@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
+  <listeners>
+    <listener class-name="com.focus.listeners.Listener"/>
+  </listeners>
+  <test thread-count="5" name="Test">
+    <classes>
+      <class name="com.focus.testcases.URLBrowserTest"/>
+      <class name="com.focus.testcases.ReportDesignerTest"/>
+    </classes>
+  </test> <!-- Test -->
+  <test name="Test(failed)">
+    <classes>
+      <class name="com.focus.testcases.URLBrowserTest">
+        <methods>
+          <include name="beforeMethodExecution"/>
+          <include name="generateReports"/>
+          <include name="intialiseReports"/>
+          <include name="openBrowser"/>
+          <include name="afterMethodExecution"/>
+        </methods>
+      </class> <!-- com.focus.testcases.URLBrowserTest -->
+      <class name="com.focus.testcases.ReportDesignerTest">
+        <methods>
+          <include name="checkReportAllProductsByTagDetails"/>
+          <include name="checkReportMRAfterChangesInCustomizationtab"/>
+          <include name="checkBillwiseReportAfterCheckingMultipleChkbox"/>
+          <include name="checkReportAccountingTrasactionsofInventoryTagDetails"/>
+          <include name="checkReportExportingThroughPDFAndValidatePDF"/>
+          <include name="checkAlignmentInReportDesgining"/>
+          <include name="checkReportWithQuaeryreport"/>
+          <include name="checkSavingRDReportsWihParameter"/>
+          <include name="checkBillwiseDetailsreport"/>
+          <include name="CheckAddingFilterInFiledsCreatedCustomizationTab"/>
+          <include name="checkSortingOptionInReportDesgining"/>
+          <include name="checkReportAccountingTransactionsOfAnAccountingTagDetails"/>
+          <include name="beforeMethodExecution"/>
+          <include name="checkCustomizeReportOFAlltransactionsofdocumentclasscube"/>
+          <include name="checkInventoryTransactionsOfATagCubeReportWithMutipleLevelsOfRowGrouping"/>
+          <include name="checkReportMRWithFilter"/>
+          <include name="checkReportInventoryTransactionsOfProductDetails"/>
+          <include name="checkReportForCreatedInventoryTransactionsOfATagCube"/>
+          <include name="checkReportAllAccountsByTagDetails"/>
+          <include name="checkSaveAReportForValidationRowFormattingTab"/>
+          <include name="checkReportInventoryTransactionsDetails"/>
+          <include name="checkLedgerAnalysisreport"/>
+          <include name="checkReportMRAfterChangesAlignmentAndSignInColoumnFiels"/>
+          <include name="checkAddingProgrammableFiledWithColAttaributeAndEditingColName"/>
+          <include name="checkAddingProgrammmingFiledInBillwiseRDReport"/>
+          <include name="afterMethodExecution"/>
+          <include name="checkLedgerDetailsExportPdf"/>
+          <include name="checkReportMRAfterChangesAInSortingTAB"/>
+        </methods>
+      </class> <!-- com.focus.testcases.ReportDesignerTest -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->

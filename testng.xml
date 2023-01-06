@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+	<listeners>
+		<listener class-name="com.focus.listeners.Listener"></listener>
+	</listeners>
+	<test thread-count="5" name="Test">
+		<classes>
+
+			<class name="com.focus.testcases.URLBrowserTest" />
+
+	<class name="com.focus.testcases.LoginPageTest" />
+	<class name="com.focus.testcases.VoucherPrintOptionsTest" />
+	<class name="com.focus.testcases.VoucherFooterScenariosTest" />
+
+	<class name="com.focus.testcases.DesignLayoutWithMultipleAttachmentsTest" />
+		
+
+	<class name="com.focus.testcases.UserRestrictionsTest" />
+	<class name="com.focus.testcases.FocusInventoryReportsTest" />
+	<class name="com.focus.testcases.FocusFinancialsReportTest" />
+
+
+	<class name="com.focus.testcases.ReportDesignerTest" />
+
+	<class name="com.focus.testcases.CreditTest" />
+
+
+	<class name="com.focus.testcases.AccountPropertiesTest" />
+	<class name="com.focus.testcases.AccountMasterTest" />
+	<class name="com.focus.testcases.CodeIncrementalTest" />
+	<class name="com.focus.testcases.ProductCodeIncrementalTest" />
+	<class name="com.focus.testcases.WarehouseCodeIncrementTest" />
+	<class name="com.focus.testcases.DepartmentCodeIncrementTest" />
+
+
+
+
+
+		</classes>
+	</test> <!-- Test -->
+</suite> <!-- Suite --> 
