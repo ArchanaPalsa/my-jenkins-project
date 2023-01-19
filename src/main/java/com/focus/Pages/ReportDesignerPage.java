@@ -968,7 +968,7 @@ public class ReportDesignerPage extends BaseEngine
 		companyLogoImg.click();
 
 		String getCompanyTxt1=companyName.getText();
-		String getLoginCompanyName1=getCompanyTxt1.substring(0, 10);
+		String getLoginCompanyName1=getCompanyTxt1.substring(0, 9);
 		System.out.println("company name  :  "+ getLoginCompanyName1);
 		companyLogoImg.click();
 
@@ -7218,7 +7218,6 @@ private static WebElement reportCloseBtn2;
 
 
 
-
 	
 	String LedgerAnalaysis = null;
 	public boolean checkLedgerDetailsExportPdf() throws InterruptedException, AWTException, IOException
@@ -7241,11 +7240,21 @@ private static WebElement reportCloseBtn2;
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_ExportPDFBtn));
 		sl_ExportPDFBtn.click();
 		
-		getWaitForAlert();
-		Thread.sleep(2000);
-		getAlert().accept();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ss_ReportPrintLabel));
+        
+        String actConfirmMsg=ss_ReportPrintMsg.getText();
+        String expConfirmMsg="";
+        Thread.sleep(2000);
+        
+        System.out.println("Actual Msg                :                "+        actConfirmMsg                + "Expected                "        +        expConfirmMsg);
+        
+        
+        getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ss_ReportPrintYesBtn));
+        ss_ReportPrintYesBtn.click();
+        
+        Thread.sleep(3000);
 
-		Thread.sleep(4000);
+
 	
 		/*	LedgerAnalaysis = checkDownloadedFileName(getDriver());*/
 		
@@ -10112,10 +10121,19 @@ private static WebElement reportCloseBtn2;
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_ExportPDFBtn));
 		sl_ExportPDFBtn.click();
 		
-		getWaitForAlert();
-		Thread.sleep(2000);
-		getAlert().accept();
-
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ss_ReportPrintLabel));
+        
+        String actConfirmMsg=ss_ReportPrintMsg.getText();
+        String expConfirmMsg="";
+        Thread.sleep(2000);
+        
+        System.out.println("Actual Msg                :                "+        actConfirmMsg                + "Expected                "        +        expConfirmMsg);
+        
+        
+        getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ss_ReportPrintYesBtn));
+        ss_ReportPrintYesBtn.click();
+        
+        Thread.sleep(3000);
 		Thread.sleep(4000);
 	
 		/*	LedgerAnalaysis = checkDownloadedFileName(getDriver());*/

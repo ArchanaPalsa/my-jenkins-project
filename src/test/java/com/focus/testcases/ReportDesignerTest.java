@@ -23,7 +23,7 @@ public class ReportDesignerTest extends BaseEngine
 		Assert.assertEquals(RDP.checkLogin(), true);	
 	}
 
-/*
+
    @Test(priority=81)
 	public void checkRestoreCompany() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	{
@@ -110,7 +110,7 @@ public class ReportDesignerTest extends BaseEngine
 	{
 		RDP=new ReportDesignerPage(getDriver());
 		Assert.assertEquals(RDP.checkSavingAccountingTransactionsOfAccountingTagDetails(), true);
-	} */
+	} 
 
 	@Test(priority=101)
 	public void checkReportAccountingTransactionsOfAnAccountingTagDetails() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException

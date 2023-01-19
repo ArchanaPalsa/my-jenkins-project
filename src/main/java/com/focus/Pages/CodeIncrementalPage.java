@@ -848,7 +848,7 @@ public class CodeIncrementalPage extends BaseEngine
 		Thread.sleep(2000);
 		
 		Select valueDD = new Select(valueDropdown);
-		valueDD.selectByVisibleText("Code");
+		valueDD.selectByVisibleText("sCode");
 		Thread.sleep(1000);
 		
 		valueDropdown.sendKeys(Keys.TAB);

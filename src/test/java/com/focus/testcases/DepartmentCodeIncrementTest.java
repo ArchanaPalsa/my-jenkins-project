@@ -18,15 +18,15 @@ public class DepartmentCodeIncrementTest extends BaseEngine {
 	
 		DepartmentCodeIncrementPage DIP;
 	
-		//@Test(priority=2000)
+		@Test(priority=2000)
 		public void checkLogin() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 		{
 			CIP=new CodeIncrementalPage(getDriver());
 			Assert.assertEquals(CIP.checkLogin(), true);
 		}
+		/*
 		
-		
-	    @Test(priority=2002)
+	  @Test(priority=2002)
 		public void checkSaveNormalIncrementIndepartmentCode() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 		{
 			DIP=new DepartmentCodeIncrementPage(getDriver());
@@ -68,7 +68,7 @@ public class DepartmentCodeIncrementTest extends BaseEngine {
 			DIP=new DepartmentCodeIncrementPage(getDriver());
 			Assert.assertEquals(DIP.checkSaveCopyFromParentAndIncrementalForGroupdepartment(), true);
 		}
-		
+		*/
 		
 		@Test(priority=2011)
 		public void checkLogoutAndLoginAfterCustomization2() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException

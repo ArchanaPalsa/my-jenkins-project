@@ -16636,9 +16636,10 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		Thread.sleep(4000);
 		
-		
-		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
-		printBtn.click();
+		ClickUsingJs(printBtn);
+		Thread.sleep(2000);
+		/*getWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
+		printBtn.click();*/
 
 		Thread.sleep(2000);
 
@@ -19508,9 +19509,9 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		LayoutNameTxt.sendKeys(Keys.TAB);
 		Thread.sleep(2000);
 
-		Select s = new Select(LayoutOptionsdropdown);
+	/*	Select s = new Select(LayoutOptionsdropdown);
 		s.selectByValue("3");
-
+*/
 		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(footerPDFBtn));
@@ -38454,9 +38455,9 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		LayoutNameTxt.sendKeys(Keys.TAB);
 		Thread.sleep(2000);
 
-		Select s = new Select(LayoutOptionsdropdown);
+	/*	Select s = new Select(LayoutOptionsdropdown);
 		s.selectByValue("2");
-
+*/
 		Thread.sleep(2000);
 
 		

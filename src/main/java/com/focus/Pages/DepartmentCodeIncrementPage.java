@@ -20,15 +20,15 @@ public class DepartmentCodeIncrementPage extends BaseEngine {
 		{
 		        try
 		        {
-		                getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(IerrorMessage));
-		                String actErrorMessage=IerrorMessage.getText();
+		                getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(errorMessage));
+		                String actErrorMessage=errorMessage.getText();
 		                String expErrorMessage=ExpMessage;
 
 		                try
 		                {
 		                
-			                getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(IerrorMessageCloseBtn));
-			                IerrorMessageCloseBtn.click();
+			                getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(errorMessageCloseBtn));
+			                errorMessageCloseBtn.click();
 
 			                System.out.println("ValidationMessage  :  "+actErrorMessage +" Value Expected : "+expErrorMessage);
 			                
@@ -192,6 +192,9 @@ public class DepartmentCodeIncrementPage extends BaseEngine {
 		public static boolean checkSavedepartmentMasterAndVerifyIncrementalPropery() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 		{
 			Thread.sleep(2000);
+			getDriver().navigate().refresh();
+			Thread.sleep(2000);
+			
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(homeMenu));
 			homeMenu.click();
 
@@ -218,9 +221,9 @@ public class DepartmentCodeIncrementPage extends BaseEngine {
 			Thread.sleep(2000);
 			nameTxt.sendKeys(Keys.TAB);
 
-			jurisdictionTxt.click();
+			JurisdictionTxt.click();
 			Thread.sleep(2000);
-			jurisdictionTxt.click();
+			JurisdictionTxt.click();
 
 			Thread.sleep(2000);
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
@@ -272,9 +275,9 @@ public class DepartmentCodeIncrementPage extends BaseEngine {
 			Thread.sleep(2000);
 			nameTxt.sendKeys(Keys.TAB);
 
-			jurisdictionTxt.click();
+			JurisdictionTxt.click();
 			Thread.sleep(2000);
-			jurisdictionTxt.click();
+			JurisdictionTxt.click();
 			
 			Thread.sleep(2000);
 			
@@ -322,10 +325,10 @@ public class DepartmentCodeIncrementPage extends BaseEngine {
 			Thread.sleep(2000);
 			nameTxt.sendKeys(Keys.TAB);
 
-			jurisdictionTxt.click();
+			JurisdictionTxt.click();
 			
 			Thread.sleep(2000);
-			jurisdictionTxt.click();
+			JurisdictionTxt.click();
 			
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 			SaveBtn.click();
@@ -526,6 +529,8 @@ public class DepartmentCodeIncrementPage extends BaseEngine {
 		public static boolean checkLogoutAndLoginAfterCustomization() throws InterruptedException
 		{
 			Thread.sleep(2000);
+			getDriver().navigate().refresh();
+			Thread.sleep(2000);
 			
 			getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(LogoutDropdown));
 			LogoutDropdown.click();
@@ -564,14 +569,14 @@ public class DepartmentCodeIncrementPage extends BaseEngine {
 		    
 		    Thread.sleep(8000);
 		          
-		    getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(userNameDisplay));
-		   	userNameDisplay.click();
+		    getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(userNameTxt));
+		    userNameTxt.click();
 		           	
-			String userInfo=userNameDisplay.getText();
+			String userInfo=userNameTxt.getText();
 			
 			System.out.println("User Info : "+userInfo);
 			
-			System.out.println("User Info Capture Text :"+userNameDisplay.getText());
+			System.out.println("User Info Capture Text :"+userNameTxt.getText());
 			
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogo));
 			
@@ -582,23 +587,15 @@ public class DepartmentCodeIncrementPage extends BaseEngine {
 			System.out.println("company name :"+ getLoginCompanyName);
 			companyLogo.click();
 			
-			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(dashboard));
-			
-			String getDashboard=dashboard.getText();
-			
-			System.out.println(getDashboard);
 			
 		    
 		    String expuserInfo            ="SU";
 		    String expLoginCompanyName    ="Account Properties And Customization";
-		    String expDashboard			  ="Graph with Active and setAsDefault";
-		   
-			
+		  
 			System.out.println("***********************************checkLogoutAndLoginAfterEnablingMandatoryCheckboxInFieldsProperties*********************************");
 		    
 		    System.out.println("User Info                        : "+userInfo               +"  value expected  "+expuserInfo);
 		    System.out.println("Login Company Name               : "+getLoginCompanyName    +"  value expected  "+expLoginCompanyName);
-		    System.out.println("Dashboard                        : "+getDashboard           +"  value expected  "+expDashboard);
 		   
 		  
 			if(userInfo.equalsIgnoreCase(expuserInfo) /*&& getLoginCompanyName.equalsIgnoreCase(expLoginCompanyName)*/)
@@ -698,7 +695,7 @@ public class DepartmentCodeIncrementPage extends BaseEngine {
 			Thread.sleep(2000);
 			
 			Select valueDD = new Select(valueDropdown);
-			valueDD.selectByVisibleText("Code");
+			valueDD.selectByVisibleText("sCode");
 			Thread.sleep(1000);
 			
 			valueDropdown.sendKeys(Keys.TAB);
@@ -855,9 +852,9 @@ public class DepartmentCodeIncrementPage extends BaseEngine {
 			Thread.sleep(2000);
 			nameTxt.sendKeys(Keys.TAB);
 
-			jurisdictionTxt.click();
+			currencyTxt.click();
 			Thread.sleep(2000);
-			jurisdictionTxt.click();
+			currencyTxt.click();
 
 			Thread.sleep(2000);
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
@@ -924,9 +921,9 @@ public class DepartmentCodeIncrementPage extends BaseEngine {
 			Thread.sleep(2000);
 			nameTxt.sendKeys(Keys.TAB);
 
-			jurisdictionTxt.click();
+			currencyTxt.click();
 			Thread.sleep(2000);
-			jurisdictionTxt.click();
+			currencyTxt.click();
 
 			Thread.sleep(2000);
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
@@ -993,9 +990,9 @@ public class DepartmentCodeIncrementPage extends BaseEngine {
 			Thread.sleep(2000);
 			nameTxt.sendKeys(Keys.TAB);
 
-			jurisdictionTxt.click();
+			currencyTxt.click();
 			Thread.sleep(2000);
-			jurisdictionTxt.click();
+			currencyTxt.click();
 
 			Thread.sleep(2000);
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
@@ -1063,9 +1060,9 @@ public class DepartmentCodeIncrementPage extends BaseEngine {
 			Thread.sleep(2000);
 			nameTxt.sendKeys(Keys.TAB);
 
-			jurisdictionTxt.click();
+			currencyTxt.click();
 			Thread.sleep(2000);
-			jurisdictionTxt.click();
+			currencyTxt.click();
 
 			Thread.sleep(2000);
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
@@ -1133,9 +1130,9 @@ public class DepartmentCodeIncrementPage extends BaseEngine {
 			Thread.sleep(2000);
 			nameTxt.sendKeys(Keys.TAB);
 
-			jurisdictionTxt.click();
+			currencyTxt.click();
 			Thread.sleep(2000);
-			jurisdictionTxt.click();
+			currencyTxt.click();
 
 			Thread.sleep(2000);
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
@@ -1236,9 +1233,9 @@ public class DepartmentCodeIncrementPage extends BaseEngine {
 			Thread.sleep(2000);
 			nameTxt.sendKeys(Keys.TAB);
 
-			jurisdictionTxt.click();
+			currencyTxt.click();
 			Thread.sleep(2000);
-			jurisdictionTxt.click();
+			currencyTxt.click();
 			
 			Thread.sleep(2000);
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
@@ -1338,9 +1335,9 @@ public class DepartmentCodeIncrementPage extends BaseEngine {
 			Thread.sleep(2000);
 			nameTxt.sendKeys(Keys.TAB);
 
-			jurisdictionTxt.click();
+			currencyTxt.click();
 			Thread.sleep(2000);
-			jurisdictionTxt.click();
+			currencyTxt.click();
 			
 			Thread.sleep(2000);
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));

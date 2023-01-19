@@ -2487,8 +2487,14 @@ public class ElementRepository
 	@FindBy(xpath="//*[@id='btnPreview']/a/i")
 	public static WebElement accountHeaderPreview;
 
-	@FindBy(xpath="//*[@id='all_TabsField']/div[5]/nav/div/div/ul/li[1]/a/i")
+	@FindBy(xpath="//*[@id='[all_TabsField']/div[5]/nav/div/div/ul/li[1]/a/i")
 	public static WebElement accountSaveBtn;
+	
+	
+	@FindBy(xpath="(//*[@id='btnMasterSaveClick'])[1]")
+	public static WebElement itemSaveBtn;
+	
+	
 
 	@FindBy(xpath="//*[@id='btnAdd_Field_MasterCust']/a/i")
 	public static WebElement accountAddBtn;
@@ -6278,7 +6284,7 @@ public class ElementRepository
 	public static WebElement newBtn;
 	
 	
-	@FindBy(xpath = "//*[@id='id_reportmenudisplay']/ul/li[9]")
+	@FindBy(xpath = "//*[@id='id_reportmenudisplay']//a/i[@class='icon-filter hiconright2']")
 	public static WebElement report_FilterExpandBtn;
 	
 	@FindBy(xpath="//*[@id='filter_Okbtn_']")
@@ -8177,10 +8183,10 @@ public class ElementRepository
 
 
 
-	@FindBy(xpath="//*[@id='HeaderDetails_1']/div/div/table/tbody/tr/td[4]")
+	@FindBy(xpath="//*[@id='mainTab_0']//table/tbody/tr/td[4]")
 	public static List<WebElement> fieldCaptionTxtList;
 
-	@FindBy(xpath="//*[@id='HeaderDetails_1']/div/div/table/tbody/tr/td[1]/i[1]")
+	@FindBy(xpath="//*[@id='mainTab_0']//table/tbody/tr/td[1]/i[1]")
 	public static List<WebElement> editFieldList;
 
 	@FindBy(xpath="//*[@id='ExtraField_Tabs']/li[2]/a")
@@ -10811,7 +10817,16 @@ public class ElementRepository
 		@FindBy(xpath="//tbody/tr[1]/td[6]/span[1]")
 		public static WebElement  report_Filter_RefreshConditionBtn;
 		
+
 		
+		@FindBy(xpath="//*[@id='lblConfirmMessage']")
+		public static WebElement ss_ReportPrintMsg;
+
+		@FindBy(xpath="//*[@id='dvConfirm']//div[3]//input[1]")
+		public static WebElement ss_ReportPrintYesBtn;
+		
+		@FindBy(xpath="(//*[@id='MCustomize_DeleteField_ModalLabel'])[1]")
+        public static WebElement ss_ReportPrintLabel;
 		
 		@FindBy(xpath="(//table[@class='CommonReportTable']/tbody)[1]/tr")
 		public static List<WebElement> reportsRowsCount;
@@ -11677,6 +11692,11 @@ public class ElementRepository
 
 			@FindBy(xpath="//input[@id='id_header_268435471']")
 			public static WebElement  jurisdictionTxt;
+			
+			@FindBy(xpath="//input[@id='Jurisdiction']")
+			public static WebElement  JurisdictionTxt;
+			
+			
 			  
 			
 			@FindBy(xpath="//input[@id='id_body_536870916']")
@@ -12038,7 +12058,7 @@ public class ElementRepository
 				public static WebElement IncTypeDropdown;
 				
 				
-				@FindBy (xpath="//*[@id='ddlField_MasterFields']")
+				@FindBy (xpath="//select[@id='ddlField_MasterFields']")
 				public static WebElement valueDropdown;
 				
 				@FindBy(xpath = "//*[@id='idGlobalError']/div/table/tbody/tr/td[2]/div[2]")
@@ -12056,13 +12076,13 @@ public class ElementRepository
 				
 				
 
-				@FindBy(xpath="//*[@id='tabId_2']/ul/li[1]/a")
+				@FindBy(xpath="//*[@id='tab_mainTab_0']")
 				public static WebElement generalMainTabInItem;
 				
-				@FindBy(xpath="//*[@id='tabId_4']/ul/li[1]/a")
+				@FindBy(xpath="//*[@id='tab_mainTab_0']")
 				public static WebElement WgeneralMainTab;
 				
-				@FindBy(xpath="//*[@id='tabId_3']/ul/li[1]/a")
+				@FindBy(xpath="//*[@id='tab_mainTab_0']")
 				public static WebElement DgeneralMainTab;
 
 				@FindBy (xpath="//*[@id='iBin']")

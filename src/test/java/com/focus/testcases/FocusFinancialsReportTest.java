@@ -19,13 +19,13 @@ public class FocusFinancialsReportTest extends BaseEngine
 	static FocusFinancialsReportPage ffrp;
 	UserRestrictionsPage urp;
 	
-	@Test(priority=97)
+	//@Test(priority=97)
 	public void checkRestoreCompany() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	{
 		urp=new UserRestrictionsPage(getDriver());
 	  Assert.assertEquals(urp.checkRestoreCompany(), true);
 	}
-	
+	/*
 	@Test(priority=98)
 	public void checkLoginWithRERInFA() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
@@ -437,23 +437,32 @@ public class FocusFinancialsReportTest extends BaseEngine
 	 {
 		 ffrp=new FocusFinancialsReportPage(getDriver());
 		 Assert.assertEquals(ffrp.checkCustomerBillWiseSummaryReport(), true);
-	 }
-
+	 }*/
+	 
 	 @Test(priority=160)
+		public void checkLoginWithRERInFAV() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+		{
+			urp=new UserRestrictionsPage(getDriver());
+		  Assert.assertEquals(urp.checkLoginWithRERInFA(), true);
+		}
+		
+	 
+
+	 @Test(priority=161)
 	 public void checkVendorListingOfOutStandingBills() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
 		 ffrp=new FocusFinancialsReportPage(getDriver());
 		 Assert.assertEquals(ffrp.checkVendorListingOfOutStandingBills(), true);
 	 }
 	 
-	 @Test(priority=161)
+	 @Test(priority=162)
 	 public void checkVendorStatementsReport() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
 		 ffrp=new FocusFinancialsReportPage(getDriver());
 		 Assert.assertEquals(ffrp.checkVendorStatementsReport(), true);
 	 }
 	 
-	 @Test(priority=162)
+	 @Test(priority=163)
 	 public void checkVendorDueDateAnalysisReport() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
 		 ffrp=new FocusFinancialsReportPage(getDriver());
@@ -461,7 +470,7 @@ public class FocusFinancialsReportTest extends BaseEngine
 	 }
 	 
 
-	 @Test(priority=163)
+	 @Test(priority=164)
 	 public void checkVendorAgeingDetailsAnalysis() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
 		 ffrp=new FocusFinancialsReportPage(getDriver());
@@ -470,14 +479,14 @@ public class FocusFinancialsReportTest extends BaseEngine
 	 
 	 
 	 
-	 @Test(priority=164)
+	 @Test(priority=165)
 	 public void checkVendorAgeingDetailByDueDateReport() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
 		 ffrp=new FocusFinancialsReportPage(getDriver());
 		 Assert.assertEquals(ffrp.checkVendorAgeingDetailByDueDateReport(), true);
 	 }
 	 
-	 @Test(priority=165)
+	 @Test(priority=166)
 	 public void checkVendorOverDueAnalysisReport() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
 		 ffrp=new FocusFinancialsReportPage(getDriver());
@@ -485,35 +494,35 @@ public class FocusFinancialsReportTest extends BaseEngine
 	 }
 	 
 	 //
-	 @Test(priority=166)
+	 @Test(priority=167)
 	 public void checkVendorAgeingSummaryAnalysisReport() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
 		 ffrp=new FocusFinancialsReportPage(getDriver());
 		 Assert.assertEquals(ffrp.checkVendorAgeingSummaryAnalysisReport(), true);
 	 }
 	 
-	 @Test(priority=167)
+	 @Test(priority=168)
 	 public void checkVendorSummaryAgeingByDueDateReport() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
 		 ffrp=new FocusFinancialsReportPage(getDriver());
 		 Assert.assertEquals(ffrp.checkVendorSummaryAgeingByDueDateReport(), true);
 	 }
 	 
-	 @Test(priority=168)
+	 @Test(priority=169)
 	 public void checkVendorOverDueSummaryReport() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
 		 ffrp=new FocusFinancialsReportPage(getDriver());
 		 Assert.assertEquals(ffrp.checkVendorOverDueSummaryReport(), true);
 	 }
 	 
-	 @Test(priority=169)
+	 @Test(priority=170)
 	 public void checkVendorBillWiseSummaryReport() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
 		 ffrp=new FocusFinancialsReportPage(getDriver());
 		 Assert.assertEquals(ffrp.checkVendorBillWiseSummaryReport(), true);
 	 }
 	 
-	 @Test(priority=170)
+	 @Test(priority=171)
 	 public void checkLogutAndLoginWithRER() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
 		 ffrp=new FocusFinancialsReportPage(getDriver());

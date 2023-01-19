@@ -22,15 +22,15 @@ public class WareHouseCodeIncrementPage extends BaseEngine {
 		{
 		        try
 		        {
-		                getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(IerrorMessage));
-		                String actErrorMessage=IerrorMessage.getText();
+		                getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(errorMessage));
+		                String actErrorMessage=errorMessage.getText();
 		                String expErrorMessage=ExpMessage;
 
 		                try
 		                {
 		                
-			                getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(IerrorMessageCloseBtn));
-			                IerrorMessageCloseBtn.click();
+			                getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(errorMessageCloseBtn));
+			                errorMessageCloseBtn.click();
 
 			                System.out.println("ValidationMessage  :  "+actErrorMessage +" Value Expected : "+expErrorMessage);
 			                
@@ -193,6 +193,8 @@ public class WareHouseCodeIncrementPage extends BaseEngine {
 		
 		public static boolean checkSaveWarehouseMasterAndVerifyIncrementalPropery() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 		{
+			Thread.sleep(2000);
+			getDriver().navigate().refresh();
 			Thread.sleep(2000);
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(homeMenu));
 			homeMenu.click();
@@ -528,6 +530,9 @@ public class WareHouseCodeIncrementPage extends BaseEngine {
 		public static boolean checkLogoutAndLoginAfterCustomization() throws InterruptedException
 		{	
 			Thread.sleep(3000);
+			
+			getDriver().navigate().refresh();
+			Thread.sleep(2000);
 			getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(LogoutDropdown));
 			LogoutDropdown.click();
 
@@ -732,7 +737,7 @@ public class WareHouseCodeIncrementPage extends BaseEngine {
 			Thread.sleep(2000);
 			
 			Select valueDD = new Select(valueDropdown);
-			valueDD.selectByVisibleText("Code");
+			valueDD.selectByVisibleText("sCode");
 			Thread.sleep(1000);
 			
 			valueDropdown.sendKeys(Keys.TAB);

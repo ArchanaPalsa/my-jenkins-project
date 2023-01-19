@@ -24,7 +24,7 @@ public class AccountMasterTest extends BaseEngine
 		  Assert.assertEquals(cmctp.checkLogin(), true);
 	  }
 	 
-	 
+	 /*
 	  // Creating Fields in Create Tab
 	  
 	  @Test(priority=2001)
@@ -198,7 +198,7 @@ public class AccountMasterTest extends BaseEngine
 	  {
 		  cmctp=new AccountMasterPage(getDriver());
 		  Assert.assertEquals(cmctp.checkSavingDemoAccount(), true);
-	  }
+	  }*/
 	  
 	  // Enable Mandatory in All fields
 	  

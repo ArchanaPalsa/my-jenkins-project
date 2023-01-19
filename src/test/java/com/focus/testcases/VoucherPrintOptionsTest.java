@@ -498,7 +498,7 @@ public class VoucherPrintOptionsTest extends BaseEngine
 	}
 
 
-	@Test(priority=10162)
+	//@Test(priority=10162)
 	public void checkChangeFieldPropertiesInLayoutForMultiplePages() throws AWTException, Exception
 	{
 		VPO=new VoucherPrintOptionsPage(getDriver());

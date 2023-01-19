@@ -22628,13 +22628,13 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 	@FindBy(xpath="(//input[@name='chkRowCheck'])[7]")
 	public static WebElement lastCheckbox;
 
-	@FindBy(xpath="//*[@id='btnProformaExportForAdvanceMasterPopUp']/i")
+	@FindBy(xpath="//*[@id='btnProformaExportForAdvanceMasterPopUp']")//*[@id="btnProformaExportForAdvanceFormPopUp"]
 	public static WebElement exportBtnInAdvanceMasterImportOrExport;
 
-	@FindBy(xpath="//*[@id='btnImportDataForAdvanceMasterPopUp']/i")
+	@FindBy(xpath="//*[@id='btnImportDataForAdvanceMasterPopUp']")
 	public static WebElement importDataBtnInAdvanceMasterImportOrExport; //*[@id="divAdvMasterImportExport"]/ul/li[2]/span[4]/i
 
-	@FindBy(xpath="//*[@id='divAdvMasterImportExport']/ul/li[2]/span[4]/i")
+	@FindBy(xpath="//*[@id='divAdvMasterImportExport']/ul/li[2]/span")
 	public static WebElement closeBtnInAdvanceMasterImportOrExport;
 
 	@FindBy(xpath="//ul[@id='ulMasterExportTab']/li")

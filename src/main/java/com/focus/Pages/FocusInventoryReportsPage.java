@@ -14,6 +14,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -22,33 +24,33 @@ import com.focus.base.BaseEngine;
 import com.testautomationguru.utility.PDFUtil;
 
 public class FocusInventoryReportsPage extends BaseEngine {
-	
-	
-	
+
+
+
 	public boolean checkItemQueryReport() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryMenu));
 		inventoryMenu.click();
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryReportsMenu));
 		inventoryReportsMenu.click();
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(itemQuery));
 		itemQuery.click();
-		
+
 		Thread.sleep(2000);
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(iq_ItemTxt));
 		iq_ItemTxt.click();
 		iq_ItemTxt.sendKeys("A1");
 		Thread.sleep(2000);
 		iq_ItemTxt.sendKeys(Keys.TAB);
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(iq_getStockBtn));
 		iq_getStockBtn.click();
-		
+
 		Thread.sleep(5000);
-		
+
 		String actiq_OpeningStocks				=iq_OpeningStocks.getText();
 		String actiq_PendingPurchaseOrders		=iq_PendingPurchaseOrders.getText();
 		String actiq_CurrentStock				=iq_CurrentStock.getText();
@@ -56,8 +58,8 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		String actiq_AvgStockRate				=iq_AvgStockRate.getText();
 		String actiq_QtyToBeOrdered				=iq_QtyToBeOrdered.getText();
 		String actiq_Value						=iq_Value.getText();
-		
-		
+
+
 		String expiq_OpeningStocks				="1.00";
 		String expiq_PendingPurchaseOrders		="0.00";
 		String expiq_CurrentStock				="3.00";
@@ -65,15 +67,15 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		String expiq_AvgStockRate				="1.00";
 		String expiq_QtyToBeOrdered				="0.00";
 		String expiq_Value						="3.00";
-	
-		
-		
+
+
+
 		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(IQRecentStockPurchasesTransactionExpand));
 		IQRecentStockPurchasesTransactionExpand.click();
-		
+
 		Thread.sleep(2000);
-	
+
 		ArrayList<String>  purchasesList1 = new ArrayList<String>(); 
 
 		int count=IQRecentStockTransactionPurchasesR1.size();
@@ -93,7 +95,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		System.out.println("actpurchasesList"+actpurchasesListR1);
 		System.out.println("exppurchasesList"+exppurchasesListR1);
 
-		
+
 		ArrayList<String>  purchasesList2 = new ArrayList<String>(); 
 
 		int count2=IQRecentStockTransactionPurchasesR2.size();
@@ -113,7 +115,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		System.out.println("actpurchasesList"+actpurchasesListR2);
 		System.out.println("exppurchasesList"+exppurchasesListR2);
 
-		
+
 		ArrayList<String>  purchasesList3 = new ArrayList<String>(); 
 
 		int count3=IQRecentStockTransactionPurchasesR3.size();
@@ -133,7 +135,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		System.out.println("actpurchasesList"+actpurchasesListR3);
 		System.out.println("exppurchasesList"+exppurchasesListR3);
 
-		
+
 		ArrayList<String>  purchasesList4 = new ArrayList<String>(); 
 
 		int count4=IQRecentStockTransactionPurchasesR4.size();
@@ -153,7 +155,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		System.out.println("actpurchasesList"+actpurchasesListR4);
 		System.out.println("exppurchasesList"+exppurchasesListR4);
 
-		
+
 		ArrayList<String>  purchasesList5 = new ArrayList<String>(); 
 
 		int count5=IQRecentStockTransactionPurchasesR5.size();
@@ -173,7 +175,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		System.out.println("actpurchasesList"+actpurchasesListR5);
 		System.out.println("exppurchasesList"+exppurchasesListR5);
 
-		
+
 		ArrayList<String>  purchasesList6 = new ArrayList<String>(); 
 
 		int count6=IQRecentStockTransactionPurchasesR6.size();
@@ -192,20 +194,20 @@ public class FocusInventoryReportsPage extends BaseEngine {
 
 		System.out.println("actpurchasesList"+actpurchasesListR6);
 		System.out.println("exppurchasesList"+exppurchasesListR6);
-		
-		
+
+
 		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(IQRecentStockPurchasesTransactionExpand));
 		IQRecentStockPurchasesTransactionExpand.click();
 		Thread.sleep(2000);
-		
-		
+
+
 		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(IQRecentStockSalessTransactionExpand));
 		IQRecentStockSalessTransactionExpand.click();
 		Thread.sleep(2000);
-		
-		
+
+
 		ArrayList<String>  salesList1 = new ArrayList<String>(); 
 
 		int Scount=IQRecentStockTransactionsalesR1.size();
@@ -225,7 +227,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		System.out.println("actsalesList"+actsalesListR1);
 		System.out.println("expsalesList"+expsalesListR1);
 
-		
+
 		ArrayList<String>  salesList2 = new ArrayList<String>(); 
 
 		int Scount2=IQRecentStockTransactionsalesR2.size();
@@ -245,7 +247,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		System.out.println("actsalesList"+actsalesListR2);
 		System.out.println("expsalesList"+expsalesListR2);
 
-		
+
 		ArrayList<String>  salesList3 = new ArrayList<String>(); 
 
 		int Scount3=IQRecentStockTransactionsalesR3.size();
@@ -265,7 +267,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		System.out.println("actsalesList"+actsalesListR3);
 		System.out.println("expsalesList"+expsalesListR3);
 
-		
+
 		ArrayList<String>  salesList4 = new ArrayList<String>(); 
 
 		int Scount4=IQRecentStockTransactionsalesR4.size();
@@ -285,18 +287,18 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		System.out.println("actsalesList"+actsalesListR4);
 		System.out.println("expsalesList"+expsalesListR4);
 
-		
+
 		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(IQRecentStockSalessTransactionExpand));
 		IQRecentStockSalessTransactionExpand.click();
 		Thread.sleep(2000);
-		
+
 		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(IQBalanceByWarehouseTransactionExpand));
 		IQBalanceByWarehouseTransactionExpand.click();
-		
+
 		Thread.sleep(2000);
-		
+
 		ArrayList<String>  WarehouseList1 = new ArrayList<String>(); 
 
 		int Wcount=IQRecentStockTransactionWarehouseR1.size();
@@ -316,7 +318,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		System.out.println("actWarehouseList"+actWarehouseListR1);
 		System.out.println("expWarehouseList"+expWarehouseListR1);
 
-		
+
 		ArrayList<String>  WarehouseList2 = new ArrayList<String>(); 
 
 		int Wcount2=IQRecentStockTransactionWarehouseR2.size();
@@ -336,7 +338,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		System.out.println("actWarehouseList"+actWarehouseListR2);
 		System.out.println("expWarehouseList"+expWarehouseListR2);
 
-		
+
 		ArrayList<String>  WarehouseList3 = new ArrayList<String>(); 
 
 		int Wcount3=IQRecentStockTransactionWarehouseR3.size();
@@ -356,7 +358,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		System.out.println("actWarehouseList"+actWarehouseListR3);
 		System.out.println("expWarehouseList"+expWarehouseListR3);
 
-		
+
 		ArrayList<String>  WarehouseList4 = new ArrayList<String>(); 
 
 		int Wcount4=IQRecentStockTransactionWarehouseR4.size();
@@ -375,15 +377,15 @@ public class FocusInventoryReportsPage extends BaseEngine {
 
 		System.out.println("actWarehouseList"+actWarehouseListR4);
 		System.out.println("expWarehouseList"+expWarehouseListR4);
-		
+
 		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(IQBalanceByWarehouseTransactionExpand));
 		IQBalanceByWarehouseTransactionExpand.click();
-		
+
 		Thread.sleep(2000);
 		IQBalanceByBinsTransactionExpand.click();
 		Thread.sleep(2000);
-		
+
 		ArrayList<String>  BinsList1 = new ArrayList<String>(); 
 
 		int Bcount=IQRecentStockTransactionBinsR1.size();
@@ -403,7 +405,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		System.out.println("actBinsList"+actBinsListR1);
 		System.out.println("expBinsList"+expBinsListR1);
 
-		
+
 		ArrayList<String>  BinsList2 = new ArrayList<String>(); 
 
 		int Bcount2=IQRecentStockTransactionBinsR2.size();
@@ -425,36 +427,36 @@ public class FocusInventoryReportsPage extends BaseEngine {
 
 
 		if (actiq_OpeningStocks.equalsIgnoreCase(expiq_OpeningStocks) && actiq_PendingPurchaseOrders.equalsIgnoreCase(expiq_PendingPurchaseOrders)
-    				&& actiq_CurrentStock.equalsIgnoreCase(expiq_CurrentStock) && actiq_PendingSalesOrders.equalsIgnoreCase(expiq_PendingSalesOrders)
-    				&& actiq_AvgStockRate.equalsIgnoreCase(expiq_AvgStockRate) && actiq_QtyToBeOrdered.equalsIgnoreCase(expiq_QtyToBeOrdered)
-    				&& actiq_Value.equalsIgnoreCase(expiq_Value)
-			
-			&&actpurchasesListR1.equalsIgnoreCase(exppurchasesListR1)&&actpurchasesListR2.equalsIgnoreCase(exppurchasesListR2)&&actpurchasesListR3.equalsIgnoreCase(exppurchasesListR3)
-			&&actpurchasesListR4.equalsIgnoreCase(exppurchasesListR4)&&actpurchasesListR5.equalsIgnoreCase(exppurchasesListR5)
-			&&actpurchasesListR6.equalsIgnoreCase(exppurchasesListR6)
-			
-			
-			&&actsalesListR1.equalsIgnoreCase(expsalesListR1)&&actsalesListR2.equalsIgnoreCase(expsalesListR2)&&actsalesListR3.equalsIgnoreCase(expsalesListR3)
-			&&actsalesListR4.equalsIgnoreCase(expsalesListR4)
-			
-			&&actWarehouseListR1.equalsIgnoreCase(expWarehouseListR1)&&actWarehouseListR2.equalsIgnoreCase(expWarehouseListR2)&&actWarehouseListR3.equalsIgnoreCase(expWarehouseListR3)
-			&&actWarehouseListR4.equalsIgnoreCase(expWarehouseListR4)
-		
-			&&actBinsListR1.equalsIgnoreCase(expBinsListR1)&&actBinsListR2.equalsIgnoreCase(expBinsListR2))
+				&& actiq_CurrentStock.equalsIgnoreCase(expiq_CurrentStock) && actiq_PendingSalesOrders.equalsIgnoreCase(expiq_PendingSalesOrders)
+				&& actiq_AvgStockRate.equalsIgnoreCase(expiq_AvgStockRate) && actiq_QtyToBeOrdered.equalsIgnoreCase(expiq_QtyToBeOrdered)
+				&& actiq_Value.equalsIgnoreCase(expiq_Value)
+
+				&&actpurchasesListR1.equalsIgnoreCase(exppurchasesListR1)&&actpurchasesListR2.equalsIgnoreCase(exppurchasesListR2)&&actpurchasesListR3.equalsIgnoreCase(exppurchasesListR3)
+				&&actpurchasesListR4.equalsIgnoreCase(exppurchasesListR4)&&actpurchasesListR5.equalsIgnoreCase(exppurchasesListR5)
+				&&actpurchasesListR6.equalsIgnoreCase(exppurchasesListR6)
+
+
+				&&actsalesListR1.equalsIgnoreCase(expsalesListR1)&&actsalesListR2.equalsIgnoreCase(expsalesListR2)&&actsalesListR3.equalsIgnoreCase(expsalesListR3)
+				&&actsalesListR4.equalsIgnoreCase(expsalesListR4)
+
+				&&actWarehouseListR1.equalsIgnoreCase(expWarehouseListR1)&&actWarehouseListR2.equalsIgnoreCase(expWarehouseListR2)&&actWarehouseListR3.equalsIgnoreCase(expWarehouseListR3)
+				&&actWarehouseListR4.equalsIgnoreCase(expWarehouseListR4)
+
+				&&actBinsListR1.equalsIgnoreCase(expBinsListR1)&&actBinsListR2.equalsIgnoreCase(expBinsListR2))
 		{
-			
+
 			return true;
-			
+
 		}
 		else 
 		{
 			return false;
 		}
-		
-		
+
+
 	}
-	
-	
+
+
 	public static boolean checkStockLedgerReport() throws InterruptedException
 	{
 		Thread.sleep(2000);
@@ -463,7 +465,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryReportsMenu));
 		inventoryReportsMenu.click();
-		
+
 		Thread.sleep(3000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(stockLedger));
 		stockLedger.click();
@@ -482,7 +484,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		sl_OkBtn.click();
 
 		Thread.sleep(2000);
-		
+
 
 		ArrayList<String>  AllDatapage1 = new ArrayList<String>(); 
 
@@ -494,10 +496,10 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		{
 			String style= stockLedgerTable.get(i).getAttribute("style");
 			if(style.contains("overflow: visible; font-weight: bold; background-color:"))
-					{
-				    String data=stockLedgerTable.get(i).getText();
-				    AllDatapage1.add(data);
-					}
+			{
+				String data=stockLedgerTable.get(i).getText();
+				AllDatapage1.add(data);
+			}
 		}
 
 		String actAllDatapage1 = AllDatapage1.toString();
@@ -505,30 +507,30 @@ public class FocusInventoryReportsPage extends BaseEngine {
 
 		System.out.println("actAllDatapage1"+actAllDatapage1);
 		System.out.println("expAllDatapage1"+expAllDatapage1);
-		
-		
+
+
 		Thread.sleep(2500);
 		report_NextBtn.click();
-		
+
 		Thread.sleep(2500);
-		
+
 		try{
 			if(pageNum.getText().equalsIgnoreCase("4"))
-					{
+			{
 				report_PrevBtn.click();
 				Thread.sleep(3000);
 				report_PrevBtn.click();
-					}
-			
+			}
+
 		}
 		catch (Exception e) 
 		{
 			if(pageNum.getText().equalsIgnoreCase("3"))
 			{
-		report_PrevBtn.click();
-	
+				report_PrevBtn.click();
+
 			}
-	
+
 			System.out.println("Exception "+e);
 
 		}
@@ -543,11 +545,11 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		{
 			String style= stockLedgerTable.get(i).getAttribute("style");
 			if(style.contains("overflow: visible; font-weight: bold; background-color:"))
-					{
-				    String data=stockLedgerTable.get(i).getText();
-				    AllDatapage2.add(data);
-					}
-			
+			{
+				String data=stockLedgerTable.get(i).getText();
+				AllDatapage2.add(data);
+			}
+
 		}
 
 		String actAllDatapage2 = AllDatapage2.toString();
@@ -555,29 +557,29 @@ public class FocusInventoryReportsPage extends BaseEngine {
 
 		System.out.println("actAllDatapage2"+actAllDatapage2);
 		System.out.println("expAllDatapage2"+expAllDatapage2);
-		
-		
+
+
 		Thread.sleep(2500);
 		report_NextBtn.click();
-		
+
 		Thread.sleep(2500);
-		
+
 		try{
 			if(pageNum.getText().equalsIgnoreCase("4"))
-					{
+			{
 				report_PrevBtn.click();
-					}
-			
+			}
+
 		}
 		catch (Exception e) 
 		{
-			
-	
+
+
 			System.out.println("Exception "+e);
 
 		}
-		
-		
+
+
 		ArrayList<String>  AllDatapage3 = new ArrayList<String>(); 
 
 		int count3=stockLedgerTable.size();
@@ -588,11 +590,11 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		{
 			String style= stockLedgerTable.get(i).getAttribute("style");
 			if(style.contains("overflow: visible; font-weight: bold; background-color:"))
-					{
-				    String data=stockLedgerTable.get(i).getText();
-				    AllDatapage3.add(data);
-					}
-	
+			{
+				String data=stockLedgerTable.get(i).getText();
+				AllDatapage3.add(data);
+			}
+
 		}
 
 		String actAllDatapage3 = AllDatapage3.toString();
@@ -600,33 +602,33 @@ public class FocusInventoryReportsPage extends BaseEngine {
 
 		System.out.println("actAllDatapage3"+actAllDatapage3);
 		System.out.println("expAllDatapage3"+expAllDatapage3);
-		
+
 		Thread.sleep(2500);
 		report_NextBtn.click();
-		
+
 		Thread.sleep(2500);
-		
-		
+
+
 		String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
 		String afterPath="]//td[2]";
 		int k;
-		
+
 		Thread.sleep(2000);
-		
+
 		int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
-		
+
 		for(  k=1;k<rows1;k++)
 		{
 			String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
-			
+
 			if(text1.contains("Grand Total"))
 			{
 				int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
 				System.err.println("count"+rowCount);
-			break;
+				break;
 			}	
-			}
-	
+		}
+
 		int reportsRow1ListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
 		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
 		for(int i=1;i<reportsRow1ListCount;i++)
@@ -636,10 +638,10 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		}
 		String actRow1List = reportsRow1ListArray.toString();
 		String expRow1List = "[Grand Total, , , , , , , , 44.00, 19.00, 13.00, 12.00, 31.00, 37.00, 13.00, 31.00, 38.00, , , ]";
-		
+
 		System.out.println("actRow1List"+actRow1List);
 		System.out.println("expRow1List"+expRow1List);
-		
+
 
 
 		if (actAllDatapage1.equalsIgnoreCase(expAllDatapage1)&& actAllDatapage2.equalsIgnoreCase(expAllDatapage2)
@@ -653,29 +655,29 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			return false;
 		}
 	}
-	
+
 	//4 records will be there and all the records are belongs to the stock transfers voucher when applied warehouse as hyd
 	public static boolean checkFilterInStockLedger() throws InterruptedException
 	{
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(report_FilterExpandBtn));
 		report_FilterExpandBtn.click();
 		Thread.sleep(2000);
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(report_FilterBtn));
 		report_FilterBtn.click();
-		
-		Thread.sleep(2000);
-		
+
+		Thread.sleep(3000);
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(report_FilterCustomizeBtn));
 		report_FilterCustomizeBtn.click();
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(report_FilterWarehouseExpansion));
 		report_FilterWarehouseExpansion.click();
-		
+
 		Thread.sleep(2000);
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(report_FilterWarehouseNameChkbox));
-		
+
 		if (report_FilterWarehouseNameChkbox.isSelected()==false) 
 		{
 			report_FilterWarehouseNameChkbox.click();
@@ -683,22 +685,22 @@ public class FocusInventoryReportsPage extends BaseEngine {
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reports_Filter_Customize_OkBtn));
 		reports_Filter_Customize_OkBtn.click();
-		
+
 		Thread.sleep(2000);
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(osr_DefaultFilterTxt));
 		osr_DefaultFilterTxt.click();
 		osr_DefaultFilterTxt.sendKeys("HYD");
-		
+
 		Thread.sleep(2000);
-		
+
 		osr_DefaultFilterTxt.sendKeys(Keys.TAB);
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(report_FilterOkBtn));
 		report_FilterOkBtn.click();
-		
+
 		Thread.sleep(3000);
-		
+
 		ArrayList<String>  AllDatapage1 = new ArrayList<String>(); 
 
 		int count1=stockLedgerTable.size();
@@ -709,11 +711,11 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		{
 			String style= stockLedgerTable.get(i).getAttribute("style");
 			if(style.contains("overflow: visible; font-weight: bold; background-color:"))
-					{
-				    String data=stockLedgerTable.get(i).getText();
-				    AllDatapage1.add(data);
-					}
-	
+			{
+				String data=stockLedgerTable.get(i).getText();
+				AllDatapage1.add(data);
+			}
+
 		}
 
 		String actAllDatapage1 = AllDatapage1.toString();
@@ -721,30 +723,30 @@ public class FocusInventoryReportsPage extends BaseEngine {
 
 		System.out.println("actAllDatapage1"+actAllDatapage1);
 		System.out.println("expAllDatapage1"+expAllDatapage1);
-		
-		
-		
-		
+
+
+
+
 		String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
 		String afterPath="]//td[2]";
 		int k;
-		
+
 		Thread.sleep(2000);
-		
+
 		int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
-		
+
 		for(  k=1;k<rows1;k++)
 		{
 			String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
-			
+
 			if(text1.contains("Grand Total"))
 			{
 				int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
 				System.err.println("count"+rowCount);
-			break;
+				break;
 			}	
-			}
-	
+		}
+
 		int reportsRow1ListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
 		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
 		for(int i=1;i<reportsRow1ListCount;i++)
@@ -754,11 +756,11 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		}
 		String actRow1List = reportsRow1ListArray.toString();
 		String expRow1List = "[Grand Total, , , , , , , , 4.00, 4.00, , , 4.00, 4.00, , 4.00, 4.00, , , ]";
-		
+
 		System.out.println("actRow1List"+actRow1List);
 		System.out.println("expRow1List"+expRow1List);
-		
-		
+
+
 		if (actAllDatapage1.equalsIgnoreCase(expAllDatapage1) && actRow1List.equalsIgnoreCase(expRow1List)) 
 		{
 			return true;
@@ -767,9 +769,9 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		{
 			return false;
 		}
-		
+
 	}
-   	
+
 	public static boolean checkOpeningStockRegisterReport() throws InterruptedException
 	{
 		Thread.sleep(2000);
@@ -777,25 +779,25 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryMenu));
 		inventoryMenu.click();
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryReportsMenu));
 		inventoryReportsMenu.click();
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(openingStocksRegister));
 		openingStocksRegister.click();
-		
+
 		Thread.sleep(2000);
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		Select s=new Select(sl_DateOptionDropdown);
 		s.selectByIndex(1);
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
 		sl_OkBtn.click();
-		
+
 		Thread.sleep(2000);
-		
-	
+
+
 		int reportsRow1ListCount = reportsRow1List.size();
 		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
 		for(int i=2;i<reportsRow1ListCount;i++)
@@ -805,12 +807,12 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			{
 				reportsRow1ListArray.add(data);
 			}
-			
+
 		}
 		String actRow1List = reportsRow1ListArray.toString();
 		String expRow1List = "[A1, 1.00, 1.00, 1.00, BIN1-1.00, D2]";
-		
-		
+
+
 
 		int reportsRow2ListCount = reportsRow2List.size();
 		ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
@@ -821,14 +823,14 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			{
 				reportsRow2ListArray.add(data);
 			}
-			
-			
+
+
 		}
 		String actRow2List = reportsRow2ListArray.toString();
 		String expRow2List = "[D1, 1.00, 1.00, 1.00, 51515151, D2]";
-	
 
-		
+
+
 		int reportsRow3ListCount = reportsRow3List.size();
 		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
 		for(int i=2;i<reportsRow3ListCount;i++)
@@ -838,13 +840,13 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			{
 				reportsRow3ListArray.add(data);
 			}
-		
+
 		}
 		String actRow3List = reportsRow3ListArray.toString();
 		String expRow3List = "[A2, 1.00, 1.00, 1.00, BIN1-1.00, D2]";
-		
-		
-		
+
+
+
 		int reportsRow4ListCount = reportsRow4List.size();
 		ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
 		for(int i=2;i<reportsRow4ListCount;i++)
@@ -854,46 +856,46 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			{
 				reportsRow4ListArray.add(data);
 			}
-			
+
 		}
 		String actRow4List = reportsRow4ListArray.toString();
 		String expRow4List = "[APPLE, 1.00, 1.00, 1.00, ASA, D2]";
-		
-		
-		
+
+
+
 		int reportsRow5ListCount = reportsRow5List.size();
 		ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
 		for(int i=2;i<reportsRow5ListCount;i++)
 		{
 			String data = reportsRow5List.get(i).getText().trim();
-			
+
 			if(data.isEmpty() == false)
 			{
 				reportsRow5ListArray.add(data);
 			}
-				}
+		}
 		String actRow5List = reportsRow5ListArray.toString();
 		String expRow5List = "[D2, 1.00, 1.00, 1.00, dds15, D2]";
-		
-		
-		
+
+
+
 		int reportsRow6ListCount = reportsRow6List.size();
 		ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
 		for(int i=2;i<reportsRow6ListCount;i++)
 		{
 			String data = reportsRow6List.get(i).getText().trim();
-			
+
 			if(data.isEmpty() == false)
 			{
 				reportsRow6ListArray.add(data);
 			}
-			
+
 		}
 		String actRow6List = reportsRow6ListArray.toString();
 		String expRow6List = "[B1, 1.00, 1.00, 1.00, BIN1-1.00, D2]";
-		
-		
-		
+
+
+
 		int reportsRow7ListCount = reportsRow7List.size();
 		ArrayList<String> reportsRow7ListArray = new ArrayList<String>();
 		for(int i=2;i<reportsRow7ListCount;i++)
@@ -903,14 +905,14 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			{
 				reportsRow7ListArray.add(data);
 			}
-			
-		
+
+
 		}
 		String actRow7List = reportsRow7ListArray.toString();
 		String expRow7List = "[B2, 1.00, 1.00, 1.00, BIN1-1.00, D2]";
-		
-		
-		
+
+
+
 		int reportsRow8ListCount = reportsRow8List.size();
 		ArrayList<String> reportsRow8ListArray = new ArrayList<String>();
 		for(int i=1;i<reportsRow8ListCount;i++)
@@ -920,40 +922,40 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			{
 				reportsRow8ListArray.add(data);
 			}
-		
+
 		}
 		String actRow8List = reportsRow8ListArray.toString();
 		String expRow8List = "[Grand Total, 7.00, 7.00, 7.00]";
-		
-		
+
+
 
 		System.out.println(actRow1List);
 		System.out.println(expRow1List);
-		
+
 		System.out.println(actRow2List);
 		System.out.println(expRow2List);
-		
+
 		System.out.println(actRow3List);
 		System.out.println(expRow3List);
-		
+
 		System.out.println(actRow4List);
 		System.out.println(expRow4List);
-		
+
 		System.out.println(actRow5List);
 		System.out.println(expRow5List);
-		
+
 		System.out.println(actRow6List);
 		System.out.println(expRow6List);
-		
+
 		System.out.println(actRow7List);
 		System.out.println(expRow7List);
-		
+
 		System.out.println(actRow8List);
 		System.out.println(expRow8List);
-		
+
 		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List) 
-					&& actRow4List.equalsIgnoreCase(expRow4List) && actRow5List.equalsIgnoreCase(expRow5List) && actRow6List.equalsIgnoreCase(expRow6List)
-					&& actRow7List.equalsIgnoreCase(expRow7List) && actRow8List.equalsIgnoreCase(expRow8List)) 
+				&& actRow4List.equalsIgnoreCase(expRow4List) && actRow5List.equalsIgnoreCase(expRow5List) && actRow6List.equalsIgnoreCase(expRow6List)
+				&& actRow7List.equalsIgnoreCase(expRow7List) && actRow8List.equalsIgnoreCase(expRow8List)) 
 		{
 			return true;
 		} 
@@ -961,22 +963,22 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		{
 			return false;
 		}	
-		
+
 	}
-	
+
 	public static boolean checkStockStatementReport() throws InterruptedException
 	{
 		getDriver().navigate().refresh();
 		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryMenu));
 		inventoryMenu.click();
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryReportsMenu));
 		inventoryReportsMenu.click();
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(stockStatement));
 		stockStatement.click();
-		
+
 		Thread.sleep(2000);
 		Thread.sleep(3000);
 
@@ -992,7 +994,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		sl_OkBtn.click();
 
 		Thread.sleep(2000);
-		
+
 		ArrayList<String>  AllDatapage1 = new ArrayList<String>(); 
 
 		int count1=stockLedgerTable.size();
@@ -1003,11 +1005,11 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		{
 			String style= stockLedgerTable.get(i).getAttribute("style");
 			if(style.contains("overflow: visible; font-weight: bold; background-color:"))
-					{
-				    String data=stockLedgerTable.get(i).getText();
-				    AllDatapage1.add(data);
-					}
-	
+			{
+				String data=stockLedgerTable.get(i).getText();
+				AllDatapage1.add(data);
+			}
+
 		}
 
 		String actAllDatapage1 = AllDatapage1.toString();
@@ -1015,11 +1017,11 @@ public class FocusInventoryReportsPage extends BaseEngine {
 
 		System.out.println("actAllDatapage1"+actAllDatapage1);
 		System.out.println("expAllDatapage1"+expAllDatapage1);
-		
+
 		Thread.sleep(2000);
 		report_NextBtn.click();
 		Thread.sleep(2000);
-		
+
 		ArrayList<String>  AllDatapage2 = new ArrayList<String>(); 
 
 		int count2=stockLedgerTable.size();
@@ -1030,11 +1032,11 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		{
 			String style= stockLedgerTable.get(i).getAttribute("style");
 			if(style.contains("overflow: visible; font-weight: bold; background-color:"))
-					{
-				    String data=stockLedgerTable.get(i).getText();
-				    AllDatapage2.add(data);
-					}
-	
+			{
+				String data=stockLedgerTable.get(i).getText();
+				AllDatapage2.add(data);
+			}
+
 		}
 
 		String actAllDatapage2 = AllDatapage2.toString();
@@ -1042,27 +1044,27 @@ public class FocusInventoryReportsPage extends BaseEngine {
 
 		System.out.println("actAllDatapage2"+actAllDatapage2);
 		System.out.println("expAllDatapage2"+expAllDatapage2);
-		
+
 		String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
 		String afterPath="]//td[2]";
 		int k;
-		
+
 		Thread.sleep(2000);
-		
+
 		int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
-		
+
 		for(  k=1;k<rows1;k++)
 		{
 			String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
-			
+
 			if(text1.contains("Grand Total"))
 			{
 				int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
 				System.err.println("count"+rowCount);
-			break;
+				break;
 			}	
-			}
-	
+		}
+
 		int reportsRow1ListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
 		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
 		for(int i=1;i<reportsRow1ListCount;i++)
@@ -1072,10 +1074,10 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		}
 		String actRow1List = reportsRow1ListArray.toString();
 		String expRow1List = "[Grand Total, 39.00, 37.00, 13.00, 31.00, 31.00, , , , ]";
-		
+
 		System.out.println("actRow1List"+actRow1List);
 		System.out.println("expRow1List"+expRow1List);
-		
+
 		if (actAllDatapage1.equalsIgnoreCase(expAllDatapage1) &&  actAllDatapage2.equalsIgnoreCase(expAllDatapage2) && actRow1List.equalsIgnoreCase(expRow1List))
 		{
 			return true;
@@ -1084,93 +1086,108 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		{
 			return false;
 		}
-	
+
 	}
-	
-	
+
+
+	@FindBy(xpath="//*[@id='lblConfirmMessage']")
+	private static WebElement ss_ReportPrintMsg;
+
+	@FindBy(xpath="//*[@id='dvConfirm']//div[3]//input[1]")
+	private static WebElement ss_ReportPrintYesBtn;
+
+
+	@FindBy(xpath="(//*[@id='MCustomize_DeleteField_ModalLabel'])[1]")
+	private static WebElement ss_ReportPrintLabel;
+
+
 	public static boolean checkPrintOptionInStockStatements() throws IOException, InterruptedException, AWTException
 	{
 		Thread.sleep(5000);
 
 		File Efile=new File(getBaseDir()+"\\autoIt\\ExportFiles\\stockStatements.pdf");
-		
+
 		if(Efile.exists())
 		{
 			Efile.delete();
 		}
-		
+
 		Thread.sleep(5000);
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_ReportPrintBtn));
 		sl_ReportPrintBtn.click();
-		
+
 		Thread.sleep(3000);
-		
-		try{
-			if(getIsAlertPresent())
-			{
-				String altetText = getAlert().getText();
-				System.out.println("altetText"+altetText);
-				getAlert().accept();
-			}
-		}
-		catch (Exception e) 
-		{
-			System.out.println("Exception"+e);
-		}
-		
-		 
-		Thread.sleep(5000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ss_ReportPrintLabel));
+
+		String actConfirmMsg=ss_ReportPrintMsg.getText();
+		String expConfirmMsg="";
+		Thread.sleep(2000);
+
+		System.out.println("Actual Msg                :                "+        actConfirmMsg                + "Expected                "        +        expConfirmMsg);
+
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ss_ReportPrintYesBtn));
+		ss_ReportPrintYesBtn.click();
+
+		Thread.sleep(3000);
+
+
+
+
+
+
 		Robot robot = new Robot();
 		robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_S);
 		robot.keyRelease(KeyEvent.VK_S);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
-		
+
 		Thread.sleep(2000);
-			
+
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\StockStatementsPrintSaving.exe");
-		
+
 		Thread.sleep(5000);
-		
+
 		robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
-		
+
 		Thread.sleep(2000);
-		
+
 		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
-			
+
 		int actOpenWindowsCount = getDriver().getWindowHandles().size();
 		int expOpenWindowsCount = 3;
-		
+
 		System.out.println("Number of Windows  : "+actOpenWindowsCount+"  Value Expected  "+expOpenWindowsCount);
-		
+
 		Thread.sleep(1000);
 
-	 	getDriver().switchTo().window(openTabs.get(2)).close();
-	 	Thread.sleep(1000);
-	 	getDriver().switchTo().window(openTabs.get(1)).close();
-	 	Thread.sleep(1000);
-	 	getDriver().switchTo().window(openTabs.get(0));
-	 	
-	 	
-	 	String actPDF = getBaseDir()+"\\autoIt\\ExportFiles\\stockStatements.pdf";
+		getDriver().switchTo().window(openTabs.get(2)).close();
+		Thread.sleep(1000);
+		getDriver().switchTo().window(openTabs.get(1)).close();
+		Thread.sleep(1000);
+		getDriver().switchTo().window(openTabs.get(0));
+
+
+		String actPDF = getBaseDir()+"\\autoIt\\ExportFiles\\stockStatements.pdf";
 		String expPDF = getBaseDir()+"\\autoIt\\ImportFiles\\stockStatements.pdf";
-		
+
 		PDFUtil pdfutil = new PDFUtil();
-		
+
 		boolean result = pdfutil.compare(actPDF, expPDF);
-		
+
 		String actData = pdfutil.getText(actPDF);
 		String expData = pdfutil.getText(expPDF).replaceAll("18/10/2022", getCurrentDateF2());
-		
+
 		System.err.println(actData);
 		System.err.println(expData);
-		
+
 		System.out.println("Compared Result  : "+result);
-		
+
 		if (actData.equalsIgnoreCase(expData) /*&& result==true*/) 
 		{
 			return true;
@@ -1179,21 +1196,22 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		{
 			return false;
 		}
-	
-	
+
+
 	}
 
 	public static boolean checkStockMovementReport() throws InterruptedException
-	{
+	{	
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryMenu));
 		inventoryMenu.click();
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryReportsMenu));
 		inventoryReportsMenu.click();
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(stockMovement));
 		stockMovement.click();
-		
+
 		Thread.sleep(3000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
@@ -1208,11 +1226,11 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		sl_OkBtn.click();
 
 		Thread.sleep(2000);
-		
+
 
 		Thread.sleep(3000);
-		
-	
+
+
 		int reportsRow1ListCount = reportsCol1List.size();
 		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
 		for(int i=0;i<reportsRow1ListCount;i++)
@@ -1222,34 +1240,34 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			{
 				reportsRow1ListArray.add(data);
 			}
-			
+
 		}
 		String actRow1List = reportsRow1ListArray.toString();
 		String expRow1List = "[Apple, A1, A2, B1, B2, D1, D2, Grand Total]";
-		
+
 		System.out.println(actRow1List);
 		System.out.println(expRow1List);
-		
+
 		String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
 		String afterPath="]//td[2]";
 		int k;
-		
+
 		Thread.sleep(2000);
-		
+
 		int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
-		
+
 		for(  k=1;k<rows1;k++)
 		{
 			String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
-			
+
 			if(text1.contains("Grand Total"))
 			{
 				int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
 				System.err.println("count"+rowCount);
-			break;
+				break;
 			}	
-			}
-	
+		}
+
 		int reportsRowListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
 		ArrayList<String> reportsRowListArray = new ArrayList<String>();
 		for(int i=1;i<reportsRowListCount;i++)
@@ -1259,11 +1277,11 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		}
 		String actRowList = reportsRowListArray.toString();
 		String expRowList = "[Grand Total, 7.00, 7.00, 37.00, 37.00, 13.00, 13.00, 31.00, 31.00, 7.00, , , ]";
-		
+
 		System.out.println("actRow1List"+actRowList);
 		System.out.println("expRow1List"+expRowList);
-		
-		
+
+
 		if (actRow1List.equalsIgnoreCase(expRow1List) && actRowList.equalsIgnoreCase(expRowList)) 
 		{
 			return true;
@@ -1272,21 +1290,22 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		{
 			return false;
 		}	
-		
-		
+
+
 	}
-	
+
 	public static boolean checkVirtualStockAnalysisReport() throws InterruptedException
 	{
+		Thread.sleep(1000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryMenu));
 		inventoryMenu.click();
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryReportsMenu));
 		inventoryReportsMenu.click();
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(virtualStockAnalysis));
 		virtualStockAnalysis.click();
-		
+
 		Thread.sleep(2000);
 		Thread.sleep(3000);
 
@@ -1302,7 +1321,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		sl_OkBtn.click();
 
 		Thread.sleep(2000);
-		
+
 
 		int reportsRow1ListCount = reportsCol1List.size();
 		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
@@ -1313,34 +1332,34 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			{
 				reportsRow1ListArray.add(data);
 			}
-			
+
 		}
 		String actRow1List = reportsRow1ListArray.toString();
 		String expRow1List = "[A1, A2, APPLE, B1, B2, D1, D2, Grand Total]";
-		
+
 		System.out.println(actRow1List);
 		System.out.println(expRow1List);
-		
+
 		String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
 		String afterPath="]//td[2]";
 		int k;
-		
+
 		Thread.sleep(2000);
-		
+
 		int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
-		
+
 		for(  k=1;k<rows1;k++)
 		{
 			String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
-			
+
 			if(text1.contains("Grand Total"))
 			{
 				int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
 				System.err.println("count"+rowCount);
-			break;
+				break;
 			}	
-			}
-	
+		}
+
 		int reportsRowListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
 		ArrayList<String> reportsRowListArray = new ArrayList<String>();
 		for(int i=1;i<reportsRowListCount;i++)
@@ -1350,11 +1369,11 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		}
 		String actRowList = reportsRowListArray.toString();
 		String expRowList = "[Grand Total, 31.00, , , , 31.00]";
-		
+
 		System.out.println("actRow1List"+actRowList);
 		System.out.println("expRow1List"+expRowList);
-		
-		
+
+
 		if (actRow1List.equalsIgnoreCase(expRow1List) && actRowList.equalsIgnoreCase(expRowList)) 
 		{
 			return true;
@@ -1364,9 +1383,9 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			return false;
 		}	
 
-		
+
 	}
-	
+
 	public static boolean checkStockValuationReportByProduct() throws InterruptedException
 	{
 		getDriver().navigate().refresh();
@@ -1409,7 +1428,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			}
 
 		}
-		
+
 		Iterator<String> itr = reportsRow1ListArray.iterator();
 		while (itr.hasNext()) 
 		{ 
@@ -1421,8 +1440,8 @@ public class FocusInventoryReportsPage extends BaseEngine {
 
 		}
 
-		
-		
+
+
 		String actRow1List = reportsRow1ListArray.toString();
 		String expRow1List = "[APPLE, A, A1, A2, B, B1, B2, D, D1, D2]";
 
@@ -1475,7 +1494,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		}	
 
 	}
-	
+
 	public static boolean checkStockValuationReportByProductByInventoryTag() throws InterruptedException
 	{
 
@@ -1498,7 +1517,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			}
 
 		}
-		
+
 		Iterator<String> itr = reportsRow1ListArray.iterator();
 		while (itr.hasNext()) 
 		{ 
@@ -1510,13 +1529,13 @@ public class FocusInventoryReportsPage extends BaseEngine {
 
 		}
 
-		
+
 		String actRow1List = reportsRow1ListArray.toString();
 		String expRow1List = "[APPLE, APPLE, APPLE, A, A1, A1, A2, A2, A1, B, B2, B1, B1, B2]";
 
 		System.out.println("ActualItems:"+actRow1List);
 		System.out.println("ExpectedItems:"+expRow1List);
-		
+
 		int reportsRow8ListCount = reportsCol7List.size();
 		ArrayList<String> reportsRow8ListArray = new ArrayList<String>();
 		for(int i=0;i<reportsRow8ListCount;i++)
@@ -1533,11 +1552,11 @@ public class FocusInventoryReportsPage extends BaseEngine {
 
 		System.out.println(actRow8List);
 		System.out.println(expRow8List);
-		
+
 		Thread.sleep(2000);
 		report_NextBtn.click();
 		Thread.sleep(2000);
-		
+
 		int reportspage2Row1ListCount = reportsCol1List.size();
 		ArrayList<String> reportspage2Row1ListArray = new ArrayList<String>();
 		for(int i=0;i<reportspage2Row1ListCount-1;i++)
@@ -1549,7 +1568,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			}
 
 		}
-		
+
 		Iterator<String> itr1 = reportspage2Row1ListArray.iterator();
 		while (itr1.hasNext()) 
 		{ 
@@ -1560,15 +1579,15 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			}
 
 		}
-		
-		
+
+
 		String actpage2Row1List = reportspage2Row1ListArray.toString();
 		String exppage2Row1List = "[D2, D1, D1, D2, D1]";
 
 		System.out.println(actpage2Row1List);
 		System.out.println(exppage2Row1List);
-		
-		
+
+
 		int reportspage2Row8ListCount = reportsCol7List.size();
 		ArrayList<String> reportspage2Row8ListArray = new ArrayList<String>();
 		for(int i=0;i<reportspage2Row8ListCount;i++)
@@ -1585,7 +1604,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 
 		System.out.println(actpage2Row8List);
 		System.out.println(exppage2Row8List);
-		
+
 		String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
 		String afterPath="]//td[2]";
 		int k;
@@ -1631,10 +1650,10 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			return false;
 		}	
 
-		
+
 	}
-	
-	
+
+
 	public static boolean checkStockValuationReportByInventoryByProduct() throws InterruptedException
 	{
 		Select sdd=new Select(stockValuationDropdwon);
@@ -1652,12 +1671,12 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			String data = reportsCol1List.get(i).getText().trim();
 			if(data.isEmpty() == false)
 			{
-				
+
 				reportsRow1ListArray.add(data);
 			}
 
 		}
-		
+
 		Iterator<String> itr = reportsRow1ListArray.iterator();
 		while (itr.hasNext()) 
 		{ 
@@ -1666,7 +1685,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			{ 
 				itr.remove();
 			}
-			
+
 			if (row1.equals("HYD"))
 			{ 
 				itr.remove();
@@ -1674,14 +1693,14 @@ public class FocusInventoryReportsPage extends BaseEngine {
 
 		}
 
-	
+
 		String actRow1List = reportsRow1ListArray.toString();
 		String expRow1List = "[A1, A1, APPLE, B1, B2, D1, D2, D2, A1, A2, APPLE, B1, B2, D1, D2]";
 
 		System.out.println("ActualItems  :"+actRow1List);
 		System.out.println("ExpectedItems:"+expRow1List);
-		
-		
+
+
 		int reportsRow8ListCount = reportsCol7List.size();
 		ArrayList<String> reportsRow8ListArray = new ArrayList<String>();
 		for(int i=0;i<reportsRow8ListCount;i++)
@@ -1701,7 +1720,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		Thread.sleep(2000);
 		report_NextBtn.click();
 		Thread.sleep(2000);
-		
+
 		int reportspage2Row1ListCount = reportsCol1List.size();
 		ArrayList<String> reportspage2Row1ListArray = new ArrayList<String>();
 		for(int i=0;i<reportspage2Row1ListCount-1;i++)
@@ -1713,7 +1732,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			}
 
 		}
-		
+
 		Iterator<String> itr1 = reportspage2Row1ListArray.iterator();
 		while (itr1.hasNext()) 
 		{ 
@@ -1724,15 +1743,15 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			}
 
 		}
-		
-		
+
+
 		String actpage2Row1List = reportspage2Row1ListArray.toString();
 		String exppage2Row1List = "[A1, A2, APPLE, D1]";
 
 		System.out.println(actpage2Row1List);
 		System.out.println(exppage2Row1List);
-		
-		
+
+
 		int reportspage2Row8ListCount = reportsCol7List.size();
 		ArrayList<String> reportspage2Row8ListArray = new ArrayList<String>();
 		for(int i=0;i<reportspage2Row8ListCount;i++)
@@ -1749,7 +1768,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 
 		System.out.println(actpage2Row8List);
 		System.out.println(exppage2Row8List);
-		
+
 		String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
 		String afterPath="]//td[2]";
 		int k;
@@ -1796,24 +1815,24 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			return false;
 		}	
 
-	
+
 	}
-	
+
 	public static boolean checkStockReprtByTagReport() throws InterruptedException
 	{
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryMenu));
 		inventoryMenu.click();
 		Thread.sleep(2000);
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryReportsMenu));
 		inventoryReportsMenu.click();
 		Thread.sleep(2000);
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(stockReportByTag));
 		stockReportByTag.click();
-		
+
 		Thread.sleep(2000);
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
 		sl_SelectAllChkBox.click();
 
@@ -1826,7 +1845,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		sl_OkBtn.click();
 
 		Thread.sleep(2000);
-		
+
 
 		Thread.sleep(2000);
 
@@ -1841,7 +1860,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			}
 
 		}
-		
+
 		String actRow1List = reportsRow1ListArray.toString();
 		String expRow1List = "[APPLE, A, A1, A2, B, B1, B2, D, D1, D2]";
 
@@ -1877,7 +1896,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			{
 				reportsRowListArray.add(data);
 			}
-			
+
 		}
 		String actRowList = reportsRowListArray.toString();
 		String expRowList = "[Grand Total, 18.00, 2.00, 18.00, 3.00, 2.00, 3.00, 10.00, 2.00, 10.00, 5.00, 2.00, 5.00]";
@@ -1898,23 +1917,23 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		}	
 
 	}
-	
+
 	public static boolean checkStockValuationByFATagReport() throws InterruptedException
 	{
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryMenu));
 		inventoryMenu.click();
 		Thread.sleep(2000);
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryReportsMenu));
 		inventoryReportsMenu.click();
 		Thread.sleep(2000);
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(stockValuationByFATagReport));
 		stockValuationByFATagReport.click();
-		
+
 		Thread.sleep(2000);
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
 		sl_SelectAllChkBox.click();
 
@@ -1927,7 +1946,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		sl_OkBtn.click();
 
 		Thread.sleep(2000);
-		
+
 
 		Thread.sleep(2000);
 
@@ -1942,7 +1961,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			}
 
 		}
-		
+
 		Iterator<String> itr1 = reportsRow1ListArray.iterator();
 		while (itr1.hasNext()) 
 		{ 
@@ -1953,18 +1972,18 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			}
 
 		}
-		
-		
+
+
 		String actRow1List = reportsRow1ListArray.toString();
 		String expRow1List = "[APPLE, A1, A2, B1, B2, D1, D2, A1, APPLE, A1, A2, B1, B2, D1, D2]";
 
 		System.out.println("ActualItems  :"+actRow1List);
 		System.out.println("ExpectedItems:"+expRow1List);
-		
+
 		Thread.sleep(2000);
 		report_NextBtn.click();
 		Thread.sleep(2000);
-		
+
 
 		int reportsPage2Row1ListCount = reportsCol1List.size();
 		ArrayList<String> reportsPage2Row1ListArray = new ArrayList<String>();
@@ -1977,7 +1996,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			}
 
 		}
-		
+
 		Iterator<String> itr2 = reportsPage2Row1ListArray.iterator();
 		while (itr2.hasNext()) 
 		{ 
@@ -1988,15 +2007,15 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			}
 
 		}
-		
-		
+
+
 		String actPage2Row1List = reportsPage2Row1ListArray.toString();
 		String expPage2Row1List = "[D2, D2]";
 
 		System.out.println("ActualItems  :"+actPage2Row1List);
 		System.out.println("ExpectedItems:"+expPage2Row1List);
-		
-		
+
+
 		String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
 		String afterPath="]//td[2]";
 		int k;
@@ -2029,7 +2048,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 
 		System.out.println("actRow1List"+actRowList);
 		System.out.println("expRow1List"+expRowList);
-		
+
 		if (actRow1List.equalsIgnoreCase(expRow1List)&& actPage2Row1List.equalsIgnoreCase(expPage2Row1List) && actRowList.equalsIgnoreCase(expRowList)) 
 		{
 			sl_CloseBtn.click();
@@ -2040,22 +2059,22 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			sl_CloseBtn.click();
 			return false;
 		}	
-		
+
 	}
-	
+
 	public static boolean checkABCAnalysisReport() throws InterruptedException
 	{
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryMenu));
 		inventoryMenu.click();
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryReportsMenu));
 		inventoryReportsMenu.click();
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(abcAnalysis));
 		abcAnalysis.click();
-		
+
 		Thread.sleep(2000);
-	
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
 		sl_SelectAllChkBox.click();
 
@@ -2068,7 +2087,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		sl_OkBtn.click();
 
 		Thread.sleep(2000);
-		
+
 
 		Thread.sleep(2000);
 
@@ -2083,13 +2102,13 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			}
 
 		}
-		
+
 		String actRow1List = reportsRow1ListArray.toString();
 		String expRow1List = "[A Product, D2, APPLE, A1, B2, B1, A2, D1, Grand Total]";
 
 		System.out.println("ActualItems  :"+actRow1List);
 		System.out.println("ExpectedItems:"+expRow1List);
-		
+
 		Thread.sleep(2000);
 
 		int reportsRow2ListCount = reportsCol2List.size();
@@ -2103,13 +2122,13 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			}
 
 		}
-		
+
 		String actRow2List = reportsRow2ListArray.toString();
 		String expRow2List = "[3.00, 9.00, 3.00, 2.00, 2.00, 2.00, 10.00, 31.00]";
 
 		System.out.println("ActualItems  :"+actRow2List);
 		System.out.println("ExpectedItems:"+expRow2List);
-		
+
 		Thread.sleep(2000);
 
 		int reportsRow3ListCount = reportsCol3List.size();
@@ -2123,13 +2142,13 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			}
 
 		}
-		
+
 		String actRow3List = reportsRow3ListArray.toString();
 		String expRow3List = "[3.00, 9.00, 3.00, 2.00, 2.00, 2.00, 10.00, 31.00]";
 
 		System.out.println("ActualItems  :"+actRow3List);
 		System.out.println("ExpectedItems:"+expRow3List);
-		
+
 		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List))
 		{
 			return true;
@@ -2139,27 +2158,27 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			return false;
 		}
 	}
-	
+
 	public static boolean checkStockAnalysisByBatchReport() throws InterruptedException
 	{
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryMenu));
 		inventoryMenu.click();
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryReportsMenu));
 		inventoryReportsMenu.click();
-		
-		
-		getAction().sendKeys(Keys.END).build().perform();
-		
-		((JavascriptExecutor)getDriver()).executeScript("arguments[0].scrollIntoView(true);", stockAnalysisByBatch);
-		getAction().moveToElement(stockAnalysisByBatch).build().perform();
+
+
+		//getAction().sendKeys(Keys.END).build().perform();
 		Thread.sleep(2000);
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(stockAnalysisByBatch));
-		stockAnalysisByBatch.click();
-		
+		scrollToElementJSE(stockAnalysisByBatch);
 		Thread.sleep(2000);
-		
+		ClickUsingJs(stockAnalysisByBatch);
+
+	/*	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(stockAnalysisByBatch));
+		stockAnalysisByBatch.click();*/
+
+		Thread.sleep(2000);
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
 		sl_SelectAllChkBox.click();
 
@@ -2172,7 +2191,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		sl_OkBtn.click();
 
 		Thread.sleep(2000);
-		
+
 
 		Thread.sleep(2000);
 
@@ -2187,13 +2206,13 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			}
 
 		}
-		
+
 		String actRow1List = reportsRow1ListArray.toString();
 		String expRow1List = "[APP001, APPLE, 1, 8.00, 1.00, 8.00, 0, 0]";
 
 		System.out.println("ActualItems  :"+actRow1List);
 		System.out.println("ExpectedItems:"+expRow1List);
-		
+
 		Thread.sleep(2000);
 
 		int reportsRow2ListCount = reportsrow2List.size();
@@ -2207,13 +2226,13 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			}
 
 		}
-		
+
 		String actRow2List = reportsRow2ListArray.toString();
 		String expRow2List = "[APP001, APPLE, ASA, 1.00, 1.00, 1.00, 0, 0]";
 
 		System.out.println("ActualItems  :"+actRow2List);
 		System.out.println("ExpectedItems:"+expRow2List);
-		
+
 		Thread.sleep(2000);
 
 		int reportsRow3ListCount = reportsrow3List.size();
@@ -2227,14 +2246,14 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			}
 
 		}
-		
+
 		String actRow3List = reportsRow3ListArray.toString();
 		String expRow3List = "[Grand Total, 9.00, 2.00, 9.00]";
 
 		System.out.println("ActualItems  :"+actRow3List);
 		System.out.println("ExpectedItems:"+expRow3List);
-		
-		
+
+
 		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List))
 		{
 			return true;
@@ -2245,25 +2264,25 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		}
 
 	}
-	
+
 	public static boolean checkStockAgeingAnalysisByRMAReport() throws InterruptedException
 	{
 		searchBtnInput.click();
 		searchBtnInput.sendKeys("Ageing Analysis by RMA");
 		Thread.sleep(1500);
 		searchBtnInput.sendKeys(Keys.ENTER);
-		
+
 		Thread.sleep(2000);
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
 		sl_SelectAllChkBox.click();
 
-	
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
 		sl_OkBtn.click();
-		
+
 		Thread.sleep(2000);
-		
+
 		Thread.sleep(2000);
 
 		int reportsRow1ListCount = reportsCol1List.size();
@@ -2277,7 +2296,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			}
 
 		}
-		
+
 		Iterator<String> itr = reportsRow1ListArray.iterator();
 		while (itr.hasNext()) 
 		{ 
@@ -2294,9 +2313,9 @@ public class FocusInventoryReportsPage extends BaseEngine {
 
 		System.out.println("ActualItems  :"+actRow1List);
 		System.out.println("ExpectedItems:"+expRow1List);
-		
+
 		Thread.sleep(2000);
-		
+
 		int reportsRow12ListCount = report12throw.size();
 		ArrayList<String> reportsRow12ListArray = new ArrayList<String>();
 		for(int i=2;i<reportsRow12ListCount;i++)
@@ -2306,15 +2325,15 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			{
 				reportsRow12ListArray.add(data);
 			}
-		
+
 		}
 		String actRow12List = reportsRow12ListArray.toString();
 		String expRow12List = "[10.00, 10.00, 9.00, 9.00, 1.00, 1.00]";
-		
+
 		System.out.println("actual Subtotal  :"+actRow12List);
 		System.out.println("Expected Subtotal:"+expRow12List);
-		
-	/*	
+
+		/*	
 		int reportsRow17ListCount = report17throw.size();
 		ArrayList<String> reportsRow17ListArray = new ArrayList<String>();
 		for(int i=2;i<reportsRow17ListCount;i++)
@@ -2324,19 +2343,19 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			{
 				reportsRow17ListArray.add(data);
 			}
-			
+
 		}
 		String actRow17List = reportsRow17ListArray.toString();
 		String expRow17List = "[3.00, 3.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00]";
-		
+
 		System.out.println("actual Subtotal  :"+actRow17List);
 		System.out.println("Expected Subtotal:"+expRow17List);
-		*/
+		 */
 		Thread.sleep(2000);
-		
+
 		report_NextBtn.click();
 		Thread.sleep(2000);
-		
+
 		int reportsPage2Row1ListCount = reportsCol1List.size();
 		ArrayList<String> reportsPage2Row1ListArray = new ArrayList<String>();
 		for(int i=0;i<reportsPage2Row1ListCount-1;i++)
@@ -2348,7 +2367,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			}
 
 		}
-		
+
 		Iterator<String> itr1 = reportsPage2Row1ListArray.iterator();
 		while (itr1.hasNext()) 
 		{ 
@@ -2365,9 +2384,9 @@ public class FocusInventoryReportsPage extends BaseEngine {
 
 		System.out.println("ActualItems  :"+actPage2Row1List);
 		System.out.println("ExpectedItems:"+expPage2Row1List);
-		
+
 		Thread.sleep(2000);
-		
+
 
 
 		String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
@@ -2399,17 +2418,17 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			{
 				reportsRowListArray.add(data);
 			}
-			
+
 		}
 		String actRowList = reportsRowListArray.toString();
 		String expRowList = "[Grand Total, 13.00, 13.00, 1.00, 1.00, 10.00, 10.00, 2.00, 2.00]";
 
 		System.out.println("actRow1List"+actRowList);
 		System.out.println("expRow1List"+expRowList);
-		
+
 
 		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow12List.equalsIgnoreCase(expRow12List) 
-					/*&& actRow17List.equalsIgnoreCase(expRow17List)*/&& actRowList.equalsIgnoreCase(expRowList)) 
+				/*&& actRow17List.equalsIgnoreCase(expRow17List)*/&& actRowList.equalsIgnoreCase(expRowList)) 
 		{
 			return true;
 		} 
@@ -2417,35 +2436,35 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		{
 			return false;
 		}
-	
+
 	}
-	
+
 	public static boolean checkStockDetailsByBins() throws InterruptedException
 	{
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryMenu));
 		inventoryMenu.click();
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryReportsMenu));
 		inventoryReportsMenu.click();
-		
+
 		Thread.sleep(2000);
 		getAction().sendKeys(Keys.END).build().perform();
 		Thread.sleep(1200);
 		((JavascriptExecutor)getDriver()).executeScript("arguments[0].scrollIntoView(true);", binsReportMenu);
 		getAction().moveToElement(binsReportMenu).build().perform();
 		Thread.sleep(2000);
-		
-		
+
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(binsReportMenu));
 		binsReportMenu.click();
-		
+
 		scrollToElementJSE(stockDetailsByBins);
 		Thread.sleep(1000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(stockDetailsByBins));
 		stockDetailsByBins.click();
-		
+
 		Thread.sleep(2000);
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
 		sl_SelectAllChkBox.click();
 
@@ -2458,10 +2477,10 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		sl_OkBtn.click();
 
 		Thread.sleep(2000);
-		
+
 
 		Thread.sleep(2000);
-		
+
 
 		Thread.sleep(2000);
 
@@ -2476,7 +2495,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			}
 
 		}
-		
+
 		Iterator<String> itr = reportsRow1ListArray.iterator();
 		while (itr.hasNext()) 
 		{ 
@@ -2488,14 +2507,14 @@ public class FocusInventoryReportsPage extends BaseEngine {
 
 		}
 
-		
-		
+
+
 		String actRow1List = reportsRow1ListArray.toString();
 		String expRow1List = "[A1 [A101], BIN1, A2 [A102], BIN1, BIN2, B1 [B201], BIN1, B2 [B202], BIN1]";
 
 		System.out.println("ActualItems  :"+actRow1List);
 		System.out.println("ExpectedItems:"+expRow1List);
-		
+
 		Thread.sleep(2000);
 
 		Thread.sleep(2000);
@@ -2530,14 +2549,14 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			{
 				reportsRowListArray.add(data);
 			}
-			
+
 		}
 		String actRowList = reportsRowListArray.toString();
 		String expRowList = "[Grand Total, 7.00, 7.00]";
 
 		System.out.println("actRow1List"+actRowList);
 		System.out.println("expRow1List"+expRowList);
-		
+
 		if (actRow1List.equalsIgnoreCase(expRow1List) && actRowList.equalsIgnoreCase(expRowList))
 		{
 			return true;
@@ -2547,41 +2566,39 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			return false;
 		}
 
-		
+
 	}
-	
+
 	public static boolean checkStockBlanceByBinsReport() throws InterruptedException
 	{
 		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryMenu));
 		inventoryMenu.click();
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryReportsMenu));
 		inventoryReportsMenu.click();
-		
+
 		Thread.sleep(2000);
-		
+
 		Thread.sleep(2000);
-	getAction().sendKeys(Keys.END).build().perform();
-		
-		((JavascriptExecutor)getDriver()).executeScript("arguments[0].scrollIntoView(true);", binsReportMenu);
-		getAction().moveToElement(binsReportMenu).build().perform();
+		scrollToElementJSE(binsReportMenu);
 		Thread.sleep(2000);
-		
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(binsReportMenu));
-		binsReportMenu.click();
-		
+		ClickUsingJs(binsReportMenu);
+
+
+	/*	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(binsReportMenu));
+		binsReportMenu.click();*/
+
 		scrollToElementJSE(stockBalancesByBins);
 		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(stockBalancesByBins));
 		stockBalancesByBins.click();
-		
+
 
 		Thread.sleep(2000);
 
 		Thread.sleep(2000);
-	
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
 		sl_SelectAllChkBox.click();
 
@@ -2594,7 +2611,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		sl_OkBtn.click();
 
 		Thread.sleep(2000);
-		
+
 
 		Thread.sleep(2000);
 
@@ -2609,7 +2626,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			}
 
 		}
-		
+
 		Iterator<String> itr = reportsRow1ListArray.iterator();
 		while (itr.hasNext()) 
 		{ 
@@ -2621,14 +2638,14 @@ public class FocusInventoryReportsPage extends BaseEngine {
 
 		}
 
-		
-		
+
+
 		String actRow1List = reportsRow1ListArray.toString();
 		String expRow1List = "[BIN2 [BIN2], A2, BIN1 [BIN1], A1, A2, B1, B2]";
 
 		System.out.println("ActualItems  :"+actRow1List);
 		System.out.println("ExpectedItems:"+expRow1List);
-		
+
 		Thread.sleep(2000);
 
 		Thread.sleep(2000);
@@ -2663,14 +2680,14 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			{
 				reportsRowListArray.add(data);
 			}
-			
+
 		}
 		String actRowList = reportsRowListArray.toString();
 		String expRowList = "[Grand Total, 7.00, 7.00]";
 
 		System.out.println("actRow1List"+actRowList);
 		System.out.println("expRow1List"+expRowList);
-		
+
 		if (actRow1List.equalsIgnoreCase(expRow1List) && actRowList.equalsIgnoreCase(expRowList))
 		{
 			return true;
@@ -2680,14 +2697,14 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			return false;
 		}
 
-		
-	
+
+
 	}
-	
+
 	public static boolean checkStockBalanceByItemsByBinsReport() throws InterruptedException
 	{
 
-		
+
 		searchBtnInput.click();
 		searchBtnInput.sendKeys("Stock Balances by Item by Bins");
 		Thread.sleep(1500);
@@ -2696,34 +2713,34 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryMenu));
 		inventoryMenu.click();
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryReportsMenu));
 		inventoryReportsMenu.click();
-		
+
 		Thread.sleep(2000);
-		
-		
+
+
 		Thread.sleep(2000);
 	getAction().sendKeys(Keys.END).build().perform();
-		
+
 		((JavascriptExecutor)getDriver()).executeScript("arguments[0].scrollIntoView(true);", binsReportMenu);
 		getAction().moveToElement(binsReportMenu).build().perform();
 		Thread.sleep(2000);
-		
-		
+
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(binsReportMenu));
 		binsReportMenu.click();
-		
+
 		getAction().moveToElement(stockBalancesByItemByBins).build().perform();
 		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(stockBalancesByItemByBins));
 		stockBalancesByItemByBins.click();
-		
+
 
 		Thread.sleep(2000);
 
 		Thread.sleep(2000);*/
-	
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
 		sl_SelectAllChkBox.click();
 
@@ -2736,7 +2753,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		sl_OkBtn.click();
 
 		Thread.sleep(2000);
-		
+
 
 		Thread.sleep(2000);
 
@@ -2751,7 +2768,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			}
 
 		}
-		
+
 		Iterator<String> itr = reportsRow1ListArray.iterator();
 		while (itr.hasNext()) 
 		{ 
@@ -2763,14 +2780,14 @@ public class FocusInventoryReportsPage extends BaseEngine {
 
 		}
 
-		
-		
+
+
 		String actRow1List = reportsRow1ListArray.toString();
 		String expRow1List = "[A1 [A101], BIN1, A2 [A102], BIN1, BIN2, B1 [B201], BIN1, B2 [B202], BIN1]";
 
 		System.out.println("ActualItems  :"+actRow1List);
 		System.out.println("ExpectedItems:"+expRow1List);
-		
+
 		Thread.sleep(2000);
 
 		Thread.sleep(2000);
@@ -2805,14 +2822,14 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			{
 				reportsRowListArray.add(data);
 			}
-			
+
 		}
 		String actRowList = reportsRowListArray.toString();
 		String expRowList = "[Grand Total, 7.00, 7.00]";
 
 		System.out.println("actRow1List"+actRowList);
 		System.out.println("expRow1List"+expRowList);
-		
+
 		if (actRow1List.equalsIgnoreCase(expRow1List) && actRowList.equalsIgnoreCase(expRowList))
 		{
 			return true;
@@ -2822,11 +2839,11 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			return false;
 		}
 
-		
-	
-	
+
+
+
 	}
-   	
+
 	public static boolean checkExpiredStockByBinsReports() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
 		Thread.sleep(2000);
@@ -2849,12 +2866,12 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		binsReportMenu.click();
 
 		getAction().sendKeys(Keys.END).build().perform();
-/*
+		/*
 		scrollToElementJSE(expiredStockByBins);
 		Thread.sleep(1200);
 		getAction().moveToElement(expiredStockByBins).build().perform();*/
 		Thread.sleep(1500);
-		
+
 		((JavascriptExecutor)getDriver()).executeScript("arguments[0].scrollIntoView(true);", expiredStockByBins);
 		getAction().moveToElement(expiredStockByBins).build().perform();
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(expiredStockByBins));
@@ -2894,10 +2911,10 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			return false;
 		}
 	}
-	
+
 	public static boolean checkStockBalanceByWarehouse() throws InterruptedException
 	{
-		
+
 		searchBtnInput.click();
 		searchBtnInput.sendKeys("Stock Balance by Warehouse");
 		Thread.sleep(1500);
@@ -2905,36 +2922,36 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		/*
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryMenu));
 		inventoryMenu.click();
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryReportsMenu));
 		inventoryReportsMenu.click();
-		
 
-		
+
+
 		Thread.sleep(2000);
 	getAction().sendKeys(Keys.END).build().perform();
-		
+
 		((JavascriptExecutor)getDriver()).executeScript("arguments[0].scrollIntoView(true);", stockBalanceByWarehouse);
 		getAction().moveToElement(stockBalanceByWarehouse).build().perform();
 		Thread.sleep(2000);
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(stockBalanceByWarehouse));
 		stockBalanceByWarehouse.click();
-		
+
 		Thread.sleep(2000);*/
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
 		sl_SelectAllChkBox.click();
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		Select s=new Select(sl_DateOptionDropdown);
 		s.selectByIndex(1);
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
 		sl_OkBtn.click();
-		
+
 		Thread.sleep(4000);
-		
+
 
 		Thread.sleep(2000);
 
@@ -2949,7 +2966,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			}
 
 		}
-		
+
 		Iterator<String> itr = reportsRow1ListArray.iterator();
 		while (itr.hasNext()) 
 		{ 
@@ -2961,17 +2978,17 @@ public class FocusInventoryReportsPage extends BaseEngine {
 
 		}
 
-		
+
 		String actRow1List = reportsRow1ListArray.toString();
 		String expRow1List = "[HYD [HYD500051], APPLE, A1, A2, D1, A1 [A101], APPLE, BALL, CAM, A1, B1, B2, C1, C2, D1, D2]";
 
 		System.out.println("ActualItems:"+actRow1List);
 		System.out.println("ExpectedItems:"+expRow1List);
-		
+
 		Thread.sleep(2000);
 		report_NextBtn.click();
 		Thread.sleep(2000);
-		
+
 		int reportspage2Row1ListCount = reportsCol1List.size();
 		ArrayList<String> reportspage2Row1ListArray = new ArrayList<String>();
 		for(int i=0;i<reportspage2Row1ListCount-1;i++)
@@ -2983,7 +3000,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			}
 
 		}
-		
+
 		Iterator<String> itr1 = reportspage2Row1ListArray.iterator();
 		while (itr1.hasNext()) 
 		{ 
@@ -2994,15 +3011,15 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			}
 
 		}
-		
-		
+
+
 		String actpage2Row1List = reportspage2Row1ListArray.toString();
 		String exppage2Row1List = "[D2 [D402], APPLE, A1, A2, B1, B2, D1, D2]";
 
 		System.out.println(actpage2Row1List);
 		System.out.println(exppage2Row1List);
-		
-	
+
+
 		Thread.sleep(2000);
 		String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
 		String afterPath="]//td[2]";
@@ -3049,9 +3066,9 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			return false;
 		}	
 
-		
+
 	}
-	
+
 	public static boolean checkStockAgeingAnalysisReport() throws InterruptedException
 	{
 
@@ -3059,18 +3076,18 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		searchBtnInput.sendKeys("Ageing Analysis");
 		Thread.sleep(1500);
 		searchBtnInput.sendKeys(Keys.ENTER);
-		
+
 		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
 		sl_SelectAllChkBox.click();
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		Select s=new Select(sl_DateOptionDropdown);
 		s.selectByIndex(1);
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
 		sl_OkBtn.click();
-		
+
 		Thread.sleep(2000);
 
 
@@ -3087,19 +3104,19 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			}
 
 		}
-		
-		
-		
+
+
+
 		String actRow1List = reportsRow1ListArray.toString();
 		String expRow1List = "[HYD HYD500051, APPLE, A1, A2, D1, A1 A101, APPLE, BALL, CAM, A1, B1, B2, C1, C2, D1, D2]";
 
 		System.out.println("ActualItems:"+actRow1List);
 		System.out.println("ExpectedItems:"+expRow1List);
-		
+
 		Thread.sleep(2000);
 		report_NextBtn.click();
 		Thread.sleep(2000);
-		
+
 		Thread.sleep(2000);
 		String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
 		String afterPath="]//td[2]";
@@ -3146,10 +3163,10 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			return false;
 		}	
 
-		
-		
+
+
 	}
-	
+
 	public static boolean checkAgeingAnalysisByBatchReport() throws InterruptedException
 	{
 
@@ -3157,24 +3174,24 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		searchBtnInput.sendKeys("Ageing Analysis by batch");
 		Thread.sleep(1500);
 		searchBtnInput.sendKeys(Keys.ENTER);
-		
+
 		Thread.sleep(2000);
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
 		sl_SelectAllChkBox.click();
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		Select s=new Select(sl_DateOptionDropdown);
 		s.selectByIndex(1);
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
 		sl_OkBtn.click();
-		
+
 		Thread.sleep(2000);
-		
+
 		Thread.sleep(3000);
-		
-		
+
+
 		int reportsRow1ListCount = reportsRow1List.size();
 		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
 		for(int i=1;i<reportsRow1ListCount;i++)
@@ -3184,12 +3201,12 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			{
 				reportsRow1ListArray.add(data);
 			}
-			
+
 		}
 		String actRow1List = reportsRow1ListArray.toString();
 		String expRow1List = "[APPLE [APP001]]";
-		
-		
+
+
 
 		int reportsRow2ListCount = reportsRow2List.size();
 		ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
@@ -3200,14 +3217,14 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			{
 				reportsRow2ListArray.add(data);
 			}
-			
-			
+
+
 		}
 		String actRow2List = reportsRow2ListArray.toString();
 		String expRow2List = "[1, 8.00, 8.00, 8.00, 8.00, 0, 0]";
-	
 
-		
+
+
 		int reportsRow3ListCount = reportsRow3List.size();
 		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
 		for(int i=1;i<reportsRow3ListCount;i++)
@@ -3217,13 +3234,13 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			{
 				reportsRow3ListArray.add(data);
 			}
-		
+
 		}
 		String actRow3List = reportsRow3ListArray.toString();
 		String expRow3List = "[ASA, 1.00, 1.00, 1.00, 1.00, 0, 0]";
-		
-		
-		
+
+
+
 		int reportsRow4ListCount = reportsRow4List.size();
 		ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
 		for(int i=1;i<reportsRow4ListCount;i++)
@@ -3233,29 +3250,29 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			{
 				reportsRow4ListArray.add(data);
 			}
-			
+
 		}
 		String actRow4List = reportsRow4ListArray.toString();
 		String expRow4List = "[Grand Total, 9.00, 9.00, 8.00, 8.00, 1.00, 1.00]";
-		
 
-	
+
+
 
 		System.out.println(actRow1List);
 		System.out.println(expRow1List);
-		
+
 		System.out.println(actRow2List);
 		System.out.println(expRow2List);
-		
+
 		System.out.println(actRow3List);
 		System.out.println(expRow3List);
-		
+
 		System.out.println(actRow4List);
 		System.out.println(expRow4List);
-		
-	
+
+
 		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List) 
-					&& actRow4List.equalsIgnoreCase(expRow4List)) 
+				&& actRow4List.equalsIgnoreCase(expRow4List)) 
 		{
 			return true;
 		} 
@@ -3263,11 +3280,11 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		{
 			return false;
 		}	
-	
+
 
 	}
-	
-	
+
+
 	public static boolean checkStockAnalysisByRMAReport() throws InterruptedException
 	{
 
@@ -3275,12 +3292,12 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		searchBtnInput.sendKeys("Stock Analysis by RMA");
 		Thread.sleep(1500);
 		searchBtnInput.sendKeys(Keys.ENTER);
-		
-		Thread.sleep(2000);
-	
 
 		Thread.sleep(2000);
-	
+
+
+		Thread.sleep(2000);
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
 		sl_SelectAllChkBox.click();
 
@@ -3293,7 +3310,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		sl_OkBtn.click();
 
 		Thread.sleep(2000);
-		
+
 
 		Thread.sleep(2000);
 
@@ -3308,13 +3325,13 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			}
 
 		}
-		
+
 		String actRow1List = reportsRow1ListArray.toString();
 		String expRow1List = "[4, 151, D1-1, D1-3, D1-4, D1-5, D1-6, D1-7, D1-8, D1-9, D1-10, dds15, 51515151]";
 
 		System.out.println("ActualItems  :"+actRow1List);
 		System.out.println("ExpectedItems:"+expRow1List);
-		
+
 		Thread.sleep(2000);
 
 		int reportsRow2ListCount = reportsCol2List.size();
@@ -3328,13 +3345,13 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			}
 
 		}
-		
+
 		String actRow2List = reportsRow2ListArray.toString();
 		String expRow2List = "[D2, D2, D1, D1, D1, D1, D1, D1, D1, D1, D1, D2, D1]";
 
 		System.out.println("ActualItems  :"+actRow2List);
 		System.out.println("ExpectedItems:"+expRow2List);
-		
+
 		Thread.sleep(2000);
 
 
@@ -3367,14 +3384,14 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			{
 				reportsRowListArray.add(data);
 			}
-			
+
 		}
 		String actRowList = reportsRowListArray.toString();
 		String expRowList = "[Grand Total, 13.00, 13.00, 13.00]";
 
 		System.out.println("actRow1List"+actRowList);
 		System.out.println("expRow1List"+expRowList);
-		
+
 		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRowList.equalsIgnoreCase(expRowList))
 		{
 			return true;
@@ -3384,44 +3401,44 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			return false;
 		}
 
-	
+
 	}
-	
+
 	public static boolean checkStockAgeingAnalysisByBins() throws InterruptedException
 	{
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryMenu));
 		inventoryMenu.click();
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryReportsMenu));
 		inventoryReportsMenu.click();
-		
+
 		Thread.sleep(1500);
 
 		scrollToElementJSE(stockAgeingAnalysisMenu);
 		Thread.sleep(1500);
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(stockAgeingAnalysisMenu));
 		stockAgeingAnalysisMenu.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ageingStockByBins));
 		ageingStockByBins.click();
-		
-		Thread.sleep(2000);
-		
 
 		Thread.sleep(2000);
-		
+
+
+		Thread.sleep(2000);
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
 		sl_SelectAllChkBox.click();
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		Select s=new Select(sl_DateOptionDropdown);
 		s.selectByIndex(1);
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
 		sl_OkBtn.click();
-	
+
 		Thread.sleep(2000);
 
 		int reportsRow1ListCount = reportsCol1List.size();
@@ -3435,13 +3452,13 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			}
 
 		}
-		
+
 		String actRow1List = reportsRow1ListArray.toString();
 		String expRow1List = "";
 
 		System.out.println("ActualItems  :"+actRow1List);
 		System.out.println("ExpectedItems:"+expRow1List);
-		
+
 		Thread.sleep(2000);
 
 		Thread.sleep(2000);
@@ -3476,14 +3493,14 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			{
 				reportsRowListArray.add(data);
 			}
-			
+
 		}
 		String actRowList = reportsRowListArray.toString();
 		String expRowList = "[Grand Total, 7.00, 7.00]";
 
 		System.out.println("actRow1List"+actRowList);
 		System.out.println("expRow1List"+expRowList);
-		
+
 		if (actRow1List.equalsIgnoreCase(expRow1List) && actRowList.equalsIgnoreCase(expRowList))
 		{
 			return true;
@@ -3493,44 +3510,44 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			return false;
 		}
 
-		
+
 	}
-	
+
 	public static boolean checkStockAgeingAnalysisByItemByBins() throws InterruptedException
 	{
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryMenu));
 		inventoryMenu.click();
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryReportsMenu));
 		inventoryReportsMenu.click();
 
 		Thread.sleep(2000);
 		scrollToElementJSE(stockAgeingAnalysisMenu);
 		Thread.sleep(1500);
-		
-		
+
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(stockAgeingAnalysisMenu));
 		stockAgeingAnalysisMenu.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ageingByItemByBins));
 		ageingByItemByBins.click();
-		
-		Thread.sleep(2000);
-		
 
 		Thread.sleep(2000);
-		
+
+
+		Thread.sleep(2000);
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
 		sl_SelectAllChkBox.click();
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		Select s=new Select(sl_DateOptionDropdown);
 		s.selectByIndex(1);
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
 		sl_OkBtn.click();
-	
+
 		Thread.sleep(2000);
 
 		int reportsRow1ListCount = reportsCol1List.size();
@@ -3544,13 +3561,13 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			}
 
 		}
-		
+
 		String actRow1List = reportsRow1ListArray.toString();
 		String expRow1List = "";
 
 		System.out.println("ActualItems  :"+actRow1List);
 		System.out.println("ExpectedItems:"+expRow1List);
-		
+
 		Thread.sleep(2000);
 
 		Thread.sleep(2000);
@@ -3585,14 +3602,14 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			{
 				reportsRowListArray.add(data);
 			}
-			
+
 		}
 		String actRowList = reportsRowListArray.toString();
 		String expRowList = "[Grand Total, 7.00, 7.00]";
 
 		System.out.println("actRow1List"+actRowList);
 		System.out.println("expRow1List"+expRowList);
-		
+
 		if (actRow1List.equalsIgnoreCase(expRow1List) && actRowList.equalsIgnoreCase(expRowList))
 		{
 			return true;
@@ -3602,47 +3619,47 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			return false;
 		}
 
-		
-		
+
+
 	}
-	
+
 	public boolean checkReorderReports() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryMenu));
 		inventoryMenu.click();
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryReportsMenu));
 		inventoryReportsMenu.click();
-		
+
 
 		Thread.sleep(2000);
 		scrollToElementJSE(reorderReport);
 		Thread.sleep(1500);
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reorderReport));
 		reorderReport.click();
-		
+
 		Thread.sleep(2000);
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
 		sl_SelectAllChkBox.click();
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		Select s=new Select(sl_DateOptionDropdown);
 		s.selectByIndex(1);
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
 		sl_OkBtn.click();
-		
+
 		Thread.sleep(2000);
-		
+
 		boolean actReportsTable = reportsTable.getText().isEmpty();
 		boolean expReportsTable = true;
-		
+
 		System.out.println("*********************************checkReorderReportReport*****************************************");
-		
+
 		System.out.println("Reports Table isEmpty : "+actReportsTable+"  Value Expected  "+expReportsTable);
-		
+
 		if(actReportsTable==expReportsTable)
 		{
 			return true;
@@ -3651,9 +3668,9 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		{
 			return false;
 		}
-		
+
 	}
-	
+
 	public static boolean checkFastMovingItemsReport() throws InterruptedException
 	{
 
@@ -3667,7 +3684,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		Thread.sleep(2000);
 		scrollToElementJSE(fastMovingItem);
 		Thread.sleep(1500);
-		
+
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(fastMovingItem));
 		fastMovingItem.click();
@@ -3782,7 +3799,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 
 
 	}
-	
+
 	public static boolean checkSlowMovingItemsReport() throws InterruptedException
 	{
 
@@ -3797,7 +3814,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		Thread.sleep(2000);
 		scrollToElementJSE(slowMovingItem);
 		Thread.sleep(1500);
-		
+
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(slowMovingItem));
 		slowMovingItem.click();
@@ -3909,7 +3926,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		}	
 
 	}
-	
+
 	public static boolean checkPeakAndLowBlancesReport() throws InterruptedException
 	{
 		Thread.sleep(2000);
@@ -3923,7 +3940,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		Thread.sleep(2000);
 		scrollToElementJSE(peakORLowBalances);
 		Thread.sleep(1500);
-		
+
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(peakORLowBalances));
 		peakORLowBalances.click();
@@ -4112,35 +4129,35 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		}	
 
 	}
-	
+
 	public static boolean checkBestSellingItemReport() throws InterruptedException
 	{
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryMenu));
 		inventoryMenu.click();
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryReportsMenu));
 		inventoryReportsMenu.click();
 
 		Thread.sleep(2000);
 		scrollToElementJSE(bestSellingItem);
 		Thread.sleep(1500);
-		
-		
+
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(bestSellingItem));
 		bestSellingItem.click();
-		
+
 		Thread.sleep(2000);
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		Select s=new Select(sl_DateOptionDropdown);
 		s.selectByIndex(1);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
 		sl_OkBtn.click();
-		
+
 		Thread.sleep(2000);
-		
+
 
 		Thread.sleep(3000);
 
@@ -4234,25 +4251,25 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			return false;
 		}	
 
-		
+
 	}
-	
+
 	public static boolean checkStockTransferRegisterReport() throws InterruptedException
 	{
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryMenu));
 		inventoryMenu.click();
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryReportsMenu));
 		inventoryReportsMenu.click();
 
 		Thread.sleep(2000);
 		scrollToElementJSE(stockTransferReport);
 		Thread.sleep(1500);
-		
-		
+
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(stockTransferReport));
 		stockTransferReport.click();
-		
+
 		Thread.sleep(2000);
 		Thread.sleep(2000);
 
@@ -4397,8 +4414,8 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		}
 		String actRow8List = reportsRow8ListArray.toString();
 		String expRow8List = "[A1, 1.00]";
-		
-		
+
+
 
 		int reportsRow9ListCount = reportsRow9List.size();
 		ArrayList<String> reportsRow9ListArray = new ArrayList<String>();
@@ -4504,7 +4521,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 
 		System.out.println(actRow8List);
 		System.out.println(expRow8List);
-		
+
 
 		System.out.println(actRow9List);
 		System.out.println(expRow9List);
@@ -4527,7 +4544,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 				&& actRow9List.equalsIgnoreCase(expRow9List)&& actRow10List.equalsIgnoreCase(expRow10List)
 				&& actRow11List.equalsIgnoreCase(expRow11List) && actRow12List.equalsIgnoreCase(expRow12List)
 				&& actRow13List.equalsIgnoreCase(expRow13List))
-			
+
 		{
 			return true;
 		} 
@@ -4537,12 +4554,12 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		}	
 
 	}
-	
+
 	public static boolean checkTransactionTypeWiseStockReport() throws InterruptedException
 	{
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryMenu));
 		inventoryMenu.click();
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryReportsMenu));
 		inventoryReportsMenu.click();
 
@@ -4550,10 +4567,10 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		Thread.sleep(2000);
 		scrollToElementJSE(transactionTypeWiseStockReport);
 		Thread.sleep(1500);
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(transactionTypeWiseStockReport));
 		transactionTypeWiseStockReport.click();
-		
+
 		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
@@ -4698,7 +4715,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		}
 		String actRow8List = reportsRow8ListArray.toString();
 		String expRow8List = "[Grand Total, 7.00, 7.00, 29.00, 29.00, 1.00, 1.00, 1.00, 1.00, 7.00, 21.00, 1.00, 1.00, 30.00, 0.78, 16.00]";
-		
+
 		System.out.println(actRow1List);
 		System.out.println(expRow1List);
 
@@ -4722,7 +4739,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 
 		System.out.println(actRow8List);
 		System.out.println(expRow8List);
-		
+
 		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List) 
 				&& actRow4List.equalsIgnoreCase(expRow4List) && actRow5List.equalsIgnoreCase(expRow5List) && actRow6List.equalsIgnoreCase(expRow6List)
 				&& actRow7List.equalsIgnoreCase(expRow7List) && actRow8List.equalsIgnoreCase(expRow8List))
@@ -4734,25 +4751,25 @@ public class FocusInventoryReportsPage extends BaseEngine {
 			return false;
 		}
 	}
-	
+
 	public static boolean checkActualConsumptionReport() throws InterruptedException
 	{
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryMenu));
 		inventoryMenu.click();
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryReportsMenu));
 		inventoryReportsMenu.click();
 
 		Thread.sleep(2000);
 		scrollToElementJSE(actualConsumptionReport);
 		Thread.sleep(1500);
-		
-		
+
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(actualConsumptionReport));
 		actualConsumptionReport.click();
-		
+
 		Thread.sleep(2000);
-		
+
 		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
@@ -4897,7 +4914,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		}
 		String actRow8List = reportsRow8ListArray.toString();
 		String expRow8List = "[Grand Total, 7.00, 7.00, 29.00, 29.00, 1.00, 1.00, 1.00, 1.00, 7.00, 21.00, 1.00, 1.00, 30.00, 0.78, 16.00]";
-		
+
 		System.out.println(actRow1List);
 		System.out.println(expRow1List);
 
@@ -4921,7 +4938,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 
 		System.out.println(actRow8List);
 		System.out.println(expRow8List);
-		
+
 		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List) 
 				&& actRow4List.equalsIgnoreCase(expRow4List) && actRow5List.equalsIgnoreCase(expRow5List) && actRow6List.equalsIgnoreCase(expRow6List)
 				&& actRow7List.equalsIgnoreCase(expRow7List) && actRow8List.equalsIgnoreCase(expRow8List))
@@ -4932,42 +4949,42 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		{
 			return false;
 		}
-		
+
 	}
-	
+
 	public static boolean checkGeneralLedgerandInventoryMismatchReport() throws InterruptedException
 	{
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryMenu));
 		inventoryMenu.click();
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryReportsMenu));
 		inventoryReportsMenu.click();
-		
+
 		Thread.sleep(2000);
 		scrollToElementJSE(GeneralLedgerAndInventoryMismatchReport);
 		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(GeneralLedgerAndInventoryMismatchReport));
 		GeneralLedgerAndInventoryMismatchReport.click();
-		
+
 		Thread.sleep(2000);
-		
+
 		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
 		sl_SelectAllChkBox.click();
 
-	
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accountTxt));
 		accountTxt.sendKeys("VendorACC");
 		Thread.sleep(2000);
 		accountTxt.sendKeys(Keys.TAB);
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
 		sl_OkBtn.click();
-		
+
 		Thread.sleep(3000);
-		
+
 		Thread.sleep(2000);
 
 
@@ -5050,7 +5067,7 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		}
 		String actRow5List = reportsRow5ListArray.toString();
 		String expRow5List = "[Grand Total, 73.00, 1.00, 72.00]";
-		
+
 		System.out.println(actRow1List);
 		System.out.println(expRow1List);
 
@@ -5069,40 +5086,40 @@ public class FocusInventoryReportsPage extends BaseEngine {
 		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List) 
 				&& actRow4List.equalsIgnoreCase(expRow4List) && actRow5List.equalsIgnoreCase(expRow5List))
 		{
-			
+
 			getWebDriverWait().until(ExpectedConditions.elementToBeClickable(userNameDisplay));
- 			userNameDisplay.click();
- 			
- 			getWebDriverWait().until(ExpectedConditions.elementToBeClickable(logoutOption));
- 			logoutOption.click();
- 			
- 			Thread.sleep(2000);
+			userNameDisplay.click();
+
+			getWebDriverWait().until(ExpectedConditions.elementToBeClickable(logoutOption));
+			logoutOption.click();
+
+			Thread.sleep(2000);
 			return true;
 		} 
 		else 
 		{
 			getWebDriverWait().until(ExpectedConditions.elementToBeClickable(userNameDisplay));
- 			userNameDisplay.click();
- 			
- 			getWebDriverWait().until(ExpectedConditions.elementToBeClickable(logoutOption));
- 			logoutOption.click();
- 			
- 			Thread.sleep(2000);
+			userNameDisplay.click();
+
+			getWebDriverWait().until(ExpectedConditions.elementToBeClickable(logoutOption));
+			logoutOption.click();
+
+			Thread.sleep(2000);
 			return false;
 		}
-		
-		
+
+
 	}
-	
-	
-	
+
+
+
 	public FocusInventoryReportsPage(WebDriver driver) 
 	{
 		PageFactory.initElements(driver, this);
 	}
-	
-	
-	
+
+
+
 	// Stock Ledger Elements 
 
 }

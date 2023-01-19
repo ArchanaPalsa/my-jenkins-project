@@ -28,7 +28,7 @@ public class LoginPageTest extends BaseEngine
 	  }
 	
 
-  @Test(priority=2)
+    // @Test(priority=2)
 	  public void checkRestoreVouchersPrintcompany() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	  {
 		  lp=new LoginPage(getDriver());

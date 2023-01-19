@@ -7,7 +7,9 @@
   <test thread-count="5" name="Test">
     <classes>
       <class name="com.focus.testcases.URLBrowserTest"/>
-      <class name="com.focus.testcases.ReportDesignerTest"/>
+      <class name="com.focus.testcases.UserRestrictionsTest"/>
+      <class name="com.focus.testcases.FocusInventoryReportsTest"/>
+      <class name="com.focus.testcases.FocusFinancialsReportTest"/>
     </classes>
   </test> <!-- Test -->
   <test name="Test(failed)">
@@ -21,38 +23,74 @@
           <include name="afterMethodExecution"/>
         </methods>
       </class> <!-- com.focus.testcases.URLBrowserTest -->
-      <class name="com.focus.testcases.ReportDesignerTest">
+      <class name="com.focus.testcases.UserRestrictionsTest">
         <methods>
-          <include name="checkReportAllProductsByTagDetails"/>
-          <include name="checkReportMRAfterChangesInCustomizationtab"/>
-          <include name="checkBillwiseReportAfterCheckingMultipleChkbox"/>
-          <include name="checkReportAccountingTrasactionsofInventoryTagDetails"/>
-          <include name="checkReportExportingThroughPDFAndValidatePDF"/>
-          <include name="checkAlignmentInReportDesgining"/>
-          <include name="checkReportWithQuaeryreport"/>
-          <include name="checkSavingRDReportsWihParameter"/>
-          <include name="checkBillwiseDetailsreport"/>
-          <include name="CheckAddingFilterInFiledsCreatedCustomizationTab"/>
-          <include name="checkSortingOptionInReportDesgining"/>
-          <include name="checkReportAccountingTransactionsOfAnAccountingTagDetails"/>
+          <include name="checkWarehouseMasterWhetherShowingOnlyRestrictedWarehouseInList"/>
           <include name="beforeMethodExecution"/>
-          <include name="checkCustomizeReportOFAlltransactionsofdocumentclasscube"/>
-          <include name="checkInventoryTransactionsOfATagCubeReportWithMutipleLevelsOfRowGrouping"/>
-          <include name="checkReportMRWithFilter"/>
-          <include name="checkReportInventoryTransactionsOfProductDetails"/>
-          <include name="checkReportForCreatedInventoryTransactionsOfATagCube"/>
-          <include name="checkReportAllAccountsByTagDetails"/>
-          <include name="checkSaveAReportForValidationRowFormattingTab"/>
-          <include name="checkReportInventoryTransactionsDetails"/>
-          <include name="checkLedgerAnalysisreport"/>
-          <include name="checkReportMRAfterChangesAlignmentAndSignInColoumnFiels"/>
-          <include name="checkAddingProgrammableFiledWithColAttaributeAndEditingColName"/>
-          <include name="checkAddingProgrammmingFiledInBillwiseRDReport"/>
+          <include name="checkAccountMasterWhetherShowingOnlyRestrictedAccountsInList"/>
+          <include name="checkPurchaseVoucherHomePageMastersList"/>
           <include name="afterMethodExecution"/>
-          <include name="checkLedgerDetailsExportPdf"/>
-          <include name="checkReportMRAfterChangesAInSortingTAB"/>
+          <include name="checkItemMasterWhetherShowingOnlyRestrictedItemsInList"/>
         </methods>
-      </class> <!-- com.focus.testcases.ReportDesignerTest -->
+      </class> <!-- com.focus.testcases.UserRestrictionsTest -->
+      <class name="com.focus.testcases.FocusFinancialsReportTest">
+        <methods>
+          <include name="checkBalanceSheetReport"/>
+          <include name="checkCashBookReport"/>
+          <include name="checkVendorAgeingDetailByDueDateReport"/>
+          <include name="checkProfitAndLoassReport"/>
+          <include name="checkAccountQueryReport"/>
+          <include name="checkEntryJournalDetailReport"/>
+          <include name="checkPurchasesGroupedByItem"/>
+          <include name="checkVendorListingOfOutStandingBills"/>
+          <include name="checkBankBookAccountReport"/>
+          <include name="checkMasterInfoOfAccountReport"/>
+          <include name="checkVendorDueDateAnalysisReport"/>
+          <include name="checkVendorOverDueAnalysisReport"/>
+          <include name="checkLedgerReport"/>
+          <include name="checkVendorAgeingSummaryAnalysisReport"/>
+          <include name="checkPeakAndLowBlanceAmount"/>
+          <include name="checkVendorStatementsReport"/>
+          <include name="checkPaymentsRegister"/>
+          <include name="checkTrandingAndProfitAndLoss"/>
+          <include name="checkSchedulesReports"/>
+          <include name="checkVendorOverDueSummaryReport"/>
+          <include name="checkLedgerDetailReport"/>
+          <include name="checkDayBookReport"/>
+          <include name="checkVendorBillWiseSummaryReport"/>
+          <include name="checkVendorSummaryAgeingByDueDateReport"/>
+          <include name="checkLoginWithRERInFA"/>
+          <include name="checkComparativeAnalysisReport"/>
+          <include name="checkInterestCalculationReport"/>
+          <include name="checkCashFlowReport"/>
+          <include name="beforeMethodExecution"/>
+          <include name="checkFundFlowReport"/>
+          <include name="checkJournalEntryRegister"/>
+          <include name="checkReciptsRegister"/>
+          <include name="checkTradingAccountReport"/>
+          <include name="checkFilterOptionInLedger"/>
+          <include name="checkVendorAgeingDetailsAnalysis"/>
+          <include name="checkSubLedgerReport"/>
+          <include name="checkTrailBalanceReport"/>
+          <include name="afterMethodExecution"/>
+          <include name="checkOpeningBalanceRegister"/>
+          <include name="checkEntryJournalRegister"/>
+          <include name="checkPettyCashBookReport"/>
+        </methods>
+      </class> <!-- com.focus.testcases.FocusFinancialsReportTest -->
+      <class name="com.focus.testcases.FocusInventoryReportsTest">
+        <methods>
+          <include name="beforeMethodExecution"/>
+          <include name="checkStockAgeingAnalysisByRMAReport"/>
+          <include name="checkTransactionTypeWiseStockReport"/>
+          <include name="checkGeneralLedgerandInventoryMismatchReport"/>
+          <include name="checkOpeningStockRegisterReport"/>
+          <include name="checkLoginWithRERInFA"/>
+          <include name="afterMethodExecution"/>
+          <include name="checkFilterInStockLedger"/>
+          <include name="checkStockValuationByFATagReport"/>
+        </methods>
+      </class> <!-- com.focus.testcases.FocusInventoryReportsTest -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

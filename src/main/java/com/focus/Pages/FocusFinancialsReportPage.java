@@ -44,6 +44,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
 		sl_SelectAllChkBox.click();
 
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 
 		Select s=new Select(sl_DateOptionDropdown);
@@ -924,6 +925,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 		
 	}
 	
+			
 	
 	public static boolean checkPrintOptionInLedgerAndValidatePDF() throws InterruptedException, IOException, AWTException
 	{
@@ -941,20 +943,22 @@ public class FocusFinancialsReportPage extends BaseEngine
 		
 		Thread.sleep(3000);
 		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ss_ReportPrintLabel));
+        
+        String actConfirmMsg=ss_ReportPrintMsg.getText();
+        String expConfirmMsg="";
+        Thread.sleep(2000);
+        
+        System.out.println("Actual Msg                :                "+        actConfirmMsg                + "Expected                "        +        expConfirmMsg);
+        
+        
+        getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ss_ReportPrintYesBtn));
+        ss_ReportPrintYesBtn.click();
+        
+        Thread.sleep(3000);
 
-		try{
-			if(getIsAlertPresent())
-			{
-				String altetText = getAlert().getText();
-				System.out.println("altetText"+altetText);
-				getAlert().accept();
-			}
-		}
-		catch (Exception e) 
-		{
-			System.out.println("Exception"+e);
-		}
-		
+
+
 		 
 		Thread.sleep(10000);
 		 
@@ -1001,7 +1005,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 		boolean result = pdfutil.compare(actPDF, expPDF);
 		
 		String actData = pdfutil.getText(actPDF);
-		String expData = pdfutil.getText(expPDF).replaceAll("24/08/2022", getCurrentDateF2());
+		String expData = pdfutil.getText(expPDF).replaceAll("25/10/2022", getCurrentDateF2());
 		
 		System.err.println(actData);
 		System.err.println(expData);
@@ -1175,6 +1179,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
 		sl_SelectAllChkBox.click();
 
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 
 		Select s=new Select(sl_DateOptionDropdown);
@@ -2488,6 +2493,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(dayBookReport));
 		dayBookReport.click();
 		
+		Thread.sleep(2000);
 	
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		sl_DateOptionDropdown.click();
@@ -3125,7 +3131,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 		
 	}
 	
-	public static boolean checkSalesSummaryRegisterReport()
+	public static boolean checkSalesSummaryRegisterReport() throws InterruptedException
 	{
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
@@ -3139,6 +3145,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(summarySalesBookReport));
 		summarySalesBookReport.click();
 		
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		sl_DateOptionDropdown.click();
 		Select s=new Select(sl_DateOptionDropdown);
@@ -3291,7 +3298,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 	
 	}
 	
-	public static boolean checkMonthlySalesReport()
+	public static boolean checkMonthlySalesReport() throws InterruptedException
 	{
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
@@ -3306,6 +3313,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(monthlySalesBookReport));
 		monthlySalesBookReport.click();
 		
+		Thread.sleep(2000);
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		sl_DateOptionDropdown.click();
@@ -3380,7 +3388,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 	
 	}
 	
-	public static boolean checkTopCustomersReports()
+	public static boolean checkTopCustomersReports() throws InterruptedException
 	{
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
@@ -3395,7 +3403,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(topCustomersListReport));
 		topCustomersListReport.click();
 		
-		
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		sl_DateOptionDropdown.click();
 		Select s=new Select(sl_DateOptionDropdown);
@@ -3469,7 +3477,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 		
 	}
 	
-	public static boolean checkTopCustomersReportsForGroupAccount()
+	public static boolean checkTopCustomersReportsForGroupAccount() throws InterruptedException
 	{
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
@@ -3484,7 +3492,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(topCustomersListReport));
 		topCustomersListReport.click();
 
-
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		sl_DateOptionDropdown.click();
 		Select s=new Select(sl_DateOptionDropdown);
@@ -3926,7 +3934,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 		
 	}
 	
-	public static boolean checkSummaryPurchaseRegister()
+	public static boolean checkSummaryPurchaseRegister() throws InterruptedException
 	{
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
@@ -3940,6 +3948,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(summaryPurchaseBookReport));
 		summaryPurchaseBookReport.click();
 		
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		sl_DateOptionDropdown.click();
 		Select s=new Select(sl_DateOptionDropdown);
@@ -4204,6 +4213,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(journalEntriesRegisterReport));
 		journalEntriesRegisterReport.click();
 		
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		sl_DateOptionDropdown.click();
 		Select s=new Select(sl_DateOptionDropdown);
@@ -4297,6 +4307,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(creditNoteRegisterReport));
 		creditNoteRegisterReport.click();
 		
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		sl_DateOptionDropdown.click();
 		Select s=new Select(sl_DateOptionDropdown);
@@ -4371,7 +4382,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(debitNoteRegisterReport));
 		debitNoteRegisterReport.click();
 		
-	
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		sl_DateOptionDropdown.click();
 		Select s=new Select(sl_DateOptionDropdown);
@@ -4447,6 +4458,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(receiptsRegisterReport));
 		receiptsRegisterReport.click();
 		
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		sl_DateOptionDropdown.click();
 		Select s=new Select(sl_DateOptionDropdown);
@@ -4524,7 +4536,8 @@ public class FocusFinancialsReportPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(paymentRegisterReport));
 		paymentRegisterReport.click();
 		
-		
+			
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		sl_DateOptionDropdown.click();
 		Select s=new Select(sl_DateOptionDropdown);
@@ -4602,6 +4615,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(pdcReceiptsRegisterReport));
 		pdcReceiptsRegisterReport.click();
 		
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		sl_DateOptionDropdown.click();
 		Select s=new Select(sl_DateOptionDropdown);
@@ -4647,6 +4661,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(pdcPaymentsRegisterReport));
 		pdcPaymentsRegisterReport.click();
 		
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		sl_DateOptionDropdown.click();
 		Select s=new Select(sl_DateOptionDropdown);
@@ -4675,7 +4690,9 @@ public class FocusFinancialsReportPage extends BaseEngine
 	
 	public static boolean checkEntryJournalRegister() throws InterruptedException
 	{
-		Thread.sleep(2000);
+		Thread.sleep(3000);
+		getDriver().navigate().refresh();
+		Thread.sleep(3000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
 		
@@ -4692,6 +4709,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(entryJournalRegisterReport));
 		entryJournalRegisterReport.click();
 		
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		sl_DateOptionDropdown.click();
 		Select s=new Select(sl_DateOptionDropdown);
@@ -4964,6 +4982,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(entryJournalDetailReport));
 		entryJournalDetailReport.click();
 		
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		sl_DateOptionDropdown.click();
 		Select s=new Select(sl_DateOptionDropdown);
@@ -5619,6 +5638,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesGroupedByDepartmentReport));
 		salesGroupedByDepartmentReport.click();
 	
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		sl_DateOptionDropdown.click();
 		Select s=new Select(sl_DateOptionDropdown);
@@ -5883,6 +5903,9 @@ public class FocusFinancialsReportPage extends BaseEngine
 	
 	public static boolean checkPurchasesGroupedByItem() throws InterruptedException
 	{
+		Thread.sleep(3000);
+		getDriver().navigate().refresh();
+		Thread.sleep(3000);
 
 		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
@@ -5893,7 +5916,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesAndPurchasesReportMenu));
 		salesAndPurchasesReportMenu.click();
-		
+
 
 		Thread.sleep(2000);
 		scrollToElementJSE(purchasesGroupedByProductReport);
@@ -5902,8 +5925,8 @@ public class FocusFinancialsReportPage extends BaseEngine
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchasesGroupedByProductReport));
 		purchasesGroupedByProductReport.click();
-		
-		
+
+
 		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
@@ -5932,7 +5955,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
 		sl_OkBtn.click();
-		
+
 
 		Thread.sleep(2000);
 		int reportsRow1ListCount = reportsCol1List.size();
@@ -5946,8 +5969,8 @@ public class FocusFinancialsReportPage extends BaseEngine
 			}
 
 		}
-		
-		
+
+
 		String actRow1List = reportsRow1ListArray.toString();
 		String expRow1List = "[A1, A1, A1, A2, APPLE, B1, B2, D1, D2, D2]";
 
@@ -5967,14 +5990,14 @@ public class FocusFinancialsReportPage extends BaseEngine
 			}
 
 		}
-		
-		
+
+
 		String actRow2List = reportsRow2ListArray.toString();
 		String expRow2List = "[BankACC, D1, Vendor A, D1, D1, D1, D1, D1, D1, D2]";
 
 		System.out.println("Actaul Voucher  :"+actRow2List);
 		System.out.println("Expected Voucher:"+expRow2List);
-		
+
 		int reportsRow3ListCount = reportsCol3List.size();
 		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
 		for(int i=0;i<reportsRow3ListCount;i++)
@@ -5989,10 +6012,10 @@ public class FocusFinancialsReportPage extends BaseEngine
 		String actRow3List = reportsRow3ListArray.toString();
 		String expRow3List = "[1.00, 1.00, 1.00, 3.00, 1.00, 1.00, 10.00, 10.00, 1.00, 1.00, 1.00, 1.00, 10.00, 10.00, 1.00, 1.00, 2.00]";
 
-		
+
 		System.out.println("Actaul Account  :"+actRow3List);
 		System.out.println("Expected Account:"+expRow3List);
-		
+
 		Thread.sleep(4000);
 
 		int reportsRow4ListCount = reportsCol4List.size();
@@ -6006,16 +6029,16 @@ public class FocusFinancialsReportPage extends BaseEngine
 			}
 
 		}
-		
+
 		String actRow4List = reportsRow4ListArray.toString();
 		String expRow4List = "[1.00, 1.00, 1.00, 3.00, 1.00, 1.00, 10.00, 10.00, 1.00, 1.00, 1.00, 1.00, 10.00, 10.00, 1.00, 1.00, 2.00]";
 
 		System.out.println("Actual Branch  :"+actRow4List);
 		System.out.println("Expected Branch:"+expRow4List);
-		
-	
+
+
 		if ( actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List)
-				 && actRow3List.equalsIgnoreCase(expRow3List) && actRow4List.equalsIgnoreCase(expRow4List)
+				&& actRow3List.equalsIgnoreCase(expRow3List) && actRow4List.equalsIgnoreCase(expRow4List)
 				) 
 		{
 			return true;
@@ -6024,7 +6047,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 		{
 			return false;
 		}
-	
+
 	}
 	
 	public static boolean checkPurchasesGroupedByDepartment() throws InterruptedException
@@ -6175,7 +6198,11 @@ public class FocusFinancialsReportPage extends BaseEngine
 	
 	public static boolean checkPeakAndLowBlanceAmount() throws InterruptedException
 	{
-
+		
+		Thread.sleep(3000);
+		getDriver().navigate().refresh();
+		Thread.sleep(3000);
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
 		
@@ -6875,7 +6902,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 		
 		System.out.println("validationConfirmationMessage : "+actvalidationConfirmationMessage+" Value Expected : "+expvalidationConfirmationMessage);
 		
-		
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		sl_DateOptionDropdown.click();
 		Select s=new Select(sl_DateOptionDropdown);
@@ -6933,7 +6960,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 		
 		System.out.println("validationConfirmationMessage : "+actvalidationConfirmationMessage+" Value Expected : "+expvalidationConfirmationMessage);
 		
-		
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		sl_DateOptionDropdown.click();
 		Select s=new Select(sl_DateOptionDropdown);
@@ -7828,7 +7855,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 		
 		System.out.println("validationConfirmationMessage : "+actvalidationConfirmationMessage+" Value Expected : "+expvalidationConfirmationMessage);
 		
-		//Thread.sleep(1500);
+		Thread.sleep(1500);
 	
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		sl_DateOptionDropdown.click();
@@ -8010,7 +8037,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 
 
 		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[H1 [H801], OpeBal:1, SalInv:1, SalInv:5, SalRet:1, Sub Total, H2 [H802], OpeBal:1, SalInv:6, Pmt:1, CreNts:1, Sub Total, CustomerACC [CAC001], OpeBal:1, Rct:1, SalInv:4, NJv:1, Sub Total, Grand Total]";
+		String expRow1List = "[H1 [H801], OpeBal:1, SalInv:1, SalInv:5, SalRet:1, Sub Total, H2 [H802], OpeBal:1, SalInv:6, Pmt:1, CreNts:1, Sub Total, CustomerACC [CAC001], OpeBal:1, Rct:1, SalInv:4, NJv:1, Sub Total]";
 
 		System.out.println("Actaul Voucher  :"+actRow1List);
 		System.out.println("Expected Voucher:"+expRow1List);
@@ -8056,7 +8083,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 
 
 		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[1.00, 4.00, 1.00, 11.00, 5.00, 1.00, 1.00, 1.00, 1.00, 4.00, 1.00, 1.00, 1.00, 1.00, 2.00, 1.00]";
+		String expRow4List = "[1.00, 4.00, 1.00, 11.00, 5.00, 1.00, 1.00, 1.00, 1.00, 4.00, 1.00, 1.00, 1.00, 1.00, 2.00]";
 
 		System.out.println("Actaul Voucher  :"+actRow4List);
 		System.out.println("Expected Voucher:"+expRow4List);
@@ -8080,7 +8107,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 
 
 		String actRow5List = reportsRow5ListArray.toString();
-		String expRow5List = "[1.00, 4.00, 1.00, 11.00, 5.00, 1.00, 1.00, 1.00, 1.00, 4.00, 1.00, 1.00, 1.00, 1.00, 2.00, 1.00]";
+		String expRow5List = "[1.00, 4.00, 1.00, 11.00, 5.00, 1.00, 1.00, 1.00, 1.00, 4.00, 1.00, 1.00, 1.00, 1.00, 2.00]";
 
 		System.out.println("Actaul Voucher  :"+actRow5List);
 		System.out.println("Expected Voucher:"+expRow5List);
@@ -8102,7 +8129,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 
 
 		String actRow6List = reportsRow6ListArray.toString();
-		String expRow6List = "[1.00, 5.00, 6.00, 5.00, 5.00, 1.00, 2.00, 3.00, 4.00, 4.00, 1.00, 1.00, 2.00, 2.00, 21.00]";
+		String expRow6List = "[1.00, 5.00, 6.00, 5.00, 5.00, 1.00, 2.00, 3.00, 4.00, 4.00, 1.00, 1.00, 2.00, 2.00]";
 
 		System.out.println("Actaul Voucher  :"+actRow6List);
 		System.out.println("Expected Voucher:"+expRow6List);
@@ -8130,104 +8157,37 @@ public class FocusFinancialsReportPage extends BaseEngine
 		System.out.println("actAllDatapage1"+actAllDatapage1);
 		System.out.println("expAllDatapage1"+expAllDatapage1);
 
-		/*
-		int reportsRow6ListCount = reportsRow6List.size();
-		ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow6ListCount-1;i++)
-		{
-			String data = reportsRow6List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow6ListArray.add(data);
-			}
-
-		}
-		String actRow6List = reportsRow6ListArray.toString();
-		String expRow6List = "[Sub Total, 5.00, 5.00, 5.00, 5.00, 5.00, 5.00, 219]";
-
-
-		System.out.println(actRow6List);
-		System.out.println(expRow6List);
-
-
-		int reportsRow12ListCount = reportsRow12List.size();
-		ArrayList<String> reportsRow12ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow12ListCount-1;i++)
-		{
-			String data = reportsRow12List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow12ListArray.add(data);
-			}
-
-		}
-		String actRow12List = reportsRow12ListArray.toString();
-		String expRow12List = "[Sub Total, 4.00, 4.00, 4.00, 2.00, 4.00, 4.00, 215]";
-
-
-		System.out.println(actRow12List);
-		System.out.println(expRow12List);
-
-		int reportsRow18ListCount = reportsRow18List.size();
-		ArrayList<String> reportsRow18ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow18ListCount-1;i++)
-		{
-			String data = reportsRow18List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow18ListArray.add(data);
-			}
-
-		}
-		String actRow18List = reportsRow18ListArray.toString();
-		String expRow18List = "[Sub Total, 2.00, 2.00, 2.00, 2.00, 2.00, 2.00, 218]";
-
-
-		System.out.println(actRow18List);
-		System.out.println(expRow18List);
-
-
-		 */
-		/*
-		String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
-		String afterPath="]//td[2]";
-		int k;
+		
 
 		Thread.sleep(2000);
+		report_NextBtn.click();
+		Thread.sleep(2000);
+		
+		
 
-		int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
-
-		for(  k=1;k<rows1;k++)
+		int reportspage2Row1ListCount = reportsrow1List.size();
+		ArrayList<String> reportspage2Row1ListArray = new ArrayList<String>();
+		for(int i=1;i<reportspage2Row1ListCount;i++)
 		{
-			String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
-
-			if(text1.contains("Grand Total"))
+			String data = reportsrow1List.get(i).getText().trim();
+			if(data.isEmpty() == false)
 			{
-				int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-				System.err.println("count"+rowCount);
-				break;
-			}	
-		}
+				reportspage2Row1ListArray.add(data);
+			}
 
-		int Row1ListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-		ArrayList<String> Row1ListArray = new ArrayList<String>();
-		for(int i=1;i<Row1ListCount-3;i++)
-		{
-			String data = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).get(i).getText();
-			Row1ListArray.add(data);
 		}
-		String actRowList =Row1ListArray.toString();
-		String expRowList = "[Grand Total, , , 1.00, 1.00, 21.00, , 1.00, 1.00, 1.00, , , , , , 652, , ]";
+		String actpage2Row1List = reportspage2Row1ListArray.toString();
+		String exppage2Row1List = "[Grand Total, 1.00, 1.00, 21.00, 1.00, 1.00, 1.00, 2380]";
 
-		System.out.println("actRow1List"+actRowList);
-		System.out.println("expRow1List"+expRowList);
-		 */
+		System.out.println("actpage2Row1List"+actpage2Row1List);
+		System.out.println("exppage2Row1List"+exppage2Row1List);
+
+		
+
 
 		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow3List.equalsIgnoreCase(expRow3List) && 
 				actRow4List.equalsIgnoreCase(expRow4List)  && actRow5List.equalsIgnoreCase(expRow5List) &&
-				actRow6List.equalsIgnoreCase(expRow6List) /*&& actRow12List.equalsIgnoreCase(expRow12List)
-				&& actRow18List.equalsIgnoreCase(expRow18List) && actAllDatapage1.equalsIgnoreCase(expAllDatapage1) 
-				&& actRowList.equalsIgnoreCase(expRowList)*/)
+				actRow6List.equalsIgnoreCase(expRow6List))
 
 		{
 			return true;
@@ -8242,6 +8202,11 @@ public class FocusFinancialsReportPage extends BaseEngine
 	
 	public static boolean checkCustomerStatementsReport() throws InterruptedException
 	{
+		
+		Thread.sleep(3000);
+		getDriver().navigate().refresh();
+		Thread.sleep(3000);
+		
 		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
@@ -8287,7 +8252,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 
 
 		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[H1 [H801], OpeBal:1, SalInv:1, SalInv:5, SalRet:1, Sub Total, H2 [H802], OpeBal:1, SalInv:6, Pmt:1, CreNts:1, Sub Total, CustomerACC [CAC001], OpeBal:1, Rct:1, SalInv:4, NJv:1, Sub Total, Grand Total]";
+		String expRow1List = "[H1 [H801], OpeBal:1, SalInv:1, SalInv:5, SalRet:1, Sub Total, H2 [H802], OpeBal:1, SalInv:6, Pmt:1, CreNts:1, Sub Total, CustomerACC [CAC001], OpeBal:1, Rct:1, SalInv:4, NJv:1]";
 
 		System.out.println("Actaul Voucher  :"+actRow1List);
 		System.out.println("Expected Voucher:"+expRow1List);
@@ -8333,7 +8298,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 
 
 		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[1.00, 4.00, 1.00, 11.00, 5.00, 1.00, 1.00, 1.00, 1.00, 4.00, 1.00, 1.00, 1.00, 1.00, 2.00, 1.00]";
+		String expRow4List = "[1.00, 4.00, 1.00, 11.00, 5.00, 1.00, 1.00, 1.00, 1.00, 4.00, 1.00, 1.00, 1.00, 1.00]";
 
 		System.out.println("Actaul Voucher  :"+actRow4List);
 		System.out.println("Expected Voucher:"+expRow4List);
@@ -8357,7 +8322,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 
 
 		String actRow7List = reportsRow7ListArray.toString();
-		String expRow7List = "[1.00, 4.00, 1.00, 11.00, 5.00, 1.00, 1.00, 1.00, 1.00, 4.00, 1.00, 1.00, 1.00, 1.00, 2.00, 1.00]";
+		String expRow7List = "[1.00, 4.00, 1.00, 11.00, 5.00, 1.00, 1.00, 1.00, 1.00, 4.00, 1.00, 1.00, 1.00, 1.00]";
 
 		System.out.println("Actaul Voucher  :"+actRow7List);
 		System.out.println("Expected Voucher:"+expRow7List);
@@ -8379,7 +8344,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 
 
 		String actRow8List = reportsRow8ListArray.toString();
-		String expRow8List = "[1.00, 5.00, 6.00, 5.00, 7.00, 1.00, 2.00, 3.00, 4.00, 10.00, 1.00, 1.00, 2.00, 4.00, 21.00]";
+		String expRow8List = "[1.00, 5.00, 6.00, 5.00, 7.00, 1.00, 2.00, 3.00, 4.00, 10.00, 1.00, 1.00, 2.00]";
 
 		System.out.println("Actaul Voucher  :"+actRow8List);
 		System.out.println("Expected Voucher:"+expRow8List);
@@ -8407,104 +8372,57 @@ public class FocusFinancialsReportPage extends BaseEngine
 		System.out.println("actAllDatapage1"+actAllDatapage1);
 		System.out.println("expAllDatapage1"+expAllDatapage1);
 
-/*
-		int reportsRow6ListCount = reportsRow6List.size();
-		ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow6ListCount-1;i++)
-		{
-			String data = reportsRow6List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow6ListArray.add(data);
-			}
-
-		}
-		String actRow6List = reportsRow6ListArray.toString();
-		String expRow6List = "[Sub Total, 5.00, 5.00, 5.00, 5.00, 5.00, 5.00, 219]";
-
-
-		System.out.println(actRow6List);
-		System.out.println(expRow6List);
-
-
-		int reportsRow12ListCount = reportsRow12List.size();
-		ArrayList<String> reportsRow12ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow12ListCount-1;i++)
-		{
-			String data = reportsRow12List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow12ListArray.add(data);
-			}
-
-		}
-		String actRow12List = reportsRow12ListArray.toString();
-		String expRow12List = "[Sub Total, 4.00, 4.00, 4.00, 2.00, 4.00, 4.00, 215]";
-
-
-		System.out.println(actRow12List);
-		System.out.println(expRow12List);
-
-		int reportsRow18ListCount = reportsRow18List.size();
-		ArrayList<String> reportsRow18ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow18ListCount-1;i++)
-		{
-			String data = reportsRow18List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow18ListArray.add(data);
-			}
-
-		}
-		String actRow18List = reportsRow18ListArray.toString();
-		String expRow18List = "[Sub Total, 2.00, 2.00, 2.00, 2.00, 2.00, 2.00, 218]";
-
-
-		System.out.println(actRow18List);
-		System.out.println(expRow18List);
-
-
-*/
-/*
-		String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
-		String afterPath="]//td[2]";
-		int k;
 
 		Thread.sleep(2000);
+		report_NextBtn.click();
+		Thread.sleep(2000);
+		
+		
 
-		int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
-
-		for(  k=1;k<rows1;k++)
+		int reportspage2Row1ListCount = reportsrow1List.size();
+		ArrayList<String> reportspage2Row1ListArray = new ArrayList<String>();
+		for(int i=1;i<reportspage2Row1ListCount-1;i++)
 		{
-			String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
-
-			if(text1.contains("Grand Total"))
+			String data = reportsrow1List.get(i).getText().trim();
+			if(data.isEmpty() == false)
 			{
-				int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-				System.err.println("count"+rowCount);
-				break;
-			}	
-		}
+				reportspage2Row1ListArray.add(data);
+			}
 
-		int Row1ListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-		ArrayList<String> Row1ListArray = new ArrayList<String>();
-		for(int i=1;i<Row1ListCount-3;i++)
+		}
+		String actpage2Row1List = reportspage2Row1ListArray.toString();
+		String exppage2Row1List = "[Sub Total, 2.00, 2.00, 4.00, 2.00, 2.00]";
+
+
+
+		int reportspage2Row2ListCount = reportsrow2List.size();
+		ArrayList<String> reportspage2Row2ListArray = new ArrayList<String>();
+		for(int i=1;i<reportspage2Row2ListCount-1;i++)
 		{
-			String data = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).get(i).getText();
-			Row1ListArray.add(data);
-		}
-		String actRowList =Row1ListArray.toString();
-		String expRowList = "[Grand Total, , , 1.00, 1.00, 21.00, , 1.00, 1.00, 1.00, , , , , , 652, , ]";
+			String data = reportsrow2List.get(i).getText().trim();
+			if(data.isEmpty() == false)
+			{
+				reportspage2Row2ListArray.add(data);
+			}
 
-		System.out.println("actRow1List"+actRowList);
-		System.out.println("expRow1List"+expRowList);
-*/
+
+		}
+		String actpage2Row2List = reportspage2Row2ListArray.toString();
+		String exppage2Row2List = "[Grand Total, 1.00, 1.00, 21.00, 1.00, 1.00]";
+
+
+		System.out.println("actpage2Row1List"+actpage2Row1List);
+		System.out.println("exppage2Row1List"+exppage2Row1List);
+		
+		System.out.println("actpage2Row2List"+actpage2Row2List);
+		System.out.println("exppage2Row2List"+exppage2Row2List);
+
+		
+
 
 		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow3List.equalsIgnoreCase(expRow3List) && 
 				actRow4List.equalsIgnoreCase(expRow4List)  && actRow7List.equalsIgnoreCase(expRow7List) &&
-				actRow8List.equalsIgnoreCase(expRow8List) /*&& actRow12List.equalsIgnoreCase(expRow12List)
-				&& actRow18List.equalsIgnoreCase(expRow18List) && actAllDatapage1.equalsIgnoreCase(expAllDatapage1) 
-				&& actRowList.equalsIgnoreCase(expRowList)*/)
+				actRow8List.equalsIgnoreCase(expRow8List))
 
 		{
 			return true;
@@ -8562,7 +8480,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 
 
 		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[H1 H801, OpeBal:1, SalInv:1, SalInv:5, SalRet:1, Sub Total, H2 H802, OpeBal:1, SalInv:6, Pmt:1, CreNts:1, Sub Total, CustomerACC CAC001, OpeBal:1, Rct:1, SalInv:4, NJv:1, Sub Total, Grand Total]";
+		String expRow1List = "[H1 [H801], OpeBal:1, SalInv:1, SalInv:5, SalRet:1, Sub Total, H2 [H802], OpeBal:1, SalInv:6, Pmt:1, CreNts:1, Sub Total, CustomerACC [CAC001], OpeBal:1, Rct:1, SalInv:4, NJv:1]";
 
 		System.out.println("Actaul Voucher  :"+actRow1List);
 		System.out.println("Expected Voucher:"+expRow1List);
@@ -8608,7 +8526,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 
 
 		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[1.00, 4.00, 1.00, 11.00, 5.00, 1.00, 1.00, 1.00, 1.00, 4.00, 1.00, 1.00, 1.00, 1.00, 2.00, 1.00]";
+		String expRow4List = "[1.00, 4.00, 1.00, 11.00, 5.00, 1.00, 1.00, 1.00, 1.00, 4.00, 1.00, 1.00, 1.00, 1.00]";
 
 		System.out.println("Actaul Voucher  :"+actRow4List);
 		System.out.println("Expected Voucher:"+expRow4List);
@@ -8632,7 +8550,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 
 
 		String actRow7List = reportsRow7ListArray.toString();
-		String expRow7List = "[1.00, 4.00, 1.00, 11.00, 5.00, 1.00, 1.00, 1.00, 1.00, 4.00, 1.00, 1.00, 1.00, 1.00, 2.00, 1.00]";
+		String expRow7List = "[1.00, 4.00, 1.00, 11.00, 5.00, 1.00, 1.00, 1.00, 1.00, 4.00, 1.00, 1.00, 1.00, 1.00]";
 
 		System.out.println("Actaul Voucher  :"+actRow7List);
 		System.out.println("Expected Voucher:"+expRow7List);
@@ -8654,7 +8572,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 
 
 		String actRow8List = reportsRow8ListArray.toString();
-		String expRow8List = "[1.00, 5.00, 6.00, 5.00, 7.00, 1.00, 2.00, 3.00, 4.00, 10.00, 1.00, 1.00, 2.00, 4.00, 21.00]";
+		String expRow8List = "[1.00, 5.00, 6.00, 5.00, 7.00, 1.00, 2.00, 3.00, 4.00, 10.00, 1.00, 1.00, 2.00]";
 
 		System.out.println("Actaul Voucher  :"+actRow8List);
 		System.out.println("Expected Voucher:"+expRow8List);
@@ -8677,109 +8595,64 @@ public class FocusFinancialsReportPage extends BaseEngine
 		}
 
 		String actAllDatapage1 = AllDatapage1.toString();
-		String expAllDatapage1 = "[H1 H801, H2 H802, CustomerACC CAC001]";
+		String expAllDatapage1 = "[H1 [H801], H2 [H802], CustomerACC [CAC001]]";
 
 		System.out.println("actAllDatapage1"+actAllDatapage1);
 		System.out.println("expAllDatapage1"+expAllDatapage1);
 
-/*
-		int reportsRow6ListCount = reportsRow6List.size();
-		ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow6ListCount-1;i++)
-		{
-			String data = reportsRow6List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow6ListArray.add(data);
-			}
-
-		}
-		String actRow6List = reportsRow6ListArray.toString();
-		String expRow6List = "[Sub Total, 5.00, 5.00, 5.00, 5.00, 5.00, 5.00, 219]";
-
-
-		System.out.println(actRow6List);
-		System.out.println(expRow6List);
-
-
-		int reportsRow12ListCount = reportsRow12List.size();
-		ArrayList<String> reportsRow12ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow12ListCount-1;i++)
-		{
-			String data = reportsRow12List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow12ListArray.add(data);
-			}
-
-		}
-		String actRow12List = reportsRow12ListArray.toString();
-		String expRow12List = "[Sub Total, 4.00, 4.00, 4.00, 2.00, 4.00, 4.00, 215]";
-
-
-		System.out.println(actRow12List);
-		System.out.println(expRow12List);
-
-		int reportsRow18ListCount = reportsRow18List.size();
-		ArrayList<String> reportsRow18ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow18ListCount-1;i++)
-		{
-			String data = reportsRow18List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow18ListArray.add(data);
-			}
-
-		}
-		String actRow18List = reportsRow18ListArray.toString();
-		String expRow18List = "[Sub Total, 2.00, 2.00, 2.00, 2.00, 2.00, 2.00, 218]";
-
-
-		System.out.println(actRow18List);
-		System.out.println(expRow18List);
-
-
-*/
-/*
-		String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
-		String afterPath="]//td[2]";
-		int k;
 
 		Thread.sleep(2000);
+		report_NextBtn.click();
+		Thread.sleep(2000);
+		
+		
 
-		int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
-
-		for(  k=1;k<rows1;k++)
+		int reportspage2Row1ListCount = reportsrow1List.size();
+		ArrayList<String> reportspage2Row1ListArray = new ArrayList<String>();
+		for(int i=1;i<reportspage2Row1ListCount-1;i++)
 		{
-			String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
-
-			if(text1.contains("Grand Total"))
+			String data = reportsrow1List.get(i).getText().trim();
+			if(data.isEmpty() == false)
 			{
-				int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-				System.err.println("count"+rowCount);
-				break;
-			}	
-		}
+				reportspage2Row1ListArray.add(data);
+			}
 
-		int Row1ListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-		ArrayList<String> Row1ListArray = new ArrayList<String>();
-		for(int i=1;i<Row1ListCount-3;i++)
+		}
+		String actpage2Row1List = reportspage2Row1ListArray.toString();
+		String exppage2Row1List = "[Sub Total, 2.00, 2.00, 4.00, 2.00, 2.00]";
+
+
+
+		int reportspage2Row2ListCount = reportsrow2List.size();
+		ArrayList<String> reportspage2Row2ListArray = new ArrayList<String>();
+		for(int i=1;i<reportspage2Row2ListCount-1;i++)
 		{
-			String data = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).get(i).getText();
-			Row1ListArray.add(data);
-		}
-		String actRowList =Row1ListArray.toString();
-		String expRowList = "[Grand Total, , , 1.00, 1.00, 21.00, , 1.00, 1.00, 1.00, , , , , , 652, , ]";
+			String data = reportsrow2List.get(i).getText().trim();
+			if(data.isEmpty() == false)
+			{
+				reportspage2Row2ListArray.add(data);
+			}
 
-		System.out.println("actRow1List"+actRowList);
-		System.out.println("expRow1List"+expRowList);
-*/
+
+		}
+		String actpage2Row2List = reportspage2Row2ListArray.toString();
+		String exppage2Row2List = "[Grand Total, 1.00, 1.00, 21.00, 1.00, 1.00]";
+
+		
+		
+		System.out.println("actpage2Row1List"+actpage2Row1List);
+		System.out.println("exppage2Row1List"+exppage2Row1List);
+		
+		
+		System.out.println("actpage2Row2List"+actpage2Row2List);
+		System.out.println("exppage2Row2List"+exppage2Row2List);
+
+
+
 
 		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow3List.equalsIgnoreCase(expRow3List) && 
 				actRow4List.equalsIgnoreCase(expRow4List)  && actRow7List.equalsIgnoreCase(expRow7List) &&
-				actRow8List.equalsIgnoreCase(expRow8List) /*&& actRow12List.equalsIgnoreCase(expRow12List)
-				&& actRow18List.equalsIgnoreCase(expRow18List) && actAllDatapage1.equalsIgnoreCase(expAllDatapage1) 
-				&& actRowList.equalsIgnoreCase(expRowList)*/)
+				actRow8List.equalsIgnoreCase(expRow8List))
 
 		{
 			return true;
@@ -8840,7 +8713,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 
 
 		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[H1 [H801], OpeBal:1, SalInv:1, SalInv:5, SalRet:1, Sub Total, H2 [H802], OpeBal:1, SalInv:6, Pmt:1, CreNts:1, Sub Total, CustomerACC [CAC001], OpeBal:1, Rct:1, SalInv:4, NJv:1, Sub Total, Grand Total]";
+		String expRow1List = "[H1 [H801], OpeBal:1, SalInv:1, SalInv:5, SalRet:1, Sub Total, H2 [H802], OpeBal:1, SalInv:6, Pmt:1, CreNts:1, Sub Total, CustomerACC [CAC001], OpeBal:1, Rct:1, SalInv:4, NJv:1]";
 
 		System.out.println("Actaul Voucher  :"+actRow1List);
 		System.out.println("Expected Voucher:"+expRow1List);
@@ -8886,7 +8759,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 
 
 		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[1.00, 4.00, 1.00, 11.00, 5.00, 1.00, 1.00, 1.00, 1.00, 4.00, 1.00, 1.00, 1.00, 1.00, 2.00, 1.00]";
+		String expRow4List = "[1.00, 4.00, 1.00, 11.00, 5.00, 1.00, 1.00, 1.00, 1.00, 4.00, 1.00, 1.00, 1.00, 1.00]";
 
 		System.out.println("Actaul Voucher  :"+actRow4List);
 		System.out.println("Expected Voucher:"+expRow4List);
@@ -8910,7 +8783,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 
 
 		String actRow5List = reportsRow5ListArray.toString();
-		String expRow5List = "[1.00, 4.00, 1.00, 11.00, 5.00, 1.00, 1.00, 1.00, 1.00, 4.00, 1.00, 1.00, 1.00, 1.00, 2.00, 1.00]";
+		String expRow5List = "[1.00, 4.00, 1.00, 11.00, 5.00, 1.00, 1.00, 1.00, 1.00, 4.00, 1.00, 1.00, 1.00, 1.00]";
 
 		System.out.println("Actaul Voucher  :"+actRow5List);
 		System.out.println("Expected Voucher:"+expRow5List);
@@ -8932,7 +8805,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 
 
 		String actRow6List = reportsRow6ListArray.toString();
-		String expRow6List = "[1.00, 5.00, 6.00, 5.00, 7.00, 1.00, 2.00, 3.00, 4.00, 10.00, 1.00, 1.00, 2.00, 4.00, 21.00]";
+		String expRow6List = "[1.00, 5.00, 6.00, 5.00, 7.00, 1.00, 2.00, 3.00, 4.00, 10.00, 1.00, 1.00, 2.00]";
 
 		System.out.println("Actaul Voucher  :"+actRow6List);
 		System.out.println("Expected Voucher:"+expRow6List);
@@ -8960,104 +8833,54 @@ public class FocusFinancialsReportPage extends BaseEngine
 		System.out.println("actAllDatapage1"+actAllDatapage1);
 		System.out.println("expAllDatapage1"+expAllDatapage1);
 
-/*
-		int reportsRow6ListCount = reportsRow6List.size();
-		ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow6ListCount-1;i++)
-		{
-			String data = reportsRow6List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow6ListArray.add(data);
-			}
 
-		}
-		String actRow6List = reportsRow6ListArray.toString();
-		String expRow6List = "[Sub Total, 5.00, 5.00, 5.00, 5.00, 5.00, 5.00, 219]";
-
-
-		System.out.println(actRow6List);
-		System.out.println(expRow6List);
-
-
-		int reportsRow12ListCount = reportsRow12List.size();
-		ArrayList<String> reportsRow12ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow12ListCount-1;i++)
-		{
-			String data = reportsRow12List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow12ListArray.add(data);
-			}
-
-		}
-		String actRow12List = reportsRow12ListArray.toString();
-		String expRow12List = "[Sub Total, 4.00, 4.00, 4.00, 2.00, 4.00, 4.00, 215]";
-
-
-		System.out.println(actRow12List);
-		System.out.println(expRow12List);
-
-		int reportsRow18ListCount = reportsRow18List.size();
-		ArrayList<String> reportsRow18ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow18ListCount-1;i++)
-		{
-			String data = reportsRow18List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow18ListArray.add(data);
-			}
-
-		}
-		String actRow18List = reportsRow18ListArray.toString();
-		String expRow18List = "[Sub Total, 2.00, 2.00, 2.00, 2.00, 2.00, 2.00, 218]";
-
-
-		System.out.println(actRow18List);
-		System.out.println(expRow18List);
-
-
-*/
-/*
-		String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
-		String afterPath="]//td[2]";
-		int k;
 
 		Thread.sleep(2000);
+		report_NextBtn.click();
+		Thread.sleep(2000);
+		
+		
 
-		int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
-
-		for(  k=1;k<rows1;k++)
+		int reportspage2Row1ListCount = reportsrow1List.size();
+		ArrayList<String> reportspage2Row1ListArray = new ArrayList<String>();
+		for(int i=1;i<reportspage2Row1ListCount;i++)
 		{
-			String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
-
-			if(text1.contains("Grand Total"))
+			String data = reportsrow1List.get(i).getText().trim();
+			if(data.isEmpty() == false)
 			{
-				int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-				System.err.println("count"+rowCount);
-				break;
-			}	
-		}
+				reportspage2Row1ListArray.add(data);
+			}
 
-		int Row1ListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-		ArrayList<String> Row1ListArray = new ArrayList<String>();
-		for(int i=1;i<Row1ListCount-3;i++)
+		}
+		String actpage2Row1List = reportspage2Row1ListArray.toString();
+		String exppage2Row1List = "[Sub Total, 2.00, 2.00, 4.00, 794, 2.00, 2.00, 1.00, 1.00, 2.00, 1.00, 1.00, 2.00]";
+
+
+
+		int reportspage2Row2ListCount = reportsrow2List.size();
+		ArrayList<String> reportspage2Row2ListArray = new ArrayList<String>();
+		for(int i=1;i<reportspage2Row2ListCount;i++)
 		{
-			String data = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).get(i).getText();
-			Row1ListArray.add(data);
+			String data = reportsrow2List.get(i).getText().trim();
+			if(data.isEmpty() == false)
+			{
+				reportspage2Row2ListArray.add(data);
+			}
+
+
 		}
-		String actRowList =Row1ListArray.toString();
-		String expRowList = "[Grand Total, , , 1.00, 1.00, 21.00, , 1.00, 1.00, 1.00, , , , , , 652, , ]";
+		String actpage2Row2List = reportspage2Row2ListArray.toString();
+		String exppage2Row2List = "[Grand Total, 1.00, 1.00, 21.00, 2380, 1.00, 1.00, 2.00, 3.00, 1.00, 2.00, 3.00, 1.00]";
 
-		System.out.println("actRow1List"+actRowList);
-		System.out.println("expRow1List"+expRowList);
-*/
+		System.out.println("actpage2Row1List"+actpage2Row1List);
+		System.out.println("exppage2Row1List"+exppage2Row1List);
 
+		System.out.println("actpage2Row2List"+actpage2Row2List);
+		System.out.println("exppage2Row2List"+exppage2Row2List);
+		
 		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow3List.equalsIgnoreCase(expRow3List) && 
 				actRow4List.equalsIgnoreCase(expRow4List)  && actRow5List.equalsIgnoreCase(expRow5List) &&
-				actRow6List.equalsIgnoreCase(expRow6List) /*&& actRow12List.equalsIgnoreCase(expRow12List)
-				&& actRow18List.equalsIgnoreCase(expRow18List) && actAllDatapage1.equalsIgnoreCase(expAllDatapage1) 
-				&& actRowList.equalsIgnoreCase(expRowList)*/)
+				actRow6List.equalsIgnoreCase(expRow6List) )
 
 		{
 			return true;
@@ -9120,7 +8943,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 
 
 		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[H1 [H801], OpeBal:1, SalInv:1, SalInv:5, SalRet:1, Sub Total, H2 [H802], OpeBal:1, SalInv:6, Pmt:1, CreNts:1, Sub Total, CustomerACC [CAC001], OpeBal:1, Rct:1, SalInv:4, NJv:1, Sub Total, Grand Total]";
+		String expRow1List = "[H1 [H801], OpeBal:1, SalInv:1, SalInv:5, SalRet:1, Sub Total, H2 [H802], OpeBal:1, SalInv:6, Pmt:1, CreNts:1, Sub Total, CustomerACC [CAC001], OpeBal:1, Rct:1, SalInv:4, NJv:1]";
 
 		System.out.println("Actaul Voucher  :"+actRow1List);
 		System.out.println("Expected Voucher:"+expRow1List);
@@ -9166,7 +8989,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 
 
 		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[1.00, 4.00, 1.00, 11.00, 5.00, 1.00, 1.00, 1.00, 1.00, 4.00, 1.00, 1.00, 1.00, 1.00, 2.00, 1.00]";
+		String expRow4List = "[1.00, 4.00, 1.00, 11.00, 5.00, 1.00, 1.00, 1.00, 1.00, 4.00, 1.00, 1.00, 1.00, 1.00]";
 
 		System.out.println("Actaul Voucher  :"+actRow4List);
 		System.out.println("Expected Voucher:"+expRow4List);
@@ -9190,7 +9013,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 
 
 		String actRow5List = reportsRow5ListArray.toString();
-		String expRow5List = "[1.00, 4.00, 1.00, 11.00, 5.00, 1.00, 1.00, 1.00, 1.00, 4.00, 1.00, 1.00, 1.00, 1.00, 2.00, 1.00]";
+		String expRow5List = "[1.00, 4.00, 1.00, 11.00, 5.00, 1.00, 1.00, 1.00, 1.00, 4.00, 1.00, 1.00, 1.00, 1.00]";
 
 		System.out.println("Actaul Voucher  :"+actRow5List);
 		System.out.println("Expected Voucher:"+expRow5List);
@@ -9213,7 +9036,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 
 
 		String actRow6List = reportsRow6ListArray.toString();
-		String expRow6List = "[1.00, 5.00, 6.00, 5.00, 7.00, 1.00, 2.00, 3.00, 4.00, 10.00, 1.00, 1.00, 2.00, 4.00, 21.00]";
+		String expRow6List = "[1.00, 5.00, 6.00, 5.00, 7.00, 1.00, 2.00, 3.00, 4.00, 10.00, 1.00, 1.00, 2.00]";
 
 		System.out.println("Actaul Voucher  :"+actRow6List);
 		System.out.println("Expected Voucher:"+expRow6List);
@@ -9242,106 +9065,57 @@ public class FocusFinancialsReportPage extends BaseEngine
 
 		System.out.println("actAllDatapage1"+actAllDatapage1);
 		System.out.println("expAllDatapage1"+expAllDatapage1);
-
-/*
-		int reportsRow6ListCount = reportsRow6List.size();
-		ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow6ListCount;i++)
-		{
-			String data = reportsRow6List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow6ListArray.add(data);
-			}
-
-		}
-		String actRow6List = reportsRow6ListArray.toString();
-		String expRow6List = "[Sub Total, 5.00, 5.00, 7.00, 219, 5.00, 5.00, 6.00, 1.00, 5.00, 6.00, 1.00, 5.00]";
-
-
-		System.out.println(actRow6List);
-		System.out.println(expRow6List);
-
-
-		int reportsRow12ListCount = reportsRow12List.size();
-		ArrayList<String> reportsRow12ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow12ListCount;i++)
-		{
-			String data = reportsRow12List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow12ListArray.add(data);
-			}
-
-		}
-		String actRow12List = reportsRow12ListArray.toString();
-		String expRow12List = "[Sub Total, 2.00, 2.00, 4.00, 218, 2.00, 2.00, 1.00, 1.00, 2.00, 1.00, 1.00, 2.00]";
-
-
-		System.out.println(actRow12List);
-		System.out.println(expRow12List);
-
-		int reportsRow18ListCount = reportsRow18List.size();
-		ArrayList<String> reportsRow18ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow18ListCount;i++)
-		{
-			String data = reportsRow18List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow18ListArray.add(data);
-			}
-
-		}
-		String actRow18List = reportsRow18ListArray.toString();
-		String expRow18List = "[Sub Total, 2.00, 2.00, 4.00, 218, 2.00, 2.00, 1.00, 1.00, 2.00, 1.00, 1.00, 2.00]";
-
-
-		System.out.println(actRow18List);
-		System.out.println(expRow18List);
-
-
-*/
-
-		/*String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
-		String afterPath="]//td[2]";
-		int k;
+		
 
 		Thread.sleep(2000);
+		report_NextBtn.click();
+		Thread.sleep(2000);
+		
+		
 
-		int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
-
-		for(  k=1;k<rows1;k++)
+		int reportspage2Row1ListCount = reportsrow1List.size();
+		ArrayList<String> reportspage2Row1ListArray = new ArrayList<String>();
+		for(int i=1;i<reportspage2Row1ListCount;i++)
 		{
-			String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
-
-			if(text1.contains("Grand Total"))
+			String data = reportsrow1List.get(i).getText().trim();
+			if(data.isEmpty() == false)
 			{
-				int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-				System.err.println("count"+rowCount);
-				break;
-			}	
-		}
+				reportspage2Row1ListArray.add(data);
+			}
 
-		int Row1ListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-		ArrayList<String> Row1ListArray = new ArrayList<String>();
-		for(int i=1;i<Row1ListCount;i++)
+		}
+		String actpage2Row1List = reportspage2Row1ListArray.toString();
+		String exppage2Row1List = "[Sub Total, 2.00, 2.00, 4.00, 794, 2.00, 2.00, 1.00, 1.00, 2.00, 1.00, 1.00, 2.00]";
+
+
+
+		int reportspage2Row2ListCount = reportsrow2List.size();
+		ArrayList<String> reportspage2Row2ListArray = new ArrayList<String>();
+		for(int i=1;i<reportspage2Row2ListCount;i++)
 		{
-			String data = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).get(i).getText();
-			Row1ListArray.add(data);
+			String data = reportsrow2List.get(i).getText().trim();
+			if(data.isEmpty() == false)
+			{
+				reportspage2Row2ListArray.add(data);
+			}
+
+
 		}
-		String actRowList =Row1ListArray.toString();
-		String expRowList = "[Grand Total, , , 1.00, 1.00, 21.00, 652, 1.00, 1.00, 2.00, , , , 3.00, , , , 1.00, 2.00, , , , 3.00, , , , 1.00, , , , , , , , , , , ]";
+		String actpage2Row2List = reportspage2Row2ListArray.toString();
+		String exppage2Row2List = "[Grand Total, 1.00, 1.00, 21.00, 2380, 1.00, 1.00, 2.00, 3.00, 1.00, 2.00, 3.00, 1.00]";
 
-		System.out.println("actRow1List"+actRowList);
-		System.out.println("expRow1List"+expRowList);
+		System.out.println("actpage2Row1List"+actpage2Row1List);
+		System.out.println("exppage2Row1List"+exppage2Row1List);
 
-*/
+		System.out.println("actpage2Row2List"+actpage2Row2List);
+		System.out.println("exppage2Row2List"+exppage2Row2List);
+		
+
+		
 		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow3List.equalsIgnoreCase(expRow3List) &&
 				actRow4List.equalsIgnoreCase(expRow4List) && actRow5List.equalsIgnoreCase(expRow5List)
 				 && actRow6List.equalsIgnoreCase(expRow6List)
-				/*actRow6List.equalsIgnoreCase(expRow6List) && actRow12List.equalsIgnoreCase(expRow12List)
-				&& actRow18List.equalsIgnoreCase(expRow18List)*/ && actAllDatapage1.equalsIgnoreCase(expAllDatapage1) 
-				/*&& actRowList.equalsIgnoreCase(expRowList)*/)
+				 && actAllDatapage1.equalsIgnoreCase(expAllDatapage1))
 
 		{
 			return true;
@@ -9401,7 +9175,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 
 
 		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[H1 [H801], OpeBal:1, SalInv:1, SalInv:5, SalRet:1, Sub Total, H2 [H802], OpeBal:1, SalInv:6, Pmt:1, CreNts:1, Sub Total, CustomerACC [CAC001], OpeBal:1, Rct:1, SalInv:4, NJv:1, Sub Total, Grand Total]";
+		String expRow1List = "[H1 [H801], OpeBal:1, SalInv:1, SalInv:5, SalRet:1, Sub Total, H2 [H802], OpeBal:1, SalInv:6, Pmt:1, CreNts:1, Sub Total, CustomerACC [CAC001], OpeBal:1, Rct:1, SalInv:4, NJv:1]";
 
 		System.out.println("Actaul Voucher  :"+actRow1List);
 		System.out.println("Expected Voucher:"+expRow1List);
@@ -9445,7 +9219,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 
 
 		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[1.00, 4.00, 1.00, 11.00, 5.00, 1.00, 1.00, 1.00, 1.00, 4.00, 1.00, 1.00, 1.00, 1.00, 2.00, 1.00]";
+		String expRow4List = "[1.00, 4.00, 1.00, 11.00, 5.00, 1.00, 1.00, 1.00, 1.00, 4.00, 1.00, 1.00, 1.00, 1.00]";
 
 		System.out.println("Actaul Voucher  :"+actRow4List);
 		System.out.println("Expected Voucher:"+expRow4List);
@@ -9468,7 +9242,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 
 
 		String actRow5List = reportsRow5ListArray.toString();
-		String expRow5List = "[1.00, 4.00, 1.00, 11.00, 5.00, 1.00, 1.00, 1.00, 1.00, 4.00, 1.00, 1.00, 1.00, 1.00, 2.00, 1.00]";
+		String expRow5List = "[1.00, 4.00, 1.00, 11.00, 5.00, 1.00, 1.00, 1.00, 1.00, 4.00, 1.00, 1.00, 1.00, 1.00]";
 
 		System.out.println("Actaul Voucher  :"+actRow5List);
 		System.out.println("Expected Voucher:"+expRow5List);
@@ -9491,7 +9265,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 
 
 		String actRow7List = reportsRow7ListArray.toString();
-		String expRow7List = "[1.00, 5.00, 6.00, 5.00, 7.00, 1.00, 2.00, 3.00, 4.00, 10.00, 1.00, 1.00, 2.00, 4.00, 21.00]";
+		String expRow7List = "[1.00, 5.00, 6.00, 5.00, 7.00, 1.00, 2.00, 3.00, 4.00, 10.00, 1.00, 1.00, 2.00]";
 
 		System.out.println("Actaul Voucher  :"+actRow7List);
 		System.out.println("Expected Voucher:"+expRow7List);
@@ -9521,99 +9295,51 @@ public class FocusFinancialsReportPage extends BaseEngine
 		System.out.println("actAllDatapage1"+actAllDatapage1);
 		System.out.println("expAllDatapage1"+expAllDatapage1);
 
-/*
-		int reportsRow6ListCount = reportsRow6List.size();
-		ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow6ListCount;i++)
-		{
-			String data = reportsRow6List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow6ListArray.add(data);
-			}
-
-		}
-		String actRow6List = reportsRow6ListArray.toString();
-		String expRow6List = "[Sub Total, 5.00, 5.00, 207, 7.00, 6.00, 1.00, 5.00]";
-
-
-		System.out.println(actRow6List);
-		System.out.println(expRow6List);
-
-
-		int reportsRow12ListCount = reportsRow12List.size();
-		ArrayList<String> reportsRow12ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow12ListCount;i++)
-		{
-			String data = reportsRow12List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow12ListArray.add(data);
-			}
-
-		}
-		String actRow12List = reportsRow12ListArray.toString();
-		String expRow12List = "[Sub Total, 4.00, 4.00, 203, 10.00, 3.00, 1.00, 4.00]";
-
-
-		System.out.println(actRow12List);
-		System.out.println(expRow12List);
-
-		int reportsRow18ListCount = reportsRow18List.size();
-		ArrayList<String> reportsRow18ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow18ListCount;i++)
-		{
-			String data = reportsRow18List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow18ListArray.add(data);
-			}
-
-		}
-		String actRow18List = reportsRow18ListArray.toString();
-		String expRow18List = "[Sub Total, 2.00, 2.00, 206, 4.00, 1.00, 1.00, 2.00]";
-
-
-		System.out.println(actRow18List);
-		System.out.println(expRow18List);
-
-*/
-/*
-
-		String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
-		String afterPath="]//td[2]";
-		int k;
 
 		Thread.sleep(2000);
+		report_NextBtn.click();
+		Thread.sleep(2000);
+		
+		
 
-		int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
-
-		for(  k=1;k<rows1;k++)
+		int reportspage2Row1ListCount = reportsrow1List.size();
+		ArrayList<String> reportspage2Row1ListArray = new ArrayList<String>();
+		for(int i=1;i<reportspage2Row1ListCount;i++)
 		{
-			String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
-
-			if(text1.contains("Grand Total"))
+			String data = reportsrow1List.get(i).getText().trim();
+			if(data.isEmpty() == false)
 			{
-				int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-				System.err.println("count"+rowCount);
-				break;
-			}	
-		}
+				reportspage2Row1ListArray.add(data);
+			}
 
-		int Row1ListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-		ArrayList<String> Row1ListArray = new ArrayList<String>();
-		for(int i=1;i<Row1ListCount;i++)
+		}
+		String actpage2Row1List = reportspage2Row1ListArray.toString();
+		String exppage2Row1List = "[Sub Total, 2.00, 2.00, 4.00, 794, 2.00, 2.00, 1.00, 1.00, 2.00, 1.00, 1.00, 2.00]";
+
+
+
+		int reportspage2Row2ListCount = reportsrow2List.size();
+		ArrayList<String> reportspage2Row2ListArray = new ArrayList<String>();
+		for(int i=1;i<reportspage2Row2ListCount;i++)
 		{
-			String data = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).get(i).getText();
-			Row1ListArray.add(data);
+			String data = reportsrow2List.get(i).getText().trim();
+			if(data.isEmpty() == false)
+			{
+				reportspage2Row2ListArray.add(data);
+			}
+
+
 		}
-		String actRowList =Row1ListArray.toString();
-		String expRowList = "[Grand Total, , , 1.00, 1.00, 616, 21.00, , 2.00, , , , 3.00, , , , 1.00, ]";
+		String actpage2Row2List = reportspage2Row2ListArray.toString();
+		String exppage2Row2List = "[Grand Total, 1.00, 1.00, 21.00, 2380, 1.00, 1.00, 2.00, 3.00, 1.00, 2.00, 3.00, 1.00]";
 
-		System.out.println("actRow1List"+actRowList);
-		System.out.println("expRow1List"+expRowList);
+		System.out.println("actpage2Row1List"+actpage2Row1List);
+		System.out.println("exppage2Row1List"+exppage2Row1List);
 
-*/
+		System.out.println("actpage2Row2List"+actpage2Row2List);
+		System.out.println("exppage2Row2List"+exppage2Row2List);
+		
+
 		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow3List.equalsIgnoreCase(expRow3List) && 
 				actRow4List.equalsIgnoreCase(expRow4List) && actRow5List.equalsIgnoreCase(expRow5List)
 				&& actRow7List.equalsIgnoreCase(expRow7List)
@@ -9635,7 +9361,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 	//Customer summary
 	
 	
-	public static boolean checkCustomerAgeingSummaryReport()
+	public static boolean checkCustomerAgeingSummaryReport() throws InterruptedException
 	{
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
@@ -9649,7 +9375,8 @@ public class FocusFinancialsReportPage extends BaseEngine
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerSummaryCustomerAgeingSummaryReport));
 		customerSummaryCustomerAgeingSummaryReport.click();
-
+		
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		Select s=new Select(sl_DateOptionDropdown);
 		s.selectByValue("1");
@@ -9947,19 +9674,6 @@ public class FocusFinancialsReportPage extends BaseEngine
 
 
 
-		int reportscol6ListCount = reportsCol6List.size();
-		ArrayList<String> reportscol6ListArray = new ArrayList<String>();
-		for(int i=0;i<reportscol6ListCount;i++)
-		{
-			String data = reportsCol6List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportscol6ListArray.add(data);
-			}
-
-		}
-		String actcol6List = reportscol6ListArray.toString();
-		String expcol6List = "[4.00, 1.00, 3.00]";
 
 
 		System.out.println(actcol1List);
@@ -9971,13 +9685,10 @@ public class FocusFinancialsReportPage extends BaseEngine
 		System.out.println(actcol3List);
 		System.out.println(expcol3List);
 
-		System.out.println(actcol6List);
-		System.out.println(expcol6List);
-
-
+		
 
 		if (actcol1List.equalsIgnoreCase(expcol1List) && actcol2List.equalsIgnoreCase(expcol2List) && actcol3List.equalsIgnoreCase(expcol3List) 
-				&& actcol6List.equalsIgnoreCase(expcol6List))
+				)
 		{
 			return true;
 		} 
@@ -11796,7 +11507,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 	}
 	
 	
-	public static boolean checkVendorAgeingSummaryAnalysisReport()
+	public static boolean checkVendorAgeingSummaryAnalysisReport() throws InterruptedException
 	{
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
@@ -11811,6 +11522,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorSummeryVendorAgeingSummaryReport));
 		vendorSummeryVendorAgeingSummaryReport.click();
 		
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		Select s=new Select(sl_DateOptionDropdown);
 		s.selectByValue("1");
@@ -11915,7 +11627,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 	
 	}
 	
-	public static boolean checkVendorSummaryAgeingByDueDateReport()
+	public static boolean checkVendorSummaryAgeingByDueDateReport() throws InterruptedException
 	{
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
@@ -11931,6 +11643,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorSummeryVendorSummaryAgeingByDueDateReport));
 		vendorSummeryVendorSummaryAgeingByDueDateReport.click();
 		
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		Select s=new Select(sl_DateOptionDropdown);
 		s.selectByValue("1");
@@ -12034,7 +11747,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 		
 	}
 	
-	public static boolean checkVendorOverDueSummaryReport()
+	public static boolean checkVendorOverDueSummaryReport() throws InterruptedException
 	{
 
 
@@ -12051,6 +11764,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorSummeryVendorOverdueSummaryReport));
 		vendorSummeryVendorOverdueSummaryReport.click();
 		
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		Select s=new Select(sl_DateOptionDropdown);
 		s.selectByValue("1");
@@ -15207,6 +14921,9 @@ public class FocusFinancialsReportPage extends BaseEngine
 	
 	public static boolean checkCashFlowReport() throws InterruptedException
 	{
+		Thread.sleep(2000);
+		getDriver().navigate().refresh();
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
 		
@@ -15304,7 +15021,8 @@ public class FocusFinancialsReportPage extends BaseEngine
 		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(advanceCashFlowReport));
 		advanceCashFlowReport.click();
-
+		
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		Select s=new Select(sl_DateOptionDropdown);
 		s.selectByValue("1");

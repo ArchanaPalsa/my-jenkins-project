@@ -25,15 +25,15 @@ public class ProductCodeIncrementalPage extends BaseEngine
 	{
 	        try
 	        {
-	                getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(IerrorMessage));
-	                String actErrorMessage=IerrorMessage.getText();
+	                getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(errorMessage));
+	                String actErrorMessage=errorMessage.getText();
 	                String expErrorMessage=ExpMessage;
 
 	                try
 	                {
 	                
-		                getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(IerrorMessageCloseBtn));
-		                IerrorMessageCloseBtn.click();
+		                getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(errorMessageCloseBtn));
+		                errorMessageCloseBtn.click();
 
 		                System.out.println("ValidationMessage  :  "+actErrorMessage +" Value Expected : "+expErrorMessage);
 		                
@@ -86,8 +86,13 @@ public class ProductCodeIncrementalPage extends BaseEngine
 	
 		Thread.sleep(2000);
 		 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterCustamizemasterBtn));	
-		masterCustamizemasterBtn.click();
+		scrollToElementJSE(masterCustamizemasterBtn);
+		Thread.sleep(2000);
+		
+		ClickUsingJs(masterCustamizemasterBtn);
+		
+		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterCustamizemasterBtn));	
+		masterCustamizemasterBtn.click();*/
 		
 		Thread.sleep(2000);
 		
@@ -95,7 +100,7 @@ public class ProductCodeIncrementalPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(generalTab));	
 		generalTab.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(generalMainTabInItem));
 		generalMainTabInItem.click();
 
@@ -199,6 +204,10 @@ public class ProductCodeIncrementalPage extends BaseEngine
 	public static boolean checkSaveProductMasterAndVerifyIncrementalPropery() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
 		Thread.sleep(2000);
+		
+		getDriver().navigate().refresh();
+		Thread.sleep(2000);
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(homeMenu));
 		homeMenu.click();
 
@@ -234,8 +243,8 @@ public class ProductCodeIncrementalPage extends BaseEngine
 		BinTxt.click();
 
 		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accountSaveBtn));
-		accountSaveBtn.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(itemSaveBtn));
+		itemSaveBtn.click();
 		
 		Thread.sleep(2000);
 		String expSaveAccountMessage = "Saved Successfully";	
@@ -289,8 +298,8 @@ public class ProductCodeIncrementalPage extends BaseEngine
 		
 		Thread.sleep(2000);
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accountSaveBtn));
-		accountSaveBtn.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(itemSaveBtn));
+		itemSaveBtn.click();
 
 		checkValidationMessage(expSaveAccountMessage);
 
@@ -338,8 +347,8 @@ public class ProductCodeIncrementalPage extends BaseEngine
 		Thread.sleep(2000);
 		BinTxt.click();
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accountSaveBtn));
-		accountSaveBtn.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(itemSaveBtn));
+		itemSaveBtn.click();
 
 		checkValidationMessage(expSaveAccountMessage);
 		
@@ -466,9 +475,14 @@ public class ProductCodeIncrementalPage extends BaseEngine
 
 
 		Thread.sleep(2000);
+		
+		scrollToElementJSE(masterCustamizemasterBtn);
+		Thread.sleep(2000);
+		
+		ClickUsingJs(masterCustamizemasterBtn);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterCustamizemasterBtn));	
-		masterCustamizemasterBtn.click();
+		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterCustamizemasterBtn));	
+		masterCustamizemasterBtn.click();*/
 
 		Thread.sleep(4000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(generalTab));	
@@ -545,6 +559,9 @@ public class ProductCodeIncrementalPage extends BaseEngine
 	
 	public static boolean checkLogoutAndLoginAfterCustomization() throws InterruptedException
 	{	
+		Thread.sleep(3000);
+		getDriver().navigate().refresh();
+		
 		Thread.sleep(3000);
 		getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(LogoutDropdown));
 		LogoutDropdown.click();
@@ -692,9 +709,14 @@ public class ProductCodeIncrementalPage extends BaseEngine
 		
 
 		Thread.sleep(2000);
+		
+		scrollToElementJSE(masterCustamizemasterBtn);
+		Thread.sleep(2000);
+		
+		ClickUsingJs(masterCustamizemasterBtn);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterCustamizemasterBtn));	
-		masterCustamizemasterBtn.click();
+		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterCustamizemasterBtn));	
+		masterCustamizemasterBtn.click();*/
 
 		Thread.sleep(4000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(generalTab));	
@@ -755,7 +777,7 @@ public class ProductCodeIncrementalPage extends BaseEngine
 		Thread.sleep(2000);
 		
 		Select valueDD = new Select(valueDropdown);
-		valueDD.selectByVisibleText("Code");
+		valueDD.selectByVisibleText("sCode");
 		Thread.sleep(1000);
 		
 		valueDropdown.sendKeys(Keys.TAB);
@@ -877,8 +899,8 @@ public class ProductCodeIncrementalPage extends BaseEngine
 		Thread.sleep(2000);
 
 		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accountSaveBtn));
-		accountSaveBtn.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(itemSaveBtn));
+		itemSaveBtn.click();
 
 		String expSaveAccountMessage = "Saved Successfully";	
 		String actSaveAccountMessage = checkValidationMessage(expSaveAccountMessage);
@@ -922,8 +944,8 @@ public class ProductCodeIncrementalPage extends BaseEngine
 		BinTxt.click();
 
 		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accountSaveBtn));
-		accountSaveBtn.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(itemSaveBtn));
+		itemSaveBtn.click();
 
 		checkValidationMessage(expSaveAccountMessage);
 
@@ -991,8 +1013,8 @@ public class ProductCodeIncrementalPage extends BaseEngine
 		BinTxt.click();
 
 		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accountSaveBtn));
-		accountSaveBtn.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(itemSaveBtn));
+		itemSaveBtn.click();
 
 		checkValidationMessage(expSaveAccountMessage);
 
@@ -1060,8 +1082,8 @@ public class ProductCodeIncrementalPage extends BaseEngine
 		BinTxt.click();
 
 		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accountSaveBtn));
-		accountSaveBtn.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(itemSaveBtn));
+		itemSaveBtn.click();
 
 		checkValidationMessage(expSaveAccountMessage);
 
@@ -1130,8 +1152,8 @@ public class ProductCodeIncrementalPage extends BaseEngine
 		BinTxt.click();
 
 		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accountSaveBtn));
-		accountSaveBtn.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(itemSaveBtn));
+		itemSaveBtn.click();
 
 		checkValidationMessage(expSaveAccountMessage);
 
@@ -1200,8 +1222,8 @@ public class ProductCodeIncrementalPage extends BaseEngine
 		BinTxt.click();
 
 		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accountSaveBtn));
-		accountSaveBtn.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(itemSaveBtn));
+		itemSaveBtn.click();
 
 		checkValidationMessage(expSaveAccountMessage);
 
@@ -1309,8 +1331,8 @@ public class ProductCodeIncrementalPage extends BaseEngine
 		BinTxt.click();
 		
 		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accountSaveBtn));
-		accountSaveBtn.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(itemSaveBtn));
+		itemSaveBtn.click();
 
 		String expSaveItemMessage = "Saved Successfully";	
 		String actSaveItemMessage = checkValidationMessage(expSaveItemMessage);
@@ -1418,8 +1440,8 @@ public class ProductCodeIncrementalPage extends BaseEngine
 		BinTxt.click();
 		
 		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accountSaveBtn));
-		accountSaveBtn.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(itemSaveBtn));
+		itemSaveBtn.click();
 
 		String expSaveItemMessage = "Saved Successfully";	
 		String actSaveItemMessage = checkValidationMessage(expSaveItemMessage);

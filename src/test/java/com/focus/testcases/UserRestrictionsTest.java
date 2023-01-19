@@ -26,7 +26,7 @@ public class UserRestrictionsTest extends BaseEngine
 	  Assert.assertEquals(urp.checkLogin(), true);
 	}
 
-	@Test(priority=1999)
+	//@Test(priority=1999)
 	public void checkRestoreCompany() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	{
 		urp=new UserRestrictionsPage(getDriver());

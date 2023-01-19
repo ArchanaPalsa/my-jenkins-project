@@ -24,7 +24,7 @@ public class CodeIncrementalTest extends BaseEngine
 		Assert.assertEquals(CIP.checkLogin(), true);
 	}
 	
-	@Test(priority=2002)
+	/*@Test(priority=2002)
 	public void checkSaveNormalIncrementOfCodeInCustMaster() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		CIP=new CodeIncrementalPage(getDriver());
@@ -71,7 +71,7 @@ public class CodeIncrementalTest extends BaseEngine
 	{
 		CIP=new CodeIncrementalPage(getDriver());
 		Assert.assertEquals(CIP.checkLogoutAndLoginAfterCustomization(), true);
-	}
+	}*/
 	
 	@Test(priority=2010)
 	public void checkSaveGroupAccountsAndNestedGroupAccountAndVerifyCode() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException

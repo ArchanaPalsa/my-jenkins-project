@@ -225,14 +225,34 @@ public class BaseEngine extends ElementRepository
 		  
 	  }
 	  
+	  
+	  public static String getCurrentDateFormatWithTime() 
+      {
+
+              String timeStamp = new SimpleDateFormat("MMM"+" "+"dd"+" "+"yyyy"+" "+"HH"+" "+"mm").format(Calendar.getInstance().getTime());
+              System.out.println(timeStamp );
+              return timeStamp;
+      }
+
+
+
+     @BeforeTest
+      public void intialiseReports()
+      {
+              
+              
+                 extentReports = new ExtentReports(baseDir +"\\reports\\"+getCurrentDateFormatWithTime()+"---FocusAutomationReport.html");
+                extentReports.assignProject("FocusAI");
+               
+      }
 	
-	  @BeforeTest
+	 /* @BeforeTest
 	  public void intialiseReports()
 	  {
 		
-		  extentReports =new ExtentReports(baseDir+"\\reports\\FocusAutomationReport.html");
+		  extentReports =new ExtentReports(baseDir+"\\reports\\"+getCurrentDateF2()+"FocusAutomationReport.html");
 		  extentReports.assignProject("FocusAI");
-	  }
+	  }*/
 	    
 	  
 	  @AfterTest
