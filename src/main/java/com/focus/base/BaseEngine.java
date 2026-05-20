@@ -334,15 +334,31 @@ public class BaseEngine extends ElementRepository
 			chromePrefs.put("download.prompt_for_download", true);
 			
 			
+			/*
+			 * ChromeOptions options = new ChromeOptions();
+			 * 
+			 * options.setExperimentalOption("prefs", chromePrefs); DesiredCapabilities cap
+			 * = DesiredCapabilities.chrome();
+			 * cap.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+			 * cap.setCapability(ChromeOptions.CAPABILITY, options);
+			 * 
+			 * 
+			 * driver = new ChromeDriver(cap);
+			 */
+			
 			ChromeOptions options = new ChromeOptions();
-			
 			options.setExperimentalOption("prefs", chromePrefs);
-			DesiredCapabilities cap = DesiredCapabilities.chrome();
-			cap.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
-			cap.setCapability(ChromeOptions.CAPABILITY, options);
-			
+			options.setAcceptInsecureCerts(true);  // replaces CapabilityType.ACCEPT_SSL_CERTS
 
-			driver = new ChromeDriver(cap);
+			/*
+			 * // optional: headless for Jenkins options.addArguments("--headless");
+			 * options.addArguments("--disable-gpu");
+			 * options.addArguments("--window-size=1920,1080");
+			 * options.addArguments("--no-sandbox");
+			 * options.addArguments("--disable-dev-shm-usage");
+			 */
+
+			driver = new ChromeDriver(options);
 			initActivities();
 			System.out.println("san");
 		}

@@ -30,7 +30,7 @@ autolt/
 debug.log
 
 # Driver files
-/drivers/
+#/drivers/
 
 # Report files
 /reports/
