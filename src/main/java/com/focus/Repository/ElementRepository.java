@@ -22,12 +22,7 @@ public class ElementRepository
 		@FindBy(xpath="//*[@id='ShowAuthForCreateRestore']/div/div/div[4]/button[2]")
 		public static WebElement cancelButtonInRestore;
 		
-		@FindBy(xpath="//*[@id='id_search_menu']/input")
-		public static WebElement searchBtnInput;
-		
-		
-		
-		
+
 
 		@FindBy (xpath="//div[@id='ReIndexingError_Modal']/div/div")
 			public static WebElement reindexingPopup;
@@ -53,15 +48,21 @@ public class ElementRepository
 
 		@FindBy(xpath = "//*[@id='idGlobalError']/div/div[2]")
 		public static WebElement errorMessage;
+		
+		@FindBy(xpath = "//*[@id='idGlobalError']/div[2]/div[2]")
+		public static WebElement errorMessage2;
 
 		@FindBy(xpath = "//*[@id='idGlobalError']/div/div[1]/button")
 		public static WebElement errorMessageCloseBtn;
+		
+		@FindBy(xpath = "//*[@id='idGlobalError']/div[2]/div[1]/button")
+		public static WebElement errorMessageCloseBtn2;
 
 
-		@FindBy(xpath="//*[@id='id_mainlayoutmenu']/ul[2]/li[5]/a")
+		@FindBy(xpath="//*[@id='id_mainlayoutmenu']/ul[2]/li[7]/a")
 		public static WebElement userNameDisplay;
 		
-		@FindBy(xpath="//div[@class='adminprofile']")
+		@FindBy(xpath="//div[@class='adminprofile']/i")
 		public static WebElement LogoutDropdown;
 		
 		
@@ -109,8 +110,12 @@ public class ElementRepository
 
 
 
-	@FindBy(xpath="//*[@id='ulCompanyDetails_HomePage']/li[1]")
+	@FindBy(xpath="//strong[@class='ms-2']")
 	public static WebElement companyName;
+	
+	@FindBy(xpath="//*[@id='id_menu_search_input']")
+	public static WebElement searchBtnInput;
+	
 
 	@FindBy(xpath="//*[@id='CompanyName']")
 	public static WebElement CompanyName;
@@ -286,7 +291,7 @@ public class ElementRepository
 	@FindBy(xpath="//*[@id='id_focus8_wrapper_default']/aside/section")
 	public static WebElement menuBar;
 
-	@FindBy(xpath="//*[@id='Dashboard_ddlList']/li/a")
+	@FindBy(xpath="(//*[@id='Dashboard_ddlList']/li/a)[1]")
 	public static WebElement dashboardName;
 
 	@FindBy(xpath="//*[@id='dashIcons']")
@@ -299,7 +304,7 @@ public class ElementRepository
 	@FindBy(xpath="//select[@id='id_languageoptions']")
 	public static WebElement languageDropdownInLogout;
 
-	@FindBy(xpath="//*[@id='id_user_profile_icons']/li[2]/a")
+	@FindBy(xpath="//*[@id='id_user_profile_icons']/li[2]/a/span")
 	public static WebElement logoutOption;
 
 	@FindBy(xpath="//*[@id='dashName']")
@@ -316,7 +321,7 @@ public class ElementRepository
 	//Financial Menu
 	@FindBy (xpath="//*[@id='60' and @title='Financials']")
 	public static WebElement financialMenu;
-
+	
 	//Fixed Assets Menu
 	@FindBy (xpath="//span[@class='icon-assets icon-font1']")
 	public static WebElement fixedAssetsMenu;
@@ -343,6 +348,13 @@ public class ElementRepository
 	//Inventory Menu and Sub Menus		
 	@FindBy(xpath="//*[@id='135']")
 	public static WebElement  inventoryMenu; 
+	
+	@FindBy(xpath="//input[@id='selectAllMasters_']")
+	public static WebElement selectAllItemsChkBox;
+	
+	@FindBy(xpath="//input[@id='id_fconfirm_btn2']")
+	public static WebElement contentChangeYesBtn;
+	
 
 	@FindBy(xpath = "//div[@id='id_left_mainmenu']/ul/li/a")
 	public static List<WebElement> menusList;
@@ -371,7 +383,7 @@ public class ElementRepository
 
 	// AccountsPage
 
-	@FindBy (xpath="//a[@id='1']")
+	@FindBy (xpath="//a[@id='1']/span[text()='Home']")
 	public static WebElement homeMenu;
 
 	//Masters Menu	
@@ -776,6 +788,9 @@ public class ElementRepository
 
 	@FindBy(xpath="//input[@id='FieldsDetails_ReadOnly']//following-sibling::span")
 	public static WebElement extraFields_PropertiesReadOnlyChekbox;
+	
+	@FindBy(xpath="//input[@id='FieldsDetails_ReadOnly']")
+	public static WebElement extraFields_PropertiesReadOnlyChekboxSelected;
 
 	@FindBy(xpath="//input[@id='FieldsDetails_InformationField']//following-sibling::span")
 	public static WebElement extraFields_PropertiesInformationFieldChekbox;
@@ -1054,7 +1069,7 @@ public class ElementRepository
 	@FindBy(xpath="//div[@class='col-md-6']//ul//li[3]//i[@class='icon-close iconbreadcom']")
 	public static WebElement UniqueConstraintsCloseBtn;
 
-	@FindBy(xpath="//i[@class='icon-font6 icon-options']")
+	@FindBy(xpath="//*[@id='btnCustomizeView']")
 	public static WebElement masterCustamizeViewBtn; 
 
 	@FindBy(xpath="//*[@id='btnCustomizeTree']")
@@ -1170,23 +1185,88 @@ public class ElementRepository
 
 
 
-	@FindBy(xpath="//*[@id='GenerateNewMasterModel']/div/div[1]/div[2]/div/ul/li[2]/button[5]")
+	@FindBy(xpath="//*[@id='GenerateNewMasterModel']/div/div[1]/div[2]/div/ul/li[2]/button[6]")
 	public static WebElement closeBtn;
 
 
-	@FindBy(xpath="//*[@id='GenerateNewMasterModel']/div/div[1]/div[2]/div/ul/li[2]/button[5]/i")
+	@FindBy(xpath="//*[@id='GenerateNewMasterModel']/div/div[1]/div[2]/div/ul/li[2]/button[6]/i")
 	public static WebElement CloseBtn;
 
 	@FindBy(xpath="//*[@id='btnCustomizeClose']/i")
 	public static WebElement CloseBtnINDC;
+	
+	
+	 
+	 @FindBy(xpath="//*[@id='69']/span")
+	 public static WebElement CreditLimitAuthoriorisationMenu;
+	 
+	 
+	 @FindBy(xpath="//*[@id='crAuthName']")
+	 public static WebElement CLA_NameTxt;
+	 
+	 @FindBy(xpath="//input[@id='txtPerFmValue-1']")
+	 public static WebElement CLA_PercenFrmValueTxt;
+	 
+	 @FindBy(xpath="//input[@id='txtPerToValue-1']")
+	 public static WebElement CLA_PercentToValueTxt;
+	 
+	 @FindBy(xpath="//input[@id='txtFrommValue-1']")
+	 public static WebElement CLA_FromValueTxt;
+	 
+	 @FindBy(xpath="//input[@id='txtToValue-1']")
+	 public static WebElement CLA_ToValueTxt;
+	 
+	 @FindBy(xpath="//input[@id='txtCreditDays-1']")
+	 public static WebElement CLA_CreditDaysTxt;
+	 
+	 @FindBy(xpath="//input[@id='txtAuthOverAll-1']")
+	 public static WebElement CLA_NumberOFAuthorizationAllowedOverAll;
+	 
+	 @FindBy(xpath="//select[@id='ddlAuthOverAll-1']")
+	 public static WebElement CLA_Row1FrqyDrpDwn;
+	 
+	 @FindBy(xpath="//input[@id='txtAuthPerCustomer-1']")
+	 public static WebElement CLA_NoOfAuthorisationPeraCustomer;
+	 
+	 @FindBy(xpath="//select[@id='ddlAuthPerCustomer-1']")
+	 public static WebElement CLA_Row2FrqyDrpDwn;
+	 
+	 @FindBy(xpath="//input[@id='txtMaxvalIncreaseOvarAll-1']")
+	 public static WebElement CLA_tMaxvalIncreaseOvarAll;
+	 
+	 @FindBy(xpath="//select[@id='ddlMaxvalIncreaseOvarAll-1']")
+	 public static WebElement CLA_Row3FrqyDrpDwn;
+	 
+	 @FindBy(xpath="//input[@id='txtMaxvalIncreaseCust-1']")
+	 public static WebElement CLA_MaxvalIncreaseCust;
+	 
+	 @FindBy(xpath="//select[@id='ddlMaxvalIncreaseCust-1']")
+	 public static WebElement CLA_Row4FrqyDrpDwn; 
+	 
+	 @FindBy(xpath="//input[@id='rdoAllUser-1']")
+	 public static WebElement CLA_AllUsersRadioBtn; 
+	 
+	 @FindBy(xpath="//input[@id='rdoSelectedUser-1']")
+	 public static WebElement CLA_AnyOfSelectedUsersRadioBtn; 
+	 
+	// @FindBy(xpath="//*[@id='togl-1']/div[2]/div[1]/fieldset/div/label")
+	 @FindBy(xpath="//*[@id='chkcheckbox-1']/label")
+	 public static List<WebElement> CLA_AllUsersChkBoxList; 
+	 
+	 @FindBy(xpath="//*[@id='CrdAuthLevelPanel-collapseOne-1']/div/div[4]/div/label")
+	 public static WebElement gotoNextLevelCheckbox; 
+	 
+	 
 
-
-
-
-
-
-
-
+	 @FindBy(xpath="//div[@id='navbarSupportedContent2']//i[@class='icon-save hiconright2']")
+	 public  static WebElement CLA_SaveBtn;
+	 
+	 @FindBy(xpath="//div[@id='navbarSupportedContent2']//i[@class='icon-delete hiconright2']")
+	 public  static WebElement CLA_DeleteBtn;
+	 
+	 @FindBy(xpath="//div[@id='navbarSupportedContent2']//i[@class='icon-close hiconright2']")
+	 public  static WebElement CLA_CancelBtn;
+	 
 	//ChequeDiscountLimit
 	@FindBy(xpath="//input[@id='fChequeDiscountLimit']")
 	public static WebElement chequeDiscountLimitTxt;
@@ -1404,8 +1484,9 @@ public class ElementRepository
 	public static WebElement dashboardCustomizationSettings;
 
 
-	@FindBy(xpath="//ul[@class='nav navbar-nav navbar-left ulNewMaster']//li[2]//button[1]")
+	@FindBy(xpath="//ul[@class='nav navbar-nav navbar-left ulNewMaster']//li[2]//button[2]")
 	public static WebElement SaveBtn;
+	
 	
 	@FindBy(xpath="//*[@id='id_transaction_entry_detail_table_body']/tr[1]/td[2]")
 	public static WebElement  select1stRow_1stColumn;
@@ -2060,6 +2141,18 @@ public class ElementRepository
 
 	@FindBy(xpath="//*[@id='id_mainlayoutmenu']/ul[2]/li[5]/a")
 	public static WebElement userNameTxt;
+	@FindBy(xpath="//*[@id='id_mainlayoutmenu']/ul[2]/li[8]/a")
+	public static WebElement userNameTxtM;
+	
+	@FindBy(xpath="(//li[@class='nav-item pt-md-2']/a)[2]")
+	public static WebElement userNameTxt1;
+	
+
+	@FindBy(xpath="//*[@id='id_mainlayoutmenu']/ul[2]/li[7]/a")
+	public static WebElement usernametxt;
+	
+	@FindBy(xpath="(//li[@class='nav-item pt-md-2']/a)[2]")
+	public static WebElement usernametxt1;
 	
 	@FindBy(xpath="//*[@id='identifierId']")
 	public static WebElement  UserNameTxt;
@@ -2069,6 +2162,11 @@ public class ElementRepository
 	
 	  @FindBy(xpath="//*[@id='id_Cancel']/a")
 	    public static WebElement  billRefcancel;  
+	  
+	  @FindBy(xpath="//*[contains(text(),'Pending Sales Orders')]")
+	    public static WebElement  pendingSalesOrderLink;  
+	  
+	//*[@id="id_transactionentry_footer_panel_summary_value_net"]/span[contains(text(),'150')]
 	    
 
 
@@ -3826,12 +3924,9 @@ public class ElementRepository
 	public static List<WebElement>  settingMenuList;
 
 
-	@FindBy(xpath="//span[contains(text(),'Configure Transactions')]")
+	@FindBy(xpath="//*[@id='17']//span[text()='Configure Transactions']")
 	public static WebElement  ConfigureTransactionBtn;
-
-
-
-
+	
 
 	@FindBy(xpath="//span[contains(text(),'Configure Transactions')]")
 	public static WebElement  settingsConfigureTransactions;   
@@ -3887,19 +3982,47 @@ public class ElementRepository
 	@FindBy(xpath="//*[@id='dvTag']/div/div/label")
 	public static List<WebElement>  configureTransactionPageList;
 
-	@FindBy(xpath="//*[@id='configureTransactions']/div/div[1]/div/div/ul/li[1]/a")
+	@FindBy(xpath="//ul[@class='showsubmenu']//span[contains(text(),'Preferences')]")
 	public static WebElement  PreferencesBtn;
 
 	@FindBy(xpath="//*[@id='configureTransactions']/div/div[1]/div/div/ul/li[2]/a")
 	public static WebElement  DocumentCustomizationBtn;
-
-
 	
-
+	@FindBy(xpath="	//*[@id='panelsStayOpen-headingtwo']//button[contains(text(), 'Accounts settings')]")
+	public static WebElement  Prefences_AccountSettingsExpandBtn;
+	
+	@FindBy(xpath="//*[@id='panelsStayOpen-headingthree']//button[contains(text(),'Negative Cash Settings')]")
+	public static WebElement  Prefences_NegativeCashSettingsBtn;
+	
+	@FindBy(xpath="//*[@id='chkEnableCreditLimitCheck']")
+	public static WebElement  enableCreditCheckBoxS;
+	
+	@FindBy(xpath="//*[@id='StockSettings']//button[contains(text(), 'Stock Settings')]")
+	public static WebElement  Inventory_StockSettingsBtn;
+	
+	@FindBy(xpath="//*[@id='chkAllowCreditLimitAuthorizationMappingToCustomerGroup']")
+	public static WebElement  creditLimitAuthToCustGrpschkbxS;
+	
+	@FindBy(xpath="//*[@id='chkIncludePendingSalesOrderValueInCreditLimitCheck']/following-sibling::span")
+	public static WebElement  IncludePendingSalesOrderValueInCreditLimitCheckchckbx;
+	
+	@FindBy(xpath="//*[@id='chkCheckcreditlimitinorders']/following-sibling::span")
+	public static WebElement  CheckcreditlimitinordersCheckbx;
+	
+	
+	
+	
+	
+	@FindBy(xpath="//*[@id='chkAllowCreditLimitAuthorizationMappingToCustomerGroup']/following-sibling::span")
+	public static WebElement  creditLimitAuthToCustGrpschkbx;
+	
+	@FindBy(xpath="//*[@id='chkEnableCreditLimitCheck']/following-sibling::span")
+	public static WebElement  enableCreditCheckBox;
+	
 	@FindBy(xpath="//li//a[@id='0' and text()='Tags']")
 	public static WebElement  TagsBtn;
 
-	@FindBy(xpath="//*[@id='1' and text()='Accounts ']")
+	@FindBy(xpath="//*[@id='1' and text()='Accounts']")
 	public static WebElement  AccountsBtn;
 
 	@FindBy(xpath="//*[@id='2' and text()='Budgets']")
@@ -3907,14 +4030,17 @@ public class ElementRepository
 
 	@FindBy(xpath="//*[@id='3' and text()='AR/AP']")
 	public static WebElement  ARAPBtn;
-
+	
+	@FindBy(xpath="//*[@id='CreditLimit']/button")
+	public static WebElement  CreditLimitExpandButton;
+	
 	@FindBy(xpath="//*[@id='4' and text()='Miscellaneous']")
 	public static WebElement  MiselleanousBtn;
 
 	@FindBy(xpath="//*[@id='5' and text()='PDC']")
 	public static WebElement  PDCBtn;
 
-	@FindBy(xpath="//*[@id='6' and text()= 'Inventory ']")
+	@FindBy(xpath="//*[@id='6' and text()= 'Inventory']")
 	public static WebElement  InventoryBtn;
 
 	@FindBy(xpath="//*[@id='7' and text()='Batch']")
@@ -4071,10 +4197,10 @@ public class ElementRepository
 	@FindBy(xpath="//input[@id='Liabilities10']")
 	public static WebElement  acc_LiabilitesDrpdwn;
 
-	@FindBy(xpath="//*[@id='panelsStayOpen-collapsethree']/div/label/span")
+	@FindBy(xpath="//*[@id='chkCheckNegativeCashBalance']/following-sibling::span")
 	public static WebElement  acc_NegCashBankChkbox;
 
-	@FindBy(xpath="//*[@id='panelsStayOpen-collapsethree']/div/label/input")
+	@FindBy(xpath="//*[@id='chkCheckNegativeCashBalance']")
 	public static WebElement  acc_NegCashBankChkboxSelected;
 
 	@FindBy(xpath="//div[@id='divTreeMenu']")
@@ -4567,10 +4693,10 @@ public class ElementRepository
 
 
 
-	@FindBy(xpath="//input[@id='CheckNegativeStock']")
+	@FindBy(xpath="//*[@id='CheckNegativeStock']")
 	public static WebElement  CheckNegativeStockChkBoxSelected;
 
-	@FindBy(xpath="//*[@id='StockSettingsContent']/div/label[1]/span")
+	@FindBy(xpath="//*[@id='CheckNegativeStock']//following-sibling::span")
 	public static WebElement  CheckNegativeStockChkBox;
 
 	@FindBy(xpath="//input[@id='CheckNegativeStockGroup_0']")
@@ -5322,13 +5448,15 @@ public class ElementRepository
 	@FindBy(xpath="//li[@class='treeview']//a[@id='2001']//span[contains(text(),'Cash and Bank')]")
 	public static WebElement financialsTransactionsCashAndBank;
 
-	@FindBy(xpath="//li[@class='active']//a[@id='2007']//span[contains(text(),'Purchases')]")
+	@FindBy(xpath="//*[@id='2007']/..//span")
 	public static WebElement financialsTransactionsPurchases;
 
 	
 
 	@FindBy(xpath="//li[@class='treeview']//span[contains(text(),'Journals')]")
 	public static WebElement financialsTransactionsJournals;
+	
+	//*[@id="2023"]
 
 	@FindBy(xpath="//li[@class='treeview']//span[contains(text(),'Auto Postings')]")
 	public static WebElement financialsTransactionsAutoPostings;
@@ -5364,6 +5492,11 @@ public class ElementRepository
 
 	@FindBy(xpath="//ul[@id='Profilemenu']/li[2]/ul/li[1]/ul/li[2]/ul/li[1]/a/span")
 	public static WebElement financialsTransactionsPurchasesVoucherOption;
+	
+	@FindBy(xpath="//*[@id='2050']")
+	public static WebElement financialsTransactionsPurchasesVoucherN;
+	
+	
 
 
 
@@ -5779,9 +5912,6 @@ public class ElementRepository
 	@FindBy(xpath="//*[contains(text(),'ProfileLoadFrom')]")
 	public static WebElement avaliableProfileProfileLoadFrom ;
 
-	@FindBy(xpath="//*[@id='profileAdditionbtns']/div[2]/span/span")
-	public static WebElement  createRoleMOveFiledsFromLeftSideToRightSide; 
-
 	@FindBy(xpath="//*[@id='profileAdditionbtns']/div[3]/span/span")
 	public static WebElement createRoleMOveFiledsFromRigheSideToLeftSide;
 
@@ -5973,7 +6103,7 @@ public class ElementRepository
 	@FindBy(xpath="//li[@class='active']//span[contains(text(),'Purchases Vouchers')]")
 	public static WebElement addFinTransPurPurchasesVouchers;
 
-	@FindBy(xpath="//li[@class='active']//span[contains(text(),'Purchases Returns')]")
+	@FindBy(xpath="//*[@id='2009']/span")
 	public static WebElement addFinTransPurPurchasesReturns;
 
 	@FindBy(xpath="//li[@class='active']//span[contains(text(),'Purchase Vouchers N')]")
@@ -6269,9 +6399,51 @@ public class ElementRepository
 	@FindBy(xpath="//*[@id='61']/span")
 	public static WebElement  financialsTransactionMenu;
 	
+	@FindBy(xpath="//td[@title='CustomerACC']")
+	public static WebElement   customerListingOfOutstandingBills1stItem;
+	
+	@FindBy(xpath="//td[@title='VendorACC']")
+	public static WebElement   vendorListingOfOutstandingBills1stItem;
+	
+	@FindBy(xpath="//td[text()='Grand Total']")
+	public static WebElement  grandTotalTxt;
+	
 
+@FindBy(xpath="//td[text()='BankACC [BAC001]']")
+public static WebElement  Ledger1stWarehouse;
+
+
+	
+	@FindBy(xpath="//td[text()='Closing balance']")
+	public static WebElement  closingBalance;
+	
+	@FindBy(xpath="//td[@title='BankACC']")
+	public static WebElement  Ledger1stItem;
+	
+	@FindBy(xpath="//table[@class='CommonReportTable']//tbody//tr[last()]//td")
+	public static List<WebElement> reportsLastRowList;
+	
+	
     @FindBy(xpath="//a[@id='2014']")
 	public static WebElement  financialTransactionSalesMenu;
+    
+    @FindBy(xpath="//*[@id='2054']/span[text()='Sales invoice N']")
+   	public static WebElement  financialTransactionSalesNVoucher;
+    
+    @FindBy(xpath="//*[@id='id_body_33554470']")
+   	public static WebElement  AQSalesInvN;
+    
+    @FindBy(xpath="//*[@id='id_body_33554471']")
+   	public static WebElement  FQSalesInvN;
+    
+    @FindBy(xpath="//*[@id='id_body_33554472']")
+   	public static WebElement  RDSalesInvN;
+    
+    
+    
+    
+  
+  
     
 
 	@FindBy(xpath="//a[@id='2007']//span[contains(text(),'Purchases')]")
@@ -6279,8 +6451,30 @@ public class ElementRepository
 
 	@FindBy(xpath="//span[contains(text(),'Purchases Vouchers')]")
 	public static WebElement  purchaseVouchersBtn;
+	
+	@FindBy(xpath="//a[@id='2015']/span")
+	public static WebElement  salesInvoicesVoucher;
+	
+	
 
-	@FindBy(xpath="//*[@id='navbarSupportedContent2']/ul/li[1]/a[@id='id_transaction_homescreen_new']")
+
+	@FindBy(xpath="//input[@id='id_header_3']")
+	public
+	static WebElement  purchasesAccTxt;
+
+	@FindBy(xpath=" //*[@id='id_header_268435460']")
+	public static WebElement  WareHouseTxtInPurchases;
+
+	@FindBy(xpath="//input[@id='id_header_268435459']")
+	public static WebElement  departmentTxt;
+	
+	@FindBy(xpath="//input[@id='id_header_67108880']")
+	public static WebElement  narrationTxt;
+	
+	@FindBy(xpath="//input[@id='id_header_268438457']")
+	public static WebElement  branchTxt;
+	
+	@FindBy(xpath="//ul//a[@id='id_transaction_homescreen_new']//i")
 	public static WebElement newBtn;
 	
 	
@@ -7123,8 +7317,11 @@ public class ElementRepository
 
 	@FindBy(xpath="//a[@id='770' and text() =' Purchases Voucher VAT']")
 	public static WebElement  purchasesVoucherVatBtn;
-
-
+	
+	
+	@FindBy(xpath="//*[@id='2007']/span[text()=' Purchases ']")
+	public static WebElement  purchasesVouchersMenu;
+	
 	@FindBy(xpath="//*[@id='doc_Searchbox']")
 	public static WebElement  searchBox;
 
@@ -7238,7 +7435,7 @@ public class ElementRepository
 	@FindBy(xpath="//a[@id='5376']")
 	public static WebElement  shortageInStocksBtn;
 
-	@FindBy(xpath="//*[@id='2048' and text()='Excesses in Stocks']")
+	@FindBy(xpath="//a[@id='2035']//*[text()='Excesses in Stocks']")
 	public static WebElement  excessInStocksBtn;
 
 	@FindBy(xpath="//a[@id='3072']")
@@ -7458,10 +7655,10 @@ public class ElementRepository
 	public static WebElement  editLayoutCaptionSettingsBtn;
 
 
-	@FindBy(xpath="//*[@id='dvCustomizeEditLayoutField']/div[2]/div/div[3]/input[1]")
+	@FindBy(xpath="//*[@id='dvCustomizeEditLayoutField']//div[@class='modal-footer']/input[@value='Apply']")
 	public static WebElement editLayoutApplyBtn;  
 
-	@FindBy(xpath="//*[@id='editLayout_FieldsCustomization_Close']/i")
+	@FindBy(xpath="//*[@id='dvCustomizeEditLayoutField']//div[@class='modal-footer']/input[@value='Close']")
 	public static WebElement editLayoutcloseBtnInDc;
 
 
@@ -7593,10 +7790,12 @@ public class ElementRepository
 	public static WebElement editScreenPropertiesTab; 
 
 
-	@FindBy(xpath="//*[@id='dvCustomizeEditScreenField']/div[2]/div/div[3]/input[1]")
+	//@FindBy(xpath="//*[@id='dvCustomizeEditScreenField']/div[2]//div/div[3]/input[1]")
+	@FindBy(xpath="//*[@id='dvCustomizeEditScreenField']//input[@value='Apply']")
 	public static WebElement editScreenApplyBtn;  
 
-	@FindBy(xpath="//*[@id='editScreen_FieldsCustomization_Close']/i")
+	//@FindBy(xpath="//*[@id='editScreen_FieldsCustomization_Close']/i")
+	@FindBy(xpath="(//*[@id='dvCustomizeEditScreenField']//input[@value='Close'])[3]")
 	public static WebElement editScreencloseBtnInDc; 
 
 
@@ -8481,7 +8680,7 @@ public class ElementRepository
 	@FindBy(xpath="//*[@id='btnSave']/i")
 	public static WebElement  reindexOkBtn;
 
-	@FindBy(xpath="//*[@id='CancelCreateProfile']/i")
+	@FindBy(xpath="//*[@id='ReIndexingError_Modal']/div/div/div[3]/button")
 	public static WebElement  reindexCancelBtn;
 
 
@@ -8775,6 +8974,17 @@ public class ElementRepository
 
 	@FindBy(xpath="//*[@id='editOptionDiv']/div[9]/label/span")
 	public static WebElement doNotAllowMasterCustomization;
+	
+	@FindBy(xpath="//*[@id='editOptionDiv']/div[9]/label/input")
+	public static WebElement doNotAllowMasterCustomizationS;
+	
+	@FindBy(xpath="//input[@id='DntAllowBatchcust']/following-sibling::span")
+	public static WebElement doNotAllowBatchCustomization;
+	
+	@FindBy(xpath="//input[@id='DntAllowBatchcust']")
+	public static WebElement doNotAllowBatchCustomizationS;
+	
+	
 
 
 	// Restriction for trees Tab
@@ -9349,11 +9559,15 @@ public class ElementRepository
 
 	//budget
 
-
+	@FindBy(xpath="//li[text()='Admin']")
+	public static WebElement  admin;
 
 
 	@FindBy(xpath="//*[@id='60']")
 	public static WebElement  financialsMenu; 
+	
+	@FindBy(xpath="//*[@id='id_transactionentry_close']")
+	public static WebElement  new_CloseBtn;
 
 	@FindBy(xpath="//*[@id='3301']/span")
 	public static WebElement  financialsBudgetMenu; 
@@ -9634,6 +9848,9 @@ public class ElementRepository
 	@FindBy(xpath="//*[@id='139']/span")
 	public static WebElement  inventoryTransactionsPurchasesMenu; 
 	
+	@FindBy(xpath="//*[@id='2033']/span")
+	public static WebElement  inventoryTransactionsStocksMenu; 
+	
 	@FindBy(xpath="//*[@id='2010']/span")
 	public static WebElement  requestForQuoteVoucher;
 	
@@ -9648,7 +9865,16 @@ public class ElementRepository
 				
 	@FindBy(xpath="//*[@id='140']/span")
 	public static WebElement  inventoryTransactionsSalesMenu; 
-			
+	
+	
+	@FindBy(xpath="//*[@id='2019']/span")
+	public static WebElement  deliveryNotesVoucher;
+	
+	
+	@FindBy(xpath="//*[@id='2017']/span")
+	public static WebElement  salesOrderVoucher;
+
+		
 	@FindBy(xpath="//*[@id='2018']/span")
 	public static WebElement  salesQuotationsVoucher;
 	
@@ -10641,6 +10867,10 @@ public class ElementRepository
 		@FindBy(xpath="//*[@id='dvReportInputs']/div[1]/div/label/span")
 		public static WebElement sl_SelectAllChkBox;
 		
+		@FindBy(xpath="//*[@id='liSelectAllMasters']")
+		public static WebElement TABLE_SelectAllItemsChkBox;
+		
+		//*[@id="liSelectAllMasters"]
 
 		@FindBy(xpath="//*[@id='navigation_menu']/li[3]/ul/li[3]/ul/li[5]")
 		public static WebElement stockStatement;
@@ -10761,10 +10991,10 @@ public class ElementRepository
 		
 	
 		
-		@FindBy(xpath="//div[@id='tblFooterReportRender']//div[2]//button[4]")
+		@FindBy(xpath="(//button[contains(text(),'Next')])")
 		public static WebElement report_NextBtn;
 		
-		@FindBy(xpath="//div[@id='tblFooterReportRender']/div[2]//button[2]")
+		@FindBy(xpath="//div[@id='tblFooterReportRender']//button[contains(text(),'Previous')]                      ")
 		public static WebElement report_PrevBtn;
 		
 	
@@ -10795,11 +11025,15 @@ public class ElementRepository
 		@FindBy(xpath="(//input[@id='5002'])[1]")
 		public static WebElement  report_FilterAccountNameChkboxSelected;
 		
-		@FindBy(xpath="//input[@id='5021']")
+		@FindBy(xpath="//*[@id='FilterFields_500_0']/ul[4]/li[1]/div/label/span")
 		public static WebElement  report_FilterItemNameChkbox;
 		
-		@FindBy(xpath="//input[@id='5058']//following-sibling::span")
+		@FindBy(xpath="(//input[@id='5058']//following-sibling::span)[2]")
 		public static WebElement  report_FilterWarehouseNameChkbox;
+		
+
+		@FindBy(xpath="(//input[@id='5058'])[2]")
+		public static WebElement  report_FilterWarehouseNameChkboxSelected;
 		
 		//@FindBy(xpath="(//input[@class='FButton-Primary'])[1]")
 		@FindBy(xpath="//input[@class='FButton-Primary' and  @value='Ok']")
@@ -10930,13 +11164,15 @@ public class ElementRepository
 		@FindBy(xpath="//a[@id='2002']//span[contains(text(),'Receipts')]")
 		public static WebElement  receiptsVoucher;
 		
+		@FindBy(xpath="//a[@id='2003']//span")
+		public static WebElement  paymentsVoucher;
 		
-	    
-		@FindBy(xpath="//ul[@class='nav navbar-nav navbar-left ulNewMaster']//li[2]//button[1]")
+		
+		@FindBy(xpath="//ul[@class='nav navbar-nav navbar-left ulNewMaster']//li[2]//button[2]")
 		public static WebElement SaveBtnInAccount;
 
 		
-		@FindBy(xpath="//*[@id='optiVoucherType1']")
+		@FindBy(xpath="//tbody[contains(@id,'tblNewMasterGenerator')]//tr[1]/td[4]")
 		public static WebElement voucherTypeInPrintLayoutTab;
 
 		
@@ -11004,6 +11240,9 @@ public class ElementRepository
 		
 		@FindBy(xpath="//table[@class='CommonReportTable']//tbody//tr[4]//td")
 		public static List<WebElement> reportsrow4List;
+		
+		@FindBy(xpath="//table[@class='CommonReportTable']//tbody//tr[5]//td")
+		public static List<WebElement> reportsrow5List;
 		
 		
 		
@@ -11213,6 +11452,9 @@ public class ElementRepository
 		@FindBy(xpath="//input[@id='MasterGroup__101']")
 		public static WebElement reportaccountTxt;
 		
+		@FindBy(xpath="//input[@id='MasterGroup__101_option']")
+		public static WebElement reportaccountTxt1;
+		
 		@FindBy(xpath="//*[@id='MasterGroup__101_table_body']/tr/td[2]")
 		public static List<WebElement> reportaccountTxtList;
 		
@@ -11344,6 +11586,20 @@ public class ElementRepository
 		
 		@FindBy(xpath="//span[@id='balance']")
 		public static WebElement  AQ_Balance;
+		
+		@FindBy(xpath="//*[@id='LastCrditTransactions']/button")
+		public static WebElement  LastCreditTransactionExpBtn;
+		
+		@FindBy(xpath="//*[@id='LastDebitTransactions']/button")
+		public static WebElement  LastDebitTransactionExpBtn;
+		
+		@FindBy(xpath="/*[@id='DeptWiseBalance']/button")
+		public static WebElement  deptWiseBalBtn;
+		
+		
+		
+		
+		
 		
 		
 		@FindBy(xpath="//*[@id='711']//span[contains(text(),'Master authorization report')]")
@@ -11512,7 +11768,7 @@ public class ElementRepository
 		@FindBy(xpath="//input[@id='CreateTabNumberField']")
 		public static WebElement accountHeaderCreateTabNumberFieldTxt;
 		
-		@FindBy(xpath="//input[@id='CreateTabBooleanField']")
+		@FindBy(xpath="//input[@id='CreateTabBooleanField']//../span")//CreateTabBooleanField
 		public static WebElement accountHeaderCreateTabBooleanFieldChkbox;
 		
 		@FindBy(xpath="//span[@id='CreateTabDateTimeField']")
@@ -11531,10 +11787,11 @@ public class ElementRepository
 		@FindBy(xpath="//div[@id='ImageDiv']")
 		public static WebElement accountHeaderCreateTabPictureFieldBrowseBtn;
 		
-		@FindBy(xpath="(//a[@id='SaveImg'])[2]")
+		@FindBy(xpath="//a[@id='SaveImg']")
 		public static WebElement accountHeaderCreateTabPictureFieldSaveBtn;
 		
-		@FindBy(xpath="(//i[@class='fa fa-eraser RemoveImg'])[2]")
+		//@FindBy(xpath="(//i[@class='fa fa-eraser RemoveImg'])[2]")
+		@FindBy(xpath="(//*[@title='Delete File'])[2]")
 		public static WebElement accountHeaderCreateTabPictureFieldDeleteBtn;
 		
 		@FindBy(xpath="//select[@id='CreateTabStringListField']")
@@ -11543,19 +11800,19 @@ public class ElementRepository
 		@FindBy(xpath="//*[@id='CreateTabDocumentViewerField']")
 		public static WebElement accountHeaderCreateTabDocumentViewerField;
 		
-		@FindBy(xpath="//*[@id='uploadBtnCreateTabDocumentViewerField']")
+		@FindBy(xpath="//i[@class='icon-attach btn-img']")
 		public static WebElement accountHeaderCreateTabDocumentViewerBrowseBtn;
 		
 		@FindBy(xpath="(//*[@id='SaveImg'])[3]")
 		public static WebElement accountHeaderCreateTabDocumentViewerSaveBtn;
 		
-		@FindBy(xpath="(//i[@class='fa fa-eraser RemoveImg'])[3]")
+		@FindBy(xpath="//i[@class='icon-edit btn-img']")
 		public static WebElement accountHeaderCreateTabDocumentViewerEraseBtn;
 
 		@FindBy(xpath="//*[@id='CreateTabNumberListField']")
 		public static WebElement accountHeaderCreateTabNumberListFieldDropdown;
 		
-		@FindBy(xpath="//input[@id='CreateTabMasterField']")
+		@FindBy(xpath="//input[@id='CreateTabMasterField']")//*[@id="CreateTabMasterField"]
 		public static WebElement accountHeaderCreateTabMasterFieldTxt;
 		
 		@FindBy(xpath="//*[@id='CreateTabMasterField_input_container']/div[2]/table/tbody/tr/td[3]/i")
@@ -11619,8 +11876,8 @@ public class ElementRepository
 		@FindBy(xpath="//*[@id='ExtraField_MandatoryFields']")
 		public static WebElement extraField_FieldDetailsMandatoryFields;
 		
-		@FindBy(xpath="//*[@id='tab_Properties_ExtraField']/div[1]/div[17]/div/label/input")
-		public static WebElement extraFields_PropertiesReadOnlyChekboxSelected;
+		//@FindBy(xpath="//*[@id='tab_Properties_ExtraField']/div[1]/div[17]/div/label/input")
+		//public static WebElement extraFields_PropertiesReadOnlyChekboxSelected;
 		
 
 
@@ -11676,9 +11933,13 @@ public class ElementRepository
 		
 		 @FindBy(xpath="//input[@id='id_header_4']")
 			public static WebElement  customerAccountTxt;
+		 
+		 @FindBy(xpath="//input[@id='id_header_3']")
+			public static WebElement  SalesOrdercustomerAccountTxt;
+		 
+		 @FindBy(xpath="//input[@id='id_header_4']")
+			public static WebElement  cashAndBankAccTxt;
 
-		 @FindBy(xpath="//input[@id='id_header_268435459']")
-			public static WebElement  departmentTxt;
 		 
 		 @FindBy(xpath="//tbody[@id='id_header_268435459_table_body']/tr/td[2]")
 		    public static List<WebElement> departmentListCount;
@@ -11697,10 +11958,186 @@ public class ElementRepository
 			public static WebElement  JurisdictionTxt;
 			
 			
-			  
+			@FindBy(xpath = "//*[@id='id_body_23_table_body']/tr")
+			public static List<WebElement> pvvGridItemList;
+
+			@FindBy(xpath = "//tbody[@id='id_body_536870916_table_body']/tr/td[2]")
+			public static List<WebElement> warehouseBodyComboList;
 			
 			@FindBy(xpath="//input[@id='id_body_536870916']")
 		    public static WebElement enter_WarehouseTxt;
+			
+			@FindBy(xpath = "//input[@id='txtSerialNo']")
+			public static WebElement rmaSerialNumberTxtField;
+			
+			// RMA POpup Window
+			@FindBy(xpath = "//div[@id='Modal_Header']/div[1]")
+			public static WebElement rmaScreenTitle;
+			
+			 @FindBy(xpath="//table[@id='RMASearchTable']//tbody//tr//td[1]/input")
+			 public static List<WebElement> RMA_SavedRMAcheckbxList;
+			 
+			 @FindBy(xpath = "//tbody[@id='tblBodyTransRender']/tr/td[5]")
+				public static List<WebElement> grid_AccountList;
+
+			 
+			 @FindBy(xpath = "//a[@id='id_transaction_homescreen_edit']//i[@class='icon-edit hiconright2']")
+				public static WebElement editBtn;
+			 
+			 @FindBy(xpath = "//*[@id='2035']/span")
+				public static WebElement excessesInStocksVoucher;
+			 
+				@FindBy(xpath="//*[@id='2034']")
+				public static WebElement  shortageInStocksMenu; 
+				
+				 @FindBy(xpath="//*[@id='id_header_86']")
+				 public static WebElement ST_WH1;
+				 
+				 @FindBy(xpath="//*[@id='id_body_87']")
+				 public static WebElement ST_WH2;
+			 
+			
+				 @FindBy(xpath = "//*[@class='icon-delete hiconright2']")
+					public static WebElement Voucher_deleteBtn;
+
+
+
+				@FindBy(xpath="//*[@id='id_body_38']")
+				public static WebElement enter_Rma;
+				
+				@FindBy(xpath="//*[@id='chkRMANumberAlwaysnumeric']/..//span")
+				public static WebElement RMANumberAlwaysnumericChcBx;
+				
+				
+				@FindBy(xpath = "//input[@id='id_body_12']")
+				public static WebElement enter_PurchaseAccountTxt;
+				
+				@FindBy(xpath="//input[@id='id_body_33554436']")
+				public static WebElement  pvou_enter_discount;
+				
+
+@FindBy(xpath="//*[@id='id_transactionentry_close']")
+public static WebElement VoucherEntryCloseBtn;
+
+
+@FindBy(xpath="//*[@id='id_fconfirm_btn2']")
+public static WebElement voucherchanges_Yes;
+
+@FindBy(xpath="//*[@id='id_fconfirm_body']/span")
+public static WebElement VoucherChangesTxt;
+
+@FindBy(xpath="//*[@id='id_fconfirm_btn3']")
+public static WebElement voucherchanges_NO;
+
+@FindBy(xpath = "//i[@class='icon-suspend-1 hiconright2']")
+public static WebElement suspendBtn;
+
+@FindBy(xpath = "//*[@id='id_transactionentry_more']/span")
+public static WebElement toggleBtn;
+
+
+@FindBy(xpath = "//*[@id='id_transactionentry_toggle']/div[15]/div/div/a/span")
+public static WebElement entryPageToggleBtn;
+
+
+@FindBy(xpath = "//tr[@id='trRender_1']//td//input")
+public static WebElement grid_ChkBox1;
+
+@FindBy(xpath = "//*[@id='id_transactionentry_previous']//span")
+public static WebElement previousBtn;
+
+
+@FindBy(xpath = "//label[contains(text(),'Copy Document')]")
+public static WebElement copyDocumentOption;
+
+@FindBy(xpath = "//label[contains(text(),'Copy to Clipboard')]")
+public static WebElement copyToClipBoardOption;
+
+@FindBy(xpath = "//label[contains(text(),'Paste from Clipboard')]")
+public static WebElement pasteFromClipBoardOption;
+
+
+@FindBy(xpath="//*[@id='id_transactionentry_new']")
+public static WebElement newBtnInHome;
+
+
+@FindBy(xpath="//*[@id='RMAModel_Bottom']//button[contains(text(),'Cancel')]")
+public static WebElement  RMA_CancelBtn;
+
+@FindBy(xpath="//*[@id='chkRMANumberCantBeUsed']")
+public static WebElement  RMANoCannotBeReUseChcBx;
+
+
+@FindBy(xpath="//*[@id='id_transentry_body_menu']/a[4]/label")
+	public static WebElement  duplicateRowBtn;
+
+@FindBy(xpath="//*[@id='id_transaction_entry_detail_table_body']/tr[1]/td[1]")
+public static WebElement  select1stRow_1sstColumn;
+
+
+
+
+
+@FindBy(xpath="//*[@id='id_transaction_entry_detail_table_body']/tr[2]/td[12]")
+public static WebElement  select2ndRow_11thColumn;
+
+@FindBy(xpath="//*[@id='id_transaction_entry_detail_table_body']/tr[2]/td[11]")
+public static WebElement  select2ndRow_10thColumn;
+
+@FindBy(xpath="//*[@id='id_transaction_entry_detail_table_body']/tr[2]/td[15]")
+public static WebElement  select2ndRow_14thColumn;
+
+@FindBy(xpath="//*[@id='id_transaction_entry_detail_table_body']/tr[2]/td[16]")
+public static WebElement  select2ndRow_15thColumn;
+
+@FindBy(xpath="//*[@id='id_transaction_entry_detail_table_body']/tr[2]/td[17]")
+public static WebElement  select2ndRow_16thColumn;
+
+
+
+@FindBy(xpath="//*[@id='id_body_24']")
+public static WebElement enter_Units;
+
+@FindBy(xpath="//*[@id='id_transaction_entry_detail_table_body']/tr[1]/td[1]")
+public static WebElement  firstRowIndex;
+
+				
+
+		
+
+			@FindBy(xpath = "//input[@id='txtQuantity']")
+			public static WebElement rmaQuantityTxtField;
+
+			@FindBy(xpath = "//i[@class='icon icon-add']")
+			public static WebElement rmaAddBtn;
+
+			@FindBy(xpath = "//div[@id='Modal_Search_Body']/div[3]/label")
+			public static WebElement rmaNumberofItemsLabel;
+
+			@FindBy(xpath = "//th[@id='RMA_Table_control_heading_1']/div")
+			public static WebElement rmaTableHeadingRMA;
+
+			@FindBy(xpath = "//th[@id='RMA_Table_control_heading_2']/div")
+			public static WebElement rmaTableHeadingDocumentNo;
+
+			@FindBy(xpath = "//th[@id='RMA_Table_control_heading_3']/div")
+			public static WebElement rmaTableHeadingDocumentDate;
+
+			@FindBy(xpath = "//div[@id='RMAModel_Bottom']/div[1]/label")
+			public static WebElement rmaClearBtn;
+
+			@FindBy(xpath = "//*[@id='div_OK']")
+			public static WebElement rmaOkBtn;
+
+			@FindBy(xpath = "(//*[@id='div_Clear'])[2]")
+			public static WebElement rmaCancelBtn;
+
+			@FindBy(xpath = "//div[@id='Modal_Header']/div[2]/span/i")
+			public static WebElement rmaCloseBtn;
+
+			
+			
+			//tbody[@id='id_transaction_entry_detail_table_body']//tr[1]//td[2]
 			
 			@FindBy(xpath="//*[@id='id_body_536870916_table_body']/tr")
 		    public static List<WebElement> pvvGridWarehouseList;
@@ -11723,18 +12160,81 @@ public class ElementRepository
 			@FindBy(xpath="//input[@id='id_body_28']")
 			public static WebElement  enter_Gross;
 			
-			  
+			@FindBy(xpath="//*[@id='id_body_33554439']")
+			public static WebElement  enter_discount;
+			
+			
+			@FindBy(xpath="//*[@id='id_body_33554438']")
+			public static WebElement  SINV_enter_discount;
+			
+			
+			
+			
+			@FindBy(xpath="//input[@id='id_body_33554435']")
+			public static WebElement  Pventer_discount;
+			
+			@FindBy(xpath="//input[@id='id_body_13']")
+			public static WebElement  enter_BatchTxt;
+			
+			@FindBy(xpath="//input[@id='id_body_16']")
+			public static WebElement  enter_AmountTxt;
+			
+			@FindBy(xpath="//input[@id='id_body_37']")
+			public static WebElement  enter_expireDateTxt;
+			
+			@FindBy(xpath="//*[@id='txtSerialNo']")
+			public static WebElement  RMA_SerialNoTxt;
+			
+			@FindBy(xpath="//i[@class='icon icon-add']")
+			public static WebElement  RMA_AddIcon;
+			
+			@FindBy(xpath="//button[@id='div_OK']")
+			public static WebElement  RMA_OkBtn;
+			
+			@FindBy(xpath="//tbody[@id='RMA_Table_body']//tr//td[2]")
+			public static List<WebElement>  RMA_AddedList;
+			
 		    @FindBy(xpath="//*[@id='id_body_33554511']")
 		    public static WebElement enter_AQTxt;
+		    
+		    @FindBy(xpath="//*[@id='id_body_33554460']")
+		    public static WebElement SalesOrderenter_AQTxt;
 
 		    @FindBy(xpath="//*[@id='id_body_33554512']")
 		    public static WebElement enter_FQTxt;
 		    
+		    
+		    @FindBy(xpath="//*[@id='id_body_33554463']")
+		    public static WebElement Sales_enter_AQTxt;
+
+		    @FindBy(xpath="//*[@id='id_body_33554464']")
+		    public static WebElement Sales_enter_FQTxt;
+		    
 		    @FindBy(xpath="//*[@id='id_body_33554529']")
 		    public static WebElement  enter_Vat;
 		    
+		    @FindBy(xpath="//*[@id='id_body_33554530']")
+		    public static WebElement  enter_Taxable;
+		    
+		    @FindBy(xpath="//*[@id='id_body_16777328']")
+		    public static WebElement  enter_taxcode;
+		    
+		  
+		    
+		    
+		    
 		    @FindBy(xpath="//a[@id='2014']")
 			public static WebElement financialsTransactionsSales;
+		    
+		    @FindBy(xpath="//*[@id='2015']")
+			public static WebElement salesInvoiceVoucher;
+		    
+		    @FindBy(xpath="//*[@id='2016']")
+			public static WebElement salesreturnbtn;
+		    
+		  //*[@id="2016"]
+		    
+		  
 		    
 			@FindBy(xpath="//*[@id='id_transactionentry_save']")
 			public static WebElement  voucherSaveBtn;
@@ -11823,10 +12323,19 @@ public class ElementRepository
 
 				@FindBy(xpath="//div[@id='dvReportDetails']/div/table/tbody/tr[15]/td")
 				public static List<WebElement> report15thRowList;
+				
+				@FindBy(xpath="//div[@id='dvReportDetails']/div/table/tbody/tr[16]/td")
+				public static List<WebElement> report16thRowList;
+				
+				@FindBy(xpath="//div[@id='dvReportDetails']/div/table/tbody/tr[17]/td")
+				public static List<WebElement> report17thRowList;
 
 				
 				@FindBy(xpath="//*[@id='trRender_1']/td[3]")
 				public static WebElement sl_2ndRow3rdCol;
+				
+				@FindBy(xpath="//*[@id='trRender_1']/td[2]")
+				public static WebElement sl_2ndRow2ndCol;
 
 
 				
@@ -11849,6 +12358,33 @@ public class ElementRepository
 				
 				@FindBy(xpath="//*[@id='id_transaction_entry_detail_table_body']/tr[3]/td[4]")
 				public static WebElement  select3rdRow_3rdColumn;
+				
+				@FindBy(xpath="//*[@id='id_transaction_entry_detail_table_body']/tr[3]/td[8]")
+				public static WebElement  select3rdRow_7thColumn;
+
+				@FindBy(xpath="//*[@id='id_transaction_entry_detail_table_body']/tr[3]/td[9]")
+				public static WebElement  select3rdRow_8thColumn;
+				
+				@FindBy(xpath="//*[@id='id_transaction_entry_detail_table_body']/tr[3]/td[10]")
+				public static WebElement  select3rdRow_9thColumn;
+				
+				@FindBy(xpath="//*[@id='id_transaction_entry_detail_table_body']/tr[3]/td[16]")
+				public static WebElement  select3rdRow_15thColumn;
+				
+				
+				@FindBy(xpath="//*[@id='id_transaction_entry_detail_table_body']/tr[3]/td[17]")
+				public static WebElement  select3rdRow_16thColumn;
+				
+				@FindBy(xpath="//*[@id='id_transaction_entry_detail_table_body']/tr[4]/td[2]")
+				public static WebElement  select4thRow_1stColumn;
+				
+				@FindBy(xpath="//*[@id='id_transaction_entry_detail_table_body']/tr[4]/td[9]")
+				public static WebElement  select4thRow_8thColumn;
+				
+				@FindBy(xpath="//*[@id='id_transaction_entry_detail_table_body']/tr[4]/td[10]")
+				public static WebElement  select4thRow_9thColumn;
+				
+				
 				
 				
 				@FindBy(xpath="//*[@id='ddlStatus']")
@@ -12068,7 +12604,7 @@ public class ElementRepository
 				public static WebElement IerrorMessageCloseBtn;
 				
 
-				@FindBy(xpath="//*[@id='all_TabsField']/div[10]//ul//li[1]//a//i")
+				@FindBy(xpath="//*[@id='all_TabsField']//i[@class='icon-save hiconright2']")
 				public static WebElement headerDetailsaccountSaveBtn;
 				
 				@FindBy(xpath="//*[@id='all_TabsField']/div[2]//ul//li[1]//a//i")
@@ -12119,17 +12655,521 @@ public class ElementRepository
 				
 				
 				
+
+				@FindBy (xpath="//tbody[@id='tblBodyTransRender']/tr/td[2]/input")
+				public static List<WebElement> grid_CheckBoxList;
+
+				@FindBy (xpath="//tbody[@id='tblBodyTransRender']/tr/td[5]")
+				public static List<WebElement> grid_VoucherNoList;
+				
+				@FindBy (xpath="//tbody[@id='tblBodyTransRender']/tr/td[15]")
+				public static List<WebElement> grid_SuspendStatusList;
+				
+			
+				@FindBy (xpath="//tbody[@id='tblBodyTransRender']/tr/td[4]")
+				public static List<WebElement> grid_DateList;
+				
+				@FindBy (xpath="//div[@id='MBatch_Content']//div[@class='modal-footer']//button")
+				public static List<WebElement> batchFooterButtons;
+				
+				
+
+				@FindBy (xpath="//div[@id='MBatch_Content']//*[contains(text(),'Cancel')]")
+				public static WebElement batchCancelBtn;
+				
+				@FindBy (xpath="//div[@id='MBatch_Content']//*[contains(text(),'Pick on FIFO')]")
+				public static WebElement batchPickOnFifoBtn;
+				
+				@FindBy (xpath="//div[@id='MBatch_Content']//*[contains(text(),'Ok')]")
+				public static WebElement batchOkBtn;
 				
 				
 				
+				@FindBy (xpath="//div[@id='id_header_3_input_container']//i[@class='icon-menudots btn-img']")
+				public static WebElement salesAccountTxtCustBtn;
+				
+				@FindBy (xpath="//*[@id='id_transactionentry_close']/a/span")
+				public static WebElement TransactionCloseBtn;
+
+				@FindBy(xpath="//*[@id='grdMapCreditLimit_col_1-2']")
+				public static WebElement  select1stRow_1stColumnMapCr;
+				
+				@FindBy(xpath="//*[@id='grdMapCreditLimit_col_1-3']")
+				public static WebElement  select1stRow_2ndColumnMapCr;
+				
+				@FindBy(xpath="//*[@id='optCustomergroup']")
+				public static WebElement  CustomerGroupMapCr;
+				
+				@FindBy(xpath="//*[@id='optAuthorizationFlow']")
+				public static WebElement  AuthorizationFlowMapCr;
+				
+				@FindBy(xpath="//*[@id='btnSaveMapping']")
+				public static WebElement  saveBtnInMapCredit;
+				
+				@FindBy(xpath="//*[@id='id_mainlayoutmenu']/ul[2]/li[3]/a/i")
+				public static WebElement  AlertBtn;
+				
+				@FindBy(xpath="//*[@id='noofalerts']")
+				public static WebElement  AlertNo;
+				
+				@FindBy(xpath="//ul[@id='alertsUL']//*[@id='11']/span")
+				public static WebElement  AlertBtnlevel1;
+				
+				@FindBy(xpath="//ul[@id='alertsUL']//*[@id='14']/span")
+				public static WebElement  AlertBtnlevel2;
+				
+				
+				@FindBy(xpath="//*[@id='masterChild_14']/a/span")
+				public static WebElement  AlertBtnlevel3;
+				
+				@FindBy(xpath="//*[@id='msPageHeader']//li/span")
+				public static WebElement  creditApprovalText;
+				
+				@FindBy(xpath="//tbody[@id='creditAllocationGrid_body']//tr//td//input[@type='checkbox']")
+				public static WebElement  approvalStatuschckbx;
+				
+				@FindBy(xpath="//*[@id='creditAllocationGrid_col_1-5']")
+				public static WebElement  approvalStatusTxt;
 				
 				
 				
+				@FindBy(xpath="//*[@id='creditAllocationGrid_First_First']")
+				public static WebElement  approvalStatusDropdown;
+				
+				@FindBy(xpath="//*[@id='btnApprove']/a/i")
+				public static WebElement  saveApprovalBtn;
+				
+				@FindBy(xpath="//*[@id='availableProfiles']/li")
+				public static List<WebElement> avaliableprofileList ;
+
+
+				@FindBy(xpath="//*[@id='profileAdditionbtns']/div[2]/span/span")
+				public static WebElement  createRoleMOveFiledsFromLeftSideToRightSide; 
+
+
+				//Create tree
+				
+				 
+				 @FindBy(xpath="(//*[@id='iTreeId'])[1]")
+				 public static WebElement createTreeDropdown;
+				 
+				 @FindBy(xpath="(//*[@id='iTreeId'])[1]/option")
+				 public static List<WebElement> createTreeDropdownOptions;
+				 
+				 
+				 
+				 @FindBy(xpath="//*[@id='treeCombo']/div/span/label")
+				 public static WebElement Tree_createTree;
+				 
+				 @FindBy(xpath="//*[text()='Create Tree']")
+				 public static WebElement Tree_createTreeBtn;
+				 
+				 @FindBy(xpath="//*[@id='treeCombo']/div/ul/li[2]/a")
+				 public static WebElement Tree_EditTreeBtn;
+				 
+				 @FindBy(xpath="//*[@id='treeCombo']/div/ul/li[3]/a")
+				 public static WebElement Tree_DeleteTreeBtn;
+				 
+				 @FindBy(xpath="//*[@id='txtTreeName']")
+				 public static WebElement Tree_CreateTreeNameTxt;
+				 
+				 @FindBy(xpath="//div[@class='modal-footer']//*[@id='btnOk']")
+				 public static WebElement Tree_CreateTreeOkBtn;
+				 
+				 @FindBy(xpath="//div[@id='divCreateTree']//div[@class='modal-footer']//*[@id='btnCancel']")
+				 public static WebElement Tree_CreateTreeCancelBtn;
+				 
+				 @FindBy(xpath="//*[@id='rbtManual']")
+				 public static WebElement manualRadioBtn;
+				 
+				 @FindBy(xpath="//*[@id='rbtAuto']")
+				 public static WebElement AutoRadioBtn;
+				 
+				 @FindBy(xpath="//tbody[@id='MasterTreeTable_body']//tr[1]//td[2]")
+				 public static WebElement FiledstableRowl;
+				 
+				 @FindBy(xpath="//*[@id='MasterTreeTable_SelectFields']")
+				 public static WebElement FieldsDropDown;
+				 
+				 @FindBy(xpath="//div[@id='RestrictionTreeMasters']//li")
+				 public static List<WebElement> MastersList;
+				 
+				 @FindBy(xpath="//ul[@id='RestrictionTreeMastersTree']//li//label")
+				 public static List<WebElement> CreatedTreeList;
+				 
+				 @FindBy(xpath="//ul[@id='RestrictionTreeMastersTree']//li//label/span")
+				 public static List<WebElement> CreatedTreechckbxList;
+				 
+				 @FindBy(xpath="//div[@id='divTreeMenu']//ul[@id='0']//li")
+				 public static List<WebElement> AccountTreeListUTR;
+				 
+				 
+				 
+
+					@FindBy(xpath="//*[@id='grdDefineBudget_col_1-2']")
+					public static WebElement  budgetTypeR1C2SelectCell; 
+					
+					@FindBy(xpath="//*[@id='grdDefineBudget_cmbbudgettype']")
+					public static WebElement  budgetTypeR1C1InputCell; 
+					
+					@FindBy(xpath="//*[@id='grdDefineBudget_col_1-3']")
+					public static WebElement  budgetDepartmentR1C3SelectCell; 
+					
+					@FindBy(xpath="//*[@id='grdDefineBudget_option_Tag1']")
+					public static WebElement  budgetDepartmentR1C3InputCell; 
+					
+					@FindBy(xpath="//*[@id='grdDefineBudget_col_1-6']")
+					public static WebElement  budgetItemR1C4SelectCell; 
+					
+					@FindBy(xpath="//*[@id='grdDefineBudget_option_product']")
+					public static WebElement  budgetItemR1C4InputCell; 
+					
+					@FindBy(xpath="//*[@id='grdDefineBudget_option_account']")
+					public static WebElement  budgetAccountR1C4InputCell; 
+					
+					
+					
+					@FindBy(xpath="//*[@id='grdDefineBudget_txtbudgetvalue']")
+					public static WebElement  budgetValueTxt; 
+					
+
+					 @FindBy(xpath="//*[@id='grdDefineBudget_body']/tr[1]/td[3]")
+					 public static WebElement budgetTypeGetText;
+					 
+					 @FindBy(xpath="//*[@id='grdDefineBudget_body']/tr[1]/td[4]")
+					 public static WebElement budgetDepartmentGetText;
+					 	
+					 @FindBy(xpath="//*[@id='grdDefineBudget_body']/tr[1]/td[7]")
+					 public static WebElement budgetItemGetText;
+					 
+					 @FindBy(xpath="//*[@id='grdDefineBudget_body']/tr[1]/td[8]")
+					 public static WebElement budgetAccountGetText;
+					 
+					 @FindBy(xpath="//*[@id='grdDefineBudget_body']/tr[1]/td[9]")
+					 public static WebElement budgetQtyGetText;	
+					 
+					 @FindBy(xpath="//*[@id='grdDefineBudget_body']/tr[1]/td[10]")
+					 public static WebElement budgetValueGetText;
+					
+					 @FindBy(xpath="//*[@id='grdDefineBudget_body']/tr[1]/td[14]")
+					 public static WebElement budgetStatusGetText;
+					 
+					 @FindBy(xpath="//*[@id='totalbudget']")
+					 public static WebElement ConfirmBudget_TotalBudget;
 				
 				
 				
+
+						@FindBy(xpath="//*[@id='RestrictionForTreestabMenu']/a")
+						public static WebElement createRole_RestrictionForTrees; 
+						
+						
+						//Fixed Asset
 				
+						 
+						 @FindBy(xpath="//*[@id='1127']/span")
+						 public static WebElement fixedAssetMaster;
+
+						 
+						 @FindBy(xpath="//*[@id='iPurchaseDate']")
+						 public static WebElement FA_PurchaseDate;
+						 
+						 @FindBy(xpath="//*[@id='iPurchaseDate_input_container']/div[1]/i[2]")
+						 public static WebElement FAdatePicker;
+
+						 @FindBy(xpath="//*[@id='iPurchaseDate_day_today']/td/span[1]")
+						 public static WebElement FAgetDate;
+						 
+						 @FindBy(xpath="//*[@id='fPrice']")
+						 public static WebElement FA_Price;
+
+
+						 @FindBy(xpath="//*[@id='fITDepreciationRate']")
+						 public static WebElement fITDepreciationRate;
+						 
+						 
+						 @FindBy(xpath="//*[@id='iQuantity']")
+						 public static WebElement FA_Quantity;
+
+						 @FindBy(xpath="//*[@id='bCreateadifferentfixedAssetforeachQty']/following-sibling::span")
+						 public static WebElement FA_CreateDiffFAForEachQty;
+							
+						 @FindBy(xpath="//*[@id='divBtnGroup1']")
+						 public static WebElement FA_DepricationTab;
+							
+						 
+						 @FindBy(xpath="//*[@id='iDateOfCommencement_input_container']/div[1]/i[2]")
+						 public static WebElement FA_DateOfCommencement;
+
+						 @FindBy(xpath="//*[@id='iDateOfCommencement_day_today']/td/span[1]")
+						 public static WebElement FA_DateofCmnmntToday;
+							
+						 @FindBy(xpath="//div[@id='tabContent_Fields_MasterCust']//a[@title='Save']")
+						public static WebElement FA_headerDetailsaccountSaveBtn;
+							
+							
+						 @FindBy(xpath="//*[@id='Modal_Header']")
+						 public static WebElement RMAPopupHeader;
+						 
+						 @FindBy(xpath="//*[@id='sp_search']")
+						 public static WebElement RMA_SearchSavedrma;
+						 
+						 @FindBy(xpath="//*[@id='chkSelectALL']")
+						 public static WebElement RMA_SelectAllCheckbox;
+						 
+						 @FindBy(xpath="//div[@id='SearchModal_Content']//*[@id='div_OK']")
+						 public static WebElement RMA_OKBtn;
+						 
+						 @FindBy(xpath="//div[@id='RMAModel_Bottom']//button[@id='div_OK']")
+						 public static WebElement RMA_OKBtn2;
+						 
+						 @FindBy(xpath="//table[@id='RMASearchTable']//tbody//tr//td[2]")
+						 public static List<WebElement> RMA_SavedRMAList;
+						 
+						 @FindBy(xpath="//tbody[@id='RMA_Table_body']//tr//td[2]")
+						 public static List<WebElement> RMA_CheckedRMAList;
+						 
+						 @FindBy(xpath="//tbody[@id='Id_MRPBatch_Grid_body']//tr//td")
+						 public static List<WebElement> Batch_SavedBatchList;
+						 
+						 
+						 
+						 @FindBy(xpath="//*[@id='div_PICKFIFO' and contains(text(),'Pick on FIFO')]")
+						 public static WebElement Batch_pickOnFifoBtn;
+						 
+						 @FindBy(xpath="//*[@id='div_Ok1']")
+						 public static WebElement Batch_PopupOkBtn;
+						 
+						 @FindBy(xpath="//label[@id='lblAdjSum']")
+						 public static WebElement Batch_qtyAdjusted;
+						 
+						 @FindBy(xpath="//label[@id='lblSum']")
+						 public static WebElement Batch_TotalQty;
+						 
+						 @FindBy(xpath="//*[@id='id_transaction_entry_detail_table_body']/tr[3]/td[20]")
+						 public static WebElement BatchPickedTxt;
+						 
+							
+							@FindBy (xpath="//input[@id='txtIncrementalTypes_ExtraFld']")
+							public static WebElement IncValueTxtForUIP;
 				
+
+							@FindBy (xpath="//*[@id='ddlIncremental_Characters']")
+							public static WebElement CharactersDropdown;
+							
+							@FindBy(xpath="//*[@id='iAcceptanceac']")
+							public static WebElement acceptanceACCField;
+							
+							@FindBy(xpath="//*[@id='iCurrencyId']")
+							public static WebElement CurrencyField;
+							
+							@FindBy(xpath="//input[@id='doNotOpenPrintFileInBrowser']//../span")
+							public static WebElement Prfrncs_DoNotOpenPrntFileNwWndw;
+							
+							@FindBy(xpath="//*[@id='2008']/span")
+							public static WebElement  purchaseVoucher;
+							
+							@FindBy(xpath="//*[@class='icon-printer hiconright2']")
+							public static WebElement  printBtn;
+							
+							@FindBy(xpath="//*[@id='opt_LayoutID']")
+							public static WebElement LayoutNameTxt;
+
+							@FindBy(xpath="//*[@id='cmd_LayoutOptions']")
+							public static WebElement LayoutOptionsdropdown;
+
+							@FindBy(xpath="//*[@id='btnPreview']")
+							public static WebElement  PreviewBtn;
+
+							@FindBy(xpath="//*[@id='btnPrint']")
+							public static WebElement footerPrintBtn;
+
+
+							@FindBy(xpath="//*[@id='id_transaction_voucherprint']/div[2]/div/div[3]/div/input[1]")
+							public static WebElement footerPDFBtn;
+
+							
+							 @FindBy(xpath="//tbody[@id='opt_LayoutID_table_body']/tr/td[2]")
+							 public static List<WebElement> LayoutList;
+							
+							 @FindBy(xpath="//*[@id='128']")
+							 public static WebElement transactionImport;
+							 
+							 @FindBy(xpath="//*[@id='oTransImportVouchers']")
+							 public static WebElement voucherTypeComboBox;
+							 
+							 @FindBy(xpath="//*[@id='btnTrnsImpBrowse']")
+							 public static WebElement transImpFileNameBtn;
+							 
+							 @FindBy(xpath="//*[@id='navbarSupportedContent2']/ul/li[3]/a/i")
+							 public static WebElement transImpImportBtn;
+							 
+							 @FindBy(xpath="//*[@id='2023']")
+							 public static WebElement JournalsExpandBtn;
+							 
+							 @FindBy(xpath="//*[@id='2028']")
+							 public static WebElement openingBalancesVoucher;
+							 
+							 
+
+@FindBy(xpath="//*[@id='id_transaction_entry_detail_table_body']//tr[1]//td")
+public static List<WebElement> VoucherRow1List;
+
+@FindBy(xpath="//*[@id='id_transaction_entry_detail_table_body']//tr[2]//td")
+public static List<WebElement> VoucherRow2List;
+
+@FindBy(xpath="//*[@id='id_transaction_entry_detail_table_body']//tr[3]//td")
+public static List<WebElement> VoucherRow3List;
+
+@FindBy(xpath="//*[@id='id_transaction_entry_detail_table_body']//tr[4]//td")
+public static List<WebElement> VoucherRow4List;
+
+@FindBy(xpath="//*[@id='id_transaction_entry_detail_table_body']//tr[5]//td")
+public static List<WebElement> VoucherRow5List;
+
+@FindBy(xpath="//*[@id='2033']")
+public static WebElement inventorystocks;
+
+@FindBy(xpath="//*[@id='2024']")
+public static WebElement non_StandardJournalsExpandBtn;
+
+@FindBy(xpath="//*[@id='2037']")
+public static WebElement inventoryopeningstocks;
+
+@FindBy(xpath="//*[@id='2049']/span[text()='Opening Stocks New']")
+public static WebElement inventoryopeningstocksNew;
+
+@FindBy(xpath="//*[@id='grdTransactionImport_body']/tr[7]/td[3]")
+public static WebElement  TIBodyAccountField;
+
+@FindBy(xpath="//*[@id='ddlDatabaseField']")
+public static WebElement  BodyAccountField;		 
+						
+@FindBy(xpath="//*[@id='2025']/span[text()='Forex JV']")
+public static WebElement  ForexJVVoucher;		 
+						
+
+@FindBy(xpath="//*[@id='cmbUserTypeMaster']")
+public static WebElement  searchAccount;
+
+@FindBy(xpath="//*[@id='btnSearchAcc1']")
+public static WebElement  Master_searchImg;
+
+@FindBy(xpath="//div[@id='id_reportmenudisplay']//*[@class='icon-filter hiconright2']")
+public static WebElement  U_report_FilterBtn;
+
+@FindBy(xpath="//div[@id='id_reportmenudisplay']//ul[@class='dropdown-menu adjustscreenmenu']//li[text()='Filter']")
+public static WebElement  U_report_FilterBtn2;
+
+
+@FindBy(xpath="//*[@id='2035']/span")
+public static WebElement inventoryExcessInStocks;
+
+@FindBy(xpath = "//input[@id='id_header_3']")
+public static WebElement purchaseAccountTxt;
+
+
+@FindBy(xpath="//tbody[@id='id_header_3_table_body']//tr/td[2]")
+public static List<WebElement> purchaseAccountList;
+
+@FindBy(xpath = "//input[@id='id_header_268435460']")
+public static WebElement warehouseTxt;
+
+
+@FindBy(xpath="//tbody[@id='id_header_268435460_table_body']//tr//td[2]")
+public static List<WebElement> warehouseList;
+
+@FindBy(xpath="//tbody[@id='id_header_268435459_table_body']//tr//td[2]")
+public static List<WebElement> departmentList;
+
+
+@FindBy(xpath="//tbody[@id='id_header_268438457_table_body']//tr/td[2]")
+public static List<WebElement> branchListInPurchases;
+
+@FindBy(xpath="//tbody[@id='id_body_23_table_body']//tr//td[2]")
+public static List<WebElement> itemList;
+
+@FindBy(xpath="//input[@id='id_body_33554435']")
+public static WebElement  pv_enter_discount;
+
+@FindBy(xpath = "//input[@id='id_body_13']")
+public static WebElement enter_Batch;
+
+@FindBy(xpath="//*[@class='icon-ok']")
+public static WebElement pickBtn;
+
+
+@FindBy(xpath="//input[@id='id_header_4']")
+public static WebElement  CustomerAccountTxt;
+
+
+@FindBy(xpath = "//input[@id='id_header_3']")
+public static WebElement SalesAccountTxt;
+
+@FindBy(xpath="//tbody[@id='id_header_3_table_body']//tr/td[2]")
+public static List<WebElement> SalesAccountList;
+
+@FindBy(xpath="//tbody[@id='id_header_4_table_body']//tr//td[2]")
+public static List<WebElement> CustomerAccountList;
+
+@FindBy(xpath="//tbody[@id='id_header_4_table_body']//tr//td[2]")
+public static List<WebElement> CBAccountList;
+
+@FindBy(xpath="//tbody[@id='id_header_268435460_table_body']/tr//td[2]")
+public static List<WebElement> SwarehouseList;
+
+@FindBy(xpath="//tbody[@id='id_header_268435459_table_body']/tr/td[2]")
+public static List<WebElement> SDepartmentList;
+
+
+@FindBy(xpath="//i[@class='icon-pick icon-font5']")
+public static WebElement batchPickOnFIFOIcon;
+
+@FindBy(xpath="//label[@id='div_Ok']")
+public static WebElement batchOkIcon;
+
+@FindBy(xpath="//input[@id='id_header_4']")
+public static WebElement  CBAccountTxt;
+
+@FindBy(xpath="//tbody[@id='id_body_12_table_body']//tr//td[2]")
+public static List<WebElement> PAccountList;
+
+
+
+@FindBy(xpath="//*[@id='2036']")
+public static WebElement StockTransfersVoucher;
+
+@FindBy(xpath="//*[@id='id_header_86']")
+public static WebElement warehouse1Txt;
+
+@FindBy(xpath="//*[@id='id_header_87']")
+public static WebElement warehouse2Txt;
+
+@FindBy(xpath="//tbody[@id='id_header_86_table_body']//tr[*]//td[2]")
+public static List<WebElement> ST_Warehouse1List;
+
+@FindBy(xpath="//tbody[@id='id_header_87_table_body']//tr[*]//td[2]")
+public static List<WebElement> ST_Warehouse2List;
+
+@FindBy(xpath="//span[text()='Design Workflow']")
+public static WebElement DesignWorkFlowBtn;
+
+@FindBy(xpath="//*[@id='line5']")
+public static WebElement linkSalOrdTOSalesInv;
+
+@FindBy(xpath="//*[@id='WorkflowSettingDialog']/div[2]/div/div[3]/div/input[2]")
+public static WebElement OkBtn;
+
+@FindBy(xpath="//*[@id='btnSave']") 
+        public static WebElement  DWsaveBtn;
+
+
+
+				
+
+
+
+
 				
 				
 				

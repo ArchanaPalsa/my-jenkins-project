@@ -12,6 +12,28 @@ import com.focus.base.BaseEngine;
 public class NotePadReader extends BaseEngine {
 
 	
+	
+	public static String getNumbNotePadTxt()
+	{
+		String data = "";
+		try {
+
+			String name = "";
+			FileInputStream fstream = new FileInputStream(".\\rmaNum.txt");
+			DataInputStream in = new DataInputStream(fstream);
+			BufferedReader br = new BufferedReader(new InputStreamReader(in));
+			while ((name = br.readLine()) != null) 
+			{
+				data += name + "\n";
+
+			}
+
+			in.close();
+		} catch (Exception e) {
+			System.err.println("Error: " + e.getMessage());
+		}
+		return data;
+	}
 
 		public static String getNotePadTxt()
 		{

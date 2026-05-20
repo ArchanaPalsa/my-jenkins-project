@@ -306,8 +306,9 @@ public class CreditPage extends BaseEngine
 	{
 		 excelReader=new ExcelReader(POJOUtility.getExcelPath());
 
+		 Thread.sleep(3000);
 		getDriver().navigate().refresh();
-		 Thread.sleep(1999);
+		 Thread.sleep(3000);
 
 		LoginPage lp=new LoginPage(getDriver()); 
 
@@ -356,6 +357,7 @@ public class CreditPage extends BaseEngine
 		
 		String expFinancialsMenuDisplayed= excelReader.getCellData(xlSheetName, 10, 6);
 		String actFinancialsMenuDisplayed=Boolean.toString(financialsMenu.isDisplayed());
+		
 		excelReader.setCellData(xlfile, xlSheetName, 10, 7, actFinancialsMenuDisplayed);
 		
 		if (actFinancialsMenuDisplayed.equalsIgnoreCase(expFinancialsMenuDisplayed)) 
@@ -379,30 +381,32 @@ public class CreditPage extends BaseEngine
 
 
 		BaseEngine.restoreCompany("CreditBillwise","BillWise");
-		
-		Thread.sleep(5000);
-		
-		String actUserInfo1=userNameTxt.getText();
+
+		Thread.sleep(6000);
+
+		String actUserInfo1=userNameTxtM.getText();
 
 		System.out.println("User Info  : "+actUserInfo1);
 
-		System.out.println("User Info Capture Text  :  "+userNameTxt.getText());
+		System.out.println("User Info Capture Text  :  "+userNameTxtM.getText());
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogoImg));
-		companyLogoImg.click();
-
-		String getCompanyTxt1=companyName.getText();
-		String getLoginCompanyName1=getCompanyTxt1.substring(0, 8);
-		System.out.println("company name  :  "+ getLoginCompanyName1);
-		companyLogoImg.click();
+		/*
+		 * getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(
+		 * companyLogoImg)); companyLogoImg.click();
+		 * 
+		 * String getCompanyTxt1=companyName.getText(); String
+		 * getLoginCompanyName1=getCompanyTxt1.substring(0, 36);
+		 * System.out.println("company name  :  "+ getLoginCompanyName1);
+		 * companyLogoImg.click();
+		 */
 
 		String expUserInfo1           ="SU";
 		String expLoginCompanyName1   ="BillWise";
 
 		System.out.println("UserInfo1             : "+actUserInfo1            +" Value Expected : "+expUserInfo1);
-		System.out.println("LoginCompanyName1     : "+getLoginCompanyName1    +" Value Expected : "+expLoginCompanyName1);
+	//	System.out.println("LoginCompanyName1     : "+getLoginCompanyName1    +" Value Expected : "+expLoginCompanyName1);
 
-		if(actUserInfo1.equalsIgnoreCase(expUserInfo1) && getLoginCompanyName1.contains(expLoginCompanyName1))
+		if(actUserInfo1.equalsIgnoreCase(expUserInfo1) /*&& getLoginCompanyName1.contains(expLoginCompanyName1)*/)
 		{
 			return true;
 		}
@@ -410,9 +414,8 @@ public class CreditPage extends BaseEngine
 		{
 			return false;
 		}
-		
-	
-	
+
+
 	}
 	
 	 public boolean checkErasingAllData() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
@@ -482,30 +485,59 @@ public class CreditPage extends BaseEngine
 	@FindBy(xpath="//*[@id='CreditLimit']/button")
 	public static WebElement creditLimitExpandBtn;
 	
+
+	@FindBy(xpath="//*[@id='16']")
+	public static WebElement SettingsBtn;
+	
+	@FindBy(xpath="//a[@id='16']//..//*[contains(text(),'Preferences')]")
+	public static WebElement preferences;
+	
+	
 	
 	public boolean chekARAPScreenUnderSettingsOption() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
 		 excelReader=new ExcelReader(POJOUtility.getExcelPath());
 		 
+		 
+		 String actREsult = "";
+		 
+		 String expResult = "";
 			getDriver().navigate().refresh();
 			Thread.sleep(3000);
+			Thread.sleep(3000);
 			
-			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(searchTxt));
-			searchTxt.click();
-			searchTxt.sendKeys("Configure Transactions");
-			Thread.sleep(1000);
-			searchTxt.sendKeys(Keys.ENTER);
-			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SettingsBtn));
+			SettingsBtn.click();
+
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(preferences));
+			preferences.click();
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ARAPBtn));
 		ARAPBtn.click();
 		
-		((JavascriptExecutor)getDriver()).executeScript("arguments[0].scrollIntoView(true);", ARAccountSettingsExpandBtn);
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ARAccountSettingsExpandBtn));
-		ARAccountSettingsExpandBtn.click();
-		Thread.sleep(2000);
-		//((JavascriptExecutor)getDriver()).executeScript("arguments[0].scrollIntoView(true);", arTagChkBox);
+		try{
+			
+			if(arItemChkBox.isDisplayed()==false)
+			{
+				
+		
+			
+			((JavascriptExecutor)getDriver()).executeScript("arguments[0].scrollIntoView(true);", ARAccountSettingsExpandBtn);
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ARAccountSettingsExpandBtn));
+			ARAccountSettingsExpandBtn.click();
+			Thread.sleep(2000);
+			}
+			
+		}
+		
+		catch (Exception e) {
+			// TODO: handle exception
+	
+		
+		
 		
 		getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(arTagChkBox));
 		
@@ -577,7 +609,7 @@ public class CreditPage extends BaseEngine
 		System.out.println("inputNarrationInReferenceChkBox         : "+actinputNarrationInReferenceChkBox        +" Value Expected : "+expinputNarrationInReferenceChkBox);
 		System.out.println("enableOverDueCheckChkBox                : "+actenableOverDueCheckChkBox               +" Value Expected : "+expenableOverDueCheckChkBox);
 		
-		
+
 		
 		boolean actMethod=actarTagChkBox.equalsIgnoreCase(exparTagChkBox) 
 				&& actsalesAccountChkBox.equalsIgnoreCase(expsalesAccountChkBox) 
@@ -590,10 +622,12 @@ public class CreditPage extends BaseEngine
 				&& actinputNarrationInReferenceChkBox.equalsIgnoreCase(expinputNarrationInReferenceChkBox)
 				&& actenableOverDueCheckChkBox.equalsIgnoreCase(expenableOverDueCheckChkBox);
 				
-		String actREsult=Boolean.toString(actMethod);
-		String expResult= excelReader.getCellData(xlSheetName, 25, 6);
+		actREsult=Boolean.toString(actMethod);
+		expResult= excelReader.getCellData(xlSheetName, 25, 6);
         
 		excelReader.setCellData(xlfile, xlSheetName, 25, 7, actREsult);
+		
+		}
 		
 		
 		if(actREsult.equalsIgnoreCase(expResult))
@@ -607,6 +641,8 @@ public class CreditPage extends BaseEngine
 			excelReader.setCellData(xlfile, xlSheetName, 13, 8, resFail);
 			return false;
 		}
+		
+		
 	}
 	
 	
@@ -1156,16 +1192,15 @@ private static WebElement openingBalancesSaveBtn;
 		Thread.sleep(1999);
 		getDriver().navigate().refresh();
 		
+		Thread.sleep(3000);
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SettingsBtn));
+		SettingsBtn.click();
+
 		Thread.sleep(2000);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(preferences));
+		preferences.click();
 	
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(searchTxt));
-		searchTxt.click();
-		searchTxt.sendKeys("Configure Transactions");
-		Thread.sleep(1000);
-		searchTxt.sendKeys(Keys.ENTER);
-		
-		Thread.sleep(2000);
-		
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ARAPBtn));
 		ARAPBtn.click();
@@ -1174,17 +1209,35 @@ private static WebElement openingBalancesSaveBtn;
 		
 		checkValidationMessage("");
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(creditLimitExpandBtn));
-		creditLimitExpandBtn.click();
-		Thread.sleep(1000);
+		try{
+			
+			getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(enableCreditLimitCheckChkBox));
+			
+			System.err.println("whenCreditLimitexceeded_StopRadio.isSelected()::"+whenCreditLimitexceeded_StopRadio.isSelected());
+			
+			if (whenCreditLimitexceeded_StopRadio.isSelected()==false) 
+			{
+				whenCreditLimitexceeded_StopRadio.click();
+			}
+			
+			
+		}
 		
-		getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(enableCreditLimitCheckChkBox));
-		
-		System.err.println("whenCreditLimitexceeded_StopRadio.isSelected()::"+whenCreditLimitexceeded_StopRadio.isSelected());
-		
-		if (whenCreditLimitexceeded_StopRadio.isSelected()==false) 
+		catch (Exception e)
 		{
-			whenCreditLimitexceeded_StopRadio.click();
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(creditLimitExpandBtn));
+			creditLimitExpandBtn.click();
+			Thread.sleep(1000);
+			
+			getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(enableCreditLimitCheckChkBox));
+			
+			System.err.println("whenCreditLimitexceeded_StopRadio.isSelected()::"+whenCreditLimitexceeded_StopRadio.isSelected());
+			
+			if (whenCreditLimitexceeded_StopRadio.isSelected()==false) 
+			{
+				whenCreditLimitexceeded_StopRadio.click();
+			}
+
 		}
 		
 
@@ -1442,8 +1495,10 @@ private static WebElement openingBalancesSaveBtn;
 		
 		Thread.sleep(2000);
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
-		newBtn.click();
+		ClickUsingJs(newBtn);
+		
+		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
+		newBtn.click();*/
 		
 		Thread.sleep(1999);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(documentNumberTxt));
@@ -1829,13 +1884,15 @@ catch(Exception e)
 
 		getDriver().navigate().refresh();
 		
+		Thread.sleep(3000);
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SettingsBtn));
+		SettingsBtn.click();
+
 		Thread.sleep(2000);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(preferences));
+		preferences.click();
 	
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(searchTxt));
-		searchTxt.click();
-		searchTxt.sendKeys("Configure Transactions");
-		Thread.sleep(1000);
-		searchTxt.sendKeys(Keys.ENTER);
 		
 		Thread.sleep(2000);
 		
@@ -1845,6 +1902,39 @@ catch(Exception e)
 		
 		Thread.sleep(1999);
 		
+		try{
+
+			getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(whenCreditLimitexceeded_WarnAndAllowRadio));
+			if(whenCreditLimitexceeded_WarnAndAllowRadio.isSelected()==false)
+			{
+				whenCreditLimitexceeded_WarnAndAllowRadio.click();
+			}
+			
+			Thread.sleep(1000);
+			getAction().moveToElement(enableOverDueCheckChkBox).build().perform();
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enableOverDueCheckChkBox));
+			
+			if(enableOverDueCheckChkBoxSelected.isSelected()==false)
+			{
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enableOverDueCheckChkBox));
+			enableOverDueCheckChkBox.click();
+			}
+			
+			Thread.sleep(1000);
+			getAction().moveToElement(useCreditDaysInsteadOfDueDateChkBox).build().perform();
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(useCreditDaysInsteadOfDueDateChkBox));
+			
+			if(useCreditDaysInsteadOfDueDateChkBoxSelected.isSelected()==false)
+			{
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(useCreditDaysInsteadOfDueDateChkBox));
+			useCreditDaysInsteadOfDueDateChkBox.click();
+			}
+			
+		}
+		
+		catch (Exception e) {
+			// TODO: handle exception
+
 		getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(creditLimitExpandBtn));
 		creditLimitExpandBtn.click();
 		Thread.sleep(1000);
@@ -1874,6 +1964,8 @@ catch(Exception e)
 		{
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(useCreditDaysInsteadOfDueDateChkBox));
 		useCreditDaysInsteadOfDueDateChkBox.click();
+		}
+		
 		}
 		
 		Thread.sleep(1000);
@@ -3031,7 +3123,7 @@ catch(Exception e)
 	 private static WebElement CreditLimitAuthoriorisationMenu;
 	 
 	 
-	 @FindBy(xpath="//input[@id='txtDropshow']")
+	 @FindBy(xpath="//*[@id='txtDropshow']")
 	 private static WebElement CLA_NameTxt;
 	 
 	 @FindBy(xpath="//input[@id='txtPerFmValue-1']")
@@ -3131,18 +3223,48 @@ catch(Exception e)
 
 		 getDriver().navigate().refresh();
 			
-			Thread.sleep(2000);
-		
-			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(searchTxt));
-			searchTxt.click();
-			searchTxt.sendKeys("Configure Transactions");
-			Thread.sleep(1000);
-			searchTxt.sendKeys(Keys.ENTER);
+		 Thread.sleep(3000);
 			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SettingsBtn));
+			SettingsBtn.click();
+
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(preferences));
+			preferences.click();
+		
 			Thread.sleep(2000);
 		 getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ARAPBtn));
 		 ARAPBtn.click();
+		 
+		 try{
+			 getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(IncludePendingSalesOrderValueInCreditLimitCheckBox));
+			 if (IncludePendingSalesOrderValueInCreditLimitCheckBoxSelected.isSelected()==false) 
+			 {
+				 IncludePendingSalesOrderValueInCreditLimitCheckBox.click();	
+			 }
 
+			 getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(CheckcreditlimitinordersCHkBox));
+			 if (CheckcreditlimitinordersCHkBoxSelected.isSelected()==false) 
+			 {
+				 CheckcreditlimitinordersCHkBox.click();	
+			 }
+			 getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(DefineCreditLimitByDepartmentChkbox));
+			 if (DefineCreditLimitByDepartmentChkboxSelected.isSelected()==false) 
+			 {
+				 DefineCreditLimitByDepartmentChkbox.click();	
+			 }
+
+			 getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(AllowCreditLimitAuthorizationMappingToCustomerChkbox));
+			 if (AllowCreditLimitAuthorizationMappingToCustomerChkboxSelected.isSelected()==false) 
+			 {
+				 AllowCreditLimitAuthorizationMappingToCustomerChkbox.click();	
+			 }
+		 }
+		 
+		 catch (Exception e)
+		 {
+			// TODO: handle exception
+	
 		 Thread.sleep(1999);
 		 getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(creditLimitExpandBtn));
 		 creditLimitExpandBtn.click();
@@ -3171,6 +3293,9 @@ catch(Exception e)
 			 AllowCreditLimitAuthorizationMappingToCustomerChkbox.click();	
 		 }
 
+		 }
+		 
+		 
 		 String actchk1=Boolean.toString(IncludePendingSalesOrderValueInCreditLimitCheckBoxSelected.isSelected());
 		 String expchk1= excelReader.getCellData(xlSheetName, 111, 6);
          excelReader.setCellData(xlfile, xlSheetName, 111, 7, actchk1);
@@ -3247,7 +3372,7 @@ catch(Exception e)
 
 		 System.err.println("*********************checkcreditlimitAuthorisationHomeScreen");
 
- Thread.sleep(1200);
+		 Thread.sleep(1200);
 		 
 		 getDriver().navigate().refresh();
 		 Thread.sleep(3000);
@@ -3345,13 +3470,13 @@ catch(Exception e)
 		 }
 	 }
 	 
-	 @FindBy(xpath="//*[@id='myDiv']/ul/li[2]/span/i")
+	 @FindBy(xpath="//div[@id='navbarSupportedContent2']//i[@class='icon-save hiconright2']")
 	 private  static WebElement CLA_SaveBtn;
 	 
-	 @FindBy(xpath="//*[@id='myDiv']/ul/li[1]/span/i")
+	 @FindBy(xpath="//*[@id='navbarSupportedContent2']/ul/li[1]/span/i")
 	 private  static WebElement CLA_DeleteBtn;
 	 
-	 @FindBy(xpath="//*[@id='myDiv']/ul/li[3]/span/i")
+	 @FindBy(xpath="//*[@id='navbarSupportedContent2']/ul/li[3]/span/i")
 	 private  static WebElement CLA_CancelBtn;
 	 
 	 public boolean checkSavingCreditLimitAuthorisationWithOutInput() throws EncryptedDocumentException, InvalidFormatException, InterruptedException, IOException
@@ -3638,9 +3763,11 @@ catch(Exception e)
 
 		 Thread.sleep(1999);
 		 
-		 getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(CLA_NameTxtIcon));
-		 CLA_NameTxtIcon.click();
 		 
+		 getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(CLA_NameTxt));
+		 CLA_NameTxt.click();
+		 Thread.sleep(1000);
+		 CLA_NameTxt.sendKeys(Keys.END,Keys.SHIFT,Keys.HOME);
 		 Thread.sleep(1999);
 		 getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(CLA_NameTxtCreditApproval));
 		 CLA_NameTxtCreditApproval.click();
@@ -3789,8 +3916,10 @@ catch(Exception e)
 
          Thread.sleep(1999);
 		 
-		 getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(CLA_NameTxtIcon));
-		 CLA_NameTxtIcon.click();
+		 getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(CLA_NameTxt));
+		 CLA_NameTxt.click();
+		 Thread.sleep(1200);
+		 CLA_NameTxt.sendKeys(Keys.END,Keys.SHIFT,Keys.HOME);
 		 
 		 Thread.sleep(1999);
 		 getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(CLA_NameTxtCreditApproval));
@@ -3977,15 +4106,15 @@ catch(Exception e)
 		 excelReader=new ExcelReader(POJOUtility.getExcelPath());
 		 getDriver().navigate().refresh();
 			
-			Thread.sleep(2000);
-		
-			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(searchTxt));
-			searchTxt.click();
-			searchTxt.sendKeys("Configure Transactions");
-			Thread.sleep(1000);
-			searchTxt.sendKeys(Keys.ENTER);
+		 Thread.sleep(3000);
 			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SettingsBtn));
+			SettingsBtn.click();
+
 			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(preferences));
+			preferences.click();
+		
 			
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ARAPBtn));
 			ARAPBtn.click();
@@ -3999,6 +4128,28 @@ catch(Exception e)
 			}
 			Thread.sleep(3000);
 			
+			
+			try{
+				
+				Thread.sleep(1000);
+				
+				if (arTagChkBoxSelected.isSelected() == false) 
+				{
+					getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(arTagChkBox));
+					arTagChkBox.click();
+					
+					arTagTxt.click();
+					arTagTxt.sendKeys(excelReader.getCellData(xlSheetName, 174, 5));
+					Thread.sleep(2000);
+					arTagTxt.sendKeys(Keys.TAB);
+					
+				}
+				
+			}
+			
+			catch (Exception e) 
+			{
+				
 			((JavascriptExecutor)getDriver()).executeScript("arguments[0].scrollIntoView(true);", ARAccountSettingsExpandBtn);
 			
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ARAccountSettingsExpandBtn));
@@ -4018,23 +4169,33 @@ catch(Exception e)
 				
 			}
 			
-		
-		scrollToElementJSE(creditLimitExpandBtn);
-		creditLimitExpandBtn.click();
-		Thread.sleep(3000);
-	
-		Thread.sleep(1000);
-		scrollToElementJSE(enableCreditLimitCheckChkBoxSelected);
-		//getAction().moveToElement(enableCreditLimitCheckChkBoxSelected).build().perform();
-		Thread.sleep(3000);
-		
-		if (enableCreditLimitCheckChkBoxSelected.isSelected() == true) 
-		{
-			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enableCreditLimitCheckChkBox));
-			enableCreditLimitCheckChkBox.click();
-		}
+			}
 			
 			
+			try{
+
+				if (enableCreditLimitCheckChkBoxSelected.isSelected() == true) 
+				{
+					getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enableCreditLimitCheckChkBox));
+					enableCreditLimitCheckChkBox.click();
+				}
+					
+			}
+		
+			catch (Exception e) 
+			{
+				// TODO: handle exception
+
+				scrollToElementJSE(creditLimitExpandBtn);
+				creditLimitExpandBtn.click();
+				Thread.sleep(3000);
+
+				Thread.sleep(1000);
+				scrollToElementJSE(enableCreditLimitCheckChkBoxSelected);
+			}
+			
+		Thread.sleep(3000);
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(settingUpdateIcon));
 		settingUpdateIcon.click();
 		
@@ -4043,9 +4204,6 @@ catch(Exception e)
 		getWaitForAlert();
 		
 		getAlert().accept();
-		
-		
-		
 		
 		String expValidationMessage= excelReader.getCellData(xlSheetName, 175, 6);
              

@@ -223,11 +223,10 @@ public class UserRestrictionsPageEER extends BaseEngine
 	@FindBy(xpath="//*[@id='dashIcons']")
 	public static WebElement dashboardIcons;
 
-	@FindBy(xpath="//span[@class='hidden-xs']")
-	public static WebElement userNameDisplay;
+
 
 	@FindBy(xpath="//div[@id='id_mainlayoutmenu']/ul[2]/li[6]")
-	public static WebElement userNameDisplayLogo;
+	public static WebElement userNameTxt1Logo;
 
 
 	@FindBy(xpath="//div[@id='id_mainlayoutmenu']/ul[2]/li[6]//ul/li[1]")
@@ -235,9 +234,6 @@ public class UserRestrictionsPageEER extends BaseEngine
 
 	@FindBy(xpath="//select[@id='id_languageoptions']")
 	public static WebElement languageDropdownInLogout;
-
-	@FindBy(xpath="//*[@id='userprofile']/li/span[2]")
-	public static WebElement logoutOption;
 
 	@FindBy(xpath="//*[@id='dashName']")
 	public static WebElement dashboard;
@@ -1355,12 +1351,6 @@ public class UserRestrictionsPageEER extends BaseEngine
 	@FindBy(xpath="//button[@id='btnCancelForDelete']")
 	public static WebElement clickOnCancelInDelete;
 
-	@FindBy(xpath = "//div[@class='theme_color font-6']")
-	public static WebElement errorMessage;
-
-	@FindBy(xpath = "//span[@class='icon-reject2 theme_color']")
-	public static WebElement errorMessageCloseBtn;
-
 	@FindBy(xpath="//*[@id='LandingGridBody']/tr/td[8]//input")
 	public static List<WebElement> masterGridBodyChkbox;
 
@@ -2024,8 +2014,12 @@ public class UserRestrictionsPageEER extends BaseEngine
 
 
 	@FindBy(xpath="//*[@id='id_mainlayoutmenu']/ul[2]/li[5]/a")
-	public static WebElement userNameTxt;
+	public static WebElement userNameTxt1;
 
+	
+
+	@FindBy(xpath="//*[@id='id_mainlayoutmenu']/ul[2]/li[5]/a")
+	public static WebElement userNameTxt11;
 
 
 
@@ -6095,7 +6089,7 @@ public class UserRestrictionsPageEER extends BaseEngine
 	public static WebElement createUserConfirmPasswordTxt;
 
 	@FindBy(xpath="//input[@id='Username']")
-	public static WebElement createUserNameTxt;
+	public static WebElement createuserNameTxt1;
 
 	@FindBy(xpath="//input[@id='lginAbbr']")
 	public static WebElement createUserLoginAbbrivationTxt;
@@ -6231,8 +6225,7 @@ public class UserRestrictionsPageEER extends BaseEngine
 	@FindBy(xpath="//span[contains(text(),'Purchases Vouchers')]")
 	public static WebElement  purchaseVouchersBtn;
 
-	@FindBy(xpath="//*[@id='id_transaction_homescreen_new']/div[1]/span")
-	public static WebElement newBtn;
+
 /*
 	@FindBy(xpath="//*[@id='id_header_4']")
 	public static WebElement vendorAccountTxt;
@@ -11318,7 +11311,7 @@ public class UserRestrictionsPageEER extends BaseEngine
 	@FindBy(xpath="/html/body/section/div[8]/div/div/div[4]/button[2]")
 	private static WebElement cancelButton;
 
-	@FindBy(xpath="//i[@class='icon-restore-1 icon-font4']")
+	@FindBy(xpath="//i[@class='icon-restore htop2']")
 	private static WebElement  loginPageRestoreBtn;
 
 	@FindBy(xpath="//*[@id='RestoreCompanyModal']/div/div/div[2]/button[1]")
@@ -11462,6 +11455,8 @@ public class UserRestrictionsPageEER extends BaseEngine
 		lp.enterUserName(unamelt);
 
 		lp.enterPassword(pawslt);
+		
+		lp.enterPassword(pawslt);
 
 		Thread.sleep(2000);
 
@@ -11516,11 +11511,11 @@ public class UserRestrictionsPageEER extends BaseEngine
 
 			Thread.sleep(2000);
 
-			String actUserInfo1=userNameDisplay.getText();
+			String actUserInfo1=userNameTxt1.getText();
 
 			System.out.println("User Info  : "+actUserInfo1);
 
-			System.out.println("User Info Capture Text  :  "+userNameDisplay.getText());
+			System.out.println("User Info Capture Text  :  "+userNameTxt1.getText());
 
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogo));
 			companyLogo.click();
@@ -11551,19 +11546,18 @@ public class UserRestrictionsPageEER extends BaseEngine
 
 			Thread.sleep(2000);
 
-			String actUserInfo1=userNameDisplay.getText();
+			String actUserInfo1=userNameTxt1.getText();
 
 			System.out.println("User Info  : "+actUserInfo1);
 
-			System.out.println("User Info Capture Text  :  "+userNameDisplay.getText());
+			System.out.println("User Info Capture Text  :  "+userNameTxt1.getText());
 
-			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogo));
-			companyLogo.click();
+			
 
 			String getCompanyTxt1=companyName.getText();
 			String getLoginCompanyName1=getCompanyTxt1.substring(0, 17);
 			System.out.println("company name  :  "+ getLoginCompanyName1);
-			companyLogo.click();
+			
 
 			String expUserInfo1           ="SU";
 			String expLoginCompanyName1   ="UserRestrictions";
@@ -11613,7 +11607,7 @@ public class UserRestrictionsPageEER extends BaseEngine
 	@FindBy(xpath="/html/body/section/div[2]/div/section[1]/div/div[1]/nav/div/div[2]/ul/li/span[2]")
 	private static WebElement CreateRoleDeleteButtonImage; 
 
-	@FindBy(xpath="//*[@id='RestrictionEntryMasters']//ul//li")
+	@FindBy(xpath="//*[@id='RestrictionEntryMasters']//li")
 	private static List<WebElement> restrictionsMastersList;
 
 	@FindBy(xpath="//tbody[@id='restrictionEntryTable_body']//td[2]")
@@ -11659,6 +11653,11 @@ public class UserRestrictionsPageEER extends BaseEngine
 		int count = restrictionsMastersList.size();
 		System.err.println("count::::::::"+count);
 
+		boolean actAccExclusion = exclusionCheckBox.isSelected();
+		boolean expAccExclusion = true;
+		
+
+		Thread.sleep(1600);
 
 		for (int i = 0; i <count; i++) 
 		{
@@ -11670,11 +11669,6 @@ public class UserRestrictionsPageEER extends BaseEngine
 				break;
 			}
 		}
-		
-		
-		boolean actAccExclusion = exclusionCheckBox.isSelected();
-		boolean expAccExclusion = true;
-		
 
 		int count1 = restrictionsEntryTableList.size();
 		System.err.println("count::::::::"+count);
@@ -11700,10 +11694,11 @@ public class UserRestrictionsPageEER extends BaseEngine
 			}
 
 		}	
+
 		
 		boolean actItemExclusion = exclusionCheckBox.isSelected();
 		boolean expItemExclusion = true;
-
+		
 		ArrayList<String> ItemNames = new ArrayList<String>();
 
 		for (int i = 0; i <count1; i++) 
@@ -11716,6 +11711,8 @@ public class UserRestrictionsPageEER extends BaseEngine
 
 		}
 
+
+		Thread.sleep(3000);
 		for (int i = 0; i <count; i++) 
 		{
 			String data = restrictionsMastersList.get(i).getText();
@@ -11743,6 +11740,7 @@ public class UserRestrictionsPageEER extends BaseEngine
 
 		}
 
+		Thread.sleep(3000);
 		for (int i = 0; i <count; i++) 
 		{
 			String data = restrictionsMastersList.get(i).getText();
@@ -11853,16 +11851,20 @@ public class UserRestrictionsPageEER extends BaseEngine
 	}
 
 	public static boolean checkLoginWithERR() throws InterruptedException
-	{
-		getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(userNameDisplay));
-		userNameDisplay.click();
+	{/*
+		 * getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(LogoutDropdown
+		 * )); LogoutDropdown.click();
+		 * 
+		 * Thread.sleep(2000);
+		 * getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(
+		 * logoutOption)); logoutOption.click();
+		 * 
+		 * 
+		 * Thread.sleep(3000);
+		 * 
+		 * getDriver().navigate().refresh();
+		 */
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(logoutOption));
-		logoutOption.click();
-		
-		Thread.sleep(4000);
-		
-		
 		LoginPage lp=new LoginPage(getDriver()); 
 
 		String unamelt="EER";
@@ -11873,6 +11875,8 @@ public class UserRestrictionsPageEER extends BaseEngine
 
 		lp.enterUserName(unamelt);
 
+		
+		Thread.sleep(2500);
 		lp.enterPassword(pawslt);
 
 		Thread.sleep(2000);
@@ -11905,36 +11909,65 @@ public class UserRestrictionsPageEER extends BaseEngine
 
 		lp.clickOnSignInBtn();
 
-		Thread.sleep(2000);
 
-		String actUserInfo1=userNameDisplay.getText();
+		Thread.sleep(6000);
 
-		System.out.println("User Info  : "+actUserInfo1);
-
-		System.out.println("User Info Capture Text  :  "+userNameDisplay.getText());
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogo));
-		companyLogo.click();
-
-		String getCompanyTxt1=companyName.getText();
-		String getLoginCompanyName1=getCompanyTxt1.substring(0, 17);
-		System.out.println("company name  :  "+ getLoginCompanyName1);
-		companyLogo.click();
-
-		String expUserInfo1           ="EER";
-		String expLoginCompanyName1   ="UserRestrictions";
-
-		System.out.println("UserInfo1             : "+actUserInfo1            +" Value Expected : "+expUserInfo1);
-		System.out.println("LoginCompanyName1     : "+getLoginCompanyName1    +" Value Expected : "+expLoginCompanyName1);
-
-		if(actUserInfo1.equalsIgnoreCase(expUserInfo1)/* && getLoginCompanyName1.contains(expLoginCompanyName1)*/)
+		/*try 
 		{
-			return true;
-		}
-		else
+			if (reindexCancelBtn.isDisplayed()) 
+			{
+				System.out.println("Reindexing Log is Displaying in Restore Company");
+
+				getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reindexCancelBtn));
+				reindexCancelBtn.click();
+
+				Thread.sleep(2000);
+
+				lp.clickOnSignInBtn();
+			}
+			
+		} 
+		catch (Exception e) 
 		{
-			return false;
-		}
+			
+			System.out.println("Reindexing Log is NOt Displaying While Restore Company");
+		}	*/
+			
+			Thread.sleep(2000);
+
+			String actUserInfo1=userNameDisplay.getText();
+
+			System.out.println("User Info  : "+actUserInfo1);
+
+			System.out.println("User Info Capture Text  :  "+userNameDisplay.getText());
+
+			//getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogo));
+			//companyLogo.click();
+
+			Thread.sleep(1500);	
+			String getCompanyTxt1=companyName.getText();
+			//String getLoginCompanyName1=getCompanyTxt1.substring(0, 17);
+			System.out.println("company name  :  "+ getCompanyTxt1);
+			//companyLogo.click();
+
+			String expUserInfo1           ="EER";
+			String expLoginCompanyName1   ="UserRestrictions";
+			
+			Thread.sleep(1500);	
+
+			System.out.println("UserInfo1             : "+actUserInfo1            +" Value Expected : "+expUserInfo1);
+			System.out.println("LoginCompanyName1     : "+getCompanyTxt1    +" Value Expected : "+expLoginCompanyName1);
+
+			if(actUserInfo1.equalsIgnoreCase(expUserInfo1) && getCompanyTxt1.contains(expLoginCompanyName1))
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		
+	
 	}
 	
 	public static boolean checkLoginWithEERInFA() throws InterruptedException
@@ -11991,11 +12024,11 @@ public class UserRestrictionsPageEER extends BaseEngine
 
 		Thread.sleep(2000);
 
-		String actUserInfo1=userNameDisplay.getText();
+		String actUserInfo1=userNameTxt1.getText();
 
 		System.out.println("User Info  : "+actUserInfo1);
 
-		System.out.println("User Info Capture Text  :  "+userNameDisplay.getText());
+		System.out.println("User Info Capture Text  :  "+userNameTxt1.getText());
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogo));
 		companyLogo.click();
@@ -12023,7 +12056,7 @@ public class UserRestrictionsPageEER extends BaseEngine
 	}
 	
 
-	@FindBy(xpath="//a[@class='clsMasterName']")
+	@FindBy(xpath="//div[@id='divTreeMenu']//ul//li/a[2]")
 	private static List<WebElement> treeAccountsList;
 
 	public static boolean checkAccountMasterWhetherShowingOnlyRestrictedAccountsInList() throws InterruptedException
@@ -12055,7 +12088,7 @@ public class UserRestrictionsPageEER extends BaseEngine
 		}
 
 		String actAccountList = AccountNames.toString();
-		String expAccountList = "[aa, rathod, ASSETS, CustVend, CONTROL ACCOUNTS, G, EXPENSES, REVENUE, Round off Exchange gain/ loss, EQUITIES, LIABILITIES, C, rakesh, ClosingACC]";
+		String expAccountList = "[CreditGroup, CustomerCredit, aa, rathod, ASSETS, CustVend, CONTROL ACCOUNTS, G, EXPENSES, REVENUE, Round off Exchange gain/ loss, EQUITIES, LIABILITIES, C, rakesh, ClosingACC]";
 
 		System.out.println("actAccountList: "+actAccountList);
 		System.out.println("expAccountList: "+expAccountList);
@@ -12073,7 +12106,7 @@ public class UserRestrictionsPageEER extends BaseEngine
 		}
 
 		String actAccountNamesinTree = AccountNamesinTree.toString();
-		String expAccountNamesinTree = "[ASSETS, Fixed Assets, Current Assets, Cash & bank, Inventories, Accounts Receivable, Investments, CONTROL ACCOUNTS, G, EXPENSES, Direct Expenses, Indirect Expenses, Administrative Expenses, Employee Benefits, Financial Charges, Gain and Loss, REVENUE, SALES, EQUITIES, Capital, LIABILITIES, Loans & Borrowings, Loans, Accrued Liabilities, Trade Payable, Provisions, C]";
+		String expAccountNamesinTree = " [Account, , ASSETS, , , , , , , , , EXPENSES, , , , , , , REVENUE, , EQUITIES, , LIABILITIES, , , , , , ]";
 
 		System.out.println("actAccountNamesinTree: "+actAccountNamesinTree);
 		System.out.println("expAccountNamesinTree: "+expAccountNamesinTree);
@@ -12089,7 +12122,7 @@ public class UserRestrictionsPageEER extends BaseEngine
 
 	}
 
-	@FindBy(xpath="//*[@id='ol_treeNavigation']/li[1]/span")
+	@FindBy(xpath="//*[@id='ol_treeNavigation']/li[1]")
 	private static WebElement accountNvgtn;
 
 	public static boolean checkChildAccountsInsideTheGroupAccountsIndivdually() throws InterruptedException
@@ -12195,7 +12228,7 @@ public class UserRestrictionsPageEER extends BaseEngine
 		}
 
 		String actaccountList = accountList.toString();
-		String expaccountList = "[Accounts Receivable, Accrued Liabilities, Administrative Expenses, ASSETS, Authorized Capital, Bank, Bank Charges, Basic Salary, C, C1, C2, Capital, Cash, Cash & bank, ClosingACC, CONTROL ACCOUNTS, Cost of goods sold - Computers, Cost of goods sold - Electronics, Cost of goods sold - HA, Courier Charges, Current Assets, Custom Duty Payable, Customer A, Customer B, Customer C, CustVend, Depreciation, Direct Expenses, Dividend Payable, Employee Benefits, Employee Payable, EQUITIES, Exchange Gain, Exchange Loss, EXPENSES, Financial Charges, Financial Charges, Fixed Assets, Fixed Deposit Investment, Freight Payable, G, G1, G2, Gain and Loss, Gain on Asset Sale, Housing Allowance, Indirect Expenses, Interest paid, Inventories]";
+		String expaccountList = "[aa, Accounts Receivable, Accrued Liabilities, Administrative Expenses, ASSETS, Authorized Capital, Bank, Bank Charges, Basic Salary, C, C1, C2, Capital, Cash, Cash & bank, ClosingACC, CONTROL ACCOUNTS, Cost of goods sold - Computers, Cost of goods sold - Electronics, Cost of goods sold - HA, Courier Charges, CreditGroup, CreditLimitCustomer, Current Assets, Custom Duty Payable, Customer A, Customer B, Customer C, CustomerCredit, CustVend, Depreciation, Direct Expenses, Dividend Payable, Employee Benefits, Employee Payable, EQUITIES, Exchange Gain, Exchange Loss, EXPENSES, Financial Charges, Financial Charges, Fixed Assets, Fixed Deposit Investment, Freight Payable, G, G1, G2, Gain and Loss, Gain on Asset Sale, Housing Allowance, Indirect Expenses, Interest paid, Inventories, Inventory Trade, Inventory FG, Inventory RM, Investments, Journal Entries Control A/C, Land and Building, Legal Fee, LIABILITIES, Loan from associate company, Loan from Director, Loans, Loans & Borrowings, Long-term Debt, Loss on Asset Sale, Office Equipment, Office Rent, Opening Balances Control A/C, Paid-up Capital, Printing and Stationery, Profit/Loss A/C, Provion for Employee Benefits, Provision for Bad Debts, Provisions, Purchase, rakesh, rathod, ReqCreditLimitCustomer, REVENUE, Round off Exchange gain/ loss, SALES, Sales - Computers, Sales - Electronics, Sales - Home Appliances, Special Allowance, Trade Payable, Transport Allowance, Uninvoiced DO, Uninvoiced Mrn, Utility charges, Vehicle Allowance, Vehicles, Vendor A, Vendor B]";
 
 		System.out.println("actaccountList:  "+actaccountList);
 		System.out.println("expaccountList:  "+expaccountList);
@@ -12204,6 +12237,8 @@ public class UserRestrictionsPageEER extends BaseEngine
 		searchAccount.sendKeys("Vendor");
 		Thread.sleep(1500);
 		searchAccount.sendKeys(Keys.ENTER);
+		
+		Thread.sleep(2500);
 
 		int count2 = searchAccountList.size();
 		ArrayList<String> accountList2 = new ArrayList<String>();
@@ -12283,7 +12318,7 @@ public class UserRestrictionsPageEER extends BaseEngine
 
 
 		String actItemList = itemList.toString();
-		String expItemList = "[BALL, Doll, CAM, C]";
+		String expItemList = "[STD RATE ITEM, BALL, Doll, CAM, C]";
 
 		System.out.println("actItemList:"+actItemList);
 		System.out.println("expItemList:"+expItemList);
@@ -12329,7 +12364,7 @@ public class UserRestrictionsPageEER extends BaseEngine
 		}
 
 		String actItemListInA = AccountListInA.toString();
-		String expItemListInA = "[BALL, Doll, CAM, C]";
+		String expItemListInA = "[STD RATE ITEM, BALL, Doll, CAM, C]";
 
 		System.out.println("actItemListInA:"+actItemListInA);
 		System.out.println("expItemListInA:"+expItemListInA);
@@ -12358,7 +12393,7 @@ public class UserRestrictionsPageEER extends BaseEngine
 		}
 
 		String actItemListInB = AccountListInB.toString();
-		String expItemListInB = "[BALL, Doll, CAM, C]";
+		String expItemListInB = "[STD RATE ITEM, BALL, Doll, CAM, C]";
 
 		System.out.println("actItemListInB:"+actItemListInB);
 		System.out.println("expItemListInB:"+expItemListInB);
@@ -12413,7 +12448,7 @@ public class UserRestrictionsPageEER extends BaseEngine
 		}
 		
 		String actitemsList = itemsList.toString();
-		String expitemsList = "[BALL, C, C1, C2, CAM, Doll]";
+		String expitemsList = "[BALL, C, C1, C2, CAM, Doll, STD RATE ITEM]";
 
 		System.out.println("actitemsList:  "+actitemsList);
 		System.out.println("expitemsList:  "+expitemsList);
@@ -12815,6 +12850,8 @@ public class UserRestrictionsPageEER extends BaseEngine
 
 		mastersMenu.click();
 
+		scrollToElementJSE(branchMasterMenu);
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(branchMasterMenu));
 
 		branchMasterMenu.click();
@@ -13094,7 +13131,7 @@ public class UserRestrictionsPageEER extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
 
-		checkValidationMessage("Screen opened");
+		
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseAccountTxt));
 		purchaseAccountTxt.click();
@@ -13249,19 +13286,28 @@ public class UserRestrictionsPageEER extends BaseEngine
 		}
 
 		String actitemList = actitemAccountList.toString();
-		String expitemList = "[BALL, C1, C2, CAM, Doll]";
+		String expitemList = "[BALL, C1, C2, CAM, Doll, STD RATE ITEM]";
 
 		System.out.println("actitemList"+actitemList);
 		System.out.println("expitemList"+expitemList);
+		
+		Thread.sleep(2000);
+		VoucherEntryCloseBtn.click();
+		voucherchanges_Yes.click();
+		Thread.sleep(5000);
 		
 		if (actPurchaseList.equalsIgnoreCase(expPurchaseList) && actvendorList.equalsIgnoreCase(expvendorList) 
 				&& actwarehouseList.equalsIgnoreCase(expwarehouseList) && actdepartmentList.equalsIgnoreCase(expdepartmentList)
 				&& actbranchList.equalsIgnoreCase(expbranchList) && actitemList.equalsIgnoreCase(expitemList))
 		{
+			
+			System.err.println("equal");
 			return true;
+			
 		} 
 		else
 		{	
+			System.err.println("not equal");
 			return false;
 		}
 		
@@ -13284,9 +13330,13 @@ public class UserRestrictionsPageEER extends BaseEngine
 	{
 		Thread.sleep(2500);
 		
+		getDriver().navigate().refresh();
+		Thread.sleep(3500);
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
+		ClickUsingJs(financialsMenu);
 					
+		Thread.sleep(2500);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionMenu));
 		financialsTransactionMenu.click();
 		
@@ -13410,7 +13460,7 @@ public class UserRestrictionsPageEER extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
 		
-		checkValidationMessage("Screen opened");
+		
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SalesAccountTxt));
 		SalesAccountTxt.click();
@@ -13516,6 +13566,9 @@ public class UserRestrictionsPageEER extends BaseEngine
 		System.out.println("actdepartmentList"+actdepartmentList);
 		System.out.println("expdepartmentList"+expdepartmentList);
 		
+		departmentTxt.sendKeys(Keys.TAB);	
+		
+		Thread.sleep(2000);
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_1stColumn));
 		select1stRow_1stColumn.click();
@@ -13539,12 +13592,15 @@ public class UserRestrictionsPageEER extends BaseEngine
 		}
 
 		String actitemList = actitemAccountList.toString();
-		String expitemList = "[BALL, C1, C2, CAM, Doll]";
+		String expitemList = "[BALL, C1, C2, CAM, Doll, STD RATE ITEM]";
 
 		System.out.println("actitemList"+actitemList);
 		System.out.println("expitemList"+expitemList);
 		
-
+		Thread.sleep(2000);
+		VoucherEntryCloseBtn.click();
+		voucherchanges_Yes.click();
+		Thread.sleep(2000);
 
 		if (actSalesList.equalsIgnoreCase(expSalesList) && actCustomerList.equalsIgnoreCase(expCustomerList) 
 				&& actwarehouseList.equalsIgnoreCase(expwarehouseList) && actdepartmentList.equalsIgnoreCase(expdepartmentList)
@@ -13579,6 +13635,7 @@ public class UserRestrictionsPageEER extends BaseEngine
 	
 	public static boolean checkPaymentsVoucherHomePageMastersList() throws InterruptedException
 	{
+		Thread.sleep(3000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
 		
@@ -13593,7 +13650,6 @@ public class UserRestrictionsPageEER extends BaseEngine
 		
 		Thread.sleep(2000);
 		
-
 		ArrayList<String>  DepartmentList = new ArrayList<String>(); 
 
 		int Dcount=PvoucherDeptNames.size();
@@ -13691,7 +13747,7 @@ public class UserRestrictionsPageEER extends BaseEngine
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
-		checkValidationMessage("Screen opened");
+		
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(CBAccountTxt));
 		CBAccountTxt.click();
@@ -13775,6 +13831,11 @@ public class UserRestrictionsPageEER extends BaseEngine
 
 		System.out.println("actAccountList"+actAccountList);
 		System.out.println("expAccountList"+expAccountList);
+		
+		Thread.sleep(2000);
+		VoucherEntryCloseBtn.click();
+		voucherchanges_Yes.click();
+		Thread.sleep(2000);
 
 		if (actCBAList.equalsIgnoreCase(expCBAList) && actdepartmentList.equalsIgnoreCase(expdepartmentList) 
 				&& actAccountList.equalsIgnoreCase(expAccountList))
@@ -13900,7 +13961,7 @@ public class UserRestrictionsPageEER extends BaseEngine
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
-		checkValidationMessage("Screen opened");
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(CBAccountTxt));
 		CBAccountTxt.click();
@@ -13985,8 +14046,10 @@ public class UserRestrictionsPageEER extends BaseEngine
 		System.out.println("actAccountList"+actAccountList);
 		System.out.println("expAccountList"+expAccountList);
 		
-		Thread.sleep(1500);
-		transactionCloseBtn.click();
+		Thread.sleep(2000);
+		VoucherEntryCloseBtn.click();
+		voucherchanges_Yes.click();
+		Thread.sleep(2000);
 		
 
 		if (actCBAList.equalsIgnoreCase(expCBAList) && actdepartmentList.equalsIgnoreCase(expdepartmentList) 
@@ -14004,8 +14067,8 @@ public class UserRestrictionsPageEER extends BaseEngine
 	
 	public static boolean checkLogoutAndLogin() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
-		getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(userNameDisplay));
-		userNameDisplay.click();
+		getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(userNameTxt1));
+		userNameTxt1.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(logoutOption));
 		logoutOption.click();
@@ -14073,14 +14136,14 @@ public class UserRestrictionsPageEER extends BaseEngine
 
 		Thread.sleep(8000);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(userNameDisplay));
-		userNameDisplay.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(userNameTxt1));
+		userNameTxt1.click();
 
-		String userInfo=userNameDisplay.getText();
+		String userInfo=userNameTxt1.getText();
 
 		System.out.println("User Info : "+userInfo);
 
-		System.out.println("User Info Capture Text :"+userNameDisplay.getText());
+		System.out.println("User Info Capture Text :"+userNameTxt1.getText());
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogo));
 

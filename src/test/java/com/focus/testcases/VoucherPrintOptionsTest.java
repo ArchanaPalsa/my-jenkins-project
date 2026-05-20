@@ -32,9 +32,8 @@ public class VoucherPrintOptionsTest extends BaseEngine
 		  Assert.assertEquals(VPO.checkSavingPurchaseVoucherVATVoucher2(), true);
 	  }*/
 
-
-	///*
-
+	
+	
 	@Test(priority=10051)
 	public void checkAccouncreatedForPrintEmailOne() throws AWTException, Exception
 	{
@@ -55,7 +54,7 @@ public class VoucherPrintOptionsTest extends BaseEngine
 		VPO=new VoucherPrintOptionsPage(getDriver());
 		Assert.assertEquals(VPO.checkAccouncreatedForPrintEmailThree(), true);
 	}
-
+	
 	@Test(priority=10054)
 	public void checkSavingReceiptsVoucherForEmailAccountOne() throws AWTException, Exception
 	{
@@ -113,7 +112,7 @@ public class VoucherPrintOptionsTest extends BaseEngine
 		VPO=new VoucherPrintOptionsPage(getDriver());
 		Assert.assertEquals(VPO.checkVoucherEmailDetailsInInfoBtn(), true);
 	}
-
+	
 
 	// Voucher Print Validations
 
@@ -145,7 +144,6 @@ public class VoucherPrintOptionsTest extends BaseEngine
 		Assert.assertEquals(VPO.checkFieldsTabOptions(), true);
 	}
 
-
 	//1
 	@Test(priority=10110)
 	public void checkCreatingLayoutforGridPropertiesForClubByItem() throws AWTException, Exception
@@ -154,14 +152,12 @@ public class VoucherPrintOptionsTest extends BaseEngine
 		Assert.assertEquals(VPO.checkCreatingLayoutforGridProperties(), true);
 	}
 
-
 	@Test(priority=10111)
 	public void checkLayoutFieldProperties() throws AWTException, Exception
 	{
 		VPO=new VoucherPrintOptionsPage(getDriver());
 		Assert.assertEquals(VPO.checkLayoutFieldProperties(), true);
 	}
-
 
 	@Test(priority=10112)
 	public void checkGridProperties_ClubByItem() throws AWTException, Exception
@@ -170,7 +166,7 @@ public class VoucherPrintOptionsTest extends BaseEngine
 		Assert.assertEquals(VPO.checkGridProperties_ClubByItem(), true);
 	}
 
-
+	
 	@Test(priority=10113)
 	public void checkPrintPdfWithEnablingDontClubIfRatesAreDiff() throws AWTException, Exception
 	{
@@ -193,6 +189,8 @@ public class VoucherPrintOptionsTest extends BaseEngine
 	}
 
 
+	
+	
 	@Test(priority=10116)
 	public void checkGridProperties_ClubByWarehouse() throws AWTException, Exception
 	{
@@ -200,14 +198,12 @@ public class VoucherPrintOptionsTest extends BaseEngine
 		Assert.assertEquals(VPO.checkGridProperties_ClubByWarehouse(), true);
 	}
 
-
 	@Test(priority=10117)
 	public void checkPrintpdfForLayoutWithClubByWarehouse() throws AWTException, Exception
 	{
 		VPO=new VoucherPrintOptionsPage(getDriver());
 		Assert.assertEquals(VPO.checkPrintpdfForLayoutWithClubByWarehouse(), true);
 	}
-
 
 	//2
 	@Test(priority=10120)
@@ -277,7 +273,7 @@ public class VoucherPrintOptionsTest extends BaseEngine
 		VPO=new VoucherPrintOptionsPage(getDriver());
 		Assert.assertEquals(VPO.checkGridproperties_OrderbyItem(), true);
 	}
-
+	
 	@Test(priority=10129)
 	public void checkPrintPdfGridPropertiesOrderByItem() throws AWTException, Exception
 	{
@@ -366,6 +362,7 @@ public class VoucherPrintOptionsTest extends BaseEngine
 		VPO=new VoucherPrintOptionsPage(getDriver());
 		Assert.assertEquals(VPO.chechPrintPdfForMultipleLayoutVoucher(), true);
 	}
+	
 
 	//6
 	@Test(priority=10145)
@@ -414,7 +411,6 @@ public class VoucherPrintOptionsTest extends BaseEngine
 		Assert.assertEquals(VPO.checkAddingFieldsInPvVatHeader(), true);
 	}
 
-
 	@Test(priority=10151)
 	public void checkSaveHeaderPictureField() throws AWTException, Exception
 	{
@@ -443,20 +439,22 @@ public class VoucherPrintOptionsTest extends BaseEngine
 		Assert.assertEquals(VPO.checkSavingPvVATWithDocAndPictures(), true);
 	}
 
-
-	//7
-	@Test(priority=10155)
-	public void checkSavingDesignLayourForAttachments() throws AWTException, Exception
-	{
-		VPO=new VoucherPrintOptionsPage(getDriver());
-		Assert.assertEquals(VPO.checkSavingDesignLayourForAttachments(), true);
-	}
-
+	
+	  //7
+	  
+	  @Test(priority=10155)
+	  public void checkSavingDesignLayourForAttachments() throws AWTException, Exception
+	  {
+	  VPO=new VoucherPrintOptionsPage(getDriver());
+	  Assert.assertEquals(VPO.checkSavingDesignLayourForAttachments(), true); 
+	  }
+	 
 
 	@Test(priority=10156)
 	public void checkPropertiesForLayoutAttachments() throws AWTException, Exception
 	{
 		VPO=new VoucherPrintOptionsPage(getDriver());
+		
 		Assert.assertEquals(VPO.checkPropertiesForLayoutAttachments(), true);
 	}
 
@@ -467,7 +465,7 @@ public class VoucherPrintOptionsTest extends BaseEngine
 		VPO=new VoucherPrintOptionsPage(getDriver());
 		Assert.assertEquals(VPO.checkPrintPDFForAttachmentsLayout(), true);
 	}
-
+	
 	@Test(priority=10158)
 	public void checkDragandDropHeaderFiledsAndBodyFiledsIntoLayout() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
@@ -482,7 +480,7 @@ public class VoucherPrintOptionsTest extends BaseEngine
 		Assert.assertEquals(VPO.checkChangeFieldPropertiesInLyout(), true);
 	}
 
-	//@Test(priority=10160)
+	@Test(priority=10160)
 	public void checkPrintPdfOfPurchaseVoucherVATWithCreatedLayout() throws AWTException, Exception
 	{
 		VPO=new VoucherPrintOptionsPage(getDriver());
@@ -498,7 +496,7 @@ public class VoucherPrintOptionsTest extends BaseEngine
 	}
 
 
-	//@Test(priority=10162)
+	@Test(priority=10162)
 	public void checkChangeFieldPropertiesInLayoutForMultiplePages() throws AWTException, Exception
 	{
 		VPO=new VoucherPrintOptionsPage(getDriver());
@@ -512,31 +510,69 @@ public class VoucherPrintOptionsTest extends BaseEngine
 		VPO=new VoucherPrintOptionsPage(getDriver());
 		Assert.assertEquals(VPO.checkPrintPdfOfLayoutForMultiplePages(), true);
 	}
-
+	
+	
+	
 	//5
 
-	@Test(priority=10173)
-	public void checkPrintPdfForAreaLayout() throws AWTException, Exception
-	{
-		VPO=new VoucherPrintOptionsPage(getDriver());
-		Assert.assertEquals(VPO.checkPrintPdfForAreaLayout(), true);
-	}
-
-
-	@Test(priority=10174)
-	public void checkChangeAreaPropertiesToRelative() throws AWTException, Exception
-	{
-		VPO=new VoucherPrintOptionsPage(getDriver());
-		Assert.assertEquals(VPO.checkChangeAreaPropertiesToRelative(), true);
-	}
-
-
-	@Test(priority=10175)
+	@Test(priority=10165)
 	public void checkPrintPDFForAreaLayoutAfterChangingToRealtive() throws AWTException, Exception
 	{
 		VPO=new VoucherPrintOptionsPage(getDriver());
 		Assert.assertEquals(VPO.checkPrintPDFForAreaLayoutAfterChangingToRealtive(), true);
 	}
+	
+	@Test(priority=10166)
+	public void checkPrintPDFForImageGridLayout() throws AWTException, Exception
+	{
+		VPO=new VoucherPrintOptionsPage(getDriver());
+		Assert.assertEquals(VPO.checkPrintPDFForImageGridLayout(), true);
+	}
+	
+	@Test(priority=10167)
+	public void checkPrintPDFForFormaulaLayout() throws AWTException, Exception
+	{
+		VPO=new VoucherPrintOptionsPage(getDriver());
+		Assert.assertEquals(VPO.checkPrintPDFForFormaulaLayout(), true);
+	}
+	
+	@Test(priority=10168)
+	public void checkPrintPDFForGroupBy() throws AWTException, Exception
+	{
+		VPO=new VoucherPrintOptionsPage(getDriver());
+		Assert.assertEquals(VPO.checkPrintPDFForGroupBy(), true);
+	}
+	
+	
+	@Test(priority=10169)
+	public void checkPintPDFForRollerLayout() throws AWTException, Exception
+	{
+		VPO=new VoucherPrintOptionsPage(getDriver());
+		Assert.assertEquals(VPO.checkPintPDFForRollerLayout(), true);
+	}
+	
+	@Test(priority=10170)
+	public void checkPrintPDFValidationForBodyGridInArea() throws AWTException, Exception
+	{
+		VPO=new VoucherPrintOptionsPage(getDriver());
+		Assert.assertEquals(VPO.checkPrintPDFValidationForBodyGridInArea(), true);
+	}
+	
+
+	@Test(priority=10171)//getting exception message
+	public void checkFilterInPurchasesVoucherHomePage() throws AWTException, Exception
+	{
+		VPO=new VoucherPrintOptionsPage(getDriver());
+		Assert.assertEquals(VPO.checkFilterInPurchasesVoucherHomePage(), true);
+	}
+	//////////
+	@Test(priority=10172)
+	public void checkPurchasesAccountAndVendorAccInFilter() throws AWTException, Exception
+	{
+		VPO=new VoucherPrintOptionsPage(getDriver());
+		Assert.assertEquals(VPO.checkPurchasesAccountAndVendorAccInFilter(), true);
+	}
+
 
 	@Test(priority=10177)
 	public void checkPreviewOptionInPVVAT() throws AWTException, Exception
@@ -552,6 +588,40 @@ public class VoucherPrintOptionsTest extends BaseEngine
 		Assert.assertEquals(VPO.checkPrintAndEmailOutputOptionInPvVAT(), true);
 	}
 	
+	@Test(priority=10180)
+	public void checkEnableDoNotOpenPrintFileInNewWindowOptionInReports() throws AWTException, Exception
+	{
+		VPO=new VoucherPrintOptionsPage(getDriver());
+		Assert.assertEquals(VPO.checkEnableDoNotOpenPrintFileInNewWindowOptionInReports(), true);
+	}
+
+	@Test(priority=10181)
+	public void checkVerifyDoNotOpenPrintFileInNewWindow() throws AWTException, Exception
+	{
+		VPO=new VoucherPrintOptionsPage(getDriver());
+		Assert.assertEquals(VPO.checkVerifyDoNotOpenPrintFileInNewWindow(), true);
+	}
+	
+	@Test(priority=10182)
+	public void checkMergMultipleVouchersInSingleFileOptionInReports() throws AWTException, Exception
+	{
+		VPO=new VoucherPrintOptionsPage(getDriver());
+		Assert.assertEquals(VPO.checkMergMultipleVouchersInSingleFileOptionInReports(), true);
+	}
+
+	@Test(priority=10183)
+	public void checkVerifyMergMultipleVouchersInSingleFileOption() throws AWTException, Exception
+	{
+		VPO=new VoucherPrintOptionsPage(getDriver());
+		Assert.assertEquals(VPO.checkVerifyMergMultipleVouchersInSingleFileOption(), true);
+	}
+	
+	@Test(priority=10184)
+	public void checkPrintDocumentSetForTagwisePrintLayout() throws AWTException, Exception
+	{
+		VPO=new VoucherPrintOptionsPage(getDriver());
+		Assert.assertEquals(VPO.checkPrintDocumentSetForTagwisePrintLayout(), true);
+	}
 	
 	@Test(priority=21110)
 	public void checkValidateCustomerStatementsReport() throws AWTException, Exception
@@ -570,19 +640,174 @@ public class VoucherPrintOptionsTest extends BaseEngine
 	}
 
 
-	@Test(priority=21112)
+	//@Test(priority=21112)
 	public void checkValidateEmailAccountOneInBothCustomerStatementsAndEmailAccountOne() throws AWTException, Exception
 	{
 		VPO=new VoucherPrintOptionsPage(getDriver());
 		Assert.assertEquals(VPO.checkValidateEmailAccountOneInBothCustomerStatementsAndEmailAccountOne(), true);
 	}
 	
-	@Test(priority=21113)
+	//@Test(priority=21113)
 	public void checkValidateEmailAccountTwoInBothCustomerStatementsAndEmailAccountTwo() throws AWTException, Exception
 	{
 		VPO=new VoucherPrintOptionsPage(getDriver());
 		Assert.assertEquals(VPO.checkValidateEmailAccountTwoInBothCustomerStatementsAndEmailAccountTwo(), true);
 	}
+	
+	@Test(priority=21120)
+	public void checkSaveSalesInvoiceNVoucherWithDescription() throws AWTException, Exception
+	{
+		VPO=new VoucherPrintOptionsPage(getDriver());
+		Assert.assertEquals(VPO.checkSaveSalesInvoiceNVoucherWithDescription(), true);
+	}
+	
+	@Test(priority=21121)
+	public void checkPrintPDFForSalesInvoicesNForDescription() throws AWTException, Exception
+	{
+		VPO=new VoucherPrintOptionsPage(getDriver());
+		Assert.assertEquals(VPO.checkPrintPDFForSalesInvoicesNForDescription(), true);
+	}
+	
+	
+
+	@Test(priority=21125)
+	public void checkPrintPDFOfSalesQuotationWithNoApprovalOfAnyUsers() throws AWTException, Exception
+	{
+		VPO=new VoucherPrintOptionsPage(getDriver());
+		Assert.assertEquals(VPO.checkPrintPDFOfSalesQuotationWithNoApprovalOfAnyUsers(), true);
+	}
+	
+	@Test(priority=21126)
+	public void checkPrintPDFForSaleaQuotationWithUser1ApprovalOnly() throws AWTException, Exception
+	{
+		VPO=new VoucherPrintOptionsPage(getDriver());
+		Assert.assertEquals(VPO.checkPrintPDFForSaleaQuotationWithUser1ApprovalOnly(), true);
+	}
+	
+	@Test(priority=21127)
+	public void checkPrintPDFForSalesQuotationsWithUser1Nd2Approval() throws AWTException, Exception
+	{
+		VPO=new VoucherPrintOptionsPage(getDriver());
+		Assert.assertEquals(VPO.checkPrintPDFForSalesQuotationsWithUser1Nd2Approval(), true);
+	}
+	
+	@Test(priority=21128)
+	public void checkPrintPDFForSalesQuotationWithUser12Nd3Approval() throws AWTException, Exception
+	{
+		VPO=new VoucherPrintOptionsPage(getDriver());
+		Assert.assertEquals(VPO.checkPrintPDFForSalesQuotationWithUser12Nd3Approval(), true);
+	}
+	
+	@Test(priority=21129)
+	public void checkPrintPDFForSalesQuotationWithUser123ND4Approval() throws AWTException, Exception
+	{
+		VPO=new VoucherPrintOptionsPage(getDriver());
+		Assert.assertEquals(VPO.checkPrintPDFForSalesQuotationWithUser123ND4Approval(), true);
+	}
+	
+	@Test(priority=21130)
+	public void checkPrintPDFWithAll5UsersApproval() throws AWTException, Exception
+	{
+		VPO=new VoucherPrintOptionsPage(getDriver());
+		Assert.assertEquals(VPO.checkPrintPDFWithAll5UsersApproval(), true);
+	}
+	
+	@Test(priority=21131)
+	public void checkPrintPDFForTheRejectedDocumentInUser1Level() throws AWTException, Exception
+	{
+		VPO=new VoucherPrintOptionsPage(getDriver());
+		Assert.assertEquals(VPO.checkPrintPDFForTheRejectedDocumentInUser1Level(), true);
+	}
+	
+	@Test(priority=21132)
+	public void checkPrintPDFForTheRejectedDocumentInUser2Level() throws AWTException, Exception
+	{
+		VPO=new VoucherPrintOptionsPage(getDriver());
+		Assert.assertEquals(VPO.checkPrintPDFForTheRejectedDocumentInUser2Level(), true);
+	}
+	
+	@Test(priority=21133)
+	public void checkPrintPDFForTheRejectedDocumentInUser123Level() throws AWTException, Exception
+	{
+		VPO=new VoucherPrintOptionsPage(getDriver());
+		Assert.assertEquals(VPO.checkPrintPDFForTheRejectedDocumentInUser123Level(), true);
+	}
+	
+	
+	@Test(priority=21134)
+	public void checkEnableAccountNameInPostingDetailsOnScreenAndInPrint() throws AWTException, Exception
+	{
+		VPO=new VoucherPrintOptionsPage(getDriver());
+		Assert.assertEquals(VPO.checkEnableAccountNameInPostingDetailsOnScreenAndInPrint(), true);
+	}
+	
+	@Test(priority=21135)
+	public void checkValidateAccountNameInPostingDetailsInBothScreenAndPrint() throws AWTException, Exception
+	{
+		VPO=new VoucherPrintOptionsPage(getDriver());
+		Assert.assertEquals(VPO.checkValidateAccountNameInPostingDetailsInBothScreenAndPrint(), true);
+	}
+	
+	@Test(priority=21136)
+	public void checkPostingDetailsInPrintLayoutWhenAccountNameIsEnabled() throws AWTException, Exception
+	{
+		VPO=new VoucherPrintOptionsPage(getDriver());
+		Assert.assertEquals(VPO.checkPostingDetailsInPrintLayoutWhenAccountNameIsEnabled(), true);
+	}
+	
+	@Test(priority=21137)
+	public void checkEnableAccountCodeInPostingDetailsOnScreenAndInPrint() throws AWTException, Exception
+	{
+		VPO=new VoucherPrintOptionsPage(getDriver());
+		Assert.assertEquals(VPO.checkEnableAccountCodeInPostingDetailsOnScreenAndInPrint(), true);
+	}
+	
+	@Test(priority=21138)
+	public void checkValidateAccountCodeInPostingDetailsInBothScreenAndPrint() throws AWTException, Exception
+	{
+		VPO=new VoucherPrintOptionsPage(getDriver());
+		Assert.assertEquals(VPO.checkValidateAccountCodeInPostingDetailsInBothScreenAndPrint(), true);
+	}
+	
+	@Test(priority=21139)
+	public void checkPostingDetailsInPrintLayoutWhenAccountCodeIsEnabled() throws AWTException, Exception
+	{
+		VPO=new VoucherPrintOptionsPage(getDriver());
+		Assert.assertEquals(VPO.checkPostingDetailsInPrintLayoutWhenAccountCodeIsEnabled(), true);
+	}
+	
+	@Test(priority=21140)
+	public void checkEnableAccountNameAndCodeInPostingDetailsOnScreenAndInPrint() throws AWTException, Exception
+	{
+		VPO=new VoucherPrintOptionsPage(getDriver());
+		Assert.assertEquals(VPO.checkEnableAccountNameAndCodeInPostingDetailsOnScreenAndInPrint(), true);
+	}
+	
+	@Test(priority=21141)
+	public void checkValidateAccountNameAndCodeInPostingDetailsInBothScreenAndPrint() throws AWTException, Exception
+	{
+		VPO=new VoucherPrintOptionsPage(getDriver());
+		Assert.assertEquals(VPO.checkValidateAccountNameAndCodeInPostingDetailsInBothScreenAndPrint(), true);
+	}
+	
+	@Test(priority=21142)
+	public void checkPostingDetailsInPrintLayoutWhenAccountNameAndCodeIsEnabled() throws AWTException, Exception
+	{
+		VPO=new VoucherPrintOptionsPage(getDriver());
+		Assert.assertEquals(VPO.checkPostingDetailsInPrintLayoutWhenAccountNameAndCodeIsEnabled(), true);
+	}
+	
+	
+	@Test(priority=21143)
+	public void checkPrintCreatedDateFieldInPVVATVoucher() throws AWTException, Exception
+	{
+		VPO=new VoucherPrintOptionsPage(getDriver());
+		Assert.assertEquals(VPO.checkPrintCreatedDateFieldInPVVATVoucher(), true);
+	}
+	
+	
+	
+	
 	
 	@Test(priority=40000)
 	public void checkLogoutFromVoucherPrintPage() throws AWTException, Exception
@@ -592,10 +817,9 @@ public class VoucherPrintOptionsTest extends BaseEngine
 	}
 	
 	
+	/*
 	
-
-
-
+	
 	//Not needed
 
 	/*@Test(priority=10176)
@@ -679,8 +903,8 @@ public class VoucherPrintOptionsTest extends BaseEngine
 		  Assert.assertEquals(VPO.checkDragnetVouchernetAndAreaItoLayout(), true);
 	  }
 
-	 */
-
+	 
+*/
 
 
 }

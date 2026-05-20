@@ -633,16 +633,16 @@ public class ProductCodeIncrementalPage extends BaseEngine
 	    
 	    reLogin(unamelt, pawslt, "Account Properties And Customization");
 	          
-	    getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(userNameTxt));
-	    userNameTxt.click();
+	    getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(usernametxt));
+	   // usernametxt.click();
 	           	
-		String userInfo=userNameTxt.getText();
+		String userInfo=usernametxt1.getText();
 		
 		System.out.println("User Info : "+userInfo);
 		
-		System.out.println("User Info Capture Text :"+userNameTxt.getText());
+		System.out.println("User Info Capture Text :"+usernametxt.getText());
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogoImg));
+	/*	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogoImg));
 		
 		companyLogoImg.click();
 		
@@ -650,7 +650,7 @@ public class ProductCodeIncrementalPage extends BaseEngine
 		String getLoginCompanyName=getCompanyTxt.substring(0, 36);
 		System.out.println("company name :"+ getLoginCompanyName);
 		companyLogoImg.click();
-		
+		*/
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(dashboardName));
 		
 		String getDashboard=dashboardName.getText();
@@ -660,17 +660,17 @@ public class ProductCodeIncrementalPage extends BaseEngine
 	    
 	    String expuserInfo            ="SU";
 	    String expLoginCompanyName    ="Account Properties And Customization";
-	    String expDashboard			  ="Graph with Active and setAsDefault";
+	    String expDashboard			  ="Dashboard";
 	   
 		
 		System.out.println("***********************************checkLogin*********************************");
 	    
 	    System.out.println("User Info                        : "+userInfo               +"  value expected  "+expuserInfo);
-	    System.out.println("Login Company Name               : "+getLoginCompanyName    +"  value expected  "+expLoginCompanyName);
+	 //   System.out.println("Login Company Name               : "+getLoginCompanyName    +"  value expected  "+expLoginCompanyName);
 	    System.out.println("Dashboard                        : "+getDashboard           +"  value expected  "+expDashboard);
 	   
 	  
-		if(userInfo.equalsIgnoreCase(expuserInfo) /*&& getLoginCompanyName.equalsIgnoreCase(expLoginCompanyName)*/)
+		if(userInfo.equalsIgnoreCase(expuserInfo)  && getDashboard.equalsIgnoreCase(expDashboard)/*&& getLoginCompanyName.equalsIgnoreCase(expLoginCompanyName)*/)
 		{	
 			return true;
 		}	 

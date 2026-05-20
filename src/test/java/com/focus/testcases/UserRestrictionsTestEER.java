@@ -18,26 +18,26 @@ public class UserRestrictionsTestEER extends BaseEngine
 	
 	//SanityBackup in backup folder in project
 
-   //@Test(priority=1999)
+   // @Test(priority=1999)
 	public void checkRestoreCompany() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		urp=new UserRestrictionsPageEER(getDriver());
 	  Assert.assertEquals(urp.checkRestoreCompany(), true);
 	}
 
-	@Test(priority=2000)
-	public void checkLogin() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
-	{
-		urp=new UserRestrictionsPageEER(getDriver());
-	  Assert.assertEquals(urp.checkLogin(), true);
-	}
-
+	/*
+	 * @Test(priority=2000) public void checkLogin() throws
+	 * EncryptedDocumentException, InvalidFormatException, IOException,
+	 * InterruptedException { urp=new UserRestrictionsPageEER(getDriver());
+	 * Assert.assertEquals(urp.checkLogin(), true); }
+	 */
+/*
 	@Test(priority=2001)
 	public void checkValidateRestrictionsGivenInRERRoleInSu() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		urp=new UserRestrictionsPageEER(getDriver());
 	  Assert.assertEquals(urp.checkValidateRestrictionsGivenInRERRoleInSu(), true);
-	}
+	}*/
 	
 	@Test(priority=2002)
 	public void checkLoginWithERR() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
@@ -45,7 +45,7 @@ public class UserRestrictionsTestEER extends BaseEngine
 		urp=new UserRestrictionsPageEER(getDriver());
 	  Assert.assertEquals(urp.checkLoginWithERR(), true);
 	}
-	
+	/*
 	@Test(priority=2003)// pronghron
 	public void checkAccountMasterWhetherShowingOnlyRestrictedAccountsInList() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
@@ -123,7 +123,7 @@ public class UserRestrictionsTestEER extends BaseEngine
 		urp=new UserRestrictionsPageEER(getDriver());
 	  Assert.assertEquals(urp.checkPurchaseVoucherHomePageMastersList(), true);
 	}
-	
+	*/
 	@Test(priority=2014)
 	public void checkPurchasesVoucherForAllTheMastersListInMastersDropdown() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{

@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.commons.collections4.iterators.ArrayListIterator;
+import org.apache.commons.lang3.SystemUtils;
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.By;
@@ -10580,19 +10582,11 @@ public class FocusFinancialsEERReportPage extends BaseEngine
 		
    	
 		
-
-		@FindBy(xpath="//input[@id='selectAllMasters_']")
-		public static WebElement sl_SelectAllItemsChkBox;
-
 		
 		@FindBy(xpath="//select[@id='DateOptions_']")
 		public static WebElement sl_DateOptionDropdown;
 
-		@FindBy(xpath="//i[contains(@class,'icon-font6 icon-ok')]")
-		public static WebElement sl_OkBtn;
-		
-		@FindBy(xpath="//div[@id='REPORTRENDERNEWControls']//*[@class='icon-font6 icon-close']")
-		public static WebElement sl_CloseBtn;
+	
 		
 		
 		@FindBy(xpath="//table[@class='CommonReportTable']//tbody//tr[1]//td[2]")
@@ -10674,8 +10668,11 @@ public class FocusFinancialsEERReportPage extends BaseEngine
 		@FindBy(xpath="(//a[text()=' Account']//i)[1]")
 		public static WebElement  report_FilterAccountExpansion;
 		
-		@FindBy(xpath="(//input[@id='5002'])[1]")
+		@FindBy(xpath="(//input[@id='5002']//following-sibling::span)[1]")
 		public static WebElement  report_FilterAccountNameChkbox;
+		
+		@FindBy(xpath="(//input[@id='5002'])[1]")
+		public static WebElement  report_FilterAccountNameChkboxSelected;
 		
 		@FindBy(xpath="//input[@id='5021']")
 		public static WebElement  report_FilterItemNameChkbox;
@@ -10683,9 +10680,6 @@ public class FocusFinancialsEERReportPage extends BaseEngine
 		@FindBy(xpath="//input[@id='5058']")
 		public static WebElement  report_FilterWarehouseNameChkbox;
 		
-		//@FindBy(xpath="(//input[@class='FButton-Primary'])[1]")
-		@FindBy(xpath="(//button[@class='Fbutton'])[1]")
-		public static WebElement  reports_Filter_Customize_OkBtn;
 		
 		@FindBy(xpath="//input[@id='FOption_551_0_DefaultFilter_0']")
 		public static WebElement  osr_DefaultFilterTxt;
@@ -10700,10 +10694,6 @@ public class FocusFinancialsEERReportPage extends BaseEngine
 		public static WebElement  report_Filter_RefreshConditionBtn;
 		
 		
-		
-		@FindBy(xpath="//span[@id='filter_Okbtn_']")
-		public static WebElement  report_FilterOkBtn;
-		
 		@FindBy(xpath="//i[contains(@class,'icon icon-close')]")
 		public static WebElement  report_FilterCancelBtn;
 		
@@ -10711,9 +10701,6 @@ public class FocusFinancialsEERReportPage extends BaseEngine
 		@FindBy(xpath="(//table[@class='CommonReportTable']/tbody)[1]/tr")
 		public static List<WebElement> reportsRowsCount;
 		
-			
-		@FindBy(xpath="//div[@id='REPORTRENDERNEWControls']//*[@class='icon-font6 icon-filter']")
-		public static WebElement report_FilterBtn;
 		
 		@FindBy(xpath="(//tr[@id='trRender_0'])[1]/td")
 		public static List<WebElement> reportsRow1List;
@@ -11077,31 +11064,6 @@ public class FocusFinancialsEERReportPage extends BaseEngine
 
 		// Skid Definition
 		
-		
-		@FindBy(xpath="//input[@id='skidId']")
-		public static WebElement skid;
-		
-		@FindBy(xpath="//input[@id='txtprefix']")
-		public static WebElement prefixTxt;
-		
-		@FindBy(xpath="//input[@id='txtStartingNumber']")
-		public static WebElement startingNoTxt;
-		
-		@FindBy(xpath="//input[@id='chkSkid']")
-		public static WebElement enableReprintChkBox;
-		
-		@FindBy(xpath="//input[@id='txtQuantity']")
-		public static WebElement quantityTxt;
-		
-		@FindBy(xpath="//span[@class='icon-analyze icon-font6']")
-		public static WebElement sd_PreviewBtn;
-		
-		@FindBy(xpath="//span[@class='icon-print icon-font6']")
-		public static WebElement sd_PrintBtn;
-		
-		@FindBy(xpath="//span[@class='icon-close']")
-		public static WebElement sd_CloseBtn;
-
 
 		@FindBy(xpath="//input[@id='RITTable__0']")
 		public static WebElement reportVoucherTxt;
@@ -11121,48 +11083,7 @@ public class FocusFinancialsEERReportPage extends BaseEngine
 		@FindBy(xpath="//*[@id='RITTable__0_table_body']/tr/td[2]")
 		public static List<WebElement> reportUsersTxtList;
 		
-		@FindBy(xpath="//input[@id='accountQuery']")
-		public static WebElement accountQueryTxt;
-		
-		@FindBy(xpath="//button[@class='btn btn-default btn-sm']")
-		public static WebElement getAccountDetailsBtn;
-		
-		@FindBy(xpath="//table[@id='creditTransTable']//tr[1]//td")
-		public static List<WebElement> CreditTransactionsTableR1;
-		@FindBy(xpath="//table[@id='creditTransTable']//tr[2]//td")
-		public static List<WebElement> CreditTransactionsTableR2;
-		
-		@FindBy(xpath="//table[@id='debitTransTable']//tr[1]//td")
-		public static List<WebElement> debitTransactionsTableR1;
-		@FindBy(xpath="//table[@id='debitTransTable']//tr[2]//td")
-		public static List<WebElement> debitTransactionsTableR2;
-		@FindBy(xpath="//table[@id='debitTransTable']//tr[3]//td")
-		public static List<WebElement> debitTransactionsTableR3;
-		
-		
-		@FindBy(xpath="//*[@id='page_Content']//div[2]/div[1]/span")
-		public static WebElement departmentBillWiseToggle;
-		
-		@FindBy(xpath="//table[@id='tagWiseTransData']//tr[1]//td")
-		public static List<WebElement> TagTransactionTableR1;
-		@FindBy(xpath="//table[@id='tagWiseTransData']//tr[2]//td")
-		public static List<WebElement> TagTransactionTableR2;
-		@FindBy(xpath="//table[@id='tagWiseTransData']//tr[3]//td")
-		public static List<WebElement> TagTransactionTableR3;
-		
-		@FindBy(xpath="//span[@id='openingBal']")
-		public static WebElement  AQ_OpnBal;
-		
-		@FindBy(xpath="//span[@id='credit']")
-		public static WebElement  AQ_Credit;
-		
-		@FindBy(xpath="//span[@id='debit']")
-		public static WebElement  AQ_Debit;
-		
-		@FindBy(xpath="//span[@id='balance']")
-		public static WebElement  AQ_Balance;
-		
-		
+	
 		@FindBy(xpath="//*[@id='711']//span[contains(text(),'Master authorization report')]")
 		public static WebElement  masterAuthorizationReport;
 		
@@ -11305,6670 +11226,6021 @@ public class FocusFinancialsEERReportPage extends BaseEngine
 		public static WebElement  receivablePayableReport;
 		
 
-		@FindBy (xpath="//div[@id='REPORTRENDERNEWControls']/ul/li/span[3]")
-		public static WebElement sl_ReportPrintBtn;
-		
-		
-
-
-	
-	public static boolean checkLedgerReport() throws InterruptedException
-	{
-
-		getDriver().navigate().refresh();
-		Thread.sleep(2000);
-	
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
-		financialsReportsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ledger));
-		ledger.click();
-		
-		Thread.sleep(3000);
-
-		getAction().moveToElement(sl_SelectAllItemsChkBox).build().perform();
-		Thread.sleep(3000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByIndex(1);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-
-		Thread.sleep(2000);
-		
-		Thread.sleep(2000);
-
-		int reportsRow2ListCount = reportsCol2List.size();
-		ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow2ListCount;i++)
+		public static boolean checkLedgerReport() throws InterruptedException
 		{
-			String data = reportsCol2List.get(i).getText().trim();
-			if(data.isEmpty() == false )
+
+			getDriver().navigate().refresh();
+			Thread.sleep(2000);
+		
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
+			financialsReportsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ledger));
+			ledger.click();
+			
+			Thread.sleep(3000);
+
+			getAction().moveToElement(sl_SelectAllChkBox).build().perform();
+			Thread.sleep(3000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+			sl_SelectAllChkBox.click();
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByIndex(1);
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+
+			Thread.sleep(2000);
+			
+			Thread.sleep(2000);
+
+			int reportsRow2ListCount = reportsCol2List.size();
+			ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow2ListCount;i++)
 			{
-				reportsRow2ListArray.add(data);
+				String data = reportsCol2List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow2ListArray.add(data);
+				}
+
+			}
+			
+			
+			String actRow2List = reportsRow2ListArray.toString();
+			String expRow2List = "[Pmt : 2, Pmt : 2, DebNts : 2, Rct : 2, Rct : 2, CreNts : 2, PurVou : 11, PurVou : 12, CreNts : 2]";
+
+			System.out.println("Actaul Voucher  :"+actRow2List);
+			System.out.println("Expected Voucher:"+expRow2List);
+			
+			int reportsRow3ListCount = reportsCol3List.size();
+			ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow3ListCount;i++)
+			{
+				String data = reportsCol3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow3ListArray.add(data);
+				}
+
+			}
+			String actRow3List = reportsRow3ListArray.toString();
+			String expRow3List = "[C1, G1, CustVend, C2, G2, CustVend, C2, Opening Balance, Cost of goods sold - Computers, Bank]";
+
+			
+			System.out.println("Actaul Account  :"+actRow3List);
+			System.out.println("Expected Account:"+expRow3List);
+			
+			Thread.sleep(4000);
+
+			int reportsRow4ListCount = reportsCol4List.size();
+			ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow4ListCount;i++)
+			{
+				String data = reportsCol4List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow4ListArray.add(data);
+				}
+
+			}
+			
+			String actRow4List = reportsRow4ListArray.toString();
+			String expRow4List = "[BR-SEC, BR-SEC]";
+
+			System.out.println("Actual Branch  :"+actRow4List);
+			System.out.println("Expected Branch:"+expRow4List);
+			
+			int reportsRow5ListCount = reportsCol5List.size();
+			ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow5ListCount;i++)
+			{
+				String data = reportsCol5List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow5ListArray.add(data);
+				}
+
+			}
+			String actRow5List = reportsRow5ListArray.toString();
+			String expRow5List = "[C1, C1, C2, C2, C2, C1, C2, FIN, C1]";
+
+			System.out.println("Actual Department  :"+actRow5List);
+			System.out.println("Expected Department:"+expRow5List);
+			
+			int reportsRow6ListCount = reportsCol6List.size();
+			ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow6ListCount;i++)
+			{
+				String data = reportsCol6List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow6ListArray.add(data);
+				}
+
+			}
+			String actRow6List = reportsRow6ListArray.toString();
+			String expRow6List = "[C2, SEC]";
+
+			System.out.println("Actual Warehouse  :"+actRow6List);
+			System.out.println("Expected Warehouse:"+expRow6List);
+			
+		
+			ArrayList<String>  AllDatapage1 = new ArrayList<String>(); 
+
+			int count1=stockLedgerTable.size();
+
+			System.err.println(count1);
+
+			for(int i=0 ; i < count1 ;i++)
+			{
+				String style= stockLedgerTable.get(i).getAttribute("style");
+				if(style.contains("overflow: visible; font-weight: bold; background-color:"))
+						{
+					    String data=stockLedgerTable.get(i).getText();
+					    AllDatapage1.add(data);
+						}
+		
 			}
 
-		}
-		
-		
-		String actRow2List = reportsRow2ListArray.toString();
-		String expRow2List = "[Pmt : 2, Pmt : 2, DebNts : 2, Rct : 2, Rct : 2, CreNts : 2, PurVou : 11, PurVou : 12, CreNts : 2]";
+			String actAllDatapage1 = AllDatapage1.toString();
+			String expAllDatapage1 = "[Cash [121-002], Bank [121-001], Inventory Trade [120-003], Customer A [122-001], CustVend [CV001]]";
 
-		System.out.println("Actaul Voucher  :"+actRow2List);
-		System.out.println("Expected Voucher:"+expRow2List);
+			System.out.println("actAllDatapage1"+actAllDatapage1);
+			System.out.println("expAllDatapage1"+expAllDatapage1);
+			
+			Thread.sleep(2000);
+			report_NextBtn.click();
+			Thread.sleep(5000);
+			
+			
+			System.out.println("*************************Printing page 1 data done*********************************");
+
 		
-		int reportsRow3ListCount = reportsCol3List.size();
-		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow3ListCount;i++)
-		{
-			String data = reportsCol3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
+			try
 			{
-				reportsRow3ListArray.add(data);
-			}
 
-		}
-		String actRow3List = reportsRow3ListArray.toString();
-		String expRow3List = "[C1, G1, CustVend, C2, G2, CustVend, C2, Opening Balance, Cost of goods sold - Computers, Bank]";
-
-		
-		System.out.println("Actaul Account  :"+actRow3List);
-		System.out.println("Expected Account:"+expRow3List);
-		
-		Thread.sleep(4000);
-
-		int reportsRow4ListCount = reportsCol4List.size();
-		ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow4ListCount;i++)
-		{
-			String data = reportsCol4List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow4ListArray.add(data);
-			}
-
-		}
-		
-		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[BR-SEC, BR-SEC]";
-
-		System.out.println("Actual Branch  :"+actRow4List);
-		System.out.println("Expected Branch:"+expRow4List);
-		
-		int reportsRow5ListCount = reportsCol5List.size();
-		ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow5ListCount;i++)
-		{
-			String data = reportsCol5List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow5ListArray.add(data);
-			}
-
-		}
-		String actRow5List = reportsRow5ListArray.toString();
-		String expRow5List = "[C1, C1, C2, C2, C2, C1, C2, FIN, C1]";
-
-		System.out.println("Actual Department  :"+actRow5List);
-		System.out.println("Expected Department:"+expRow5List);
-		
-		int reportsRow6ListCount = reportsCol6List.size();
-		ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow6ListCount;i++)
-		{
-			String data = reportsCol6List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow6ListArray.add(data);
-			}
-
-		}
-		String actRow6List = reportsRow6ListArray.toString();
-		String expRow6List = "[C2, SEC]";
-
-		System.out.println("Actual Warehouse  :"+actRow6List);
-		System.out.println("Expected Warehouse:"+expRow6List);
-		
-	
-		ArrayList<String>  AllDatapage1 = new ArrayList<String>(); 
-
-		int count1=stockLedgerTable.size();
-
-		System.err.println(count1);
-
-		for(int i=0 ; i < count1 ;i++)
-		{
-			String style= stockLedgerTable.get(i).getAttribute("style");
-			if(style.contains("overflow: visible; font-weight: bold; background-color:"))
-					{
-				    String data=stockLedgerTable.get(i).getText();
-				    AllDatapage1.add(data);
-					}
-	
-		}
-
-		String actAllDatapage1 = AllDatapage1.toString();
-		String expAllDatapage1 = "[Cash 121-002, Bank 121-001, Inventory Trade 120-003, Customer A 122-001, CustVend CV001]";
-
-		System.out.println("actAllDatapage1"+actAllDatapage1);
-		System.out.println("expAllDatapage1"+expAllDatapage1);
-		
-		Thread.sleep(2000);
-		report_NextBtn.click();
-		Thread.sleep(2000);
-		
-		
-		System.out.println("*************************Printing page 1 data done*********************************");
-
-	
-		try
-		{
-			if(pageNum.getText().equalsIgnoreCase("4"))
-					{
-				report_PrevBtn.click();
+				if(pageNum.getText().equalsIgnoreCase("2"))
+				{
+					System.err.println("ok");
 				
-					}
+				}
+			
+				
+				
+				
+			
+			}
+			catch (Exception e3) {
+
+				if(pageNum.getText().equalsIgnoreCase("4"))
+				{
+					report_PrevBtn.click();
+					Thread.sleep(2000);
+					report_PrevBtn.click();
+
+				}
+
+				Thread.sleep(5000);
+
+				if(pageNum.getText().equalsIgnoreCase("3"))
+				{
+					Thread.sleep(3000);
+					ClickUsingJs(report_PrevBtn);
+				}
+
+				System.out.println("Exception "+e3);
+			}
+			
+		
+		
+
+			int reportsPage2Row2ListCount = reportsCol2List.size();
+			ArrayList<String> reportsPage2Row2ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsPage2Row2ListCount;i++)
+			{
+				String data = reportsCol2List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsPage2Row2ListArray.add(data);
+				}
+
+			}
 			
 			
-			if(pageNum.getText().equalsIgnoreCase("3"))
+			String actPage2Row2List = reportsPage2Row2ListArray.toString();
+			String expPage2Row2List = "[PurVou : 12, CreNts : 2, DebNts : 2, Pmt : 2, SalInv : 7, SalInv : 7, SalInv : 7, SalInv : 7, SalInv : 7]";
+
+			System.out.println("Actaul Voucher  :"+actPage2Row2List);
+			System.out.println("Expected Voucher:"+expPage2Row2List);
+			
+			int reportsPage2Row3ListCount = reportsCol3List.size();
+			ArrayList<String> reportsPage2Row3ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsPage2Row3ListCount;i++)
 			{
-				Thread.sleep(3000);
-				ClickUsingJs(report_PrevBtn);
+				String data = reportsCol3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsPage2Row3ListArray.add(data);
+				}
+
 			}
-		
-		
-		}
-		catch (Exception e3) {
-			System.out.println("Exception "+e3);
-		}
-		
-	
-	
+			String actPage2Row3List = reportsPage2Row3ListArray.toString();
+			String expPage2Row3List = "[Cost of goods sold - Computers, Bank, Cash, Opening Balance, Opening Balance, Cash, Sales - Computers, Sales - Computers, Sales - Computers, Sales - Computers, Sales - Computers]";
 
-		int reportsPage2Row2ListCount = reportsCol2List.size();
-		ArrayList<String> reportsPage2Row2ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsPage2Row2ListCount;i++)
-		{
-			String data = reportsCol2List.get(i).getText().trim();
-			if(data.isEmpty() == false )
+			
+			System.out.println("Actaul Account  :"+actPage2Row3List);
+			System.out.println("Expected Account:"+expPage2Row3List);
+			
+			Thread.sleep(4000);
+
+			int reportsPage2Row4ListCount = reportsCol4List.size();
+			ArrayList<String> reportsPage2Row4ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsPage2Row4ListCount;i++)
 			{
-				reportsPage2Row2ListArray.add(data);
+				String data = reportsCol4List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsPage2Row4ListArray.add(data);
+				}
+
 			}
+			
+			String actPage2Row4List = reportsPage2Row4ListArray.toString();
+			String expPage2Row4List = "[BR-SEC, BR-SEC, BR-SEC, BR-SEC, BR-SEC, BR-SEC]";
 
-		}
-		
-		
-		String actPage2Row2List = reportsPage2Row2ListArray.toString();
-		String expPage2Row2List = "[DebNts : 2, Pmt : 2, SalInv : 7, SalInv : 7, SalInv : 7, SalInv : 7, SalInv : 7, Rct : 2, SalRet : 2]";
-
-		System.out.println("Actaul Voucher  :"+actPage2Row2List);
-		System.out.println("Expected Voucher:"+expPage2Row2List);
-		
-		int reportsPage2Row3ListCount = reportsCol3List.size();
-		ArrayList<String> reportsPage2Row3ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsPage2Row3ListCount;i++)
-		{
-			String data = reportsCol3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
+			System.out.println("Actual Branch  :"+actPage2Row4List);
+			System.out.println("Expected Branch:"+expPage2Row4List);
+			
+			int reportsPage2Row5ListCount = reportsCol5List.size();
+			ArrayList<String> reportsPage2Row5ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsPage2Row5ListCount;i++)
 			{
-				reportsPage2Row3ListArray.add(data);
+				String data = reportsCol5List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsPage2Row5ListArray.add(data);
+				}
+
 			}
+			String actPage2Row5List = reportsPage2Row5ListArray.toString();
+			String expPage2Row5List = "[FIN, C1, C2, C1, C1, C1, C1, C1, C1]";
 
-		}
-		String actPage2Row3List = reportsPage2Row3ListArray.toString();
-		String expPage2Row3List = "[Cash, Opening Balance, Opening Balance, Cash, Sales - Computers, Sales - Computers, Sales - Computers, Sales - Computers, Sales - Computers, Bank, Sales - Computers]";
-
-		
-		System.out.println("Actaul Account  :"+actPage2Row3List);
-		System.out.println("Expected Account:"+expPage2Row3List);
-		
-		Thread.sleep(4000);
-
-		int reportsPage2Row4ListCount = reportsCol4List.size();
-		ArrayList<String> reportsPage2Row4ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsPage2Row4ListCount;i++)
-		{
-			String data = reportsCol4List.get(i).getText().trim();
-			if(data.isEmpty() == false )
+			System.out.println("Actual Department  :"+actPage2Row5List);
+			System.out.println("Expected Department:"+expPage2Row5List);
+			
+			int reportsPage2Row6ListCount = reportsCol6List.size();
+			ArrayList<String> reportsPage2Row6ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsPage2Row6ListCount;i++)
 			{
-				reportsPage2Row4ListArray.add(data);
+				String data = reportsCol6List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsPage2Row6ListArray.add(data);
+				}
+
 			}
+			String actPage2Row6List = reportsPage2Row6ListArray.toString();
+			String expPage2Row6List = "[SEC, C1, C1, C1, C1, C1]";
 
-		}
+			System.out.println("Actual Warehouse  :"+actPage2Row6List);
+			System.out.println("Expected Warehouse:"+expPage2Row6List);
+			
 		
-		String actPage2Row4List = reportsPage2Row4ListArray.toString();
-		String expPage2Row4List = "[BR-SEC, BR-SEC, BR-SEC, BR-SEC, BR-SEC]";
+			ArrayList<String>  AllDatapage2 = new ArrayList<String>(); 
 
-		System.out.println("Actual Branch  :"+actPage2Row4List);
-		System.out.println("Expected Branch:"+expPage2Row4List);
-		
-		int reportsPage2Row5ListCount = reportsCol5List.size();
-		ArrayList<String> reportsPage2Row5ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsPage2Row5ListCount;i++)
-		{
-			String data = reportsCol5List.get(i).getText().trim();
-			if(data.isEmpty() == false)
+			int count2=stockLedgerTable.size();
+
+			System.err.println(count2);
+
+			for(int i=0 ; i < count2 ;i++)
 			{
-				reportsPage2Row5ListArray.add(data);
-			}
-
-		}
-		String actPage2Row5List = reportsPage2Row5ListArray.toString();
-		String expPage2Row5List = "[C2, C1, C1, C1, C1, C1, C1, C2, C2]";
-
-		System.out.println("Actual Department  :"+actPage2Row5List);
-		System.out.println("Expected Department:"+expPage2Row5List);
+				String style= stockLedgerTable.get(i).getAttribute("style");
+				if(style.contains("overflow: visible; font-weight: bold; background-color:"))
+						{
+					    String data=stockLedgerTable.get(i).getText();
+					    AllDatapage2.add(data);
+						}
 		
-		int reportsPage2Row6ListCount = reportsCol6List.size();
-		ArrayList<String> reportsPage2Row6ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsPage2Row6ListCount;i++)
-		{
-			String data = reportsCol6List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsPage2Row6ListArray.add(data);
 			}
 
-		}
-		String actPage2Row6List = reportsPage2Row6ListArray.toString();
-		String expPage2Row6List = "[C1, C1, C1, C1, C1, C2]";
+			String actAllDatapage2 = AllDatapage2.toString();
+			String expAllDatapage2 = "[Opening Balances Control A/C [OBC], G1 [G701], G2 [G702]]";
 
-		System.out.println("Actual Warehouse  :"+actPage2Row6List);
-		System.out.println("Expected Warehouse:"+expPage2Row6List);
-		
-	
-		ArrayList<String>  AllDatapage2 = new ArrayList<String>(); 
+			System.out.println("actAllDatapage2"+actAllDatapage2);
+			System.out.println("expAllDatapage2"+expAllDatapage2);
+			
+			
+			System.out.println("*************************Printing page 2 data done*********************************");
 
-		int count2=stockLedgerTable.size();
+			Thread.sleep(2000);
+			report_NextBtn.click();
+			Thread.sleep(2000);
 
-		System.err.println(count2);
-
-		for(int i=0 ; i < count2 ;i++)
-		{
-			String style= stockLedgerTable.get(i).getAttribute("style");
-			if(style.contains("overflow: visible; font-weight: bold; background-color:"))
-					{
-				    String data=stockLedgerTable.get(i).getText();
-				    AllDatapage2.add(data);
-					}
-	
-		}
-
-		String actAllDatapage2 = AllDatapage2.toString();
-		String expAllDatapage2 = "[Opening Balances Control A/C OBC, G1 G701, G2 G702, Purchase 091-002]";
-
-		System.out.println("actAllDatapage2"+actAllDatapage2);
-		System.out.println("expAllDatapage2"+expAllDatapage2);
-		
-		Thread.sleep(2000);
-		report_NextBtn.click();
-		Thread.sleep(2000);
-		System.out.println("*************************Printing page 2 data done*********************************");
+			try{
 
 
-		try{
-			if(pageNum.getText().equalsIgnoreCase("5"))
+				if (pageNum.getText().equalsIgnoreCase("4")) 
+				{
+					Thread.sleep(2000);
+					report_PrevBtn.click(); 
+				}
+
+			}
+			catch (Exception e) 
 			{
 				
-		Thread.sleep(1000);
-		report_PrevBtn.click();
-		Thread.sleep(1000);
-		report_PrevBtn.click();
-			}
-	
-	if (pageNum.getText().equalsIgnoreCase("4")) 
-	{
-		
-		report_PrevBtn.click();
-	}
-			
-		}
-		catch (Exception e) 
-		{
-			System.out.println("Exception "+e);
-
-		}
-		
-		
-
-		int reportspage3Row2ListCount = reportsCol2List.size();
-		ArrayList<String> reportspage3Row2ListArray = new ArrayList<String>();
-		for(int i=0;i<reportspage3Row2ListCount;i++)
-		{
-			String data = reportsCol2List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportspage3Row2ListArray.add(data);
-			}
-
-		}
-		
-		
-		String actpage3Row2List = reportspage3Row2ListArray.toString();
-		String exppage3Row2List = "[PurVou : 7, PurRet : 2, PurVou : 12, SalInv : 7, SalInv : 7, SalInv : 7, SalInv : 7, SalInv : 7, SalRet : 2, NJv : 2, PurVou : 7]";
-
-		System.out.println("Actaul Voucher  :"+actpage3Row2List);
-		System.out.println("Expected Voucher:"+exppage3Row2List);
-		
-		int reportspage3Row3ListCount = reportsCol3List.size();
-		ArrayList<String> reportspage3Row3ListArray = new ArrayList<String>();
-		for(int i=0;i<reportspage3Row3ListCount;i++)
-		{
-			String data = reportsCol3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportspage3Row3ListArray.add(data);
-			}
-
-		}
-		String actpage3Row3List = reportspage3Row3ListArray.toString();
-		String exppage3Row3List = "[Vendor A, C2, CustVend, G2, G2, G2, G2, G2, G2, C2, Purchase]";
-
-		
-		System.out.println("Actaul Account  :"+actpage3Row3List);
-		System.out.println("Expected Account:"+exppage3Row3List);
-		
-		Thread.sleep(4000);
-
-		int reportspage3Row4ListCount = reportsCol4List.size();
-		ArrayList<String> reportspage3Row4ListArray = new ArrayList<String>();
-		for(int i=0;i<reportspage3Row4ListCount;i++)
-		{
-			String data = reportsCol4List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportspage3Row4ListArray.add(data);
-			}
-
-		}
-		
-		String actpage3Row4List = reportspage3Row4ListArray.toString();
-		String exppage3Row4List = "[BR-SEC, 0, BR-SEC, BR-SEC, BR-SEC, BR-SEC, BR-SEC, BR-SEC, 0, 0, BR-SEC]";
-
-		System.out.println("Actual Branch  :"+actpage3Row4List);
-		System.out.println("Expected Branch:"+exppage3Row4List);
-		
-		int reportspage3Row5ListCount = reportsCol5List.size();
-		ArrayList<String> reportspage3Row5ListArray = new ArrayList<String>();
-		for(int i=0;i<reportspage3Row5ListCount;i++)
-		{
-			String data = reportsCol5List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportspage3Row5ListArray.add(data);
-			}
-
-		}
-		String actpage3Row5List = reportspage3Row5ListArray.toString();
-		String exppage3Row5List = "[C1, C2, FIN, C1, C1, C1, C1, C1, C2, C2, C1]";
-
-		System.out.println("Actual Department  :"+actpage3Row5List);
-		System.out.println("Expected Department:"+exppage3Row5List);
-		
-		int reportspage3Row6ListCount = reportsCol6List.size();
-		ArrayList<String> reportspage3Row6ListArray = new ArrayList<String>();
-		for(int i=0;i<reportspage3Row6ListCount;i++)
-		{
-			String data = reportsCol6List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportspage3Row6ListArray.add(data);
-			}
-
-		}
-		String actpage3Row6List = reportspage3Row6ListArray.toString();
-		String exppage3Row6List = "[C1, C2, SEC, C1, C1, C1, C1, C1, C2, C1]";
-
-		System.out.println("Actual Warehouse  :"+actpage3Row6List);
-		System.out.println("Expected Warehouse:"+exppage3Row6List);
-		
-	
-		ArrayList<String>  AllDatapage3 = new ArrayList<String>(); 
-
-		int count3=stockLedgerTable.size();
-
-		System.err.println(count3);
-
-		for(int i=0 ; i < count3 ;i++)
-		{
-			String style= stockLedgerTable.get(i).getAttribute("style");
-			if(style.contains("overflow: visible; font-weight: bold; background-color:"))
-					{
-				    String data=stockLedgerTable.get(i).getText();
-				    AllDatapage3.add(data);
-					}
-	
-		}
-
-		String actAllDatapage3 = AllDatapage3.toString();
-		String expAllDatapage3 = "[Cost of goods sold - Computers 091-003, Sales - Computers 071-001, Vendor A 033-001, C1 C301]";
-
-		System.out.println("actAllDatapage3"+actAllDatapage3);
-		System.out.println("expAllDatapage3"+expAllDatapage3);
-		
-		
-		System.out.println("*************************Printing page 3 data done*********************************");
-
-		Thread.sleep(2000);
-		report_NextBtn.click();
-		Thread.sleep(2000);
-		
-		try{
-			if(pageNum.getText().equalsIgnoreCase("5"))
-					{
-				report_PrevBtn.click();
-					}
-			
-		}
-		catch (Exception e) 
-		{
-			System.out.println("Exception "+e);
-			
-			
-
-		}
-		
-		int reportspage4Row2ListCount = reportsCol2List.size();
-		ArrayList<String> reportspage4Row2ListArray = new ArrayList<String>();
-		for(int i=0;i<reportspage4Row2ListCount;i++)
-		{
-			String data = reportsCol2List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportspage4Row2ListArray.add(data);
-			}
-
-		}
-		
-		
-		String actpage4Row2List = reportspage4Row2ListArray.toString();
-		String exppage4Row2List = "[Pmt : 2, PurVou : 11, Rct : 2, PurRet : 2, NJv : 2]";
-
-		System.out.println("Actaul Voucher  :"+actpage4Row2List);
-		System.out.println("Expected Voucher:"+exppage4Row2List);
-		
-		int reportspage4Row3ListCount = reportsCol3List.size();
-		ArrayList<String> reportspage4Row3ListArray = new ArrayList<String>();
-		for(int i=0;i<reportspage4Row3ListCount;i++)
-		{
-			String data = reportsCol3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportspage4Row3ListArray.add(data);
-			}
-
-		}
-		String actpage4Row3List = reportspage4Row3ListArray.toString();
-		String exppage4Row3List = "[Opening Balance, Cash, Inventory Trade, Bank, Purchase, Sales - Computers]";
-
-		
-		System.out.println("Actaul Account  :"+actpage4Row3List);
-		System.out.println("Expected Account:"+exppage4Row3List);
-		
-		Thread.sleep(4000);
-
-		int reportspage4Row4ListCount = reportsCol4List.size();
-		ArrayList<String> reportspage4Row4ListArray = new ArrayList<String>();
-		for(int i=0;i<reportspage4Row4ListCount;i++)
-		{
-			String data = reportsCol4List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportspage4Row4ListArray.add(data);
-			}
-
-		}
-		
-		String actpage4Row4List = reportspage4Row4ListArray.toString();
-		String exppage4Row4List = "[0, BR-SEC, 0, 0, 0]";
-
-		System.out.println("Actual Branch  :"+actpage4Row4List);
-		System.out.println("Expected Branch:"+exppage4Row4List);
-		
-		int reportspage4Row5ListCount = reportsCol5List.size();
-		ArrayList<String> reportspage4Row5ListArray = new ArrayList<String>();
-		for(int i=0;i<reportspage4Row5ListCount;i++)
-		{
-			String data = reportsCol5List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportspage4Row5ListArray.add(data);
-			}
-
-		}
-		String actpage4Row5List = reportspage4Row5ListArray.toString();
-		String exppage4Row5List = "[C1, C2, C2, C2, C2]";
-
-		System.out.println("Actual Department  :"+actpage4Row5List);
-		System.out.println("Expected Department:"+exppage4Row5List);
-		
-		int reportspage4Row6ListCount = reportsCol6List.size();
-		ArrayList<String> reportspage4Row6ListArray = new ArrayList<String>();
-		for(int i=0;i<reportspage4Row6ListCount;i++)
-		{
-			String data = reportsCol6List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportspage4Row6ListArray.add(data);
-			}
-
-		}
-		String actpage4Row6List = reportspage4Row6ListArray.toString();
-		String exppage4Row6List = "[C2, C2]";
-
-		System.out.println("Actual Warehouse  :"+actpage4Row6List);
-		System.out.println("Expected Warehouse:"+exppage4Row6List);
-		
-	
-		ArrayList<String>  AllDatapage4 = new ArrayList<String>(); 
-
-		int count4=stockLedgerTable.size();
-
-		System.err.println(count4);
-
-		for(int i=0 ; i < count4 ;i++)
-		{
-			String style= stockLedgerTable.get(i).getAttribute("style");
-			if(style.contains("overflow: visible; font-weight: bold; background-color:"))
-					{
-				    String data=stockLedgerTable.get(i).getText();
-				    AllDatapage4.add(data);
-					}
-	
-		}
-
-		String actAllDatapage4 = AllDatapage4.toString();
-		String expAllDatapage4 = "[C2 C302]";
-
-		System.out.println("actAllDatapage4"+actAllDatapage4);
-		System.out.println("expAllDatapage4"+expAllDatapage4);
-		
-		System.out.println("*************************Printing page 4 data done*********************************");
-
-		Thread.sleep(2000);
-		report_NextBtn.click();
-		Thread.sleep(2000);
-		
-		//
-
-		int reportspage5Row2ListCount = reportsCol2List.size();
-		ArrayList<String> reportspage5Row2ListArray = new ArrayList<String>();
-		for(int i=0;i<reportspage5Row2ListCount;i++)
-		{
-			String data = reportsCol2List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportspage5Row2ListArray.add(data);
-			}
-
-		}
-		
-		
-		String actpage5Row2List = reportspage5Row2ListArray.toString();
-		String exppage5Row2List = "[Pmt : 2, PurVou : 11, Rct : 2, PurRet : 2, NJv : 2]";
-
-		System.out.println("Actaul Voucher  :"+actpage5Row2List);
-		System.out.println("Expected Voucher:"+exppage5Row2List);
-		
-		int reportspage5Row3ListCount = reportsCol3List.size();
-		ArrayList<String> reportspage5Row3ListArray = new ArrayList<String>();
-		for(int i=0;i<reportspage5Row3ListCount;i++)
-		{
-			String data = reportsCol3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportspage5Row3ListArray.add(data);
-			}
-
-		}
-		String actpage5Row3List = reportspage5Row3ListArray.toString();
-		String exppage5Row3List = "[Opening Balance, Cash, Inventory Trade, Bank, Purchase, Sales - Computers]";
-
-		
-		System.out.println("Actaul Account  :"+actpage5Row3List);
-		System.out.println("Expected Account:"+exppage5Row3List);
-		
-		Thread.sleep(4000);
-
-		int reportspage5Row4ListCount = reportsCol4List.size();
-		ArrayList<String> reportspage5Row4ListArray = new ArrayList<String>();
-		for(int i=0;i<reportspage5Row4ListCount;i++)
-		{
-			String data = reportsCol4List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportspage5Row4ListArray.add(data);
-			}
-
-		}
-		
-		String actpage5Row4List = reportspage5Row4ListArray.toString();
-		String exppage5Row4List = "[0, BR-SEC, 0, 0, 0]";
-
-		System.out.println("Actual Branch  :"+actpage5Row4List);
-		System.out.println("Expected Branch:"+exppage5Row4List);
-		
-		int reportspage5Row5ListCount = reportsCol5List.size();
-		ArrayList<String> reportspage5Row5ListArray = new ArrayList<String>();
-		for(int i=0;i<reportspage5Row5ListCount;i++)
-		{
-			String data = reportsCol5List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportspage5Row5ListArray.add(data);
-			}
-
-		}
-		String actpage5Row5List = reportspage5Row5ListArray.toString();
-		String exppage5Row5List = "[C1, C2, C2, C2, C2]";
-
-		System.out.println("Actual Department  :"+actpage5Row5List);
-		System.out.println("Expected Department:"+exppage5Row5List);
-		
-		int reportspage5Row6ListCount = reportsCol6List.size();
-		ArrayList<String> reportspage5Row6ListArray = new ArrayList<String>();
-		for(int i=0;i<reportspage5Row6ListCount;i++)
-		{
-			String data = reportsCol6List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportspage5Row6ListArray.add(data);
-			}
-
-		}
-		String actpage5Row6List = reportspage5Row6ListArray.toString();
-		String exppage5Row6List = "[C2, C2]";
-
-		System.out.println("Actual Warehouse  :"+actpage5Row6List);
-		System.out.println("Expected Warehouse:"+exppage5Row6List);
-		
-	
-		ArrayList<String>  AllDatapage5 = new ArrayList<String>(); 
-
-		int count5=stockLedgerTable.size();
-
-		System.err.println(count5);
-
-		for(int i=0 ; i < count5 ;i++)
-		{
-			String style= stockLedgerTable.get(i).getAttribute("style");
-			if(style.contains("overflow: visible; font-weight: bold; background-color:"))
-					{
-				    String data=stockLedgerTable.get(i).getText();
-				    AllDatapage5.add(data);
-					}
-	
-		}
-
-		String actAllDatapage5 = AllDatapage5.toString();
-		String expAllDatapage5 = "[C2 C302]";
-
-		System.out.println("actAllDatapage5"+actAllDatapage5);
-		System.out.println("expAllDatapage5"+expAllDatapage5);
-		
-
-		
-		
-		String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
-		String afterPath="]//td[2]";
-		int k;
-		
-		Thread.sleep(2000);
-		
-		int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
-		
-		for(  k=1;k<rows1;k++)
-		{
-			String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
-			
-			if(text1.contains("Grand Total"))
-			{
-				int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-				System.err.println("count"+rowCount);
-			break;
-			}	
-			}
-	
-		int reportsRow1ListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow1ListCount;i++)
-		{
-			String data = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).get(i).getText();
-			reportsRow1ListArray.add(data);
-		}
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[Grand Total, , , , , , 545.00, 545.00, , , , , 545.00, 545.00, , ]";
-		
-		System.out.println("actRow1List"+actRow1List);
-		System.out.println("expRow1List"+expRow1List);
-		
-		if (actAllDatapage1.equalsIgnoreCase(expAllDatapage1) &&  actAllDatapage2.equalsIgnoreCase(expAllDatapage2) &&
-				 actAllDatapage3.equalsIgnoreCase(expAllDatapage3) &&  actAllDatapage4.equalsIgnoreCase(expAllDatapage4)
-				 &&  actAllDatapage5.equalsIgnoreCase(expAllDatapage5)&& actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List)
-				 && actRow3List.equalsIgnoreCase(expRow3List) && actRow4List.equalsIgnoreCase(expRow4List)
-				 && actRow5List.equalsIgnoreCase(expRow5List) && actRow6List.equalsIgnoreCase(expRow6List)
-				 && actPage2Row2List.equalsIgnoreCase(expPage2Row2List)
-				 && actPage2Row3List.equalsIgnoreCase(expPage2Row3List) && actPage2Row4List.equalsIgnoreCase(expPage2Row4List)
-				 && actPage2Row5List.equalsIgnoreCase(expPage2Row5List) && actPage2Row6List.equalsIgnoreCase(expPage2Row6List)
-				 
-				 && actpage3Row2List.equalsIgnoreCase(exppage3Row2List)
-				 && actpage3Row3List.equalsIgnoreCase(exppage3Row3List) && actpage3Row4List.equalsIgnoreCase(exppage3Row4List)
-				 && actpage3Row5List.equalsIgnoreCase(exppage3Row5List) && actpage3Row6List.equalsIgnoreCase(exppage3Row6List)
-				 
-				 
-				 && actpage4Row2List.equalsIgnoreCase(exppage4Row2List)
-				 && actpage4Row3List.equalsIgnoreCase(exppage4Row3List) && actpage4Row4List.equalsIgnoreCase(exppage4Row4List)
-				 && actpage4Row5List.equalsIgnoreCase(exppage4Row5List) && actpage4Row6List.equalsIgnoreCase(exppage4Row6List)
-				 
-				 && actpage5Row2List.equalsIgnoreCase(exppage5Row2List)
-				 && actpage5Row3List.equalsIgnoreCase(exppage5Row3List) && actpage5Row4List.equalsIgnoreCase(exppage5Row4List)
-				 && actpage5Row5List.equalsIgnoreCase(exppage5Row5List) && actpage5Row6List.equalsIgnoreCase(exppage5Row6List))
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-		
-		
-	}
-	
-	
-	public static boolean checkPrintOptionInLedgerAndValidatePDF() throws InterruptedException, IOException, AWTException
-	{
-		File Efile=new File(getBaseDir()+"\\autoIt\\ExportFiles\\EERLedgerPDF.pdf");
-		
-		if(Efile.exists())
-		{
-			Efile.delete();
-		}
-		
-		Thread.sleep(1500);
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_ReportPrintBtn));
-		sl_ReportPrintBtn.click();
-		
-		Thread.sleep(15000);
-		
-		 
-		Robot robot = new Robot();
-		robot.keyPress(KeyEvent.VK_CONTROL);
-		robot.keyPress(KeyEvent.VK_S);
-		robot.keyRelease(KeyEvent.VK_S);
-		robot.keyRelease(KeyEvent.VK_CONTROL);
-		
-		Thread.sleep(2000);
-			
-		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\EERLedgerPrintSaving.exe");
-		
-		Thread.sleep(5000);
-		
-		robot.keyPress(KeyEvent.VK_CONTROL);
-		robot.keyPress(KeyEvent.VK_J);
-		robot.keyRelease(KeyEvent.VK_J);
-		robot.keyRelease(KeyEvent.VK_CONTROL);
-		
-		Thread.sleep(2000);
-		
-		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
-			
-		int actOpenWindowsCount = getDriver().getWindowHandles().size();
-		int expOpenWindowsCount = 3;
-		
-		System.out.println("Number of Windows  : "+actOpenWindowsCount+"  Value Expected  "+expOpenWindowsCount);
-		
-		Thread.sleep(1000);
-
-	 	getDriver().switchTo().window(openTabs.get(2)).close();
-	 	Thread.sleep(1000);
-	 	getDriver().switchTo().window(openTabs.get(1)).close();
-	 	Thread.sleep(1000);
-	 	getDriver().switchTo().window(openTabs.get(0));
-	 	
-	 	
-	 	String actPDF = getBaseDir()+"\\autoIt\\ExportFiles\\EERLedgerPDF.pdf";
-		String expPDF = getBaseDir()+"\\autoIt\\ImportFiles\\EERLedgerPDF.pdf";
-		
-		PDFUtil pdfutil = new PDFUtil();
-		
-		boolean result = pdfutil.compare(actPDF, expPDF);
-		
-		String actData = pdfutil.getText(actPDF);
-		String expData = pdfutil.getText(expPDF).replaceAll("13/01/2023", getCurrentDateF2());
-		
-		System.err.println(actData);
-		System.err.println(expData);
-		
-		System.out.println("Compared Result  : "+result);
-		
-		if (actData.equalsIgnoreCase(expData) && result==true) 
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	
-	}
-	
-	public static boolean checkFilterOptionInLedger() throws InterruptedException
-	{
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(report_FilterBtn));
-		report_FilterBtn.click();
-		
-		Thread.sleep(2000);
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(report_FilterCustomizeBtn));
-		report_FilterCustomizeBtn.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(report_FilterAccountExpansion));
-		report_FilterAccountExpansion.click();
-		
-		Thread.sleep(2000);
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(report_FilterAccountNameChkbox));
-		
-		if (report_FilterAccountNameChkbox.isSelected()==false) 
-		{
-			report_FilterAccountNameChkbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reports_Filter_Customize_OkBtn));
-		reports_Filter_Customize_OkBtn.click();
-		
-		Thread.sleep(2000);
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(acc_DefaultFilterTxt));
-		acc_DefaultFilterTxt.click();
-		acc_DefaultFilterTxt.sendKeys("C");
-		
-		Thread.sleep(2000);
-		
-		acc_DefaultFilterTxt.sendKeys(Keys.TAB);
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(report_FilterOkBtn));
-		report_FilterOkBtn.click();
-		
-		Thread.sleep(3000);
-		
-		
-		int reportsRow3ListCount = reportsCol3List.size();
-		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow3ListCount;i++)
-		{
-			String data = reportsCol3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow3ListArray.add(data);
-			}
-
-		}
-		String actRow3List = reportsRow3ListArray.toString();
-		String expRow3List = "[C1, C2, C2, Opening Balance, C2, C2]";
-
-		System.out.println("Actaul Account  :"+actRow3List);
-		System.out.println("Expected Account:"+expRow3List);
-		
-		ArrayList<String>  AllDatapage1 = new ArrayList<String>(); 
-
-		int count1=stockLedgerTable.size();
-
-		System.err.println(count1);
-
-		for(int i=0 ; i < count1 ;i++)
-		{
-			String style= stockLedgerTable.get(i).getAttribute("style");
-			if(style.contains("overflow: visible; font-weight: bold; background-color:"))
-					{
-				    String data=stockLedgerTable.get(i).getText();
-				    AllDatapage1.add(data);
-					}
-	
-		}
-
-		String actAllDatapage1 = AllDatapage1.toString();
-		String expAllDatapage1 = "[Cash 121-002, Bank 121-001, Inventory Trade 120-003, Opening Balances Control A/C OBC, Purchase 091-002, Sales - Computers 071-001, C1 C301]";
-
-		System.out.println("actAllDatapage1"+actAllDatapage1);
-		System.out.println("expAllDatapage1"+expAllDatapage1);
-		
-		
-		
-
-		Thread.sleep(2000);
-		report_NextBtn.click();
-		Thread.sleep(2000);
-		
-		//
-
-		int reportspage2Row3ListCount = reportsCol3List.size();
-		ArrayList<String> reportspage2Row3ListArray = new ArrayList<String>();
-		for(int i=0;i<reportspage2Row3ListCount;i++)
-		{
-			String data = reportsCol3List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportspage2Row3ListArray.add(data);
-			}
-
-		}
-		
-		
-		String actpage2Row3List = reportspage2Row3ListArray.toString();
-		String exppage2Row3List = "[Opening Balance, Cash, Inventory Trade, Bank, Purchase, Sales - Computers]";
-
-		System.out.println("Actaul Voucher  :"+actpage2Row3List);
-		System.out.println("Expected Voucher:"+exppage2Row3List);
-		
-		
-		Thread.sleep(2000);
-		ArrayList<String>  AllDatapage2 = new ArrayList<String>(); 
-
-		int count2=stockLedgerTable.size();
-
-		System.err.println(count2);
-
-		for(int i=0 ; i < count2 ;i++)
-		{
-			String style= stockLedgerTable.get(i).getAttribute("style");
-			if(style.contains("overflow: visible; font-weight: bold; background-color:"))
-					{
-				    String data=stockLedgerTable.get(i).getText();
-				    AllDatapage2.add(data);
-					}
-	
-		}
-
-		String actAllDatapage2 = AllDatapage2.toString();
-		String expAllDatapage2 = "[C2 C302]";
-
-		System.out.println("actAllDatapage2"+actAllDatapage2);
-		System.out.println("expAllDatapage2"+expAllDatapage2);
-		
-		
-		String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
-		String afterPath="]//td[2]";
-		int k;
-		
-		Thread.sleep(2000);
-		
-		int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
-		
-		for(  k=1;k<rows1;k++)
-		{
-			String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
-			
-			if(text1.contains("Grand Total"))
-			{
-				int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-				System.err.println("count"+rowCount);
-			break;
-			}	
-			}
-	
-		int reportsRow1ListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow1ListCount;i++)
-		{
-			String data = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).get(i).getText();
-			reportsRow1ListArray.add(data);
-		}
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[Grand Total, , , , , , 14.00, 14.00, , , , , 14.00, 14.00, , ]";
-		
-		System.out.println("actRow1List"+actRow1List);
-		System.out.println("expRow1List"+expRow1List);
-		
-		
-		if (actRow3List.equalsIgnoreCase(expRow3List)  && actAllDatapage1.equalsIgnoreCase(expAllDatapage1) && actpage2Row3List.equalsIgnoreCase(exppage2Row3List)
-				&& actAllDatapage2.equalsIgnoreCase(expAllDatapage2) && actRow1List.equalsIgnoreCase(expRow1List)) 
-		{
-			return true;
-		}
-		else 
-		{
-			return false;
-		}
-		
-	}
-
-	public static boolean checkLedgerDetailReport() throws InterruptedException
-	{
-		getDriver().navigate().refresh();
-		Thread.sleep(2000);
-	
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
-		financialsReportsMenu.click();
-		Thread.sleep(3000);
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ledgerDetail));
-		ledgerDetail.click();
-		
-		
-		Thread.sleep(3000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByIndex(1);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-
-		Thread.sleep(2000);
-		
-		
-		
-		int reportsRow3ListCount = reportsCol3List.size();
-		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow3ListCount;i++)
-		{
-			String data = reportsCol3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow3ListArray.add(data);
-			}
-
-		}
-		String actRow3List = reportsRow3ListArray.toString();
-		String expRow3List = "[CustVend, G1, C1, CustVend, G2, C2, C2, Sales - Computers, Sales - Computers, Sales - Computers, Sales - Computers, Sales - Computers, Sales - Computers]";
-
-		
-		System.out.println("Actaul Account  :"+actRow3List);
-		System.out.println("Expected Account:"+expRow3List);
-		
-		Thread.sleep(4000);
-
-		int reportsRow4ListCount = reportsCol5List.size();
-		ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow4ListCount;i++)
-		{
-			String data = reportsCol5List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow4ListArray.add(data);
-			}
-
-		}
-		
-		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[CustVend, G1, C1, CustVend, G2, C2, C2, G2, G2, G2, G2, G2, G2]";
-
-		System.out.println("Actual Account1  :"+actRow4List);
-		System.out.println("Expected Account1:"+expRow4List);
-		
-		ArrayList<String>  AllDatapage1 = new ArrayList<String>(); 
-
-		int count1=stockLedgerTable.size();
-
-		System.err.println(count1);
-
-		for(int i=0 ; i < count1 ;i++)
-		{
-			String style= stockLedgerTable.get(i).getAttribute("style");
-			if(style.contains("overflow: visible; font-weight: bold; background-color:"))
-					{
-				    String data=stockLedgerTable.get(i).getText();
-				    AllDatapage1.add(data);
-					}
-	
-		}
-
-		String actAllDatapage1 = AllDatapage1.toString();
-		String expAllDatapage1 = "[Cash 121-002, Bank 121-001, Sales - Computers 071-001]";
-
-		System.out.println("actAllDatapage1"+actAllDatapage1);
-		System.out.println("expAllDatapage1"+expAllDatapage1);
-		
-		Thread.sleep(2000);
-		report_NextBtn.click();
-		Thread.sleep(2000);
-		
-		
-		System.out.println("*************************Printing page 1 data done*********************************");
-
-		try{
-			if(pageNum.getText().equalsIgnoreCase("4"))
-					{
-				report_PrevBtn.click();
-					}
-			
-			if (pageNum.getText().equalsIgnoreCase("3")) 
-			{
-				ClickUsingJs(report_PrevBtn);
-			}
-			
-		}
-		catch (Exception e) 
-		{
-			System.out.println("Exception "+e);
-
-		}
-		
-		
-
-		int reportsPage2Row3ListCount = reportsCol3List.size();
-		ArrayList<String> reportsPage2Row3ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsPage2Row3ListCount;i++)
-		{
-			String data = reportsCol3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsPage2Row3ListArray.add(data);
-			}
-
-		}
-		String actPage2Row3List = reportsPage2Row3ListArray.toString();
-		String expPage2Row3List = "[Purchase, Purchase, Inventory Trade, Purchase, Cost of goods sold - Computers, CustVend, CustVend, Cost of goods sold - Computers]";
-
-		
-		System.out.println("Actaul Account  :"+actPage2Row3List);
-		System.out.println("Expected Account:"+expPage2Row3List);
-		
-		Thread.sleep(4000);
-
-		int reportsPage2Row4ListCount = reportsCol5List.size();
-		ArrayList<String> reportsPage2Row4ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsPage2Row4ListCount;i++)
-		{
-			String data = reportsCol5List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsPage2Row4ListArray.add(data);
-			}
-
-		}
-		
-		String actPage2Row4List = reportsPage2Row4ListArray.toString();
-		String expPage2Row4List = "[Vendor A, C2, C2, Purchase, CustVend, Bank, Cash, Cost of goods sold - Computers]";
-
-		System.out.println("Actual Account1  :"+actPage2Row4List);
-		System.out.println("Expected Account1:"+expPage2Row4List);
-		
-	
-		ArrayList<String>  AllDatapage2 = new ArrayList<String>(); 
-
-		int count2=stockLedgerTable.size();
-
-		System.err.println(count2);
-
-		for(int i=0 ; i < count2 ;i++)
-		{
-			String style= stockLedgerTable.get(i).getAttribute("style");
-			if(style.contains("overflow: visible; font-weight: bold; background-color:"))
-					{
-				    String data=stockLedgerTable.get(i).getText();
-				    AllDatapage2.add(data);
-					}
-	
-		}
-
-		String actAllDatapage2 = AllDatapage2.toString();
-		String expAllDatapage2 = "[Purchase 091-002, Inventory Trade 120-003, Vendor A 033-001, Cost of goods sold - Computers 091-003, CustVend CV001, C1 C301]";
-
-		System.out.println("actAllDatapage2"+actAllDatapage2);
-		System.out.println("expAllDatapage2"+expAllDatapage2);
-		
-		Thread.sleep(2000);
-		report_NextBtn.click();
-		Thread.sleep(2000);
-		System.out.println("*************************Printing page 2 data done*********************************");
-
-
-		try{
-			if(pageNum.getText().equalsIgnoreCase("5")/* || pageNum.getText().equalsIgnoreCase("4")*/)
-					{
-				report_PrevBtn.click();
-				Thread.sleep(2000);
-				report_PrevBtn.click();
-					}
-			
-		}
-		catch (Exception e) 
-		{
-			if(pageNum.getText().equalsIgnoreCase("4"))
-			{
-		
-		report_PrevBtn.click();
-			}
-			System.out.println("Exception "+e);
-
-		}
-		
-		
-
-
-		int reportspage3Row3ListCount = reportsCol3List.size();
-		ArrayList<String> reportspage3Row3ListArray = new ArrayList<String>();
-		for(int i=0;i<reportspage3Row3ListCount;i++)
-		{
-			String data = reportsCol3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportspage3Row3ListArray.add(data);
-			}
-
-		}
-		String actpage3Row3List = reportspage3Row3ListArray.toString();
-		String exppage3Row3List = "[C1, C2, Purchase, Inventory Trade, C2, G1, G2, Sales - Computers, Sales - Computers, Sales - Computers, Sales - Computers]";
-
-		
-		System.out.println("Actaul Account  :"+actpage3Row3List);
-		System.out.println("Expected Account:"+exppage3Row3List);
-		
-		Thread.sleep(4000);
-
-		int reportspage3Row4ListCount = reportsCol5List.size();
-		ArrayList<String> reportspage3Row4ListArray = new ArrayList<String>();
-		for(int i=0;i<reportspage3Row4ListCount;i++)
-		{
-			String data = reportsCol5List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportspage3Row4ListArray.add(data);
-			}
-
-		}
-		
-		String actpage3Row4List = reportspage3Row4ListArray.toString();
-		String exppage3Row4List = "[Opening Balance, Cash, Sales - Computers, Purchase, Inventory Trade, Bank, Opening Balance, Cash, Bank, Sales - Computers, Sales - Computers, Sales - Computers, Sales - Computers]";
-
-		System.out.println("Actual Account1  :"+actpage3Row4List);
-		System.out.println("Expected Account1:"+exppage3Row4List);
-		
-	
-		ArrayList<String>  AllDatapage3 = new ArrayList<String>(); 
-
-		int count3=stockLedgerTable.size();
-
-		System.err.println(count3);
-
-		for(int i=0 ; i < count3 ;i++)
-		{
-			String style= stockLedgerTable.get(i).getAttribute("style");
-			if(style.contains("overflow: visible; font-weight: bold; background-color:"))
-					{
-				    String data=stockLedgerTable.get(i).getText();
-				    AllDatapage3.add(data);
-					}
-	
-		}
-
-		String actAllDatapage3 = AllDatapage3.toString();
-		String expAllDatapage3 = "[C2 C302, G1 G701, G2 G702]";
-
-		System.out.println("actAllDatapage3"+actAllDatapage3);
-		System.out.println("expAllDatapage3"+expAllDatapage3);
-		
-		
-		System.out.println("*************************Printing page 3 data done*********************************");
-
-		Thread.sleep(2000);
-		report_NextBtn.click();
-		Thread.sleep(2000);
-		
-		try{
-			if(pageNum.getText().equalsIgnoreCase("5"))
-					{
-				report_PrevBtn.click();
-					}
-			
-		}
-		catch (Exception e) 
-		{
-			System.out.println("Exception "+e);
-			
-			
-
-		}
-		
-	
-		
-		int reportspage4Row3ListCount = reportsCol3List.size();
-		ArrayList<String> reportspage4Row3ListArray = new ArrayList<String>();
-		for(int i=0;i<reportspage4Row3ListCount;i++)
-		{
-			String data = reportsCol3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportspage4Row3ListArray.add(data);
-			}
-
-		}
-		String actpage4Row3List = reportspage4Row3ListArray.toString();
-		String exppage4Row3List = "[Sales - Computers, Sales - Computers]";
-
-		
-		System.out.println("Actaul Account  :"+actpage4Row3List);
-		System.out.println("Expected Account:"+exppage4Row3List);
-		
-		Thread.sleep(4000);
-
-		int reportspage4Row4ListCount = reportsCol5List.size();
-		ArrayList<String> reportspage4Row4ListArray = new ArrayList<String>();
-		for(int i=0;i<reportspage4Row4ListCount;i++)
-		{
-			String data = reportsCol5List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportspage4Row4ListArray.add(data);
-			}
-
-		}
-		
-		String actpage4Row4List = reportspage4Row4ListArray.toString();
-		String exppage4Row4List = "[Sales - Computers, Sales - Computers, Opening Balance, Opening Balance]";
-
-		System.out.println("Actual Account1  :"+actpage4Row4List);
-		System.out.println("Expected Account1:"+exppage4Row4List);
-	
-		ArrayList<String>  AllDatapage4 = new ArrayList<String>(); 
-
-		int count4=stockLedgerTable.size();
-
-		System.err.println(count4);
-
-		for(int i=0 ; i < count4 ;i++)
-		{
-			String style= stockLedgerTable.get(i).getAttribute("style");
-			if(style.contains("overflow: visible; font-weight: bold; background-color:"))
-					{
-				    String data=stockLedgerTable.get(i).getText();
-				    AllDatapage4.add(data);
-					}
-	
-		}
-
-		String actAllDatapage4 = AllDatapage4.toString();
-		String expAllDatapage4 = "[Customer A 122-001, Opening Balances Control A/C OBC]";
-
-		System.out.println("actAllDatapage4"+actAllDatapage4);
-		System.out.println("expAllDatapage4"+expAllDatapage4);
-		
-		System.out.println("*************************Printing page 4 data done*********************************");
-
-		Thread.sleep(2000);
-		report_NextBtn.click();
-		Thread.sleep(2000);
-		
-		//
-
-		
-		int reportspage5Row3ListCount = reportsCol3List.size();
-		ArrayList<String> reportspage5Row3ListArray = new ArrayList<String>();
-		for(int i=0;i<reportspage5Row3ListCount;i++)
-		{
-			String data = reportsCol3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportspage5Row3ListArray.add(data);
-			}
-
-		}
-		String actpage5Row3List = reportspage5Row3ListArray.toString();
-		String exppage5Row3List = "[Sales - Computers, Sales - Computers]";
-
-		
-		System.out.println("Actaul Account  :"+actpage5Row3List);
-		System.out.println("Expected Account:"+exppage5Row3List);
-		
-		Thread.sleep(4000);
-
-		int reportspage5Row4ListCount = reportsCol5List.size();
-		ArrayList<String> reportspage5Row4ListArray = new ArrayList<String>();
-		for(int i=0;i<reportspage5Row4ListCount;i++)
-		{
-			String data = reportsCol5List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportspage5Row4ListArray.add(data);
-			}
-
-		}
-		
-		String actpage5Row4List = reportspage5Row4ListArray.toString();
-		String exppage5Row4List = "[Sales - Computers, Sales - Computers, Opening Balance, Opening Balance]";
-
-		System.out.println("Actual Account1  :"+actpage5Row4List);
-		System.out.println("Expected Account1:"+exppage5Row4List);
-		
-		
-		ArrayList<String>  AllDatapage5 = new ArrayList<String>(); 
-
-		int count5=stockLedgerTable.size();
-
-		System.err.println(count5);
-
-		for(int i=0 ; i < count5 ;i++)
-		{
-			String style= stockLedgerTable.get(i).getAttribute("style");
-			if(style.contains("overflow: visible; font-weight: bold; background-color:"))
-					{
-				    String data=stockLedgerTable.get(i).getText();
-				    AllDatapage5.add(data);
-					}
-	
-		}
-
-		String actAllDatapage5 = AllDatapage5.toString();
-		String expAllDatapage5 = "[Customer A 122-001, Opening Balances Control A/C OBC]";
-
-		System.out.println("actAllDatapage5"+actAllDatapage5);
-		System.out.println("expAllDatapage5"+expAllDatapage5);
-		
-
-		
-		
-		String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
-		String afterPath="]//td[2]";
-		int k;
-		
-		Thread.sleep(2000);
-		
-		int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
-		
-		for(  k=1;k<rows1;k++)
-		{
-			String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
-			
-			if(text1.contains("Grand Total"))
-			{
-				int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-				System.err.println("count"+rowCount);
-			break;
-			}	
-			}
-	
-		int reportsRow1ListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow1ListCount;i++)
-		{
-			String data = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).get(i).getText();
-			reportsRow1ListArray.add(data);
-		}
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[Grand Total, , , , , 545.00, 545.00, , 542.00, 542.00, , 545.00, 545.00, ]";
-		
-		System.out.println("actRow1List"+actRow1List);
-		System.out.println("expRow1List"+expRow1List);
-		
-		if (actAllDatapage1.equalsIgnoreCase(expAllDatapage1) &&  actAllDatapage2.equalsIgnoreCase(expAllDatapage2) &&
-				 actAllDatapage3.equalsIgnoreCase(expAllDatapage3) &&  actAllDatapage4.equalsIgnoreCase(expAllDatapage4)
-				 &&  actAllDatapage5.equalsIgnoreCase(expAllDatapage5)&& actRow1List.equalsIgnoreCase(expRow1List) 
-				 && actRow3List.equalsIgnoreCase(expRow3List) && actRow4List.equalsIgnoreCase(expRow4List)
-				
-				 && actPage2Row3List.equalsIgnoreCase(expPage2Row3List) && actPage2Row4List.equalsIgnoreCase(expPage2Row4List)
-				
-				 && actpage3Row3List.equalsIgnoreCase(exppage3Row3List) && actpage3Row4List.equalsIgnoreCase(exppage3Row4List)
-				
-				 && actpage4Row3List.equalsIgnoreCase(exppage4Row3List) && actpage4Row4List.equalsIgnoreCase(exppage4Row4List)
-				
-				 && actpage5Row3List.equalsIgnoreCase(exppage5Row3List) && actpage5Row4List.equalsIgnoreCase(exppage5Row4List))
-				 
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-		
-		
-	
-	}
-
-
-	public static boolean checkSubLedgerReport() throws InterruptedException
-	{
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
-		financialsReportsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(subLedger));
-		subLedger.click();
-		
-		Thread.sleep(2000);
-		
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		sl_DateOptionDropdown.click();
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-	
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reportaccountTxt));
-		reportaccountTxt.click();
-		reportaccountTxt.sendKeys("C");
-		
-		int reportaccountTxtListCount = reportaccountTxtList.size();
-		
-		for(int i=0;i<reportaccountTxtListCount;i++)
-		{
-			String data = reportaccountTxtList.get(i).getText();
-			
-			if(data.equalsIgnoreCase("CustomerACC"))
-			{
-				reportaccountTxtList.get(i).click();
-			}
-		}
-		
-		reportaccountTxt.sendKeys(Keys.TAB);
-		
-	
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		
-		Thread.sleep(2000);
-		
-
-
-		int reportsRow1ListCount = reportsRow1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsRow1List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[CustomerACC CAC001]";
-
-
-
-		int reportsRow2ListCount = reportsRow2List.size();
-		ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow2ListCount;i++)
-		{
-			String data = reportsRow2List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow2ListArray.add(data);
-			}
-
-
-		}
-		String actRow2List = reportsRow2ListArray.toString();
-		String expRow2List = "[Opening Balance, 1.00, 1.00, 1.00, 1.00]";
-
-
-
-		int reportsRow3ListCount = reportsRow3List.size();
-		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow3ListCount;i++)
-		{
-			String data = reportsRow3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow3ListArray.add(data);
-			}
-
-		}
-		String actRow3List = reportsRow3ListArray.toString();
-		String expRow3List = "[22/07/2022, Rct : 1, BankACC, 1.00, 1.00, Indian Rupees]";
-
-
-
-		int reportsRow4ListCount = reportsRow4List.size();
-		ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow4ListCount;i++)
-		{
-			String data = reportsRow4List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow4ListArray.add(data);
-			}
-
-		}
-		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[25/07/2022, SalInv : 4, F1, APPLE, 1.00, 1.00, 1.00, 1.00, Indian Rupees]";
-
-
-
-		int reportsRow5ListCount = reportsRow5List.size();
-		ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow5ListCount;i++)
-		{
-			String data = reportsRow5List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow5ListArray.add(data);
-			}
-		}
-		String actRow5List = reportsRow5ListArray.toString();
-		String expRow5List = "[26/07/2022, NJv : 1, SalesACC, 1.00, 2.00, 1.00, 2.00, Indian Rupees]";
-		
-
-		int reportsRow6ListCount = reportsRow6List.size();
-		ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow6ListCount;i++)
-		{
-			String data = reportsRow6List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow6ListArray.add(data);
-			}
-		}
-		String actRow6List = reportsRow6ListArray.toString();
-		String expRow6List = "[Grand Total, 3.00, 1.00, 2.00, 3.00, 1.00, 2.00]";
-		
-		
-
-		int reportsRow7ListCount = reportsRow7List.size();
-		ArrayList<String> reportsRow7ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow7ListCount;i++)
-		{
-			String data = reportsRow7List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow7ListArray.add(data);
-			}
-		}
-		String actRow7List = reportsRow7ListArray.toString();
-		String expRow7List = "[Grand Total, 3.00, 1.00, 2.00, 3.00, 1.00, 2.00]";
-		
-		
-
-		int reportsRow8ListCount = reportsRow8List.size();
-		ArrayList<String> reportsRow8ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow8ListCount;i++)
-		{
-			String data = reportsRow8List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow8ListArray.add(data);
-			}
-		}
-		String actRow8List = reportsRow8ListArray.toString();
-		String expRow8List = "[Grand Total, 3.00, 1.00, 2.00, 3.00, 1.00, 2.00]";
-		
-
-		int reportsRow9ListCount = reportsRow9List.size();
-		ArrayList<String> reportsRow9ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow9ListCount;i++)
-		{
-			String data = reportsRow9List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow9ListArray.add(data);
-			}
-		}
-		String actRow9List = reportsRow9ListArray.toString();
-		String expRow9List = "[Grand Total, 3.00, 1.00, 2.00, 3.00, 1.00, 2.00]";
-		
-		
-
-		int reportsRow10ListCount = reportsRow10List.size();
-		ArrayList<String> reportsRow10ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow10ListCount;i++)
-		{
-			String data = reportsRow10List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow10ListArray.add(data);
-			}
-		}
-		String actRow10List = reportsRow10ListArray.toString();
-		String expRow10List = "[Grand Total, 3.00, 1.00, 2.00, 3.00, 1.00, 2.00]";
-		
-		
-
-		int reportsRow11ListCount = reportsRow11List.size();
-		ArrayList<String> reportsRow11ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow11ListCount;i++)
-		{
-			String data = reportsRow11List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow11ListArray.add(data);
-			}
-		}
-		String actRow11List = reportsRow11ListArray.toString();
-		String expRow11List = "[Grand Total, 3.00, 1.00, 2.00, 3.00, 1.00, 2.00]";
-		
-		System.out.println(actRow1List);
-		System.out.println(expRow1List);
-
-		System.out.println(actRow2List);
-		System.out.println(expRow2List);
-
-		System.out.println(actRow3List);
-		System.out.println(expRow3List);
-
-		System.out.println(actRow4List);
-		System.out.println(expRow4List);
-
-		System.out.println(actRow5List);
-		System.out.println(expRow5List);
-		
-
-		System.out.println(actRow6List);
-		System.out.println(expRow6List);
-		
-		System.out.println(actRow7List);
-		System.out.println(expRow7List);
-		
-		System.out.println(actRow8List);
-		System.out.println(expRow8List);
-		
-		System.out.println(actRow9List);
-		System.out.println(expRow9List);
-		
-		System.out.println(actRow10List);
-		System.out.println(expRow10List);
-		
-		System.out.println(actRow11List);
-		System.out.println(expRow11List);
-
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List) 
-				&& actRow4List.equalsIgnoreCase(expRow4List) && actRow5List.equalsIgnoreCase(expRow5List)&& actRow6List.equalsIgnoreCase(expRow6List))
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-		
-		
-		
-		
-	}
-	
-	public static boolean checkCashBookReport() throws InterruptedException
-	{
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
-		financialsReportsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(cashAndBankBooksMenu));
-		cashAndBankBooksMenu.click();
-		
-		Thread.sleep(2000);
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(cashBookReport));
-		cashBookReport.click();
-		
-		Thread.sleep(2000);
-		
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		sl_DateOptionDropdown.click();
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reportaccountTxt));
-		reportaccountTxt.click();
-		reportaccountTxt.sendKeys(Keys.SPACE);
-		
-		int reportaccountTxtListCount = reportaccountTxtList.size();
-		
-		for(int i=0;i<reportaccountTxtListCount;i++)
-		{
-			String data = reportaccountTxtList.get(i).getText();
-			
-			if(data.equalsIgnoreCase("Cash"))
-			{
-				reportaccountTxtList.get(i).click();
-			}
-		}
-		
-		reportaccountTxt.sendKeys(Keys.TAB);
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-	
-		Thread.sleep(1500);
-		
-		Thread.sleep(2000);
-		
-
-
-		int reportsRow1ListCount = reportsRow1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsRow1List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[Opening Balance, 1.00, 1.00, 1.00, 1.00]";
-
-
-
-		int reportsRow2ListCount = reportsRow2List.size();
-		ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow2ListCount;i++)
-		{
-			String data = reportsRow2List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow2ListArray.add(data);
-			}
-
-
-		}
-		String actRow2List = reportsRow2ListArray.toString();
-		String expRow2List = "[25/07/2022, SalInv : 3, E2, 1.00, 2.00, 1.00, 2.00, 1.00, 1.00]";
-
-
-
-		int reportsRow3ListCount = reportsRow3List.size();
-		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow3ListCount;i++)
-		{
-			String data = reportsRow3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow3ListArray.add(data);
-			}
-
-		}
-		String actRow3List = reportsRow3ListArray.toString();
-		String expRow3List = "[Total, 2.00, 2.00, 2.00, 2.00, 1.00, 1.00]";
-
-
-
-		int reportsRow4ListCount = reportsRow4List.size();
-		ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow4ListCount;i++)
-		{
-			String data = reportsRow4List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow4ListArray.add(data);
-			}
-
-		}
-		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[Closing balance, 2.00, 2.00, 1.00]";
-		
-		
-
-		int reportsRow5ListCount = reportsRow5List.size();
-		ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow5ListCount;i++)
-		{
-			String data = reportsRow5List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow5ListArray.add(data);
-			}
-
-		}
-		String actRow5List = reportsRow5ListArray.toString();
-		String expRow5List = "[Closing balance, 2.00, 2.00, 1.00]";
-
-
-
-		System.out.println(actRow1List);
-		System.out.println(expRow1List);
-
-		System.out.println(actRow2List);
-		System.out.println(expRow2List);
-
-		System.out.println(actRow3List);
-		System.out.println(expRow3List);
-
-		System.out.println(actRow4List);
-		System.out.println(expRow4List);
-
-	
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List) 
-				&& actRow4List.equalsIgnoreCase(expRow4List))
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-	
-	}
-
-	public static boolean checkBankBookAccountReport() throws InterruptedException
-	{
-		Thread.sleep(2000);
-		
-		getDriver().navigate().refresh();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
-		financialsReportsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(cashAndBankBooksMenu));
-		cashAndBankBooksMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(bankBookReport));
-		bankBookReport.click();
-		
-		Thread.sleep(2000);
-		
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		sl_DateOptionDropdown.click();
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reportaccountTxt));
-		reportaccountTxt.click();
-		reportaccountTxt.sendKeys(Keys.SPACE);
-		
-		int reportaccountTxtListCount = reportaccountTxtList.size();
-		
-		for(int i=0;i<reportaccountTxtListCount;i++)
-		{
-			String data = reportaccountTxtList.get(i).getText();
-			
-			if(data.equalsIgnoreCase("Bank"))
-			{
-				reportaccountTxtList.get(i).click();
-			}
-		}
-		
-		reportaccountTxt.sendKeys(Keys.TAB);
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		
-		Thread.sleep(2000);
-		
-		Thread.sleep(2000);
-		
-
-
-		int reportsRow1ListCount = reportsRow1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsRow1List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[Opening Balance, 1.00, 1.00, 1.00, 1.00]";
-
-
-
-		int reportsRow2ListCount = reportsRow2List.size();
-		ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow2ListCount;i++)
-		{
-			String data = reportsRow2List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow2ListArray.add(data);
-			}
-
-
-		}
-		String actRow2List = reportsRow2ListArray.toString();
-		String expRow2List = "[21/07/2022, PurVou : 9, A1, 1.00, 1.00, 1.00, 1.00]";
-
-
-
-		int reportsRow3ListCount = reportsRow3List.size();
-		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow3ListCount;i++)
-		{
-			String data = reportsRow3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow3ListArray.add(data);
-			}
-
-		}
-		String actRow3List = reportsRow3ListArray.toString();
-		String expRow3List = "[22/07/2022, Rct : 1, CustomerACC, 1.00, 1.00, 1.00, 1.00, 1.00]";
-
-
-
-		int reportsRow4ListCount = reportsRow4List.size();
-		ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow4ListCount;i++)
-		{
-			String data = reportsRow4List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow4ListArray.add(data);
-			}
-
-		}
-		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[25/07/2022, Pmt : 1, H2, 1.00, 1.00, 1.00, 1.00]";
-
-
-
-		int reportsRow5ListCount = reportsRow5List.size();
-		ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow5ListCount;i++)
-		{
-			String data = reportsRow5List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow5ListArray.add(data);
-			}
-		}
-		String actRow5List = reportsRow5ListArray.toString();
-		String expRow5List = "[25/07/2022, SalInv : 2, E1, 1.00, 1.00, 1.00, 1.00, 1.00]";
-		
-
-		int reportsRow6ListCount = reportsRow6List.size();
-		ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow6ListCount;i++)
-		{
-			String data = reportsRow6List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow6ListArray.add(data);
-			}
-		}
-		String actRow6List = reportsRow6ListArray.toString();
-		String expRow6List = "[Total, 3.00, 2.00, 1.00, 3.00, 2.00, 1.00, 2.00, 2.00]";
-		
-		int reportsRow7ListCount = reportsRow7List.size();
-		ArrayList<String> reportsRow7ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow7ListCount;i++)
-		{
-			String data = reportsRow7List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow7ListArray.add(data);
-			}
-		}
-		String actRow7List = reportsRow7ListArray.toString();
-		String expRow7List = "[Closing balance, 1.00, 1.00]";
-		
-		System.out.println(actRow1List);
-		System.out.println(expRow1List);
-
-		System.out.println(actRow2List);
-		System.out.println(expRow2List);
-
-		System.out.println(actRow3List);
-		System.out.println(expRow3List);
-
-		System.out.println(actRow4List);
-		System.out.println(expRow4List);
-
-		System.out.println(actRow5List);
-		System.out.println(expRow5List);
-		
-
-		System.out.println(actRow6List);
-		System.out.println(expRow6List);
-		
-		System.out.println(actRow7List);
-		System.out.println(expRow7List);
-
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List) 
-				&& actRow4List.equalsIgnoreCase(expRow4List) && actRow5List.equalsIgnoreCase(expRow5List)&& 
-				actRow6List.equalsIgnoreCase(expRow6List) && actRow7List.equalsIgnoreCase(expRow7List))
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-	
-		
-	}
-
-	public static boolean checkPettyCashBookReport() throws InterruptedException
-	{
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
-		financialsReportsMenu.click();
-		
-		Thread.sleep(1500);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(cashAndBankBooksMenu));
-		cashAndBankBooksMenu.click();
-		
-		Thread.sleep(1500);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(pettyCashBokReport));
-		pettyCashBokReport.click();
-
-       Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		sl_DateOptionDropdown.click();
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reportaccountTxt));
-		reportaccountTxt.click();
-		reportaccountTxt.sendKeys(Keys.SPACE);
-		
-		int reportaccountTxtListCount = reportaccountTxtList.size();
-		
-		for(int i=0;i<reportaccountTxtListCount;i++)
-		{
-			String data = reportaccountTxtList.get(i).getText();
-			
-			if(data.equalsIgnoreCase("Cash"))
-			{
-				reportaccountTxtList.get(i).click();
-			}
-		}
-		
-		reportaccountTxt.sendKeys(Keys.TAB);
-		
-	
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		
-
-
-		int reportsRow1ListCount = reportsRow1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsRow1List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[Opening Balance, 1.00, 1.00, 1.00, 1.00]";
-
-
-
-		int reportsRow2ListCount = reportsRow2List.size();
-		ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow2ListCount;i++)
-		{
-			String data = reportsRow2List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow2ListArray.add(data);
-			}
-
-
-		}
-		String actRow2List = reportsRow2ListArray.toString();
-		String expRow2List = "[25/07/2022, SalInv : 3, E2, 1.00, 2.00, 1.00, 2.00, 1.00, 1.00]";
-
-
-
-		int reportsRow3ListCount = reportsRow3List.size();
-		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow3ListCount;i++)
-		{
-			String data = reportsRow3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow3ListArray.add(data);
-			}
-
-		}
-		String actRow3List = reportsRow3ListArray.toString();
-		String expRow3List = "[Total, 2.00, 2.00, 2.00, 2.00, 1.00, 1.00]";
-
-
-
-		int reportsRow4ListCount = reportsRow4List.size();
-		ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow4ListCount;i++)
-		{
-			String data = reportsRow4List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow4ListArray.add(data);
-			}
-
-		}
-		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[Closing balance, 2.00, 2.00, 1.00]";
-
-		System.out.println(actRow1List);
-		System.out.println(expRow1List);
-
-		System.out.println(actRow2List);
-		System.out.println(expRow2List);
-
-		System.out.println(actRow3List);
-		System.out.println(expRow3List);
-
-		System.out.println(actRow4List);
-		System.out.println(expRow4List);
-
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List) 
-				&& actRow4List.equalsIgnoreCase(expRow4List))
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-		
-		
-		
-		
-		
-	}
-	
-	public static boolean checkDayBookReport() throws InterruptedException
-	{
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
-		financialsReportsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(cashAndBankBooksMenu));
-		cashAndBankBooksMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(dayBookReport));
-		dayBookReport.click();
-		
-	
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		sl_DateOptionDropdown.click();
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		
-		Thread.sleep(2000);
-		
-		int reportsRow1ListCount = reportsCol1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsCol1List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow1ListArray.add(data);
-			}
-			
-		}
-		
-		Iterator<String> itr = reportsRow1ListArray.iterator();
-		while (itr.hasNext()) 
-		{ 
-			String row1 = itr.next(); 
-			if (row1.equals("Sub Total"))
-			{ 
-				itr.remove();
-			}
-
-		}
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[31-03-2022, OpeBal : 1, 21-07-2022, PurVou : 1, PurVou : 2, SalInv : 1, SalInv : 1, PurVou : 1, PurVou : 2, PurVou : 9, PurVou : 9, 22-07-2022, Rct : 1, Rct : 1]";
-		
-		System.out.println(actRow1List);
-		System.out.println(expRow1List);
-		
-		Thread.sleep(2000);
-		
-		int reportsRow2ListCount = reportsCol2List.size();
-		ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow2ListCount;i++)
-		{
-			String data = reportsCol2List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow2ListArray.add(data);
-			}
-			
-		}
-		String actRow2List = reportsRow2ListArray.toString();
-		String expRow2List = "[Opening Balance, Opening Balances Control A/C, A1, VendorACC, E1, H1, D1, Purchase, A1, BankACC, BankACC, CustomerACC]";
-		
-		System.out.println(actRow2List);
-		System.out.println(expRow2List);
-		
-		
-		ArrayList<String>  AllDatapage1 = new ArrayList<String>(); 
-
-		int count1=stockLedgerTable.size();
-
-		System.err.println(count1);
-
-		for(int i=0 ; i < count1 ;i++)
-		{
-			String style= stockLedgerTable.get(i).getAttribute("style");
-			if(style.contains("overflow: visible; font-weight: bold; background-color:"))
-					{
-				    String data=stockLedgerTable.get(i).getText();
-				    AllDatapage1.add(data);
-					}
-	
-		}
-
-		String actAllDatapage1 = AllDatapage1.toString();
-		String expAllDatapage1 = "[31-03-2022, 21-07-2022, 22-07-2022]";
-
-		System.out.println("actAllDatapage1"+actAllDatapage1);
-		System.out.println("expAllDatapage1"+expAllDatapage1);
-		
-		Thread.sleep(2000);
-		report_NextBtn.click();
-		Thread.sleep(2000);
-		
-		
-		System.out.println("*************************Printing page 1 data done*********************************");
-
-		try{
-			if(pageNum.getText().equalsIgnoreCase("3"))
-					{
-				report_PrevBtn.click();
-					}
-			
-		}
-		catch (Exception e) 
-		{
-			System.out.println("Exception "+e);
-
-		}
-		
-		Thread.sleep(2000);
-		
-		int reportspage2Row1ListCount = reportsCol1List.size();
-		ArrayList<String> reportspage2Row1ListArray = new ArrayList<String>();
-		for(int i=0;i<reportspage2Row1ListCount;i++)
-		{
-			String data = reportsCol1List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportspage2Row1ListArray.add(data);
-			}
-			
-		}
-		
-		Iterator<String> itr1 = reportsRow2ListArray.iterator();
-		while (itr1.hasNext()) 
-		{ 
-			String row1 = itr1.next(); 
-			if (row1.equals("Sub Total"))
-			{ 
-				itr1.remove();
-			}
-
-		}
-		
-		String actpage2Row1List = reportspage2Row1ListArray.toString();
-		String exppage2Row1List = "[25-07-2022, SalInv : 3, SalInv : 5, SalInv : 5, SalInv : 4, SalInv : 6, SalInv : 2, Pmt : 1, SalInv : 4, Pmt : 1, PurVou : 10, SalInv : 2, PurVou : 10, SalInv : 3, SalInv : 6, Sub Total, 26-07-2022, SalRet : 1, DebNts : 1]";
-		
-		System.out.println(actpage2Row1List);
-		System.out.println(exppage2Row1List);
-		
-		Thread.sleep(2000);
-		
-		int reportspage2Row2ListCount = reportsCol2List.size();
-		ArrayList<String> reportspage2Row2ListArray = new ArrayList<String>();
-		for(int i=0;i<reportspage2Row2ListCount;i++)
-		{
-			String data = reportsCol2List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportspage2Row2ListArray.add(data);
-			}
-			
-		}
-		String actpage2Row2List = reportspage2Row2ListArray.toString();
-		String exppage2Row2List = "[CashACC, H1, F2, F1, SalesACC, E1, H2, CustomerACC, BankACC, D2, BankACC, B2, E2, H2, E1, E2]";
-		
-		System.out.println(actpage2Row2List);
-		System.out.println(exppage2Row2List);
-		
-		
-		ArrayList<String>  AllDatapage2 = new ArrayList<String>(); 
-
-		int count2=stockLedgerTable.size();
-
-		System.err.println(count2);
-
-		for(int i=0 ; i < count2 ;i++)
-		{
-			String style= stockLedgerTable.get(i).getAttribute("style");
-			if(style.contains("overflow: visible; font-weight: bold; background-color:"))
-					{
-				    String data=stockLedgerTable.get(i).getText();
-				    AllDatapage2.add(data);
-					}
-	
-		}
-
-		String actAllDatapage2 = AllDatapage2.toString();
-		String expAllDatapage2 = "[25-07-2022, 26-07-2022]";
-
-		System.out.println("actAllDatapage2"+actAllDatapage2);
-		System.out.println("expAllDatapage2"+expAllDatapage2);
-		
-		Thread.sleep(2000);
-		report_NextBtn.click();
-		Thread.sleep(2000);
-		
-		Thread.sleep(2000);
-		
-		int reportspage3Row1ListCount = reportsCol1List.size();
-		ArrayList<String> reportspage3Row1ListArray = new ArrayList<String>();
-		for(int i=0;i<reportspage3Row1ListCount;i++)
-		{
-			String data = reportsCol1List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportspage3Row1ListArray.add(data);
-			}
-			
-		}
-		
-		Iterator<String> itr2 = reportspage3Row1ListArray.iterator();
-		while (itr2.hasNext()) 
-		{ 
-			String row1 = itr2.next(); 
-			if (row1.equals("Sub Total"))
-			{ 
-				itr2.remove();
-			}
-
-		}
-		String actpage3Row1List = reportspage3Row1ListArray.toString();
-		String exppage3Row1List = "[PurRet : 1, SalRet : 1, NJv : 1, NJv : 1, NJv : 1, PurRet : 1, DebNts : 1, CreNts : 1, CreNts : 1, NJv : 1, Grand Total]";
-		
-		System.out.println(actpage3Row1List);
-		System.out.println(exppage3Row1List);
-		
-		Thread.sleep(2000);
-		
-		int reportspage3Row2ListCount = reportsCol2List.size();
-		ArrayList<String> reportspage3Row2ListArray = new ArrayList<String>();
-		for(int i=0;i<reportspage3Row2ListCount;i++)
-		{
-			String data = reportsCol2List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportspage3Row2ListArray.add(data);
-			}
-			
-		}
-		String actpage3Row2List = reportspage3Row2ListArray.toString();
-		String exppage3Row2List = "[A1, H1, SalesACC, VendorACC, PurchaseACC, D2, D2, B2, H2, CustomerACC]";
-		
-		System.out.println(actpage3Row2List);
-		System.out.println(exppage3Row2List);
-		
-		
-		System.out.println("*************************Printing page 3 data done*********************************");
-
-
-		String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
-		String afterPath="]//td[2]";
-		int k;
-		
-		Thread.sleep(2000);
-		
-		int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
-		
-		for(  k=1;k<rows1;k++)
-		{
-			String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
-			
-			if(text1.contains("Grand Total"))
-			{
-				int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-				System.err.println("count"+rowCount);
-			break;
-			}	
-			}
-	
-		int reportsRowListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-		ArrayList<String> reportsRowListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRowListCount;i++)
-		{
-			String data = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).get(i).getText();
-			reportsRowListArray.add(data);
-		}
-		String actRowList = reportsRowListArray.toString();
-		String expRowList = "[Grand Total, , , , 1.00, 2.00, 72.00, 75.00, 95.00, 59.00, 95.00, 59.00, 77.00, 59.00]";
-		
-		System.out.println("actRow1List"+actRowList);
-		System.out.println("expRow1List"+expRowList);
-		
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) 
-				&& actpage2Row1List.equalsIgnoreCase(exppage2Row1List) && actpage2Row2List.equalsIgnoreCase(exppage2Row2List) 
-				&& actpage3Row1List.equalsIgnoreCase(exppage3Row1List) && actpage3Row2List.equalsIgnoreCase(exppage3Row2List) 
-				&& actAllDatapage1.equalsIgnoreCase(expAllDatapage1) && actAllDatapage2.equalsIgnoreCase(expAllDatapage2) && 
-				actRowList.equalsIgnoreCase(expRowList)) 
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}	
-		
-	}
-	
-	public static boolean checkVirtualBankLedger() throws InterruptedException
-	{
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
-		financialsReportsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(cashAndBankBooksMenu));
-		cashAndBankBooksMenu.click();
-		Thread.sleep(2000);
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(virtualBankLedgerReport));
-		virtualBankLedgerReport.click();
-		
-		Thread.sleep(3000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByIndex(1);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-
-		Thread.sleep(2000);
-		ArrayList<String>  AllDatapage1 = new ArrayList<String>(); 
-
-		int count1=stockLedgerTable.size();
-
-		System.err.println(count1);
-
-		for(int i=0 ; i < count1 ;i++)
-		{
-			String style= stockLedgerTable.get(i).getAttribute("style");
-			if(style.contains("overflow: visible; font-weight: bold; background-color:"))
-					{
-				    String data=stockLedgerTable.get(i).getText();
-				    AllDatapage1.add(data);
-					}
-	
-		}
-
-		String actAllDatapage1 = AllDatapage1.toString();
-		String expAllDatapage1 = "[CashACC CASH001, BankACC BAC001]";
-
-		System.out.println("actAllDatapage1"+actAllDatapage1);
-		System.out.println("expAllDatapage1"+expAllDatapage1);
-		
-		String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
-		String afterPath="]//td[2]";
-		int k;
-		
-		Thread.sleep(2000);
-		
-		int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
-		
-		for(  k=1;k<rows1;k++)
-		{
-			String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
-			
-			if(text1.contains("Grand Total"))
-			{
-				int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-				System.err.println("count"+rowCount);
-			break;
-			}	
-			}
-	
-		int reportsRowListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-		ArrayList<String> reportsRowListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRowListCount;i++)
-		{
-			String data = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).get(i).getText();
-			reportsRowListArray.add(data);
-		}
-		String actRowList = reportsRowListArray.toString();
-		String expRowList = "[Grand Total, 5.00, 2.00, 6.00, , , , 5.00, 2.00, 6.00, , , , 3.00, 2.00, , , , ]";
-		
-		System.out.println("actRow1List"+actRowList);
-		System.out.println("expRow1List"+expRowList);
-		
-		
-		if (actAllDatapage1.equalsIgnoreCase(expAllDatapage1) && actRowList.equalsIgnoreCase(expRowList)) 
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}	
-	
-	}
-
-
-	public static boolean checkSalesRegisterReport() throws InterruptedException
-	{
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
-		financialsReportsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesReportsMenu));
-		salesReportsMenu.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesRegisterReport));
-		salesRegisterReport.click();
-		
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		sl_DateOptionDropdown.click();
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reportaccountTxt));
-		reportaccountTxt.click();
-		reportaccountTxt.sendKeys(Keys.SPACE);
-		
-		int reportaccountTxtListCount = reportaccountTxtList.size();
-		
-		for(int i=0;i<reportaccountTxtListCount;i++)
-		{
-			String data = reportaccountTxtList.get(i).getText();
-			
-			if(data.equalsIgnoreCase("C"))
-			{
-				reportaccountTxtList.get(i).click();
-			}
-		}
-		
-		reportaccountTxt.sendKeys(Keys.TAB);
-		
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		
-		int reportsRow1ListCount = reportsRow1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsRow1List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[21/07/2022, SalInv : 1, Sales Invoices, H1, E1, A1, 4.00, 2.00]";
-
-
-
-		int reportsRow2ListCount = reportsRow2List.size();
-		ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow2ListCount;i++)
-		{
-			String data = reportsRow2List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow2ListArray.add(data);
-			}
-
-
-		}
-		String actRow2List = reportsRow2ListArray.toString();
-		String expRow2List = "[25/07/2022, SalInv : 2, Sales Invoices, BankACC, E1, A1, 1.00, 1.00]";
-
-
-
-		int reportsRow3ListCount = reportsRow3List.size();
-		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow3ListCount;i++)
-		{
-			String data = reportsRow3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow3ListArray.add(data);
-			}
-
-		}
-		String actRow3List = reportsRow3ListArray.toString();
-		String expRow3List = "[25/07/2022, SalInv : 3, Sales Invoices, CashACC, E2, A1, 1.00, 1.00]";
-
-
-
-		int reportsRow4ListCount = reportsRow4List.size();
-		ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow4ListCount;i++)
-		{
-			String data = reportsRow4List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow4ListArray.add(data);
-			}
-
-		}
-		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[25/07/2022, SalInv : 4, Sales Invoices, CustomerACC, F1, APPLE, 1.00, 1.00]";
-
-
-
-		int reportsRow5ListCount = reportsRow5List.size();
-		ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow5ListCount;i++)
-		{
-			String data = reportsRow5List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow5ListArray.add(data);
-			}
-		}
-		String actRow5List = reportsRow5ListArray.toString();
-		String expRow5List = "[25/07/2022, SalInv : 5, Sales Invoices, H1, F2, APPLE, 1.00, 1.00]";
-		
-
-		int reportsRow6ListCount = reportsRow6List.size();
-		ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow6ListCount;i++)
-		{
-			String data = reportsRow6List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow6ListArray.add(data);
-			}
-		}
-		String actRow6List = reportsRow6ListArray.toString();
-		String expRow6List = "[Grand Total, 8.00, 6.00]";
-		
-	
-		System.out.println(actRow1List);
-		System.out.println(expRow1List);
-
-		System.out.println(actRow2List);
-		System.out.println(expRow2List);
-
-		System.out.println(actRow3List);
-		System.out.println(expRow3List);
-
-		System.out.println(actRow4List);
-		System.out.println(expRow4List);
-
-		System.out.println(actRow5List);
-		System.out.println(expRow5List);
-		
-
-		System.out.println(actRow6List);
-		System.out.println(expRow6List);
-	
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List) 
-				&& actRow4List.equalsIgnoreCase(expRow4List) && actRow5List.equalsIgnoreCase(expRow5List)&& 
-				actRow6List.equalsIgnoreCase(expRow6List))
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-	
-		
-	}
-	
-	public static boolean checkSalesReturnRegisterReport()
-	{
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
-		financialsReportsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesReportsMenu));
-		salesReportsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesReturnRegisterReport));
-		salesReturnRegisterReport.click();
-		
-	
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		sl_DateOptionDropdown.click();
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reportaccountTxt));
-		reportaccountTxt.click();
-		reportaccountTxt.sendKeys(Keys.SPACE);
-		int reportaccountTxtListCount = reportaccountTxtList.size();
-		
-		for(int i=0;i<reportaccountTxtListCount;i++)
-		{
-			String data = reportaccountTxtList.get(i).getText();
-			
-			if(data.equalsIgnoreCase("E"))
-			{
-				reportaccountTxtList.get(i).click();
-			}
-		}
-		
-		reportaccountTxt.sendKeys(Keys.TAB);
-		
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		
-		int reportsRow1ListCount = reportsRow1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsRow1List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[Opening Balance, 1.00, 1.00, 1.00, 1.00]";
-
-		int reportsRow2ListCount = reportsRow2List.size();
-		ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow2ListCount;i++)
-		{
-			String data = reportsRow2List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow2ListArray.add(data);
-			}
-
-
-		}
-		String actRow2List = reportsRow2ListArray.toString();
-		String expRow2List = "[21/07/2022, PurVou : 9, A1, 1.00, 1.00, 1.00, 1.00]";
-
-		System.out.println(actRow1List);
-		System.out.println(expRow1List);
-
-		System.out.println(actRow2List);
-		System.out.println(expRow2List);
-
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List))
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-	
-		
-	}
-	
-	public static boolean checkSalesSummaryRegisterReport()
-	{
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
-		financialsReportsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesReportsMenu));
-		salesReportsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(summarySalesBookReport));
-		summarySalesBookReport.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		sl_DateOptionDropdown.click();
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reportaccountTxt));
-		reportaccountTxt.click();
-		reportaccountTxt.sendKeys(Keys.SPACE);
-		
-		int reportaccountTxtListCount = reportaccountTxtList.size();
-		
-		for(int i=0;i<reportaccountTxtListCount;i++)
-		{
-			String data = reportaccountTxtList.get(i).getText();
-			
-			if(data.equalsIgnoreCase("C"))
-			{
-				reportaccountTxtList.get(i).click();
-			}
-		}
-		reportaccountTxt.sendKeys(Keys.TAB);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		
-		int reportsRow1ListCount = reportsRow1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsRow1List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[21/07/2022, H1, E1, SalInv : 1, H1, 4.00]";
-
-
-
-		int reportsRow2ListCount = reportsRow2List.size();
-		ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow2ListCount;i++)
-		{
-			String data = reportsRow2List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow2ListArray.add(data);
-			}
-
-
-		}
-		String actRow2List = reportsRow2ListArray.toString();
-		String expRow2List = "[25/07/2022, BankACC, E1, SalInv : 2, BankACC, 1.00]";
-
-
-
-		int reportsRow3ListCount = reportsRow3List.size();
-		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow3ListCount;i++)
-		{
-			String data = reportsRow3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow3ListArray.add(data);
-			}
-
-		}
-		String actRow3List = reportsRow3ListArray.toString();
-		String expRow3List = "[25/07/2022, CashACC, E2, SalInv : 3, CashACC, 1.00]";
-
-
-
-		int reportsRow4ListCount = reportsRow4List.size();
-		ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow4ListCount;i++)
-		{
-			String data = reportsRow4List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow4ListArray.add(data);
-			}
-
-		}
-		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[25/07/2022, CustomerACC, F1, SalInv : 4, CustomerACC, 1.00]";
-
-
-
-		int reportsRow5ListCount = reportsRow5List.size();
-		ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow5ListCount;i++)
-		{
-			String data = reportsRow5List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow5ListArray.add(data);
-			}
-		}
-		String actRow5List = reportsRow5ListArray.toString();
-		String expRow5List = "[25/07/2022, H1, F2, SalInv : 5, H1, 1.00]";
-		
-
-		int reportsRow6ListCount = reportsRow6List.size();
-		ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow6ListCount;i++)
-		{
-			String data = reportsRow6List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow6ListArray.add(data);
-			}
-		}
-		String actRow6List = reportsRow6ListArray.toString();
-		String expRow6List = "[Grand Total, 8.00]";
-		
-	
-		System.out.println(actRow1List);
-		System.out.println(expRow1List);
-
-		System.out.println(actRow2List);
-		System.out.println(expRow2List);
-
-		System.out.println(actRow3List);
-		System.out.println(expRow3List);
-
-		System.out.println(actRow4List);
-		System.out.println(expRow4List);
-
-		System.out.println(actRow5List);
-		System.out.println(expRow5List);
-		
-
-		System.out.println(actRow6List);
-		System.out.println(expRow6List);
-	
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List) 
-				&& actRow4List.equalsIgnoreCase(expRow4List) && actRow5List.equalsIgnoreCase(expRow5List)&& 
-				actRow6List.equalsIgnoreCase(expRow6List))
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-	
-	}
-	
-	public static boolean checkMonthlySalesReport() throws InterruptedException
-	{
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
-		financialsReportsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesReportsMenu));
-		salesReportsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(monthlySalesBookReport));
-		monthlySalesBookReport.click();
-		
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		sl_DateOptionDropdown.click();
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reportaccountTxt));
-		reportaccountTxt.click();
-		reportaccountTxt.sendKeys(Keys.SPACE);
-		int reportaccountTxtListCount = reportaccountTxtList.size();
-		
-		for(int i=0;i<reportaccountTxtListCount;i++)
-		{
-			String data = reportaccountTxtList.get(i).getText();
-			
-			if(data.equalsIgnoreCase("C"))
-			{
-				reportaccountTxtList.get(i).click();
-			}
-		}
-		
-		reportaccountTxt.sendKeys(Keys.TAB);
-		
-		
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		
-		int reportsRow1ListCount = reportsRow1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsRow1List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[July, 8.00]";
-
-		int reportsRow2ListCount = reportsRow2List.size();
-		ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow2ListCount;i++)
-		{
-			String data = reportsRow2List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow2ListArray.add(data);
-			}
-
-
-		}
-		String actRow2List = reportsRow2ListArray.toString();
-		String expRow2List = "[Grand Total, 8.00]";
-
-		System.out.println(actRow1List);
-		System.out.println(expRow1List);
-
-		System.out.println(actRow2List);
-		System.out.println(expRow2List);
-
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List))
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-	
-	}
-	
-	public static boolean checkTopCustomersReports() throws InterruptedException
-	{	
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
-		financialsReportsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesReportsMenu));
-		salesReportsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(topCustomersListReport));
-		topCustomersListReport.click();
-		
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		sl_DateOptionDropdown.click();
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reportaccountTxt));
-		reportaccountTxt.click();
-		reportaccountTxt.sendKeys(Keys.SPACE);
-		
-		int reportaccountTxtListCount = reportaccountTxtList.size();
-		
-		for(int i=0;i<reportaccountTxtListCount;i++)
-		{
-			String data = reportaccountTxtList.get(i).getText();
-			
-			if(data.equalsIgnoreCase("C1"))
-			{
-				reportaccountTxtList.get(i).click();
-			}
-		}
-		
-		reportaccountTxt.sendKeys(Keys.TAB);
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		
-		int reportsRow1ListCount = reportsRow1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsRow1List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[H1, 7.00, 7.00]";
-
-		int reportsRow2ListCount = reportsRow2List.size();
-		ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow2ListCount;i++)
-		{
-			String data = reportsRow2List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow2ListArray.add(data);
-			}
-
-
-		}
-		String actRow2List = reportsRow2ListArray.toString();
-		String expRow2List = "[Grand Total, 7.00, 7.00]";
-
-		System.out.println(actRow1List);
-		System.out.println(expRow1List);
-
-		System.out.println(actRow2List);
-		System.out.println(expRow2List);
-
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List))
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-	
-		
-	}
-	
-	public static boolean checkTopCustomersReportsForGroupAccount()
-	{
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
-		financialsReportsMenu.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesReportsMenu));
-		salesReportsMenu.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(topCustomersListReport));
-		topCustomersListReport.click();
-
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		sl_DateOptionDropdown.click();
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reportaccountTxt));
-		reportaccountTxt.click();
-		reportaccountTxt.sendKeys(Keys.SPACE);
-
-		int reportaccountTxtListCount = reportaccountTxtList.size();
-
-		for(int i=0;i<reportaccountTxtListCount;i++)
-		{
-			String data = reportaccountTxtList.get(i).getText();
-
-			if(data.equalsIgnoreCase("C"))
-			{
-				reportaccountTxtList.get(i).click();
-			}
-		}
-
-		reportaccountTxt.sendKeys(Keys.TAB);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-
-		int reportsRow1ListCount = reportsRow1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsRow1List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[CashACC, 1.00, 1.00]";
-
-		int reportsRow2ListCount = reportsRow2List.size();
-		ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow2ListCount;i++)
-		{
-			String data = reportsRow2List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow2ListArray.add(data);
-			}
-
-
-		}
-		String actRow2List = reportsRow2ListArray.toString();
-		String expRow2List = "[CustomerACC, 1.00, 1.00]";
-
-
-		int reportsRow3ListCount = reportsRow3List.size();
-		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow3ListCount;i++)
-		{
-			String data = reportsRow3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow3ListArray.add(data);
-			}
-
-		}
-		String actRow3List = reportsRow3ListArray.toString();
-		String expRow3List = "[H1, 6.00, 6.00]";
-
-
-
-		int reportsRow4ListCount = reportsRow4List.size();
-		ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow4ListCount;i++)
-		{
-			String data = reportsRow4List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow4ListArray.add(data);
-			}
-
-		}
-		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[Grand Total, 4.00, 4.00]";
-
-
-
-		System.out.println(actRow1List);
-		System.out.println(expRow1List);
-
-		System.out.println(actRow2List);
-		System.out.println(expRow2List);
-
-		System.out.println(actRow3List);
-		System.out.println(expRow3List);
-
-
-		System.out.println(actRow4List);
-		System.out.println(expRow4List);
-
-
-
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List) 
-				&& actRow4List.equalsIgnoreCase(expRow4List))
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-
-	}
-	
-	public static boolean checkPurchaseRegisterReport() throws InterruptedException
-	{
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
-		financialsReportsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseReportsMenu));
-		purchaseReportsMenu.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseRegisterReport));
-		purchaseRegisterReport.click();
-		
-		Thread.sleep(2000);
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		sl_DateOptionDropdown.click();
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reportaccountTxt));
-		reportaccountTxt.click();
-		reportaccountTxt.sendKeys(Keys.SPACE);
-		
-		int reportaccountTxtListCount = reportaccountTxtList.size();
-		
-		for(int i=0;i<reportaccountTxtListCount;i++)
-		{
-			String data = reportaccountTxtList.get(i).getText();
-			
-			if(data.equalsIgnoreCase("Vendor A"))
-			{
-				reportaccountTxtList.get(i).click();
-			}
-		}
-		
-		reportaccountTxt.sendKeys(Keys.TAB);
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		
-
-		int reportsRow1ListCount = reportsRow1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsRow1List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[21/07/2022, PurVou : 1, D1, 1.00, A1, 1.00, 1.00]";
-
-
-
-		int reportsRow2ListCount = reportsRow2List.size();
-		ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow2ListCount;i++)
-		{
-			String data = reportsRow2List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow2ListArray.add(data);
-			}
-
-
-		}
-		String actRow2List = reportsRow2ListArray.toString();
-		String expRow2List = "[21/07/2022, PurVou : 1, D1, 1.00, A2, 1.00, 1.00]";
-
-
-
-		int reportsRow3ListCount = reportsRow3List.size();
-		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow3ListCount;i++)
-		{
-			String data = reportsRow3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow3ListArray.add(data);
-			}
-
-		}
-		String actRow3List = reportsRow3ListArray.toString();
-		String expRow3List = "[21/07/2022, PurVou : 1, D1, 1.00, B1, 1.00, 1.00]";
-
-
-
-		int reportsRow4ListCount = reportsRow4List.size();
-		ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow4ListCount;i++)
-		{
-			String data = reportsRow4List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow4ListArray.add(data);
-			}
-
-		}
-		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[21/07/2022, PurVou : 1, D1, 1.00, B2, 1.00, 1.00]";
-
-
-
-		int reportsRow5ListCount = reportsRow5List.size();
-		ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow5ListCount;i++)
-		{
-			String data = reportsRow5List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow5ListArray.add(data);
-			}
-		}
-		String actRow5List = reportsRow5ListArray.toString();
-		String expRow5List = "[21/07/2022, PurVou : 1, D1, 10.00, D1, 10.00, 1.00]";
-		
-
-		int reportsRow6ListCount = reportsRow6List.size();
-		ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow6ListCount;i++)
-		{
-			String data = reportsRow6List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow6ListArray.add(data);
-			}
-		}
-		String actRow6List = reportsRow6ListArray.toString();
-		String expRow6List = "[21/07/2022, PurVou : 1, D1, 1.00, D2, 1.00, 1.00]";
-		
-		
-		//
-
-
-		int reportsRow7ListCount = reportsRow7List.size();
-		ArrayList<String> reportsRow7ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow7ListCount;i++)
-		{
-			String data = reportsRow7List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow7ListArray.add(data);
-			}
-
-		}
-		String actRow7List = reportsRow7ListArray.toString();
-		String expRow7List = "[21/07/2022, PurVou : 1, D1, 10.00, APPLE, 10.00, 1.00]";
-
-
-
-		int reportsRow8ListCount = reportsRow8List.size();
-		ArrayList<String> reportsRow8ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow8ListCount;i++)
-		{
-			String data = reportsRow8List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow8ListArray.add(data);
-			}
-
-		}
-		String actRow8List = reportsRow8ListArray.toString();
-		String expRow8List = "[21/07/2022, PurVou : 3, Vendor A, 1.00, A1, 1.00, 1.00]";
-
-
-
-		int reportsRow9ListCount = reportsRow9List.size();
-		ArrayList<String> reportsRow9ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow9ListCount;i++)
-		{
-			String data = reportsRow9List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow9ListArray.add(data);
-			}
-		}
-		
-		
-		String actRow9List = reportsRow9ListArray.toString();
-		String expRow9List = "[21/07/2022, PurVou : 9, BankACC, 1.00, A1, 1.00, 1.00]";
-		
-		int reportsRow10ListCount = reportsRow10List.size();
-		ArrayList<String> reportsRow10ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow10ListCount;i++)
-		{
-			String data = reportsRow10List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow10ListArray.add(data);
-			}
-		}
-		String actRow10List = reportsRow10ListArray.toString();
-		String expRow10List = "[21/07/2022, PurVou : 10, BankACC, 1.00, A1, 1.00, 1.00]";
-		
-		
-		System.out.println(actRow1List);
-		System.out.println(expRow1List);
-
-		System.out.println(actRow2List);
-		System.out.println(expRow2List);
-
-		System.out.println(actRow3List);
-		System.out.println(expRow3List);
-
-		System.out.println(actRow4List);
-		System.out.println(expRow4List);
-
-		System.out.println(actRow5List);
-		System.out.println(expRow5List);
-		
-
-		System.out.println(actRow6List);
-		System.out.println(expRow6List);
-		
-		System.out.println(actRow7List);
-		System.out.println(expRow7List);
-
-		System.out.println(actRow8List);
-		System.out.println(expRow8List);
-		
-
-		System.out.println(actRow9List);
-		System.out.println(expRow9List);
-		
-		System.out.println(actRow10List);
-		System.out.println(expRow10List);
-	
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List) 
-				&& actRow4List.equalsIgnoreCase(expRow4List) && actRow5List.equalsIgnoreCase(expRow5List)&& 
-				actRow6List.equalsIgnoreCase(expRow6List)
-				&& actRow7List.equalsIgnoreCase(expRow7List) && actRow8List.equalsIgnoreCase(expRow8List)&& 
-				actRow9List.equalsIgnoreCase(expRow9List) && actRow10List.equalsIgnoreCase(expRow10List))
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-	
-		
-		
-	}
-	
-	public static boolean checkPurchaseReturnRegister() throws InterruptedException
-	{
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
-		financialsReportsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseReportsMenu));
-		purchaseReportsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseReturnRegisteReport));
-		purchaseReturnRegisteReport.click();
-		
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		sl_DateOptionDropdown.click();
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reportaccountTxt));
-		reportaccountTxt.click();
-		reportaccountTxt.sendKeys(Keys.SPACE);
-		
-		int reportaccountTxtListCount = reportaccountTxtList.size();
-		
-		for(int i=0;i<reportaccountTxtListCount;i++)
-		{
-			String data = reportaccountTxtList.get(i).getText();
-			
-			if(data.equalsIgnoreCase("Vendor A"))
-			{
-				reportaccountTxtList.get(i).click();
-			}
-		}
-		
-		reportaccountTxt.sendKeys(Keys.TAB);
-		
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		
-		Thread.sleep(2000);
-		
-
-		int reportsRow1ListCount = reportsRow1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsRow1List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[26/07/2022, PurRet : 1, D2, A1, 1.00, 1.00, 1.00]";
-
-		int reportsRow2ListCount = reportsRow2List.size();
-		ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow2ListCount;i++)
-		{
-			String data = reportsRow2List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow2ListArray.add(data);
-			}
-
-
-		}
-		String actRow2List = reportsRow2ListArray.toString();
-		String expRow2List = "[Grand Total, 1.00, 1.00, 1.00]";
-
-		System.out.println(actRow1List);
-		System.out.println(expRow1List);
-
-		System.out.println(actRow2List);
-		System.out.println(expRow2List);
-
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List))
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-	
-		
-	}
-	
-	public static boolean checkSummaryPurchaseRegister()
-	{
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
-		financialsReportsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseReportsMenu));
-		purchaseReportsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(summaryPurchaseBookReport));
-		summaryPurchaseBookReport.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		sl_DateOptionDropdown.click();
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reportaccountTxt));
-		reportaccountTxt.click();
-		reportaccountTxt.sendKeys(Keys.SPACE);
-		
-		int reportaccountTxtListCount = reportaccountTxtList.size();
-		
-		for(int i=0;i<reportaccountTxtListCount;i++)
-		{
-			String data = reportaccountTxtList.get(i).getText();
-			
-			if(data.equalsIgnoreCase("Vendor A"))
-			{
-				reportaccountTxtList.get(i).click();
-			}
-		}
-		
-		reportaccountTxt.sendKeys(Keys.TAB);
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		
-		int reportsRow1ListCount = reportsRow1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsRow1List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[21/07/2022, PurVou : 1, D1, 25.00]";
-
-		int reportsRow2ListCount = reportsRow2List.size();
-		ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow2ListCount;i++)
-		{
-			String data = reportsRow2List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow2ListArray.add(data);
-			}
-
-
-		}
-		String actRow2List = reportsRow2ListArray.toString();
-		String expRow2List = "[21/07/2022, PurVou : 3, Vendor A, 1.00]";
-
-
-		int reportsRow3ListCount = reportsRow3List.size();
-		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow3ListCount;i++)
-		{
-			String data = reportsRow3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow3ListArray.add(data);
-			}
-
-		}
-		String actRow3List = reportsRow3ListArray.toString();
-		String expRow3List = "[21/07/2022, PurVou : 9, BankACC, 1.00]";
-
-
-
-		int reportsRow4ListCount = reportsRow4List.size();
-		ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow4ListCount;i++)
-		{
-			String data = reportsRow4List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow4ListArray.add(data);
-			}
-
-		}
-		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[Grand Total, 27.00]";
-
-
-
-		System.out.println(actRow1List);
-		System.out.println(expRow1List);
-
-		System.out.println(actRow2List);
-		System.out.println(expRow2List);
-
-		System.out.println(actRow3List);
-		System.out.println(expRow3List);
-
-
-		System.out.println(actRow4List);
-		System.out.println(expRow4List);
-
-
-
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List) 
-				&& actRow4List.equalsIgnoreCase(expRow4List))
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-
-		
-	}
-	
-	public static boolean checkOpeningBalanceRegister() throws InterruptedException
-	{
-		Thread.sleep(2300);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
-		financialsReportsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(registersReportMenu));
-		registersReportMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(openingBalanceRegisterReport));
-		openingBalanceRegisterReport.click();
-		
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		sl_DateOptionDropdown.click();
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		
-		int reportsRow1ListCount = reportsCol2List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsCol2List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-		
-		
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1]";
-
-		System.out.println("Actaul Voucher  :"+actRow1List);
-		System.out.println("Expected Voucher:"+expRow1List);
-		
-		
-		int reportsRow2ListCount = reportsCol3List.size();
-		ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow2ListCount;i++)
-		{
-			String data = reportsCol3List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow2ListArray.add(data);
-			}
-
-		}
-		
-		
-		String actRow2List = reportsRow2ListArray.toString();
-		String expRow2List = "[A1, A2, B1, B2, BankACC, CashACC, CustomerACC, D2, D1, E1, E2, F1, F2, H1, H2, PurchaseACC, SalesACC, VendorACC]";
-
-		System.out.println("Actaul Voucher  :"+actRow2List);
-		System.out.println("Expected Voucher:"+expRow2List);
-		
-
-		String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
-		String afterPath="]//td[2]";
-		int k;
-		
-		Thread.sleep(2000);
-		
-		int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
-		
-		for(  k=1;k<rows1;k++)
-		{
-			String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
-			
-			if(text1.contains("Grand Total"))
-			{
-				int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-				System.err.println("count"+rowCount);
-			break;
-			}	
-			}
-	
-		int Row1ListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-		ArrayList<String> Row1ListArray = new ArrayList<String>();
-		for(int i=1;i<Row1ListCount;i++)
-		{
-			String data = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).get(i).getText();
-			Row1ListArray.add(data);
-		}
-		String actList = Row1ListArray.toString();
-		String expList = "[Grand Total, , , 18.00, , 18.00, , 18.00, ]";
-		
-		System.out.println("actRow1List"+actList);
-		System.out.println("expRow1List"+expList);
-		
-		
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) &&
-				actList.equalsIgnoreCase(expList))
-		{
-			return true;
-		}
-		else 
-		{
-			return false;
-		}
-	
-	}
-	
-	public static boolean checkJournalEntryRegister() throws InterruptedException
-	{
-		Thread.sleep(2500);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
-		financialsReportsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(registersReportMenu));
-		registersReportMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(journalEntriesRegisterReport));
-		journalEntriesRegisterReport.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		sl_DateOptionDropdown.click();
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		
-		Thread.sleep(2000);
-		
-
-		int reportsRow1ListCount = reportsRow1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsRow1List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[26/07/2022, NJv : 1, CustomerACC, 1.00, 1.00, 1.00]";
-
-		int reportsRow2ListCount = reportsRow2List.size();
-		ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow2ListCount;i++)
-		{
-			String data = reportsRow2List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow2ListArray.add(data);
-			}
-
-
-		}
-		String actRow2List = reportsRow2ListArray.toString();
-		String expRow2List = "[26/07/2022, NJv : 1, VendorACC, 1.00, 1.00, 1.00]";
-
-
-		int reportsRow3ListCount = reportsRow3List.size();
-		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow3ListCount;i++)
-		{
-			String data = reportsRow3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow3ListArray.add(data);
-			}
-
-		}
-		String actRow3List = reportsRow3ListArray.toString();
-		String expRow3List = "[Grand Total, 2.00, 2.00, 2.00]";
-
-
-		System.out.println(actRow1List);
-		System.out.println(expRow1List);
-
-		System.out.println(actRow2List);
-		System.out.println(expRow2List);
-
-		System.out.println(actRow3List);
-		System.out.println(expRow3List);
-
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List))
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-
-		
-		
-	}
-	
-	public static boolean checkCreditNoteRegister() throws InterruptedException
-	{
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
-		financialsReportsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(registersReportMenu));
-		registersReportMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(creditNoteRegisterReport));
-		creditNoteRegisterReport.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		sl_DateOptionDropdown.click();
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		
-		Thread.sleep(2000);
-		
-
-		int reportsRow1ListCount = reportsRow1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsRow1List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[26/07/2022, CreNts : 1, H2, 1.00]";
-
-		int reportsRow2ListCount = reportsRow2List.size();
-		ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow2ListCount;i++)
-		{
-			String data = reportsRow2List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow2ListArray.add(data);
-			}
-
-
-		}
-		String actRow2List = reportsRow2ListArray.toString();
-		String expRow2List = "[Grand Total, 1.00]";
-
-
-		System.out.println(actRow1List);
-		System.out.println(expRow1List);
-
-		System.out.println(actRow2List);
-		System.out.println(expRow2List);
-
-	
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List))
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-
-	}
-	
-	public static boolean checkDebitNotesRegister() throws InterruptedException
-	{
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
-		financialsReportsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(registersReportMenu));
-		registersReportMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(debitNoteRegisterReport));
-		debitNoteRegisterReport.click();
-		
-	
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		sl_DateOptionDropdown.click();
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		
-		Thread.sleep(2000);
-		
-
-		int reportsRow1ListCount = reportsRow1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsRow1List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[21/07/2022, PurVou : 1, D1, 25.00]";
-
-		int reportsRow2ListCount = reportsRow2List.size();
-		ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow2ListCount;i++)
-		{
-			String data = reportsRow2List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow2ListArray.add(data);
-			}
-
-
-		}
-		String actRow2List = reportsRow2ListArray.toString();
-		String expRow2List = "[21/07/2022, PurVou : 9, BankACC, 1.00]";
-
-
-		System.out.println(actRow1List);
-		System.out.println(expRow1List);
-
-		System.out.println(actRow2List);
-		System.out.println(expRow2List);
-
-	
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List))
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-
-	}
-	
-	public static boolean checkReciptsRegister() throws InterruptedException
-	{	
-		
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
-		financialsReportsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(registersReportMenu));
-		registersReportMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(receiptsRegisterReport));
-		receiptsRegisterReport.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		sl_DateOptionDropdown.click();
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		
-		Thread.sleep(2000);
-		
-
-		int reportsRow1ListCount = reportsRow1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsRow1List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[22/07/2022, Rct : 1, CustomerACC, 1.00, 1.00, 1.00]";
-
-		int reportsRow2ListCount = reportsRow2List.size();
-		ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow2ListCount;i++)
-		{
-			String data = reportsRow2List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow2ListArray.add(data);
-			}
-
-
-		}
-		String actRow2List = reportsRow2ListArray.toString();
-		String expRow2List = "[Grand Total, 1.00, 1.00, 1.00]";
-
-
-		System.out.println(actRow1List);
-		System.out.println(expRow1List);
-
-		System.out.println(actRow2List);
-		System.out.println(expRow2List);
-
-	
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List))
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-
-	
-	}
-	
-	public static boolean checkPaymentsRegister() throws InterruptedException
-	{
-	
-		
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
-		financialsReportsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(registersReportMenu));
-		registersReportMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(paymentRegisterReport));
-		paymentRegisterReport.click();
-		
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		sl_DateOptionDropdown.click();
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		
-		Thread.sleep(2000);
-		
-
-		int reportsRow1ListCount = reportsRow1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsRow1List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[25/07/2022, Pmt : 1, H2, 1.00, 1.00, 1.00]";
-
-		int reportsRow2ListCount = reportsRow2List.size();
-		ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow2ListCount;i++)
-		{
-			String data = reportsRow2List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow2ListArray.add(data);
-			}
-
-
-		}
-		String actRow2List = reportsRow2ListArray.toString();
-		String expRow2List = "[Grand Total, 1.00, 1.00, 1.00]";
-
-
-		System.out.println(actRow1List);
-		System.out.println(expRow1List);
-
-		System.out.println(actRow2List);
-		System.out.println(expRow2List);
-
-	
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List))
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-
-	
-	
-	}
-	
-	public static boolean checkPDCReceiptsRegister() throws InterruptedException
-	{
-
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
-		financialsReportsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(registersReportMenu));
-		registersReportMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(pdcReceiptsRegisterReport));
-		pdcReceiptsRegisterReport.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		sl_DateOptionDropdown.click();
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		
-		boolean actReportTable = reportsTable.getText().isEmpty();
-		boolean expReportTable = true;
-		
-		System.out.println(actReportTable);
-		System.out.println(expReportTable);
-		
-		if (actReportTable== expReportTable)
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-		
-	}
-	
-	public static boolean checkPDCPaymentsRegister() throws InterruptedException
-	{
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
-		financialsReportsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(registersReportMenu));
-		registersReportMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(pdcPaymentsRegisterReport));
-		pdcPaymentsRegisterReport.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		sl_DateOptionDropdown.click();
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		
-		boolean actReportTable = reportsTable.getText().isEmpty();
-		boolean expReportTable = true;
-		
-		System.out.println(actReportTable);
-		System.out.println(expReportTable);
-		
-		if (actReportTable== expReportTable)
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-		
-	
-	}
-	
-	public static boolean checkEntryJournalRegister() throws InterruptedException
-	{
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
-		financialsReportsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(registersReportMenu));
-		registersReportMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(entryJournalRegisterReport));
-		entryJournalRegisterReport.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		sl_DateOptionDropdown.click();
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		Thread.sleep(2000);
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		
-		Thread.sleep(2000);
-
-		int reportsRow2ListCount = reportsCol2List.size();
-		ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow2ListCount;i++)
-		{
-			String data = reportsCol2List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow2ListArray.add(data);
-			}
-
-		}
-		
-		String actRow2List = reportsRow2ListArray.toString();
-		String expRow2List = "[OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1]";
-
-		System.out.println("Actaul Voucher  :"+actRow2List);
-		System.out.println("Expected Voucher:"+expRow2List);
-		
-		int reportsRow3ListCount = reportsCol3List.size();
-		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow3ListCount;i++)
-		{
-			String data = reportsCol3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow3ListArray.add(data);
-			}
-
-		}
-		String actRow3List = reportsRow3ListArray.toString();
-		String expRow3List = "[F2, B1, Opening Balances Control A/C, H2, Opening Balances Control A/C, Opening Balances Control A/C, Opening Balances Control A/C, D2, E2, VendorACC, Opening Balances Control A/C, A2, Opening Balances Control A/C, Opening Balances Control A/C, Opening Balances Control A/C, D1, A1, Opening Balances Control A/C, Opening Balances Control A/C]";
-
-		
-		System.out.println("Actaul Account  :"+actRow3List);
-		System.out.println("Expected Account:"+expRow3List);
-		
-
-		Thread.sleep(2500);
-		report_NextBtn.click();
-		
-		Thread.sleep(2500);
-		
-		try{
-			if(pageNum.getText().equalsIgnoreCase("3") || pageNum.getText().equalsIgnoreCase("4") )
-					{
-				report_PrevBtn.click();
-					}
-			
-		}
-		catch (Exception e) 
-		{
-			System.out.println("Exception "+e);
-
-		}
-		
-		
-		int reportspage2row2ListCount = reportsCol2List.size();
-		ArrayList<String> reportspage2row2ListArray = new ArrayList<String>();
-		for(int i=0;i<reportspage2row2ListCount;i++)
-		{
-			String data = reportsCol2List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportspage2row2ListArray.add(data);
-			}
-
-		}
-		
-		String actpage2row2List = reportspage2row2ListArray.toString();
-		String exppage2row2List = "[OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, PurVou : 1, PurVou : 1]";
-
-		System.out.println("Actaul Voucher  :"+actpage2row2List);
-		System.out.println("Expected Voucher:"+exppage2row2List);
-		
-		int reportspage2row3ListCount = reportsCol3List.size();
-		ArrayList<String> reportspage2row3ListArray = new ArrayList<String>();
-		for(int i=0;i<reportspage2row3ListCount;i++)
-		{
-			String data = reportsCol3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportspage2row3ListArray.add(data);
-			}
-
-		}
-		String actpage2row3List = reportspage2row3ListArray.toString();
-		String exppage2row3List = "[Opening Balances Control A/C, F1, B2, CustomerACC, Opening Balances Control A/C, Opening Balances Control A/C, Opening Balances Control A/C, CashACC, Opening Balances Control A/C, BankACC, Opening Balances Control A/C, Opening Balances Control A/C, E1, Opening Balances Control A/C, SalesACC, H1, PurchaseACC, D1, A1]";
-
-		
-		System.out.println("Actaul Account  :"+actpage2row3List);
-		System.out.println("Expected Account:"+exppage2row3List);
-		
-
-		Thread.sleep(2500);
-		report_NextBtn.click();
-		
-		Thread.sleep(2500);
-		
-		try{
-			if(pageNum.getText().equalsIgnoreCase("4"))
-					{
-				report_PrevBtn.click();
-					}
-			
-		}
-		catch (Exception e) 
-		{
-			System.out.println("Exception "+e);
-
-		}
-		
-	
-		
-		int reportspage3row2ListCount = reportsCol2List.size();
-		ArrayList<String> reportspage3row2ListArray = new ArrayList<String>();
-		for(int i=0;i<reportspage3row2ListCount;i++)
-		{
-			String data = reportsCol2List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportspage3row2ListArray.add(data);
-			}
-
-		}
-		
-		String actpage3row2List = reportspage3row2ListArray.toString();
-		String exppage3row2List = "[PurVou : 2, PurVou : 2, PurVou : 9, PurVou : 9, SalInv : 1, SalInv : 1, Rct : 1, Rct : 1, Pmt : 1, Pmt : 1, SalInv : 2, SalInv : 2, SalInv : 3, SalInv : 3, SalInv : 4, SalInv : 4, SalInv : 5, SalInv : 5, SalInv : 6]";
-
-		System.out.println("Actaul Voucher  :"+actpage3row2List);
-		System.out.println("Expected Voucher:"+exppage3row2List);
-		
-		int reportspage3row3ListCount = reportsCol3List.size();
-		ArrayList<String> reportspage3row3ListArray = new ArrayList<String>();
-		for(int i=0;i<reportspage3row3ListCount;i++)
-		{
-			String data = reportsCol3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportspage3row3ListArray.add(data);
-			}
-
-		}
-		String actpage3row3List = reportspage3row3ListArray.toString();
-		String exppage3row3List = "[VendorACC, Purchase, A1, BankACC, H1, E1, CustomerACC, BankACC, H2, BankACC, BankACC, E1, E2, CashACC, CustomerACC, F1, H1, F2, SalesACC]";
-
-		
-		System.out.println("Actaul Account  :"+actpage3row3List);
-		System.out.println("Expected Account:"+exppage3row3List);
-		
-		Thread.sleep(2500);
-		report_NextBtn.click();
-		Thread.sleep(2500);
-		
-		int reportspage4row2ListCount = reportsCol2List.size();
-		ArrayList<String> reportspage4row2ListArray = new ArrayList<String>();
-		for(int i=0;i<reportspage4row2ListCount;i++)
-		{
-			String data = reportsCol2List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportspage4row2ListArray.add(data);
-			}
-
-		}
-		
-		String actpage4row2List = reportspage4row2ListArray.toString();
-		String exppage4row2List = "[SalInv : 6, PurVou : 10, PurVou : 10, NJv : 1, NJv : 1, NJv : 1, NJv : 1, CreNts : 1, CreNts : 1, DebNts : 1, DebNts : 1, PurRet : 1, PurRet : 1, SalRet : 1, SalRet : 1]";
-
-		System.out.println("Actaul Voucher  :"+actpage4row2List);
-		System.out.println("Expected Voucher:"+exppage4row2List);
-		
-		int reportspage4row3ListCount = reportsCol3List.size();
-		ArrayList<String> reportspage4row3ListArray = new ArrayList<String>();
-		for(int i=0;i<reportspage4row3ListCount;i++)
-		{
-			String data = reportsCol3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportspage4row3ListArray.add(data);
-			}
-
-		}
-		String actpage4row3List = reportspage4row3ListArray.toString();
-		String exppage4row3List = "[H2, B2, D2, VendorACC, PurchaseACC, SalesACC, CustomerACC, H2, B2, D2, E2, D2, A1, E1, H1]";
-
-		
-		System.out.println("Actaul Account  :"+actpage4row3List);
-		System.out.println("Expected Account:"+exppage4row3List);
-		
-
-		String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
-		String afterPath="]//td[2]";
-		int k;
-		
-		Thread.sleep(2000);
-		
-		int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
-		
-		for(  k=1;k<rows1;k++)
-		{
-			String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
-			
-			if(text1.contains("Grand Total"))
-			{
-				int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-				System.err.println("count"+rowCount);
-			break;
-			}	
-			}
-	
-		int Row1ListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-		ArrayList<String> Row1ListArray = new ArrayList<String>();
-		for(int i=1;i<Row1ListCount;i++)
-		{
-			String data = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).get(i).getText();
-			Row1ListArray.add(data);
-		}
-		String actList = Row1ListArray.toString();
-		String expList = "[Grand Total, , , 77.00, 77.00, 21.00, , 77.00, 77.00, 21.00, 77.00, 77.00, 21.00]";
-		
-		System.out.println("actRow1List"+actList);
-		System.out.println("expRow1List"+expList);
-		
-		if (actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List) &&
-				actpage2row2List.equalsIgnoreCase(exppage2row2List)&& actpage2row3List.equalsIgnoreCase(exppage2row3List) &&
-				actpage3row2List.equalsIgnoreCase(exppage3row2List) && actpage3row3List.equalsIgnoreCase(exppage3row3List)&&
-				actpage4row2List.equalsIgnoreCase(exppage4row2List) && actpage4row3List.equalsIgnoreCase(exppage4row3List)
-				&& actList.equalsIgnoreCase(expList)) 
-		{
-			return true;
-			
-		} 
-		else 
-		{
-			return false;
-		}
-
-	}
-	
-	public static boolean checkEntryJournalDetailReport() throws InterruptedException
-	{
-
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
-		financialsReportsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(registersReportMenu));
-		registersReportMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(entryJournalDetailReport));
-		entryJournalDetailReport.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		sl_DateOptionDropdown.click();
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		Thread.sleep(2000);
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		
-		Thread.sleep(2000);
-
-		int reportsRow1ListCount = reportsCol1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsCol1List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-		
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1]";
-
-		System.out.println("Actaul Voucher  :"+actRow1List);
-		System.out.println("Expected Voucher:"+expRow1List);
-		
-		
-		
-		
-		int reportsRow3ListCount = reportsCol3List.size();
-		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow3ListCount;i++)
-		{
-			String data = reportsCol3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow3ListArray.add(data);
-			}
-
-		}
-		String actRow3List = reportsRow3ListArray.toString();
-		String expRow3List = "[A1, A2, B1, B2, BankACC, CashACC, CustomerACC, D2, D1, E1]";
-
-		
-		System.out.println("Actaul Account  :"+actRow3List);
-		System.out.println("Expected Account:"+expRow3List);
-		
-		
-		
-		int reportsRow4ListCount = reportsCol4List.size();
-		ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow4ListCount;i++)
-		{
-			String data = reportsCol4List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow4ListArray.add(data);
-			}
-
-		}
-		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[Opening Balances Control A/C, Opening Balances Control A/C, Opening Balances Control A/C, Opening Balances Control A/C, Opening Balances Control A/C, Opening Balances Control A/C, Opening Balances Control A/C, Opening Balances Control A/C, Opening Balances Control A/C]";
-
-		
-		System.out.println("Actaul Account  :"+actRow4List);
-		System.out.println("Expected Account:"+expRow4List);
-		
-
-		Thread.sleep(2500);
-		report_NextBtn.click();
-		
-		Thread.sleep(2500);
-		
-		try{
-			if(pageNum.getText().equalsIgnoreCase("3") || pageNum.getText().equalsIgnoreCase("4") )
-					{
-				report_PrevBtn.click();
-					}
-			
-		}
-		catch (Exception e) 
-		{
-			System.out.println("Exception "+e);
-
-		}
-		
-		
-		int reportspage2row1ListCount = reportsCol1List.size();
-		ArrayList<String> reportspage2row1ListArray = new ArrayList<String>();
-		for(int i=0;i<reportspage2row1ListCount;i++)
-		{
-			String data = reportsCol1List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportspage2row1ListArray.add(data);
-			}
-
-		}
-		
-		String actpage2row1List = reportspage2row1ListArray.toString();
-		String exppage2row1List = "[OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, PurVou : 1, PurVou : 1]";
-
-		System.out.println("Actaul Voucher  :"+actpage2row1List);
-		System.out.println("Expected Voucher:"+exppage2row1List);
-		
-		int reportspage2row3ListCount = reportsCol3List.size();
-		ArrayList<String> reportspage2row3ListArray = new ArrayList<String>();
-		for(int i=0;i<reportspage2row3ListCount;i++)
-		{
-			String data = reportsCol3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportspage2row3ListArray.add(data);
-			}
-
-		}
-		String actpage2row3List = reportspage2row3ListArray.toString();
-		String exppage2row3List = "[E2, F1, F2, H1, H2, PurchaseACC, SalesACC, VendorACC, A1]";
-
-		
-		System.out.println("Actaul Account  :"+actpage2row3List);
-		System.out.println("Expected Account:"+exppage2row3List);
-		
-		
-		int reportspage2row4ListCount = reportsCol4List.size();
-		ArrayList<String> reportspage2row4ListArray = new ArrayList<String>();
-		for(int i=0;i<reportspage2row4ListCount;i++)
-		{
-			String data = reportsCol4List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportspage2row4ListArray.add(data);
-			}
-
-		}
-		String actpage2row4List = reportspage2row4ListArray.toString();
-		String exppage2row4List = "[Opening Balances Control A/C, Opening Balances Control A/C, Opening Balances Control A/C, Opening Balances Control A/C, Opening Balances Control A/C, Opening Balances Control A/C, Opening Balances Control A/C, Opening Balances Control A/C, Opening Balances Control A/C, D1]";
-
-		
-		System.out.println("Actaul Account  :"+actpage2row4List);
-		System.out.println("Expected Account:"+exppage2row4List);
-		
-
-		Thread.sleep(2500);
-		report_NextBtn.click();
-		
-		Thread.sleep(2500);
-		
-		try{
-			if(pageNum.getText().equalsIgnoreCase("4"))
-					{
-				report_PrevBtn.click();
-					}
-			
-		}
-		catch (Exception e) 
-		{
-			System.out.println("Exception "+e);
-
-		}
-		
-	
-		
-		int reportspage3row1ListCount = reportsCol1List.size();
-		ArrayList<String> reportspage3row1ListArray = new ArrayList<String>();
-		for(int i=0;i<reportspage3row1ListCount;i++)
-		{
-			String data = reportsCol1List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportspage3row1ListArray.add(data);
-			}
-
-		}
-		
-		String actpage3row1List = reportspage3row1ListArray.toString();
-		String exppage3row1List = "[PurVou : 2, PurVou : 2, PurVou : 9, PurVou : 9, SalInv : 1, SalInv : 1, Rct : 1, Rct : 1, SalInv : 2, SalInv : 2, SalInv : 3, SalInv : 3, SalInv : 4, SalInv : 4, SalInv : 5, SalInv : 5, SalInv : 6, SalInv : 6, PurVou : 10]";
-
-		System.out.println("Actaul Voucher  :"+actpage3row1List);
-		System.out.println("Expected Voucher:"+exppage3row1List);
-		
-		int reportspage3row3ListCount = reportsCol3List.size();
-		ArrayList<String> reportspage3row3ListArray = new ArrayList<String>();
-		for(int i=0;i<reportspage3row3ListCount;i++)
-		{
-			String data = reportsCol3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportspage3row3ListArray.add(data);
-			}
-
-		}
-		String actpage3row3List = reportspage3row3ListArray.toString();
-		String exppage3row3List = "[Purchase, A1, H1, BankACC, BankACC, CashACC, CustomerACC, H1, H2, B2]";
-
-		
-		System.out.println("Actaul Account  :"+actpage3row3List);
-		System.out.println("Expected Account:"+exppage3row3List);
-		
-		int reportspage3row4ListCount = reportsCol4List.size();
-		ArrayList<String> reportspage3row4ListArray = new ArrayList<String>();
-		for(int i=0;i<reportspage3row4ListCount;i++)
-		{
-			String data = reportsCol4List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportspage3row4ListArray.add(data);
-			}
-
-		}
-		String actpage3row4List = reportspage3row4ListArray.toString();
-		String exppage3row4List = "[VendorACC, BankACC, E1, CustomerACC, E1, E2, F1, F2, SalesACC]";
-
-		
-		System.out.println("Actaul Account  :"+actpage3row4List);
-		System.out.println("Expected Account:"+exppage3row4List);
-		
-		
-		Thread.sleep(2500);
-		report_NextBtn.click();
-		Thread.sleep(2500);
-
-		
-		int reportspage4row1ListCount = reportsCol1List.size();
-		ArrayList<String> reportspage4row1ListArray = new ArrayList<String>();
-		for(int i=0;i<reportspage4row1ListCount;i++)
-		{
-			String data = reportsCol1List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportspage4row1ListArray.add(data);
-			}
-
-		}
-		
-		String actpage4row1List = reportspage4row1ListArray.toString();
-		String exppage4row1List = "[PurVou : 10, Pmt : 1, Pmt : 1, SalRet : 1, SalRet : 1, PurRet : 1, PurRet : 1, NJv : 1, NJv : 1, NJv : 1, NJv : 1, CreNts : 1, CreNts : 1, DebNts : 1, DebNts : 1, Grand Total]";
-
-		System.out.println("Actaul Voucher  :"+actpage4row1List);
-		System.out.println("Expected Voucher:"+exppage4row1List);
-		
-		int reportspage4row3ListCount = reportsCol3List.size();
-		ArrayList<String> reportspage4row3ListArray = new ArrayList<String>();
-		for(int i=0;i<reportspage4row3ListCount;i++)
-		{
-			String data = reportsCol3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportspage4row3ListArray.add(data);
-			}
-
-		}
-		String actpage4row3List = reportspage4row3ListArray.toString();
-		String exppage4row3List = "[H2, E1, D2, CustomerACC, VendorACC, H2, E2]";
-
-		
-		System.out.println("Actaul Account  :"+actpage4row3List);
-		System.out.println("Expected Account:"+exppage4row3List);
-		
-		int reportspage4row4ListCount = reportsCol4List.size();
-		ArrayList<String> reportspage4row4ListArray = new ArrayList<String>();
-		for(int i=0;i<reportspage4row4ListCount;i++)
-		{
-			String data = reportsCol4List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportspage4row4ListArray.add(data);
-			}
-
-		}
-		String actpage4row4List = reportspage4row4ListArray.toString();
-		String exppage4row4List = "[D2, BankACC, H1, A1, SalesACC, PurchaseACC, B2, D2]";
-
-		
-		System.out.println("Actaul Account  :"+actpage4row4List);
-		System.out.println("Expected Account:"+exppage4row4List);
-		
-		
-
-		String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
-		String afterPath="]//td[2]";
-		int k;
-		
-		Thread.sleep(2000);
-		
-		int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
-		
-		for(  k=1;k<rows1;k++)
-		{
-			String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
-			
-			if(text1.contains("Grand Total"))
-			{
-				int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-				System.err.println("count"+rowCount);
-			break;
-			}	
-			}
-	
-		int Row1ListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-		ArrayList<String> Row1ListArray = new ArrayList<String>();
-		for(int i=1;i<Row1ListCount;i++)
-		{
-			String data = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).get(i).getText();
-			Row1ListArray.add(data);
-		}
-		String actList = Row1ListArray.toString();
-		String expList = "[Grand Total, , , , ]";
-		
-		System.out.println("actRow1List"+actList);
-		System.out.println("expRow1List"+expList);
-		
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow3List.equalsIgnoreCase(expRow3List) && actRow4List.equalsIgnoreCase(expRow4List) &&
-				actpage2row1List.equalsIgnoreCase(exppage2row1List)&& actpage2row3List.equalsIgnoreCase(exppage2row3List) &&  actpage2row4List.equalsIgnoreCase(exppage2row4List) &&
-				actpage3row1List.equalsIgnoreCase(exppage3row1List) && actpage3row3List.equalsIgnoreCase(exppage3row3List) && actpage3row4List.equalsIgnoreCase(exppage3row4List) && 
-				actpage4row1List.equalsIgnoreCase(exppage4row1List) && actpage4row3List.equalsIgnoreCase(exppage4row3List) && actpage4row4List.equalsIgnoreCase(exppage4row4List) 
-				&& actList.equalsIgnoreCase(expList)) 
-		{
-			return true;
-			
-		} 
-		else 
-		{
-			return false;
-		}
-
-	
-	}
-	
-	public static boolean checkSalesGroupedByCustomer() throws InterruptedException
-	{
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
-		financialsReportsMenu.click();
-		
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesAndPurchasesReportMenu));
-		salesAndPurchasesReportMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesGroupedByCustomerReport));
-		salesGroupedByCustomerReport.click();
-		
-		Thread.sleep(2000);
-		
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		sl_DateOptionDropdown.click();
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reportaccountTxt));
-		reportaccountTxt.click();
-		reportaccountTxt.sendKeys(Keys.SPACE);
-		
-		int reportaccountTxtListCount = reportaccountTxtList.size();
-		
-		for(int i=0;i<reportaccountTxtListCount;i++)
-		{
-			String data = reportaccountTxtList.get(i).getText();
-			
-			if(data.equalsIgnoreCase("E"))
-			{
-				reportaccountTxtList.get(i).click();
-			}
-		}
-		
-		reportaccountTxt.sendKeys(Keys.TAB);
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		
-		
-		Thread.sleep(2000);
-		int reportsRow1ListCount = reportsCol1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsCol1List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-		
-		
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[BankACC, CashACC, CustomerACC, H1, H1, Grand Total]";
-
-		System.out.println("Actaul Voucher  :"+actRow1List);
-		System.out.println("Expected Voucher:"+expRow1List);
-
-		Thread.sleep(2000);
-
-		int reportsRow2ListCount = reportsCol2List.size();
-		ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow2ListCount;i++)
-		{
-			String data = reportsCol2List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow2ListArray.add(data);
-			}
-
-		}
-		
-		
-		String actRow2List = reportsRow2ListArray.toString();
-		String expRow2List = "[BankACC, CashACC, CustomerACC, H1, H1]";
-
-		System.out.println("Actaul Voucher  :"+actRow2List);
-		System.out.println("Expected Voucher:"+expRow2List);
-		
-		int reportsRow3ListCount = reportsCol3List.size();
-		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow3ListCount;i++)
-		{
-			String data = reportsCol3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow3ListArray.add(data);
-			}
-
-		}
-		String actRow3List = reportsRow3ListArray.toString();
-		String expRow3List = "[A1, A1, APPLE, A1, APPLE]";
-
-		
-		System.out.println("Actaul Account  :"+actRow3List);
-		System.out.println("Expected Account:"+expRow3List);
-		
-		Thread.sleep(4000);
-
-		int reportsRow4ListCount = reportsCol4List.size();
-		ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow4ListCount;i++)
-		{
-			String data = reportsCol4List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow4ListArray.add(data);
-			}
-
-		}
-		
-		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 2.00, 1.00, 3.00, 6.00]";
-
-		System.out.println("Actual Branch  :"+actRow4List);
-		System.out.println("Expected Branch:"+expRow4List);
-		
-		int reportsRow5ListCount = reportsCol5List.size();
-		ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow5ListCount;i++)
-		{
-			String data = reportsCol5List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow5ListArray.add(data);
-			}
-
-		}
-		String actRow5List = reportsRow5ListArray.toString();
-		String expRow5List = "[1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 4.00, 1.00, 5.00, 8.00]";
-
-		System.out.println("Actual Department  :"+actRow5List);
-		System.out.println("Expected Department:"+expRow5List);
-		
-		if ( actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List)
-				 && actRow3List.equalsIgnoreCase(expRow3List) && actRow4List.equalsIgnoreCase(expRow4List)
-				 && actRow5List.equalsIgnoreCase(expRow5List)) 
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-		
-	}
-	
-	public static boolean checkSalesGroupedByItem() throws InterruptedException
-	{
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
-		financialsReportsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesAndPurchasesReportMenu));
-		salesAndPurchasesReportMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesGroupedByProductReport));
-		salesGroupedByProductReport.click();
-		
-		Thread.sleep(2000);
-		
-	
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		sl_DateOptionDropdown.click();
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reportaccountTxt));
-		reportaccountTxt.click();
-		reportaccountTxt.sendKeys(Keys.SPACE);
-		
-		int reportaccountTxtListCount = reportaccountTxtList.size();
-		
-		for(int i=0;i<reportaccountTxtListCount;i++)
-		{
-			String data = reportaccountTxtList.get(i).getText();
-			
-			if(data.equalsIgnoreCase("E"))
-			{
-				reportaccountTxtList.get(i).click();
-			}
-		}
-		
-		reportaccountTxt.sendKeys(Keys.TAB);
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		
-
-		Thread.sleep(2000);
-		int reportsRow1ListCount = reportsCol1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsCol1List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-		
-		
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[A1, A1, A1, APPLE, APPLE, Grand Total]";
-
-		System.out.println("Actaul Voucher  :"+actRow1List);
-		System.out.println("Expected Voucher:"+expRow1List);
-
-		Thread.sleep(2000);
-
-		int reportsRow2ListCount = reportsCol2List.size();
-		ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow2ListCount;i++)
-		{
-			String data = reportsCol2List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow2ListArray.add(data);
-			}
-
-		}
-		
-		
-		String actRow2List = reportsRow2ListArray.toString();
-		String expRow2List = "[BankACC, CashACC, H1, CustomerACC, H1]";
-
-		System.out.println("Actaul Voucher  :"+actRow2List);
-		System.out.println("Expected Voucher:"+expRow2List);
-		
-		int reportsRow3ListCount = reportsCol3List.size();
-		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow3ListCount;i++)
-		{
-			String data = reportsCol3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow3ListArray.add(data);
-			}
-
-		}
-		String actRow3List = reportsRow3ListArray.toString();
-		String expRow3List = "[1.00, 1.00, 2.00, 4.00, 1.00, 1.00, 2.00, 6.00]";
-
-		
-		System.out.println("Actaul Account  :"+actRow3List);
-		System.out.println("Expected Account:"+expRow3List);
-		
-		Thread.sleep(4000);
-
-		int reportsRow4ListCount = reportsCol4List.size();
-		ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow4ListCount;i++)
-		{
-			String data = reportsCol4List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow4ListArray.add(data);
-			}
-
-		}
-		
-		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[1.00, 1.00, 4.00, 6.00, 1.00, 1.00, 2.00, 8.00]";
-
-		System.out.println("Actual Branch  :"+actRow4List);
-		System.out.println("Expected Branch:"+expRow4List);
-		
-	
-		if ( actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List)
-				 && actRow3List.equalsIgnoreCase(expRow3List) && actRow4List.equalsIgnoreCase(expRow4List)
-				) 
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-		
-
-	}
-	
-	public static boolean checkSalesGroupedByDepartment()
-	{
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
-		financialsReportsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesAndPurchasesReportMenu));
-		salesAndPurchasesReportMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesGroupedByDepartmentReport));
-		salesGroupedByDepartmentReport.click();
-	
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		sl_DateOptionDropdown.click();
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reportaccountTxt));
-		reportaccountTxt.click();
-		reportaccountTxt.sendKeys(Keys.SPACE);
-		
-		int reportaccountTxtListCount = reportaccountTxtList.size();
-		
-		for(int i=0;i<reportaccountTxtListCount;i++)
-		{
-			String data = reportaccountTxtList.get(i).getText();
-			
-			if(data.equalsIgnoreCase("E"))
-			{
-				reportaccountTxtList.get(i).click();
-			}
-		}
-		
-		reportaccountTxt.sendKeys(Keys.TAB);
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		
-
-
-		int reportsRow1ListCount = reportsRow1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsRow1List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[A1, APPLE, 2.00, 2.00]";
-
-
-
-		int reportsRow2ListCount = reportsRow2List.size();
-		ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow2ListCount;i++)
-		{
-			String data = reportsRow2List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow2ListArray.add(data);
-			}
-
-
-		}
-		String actRow2List = reportsRow2ListArray.toString();
-		String expRow2List = "[A1, A1, 4.00, 6.00]";
-
-
-
-		int reportsRow3ListCount = reportsRow3List.size();
-		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow3ListCount;i++)
-		{
-			String data = reportsRow3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow3ListArray.add(data);
-			}
-
-		}
-		String actRow3List = reportsRow3ListArray.toString();
-		String expRow3List = "[6.00, 8.00]";
-
-
-
-		int reportsRow4ListCount = reportsRow4List.size();
-		ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow4ListCount;i++)
-		{
-			String data = reportsRow4List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow4ListArray.add(data);
-			}
-
-		}
-		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[Grand Total, 6.00, 8.00]";
-
-		System.out.println(actRow1List);
-		System.out.println(expRow1List);
-
-		System.out.println(actRow2List);
-		System.out.println(expRow2List);
-
-		System.out.println(actRow3List);
-		System.out.println(expRow3List);
-
-		System.out.println(actRow4List);
-		System.out.println(expRow4List);
-
-	
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List) 
-				&& actRow4List.equalsIgnoreCase(expRow4List))
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-		
-
-	}
-	
-	public static boolean checkPurchasesGroupedByVendor() throws InterruptedException
-	{
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
-		financialsReportsMenu.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesAndPurchasesReportMenu));
-		salesAndPurchasesReportMenu.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchasesGroupedByVendorReport));
-		purchasesGroupedByVendorReport.click();
-
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		sl_DateOptionDropdown.click();
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reportaccountTxt));
-		reportaccountTxt.click();
-		reportaccountTxt.sendKeys(Keys.SPACE);
-
-		int reportaccountTxtListCount = reportaccountTxtList.size();
-
-		for(int i=0;i<reportaccountTxtListCount;i++)
-		{
-			String data = reportaccountTxtList.get(i).getText();
-
-			if(data.equalsIgnoreCase("A"))
-			{
-				reportaccountTxtList.get(i).click();
-			}
-		}
-
-		reportaccountTxt.sendKeys(Keys.TAB);
-
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		
-
-		Thread.sleep(2000);
-		int reportsRow1ListCount = reportsCol1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsCol1List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-		
-		
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[BankACC, D1, D1, D1, D1, D1, D1, D1, D2, Vendor A, Grand Total]";
-
-		System.out.println("Actaul Voucher  :"+actRow1List);
-		System.out.println("Expected Voucher:"+expRow1List);
-
-		Thread.sleep(2000);
-
-		int reportsRow2ListCount = reportsCol2List.size();
-		ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow2ListCount;i++)
-		{
-			String data = reportsCol2List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow2ListArray.add(data);
-			}
-
-		}
-		
-		
-		String actRow2List = reportsRow2ListArray.toString();
-		String expRow2List = "[A1, A1, A2, APPLE, B1, B2, D1, D2, D2, A1]";
-
-		System.out.println("Actaul Voucher  :"+actRow2List);
-		System.out.println("Expected Voucher:"+expRow2List);
-		
-		int reportsRow3ListCount = reportsCol3List.size();
-		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow3ListCount;i++)
-		{
-			String data = reportsCol3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow3ListArray.add(data);
-			}
-
-		}
-		String actRow3List = reportsRow3ListArray.toString();
-		String expRow3List = "[1.00, 1.00, 1.00, 1.00, 10.00, 1.00, 1.00, 10.00, 1.00, 25.00, 1.00, 1.00, 1.00, 1.00, 28.00]";
-
-		
-		System.out.println("Actaul Account  :"+actRow3List);
-		System.out.println("Expected Account:"+expRow3List);
-		
-		Thread.sleep(4000);
-
-		int reportsRow4ListCount = reportsCol4List.size();
-		ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow4ListCount;i++)
-		{
-			String data = reportsCol4List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow4ListArray.add(data);
-			}
-
-		}
-		
-		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[1.00, 1.00, 1.00, 1.00, 10.00, 1.00, 1.00, 10.00, 1.00, 25.00, 1.00, 1.00, 1.00, 1.00, 28.00]";
-
-		System.out.println("Actual Branch  :"+actRow4List);
-		System.out.println("Expected Branch:"+expRow4List);
-		
-	
-		if ( actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List)
-				 && actRow3List.equalsIgnoreCase(expRow3List) && actRow4List.equalsIgnoreCase(expRow4List)
-				) 
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-		
-
-	}
-	
-	public static boolean checkPurchasesGroupedByItem() throws InterruptedException
-	{
-
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
-		financialsReportsMenu.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesAndPurchasesReportMenu));
-		salesAndPurchasesReportMenu.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchasesGroupedByProductReport));
-		purchasesGroupedByProductReport.click();
-		
-		
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		sl_DateOptionDropdown.click();
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reportaccountTxt));
-		reportaccountTxt.click();
-		reportaccountTxt.sendKeys(Keys.SPACE);
-
-		int reportaccountTxtListCount = reportaccountTxtList.size();
-
-		for(int i=0;i<reportaccountTxtListCount;i++)
-		{
-			String data = reportaccountTxtList.get(i).getText();
-
-			if(data.equalsIgnoreCase("A"))
-			{
-				reportaccountTxtList.get(i).click();
-			}
-		}
-
-		reportaccountTxt.sendKeys(Keys.TAB);
-
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		
-
-		Thread.sleep(2000);
-		int reportsRow1ListCount = reportsCol1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsCol1List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-		
-		
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[A1, A1, A1, A2, APPLE, B1, B2, D1, D2, D2, Grand Total]";
-
-		System.out.println("Actaul Voucher  :"+actRow1List);
-		System.out.println("Expected Voucher:"+expRow1List);
-
-		Thread.sleep(2000);
-
-		int reportsRow2ListCount = reportsCol2List.size();
-		ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow2ListCount;i++)
-		{
-			String data = reportsCol2List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow2ListArray.add(data);
-			}
-
-		}
-		
-		
-		String actRow2List = reportsRow2ListArray.toString();
-		String expRow2List = "[BankACC, D1, Vendor A, D1, D1, D1, D1, D1, D1, D2]";
-
-		System.out.println("Actaul Voucher  :"+actRow2List);
-		System.out.println("Expected Voucher:"+expRow2List);
-		
-		int reportsRow3ListCount = reportsCol3List.size();
-		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow3ListCount;i++)
-		{
-			String data = reportsCol3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow3ListArray.add(data);
-			}
-
-		}
-		String actRow3List = reportsRow3ListArray.toString();
-		String expRow3List = "[1.00, 1.00, 1.00, 3.00, 1.00, 1.00, 10.00, 10.00, 1.00, 1.00, 1.00, 1.00, 10.00, 10.00, 1.00, 1.00, 2.00, 28.00]";
-
-		
-		System.out.println("Actaul Account  :"+actRow3List);
-		System.out.println("Expected Account:"+expRow3List);
-		
-		Thread.sleep(4000);
-
-		int reportsRow4ListCount = reportsCol4List.size();
-		ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow4ListCount;i++)
-		{
-			String data = reportsCol4List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow4ListArray.add(data);
-			}
-
-		}
-		
-		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[1.00, 1.00, 1.00, 3.00, 1.00, 1.00, 10.00, 10.00, 1.00, 1.00, 1.00, 1.00, 10.00, 10.00, 1.00, 1.00, 2.00, 28.00]";
-
-		System.out.println("Actual Branch  :"+actRow4List);
-		System.out.println("Expected Branch:"+expRow4List);
-		
-	
-		if ( actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List)
-				 && actRow3List.equalsIgnoreCase(expRow3List) && actRow4List.equalsIgnoreCase(expRow4List)
-				) 
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	
-	}
-	
-	public static boolean checkPurchasesGroupedByDepartment() throws InterruptedException
-	{
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
-		financialsReportsMenu.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesAndPurchasesReportMenu));
-		salesAndPurchasesReportMenu.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchasesGroupedByDepartmentReport));
-		purchasesGroupedByDepartmentReport.click();
-
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		sl_DateOptionDropdown.click();
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reportaccountTxt));
-		reportaccountTxt.click();
-		reportaccountTxt.sendKeys(Keys.SPACE);
-
-		int reportaccountTxtListCount = reportaccountTxtList.size();
-
-		for(int i=0;i<reportaccountTxtListCount;i++)
-		{
-			String data = reportaccountTxtList.get(i).getText();
-
-			if(data.equalsIgnoreCase("A"))
-			{
-				reportaccountTxtList.get(i).click();
-			}
-		}
-
-		reportaccountTxt.sendKeys(Keys.TAB);
-
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-
-
-		Thread.sleep(2000);
-		int reportsRow1ListCount = reportsCol1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsCol1List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[A1, A1, A1, A1, A1, A1, A1, D2, Grand Total]";
-
-		System.out.println("Actaul Voucher  :"+actRow1List);
-		System.out.println("Expected Voucher:"+expRow1List);
-
-		Thread.sleep(2000);
-
-		int reportsRow2ListCount = reportsCol2List.size();
-		ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow2ListCount;i++)
-		{
-			String data = reportsCol2List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow2ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow2List = reportsRow2ListArray.toString();
-		String expRow2List = "[APPLE, D1, B2, A2, A1, D2, B1, D2]";
-
-		System.out.println("Actaul Voucher  :"+actRow2List);
-		System.out.println("Expected Voucher:"+expRow2List);
-
-		int reportsRow3ListCount = reportsCol3List.size();
-		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow3ListCount;i++)
-		{
-			String data = reportsCol3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow3ListArray.add(data);
-			}
-
-		}
-		String actRow3List = reportsRow3ListArray.toString();
-		String expRow3List = "[10.00, 10.00, 1.00, 1.00, 3.00, 1.00, 1.00, 27.00, 1.00, 1.00, 28.00]";
-
-
-		System.out.println("Actaul Account  :"+actRow3List);
-		System.out.println("Expected Account:"+expRow3List);
-
-		Thread.sleep(4000);
-
-		int reportsRow4ListCount = reportsCol4List.size();
-		ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow4ListCount;i++)
-		{
-			String data = reportsCol4List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow4ListArray.add(data);
-			}
-
-		}
-
-		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[10.00, 10.00, 1.00, 1.00, 3.00, 1.00, 1.00, 27.00, 1.00, 1.00, 28.00]";
-
-		System.out.println("Actual Branch  :"+actRow4List);
-		System.out.println("Expected Branch:"+expRow4List);
-
-
-		if ( actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List)
-				&& actRow3List.equalsIgnoreCase(expRow3List) && actRow4List.equalsIgnoreCase(expRow4List)
-				) 
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-
-
-	}
-	
-	public static boolean checkPeakAndLowBlanceAmount() throws InterruptedException
-	{
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
-		financialsReportsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(MiscellaneousAnalysisReportMenu));
-		MiscellaneousAnalysisReportMenu.click();
-	
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(peakAndLowBalancesReport));
-		peakAndLowBalancesReport.click();
-		
-		Thread.sleep(2000);
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		sl_DateOptionDropdown.click();
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
-		
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		
-		int reportsRow1ListCount = reportsRow1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsRow1List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[B2, 0, 0, 26/07/2022, 1.00, 26/07/2022, 1.00]";
-
-
-
-		int reportsRow2ListCount = reportsRow2List.size();
-		ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow2ListCount;i++)
-		{
-			String data = reportsRow2List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow2ListArray.add(data);
-			}
-
-
-		}
-		String actRow2List = reportsRow2ListArray.toString();
-		String expRow2List = "[BankACC, 22/07/2022, 25/07/2022, 1.00, 21/07/2022, 25/07/2022, 1.00]";
-
-
-
-		int reportsRow3ListCount = reportsRow3List.size();
-		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow3ListCount;i++)
-		{
-			String data = reportsRow3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow3ListArray.add(data);
-			}
-
-		}
-		String actRow3List = reportsRow3ListArray.toString();
-		String expRow3List = "[CashACC, 25/07/2022, 1.00, 25/07/2022, 1.00, 0, 0]";
-
-		int reportsRow4ListCount = reportsRow4List.size();
-		ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow4ListCount;i++)
-		{
-			String data = reportsRow4List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow4ListArray.add(data);
-			}
-
-		}
-		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[CustomerACC, 25/07/2022, 1.00, 25/07/2022, 1.00, 0, 0]";
-		
-		int reportsRow5ListCount = reportsRow5List.size();
-		ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
-		for(int i=5;i<reportsRow5ListCount;i++)
-		{
-			String data = reportsRow5List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow5ListArray.add(data);
-			}
-
-		}
-		String actRow5List = reportsRow5ListArray.toString();
-		String expRow5List = "[21/07/2022, 1.00, 21/07/2022, 29.00]";
-
-
-
-		int reportsRow6ListCount = reportsRow6List.size();
-		ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow6ListCount;i++)
-		{
-			String data = reportsRow6List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow6ListArray.add(data);
-			}
-
-
-		}
-		String actRow6List = reportsRow6ListArray.toString();
-		String expRow6List = "[D2, 26/07/2022, 26/07/2022, 1.00, 25/07/2022, 25/07/2022, 1.00]";
-
-
-
-		int reportsRow7ListCount = reportsRow7List.size();
-		ArrayList<String> reportsRow7ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow7ListCount;i++)
-		{
-			String data = reportsRow7List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow7ListArray.add(data);
-			}
-
-		}
-		String actRow7List = reportsRow7ListArray.toString();
-		String expRow7List = "[E2, 26/07/2022, 1.00, 26/07/2022, 1.00, 0, 0]";
-
-
-
-		int reportsRow8ListCount = reportsRow8List.size();
-		ArrayList<String> reportsRow8ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow8ListCount;i++)
-		{
-			String data = reportsRow8List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow8ListArray.add(data);
-			}
-
-		}
-		String actRow8List = reportsRow8ListArray.toString();
-		String expRow8List = "[H1, 21/07/2022, 25/07/2022, 4.00, 26/07/2022, 26/07/2022, 11.00]";
-		
-		int reportsRow9ListCount = reportsRow9List.size();
-		ArrayList<String> reportsRow9ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow9ListCount;i++)
-		{
-			String data = reportsRow9List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow9ListArray.add(data);
-			}
-
-		}
-		String actRow9List = reportsRow9ListArray.toString();
-		String expRow9List = "[H2, 25/07/2022, 1.00, 25/07/2022, 1.00, 0, 0]";
-
-
-
-		int reportsRow10ListCount = reportsRow10List.size();
-		ArrayList<String> reportsRow10ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow10ListCount;i++)
-		{
-			String data = reportsRow10List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow10ListArray.add(data);
-			}
-
-		}
-		String actRow10List = reportsRow10ListArray.toString();
-		String expRow10List = "[Opening Balances Control A/C, 0, 0, 31/03/2022, 1.00, 31/03/2022, 1.00]";
-		
-		int reportsRow11ListCount = reportsRow11List.size();
-		ArrayList<String> reportsRow11ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow11ListCount;i++)
-		{
-			String data = reportsRow11List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow11ListArray.add(data);
-			}
-
-		}
-		String actRow11List = reportsRow11ListArray.toString();
-		String expRow11List = "[PurchaseACC, 0, 0, 26/07/2022, 1.00, 26/07/2022, 1.00]";
-
-
-
-		int reportsRow12ListCount = reportsRow12List.size();
-		ArrayList<String> reportsRow12ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow12ListCount;i++)
-		{
-			String data = reportsRow12List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow12ListArray.add(data);
-			}
-
-
-		}
-		String actRow12List = reportsRow12ListArray.toString();
-		String expRow12List = "[SalesACC, 0, 0, 26/07/2022, 1.00, 26/07/2022, 1.00]";
-
-
-
-		int reportsRow13ListCount = reportsRow13List.size();
-		ArrayList<String> reportsRow13ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow13ListCount;i++)
-		{
-			String data = reportsRow13List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow13ListArray.add(data);
-			}
-
-		}
-		String actRow13List = reportsRow13ListArray.toString();
-		String expRow13List = "[VendorACC, 0, 0, 21/07/2022, 1.00, 21/07/2022, 1.00]";
-
-
-
-		int reportsRow14ListCount = reportsRow14List.size();
-		ArrayList<String> reportsRow14ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow14ListCount;i++)
-		{
-			String data = reportsRow14List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow14ListArray.add(data);
-			}
-
-		}
-		String actRow14List = reportsRow14ListArray.toString();
-		String expRow14List = "[Grand Total, 4.00, 10.00, 6.00, 47.00]";
-		
-		System.out.println(actRow1List);
-		
-		System.out.println(expRow1List);
-
-		System.out.println(actRow2List);
-		
-		System.out.println(expRow2List);
-
-		System.out.println(actRow3List);
-		System.out.println(expRow3List);
-
-		System.out.println(actRow4List);
-		System.out.println(expRow4List);
-
-		System.out.println(actRow5List);
-		System.out.println(expRow5List);
-		
-
-		System.out.println(actRow6List);
-		System.out.println(expRow6List);
-		
-		System.out.println(actRow7List);
-		System.out.println(expRow7List);
-
-		System.out.println(actRow8List);
-		System.out.println(expRow8List);
-		
-
-		System.out.println(actRow9List);
-		System.out.println(expRow9List);
-	
-		
-		System.out.println(actRow10List);
-		System.out.println(expRow10List);
-		
-
-		System.out.println(actRow11List);
-		System.out.println(expRow11List);
-		
-		System.out.println(actRow12List);
-		System.out.println(expRow12List);
-
-		System.out.println(actRow13List);
-		System.out.println(expRow13List);
-		
-
-		System.out.println(actRow14List);
-		System.out.println(expRow14List);
-	
-		
-		
-		
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List)
-				&& actRow3List.equalsIgnoreCase(expRow3List) && actRow4List.equalsIgnoreCase(expRow4List)&&
-				actRow5List.equalsIgnoreCase(expRow5List) && actRow6List.equalsIgnoreCase(expRow6List)
-				&& actRow7List.equalsIgnoreCase(expRow7List) && actRow8List.equalsIgnoreCase(expRow8List) &&
-				actRow9List.equalsIgnoreCase(expRow9List) && actRow10List.equalsIgnoreCase(expRow10List)
-				&& actRow11List.equalsIgnoreCase(expRow11List) && actRow12List.equalsIgnoreCase(expRow12List)&&
-				actRow13List.equalsIgnoreCase(expRow13List) && actRow14List.equalsIgnoreCase(expRow14List)
-				) 
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-		
-	
-	}
-	
-	public static boolean checkComparativeAnalysisReport() throws InterruptedException
-	{
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
-		financialsReportsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(MiscellaneousAnalysisReportMenu));
-		MiscellaneousAnalysisReportMenu.click();
-	
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(comprativeAnalysisReport));
-		comprativeAnalysisReport.click();
-		
-		Thread.sleep(2000);
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		sl_DateOptionDropdown.click();
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
-		
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		
-
-
-		int reportsRow1ListCount = reportsRow1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsRow1List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[PurchaseACC, 1.00]";
-
-
-
-		int reportsRow2ListCount = reportsRow2List.size();
-		ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow2ListCount;i++)
-		{
-			String data = reportsRow2List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow2ListArray.add(data);
-			}
-
-
-		}
-		String actRow2List = reportsRow2ListArray.toString();
-		String expRow2List = "[SalesACC, 1.00, 2.00]";
-
-
-
-		int reportsRow3ListCount = reportsRow3List.size();
-		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow3ListCount;i++)
-		{
-			String data = reportsRow3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow3ListArray.add(data);
-			}
-
-		}
-		String actRow3List = reportsRow3ListArray.toString();
-		String expRow3List = "[CustomerACC, 2.00, 1.00]";
-
-
-
-		int reportsRow4ListCount = reportsRow4List.size();
-		ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow4ListCount;i++)
-		{
-			String data = reportsRow4List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow4ListArray.add(data);
-			}
-
-		}
-		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[A1, 35.00, 34.00]";
-		
-		int reportsRow5ListCount = reportsRow5List.size();
-		ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow5ListCount;i++)
-		{
-			String data = reportsRow5List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow5ListArray.add(data);
-			}
-
-		}
-		String actRow5List = reportsRow5ListArray.toString();
-		String expRow5List = "[D1, 32.00, 33.00]";
-
-
-
-		int reportsRow6ListCount = reportsRow6List.size();
-		ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow6ListCount;i++)
-		{
-			String data = reportsRow6List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow6ListArray.add(data);
-			}
-
-
-		}
-		String actRow6List = reportsRow6ListArray.toString();
-		String expRow6List = "[D2, 1.00]";
-
-
-
-		int reportsRow7ListCount = reportsRow7List.size();
-		ArrayList<String> reportsRow7ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow7ListCount;i++)
-		{
-			String data = reportsRow7List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow7ListArray.add(data);
-			}
-
-		}
-		String actRow7List = reportsRow7ListArray.toString();
-		String expRow7List = "[E1, 7.00, 6.00]";
-
-
-
-		int reportsRow8ListCount = reportsRow8List.size();
-		ArrayList<String> reportsRow8ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow8ListCount;i++)
-		{
-			String data = reportsRow8List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow8ListArray.add(data);
-			}
-
-		}
-		String actRow8List = reportsRow8ListArray.toString();
-		String expRow8List = "[F1, 1.00]";
-		
-		int reportsRow9ListCount = reportsRow9List.size();
-		ArrayList<String> reportsRow9ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow9ListCount;i++)
-		{
-			String data = reportsRow9List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow9ListArray.add(data);
-			}
-
-		}
-		String actRow9List = reportsRow9ListArray.toString();
-		String expRow9List = "[F2, 1.00]";
-
-
-
-		int reportsRow10ListCount = reportsRow10List.size();
-		ArrayList<String> reportsRow10ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow10ListCount;i++)
-		{
-			String data = reportsRow10List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow10ListArray.add(data);
-			}
-
-		}
-		String actRow10List = reportsRow10ListArray.toString();
-		String expRow10List = "[H1, 5.00, 6.00]";
-		
-		int reportsRow11ListCount = reportsRow11List.size();
-		ArrayList<String> reportsRow11ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow11ListCount;i++)
-		{
-			String data = reportsRow11List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow11ListArray.add(data);
-			}
-
-		}
-		String actRow11List = reportsRow11ListArray.toString();
-		String expRow11List = "[H2, 4.00, 3.00]";
-
-
-
-		int reportsRow12ListCount = reportsRow12List.size();
-		ArrayList<String> reportsRow12ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow12ListCount;i++)
-		{
-			String data = reportsRow12List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow12ListArray.add(data);
-			}
-
-
-		}
-		String actRow12List = reportsRow12ListArray.toString();
-		String expRow12List = "[CashACC, 2.00, 1.00]";
-
-
-
-		int reportsRow13ListCount = reportsRow13List.size();
-		ArrayList<String> reportsRow13ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow13ListCount;i++)
-		{
-			String data = reportsRow13List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow13ListArray.add(data);
-			}
-
-		}
-		String actRow13List = reportsRow13ListArray.toString();
-		String expRow13List = "[Grand Total, 12.00]";
-
-	    System.out.println(actRow1List);
-		
-		System.out.println(expRow1List);
-
-		System.out.println(actRow2List);
-		
-		System.out.println(expRow2List);
-
-		System.out.println(actRow3List);
-		System.out.println(expRow3List);
-
-		System.out.println(actRow4List);
-		System.out.println(expRow4List);
-
-		System.out.println(actRow5List);
-		System.out.println(expRow5List);
-		
-
-		System.out.println(actRow6List);
-		System.out.println(expRow6List);
-		
-		System.out.println(actRow7List);
-		System.out.println(expRow7List);
-
-		System.out.println(actRow8List);
-		System.out.println(expRow8List);
-		
-
-		System.out.println(actRow9List);
-		System.out.println(expRow9List);
-	
-		
-		System.out.println(actRow10List);
-		System.out.println(expRow10List);
-		
-
-		System.out.println(actRow11List);
-		System.out.println(expRow11List);
-		
-		System.out.println(actRow12List);
-		System.out.println(expRow12List);
-
-		System.out.println(actRow13List);
-		System.out.println(expRow13List);
-		
-
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List)
-				&& actRow3List.equalsIgnoreCase(expRow3List) && actRow4List.equalsIgnoreCase(expRow4List)&&
-				actRow5List.equalsIgnoreCase(expRow5List) && actRow6List.equalsIgnoreCase(expRow6List)
-				&& actRow7List.equalsIgnoreCase(expRow7List) && actRow8List.equalsIgnoreCase(expRow8List) &&
-				actRow9List.equalsIgnoreCase(expRow9List) && actRow10List.equalsIgnoreCase(expRow10List)
-				&& actRow11List.equalsIgnoreCase(expRow11List) && actRow12List.equalsIgnoreCase(expRow12List)&&
-				actRow13List.equalsIgnoreCase(expRow13List)) 
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-		
-	
-	
-	}
-	
-	public static boolean checkTransactionsTypeAnalysis() throws InterruptedException
-	{
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
-		financialsReportsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(MiscellaneousAnalysisReportMenu));
-		MiscellaneousAnalysisReportMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(transactionsTypeAnalysisReport));
-		transactionsTypeAnalysisReport.click();
-		
-		Thread.sleep(2000);
-		
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		sl_DateOptionDropdown.click();
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
-		
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		
-
-		boolean novalidationConfirmationMessage =validationConfirmationMessage.getText().isEmpty();
-	
-		String actvalidationConfirmationMessage = Boolean.toString(novalidationConfirmationMessage);
-		String expvalidationConfirmationMessage = "true";
-		
-		System.out.println("validationConfirmationMessage : "+actvalidationConfirmationMessage+" Value Expected : "+expvalidationConfirmationMessage);
-		
-		Thread.sleep(2000);
-		
-	if (actvalidationConfirmationMessage.equalsIgnoreCase(expvalidationConfirmationMessage)) 
-	{
-		return true;
-	} 
-	else 
-	{
-		return false;
-	}
-	
-	}
-	
-	public static boolean checkABCAnalysisAmountReport() throws InterruptedException
-	{
-		Thread.sleep(3000);
-		getDriver().navigate().refresh();
-		Thread.sleep(2000);
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
-		financialsReportsMenu.click();
-		
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(MiscellaneousAnalysisReportMenu));
-		MiscellaneousAnalysisReportMenu.click();
-		
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(abcAnalysisReport));
-		abcAnalysisReport.click();
-		
-		Thread.sleep(2000);
-		
-		boolean novalidationConfirmationMessage =validationConfirmationMessage.getText().isEmpty();
-		
-		String actvalidationConfirmationMessage = Boolean.toString(novalidationConfirmationMessage);
-		String expvalidationConfirmationMessage = "true";
-		
-		System.out.println("validationConfirmationMessage : "+actvalidationConfirmationMessage+" Value Expected : "+expvalidationConfirmationMessage);
-		
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		sl_DateOptionDropdown.click();
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
-		
+				if (pageNum.getText().equalsIgnoreCase("3")) 
+				{
+					System.err.println("page 3 ");
+		
+				}
 					
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
+				System.out.println("Exception "+e);
+
+			}
+			
+			
+
+			int reportspage3Row2ListCount = reportsCol2List.size();
+			ArrayList<String> reportspage3Row2ListArray = new ArrayList<String>();
+			for(int i=0;i<reportspage3Row2ListCount;i++)
+			{
+				String data = reportsCol2List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportspage3Row2ListArray.add(data);
+				}
+
+			}
+			
+			
+			String actpage3Row2List = reportspage3Row2ListArray.toString();
+			String exppage3Row2List = "[PurVou : 7, PurRet : 2, PurVou : 12, SalInv : 7, SalInv : 7, SalInv : 7, SalInv : 7, SalInv : 7, SalRet : 2, NJv : 2, PurVou : 7]";
+
+			System.out.println("Actaul Voucher  :"+actpage3Row2List);
+			System.out.println("Expected Voucher:"+exppage3Row2List);
+			
+			int reportspage3Row3ListCount = reportsCol3List.size();
+			ArrayList<String> reportspage3Row3ListArray = new ArrayList<String>();
+			for(int i=0;i<reportspage3Row3ListCount;i++)
+			{
+				String data = reportsCol3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportspage3Row3ListArray.add(data);
+				}
+
+			}
+			String actpage3Row3List = reportspage3Row3ListArray.toString();
+			String exppage3Row3List = "[Vendor A, C2, CustVend, G2, G2, G2, G2, G2, G2, C2, Purchase]";
+
+			
+			System.out.println("Actaul Account  :"+actpage3Row3List);
+			System.out.println("Expected Account:"+exppage3Row3List);
+			
+			Thread.sleep(4000);
+
+			int reportspage3Row4ListCount = reportsCol4List.size();
+			ArrayList<String> reportspage3Row4ListArray = new ArrayList<String>();
+			for(int i=0;i<reportspage3Row4ListCount;i++)
+			{
+				String data = reportsCol4List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportspage3Row4ListArray.add(data);
+				}
+
+			}
+			
+			String actpage3Row4List = reportspage3Row4ListArray.toString();
+			String exppage3Row4List = "[BR-SEC, 0, BR-SEC, BR-SEC, BR-SEC, BR-SEC, BR-SEC, BR-SEC, 0, 0, BR-SEC]";
+
+			System.out.println("Actual Branch  :"+actpage3Row4List);
+			System.out.println("Expected Branch:"+exppage3Row4List);
+			
+			int reportspage3Row5ListCount = reportsCol5List.size();
+			ArrayList<String> reportspage3Row5ListArray = new ArrayList<String>();
+			for(int i=0;i<reportspage3Row5ListCount;i++)
+			{
+				String data = reportsCol5List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportspage3Row5ListArray.add(data);
+				}
+
+			}
+			String actpage3Row5List = reportspage3Row5ListArray.toString();
+			String exppage3Row5List = "[C1, C2, FIN, C1, C1, C1, C1, C1, C2, C2, C1]";
+
+			System.out.println("Actual Department  :"+actpage3Row5List);
+			System.out.println("Expected Department:"+exppage3Row5List);
+			
+			int reportspage3Row6ListCount = reportsCol6List.size();
+			ArrayList<String> reportspage3Row6ListArray = new ArrayList<String>();
+			for(int i=0;i<reportspage3Row6ListCount;i++)
+			{
+				String data = reportsCol6List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportspage3Row6ListArray.add(data);
+				}
+
+			}
+			String actpage3Row6List = reportspage3Row6ListArray.toString();
+			String exppage3Row6List = "[C1, C2, SEC, C1, C1, C1, C1, C1, C2, C1]";
+
+			System.out.println("Actual Warehouse  :"+actpage3Row6List);
+			System.out.println("Expected Warehouse:"+exppage3Row6List);
+			
+		
+			ArrayList<String>  AllDatapage3 = new ArrayList<String>(); 
+
+			int count3=stockLedgerTable.size();
+
+			System.err.println(count3);
+
+			for(int i=0 ; i < count3 ;i++)
+			{
+				String style= stockLedgerTable.get(i).getAttribute("style");
+				if(style.contains("overflow: visible; font-weight: bold; background-color:"))
+						{
+					    String data=stockLedgerTable.get(i).getText();
+					    AllDatapage3.add(data);
+						}
+		
+			}
+
+			String actAllDatapage3 = AllDatapage3.toString();
+			String expAllDatapage3 = "[Cost of goods sold - Computers 091-003, Sales - Computers 071-001, Vendor A 033-001, C1 C301]";
+
+			System.out.println("actAllDatapage3"+actAllDatapage3);
+			System.out.println("expAllDatapage3"+expAllDatapage3);
+			
+			
+			System.out.println("*************************Printing page 3 data done*********************************");
+
+			Thread.sleep(2000);
+			report_NextBtn.click();
+			Thread.sleep(2000);
+			
+			int reportspage4Row2ListCount = reportsCol2List.size();
+			ArrayList<String> reportspage4Row2ListArray = new ArrayList<String>();
+			for(int i=0;i<reportspage4Row2ListCount;i++)
+			{
+				String data = reportsCol2List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportspage4Row2ListArray.add(data);
+				}
+
+			}
+			
+			
+			String actpage4Row2List = reportspage4Row2ListArray.toString();
+			String exppage4Row2List = "[Pmt : 2, PurVou : 11, Rct : 2, PurRet : 2, NJv : 2]";
+
+			System.out.println("Actaul Voucher  :"+actpage4Row2List);
+			System.out.println("Expected Voucher:"+exppage4Row2List);
+			
+			int reportspage4Row3ListCount = reportsCol3List.size();
+			ArrayList<String> reportspage4Row3ListArray = new ArrayList<String>();
+			for(int i=0;i<reportspage4Row3ListCount;i++)
+			{
+				String data = reportsCol3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportspage4Row3ListArray.add(data);
+				}
+
+			}
+			String actpage4Row3List = reportspage4Row3ListArray.toString();
+			String exppage4Row3List = "[Opening Balance, Cash, Inventory Trade, Bank, Purchase, Sales - Computers]";
+
+			
+			System.out.println("Actaul Account  :"+actpage4Row3List);
+			System.out.println("Expected Account:"+exppage4Row3List);
+			
+			Thread.sleep(4000);
+
+			int reportspage4Row4ListCount = reportsCol4List.size();
+			ArrayList<String> reportspage4Row4ListArray = new ArrayList<String>();
+			for(int i=0;i<reportspage4Row4ListCount;i++)
+			{
+				String data = reportsCol4List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportspage4Row4ListArray.add(data);
+				}
+
+			}
+			
+			String actpage4Row4List = reportspage4Row4ListArray.toString();
+			String exppage4Row4List = "[0, BR-SEC, 0, 0, 0]";
+
+			System.out.println("Actual Branch  :"+actpage4Row4List);
+			System.out.println("Expected Branch:"+exppage4Row4List);
+			
+			int reportspage4Row5ListCount = reportsCol5List.size();
+			ArrayList<String> reportspage4Row5ListArray = new ArrayList<String>();
+			for(int i=0;i<reportspage4Row5ListCount;i++)
+			{
+				String data = reportsCol5List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportspage4Row5ListArray.add(data);
+				}
+
+			}
+			String actpage4Row5List = reportspage4Row5ListArray.toString();
+			String exppage4Row5List = "[C1, C2, C2, C2, C2]";
+
+			System.out.println("Actual Department  :"+actpage4Row5List);
+			System.out.println("Expected Department:"+exppage4Row5List);
+			
+			int reportspage4Row6ListCount = reportsCol6List.size();
+			ArrayList<String> reportspage4Row6ListArray = new ArrayList<String>();
+			for(int i=0;i<reportspage4Row6ListCount;i++)
+			{
+				String data = reportsCol6List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportspage4Row6ListArray.add(data);
+				}
+
+			}
+			String actpage4Row6List = reportspage4Row6ListArray.toString();
+			String exppage4Row6List = "[C2, C2]";
+
+			System.out.println("Actual Warehouse  :"+actpage4Row6List);
+			System.out.println("Expected Warehouse:"+exppage4Row6List);
+			
+		
+			ArrayList<String>  AllDatapage4 = new ArrayList<String>(); 
+
+			int count4=stockLedgerTable.size();
+
+			System.err.println(count4);
+
+			for(int i=0 ; i < count4 ;i++)
+			{
+				String style= stockLedgerTable.get(i).getAttribute("style");
+				if(style.contains("overflow: visible; font-weight: bold; background-color:"))
+						{
+					    String data=stockLedgerTable.get(i).getText();
+					    AllDatapage4.add(data);
+						}
+		
+			}
+
+			String actAllDatapage4 = AllDatapage4.toString();
+			String expAllDatapage4 = "[C2 C302]";
+
+			System.out.println("actAllDatapage4"+actAllDatapage4);
+			System.out.println("expAllDatapage4"+expAllDatapage4);
+			
+			System.out.println("*************************Printing page 4 data done*********************************");
+			
+			
+
+			
+			
+			String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
+			String afterPath="]//td[2]";
+			int k;
+			
+			Thread.sleep(2000);
+			
+			int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
+			
+			for(  k=1;k<rows1;k++)
+			{
+				String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
 				
-		boolean novalidationConfirmationMessage1 =validationConfirmationMessage.getText().isEmpty();
-		String actvalidationConfirmationMessage1 = Boolean.toString(novalidationConfirmationMessage1);
-		String expvalidationConfirmationMessage1 = "true";
+				if(text1.contains("Grand Total"))
+				{
+					int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
+					System.err.println("count"+rowCount);
+				break;
+				}	
+				}
 		
-		System.out.println("validationConfirmationMessage1 : "+actvalidationConfirmationMessage1+" Value Expected : "+expvalidationConfirmationMessage1);
+			int reportsRow1ListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow1ListCount;i++)
+			{
+				String data = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).get(i).getText();
+				reportsRow1ListArray.add(data);
+			}
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[Grand Total, , , , , , 545.00, 545.00, , , , , 545.00, 545.00, , ]";
+			
+			System.out.println("actRow1List"+actRow1List);
+			System.out.println("expRow1List"+expRow1List);
+
+			
+			if (actAllDatapage1.equalsIgnoreCase(expAllDatapage1) &&  actAllDatapage2.equalsIgnoreCase(expAllDatapage2) &&
+					 actAllDatapage3.equalsIgnoreCase(expAllDatapage3) &&  actAllDatapage4.equalsIgnoreCase(expAllDatapage4)
+					 && actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List)
+					 && actRow3List.equalsIgnoreCase(expRow3List) && actRow4List.equalsIgnoreCase(expRow4List)
+					 && actRow5List.equalsIgnoreCase(expRow5List) && actRow6List.equalsIgnoreCase(expRow6List)
+					 && actPage2Row2List.equalsIgnoreCase(expPage2Row2List)
+					 && actPage2Row3List.equalsIgnoreCase(expPage2Row3List) && actPage2Row4List.equalsIgnoreCase(expPage2Row4List)
+					 && actPage2Row5List.equalsIgnoreCase(expPage2Row5List) && actPage2Row6List.equalsIgnoreCase(expPage2Row6List)
+					 
+					 && actpage3Row2List.equalsIgnoreCase(exppage3Row2List)
+					 && actpage3Row3List.equalsIgnoreCase(exppage3Row3List) && actpage3Row4List.equalsIgnoreCase(exppage3Row4List)
+					 && actpage3Row5List.equalsIgnoreCase(exppage3Row5List) && actpage3Row6List.equalsIgnoreCase(exppage3Row6List)
+					 
+					 
+					 && actpage4Row2List.equalsIgnoreCase(exppage4Row2List)
+					 && actpage4Row3List.equalsIgnoreCase(exppage4Row3List) && actpage4Row4List.equalsIgnoreCase(exppage4Row4List)
+					 && actpage4Row5List.equalsIgnoreCase(exppage4Row5List) && actpage4Row6List.equalsIgnoreCase(exppage4Row6List))
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+			
+			
+		}
 		
+		
+		public static boolean checkPrintOptionInLedgerAndValidatePDF() throws InterruptedException, IOException, AWTException
+		{
+			File Efile=new File(getBaseDir()+"\\autoIt\\ExportFiles\\EERLedgerPrint.pdf");
+			
+			if(Efile.exists())
+			{
+				Efile.delete();
+			}
+			
+			Thread.sleep(1500);
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_ReportPrintBtn));
+			sl_ReportPrintBtn.click();
+			
+			Thread.sleep(20000);
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ss_ReportPrintLabel));
+
+			String actConfirmMsg=ss_ReportPrintMsg.getText();
+			String expConfirmMsg="";
+			Thread.sleep(2000);
+
+			System.out.println("Actual Msg                :                "+        actConfirmMsg                + "Expected                "        +        expConfirmMsg);
+
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ss_ReportPrintYesBtn));
+			ss_ReportPrintYesBtn.click();
+			
+			Thread.sleep(20000);
+
+			Thread.sleep(3000);
+			
+			
+			Robot robot = new Robot();
+			robot.keyPress(KeyEvent.VK_CONTROL);
+			robot.keyPress(KeyEvent.VK_S);
+			robot.keyRelease(KeyEvent.VK_S);
+			robot.keyRelease(KeyEvent.VK_CONTROL);
+			
+			Thread.sleep(2000);
+				
+			Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\EERLedgerPrintSaving.exe");
+			
+			Thread.sleep(5000);
+			
+			robot.keyPress(KeyEvent.VK_CONTROL);
+			robot.keyPress(KeyEvent.VK_J);
+			robot.keyRelease(KeyEvent.VK_J);
+			robot.keyRelease(KeyEvent.VK_CONTROL);
+			
+			Thread.sleep(2000);
+			
+			ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
+				
+			int actOpenWindowsCount = getDriver().getWindowHandles().size();
+			int expOpenWindowsCount = 3;
+			
+			System.out.println("Number of Windows  : "+actOpenWindowsCount+"  Value Expected  "+expOpenWindowsCount);
+			
+			Thread.sleep(1000);
+
+		 	getDriver().switchTo().window(openTabs.get(2)).close();
+		 	Thread.sleep(1000);
+		 	getDriver().switchTo().window(openTabs.get(1)).close();
+		 	Thread.sleep(1000);
+		 	getDriver().switchTo().window(openTabs.get(0));
+		 	
+		 	
+		 	String actPDF = getBaseDir()+"\\autoIt\\ExportFiles\\EERLedgerPrint.pdf";
+			String expPDF = getBaseDir()+"\\autoIt\\ImportFiles\\EERLedgerPrint.pdf";
+			
+			PDFUtil pdfutil = new PDFUtil();
+			
+			/*boolean result = pdfutil.compare(actPDF, expPDF);*/
+			
+			String actData = pdfutil.getText(actPDF);
+			String expData = pdfutil.getText(expPDF).replaceAll("13/01/2023", getCurrentDateF2());
+			
+			System.err.println(actData);
+			System.err.println(expData);
+			
+			/*boolean result = pdfutil.compare(actData, expData);*/
+			
+			/*System.out.println("Compared Result  : "+result);*/
+			
+			if (actData.equalsIgnoreCase(expData) /*&& result==true*/) 
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		
+		}
+		
+		public static boolean checkFilterOptionInLedger() throws InterruptedException
+		{
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(report_FilterExpandBtn));
+			report_FilterExpandBtn.click();
+			Thread.sleep(2000);
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(report_FilterBtn));
+			report_FilterBtn.click();
+
+			Thread.sleep(3000);
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(report_FilterCustomizeBtn));
+			report_FilterCustomizeBtn.click();
+
+		
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(report_FilterAccountExpansion));
+			report_FilterAccountExpansion.click();
+			
+			Thread.sleep(2000);
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(report_FilterAccountNameChkbox));
+			
+			if (report_FilterAccountNameChkboxSelected.isSelected()==false) 
+			{
+				report_FilterAccountNameChkbox.click();
+			}
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reports_Filter_Customize_OkBtn));
+			reports_Filter_Customize_OkBtn.click();
+			
+			Thread.sleep(2000);
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(acc_DefaultFilterTxt));
+			acc_DefaultFilterTxt.click();
+			acc_DefaultFilterTxt.sendKeys("G1");
+			
+			Thread.sleep(2000);
+			
+			acc_DefaultFilterTxt.sendKeys(Keys.TAB);
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(report_FilterOkBtn));
+			report_FilterOkBtn.click();
+			
+			Thread.sleep(3000);
+			
+			
+			int reportsRow3ListCount = reportsCol3List.size();
+			ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow3ListCount;i++)
+			{
+				String data = reportsCol3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow3ListArray.add(data);
+				}
+
+			}
+			String actRow3List = reportsRow3ListArray.toString();
+			String expRow3List = "[G1, Opening Balance, Opening Balance, Cash]";
+
+			System.out.println("Actaul Account  :"+actRow3List);
+			System.out.println("Expected Account:"+expRow3List);
+			
+			ArrayList<String>  AllDatapage1 = new ArrayList<String>(); 
+
+			int count1=stockLedgerTable.size();
+
+			System.err.println(count1);
+
+			for(int i=0 ; i < count1 ;i++)
+			{
+				String style= stockLedgerTable.get(i).getAttribute("style");
+				if(style.contains("overflow: visible; font-weight: bold; background-color: rgb(222, 245, 253); border-style: none;"))
+					
+						{
+					    String data=stockLedgerTable.get(i).getText();
+					    AllDatapage1.add(data);
+						}
+		
+			}
+
+			String actAllDatapage1 = AllDatapage1.toString();
+			String expAllDatapage1 = "[Cash [121-002], Opening Balances Control A/C [OBC], G1 [G701]]";
+
+			System.out.println("actAllDatapage1"+actAllDatapage1);
+			System.out.println("expAllDatapage1"+expAllDatapage1);
+			
+			
+			
+			String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
+			String afterPath="]//td[2]";
+			int k;
+			
+			Thread.sleep(2000);
+			
+			int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
+			
+			for(  k=1;k<rows1;k++)
+			{
+				String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
+				
+				if(text1.contains("Grand Total"))
+				{
+					int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
+					System.err.println("count"+rowCount);
+				break;
+				}	
+				}
+		
+			int reportsRow1ListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow1ListCount;i++)
+			{
+				String data = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).get(i).getText();
+				reportsRow1ListArray.add(data);
+			}
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[Grand Total, , , , , , 2.00, 2.00, , , , , 2.00, 2.00, , ]";
+			
+			System.out.println("actRow1List"+actRow1List);
+			System.out.println("expRow1List"+expRow1List);
+			
+			
+			if (actRow3List.equalsIgnoreCase(expRow3List)  && actAllDatapage1.equalsIgnoreCase(expAllDatapage1)  && actRow1List.equalsIgnoreCase(expRow1List)) 
+			{
+				return true;
+			}
+			else 
+			{
+				return false;
+			}
+			
+		}
+
+		public static boolean checkLedgerDetailReport() throws InterruptedException
+		{
+			getDriver().navigate().refresh();
+			Thread.sleep(2000);
+		
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
+			financialsReportsMenu.click();
+			Thread.sleep(3000);
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ledgerDetail));
+			ledgerDetail.click();
+			
+			
+			Thread.sleep(3000);
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+			sl_SelectAllChkBox.click();
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByIndex(1);
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+
+			Thread.sleep(2000);
+			
+			
+			
+			int reportsRow3ListCount = reportsCol3List.size();
+			ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow3ListCount;i++)
+			{
+				String data = reportsCol3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow3ListArray.add(data);
+				}
+
+			}
+			String actRow3List = reportsRow3ListArray.toString();
+			String expRow3List = "[CustVend, C1, G1, CustVend, G2, C2, C2, Sales - Computers, Sales - Computers, Sales - Computers, Sales - Computers, Sales - Computers]";
+
+			
+			System.out.println("Actaul Account  :"+actRow3List);
+			System.out.println("Expected Account:"+expRow3List);
+			
+			Thread.sleep(4000);
+
+			int reportsRow4ListCount = reportsCol5List.size();
+			ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow4ListCount;i++)
+			{
+				String data = reportsCol5List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow4ListArray.add(data);
+				}
+
+			}
+			
+			String actRow4List = reportsRow4ListArray.toString();
+			String expRow4List = "[CustVend, C1, G1, CustVend, G2, C2, C2, G2, G2, G2, G2, G2]";
+
+			System.out.println("Actual Account1  :"+actRow4List);
+			System.out.println("Expected Account1:"+expRow4List);
+			
+			ArrayList<String>  AllDatapage1 = new ArrayList<String>(); 
+
+			int count1=stockLedgerTable.size();
+
+			System.err.println(count1);
+
+			for(int i=0 ; i < count1 ;i++)
+			{
+				String style= stockLedgerTable.get(i).getAttribute("style");
+				if(style.contains("overflow: visible; font-weight: bold; background-color:"))
+						{
+					    String data=stockLedgerTable.get(i).getText();
+					    AllDatapage1.add(data);
+						}
+		
+			}
+
+			String actAllDatapage1 = AllDatapage1.toString();
+			String expAllDatapage1 = "[Cash [121-002], Bank [121-001], Sales - Computers [071-001]]";
+
+			System.out.println("actAllDatapage1"+actAllDatapage1);
+			System.out.println("expAllDatapage1"+expAllDatapage1);
+			
+			Thread.sleep(2000);
+			report_NextBtn.click();
+			Thread.sleep(2000);
+			
+			
+			System.out.println("*************************Printing page 1 data done*********************************");
+
+			try{
+				if(pageNum.getText().equalsIgnoreCase("4"))
+						{
+					report_PrevBtn.click();
+						}
+				
+				if (pageNum.getText().equalsIgnoreCase("3")) 
+				{
+					ClickUsingJs(report_PrevBtn);
+				}
+				
+			}
+			catch (Exception e) 
+			{
+				System.out.println("Exception "+e);
+
+			}
+			
+			
+
+			int reportsPage2Row3ListCount = reportsCol3List.size();
+			ArrayList<String> reportsPage2Row3ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsPage2Row3ListCount;i++)
+			{
+				String data = reportsCol3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsPage2Row3ListArray.add(data);
+				}
+
+			}
+			String actPage2Row3List = reportsPage2Row3ListArray.toString();
+			String expPage2Row3List = "[Sales - Computers, Purchase, Purchase, Inventory Trade, Purchase, Cost of goods sold - Computers, CustVend]";
+
+			
+			System.out.println("Actaul Account  :"+actPage2Row3List);
+			System.out.println("Expected Account:"+expPage2Row3List);
+			
+			Thread.sleep(4000);
+
+			int reportsPage2Row4ListCount = reportsCol5List.size();
+			ArrayList<String> reportsPage2Row4ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsPage2Row4ListCount;i++)
+			{
+				String data = reportsCol5List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsPage2Row4ListArray.add(data);
+				}
+
+			}
+			
+			String actPage2Row4List = reportsPage2Row4ListArray.toString();
+			String expPage2Row4List = "[G2, Vendor A, C2, C2, Purchase, CustVend, Bank]";
+
+			System.out.println("Actual Account1  :"+actPage2Row4List);
+			System.out.println("Expected Account1:"+expPage2Row4List);
+			
+		
+			ArrayList<String>  AllDatapage2 = new ArrayList<String>(); 
+
+			int count2=stockLedgerTable.size();
+
+			System.err.println(count2);
+
+			for(int i=0 ; i < count2 ;i++)
+			{
+				String style= stockLedgerTable.get(i).getAttribute("style");
+				if(style.contains("overflow: visible; font-weight: bold; background-color:"))
+						{
+					    String data=stockLedgerTable.get(i).getText();
+					    AllDatapage2.add(data);
+						}
+		
+			}
+
+			String actAllDatapage2 = AllDatapage2.toString();
+			String expAllDatapage2 = "[Purchase [091-002], Inventory Trade [120-003], Vendor A [033-001], Cost of goods sold - Computers [091-003], CustVend [CV001]]";
+
+			System.out.println("actAllDatapage2"+actAllDatapage2);
+			System.out.println("expAllDatapage2"+expAllDatapage2);
+			
+			Thread.sleep(2000);
+			report_NextBtn.click();
+			Thread.sleep(2000);
+			System.out.println("*************************Printing page 2 data done*********************************");
+
+
+			try{
+				if(pageNum.getText().equalsIgnoreCase("5")/* || pageNum.getText().equalsIgnoreCase("4")*/)
+						{
+					report_PrevBtn.click();
+					Thread.sleep(2000);
+					report_PrevBtn.click();
+						}
+				
+			}
+			catch (Exception e) 
+			{
+				if(pageNum.getText().equalsIgnoreCase("4"))
+				{
+			
+			report_PrevBtn.click();
+				}
+				System.out.println("Exception "+e);
+
+			}
+			
+			
+
+
+			int reportspage3Row3ListCount = reportsCol3List.size();
+			ArrayList<String> reportspage3Row3ListArray = new ArrayList<String>();
+			for(int i=0;i<reportspage3Row3ListCount;i++)
+			{
+				String data = reportsCol3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportspage3Row3ListArray.add(data);
+				}
+
+			}
+			String actpage3Row3List = reportspage3Row3ListArray.toString();
+			String exppage3Row3List = "[CustVend, Cost of goods sold - Computers, C1, C2, Purchase, Inventory Trade, C2, G1]";
+
+			
+			System.out.println("Actaul Account  :"+actpage3Row3List);
+			System.out.println("Expected Account:"+exppage3Row3List);
+			
+			Thread.sleep(4000);
+
+			int reportspage3Row4ListCount = reportsCol5List.size();
+			ArrayList<String> reportspage3Row4ListArray = new ArrayList<String>();
+			for(int i=0;i<reportspage3Row4ListCount;i++)
+			{
+				String data = reportsCol5List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportspage3Row4ListArray.add(data);
+				}
+
+			}
+			
+			String actpage3Row4List = reportspage3Row4ListArray.toString();
+			String exppage3Row4List = "[Cash, Cost of goods sold - Computers, Opening Balance, Cash, Sales - Computers, Purchase, Inventory Trade, Bank, Opening Balance, Cash]";
+
+			System.out.println("Actual Account1  :"+actpage3Row4List);
+			System.out.println("Expected Account1:"+exppage3Row4List);
+			
+		
+			ArrayList<String>  AllDatapage3 = new ArrayList<String>(); 
+
+			int count3=stockLedgerTable.size();
+
+			System.err.println(count3);
+
+			for(int i=0 ; i < count3 ;i++)
+			{
+				String style= stockLedgerTable.get(i).getAttribute("style");
+				if(style.contains("overflow: visible; font-weight: bold; background-color:"))
+						{
+					    String data=stockLedgerTable.get(i).getText();
+					    AllDatapage3.add(data);
+						}
+		
+			}
+
+			String actAllDatapage3 = AllDatapage3.toString();
+			String expAllDatapage3 = "[C1 [C301], C2 [C302], G1 [G701]]";
+
+			System.out.println("actAllDatapage3"+actAllDatapage3);
+			System.out.println("expAllDatapage3"+expAllDatapage3);
+			
+			
+			System.out.println("*************************Printing page 3 data done*********************************");
+
+			Thread.sleep(2000);
+			report_NextBtn.click();
+			Thread.sleep(2000);
+			
+			try{
+				if(pageNum.getText().equalsIgnoreCase("5"))
+						{
+					report_PrevBtn.click();
+						}
+				
+			}
+			catch (Exception e) 
+			{
+				System.out.println("Exception "+e);
+				
+				
+
+			}
+			
+		
+			
+			int reportspage4Row3ListCount = reportsCol3List.size();
+			ArrayList<String> reportspage4Row3ListArray = new ArrayList<String>();
+			for(int i=0;i<reportspage4Row3ListCount;i++)
+			{
+				String data = reportsCol3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportspage4Row3ListArray.add(data);
+				}
+
+			}
+			String actpage4Row3List = reportspage4Row3ListArray.toString();
+			String exppage4Row3List = "[G2, Sales - Computers, Sales - Computers, Sales - Computers, Sales - Computers, Sales - Computers, Sales - Computers]";
+
+			
+			System.out.println("Actaul Account  :"+actpage4Row3List);
+			System.out.println("Expected Account:"+exppage4Row3List);
+			
+			Thread.sleep(4000);
+
+			int reportspage4Row4ListCount = reportsCol5List.size();
+			ArrayList<String> reportspage4Row4ListArray = new ArrayList<String>();
+			for(int i=0;i<reportspage4Row4ListCount;i++)
+			{
+				String data = reportsCol5List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportspage4Row4ListArray.add(data);
+				}
+
+			}
+			
+			String actpage4Row4List = reportspage4Row4ListArray.toString();
+			String exppage4Row4List = "[Bank, Sales - Computers, Sales - Computers, Sales - Computers, Sales - Computers, Sales - Computers, Sales - Computers, Opening Balance, Opening Balance]";
+
+			System.out.println("Actual Account1  :"+actpage4Row4List);
+			System.out.println("Expected Account1:"+exppage4Row4List);
+		
+			ArrayList<String>  AllDatapage4 = new ArrayList<String>(); 
+
+			int count4=stockLedgerTable.size();
+
+			System.err.println(count4);
+
+			for(int i=0 ; i < count4 ;i++)
+			{
+				String style= stockLedgerTable.get(i).getAttribute("style");
+				if(style.contains("overflow: visible; font-weight: bold; background-color:"))
+						{
+					    String data=stockLedgerTable.get(i).getText();
+					    AllDatapage4.add(data);
+						}
+		
+			}
+
+			String actAllDatapage4 = AllDatapage4.toString();
+			String expAllDatapage4 = "[G2 [G702], Customer A [122-001], Opening Balances Control A/C [OBC]]";
+
+			System.out.println("actAllDatapage4"+actAllDatapage4);
+			System.out.println("expAllDatapage4"+expAllDatapage4);
+			
+			System.out.println("*************************Printing page 4 data done*********************************");
+
+			Thread.sleep(2000);
+			report_NextBtn.click();
+			Thread.sleep(2000);
+			
+			//
+
+			
+			int reportspage5Row3ListCount = reportsCol3List.size();
+			ArrayList<String> reportspage5Row3ListArray = new ArrayList<String>();
+			for(int i=0;i<reportspage5Row3ListCount;i++)
+			{
+				String data = reportsCol3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportspage5Row3ListArray.add(data);
+				}
+
+			}
+			String actpage5Row3List = reportspage5Row3ListArray.toString();
+			String exppage5Row3List = "[G2, Sales - Computers, Sales - Computers, Sales - Computers, Sales - Computers, Sales - Computers, Sales - Computers]";
+
+			
+			System.out.println("Actaul Account  :"+actpage5Row3List);
+			System.out.println("Expected Account:"+exppage5Row3List);
+			
+			Thread.sleep(4000);
+
+			int reportspage5Row4ListCount = reportsCol5List.size();
+			ArrayList<String> reportspage5Row4ListArray = new ArrayList<String>();
+			for(int i=0;i<reportspage5Row4ListCount;i++)
+			{
+				String data = reportsCol5List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportspage5Row4ListArray.add(data);
+				}
+
+			}
+			
+			String actpage5Row4List = reportspage5Row4ListArray.toString();
+			String exppage5Row4List = "[Bank, Sales - Computers, Sales - Computers, Sales - Computers, Sales - Computers, Sales - Computers, Sales - Computers, Opening Balance, Opening Balance]";
+
+			System.out.println("Actual Account1  :"+actpage5Row4List);
+			System.out.println("Expected Account1:"+exppage5Row4List);
+			
+			
+			ArrayList<String>  AllDatapage5 = new ArrayList<String>(); 
+
+			int count5=stockLedgerTable.size();
+
+			System.err.println(count5);
+
+			for(int i=0 ; i < count5 ;i++)
+			{
+				String style= stockLedgerTable.get(i).getAttribute("style");
+				if(style.contains("overflow: visible; font-weight: bold; background-color:"))
+						{
+					    String data=stockLedgerTable.get(i).getText();
+					    AllDatapage5.add(data);
+						}
+		
+			}
+
+			String actAllDatapage5 = AllDatapage5.toString();
+			String expAllDatapage5 = "[G2 [G702], Customer A [122-001], Opening Balances Control A/C [OBC]]";
+
+			System.out.println("actAllDatapage5"+actAllDatapage5);
+			System.out.println("expAllDatapage5"+expAllDatapage5);
+			
+
+			
+			
+			String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
+			String afterPath="]//td[2]";
+			int k;
+			
+			Thread.sleep(2000);
+			
+			int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
+			
+			for(  k=1;k<rows1;k++)
+			{
+				String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
+				
+				if(text1.contains("Grand Total"))
+				{
+					int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
+					System.err.println("count"+rowCount);
+				break;
+				}	
+				}
+		
+			int reportsRow1ListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow1ListCount;i++)
+			{
+				String data = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).get(i).getText();
+				reportsRow1ListArray.add(data);
+			}
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[Grand Total, , , , , 545.00, 545.00, , 542.00, 542.00, , 545.00, 545.00, ]";
+			
+			System.out.println("actRow1List"+actRow1List);
+			System.out.println("expRow1List"+expRow1List);
+			
+			if (actAllDatapage1.equalsIgnoreCase(expAllDatapage1) &&  actAllDatapage2.equalsIgnoreCase(expAllDatapage2) &&
+					 actAllDatapage3.equalsIgnoreCase(expAllDatapage3) &&  actAllDatapage4.equalsIgnoreCase(expAllDatapage4)
+					 &&  actAllDatapage5.equalsIgnoreCase(expAllDatapage5)&& actRow1List.equalsIgnoreCase(expRow1List) 
+					 && actRow3List.equalsIgnoreCase(expRow3List) && actRow4List.equalsIgnoreCase(expRow4List)
+					
+					 && actPage2Row3List.equalsIgnoreCase(expPage2Row3List) && actPage2Row4List.equalsIgnoreCase(expPage2Row4List)
+					
+					 && actpage3Row3List.equalsIgnoreCase(exppage3Row3List) && actpage3Row4List.equalsIgnoreCase(exppage3Row4List)
+					
+					 && actpage4Row3List.equalsIgnoreCase(exppage4Row3List) && actpage4Row4List.equalsIgnoreCase(exppage4Row4List)
+					
+					 && actpage5Row3List.equalsIgnoreCase(exppage5Row3List) && actpage5Row4List.equalsIgnoreCase(exppage5Row4List))
+					 
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+			
+			
+		
+		}
+
+
+		public static boolean checkSubLedgerReport() throws InterruptedException
+		{
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
+			financialsReportsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(subLedger));
+			subLedger.click();
+			
+			Thread.sleep(2000);
+			
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			sl_DateOptionDropdown.click();
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+		
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reportaccountTxt));
+			reportaccountTxt.click();
+			reportaccountTxt.sendKeys("Cash & bank");
+			
+			int reportaccountTxtListCount = reportaccountTxtList.size();
+			
+			for(int i=0;i<reportaccountTxtListCount;i++)
+			{
+				String data = reportaccountTxtList.get(i).getText();
+				
+				if(data.equalsIgnoreCase("Cash & bank"))
+				{
+					reportaccountTxtList.get(i).click();
+				}
+			}
+			
+			reportaccountTxt.sendKeys(Keys.TAB);
+			
+		
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			
+			Thread.sleep(2000);
+			
+
+
+			int reportsRow1ListCount = reportsRow1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsRow1List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[Cash [121-002]]";
+
+
+
+			int reportsRow2ListCount = reportsRow2List.size();
+			ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
+			for(int i=2;i<reportsRow2ListCount;i++)
+			{
+				String data = reportsRow2List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow2ListArray.add(data);
+				}
+
+
+			}
+			String actRow2List = reportsRow2ListArray.toString();
+			String expRow2List = "[Pmt : 2, C1, 1.00, 1.00, 1.00, 1.00, Indian Rupees]";
+
+
+
+			int reportsRow3ListCount = reportsRow3List.size();
+			ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
+			for(int i=2;i<reportsRow3ListCount;i++)
+			{
+				String data = reportsRow3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow3ListArray.add(data);
+				}
+
+			}
+			String actRow3List = reportsRow3ListArray.toString();
+			String expRow3List = "[Pmt : 2, G1, 1.00, 2.00, 1.00, 2.00, Indian Rupees]";
+
+
+
+			int reportsRow4ListCount = reportsRow4List.size();
+			ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
+			for(int i=2;i<reportsRow4ListCount;i++)
+			{
+				String data = reportsRow4List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow4ListArray.add(data);
+				}
+
+			}
+			String actRow4List = reportsRow4ListArray.toString();
+			String expRow4List = "[DebNts : 2, CustVend, 1.00, 1.00, 1.00, 1.00, Indian Rupees]";
+
+
+
+			int reportsRow5ListCount = reportsRow5List.size();
+			ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow5ListCount;i++)
+			{
+				String data = reportsRow5List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow5ListArray.add(data);
+				}
+			}
+			String actRow5List = reportsRow5ListArray.toString();
+			String expRow5List = "[Sub Total, 1.00, 2.00, 1.00, 1.00, 2.00, 1.00]";
+			
+
+			int reportsRow6ListCount = reportsRow6List.size();
+			ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow6ListCount;i++)
+			{
+				String data = reportsRow6List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow6ListArray.add(data);
+				}
+			}
+			String actRow6List = reportsRow6ListArray.toString();
+			String expRow6List = "[Bank [121-001]]";
+			
+			
+
+			int reportsRow7ListCount = reportsRow7List.size();
+			ArrayList<String> reportsRow7ListArray = new ArrayList<String>();
+			for(int i=2;i<reportsRow7ListCount;i++)
+			{
+				String data = reportsRow7List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow7ListArray.add(data);
+				}
+			}
+			String actRow7List = reportsRow7ListArray.toString();
+			String expRow7List = "[Rct : 2, C2, 1.00, 1.00, 1.00, 1.00, Indian Rupees]";
+			
+			
+
+			int reportsRow8ListCount = reportsRow8List.size();
+			ArrayList<String> reportsRow8ListArray = new ArrayList<String>();
+			for(int i=2;i<reportsRow8ListCount;i++)
+			{
+				String data = reportsRow8List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow8ListArray.add(data);
+				}
+			}
+			String actRow8List = reportsRow8ListArray.toString();
+			String expRow8List = "[Rct : 2, G2, 1.00, 2.00, 1.00, 2.00, Indian Rupees]";
+			
+
+			int reportsRow9ListCount = reportsRow9List.size();
+			ArrayList<String> reportsRow9ListArray = new ArrayList<String>();
+			for(int i=2;i<reportsRow9ListCount;i++)
+			{
+				String data = reportsRow9List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow9ListArray.add(data);
+				}
+			}
+			String actRow9List = reportsRow9ListArray.toString();
+			String expRow9List = "[CreNts : 2, CustVend, 1.00, 1.00, 1.00, 1.00, Indian Rupees]";
+			
+			
+
+			int reportsRow10ListCount = reportsRow10List.size();
+			ArrayList<String> reportsRow10ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow10ListCount;i++)
+			{
+				String data = reportsRow10List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow10ListArray.add(data);
+				}
+			}
+			String actRow10List = reportsRow10ListArray.toString();
+			String expRow10List = "[Sub Total, 2.00, 1.00, 1.00, 2.00, 1.00, 1.00]";
+			
+			
+
+			int reportsRow11ListCount = reportsRow11List.size();
+			ArrayList<String> reportsRow11ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow11ListCount;i++)
+			{
+				String data = reportsRow11List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow11ListArray.add(data);
+				}
+			}
+			String actRow11List = reportsRow11ListArray.toString();
+			String expRow11List = "[Grand Total, 3.00, 3.00, 3.00, 3.00]";
+			
+			System.out.println(actRow1List);
+			System.out.println(expRow1List);
+
+			System.out.println(actRow2List);
+			System.out.println(expRow2List);
+
+			System.out.println(actRow3List);
+			System.out.println(expRow3List);
+
+			System.out.println(actRow4List);
+			System.out.println(expRow4List);
+
+			System.out.println(actRow5List);
+			System.out.println(expRow5List);
+			
+
+			System.out.println(actRow6List);
+			System.out.println(expRow6List);
+			
+			System.out.println(actRow7List);
+			System.out.println(expRow7List);
+			
+			System.out.println(actRow8List);
+			System.out.println(expRow8List);
+			
+			System.out.println(actRow9List);
+			System.out.println(expRow9List);
+			
+			System.out.println(actRow10List);
+			System.out.println(expRow10List);
+			
+			System.out.println(actRow11List);
+			System.out.println(expRow11List);
+
+			if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List) 
+					&& actRow4List.equalsIgnoreCase(expRow4List) && actRow5List.equalsIgnoreCase(expRow5List)&& actRow6List.equalsIgnoreCase(expRow6List))
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+			
+			
+			
+			
+		}
+		
+		public static boolean checkCashBookReport() throws InterruptedException
+		{
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
+			financialsReportsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(cashAndBankBooksMenu));
+			cashAndBankBooksMenu.click();
+			
+			Thread.sleep(2000);
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(cashBookReport));
+			cashBookReport.click();
+			
+			Thread.sleep(2000);
+			
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			sl_DateOptionDropdown.click();
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reportaccountTxt));
+			reportaccountTxt.click();
+			reportaccountTxt.sendKeys(Keys.SPACE);
+			
+			int reportaccountTxtListCount = reportaccountTxtList.size();
+			
+			for(int i=0;i<reportaccountTxtListCount;i++)
+			{
+				String data = reportaccountTxtList.get(i).getText();
+				
+				if(data.equalsIgnoreCase("Cash"))
+				{
+					reportaccountTxtList.get(i).click();
+				}
+			}
+			
+			reportaccountTxt.sendKeys(Keys.TAB);
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+		
+			Thread.sleep(1500);
+			
+			Thread.sleep(2000);
+			
+
+
+			int reportsRow1ListCount = reportsRow1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=2;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsRow1List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[Pmt : 2, C1, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00]";
+
+
+
+			int reportsRow2ListCount = reportsRow2List.size();
+			ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
+			for(int i=2;i<reportsRow2ListCount;i++)
+			{
+				String data = reportsRow2List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow2ListArray.add(data);
+				}
+
+
+			}
+			String actRow2List = reportsRow2ListArray.toString();
+			String expRow2List = "[Pmt : 2, G1, 1.00, 2.00, 1.00, 2.00, 1.00, 2.00]";
+
+
+
+			int reportsRow3ListCount = reportsRow3List.size();
+			ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
+			for(int i=2;i<reportsRow3ListCount;i++)
+			{
+				String data = reportsRow3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow3ListArray.add(data);
+				}
+
+			}
+			String actRow3List = reportsRow3ListArray.toString();
+			String expRow3List = "[DebNts : 2, CustVend, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00]";
+
+
+
+			int reportsRow4ListCount = reportsRow4List.size();
+			ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow4ListCount;i++)
+			{
+				String data = reportsRow4List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow4ListArray.add(data);
+				}
+
+			}
+			String actRow4List = reportsRow4ListArray.toString();
+			String expRow4List = "[Total, 1.00, 2.00, 1.00, 1.00, 2.00, 1.00, 1.00, 2.00, 1.00]";
+			
+			
+
+			int reportsRow5ListCount = reportsRow5List.size();
+			ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow5ListCount;i++)
+			{
+				String data = reportsRow5List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow5ListArray.add(data);
+				}
+
+			}
+			String actRow5List = reportsRow5ListArray.toString();
+			String expRow5List = "[Closing balance, 2.00, 2.00, 1.00]";
+
+
+
+			System.out.println(actRow1List);
+			System.out.println(expRow1List);
+
+			System.out.println(actRow2List);
+			System.out.println(expRow2List);
+
+			System.out.println(actRow3List);
+			System.out.println(expRow3List);
+
+			System.out.println(actRow4List);
+			System.out.println(expRow4List);
+			
+			System.out.println(actRow5List);
+			System.out.println(expRow5List);
+			
+			
+
+		
+			if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List) 
+					&& actRow4List.equalsIgnoreCase(expRow4List))
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+		
+		}
+
+		public static boolean checkBankBookAccountReport() throws InterruptedException
+		{
+			Thread.sleep(2000);
+			
+			getDriver().navigate().refresh();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
+			financialsReportsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(cashAndBankBooksMenu));
+			cashAndBankBooksMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(bankBookReport));
+			bankBookReport.click();
+			
+			Thread.sleep(2000);
+			
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			sl_DateOptionDropdown.click();
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reportaccountTxt));
+			reportaccountTxt.click();
+			reportaccountTxt.sendKeys(Keys.SPACE);
+			
+			int reportaccountTxtListCount = reportaccountTxtList.size();
+			
+			for(int i=0;i<reportaccountTxtListCount;i++)
+			{
+				String data = reportaccountTxtList.get(i).getText();
+				
+				if(data.equalsIgnoreCase("Bank"))
+				{
+					reportaccountTxtList.get(i).click();
+				}
+			}
+			
+			reportaccountTxt.sendKeys(Keys.TAB);
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			
+			Thread.sleep(2000);
+			
+			Thread.sleep(2000);
+			
+
+
+			int reportsRow1ListCount = reportsRow1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=2;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsRow1List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[Rct : 2, C2, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00]";
+
+
+
+			int reportsRow2ListCount = reportsRow2List.size();
+			ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
+			for(int i=2;i<reportsRow2ListCount;i++)
+			{
+				String data = reportsRow2List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow2ListArray.add(data);
+				}
+
+
+			}
+			String actRow2List = reportsRow2ListArray.toString();
+			String expRow2List = "[Rct : 2, G2, 1.00, 2.00, 1.00, 2.00, 1.00, 2.00]";
+
+
+
+			int reportsRow3ListCount = reportsRow3List.size();
+			ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
+			for(int i=2;i<reportsRow3ListCount;i++)
+			{
+				String data = reportsRow3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow3ListArray.add(data);
+				}
+
+			}
+			String actRow3List = reportsRow3ListArray.toString();
+			String expRow3List = "[CreNts : 2, CustVend, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00]";
+
+
+
+			int reportsRow4ListCount = reportsRow4List.size();
+			ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow4ListCount;i++)
+			{
+				String data = reportsRow4List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow4ListArray.add(data);
+				}
+
+			}
+			String actRow4List = reportsRow4ListArray.toString();
+			String expRow4List = "[Total, 2.00, 1.00, 1.00, 2.00, 1.00, 1.00, 2.00, 1.00, 1.00]";
+
+
+
+			int reportsRow5ListCount = reportsRow5List.size();
+			ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow5ListCount;i++)
+			{
+				String data = reportsRow5List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow5ListArray.add(data);
+				}
+			}
+			String actRow5List = reportsRow5ListArray.toString();
+			String expRow5List = "[Closing balance, 1.00, 1.00, 1.00]";
+			
+
+			
+			System.out.println(actRow1List);
+			System.out.println(expRow1List);
+
+			System.out.println(actRow2List);
+			System.out.println(expRow2List);
+
+			System.out.println(actRow3List);
+			System.out.println(expRow3List);
+
+			System.out.println(actRow4List);
+			System.out.println(expRow4List);
+
+			System.out.println(actRow5List);
+			System.out.println(expRow5List);
+			
+
+			if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List) 
+					&& actRow4List.equalsIgnoreCase(expRow4List) && actRow5List.equalsIgnoreCase(expRow5List))
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+		
+			
+		}
+
+		public static boolean checkPettyCashBookReport() throws InterruptedException
+		{
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
+			financialsReportsMenu.click();
+			
+			Thread.sleep(1500);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(cashAndBankBooksMenu));
+			cashAndBankBooksMenu.click();
+			
+			Thread.sleep(1500);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(pettyCashBokReport));
+			pettyCashBokReport.click();
+
+	       Thread.sleep(2000);
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			sl_DateOptionDropdown.click();
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reportaccountTxt));
+			reportaccountTxt.click();
+			reportaccountTxt.sendKeys(Keys.SPACE);
+			
+			int reportaccountTxtListCount = reportaccountTxtList.size();
+			
+			for(int i=0;i<reportaccountTxtListCount;i++)
+			{
+				String data = reportaccountTxtList.get(i).getText();
+				
+				if(data.equalsIgnoreCase("Cash"))
+				{
+					reportaccountTxtList.get(i).click();
+				}
+			}
+			
+			reportaccountTxt.sendKeys(Keys.TAB);
+			
+		
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			
+
+
+			int reportsRow1ListCount = reportsRow1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=2;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsRow1List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[Pmt : 2, C1, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00]";
+
+
+
+			int reportsRow2ListCount = reportsRow2List.size();
+			ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
+			for(int i=2;i<reportsRow2ListCount;i++)
+			{
+				String data = reportsRow2List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow2ListArray.add(data);
+				}
+
+
+			}
+			String actRow2List = reportsRow2ListArray.toString();
+			String expRow2List = "[Pmt : 2, G1, 1.00, 2.00, 1.00, 2.00, 1.00, 2.00]";
+
+
+
+			int reportsRow3ListCount = reportsRow3List.size();
+			ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
+			for(int i=2;i<reportsRow3ListCount;i++)
+			{
+				String data = reportsRow3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow3ListArray.add(data);
+				}
+
+			}
+			String actRow3List = reportsRow3ListArray.toString();
+			String expRow3List = "[DebNts : 2, CustVend, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00]";
+
+
+
+			int reportsRow4ListCount = reportsRow4List.size();
+			ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow4ListCount;i++)
+			{
+				String data = reportsRow4List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow4ListArray.add(data);
+				}
+
+			}
+			String actRow4List = reportsRow4ListArray.toString();
+			String expRow4List = "[Total, 1.00, 2.00, 1.00, 1.00, 2.00, 1.00, 1.00, 2.00, 1.00]";
+
+			
+			int reportsRow5ListCount = reportsRow5List.size();
+			ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow5ListCount;i++)
+			{
+				String data = reportsRow5List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow5ListArray.add(data);
+				}
+
+			}
+			String actRow5List = reportsRow5ListArray.toString();
+			String expRow5List = "[Closing balance, 1.00, 1.00, 1.00]";
+
+			System.out.println(actRow1List);
+			System.out.println(expRow1List);
+
+			System.out.println(actRow2List);
+			System.out.println(expRow2List);
+
+			System.out.println(actRow3List);
+			System.out.println(expRow3List);
+
+			System.out.println(actRow4List);
+			System.out.println(expRow4List);
+			
+			System.out.println(actRow5List);
+			System.out.println(expRow5List);
+
+			if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List) 
+					&& actRow4List.equalsIgnoreCase(expRow4List) && actRow5List.equalsIgnoreCase(expRow5List))
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+			
+			
+		}
+		
+		public static boolean checkDayBookReport() throws InterruptedException
+		{
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
+			financialsReportsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(cashAndBankBooksMenu));
+			cashAndBankBooksMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(dayBookReport));
+			dayBookReport.click();
+			
+			
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			sl_DateOptionDropdown.click();
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			
+			Thread.sleep(2000);
+			
+			int reportsRow1ListCount = reportsCol1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsCol1List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow1ListArray.add(data);
+				}
+				
+			}
+			
+			Iterator<String> itr = reportsRow1ListArray.iterator();
+			while (itr.hasNext()) 
+			{ 
+				String row1 = itr.next(); 
+				if (row1.equals("Sub Total"))
+				{ 
+					itr.remove();
+				}
+
+			}
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[31-03-2022, OpeBal : 2, 21-07-2022, PurVou : 7, PurVou : 7, 27-07-2022, PurVou : 11, PurVou : 11, PurVou : 12, PurVou : 12, SalInv : 7, SalInv : 7, Rct : 2, Rct : 2, Rct : 2]";
+			
+			System.out.println(actRow1List);
+			System.out.println(expRow1List);
+			
+			Thread.sleep(2000);
+			
+			int reportsRow2ListCount = reportsCol2List.size();
+			ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow2ListCount;i++)
+			{
+				String data = reportsCol2List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow2ListArray.add(data);
+				}
+				
+			}
+			String actRow2List = reportsRow2ListArray.toString();
+			String expRow2List = "[Opening Balance, Opening Balances Control A/C, Purchase, Vendor A, Inventory Trade, C2, Cost of goods sold - Computers, CustVend, G2, Sales - Computers, Bank, G2, C2]";
+			
+			System.out.println(actRow2List);
+			System.out.println(expRow2List);
+			
+			
+			ArrayList<String>  AllDatapage1 = new ArrayList<String>(); 
+
+			int count1=stockLedgerTable.size();
+
+			System.err.println(count1);
+
+			for(int i=0 ; i < count1 ;i++)
+			{
+				String style= stockLedgerTable.get(i).getAttribute("style");
+				if(style.contains("overflow: visible; font-weight: bold; background-color:"))
+						{
+					    String data=stockLedgerTable.get(i).getText();
+					    AllDatapage1.add(data);
+						}
+		
+			}
+
+			String actAllDatapage1 = AllDatapage1.toString();
+			String expAllDatapage1 = "[31-03-2022, 21-07-2022, 27-07-2022]";
+
+			System.out.println("actAllDatapage1"+actAllDatapage1);
+			System.out.println("expAllDatapage1"+expAllDatapage1);
+			
+			Thread.sleep(2000);
+			report_NextBtn.click();
+			Thread.sleep(2000);
+			
+			
+			System.out.println("*************************Printing page 1 data done*********************************");
+
+			
+			Thread.sleep(2000);
+			
+			int reportspage2Row1ListCount = reportsCol1List.size();
+			ArrayList<String> reportspage2Row1ListArray = new ArrayList<String>();
+			for(int i=0;i<reportspage2Row1ListCount;i++)
+			{
+				String data = reportsCol1List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportspage2Row1ListArray.add(data);
+				}
+				
+			}
+			
+			Iterator<String> itr1 = reportsRow2ListArray.iterator();
+			while (itr1.hasNext()) 
+			{ 
+				String row1 = itr1.next(); 
+				if (row1.equals("Sub Total"))
+				{ 
+					itr1.remove();
+				}
+
+			}
+			
+			String actpage2Row1List = reportspage2Row1ListArray.toString();
+			String exppage2Row1List = "[Pmt : 2, Pmt : 2, Pmt : 2, CreNts : 2, CreNts : 2, DebNts : 2, DebNts : 2, SalRet : 2, SalRet : 2, PurRet : 2, PurRet : 2, NJv : 2, NJv : 2, Sub Total, Grand Total]";
+			
+			System.out.println(actpage2Row1List);
+			System.out.println(exppage2Row1List);
+			
+			Thread.sleep(2000);
+			
+			int reportspage2Row2ListCount = reportsCol2List.size();
+			ArrayList<String> reportspage2Row2ListArray = new ArrayList<String>();
+			for(int i=0;i<reportspage2Row2ListCount;i++)
+			{
+				String data = reportsCol2List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportspage2Row2ListArray.add(data);
+				}
+				
+			}
+			String actpage2Row2List = reportspage2Row2ListArray.toString();
+			String exppage2Row2List = "[C1, G1, Cash, Bank, CustVend, CustVend, Cash, Sales - Computers, G2, C2, Purchase, C2, Sales - Computers]";
+			
+			System.out.println(actpage2Row2List);
+			System.out.println(exppage2Row2List);
+			
+			
+		
+
+			String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
+			String afterPath="]//td[2]";
+			int k;
+			
+			Thread.sleep(2000);
+			
+			int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
+			
+			for(  k=1;k<rows1;k++)
+			{
+				String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
+				
+				if(text1.contains("Grand Total"))
+				{
+					int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
+					System.err.println("count"+rowCount);
+				break;
+				}	
+				}
+		
+			int reportsRowListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
+			ArrayList<String> reportsRowListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRowListCount;i++)
+			{
+				String data = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).get(i).getText();
+				reportsRowListArray.add(data);
+			}
+			String actRowList = reportsRowListArray.toString();
+			String expRowList = "[Grand Total, , 1.00, 2.00, 2.00, 1.00, 542.00, 536.00, 542.00, 548.00, 542.00, 548.00, 542.00, 545.00]";
+			
+			System.out.println("actRow1List"+actRowList);
+			System.out.println("expRow1List"+expRowList);
+			
+			if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) 
+					&& actpage2Row1List.equalsIgnoreCase(exppage2Row1List) && actpage2Row2List.equalsIgnoreCase(exppage2Row2List) 
+					&& actAllDatapage1.equalsIgnoreCase(expAllDatapage1) && 
+					actRowList.equalsIgnoreCase(expRowList)) 
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}	
+			
+		}
+		
+		public static boolean checkVirtualBankLedger() throws InterruptedException
+		{
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
+			financialsReportsMenu.click();
+			
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(cashAndBankBooksMenu));
+			cashAndBankBooksMenu.click();
+			Thread.sleep(2000);
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(virtualBankLedgerReport));
+			virtualBankLedgerReport.click();
+			
+			Thread.sleep(3000);
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+			sl_SelectAllChkBox.click();
+
+			Thread.sleep(2000);
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByIndex(1);
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+
+			Thread.sleep(2000);
+			ArrayList<String>  AllDatapage1 = new ArrayList<String>(); 
+
+			int count1=stockLedgerTable.size();
+
+			System.err.println(count1);
+
+			for(int i=0 ; i < count1 ;i++)
+			{
+				String style= stockLedgerTable.get(i).getAttribute("style");
+				if(style.contains("overflow: visible; font-weight: bold; background-color:"))
+						{
+					    String data=stockLedgerTable.get(i).getText();
+					    AllDatapage1.add(data);
+						}
+		
+			}
+
+			String actAllDatapage1 = AllDatapage1.toString();
+			String expAllDatapage1 = "[Cash 121-002, Bank 121-001]";
+
+			System.out.println("actAllDatapage1"+actAllDatapage1);
+			System.out.println("expAllDatapage1"+expAllDatapage1);
+			
+			String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
+			String afterPath="]//td[2]";
+			int k;
+			
+			Thread.sleep(2000);
+			
+			int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
+			
+			for(  k=1;k<rows1;k++)
+			{
+				String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
+				
+				if(text1.contains("Grand Total"))
+				{
+					int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
+					System.err.println("count"+rowCount);
+				break;
+				}	
+				}
+		
+			int reportsRowListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
+			ArrayList<String> reportsRowListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRowListCount;i++)
+			{
+				String data = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).get(i).getText();
+				reportsRowListArray.add(data);
+			}
+			String actRowList = reportsRowListArray.toString();
+			String expRowList = "[Grand Total, 3.00, 3.00, , , , , 3.00, 3.00, , , , , 3.00, 3.00, , , , ]";
+			
+			System.out.println("actRow1List"+actRowList);
+			System.out.println("expRow1List"+expRowList);
+			
+			
+			if (actAllDatapage1.equalsIgnoreCase(expAllDatapage1) && actRowList.equalsIgnoreCase(expRowList)) 
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}	
+		
+		}
+
+
+		public static boolean checkSalesRegisterReport() throws InterruptedException
+		{
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
+			financialsReportsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesReportsMenu));
+			salesReportsMenu.click();
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesRegisterReport));
+			salesRegisterReport.click();
+			
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			sl_DateOptionDropdown.click();
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reportaccountTxt));
+			reportaccountTxt.click();
+			reportaccountTxt.sendKeys(Keys.SPACE);
+			
+			int reportaccountTxtListCount = reportaccountTxtList.size();
+			
+			for(int i=0;i<reportaccountTxtListCount;i++)
+			{
+				String data = reportaccountTxtList.get(i).getText();
+				
+				if(data.equalsIgnoreCase("G"))
+				{
+					reportaccountTxtList.get(i).click();
+				}
+			}
+			
+			reportaccountTxt.sendKeys(Keys.TAB);
+			
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			
+			int reportsRow1ListCount = reportsRow1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=2;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsRow1List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[SalInv : 7, Sales Invoices, G2, Sales - Computers, BALL, 1.00, 1.00]";
+
+
+
+			int reportsRow2ListCount = reportsRow2List.size();
+			ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
+			for(int i=2;i<reportsRow2ListCount;i++)
+			{
+				String data = reportsRow2List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow2ListArray.add(data);
+				}
+
+
+			}
+			String actRow2List = reportsRow2ListArray.toString();
+			String expRow2List = "[SalInv : 7, Sales Invoices, G2, Sales - Computers, C1, 2.00, 2.00]";
+
+
+
+			int reportsRow3ListCount = reportsRow3List.size();
+			ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
+			for(int i=2;i<reportsRow3ListCount;i++)
+			{
+				String data = reportsRow3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow3ListArray.add(data);
+				}
+
+			}
+			String actRow3List = reportsRow3ListArray.toString();
+			String expRow3List = "[SalInv : 7, Sales Invoices, G2, Sales - Computers, C2, 3.00, 3.00]";
+
+
+
+			int reportsRow4ListCount = reportsRow4List.size();
+			ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
+			for(int i=2;i<reportsRow4ListCount;i++)
+			{
+				String data = reportsRow4List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow4ListArray.add(data);
+				}
+
+			}
+			String actRow4List = reportsRow4ListArray.toString();
+			String expRow4List = "[SalInv : 7, Sales Invoices, G2, Sales - Computers, CAM, 4.00, 4.00]";
+
+
+
+			int reportsRow5ListCount = reportsRow5List.size();
+			ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
+			for(int i=2;i<reportsRow5ListCount;i++)
+			{
+				String data = reportsRow5List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow5ListArray.add(data);
+				}
+			}
+			String actRow5List = reportsRow5ListArray.toString();
+			String expRow5List = "[SalInv : 7, Sales Invoices, G2, Sales - Computers, Doll, 5.00, 5.00]";
+			
+
+			int reportsRow6ListCount = reportsRow6List.size();
+			ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow6ListCount;i++)
+			{
+				String data = reportsRow6List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow6ListArray.add(data);
+				}
+			}
+			String actRow6List = reportsRow6ListArray.toString();
+			String expRow6List = "[Grand Total, 15.00, 15.00]";
+			
+		
+			System.out.println(actRow1List);
+			System.out.println(expRow1List);
+
+			System.out.println(actRow2List);
+			System.out.println(expRow2List);
+
+			System.out.println(actRow3List);
+			System.out.println(expRow3List);
+
+			System.out.println(actRow4List);
+			System.out.println(expRow4List);
+
+			System.out.println(actRow5List);
+			System.out.println(expRow5List);
+			
+
+			System.out.println(actRow6List);
+			System.out.println(expRow6List);
+		
+			if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List) 
+					&& actRow4List.equalsIgnoreCase(expRow4List) && actRow5List.equalsIgnoreCase(expRow5List)&& 
+					actRow6List.equalsIgnoreCase(expRow6List))
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+		
+			
+		}
+		
+		public static boolean checkSalesReturnRegisterReport()
+		{
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
+			financialsReportsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesReportsMenu));
+			salesReportsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesReturnRegisterReport));
+			salesReturnRegisterReport.click();
+			
+		
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			sl_DateOptionDropdown.click();
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reportaccountTxt));
+			reportaccountTxt.click();
+			reportaccountTxt.sendKeys(Keys.SPACE);
+			int reportaccountTxtListCount = reportaccountTxtList.size();
+			
+			for(int i=0;i<reportaccountTxtListCount;i++)
+			{
+				String data = reportaccountTxtList.get(i).getText();
+				
+				if(data.equalsIgnoreCase("E"))
+				{
+					reportaccountTxtList.get(i).click();
+				}
+			}
+			
+			reportaccountTxt.sendKeys(Keys.TAB);
+			
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			
+			int reportsRow1ListCount = reportsRow1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsRow1List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[Opening Balance, 1.00, 1.00, 1.00, 1.00]";
+
+			int reportsRow2ListCount = reportsRow2List.size();
+			ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow2ListCount;i++)
+			{
+				String data = reportsRow2List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow2ListArray.add(data);
+				}
+
+
+			}
+			String actRow2List = reportsRow2ListArray.toString();
+			String expRow2List = "[21/07/2022, PurVou : 9, A1, 1.00, 1.00, 1.00, 1.00]";
+
+			System.out.println(actRow1List);
+			System.out.println(expRow1List);
+
+			System.out.println(actRow2List);
+			System.out.println(expRow2List);
+
+			if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List))
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+		
+			
+		}
+		
+		public static boolean checkSalesSummaryRegisterReport() throws InterruptedException
+		{
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
+			financialsReportsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesReportsMenu));
+			salesReportsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(summarySalesBookReport));
+			summarySalesBookReport.click();
+			
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			sl_DateOptionDropdown.click();
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			Thread.sleep(2000);
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reportaccountTxt));
+			reportaccountTxt.click();
+			reportaccountTxt.sendKeys(Keys.SPACE);
+			Thread.sleep(2000);
+			reportaccountTxt.sendKeys("Sales - Computers");
+			Thread.sleep(1500);
+			reportaccountTxt.sendKeys(Keys.TAB);
+			
+			/*int reportaccountTxtListCount = reportaccountTxtList.size();
+			
+			for(int i=0;i<reportaccountTxtListCount;i++)
+			{
+				String data = reportaccountTxtList.get(i).getText();
+				
+				Thread.sleep(2000);
+				if(data.equalsIgnoreCase("Sales - Computers"))
+				{
+					Thread.sleep(2000);
+					reportaccountTxtList.get(i).click();
+				}
+			}
+			reportaccountTxt.sendKeys(Keys.TAB);*/
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			
+			int reportsRow1ListCount = reportsRow1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=2;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsRow1List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[G2, Sales - Computers, SalInv : 7, G2, 15.00]";
+
+
+
+			int reportsRow2ListCount = reportsRow2List.size();
+			ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow2ListCount;i++)
+			{
+				String data = reportsRow2List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow2ListArray.add(data);
+				}
+
+
+			}
+			String actRow2List = reportsRow2ListArray.toString();
+			String expRow2List = "[Grand Total, 15.00]";
+
+
+
+		
+			System.out.println(actRow1List);
+			System.out.println(expRow1List);
+
+			System.out.println(actRow2List);
+			System.out.println(expRow2List);
+
+		
+		
+			if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List))
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+		
+		}
+		
+		public static boolean checkMonthlySalesReport() throws InterruptedException
+		{
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
+			financialsReportsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesReportsMenu));
+			salesReportsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(monthlySalesBookReport));
+			monthlySalesBookReport.click();
+			
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			sl_DateOptionDropdown.click();
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reportaccountTxt));
+			reportaccountTxt.click();
+			reportaccountTxt.sendKeys(Keys.SPACE);
+			int reportaccountTxtListCount = reportaccountTxtList.size();
+			
+			for(int i=0;i<reportaccountTxtListCount;i++)
+			{
+				String data = reportaccountTxtList.get(i).getText();
+				
+				if(data.equalsIgnoreCase("Sales - Computers"))
+				{
+					reportaccountTxtList.get(i).click();
+				}
+			}
+			
+			reportaccountTxt.sendKeys(Keys.TAB);
+			
+			
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			
+			int reportsRow1ListCount = reportsRow1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsRow1List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[July, 15.00]";
+
+			int reportsRow2ListCount = reportsRow2List.size();
+			ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow2ListCount;i++)
+			{
+				String data = reportsRow2List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow2ListArray.add(data);
+				}
+
+
+			}
+			String actRow2List = reportsRow2ListArray.toString();
+			String expRow2List = "[Grand Total, 15.00]";
+
+			System.out.println(actRow1List);
+			System.out.println(expRow1List);
+
+			System.out.println(actRow2List);
+			System.out.println(expRow2List);
+
+			if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List))
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+		
+		}
+		
+		public static boolean checkTopCustomersReports() throws InterruptedException
+		{	
+			Thread.sleep(2000);
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
+			financialsReportsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesReportsMenu));
+			salesReportsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(topCustomersListReport));
+			topCustomersListReport.click();
+			
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			sl_DateOptionDropdown.click();
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reportaccountTxt));
+			reportaccountTxt.click();
+			reportaccountTxt.sendKeys(Keys.SPACE);
+			
+			int reportaccountTxtListCount = reportaccountTxtList.size();
+			
+			for(int i=0;i<reportaccountTxtListCount;i++)
+			{
+				String data = reportaccountTxtList.get(i).getText();
+				
+				if(data.equalsIgnoreCase("Sales - Computers"))
+				{
+					reportaccountTxtList.get(i).click();
+				}
+			}
+			
+			reportaccountTxt.sendKeys(Keys.TAB);
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			
+			int reportsRow1ListCount = reportsRow1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsRow1List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[G2, 10.00, 10.00]";
+
+			int reportsRow2ListCount = reportsRow2List.size();
+			ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow2ListCount;i++)
+			{
+				String data = reportsRow2List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow2ListArray.add(data);
+				}
+
+
+			}
+			String actRow2List = reportsRow2ListArray.toString();
+			String expRow2List = "[Grand Total, 10.00, 10.00]";
+
+			System.out.println(actRow1List);
+			System.out.println(expRow1List);
+
+			System.out.println(actRow2List);
+			System.out.println(expRow2List);
+
+			if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List))
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+		
+			
+		}
+		
+		public static boolean checkTopCustomersReportsForGroupAccount() throws InterruptedException
+		{
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
+			financialsReportsMenu.click();
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesReportsMenu));
+			salesReportsMenu.click();
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(topCustomersListReport));
+			topCustomersListReport.click();
+
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			sl_DateOptionDropdown.click();
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reportaccountTxt));
+			reportaccountTxt.click();
+			reportaccountTxt.sendKeys(Keys.SPACE);
+
+			int reportaccountTxtListCount = reportaccountTxtList.size();
+
+			for(int i=0;i<reportaccountTxtListCount;i++)
+			{
+				String data = reportaccountTxtList.get(i).getText();
+
+				if(data.equalsIgnoreCase("Sales - Computers"))
+				{
+					reportaccountTxtList.get(i).click();
+				}
+			}
+
+			reportaccountTxt.sendKeys(Keys.TAB);
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+
+			int reportsRow1ListCount = reportsRow1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsRow1List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[CashACC, 1.00, 1.00]";
+
+			int reportsRow2ListCount = reportsRow2List.size();
+			ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow2ListCount;i++)
+			{
+				String data = reportsRow2List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow2ListArray.add(data);
+				}
+
+
+			}
+			String actRow2List = reportsRow2ListArray.toString();
+			String expRow2List = "[CustomerACC, 1.00, 1.00]";
+
+
+			int reportsRow3ListCount = reportsRow3List.size();
+			ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow3ListCount;i++)
+			{
+				String data = reportsRow3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow3ListArray.add(data);
+				}
+
+			}
+			String actRow3List = reportsRow3ListArray.toString();
+			String expRow3List = "[H1, 6.00, 6.00]";
+
+
+
+			int reportsRow4ListCount = reportsRow4List.size();
+			ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow4ListCount;i++)
+			{
+				String data = reportsRow4List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow4ListArray.add(data);
+				}
+
+			}
+			String actRow4List = reportsRow4ListArray.toString();
+			String expRow4List = "[Grand Total, 4.00, 4.00]";
+
+
+
+			System.out.println(actRow1List);
+			System.out.println(expRow1List);
+
+			System.out.println(actRow2List);
+			System.out.println(expRow2List);
+
+			System.out.println(actRow3List);
+			System.out.println(expRow3List);
+
+
+			System.out.println(actRow4List);
+			System.out.println(expRow4List);
+
+
+
+			if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List) 
+					&& actRow4List.equalsIgnoreCase(expRow4List))
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+
+		}
+		
+		public static boolean checkPurchaseRegisterReport() throws InterruptedException
+		{
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
+			financialsReportsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseReportsMenu));
+			purchaseReportsMenu.click();
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseRegisterReport));
+			purchaseRegisterReport.click();
+			
+			Thread.sleep(2000);
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			sl_DateOptionDropdown.click();
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reportaccountTxt));
+			reportaccountTxt.click();
+			reportaccountTxt.sendKeys(Keys.SPACE);
+			Thread.sleep(2000);
+			reportaccountTxt.sendKeys("Vendor A");
+			Thread.sleep(1500);
+			reportaccountTxt.sendKeys(Keys.TAB);
+			
+			
+			/*int reportaccountTxtListCount = reportaccountTxtList.size();
+			
+			for(int i=0;i<reportaccountTxtListCount;i++)
+			{
+				String data = reportaccountTxtList.get(i).getText();
+				
+				if(data.equalsIgnoreCase("Vendor A"))
+				{
+					Thread.sleep(2000);
+					reportaccountTxtList.get(i).click();
+				}
+			}
+			
+			reportaccountTxt.sendKeys(Keys.TAB);*/
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			
+
+			int reportsRow1ListCount = reportsRow1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=2;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsRow1List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[PurVou : 7, Vendor A, 100.00, C1, 10.00, 10.00]";
+
+
+
+			int reportsRow2ListCount = reportsRow2List.size();
+			ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
+			for(int i=2;i<reportsRow2ListCount;i++)
+			{
+				String data = reportsRow2List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow2ListArray.add(data);
+				}
+
+
+			}
+			String actRow2List = reportsRow2ListArray.toString();
+			String expRow2List = "[PurVou : 7, Vendor A, 100.00, BALL, 10.00, 10.00]";
+
+
+
+			int reportsRow3ListCount = reportsRow3List.size();
+			ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
+			for(int i=2;i<reportsRow3ListCount;i++)
+			{
+				String data = reportsRow3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow3ListArray.add(data);
+				}
+
+			}
+			String actRow3List = reportsRow3ListArray.toString();
+			String expRow3List = "[PurVou : 7, Vendor A, 100.00, C2, 10.00, 10.00]";
+
+
+
+			int reportsRow4ListCount = reportsRow4List.size();
+			ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
+			for(int i=2;i<reportsRow4ListCount;i++)
+			{
+				String data = reportsRow4List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow4ListArray.add(data);
+				}
+
+			}
+			String actRow4List = reportsRow4ListArray.toString();
+			String expRow4List = "[PurVou : 7, Vendor A, 100.00, CAM, 10.00, 10.00]";
+
+
+
+			int reportsRow5ListCount = reportsRow5List.size();
+			ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
+			for(int i=2;i<reportsRow5ListCount;i++)
+			{
+				String data = reportsRow5List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow5ListArray.add(data);
+				}
+			}
+			String actRow5List = reportsRow5ListArray.toString();
+			String expRow5List = "[PurVou : 7, Vendor A, 100.00, Doll, 10.00, 10.00]";
+			
+
+			int reportsRow6ListCount = reportsRow6List.size();
+			ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow6ListCount;i++)
+			{
+				String data = reportsRow6List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow6ListArray.add(data);
+				}
+			}
+			String actRow6List = reportsRow6ListArray.toString();
+			String expRow6List = "[Grand Total, 500.00, 50.00, 50.00]";
+			
+			
+			System.out.println(actRow1List);
+			System.out.println(expRow1List);
+
+			System.out.println(actRow2List);
+			System.out.println(expRow2List);
+
+			System.out.println(actRow3List);
+			System.out.println(expRow3List);
+
+			System.out.println(actRow4List);
+			System.out.println(expRow4List);
+
+			System.out.println(actRow5List);
+			System.out.println(expRow5List);
+			
+
+			System.out.println(actRow6List);
+			System.out.println(expRow6List);
+			
+			
+		
+			if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List) 
+					&& actRow4List.equalsIgnoreCase(expRow4List) && actRow5List.equalsIgnoreCase(expRow5List)&& 
+					actRow6List.equalsIgnoreCase(expRow6List)
+					)
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+		
+			
+			
+		}
+		
+		public static boolean checkPurchaseReturnRegister() throws InterruptedException
+		{
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
+			financialsReportsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseReportsMenu));
+			purchaseReportsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseReturnRegisteReport));
+			purchaseReturnRegisteReport.click();
+			
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			sl_DateOptionDropdown.click();
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reportaccountTxt));
+			reportaccountTxt.click();
+			reportaccountTxt.sendKeys(Keys.SPACE);
+			Thread.sleep(2000);
+			reportaccountTxt.sendKeys("Purchase");
+			Thread.sleep(1500);
+			reportaccountTxt.sendKeys(Keys.TAB);
+			
+			
+			/*int reportaccountTxtListCount = reportaccountTxtList.size();
+			
+			for(int i=0;i<reportaccountTxtListCount;i++)
+			{
+				String data = reportaccountTxtList.get(i).getText();
+				
+				if(data.equalsIgnoreCase("Vendor A"))
+				{
+					reportaccountTxtList.get(i).click();
+				}
+			}
+			
+			reportaccountTxt.sendKeys(Keys.TAB);*/
+			
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			
+			Thread.sleep(2000);
+			
+
+			int reportsRow1ListCount = reportsRow1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsRow1List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[27/07/2022, PurRet : 2, C2, BALL, 1.00, 1.00, 1.00]";
+
+			int reportsRow2ListCount = reportsRow2List.size();
+			ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow2ListCount;i++)
+			{
+				String data = reportsRow2List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow2ListArray.add(data);
+				}
+
+
+			}
+			String actRow2List = reportsRow2ListArray.toString();
+			String expRow2List = "[27/07/2022, PurRet : 2, C2, C1, 1.00, 1.00, 1.00]";
+
+			System.out.println(actRow1List);
+			System.out.println(expRow1List);
+
+			System.out.println(actRow2List);
+			System.out.println(expRow2List);
+			
+			int reportsRow3ListCount = reportsRow3List.size();
+			ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow3ListCount;i++)
+			{
+				String data = reportsRow3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow3ListArray.add(data);
+				}
+
+
+			}
+			String actRow3List = reportsRow3ListArray.toString();
+			String expRow3List = "[27/07/2022, PurRet : 2, C2, C2, 1.00, 1.00, 1.00]";
+
+			
+			System.out.println(actRow3List);
+			System.out.println(expRow3List);
+			
+			
+			
+			int reportsRow4ListCount = reportsRow4List.size();
+			ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow4ListCount;i++)
+			{
+				String data = reportsRow4List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow4ListArray.add(data);
+				}
+
+
+			}
+			String actRow4List = reportsRow4ListArray.toString();
+			String expRow4List = "[27/07/2022, PurRet : 2, C2, CAM, 1.00, 1.00, 1.00]";
+
+			
+			System.out.println(actRow4List);
+			System.out.println(expRow4List);
+			
+			
+			
+			int reportsRow5ListCount = reportsRow5List.size();
+			ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow5ListCount;i++)
+			{
+				String data = reportsRow5List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow5ListArray.add(data);
+				}
+
+
+			}
+			String actRow5List = reportsRow5ListArray.toString();
+			String expRow5List = "[27/07/2022, PurRet : 2, C2, Doll, 1.00, 1.00, 1.00]";
+
+			
+			System.out.println(actRow5List);
+			System.out.println(expRow5List);
+			
+			
+			
+			int reportsRow6ListCount = reportsRow6List.size();
+			ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow6ListCount;i++)
+			{
+				String data = reportsRow6List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow6ListArray.add(data);
+				}
+
+
+			}
+			String actRow6List = reportsRow6ListArray.toString();
+			String expRow6List = "[Grand Total, 5.00, 5.00, 5.00]";
+
+			
+			System.out.println(actRow6List);
+			System.out.println(expRow6List);
+
+			if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List)
+					&& actRow3List.equalsIgnoreCase(expRow3List) && actRow4List.equalsIgnoreCase(expRow4List)
+					&& actRow5List.equalsIgnoreCase(expRow5List) && actRow6List.equalsIgnoreCase(expRow6List))
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+		
+			
+		}
+		
+		public static boolean checkSummaryPurchaseRegister() throws InterruptedException
+		{
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
+			financialsReportsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseReportsMenu));
+			purchaseReportsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(summaryPurchaseBookReport));
+			summaryPurchaseBookReport.click();
+			
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			sl_DateOptionDropdown.click();
+			Thread.sleep(2000);
+			
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reportaccountTxt));
+			reportaccountTxt.click();
+			reportaccountTxt.sendKeys(Keys.SPACE);
+			Thread.sleep(2000);
+			reportaccountTxt.sendKeys("Vendor A");
+			Thread.sleep(1500);
+			reportaccountTxt.sendKeys(Keys.TAB);
+			
+			
+			/*int reportaccountTxtListCount = reportaccountTxtList.size();
+			
+			for(int i=0;i<reportaccountTxtListCount;i++)
+			{
+				String data = reportaccountTxtList.get(i).getText();
+				
+				if(data.equalsIgnoreCase("Vendor A"))
+				{
+					reportaccountTxtList.get(i).click();
+				}
+			}
+			
+			reportaccountTxt.sendKeys(Keys.TAB);*/
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			
+			int reportsRow1ListCount = reportsRow1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsRow1List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[21/07/2022, PurVou : 7, Vendor A, 500.00]";
+
+			int reportsRow2ListCount = reportsRow2List.size();
+			ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow2ListCount;i++)
+			{
+				String data = reportsRow2List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow2ListArray.add(data);
+				}
+
+
+			}
+			String actRow2List = reportsRow2ListArray.toString();
+			String expRow2List = "[Grand Total, 500.00]";
+
+
+
+			System.out.println(actRow1List);
+			System.out.println(expRow1List);
+
+			System.out.println(actRow2List);
+			System.out.println(expRow2List);
+
+
+			if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List))
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+
+			
+		}
+		
+		public static boolean checkOpeningBalanceRegister() throws InterruptedException
+		{
+			Thread.sleep(2300);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
+			financialsReportsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(registersReportMenu));
+			registersReportMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(openingBalanceRegisterReport));
+			openingBalanceRegisterReport.click();
+			
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			sl_DateOptionDropdown.click();
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			
+			int reportsRow1ListCount = reportsCol2List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsCol2List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+			
+			
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[OpeBal : 2, OpeBal : 2, OpeBal : 2]";
+
+			System.out.println("Actaul Voucher  :"+actRow1List);
+			System.out.println("Expected Voucher:"+expRow1List);
+			
+			
+			int reportsRow2ListCount = reportsCol3List.size();
+			ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow2ListCount;i++)
+			{
+				String data = reportsCol3List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow2ListArray.add(data);
+				}
+
+			}
+			
+			
+			String actRow2List = reportsRow2ListArray.toString();
+			String expRow2List = "[C1, G1, Customer A]";
+
+			System.out.println("Actaul Voucher  :"+actRow2List);
+			System.out.println("Expected Voucher:"+expRow2List);
+			
+
+			String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
+			String afterPath="]//td[2]";
+			int k;
+			
+			Thread.sleep(2000);
+			
+			int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
+			
+			for(  k=1;k<rows1;k++)
+			{
+				String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
+				
+				if(text1.contains("Grand Total"))
+				{
+					int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
+					System.err.println("count"+rowCount);
+				break;
+				}	
+				}
+		
+			int Row1ListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
+			ArrayList<String> Row1ListArray = new ArrayList<String>();
+			for(int i=1;i<Row1ListCount;i++)
+			{
+				String data = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).get(i).getText();
+				Row1ListArray.add(data);
+			}
+			String actList = Row1ListArray.toString();
+			String expList = "[Grand Total, , , , 3.00, , 3.00, , 3.00]";
+			
+			System.out.println("actRow1List"+actList);
+			System.out.println("expRow1List"+expList);
+			
+			
+			if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) &&
+					actList.equalsIgnoreCase(expList))
+			{
+				return true;
+			}
+			else 
+			{
+				return false;
+			}
+		
+		}
+		
+		public static boolean checkJournalEntryRegister() throws InterruptedException
+		{
+			Thread.sleep(2500);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
+			financialsReportsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(registersReportMenu));
+			registersReportMenu.click();
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(journalEntriesRegisterReport));
+			journalEntriesRegisterReport.click();
+			
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			sl_DateOptionDropdown.click();
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			
+			Thread.sleep(2000);
+			
+
+			int reportsRow1ListCount = reportsRow1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=2;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsRow1List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[NJv : 2, C2, 1.00, 1.00, 1.00]";
+
+			int reportsRow2ListCount = reportsRow2List.size();
+			ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow2ListCount;i++)
+			{
+				String data = reportsRow2List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow2ListArray.add(data);
+				}
+
+
+			}
+			String actRow2List = reportsRow2ListArray.toString();
+			String expRow2List = "[Grand Total, 1.00, 1.00, 1.00]";
+
+
+			
+			System.out.println(actRow1List);
+			System.out.println(expRow1List);
+
+			System.out.println(actRow2List);
+			System.out.println(expRow2List);
+
+			
+			if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List))
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+
+			
+			
+		}
+		
+		public static boolean checkCreditNoteRegister() throws InterruptedException
+		{
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
+			financialsReportsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(registersReportMenu));
+			registersReportMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(creditNoteRegisterReport));
+			creditNoteRegisterReport.click();
+			
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			sl_DateOptionDropdown.click();
+			Thread.sleep(2000);
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			
+			Thread.sleep(2000);
+			
+
+			int reportsRow1ListCount = reportsRow1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=2;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsRow1List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[CreNts : 2, CustVend, 1.00]";
+
+			int reportsRow2ListCount = reportsRow2List.size();
+			ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow2ListCount;i++)
+			{
+				String data = reportsRow2List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow2ListArray.add(data);
+				}
+
+
+			}
+			String actRow2List = reportsRow2ListArray.toString();
+			String expRow2List = "[Grand Total, 1.00]";
+
+
+			System.out.println(actRow1List);
+			System.out.println(expRow1List);
+
+			System.out.println(actRow2List);
+			System.out.println(expRow2List);
+
+		
+			if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List))
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+
+		}
+		
+		public static boolean checkDebitNotesRegister() throws InterruptedException
+		{
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
+			financialsReportsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(registersReportMenu));
+			registersReportMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(debitNoteRegisterReport));
+			debitNoteRegisterReport.click();
+			
+		
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			sl_DateOptionDropdown.click();
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			
+			Thread.sleep(2000);
+			
+
+			int reportsRow1ListCount = reportsRow1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsRow1List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[21/07/2022, PurVou : 1, D1, 25.00]";
+
+			int reportsRow2ListCount = reportsRow2List.size();
+			ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow2ListCount;i++)
+			{
+				String data = reportsRow2List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow2ListArray.add(data);
+				}
+
+
+			}
+			String actRow2List = reportsRow2ListArray.toString();
+			String expRow2List = "[21/07/2022, PurVou : 9, BankACC, 1.00]";
+
+
+			System.out.println(actRow1List);
+			System.out.println(expRow1List);
+
+			System.out.println(actRow2List);
+			System.out.println(expRow2List);
+
+		
+			if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List))
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+
+		}
+		
+		public static boolean checkReciptsRegister() throws InterruptedException
+		{	
+			
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
+			financialsReportsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(registersReportMenu));
+			registersReportMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(receiptsRegisterReport));
+			receiptsRegisterReport.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			sl_DateOptionDropdown.click();
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			
+			Thread.sleep(2000);
+			
+
+			int reportsRow1ListCount = reportsRow1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=2;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsRow1List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[Rct : 2, C2, 1.00, 1.00, 1.00]";
+
+			int reportsRow2ListCount = reportsRow2List.size();
+			ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
+			for(int i=2;i<reportsRow2ListCount;i++)
+			{
+				String data = reportsRow2List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow2ListArray.add(data);
+				}
+
+
+			}
+			String actRow2List = reportsRow2ListArray.toString();
+			String expRow2List = "[Rct : 2, G2, 1.00, 1.00, 1.00]";
+
+			Thread.sleep(2000);
+			
+			int reportsRow3ListCount = reportsRow3List.size();
+			ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow3ListCount;i++)
+			{
+				String data = reportsRow3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow3ListArray.add(data);
+				}
+
+
+			}
+			String actRow3List = reportsRow3ListArray.toString();
+			String expRow3List = "[Grand Total, 2.00, 2.00, 2.00]";
+
+
+			System.out.println(actRow1List);
+			System.out.println(expRow1List);
+
+			System.out.println(actRow2List);
+			System.out.println(expRow2List);
+			
+			System.out.println(actRow3List);
+			System.out.println(expRow3List);
+
+		
+			if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List)
+					&& actRow3List.equalsIgnoreCase(expRow3List))
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+
+		
+		}
+		
+		public static boolean checkPaymentsRegister() throws InterruptedException
+		{
+		
+			
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
+			financialsReportsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(registersReportMenu));
+			registersReportMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(paymentRegisterReport));
+			paymentRegisterReport.click();
+			
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			sl_DateOptionDropdown.click();
+			Thread.sleep(2000);
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			
+			Thread.sleep(2000);
+			
+
+			int reportsRow1ListCount = reportsRow1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=2;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsRow1List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[Pmt : 2, C1, 1.00, 1.00, 1.00]";
+
+			int reportsRow2ListCount = reportsRow2List.size();
+			ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
+			for(int i=2;i<reportsRow2ListCount;i++)
+			{
+				String data = reportsRow2List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow2ListArray.add(data);
+				}
+
+
+			}
+			String actRow2List = reportsRow2ListArray.toString();
+			String expRow2List = "[Pmt : 2, G1, 1.00, 1.00, 1.00]";
+			
+			int reportsRow3ListCount = reportsRow3List.size();
+			ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow3ListCount;i++)
+			{
+				String data = reportsRow3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow3ListArray.add(data);
+				}
+
+
+			}
+			String actRow3List = reportsRow3ListArray.toString();
+			String expRow3List = "[Grand Total, 2.00, 2.00, 2.00]";
+
+
+			System.out.println(actRow1List);
+			System.out.println(expRow1List);
+
+			System.out.println(actRow2List);
+			System.out.println(expRow2List);
+			
+			System.out.println(actRow3List);
+			System.out.println(expRow3List);
+
+		
+			if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List)
+					&& actRow3List.equalsIgnoreCase(expRow3List))
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+
+		
+		
+		}
+		
+		public static boolean checkPDCReceiptsRegister() throws InterruptedException
+		{
+
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
+			financialsReportsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(registersReportMenu));
+			registersReportMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(pdcReceiptsRegisterReport));
+			pdcReceiptsRegisterReport.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			sl_DateOptionDropdown.click();
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			
+			boolean actReportTable = reportsTable.getText().isEmpty();
+			boolean expReportTable = true;
+			
+			System.out.println(actReportTable);
+			System.out.println(expReportTable);
+			
+			if (actReportTable== expReportTable)
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+			
+		}
+		
+		public static boolean checkPDCPaymentsRegister() throws InterruptedException
+		{
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
+			financialsReportsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(registersReportMenu));
+			registersReportMenu.click();
+			
+			Thread.sleep(2000);
+			scrollToElementJSE(pdcPaymentsRegisterReport);
+			Thread.sleep(2000);
+			ClickUsingJs(pdcPaymentsRegisterReport);
+			
+			/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(pdcPaymentsRegisterReport));
+			pdcPaymentsRegisterReport.click();*/
+			
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			sl_DateOptionDropdown.click();
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			
+			boolean actReportTable = reportsTable.getText().isEmpty();
+			boolean expReportTable = true;
+			
+			System.out.println(actReportTable);
+			System.out.println(expReportTable);
+			
+			if (actReportTable== expReportTable)
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+			
+		
+		}
+		
+		public static boolean checkEntryJournalRegister() throws InterruptedException
+		{
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
+			financialsReportsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(registersReportMenu));
+			registersReportMenu.click();
+			
+			
+			scrollToElementJSE(entryJournalRegisterReport);
+			Thread.sleep(2000);
+			ClickUsingJs(entryJournalRegisterReport);
+			
+			/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(entryJournalRegisterReport));
+			entryJournalRegisterReport.click();*/
+			
+			Thread.sleep(2000);
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			sl_DateOptionDropdown.click();
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			Thread.sleep(2000);
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			
+			Thread.sleep(2000);
+
+			int reportsRow2ListCount = reportsCol2List.size();
+			ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow2ListCount;i++)
+			{
+				String data = reportsCol2List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow2ListArray.add(data);
+				}
+
+			}
+			
+			String actRow2List = reportsRow2ListArray.toString();
+			String expRow2List = "[OpeBal : 2, OpeBal : 2, OpeBal : 2, OpeBal : 2, OpeBal : 2, OpeBal : 2, PurVou : 7, PurVou : 7, NJv : 2, NJv : 2, Pmt : 2, Pmt : 2, Pmt : 2, Pmt : 2, Rct : 2, Rct : 2, Rct : 2, Rct : 2, CreNts : 2]";
+
+			System.out.println("Actaul Voucher  :"+actRow2List);
+			System.out.println("Expected Voucher:"+expRow2List);
+			
+			int reportsRow3ListCount = reportsCol3List.size();
+			ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow3ListCount;i++)
+			{
+				String data = reportsCol3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow3ListArray.add(data);
+				}
+
+			}
+			String actRow3List = reportsRow3ListArray.toString();
+			String expRow3List = "[CreNts : 2, DebNts : 2, DebNts : 2, PurRet : 2, PurRet : 2, SalInv : 7, SalInv : 7, SalInv : 7, SalInv : 7, SalInv : 7, SalInv : 7, SalInv : 7, SalInv : 7, SalInv : 7, SalInv : 7, SalRet : 2, SalRet : 2, PurVou : 11, PurVou : 11]";
+
+			
+			System.out.println("Actaul Account  :"+actRow3List);
+			System.out.println("Expected Account:"+expRow3List);
+			
+
+			Thread.sleep(2500);
+			report_NextBtn.click();
+			
+			Thread.sleep(2500);
+			
+			
+			int reportspage2row2ListCount = reportsCol2List.size();
+			ArrayList<String> reportspage2row2ListArray = new ArrayList<String>();
+			for(int i=0;i<reportspage2row2ListCount;i++)
+			{
+				String data = reportsCol2List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportspage2row2ListArray.add(data);
+				}
+
+			}
+			
+			String actpage2row2List = reportspage2row2ListArray.toString();
+			String exppage2row2List = "[CreNts : 2, DebNts : 2, DebNts : 2, PurRet : 2, PurRet : 2, SalInv : 7, SalInv : 7, SalInv : 7, SalInv : 7, SalInv : 7, SalInv : 7, SalInv : 7, SalInv : 7, SalInv : 7, SalInv : 7, SalRet : 2, SalRet : 2, PurVou : 11, PurVou : 11]";
+
+			System.out.println("Actaul Voucher  :"+actpage2row2List);
+			System.out.println("Expected Voucher:"+exppage2row2List);
+			
+			int reportspage2row3ListCount = reportsCol3List.size();
+			ArrayList<String> reportspage2row3ListArray = new ArrayList<String>();
+			for(int i=0;i<reportspage2row3ListCount;i++)
+			{
+				String data = reportsCol3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportspage2row3ListArray.add(data);
+				}
+
+			}
+			String actpage2row3List = reportspage2row3ListArray.toString();
+			String exppage2row3List = "[CustVend, CustVend, Cash, C2, Purchase, G2, Sales - Computers, Sales - Computers, G2, G2, G2, G2, Sales - Computers, Sales - Computers, Sales - Computers, Sales - Computers, G2, C2, Inventory Trade]";
+
+			
+			System.out.println("Actaul Account  :"+actpage2row3List);
+			System.out.println("Expected Account:"+exppage2row3List);
+			
+			
+			Thread.sleep(2500);
+			report_NextBtn.click();
+			
+			Thread.sleep(2500);
+
+			String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
+			String afterPath="]//td[2]";
+			int k;
+			
+			Thread.sleep(2000);
+			
+			int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
+			
+			for(  k=1;k<rows1;k++)
+			{
+				String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
+				
+				if(text1.contains("Grand Total"))
+				{
+					int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
+					System.err.println("count"+rowCount);
+				break;
+				}	
+				}
+		
+			int Row1ListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
+			ArrayList<String> Row1ListArray = new ArrayList<String>();
+			for(int i=1;i<Row1ListCount;i++)
+			{
+				String data = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).get(i).getText();
+				Row1ListArray.add(data);
+			}
+			String actList = Row1ListArray.toString();
+			String expList = "[Grand Total, , , 77.00, 77.00, 21.00, , 77.00, 77.00, 21.00, 77.00, 77.00, 21.00]";
+			
+			System.out.println("actRow1List"+actList);
+			System.out.println("expRow1List"+expList);
+			
+			if (actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List) &&
+					actpage2row2List.equalsIgnoreCase(exppage2row2List)&& actpage2row3List.equalsIgnoreCase(exppage2row3List) &&
+					actList.equalsIgnoreCase(expList)) 
+			{
+				return true;
+				
+			} 
+			else 
+			{
+				return false;
+			}
+
+		}
+		
+		public static boolean checkEntryJournalDetailReport() throws InterruptedException
+		{
+
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
+			financialsReportsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(registersReportMenu));
+			registersReportMenu.click();
+			
+			
+			Thread.sleep(3000);
+			scrollToElementJSE(entryJournalDetailReport);
+			Thread.sleep(2000);
+			ClickUsingJs(entryJournalDetailReport);
+			
+			/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(entryJournalDetailReport));
+			entryJournalDetailReport.click();*/
+			
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			sl_DateOptionDropdown.click();
+			
+			Thread.sleep(2000);
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			Thread.sleep(2000);
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			
+			Thread.sleep(2000);
+
+			int reportsRow1ListCount = reportsCol1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsCol1List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+			
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1]";
+
+			System.out.println("Actaul Voucher  :"+actRow1List);
+			System.out.println("Expected Voucher:"+expRow1List);
+			
+			
+			
+			
+			int reportsRow3ListCount = reportsCol3List.size();
+			ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow3ListCount;i++)
+			{
+				String data = reportsCol3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow3ListArray.add(data);
+				}
+
+			}
+			String actRow3List = reportsRow3ListArray.toString();
+			String expRow3List = "[A1, A2, B1, B2, BankACC, CashACC, CustomerACC, D2, D1, E1]";
+
+			
+			System.out.println("Actaul Account  :"+actRow3List);
+			System.out.println("Expected Account:"+expRow3List);
+			
+			
+			
+			int reportsRow4ListCount = reportsCol4List.size();
+			ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow4ListCount;i++)
+			{
+				String data = reportsCol4List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow4ListArray.add(data);
+				}
+
+			}
+			String actRow4List = reportsRow4ListArray.toString();
+			String expRow4List = "[Opening Balances Control A/C, Opening Balances Control A/C, Opening Balances Control A/C, Opening Balances Control A/C, Opening Balances Control A/C, Opening Balances Control A/C, Opening Balances Control A/C, Opening Balances Control A/C, Opening Balances Control A/C]";
+
+			
+			System.out.println("Actaul Account  :"+actRow4List);
+			System.out.println("Expected Account:"+expRow4List);
+			
+
+			Thread.sleep(2500);
+			report_NextBtn.click();
+			
+			Thread.sleep(2500);
+			
+			int reportspage2row1ListCount = reportsCol1List.size();
+			ArrayList<String> reportspage2row1ListArray = new ArrayList<String>();
+			for(int i=0;i<reportspage2row1ListCount;i++)
+			{
+				String data = reportsCol1List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportspage2row1ListArray.add(data);
+				}
+
+			}
+			
+			String actpage2row1List = reportspage2row1ListArray.toString();
+			String exppage2row1List = "[OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, OpeBal : 1, PurVou : 1, PurVou : 1]";
+
+			System.out.println("Actaul Voucher  :"+actpage2row1List);
+			System.out.println("Expected Voucher:"+exppage2row1List);
+			
+			int reportspage2row3ListCount = reportsCol3List.size();
+			ArrayList<String> reportspage2row3ListArray = new ArrayList<String>();
+			for(int i=0;i<reportspage2row3ListCount;i++)
+			{
+				String data = reportsCol3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportspage2row3ListArray.add(data);
+				}
+
+			}
+			String actpage2row3List = reportspage2row3ListArray.toString();
+			String exppage2row3List = "[E2, F1, F2, H1, H2, PurchaseACC, SalesACC, VendorACC, A1]";
+
+			
+			System.out.println("Actaul Account  :"+actpage2row3List);
+			System.out.println("Expected Account:"+exppage2row3List);
+			
+			
+			int reportspage2row4ListCount = reportsCol4List.size();
+			ArrayList<String> reportspage2row4ListArray = new ArrayList<String>();
+			for(int i=0;i<reportspage2row4ListCount;i++)
+			{
+				String data = reportsCol4List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportspage2row4ListArray.add(data);
+				}
+
+			}
+			String actpage2row4List = reportspage2row4ListArray.toString();
+			String exppage2row4List = "[Opening Balances Control A/C, Opening Balances Control A/C, Opening Balances Control A/C, Opening Balances Control A/C, Opening Balances Control A/C, Opening Balances Control A/C, Opening Balances Control A/C, Opening Balances Control A/C, Opening Balances Control A/C, D1]";
+
+			
+			System.out.println("Actaul Account  :"+actpage2row4List);
+			System.out.println("Expected Account:"+exppage2row4List);
+			
+
+
+			String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
+			String afterPath="]//td[2]";
+			int k;
+			
+			Thread.sleep(2000);
+			
+			int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
+			
+			for(  k=1;k<rows1;k++)
+			{
+				String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
+				
+				if(text1.contains("Grand Total"))
+				{
+					int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
+					System.err.println("count"+rowCount);
+				break;
+				}	
+				}
+		
+			int Row1ListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
+			ArrayList<String> Row1ListArray = new ArrayList<String>();
+			for(int i=1;i<Row1ListCount;i++)
+			{
+				String data = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).get(i).getText();
+				Row1ListArray.add(data);
+			}
+			String actList = Row1ListArray.toString();
+			String expList = "[Grand Total, , , , ]";
+			
+			System.out.println("actRow1List"+actList);
+			System.out.println("expRow1List"+expList);
+			
+			if (actRow1List.equalsIgnoreCase(expRow1List) && actRow3List.equalsIgnoreCase(expRow3List) && actRow4List.equalsIgnoreCase(expRow4List) &&
+					actpage2row1List.equalsIgnoreCase(exppage2row1List)&& actpage2row3List.equalsIgnoreCase(exppage2row3List) &&  actpage2row4List.equalsIgnoreCase(exppage2row4List)
+					&&actList.equalsIgnoreCase(expList)) 
+			{
+				return true;
+				
+			} 
+			else 
+			{
+				return false;
+			}
+
+		
+		}
+		
+		public static boolean checkSalesGroupedByCustomer() throws InterruptedException
+		{
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
+			financialsReportsMenu.click();
+			
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesAndPurchasesReportMenu));
+			salesAndPurchasesReportMenu.click();
+			
+			Thread.sleep(2000);
+			scrollToElementJSE(salesGroupedByCustomerReport);
+			Thread.sleep(2000);
+			ClickUsingJs(salesGroupedByCustomerReport);
+			
+			/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesGroupedByCustomerReport));
+			salesGroupedByCustomerReport.click();*/
+			
+			Thread.sleep(2000);
+			
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			sl_DateOptionDropdown.click();
+			
+			Thread.sleep(2000);
+			
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reportaccountTxt));
+			reportaccountTxt.click();
+			reportaccountTxt.sendKeys(Keys.SPACE);
+			
+			int reportaccountTxtListCount = reportaccountTxtList.size();
+			
+			for(int i=0;i<reportaccountTxtListCount;i++)
+			{
+				String data = reportaccountTxtList.get(i).getText();
+				
+				if(data.equalsIgnoreCase("Sales - Computers"))
+				{
+					reportaccountTxtList.get(i).click();
+				}
+			}
+			
+			reportaccountTxt.sendKeys(Keys.TAB);
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			
+			
+			Thread.sleep(2000);
+			int reportsRow1ListCount = reportsCol1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsCol1List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+			
+			
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[G2, G2, G2, G2, G2, Grand Total]";
+
+			System.out.println("Actaul Voucher  :"+actRow1List);
+			System.out.println("Expected Voucher:"+expRow1List);
+
+			Thread.sleep(2000);
+
+			int reportsRow2ListCount = reportsCol2List.size();
+			ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow2ListCount;i++)
+			{
+				String data = reportsCol2List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow2ListArray.add(data);
+				}
+
+			}
+			
+			
+			String actRow2List = reportsRow2ListArray.toString();
+			String expRow2List = "[G2, G2, G2, G2, G2]";
+
+			System.out.println("Actaul Voucher  :"+actRow2List);
+			System.out.println("Expected Voucher:"+expRow2List);
+			
+			int reportsRow3ListCount = reportsCol3List.size();
+			ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow3ListCount;i++)
+			{
+				String data = reportsCol3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow3ListArray.add(data);
+				}
+
+			}
+			String actRow3List = reportsRow3ListArray.toString();
+			String expRow3List = "[BALL, C1, C2, CAM, Doll]";
+
+			
+			System.out.println("Actaul Account  :"+actRow3List);
+			System.out.println("Expected Account:"+expRow3List);
+			
+			Thread.sleep(4000);
+
+			int reportsRow4ListCount = reportsCol4List.size();
+			ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow4ListCount;i++)
+			{
+				String data = reportsCol4List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow4ListArray.add(data);
+				}
+
+			}
+			
+			String actRow4List = reportsRow4ListArray.toString();
+			String expRow4List = "[1.00, 2.00, 3.00, 4.00, 5.00, 15.00, 15.00]";
+
+			System.out.println("Actual Branch  :"+actRow4List);
+			System.out.println("Expected Branch:"+expRow4List);
+			
+			int reportsRow5ListCount = reportsCol5List.size();
+			ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow5ListCount;i++)
+			{
+				String data = reportsCol5List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow5ListArray.add(data);
+				}
+
+			}
+			String actRow5List = reportsRow5ListArray.toString();
+			String expRow5List = "[1.00, 2.00, 3.00, 4.00, 5.00, 15.00, 15.00]";
+
+			System.out.println("Actual Department  :"+actRow5List);
+			System.out.println("Expected Department:"+expRow5List);
+			
+			if ( actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List)
+					 && actRow3List.equalsIgnoreCase(expRow3List) && actRow4List.equalsIgnoreCase(expRow4List)
+					 && actRow5List.equalsIgnoreCase(expRow5List)) 
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+			
+		}
+		
+		public static boolean checkSalesGroupedByItem() throws InterruptedException
+		{
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
+			financialsReportsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesAndPurchasesReportMenu));
+			salesAndPurchasesReportMenu.click();
+			
+			Thread.sleep(2000);
+			scrollToElementJSE(salesGroupedByProductReport);
+			Thread.sleep(2000);
+			ClickUsingJs(salesGroupedByProductReport);
+			
+			/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesGroupedByProductReport));
+			salesGroupedByProductReport.click();*/
+			
+			Thread.sleep(2000);
+			
+		
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			sl_DateOptionDropdown.click();
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reportaccountTxt));
+			reportaccountTxt.click();
+			reportaccountTxt.sendKeys(Keys.SPACE);
+			
+			int reportaccountTxtListCount = reportaccountTxtList.size();
+			
+			for(int i=0;i<reportaccountTxtListCount;i++)
+			{
+				String data = reportaccountTxtList.get(i).getText();
+				
+				if(data.equalsIgnoreCase("Sales - Computers"))
+				{
+					reportaccountTxtList.get(i).click();
+				}
+			}
+			
+			reportaccountTxt.sendKeys(Keys.TAB);
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			
+
+			Thread.sleep(2000);
+			int reportsRow1ListCount = reportsCol1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsCol1List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+			
+			
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[BALL, C1, C2, CAM, Doll, Grand Total]";
+
+			System.out.println("Actaul Voucher  :"+actRow1List);
+			System.out.println("Expected Voucher:"+expRow1List);
+
+			Thread.sleep(2000);
+
+			int reportsRow2ListCount = reportsCol2List.size();
+			ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow2ListCount;i++)
+			{
+				String data = reportsCol2List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow2ListArray.add(data);
+				}
+
+			}
+			
+			
+			String actRow2List = reportsRow2ListArray.toString();
+			String expRow2List = "[G2, G2, G2, G2, G2]";
+
+			System.out.println("Actaul Voucher  :"+actRow2List);
+			System.out.println("Expected Voucher:"+expRow2List);
+			
+			int reportsRow3ListCount = reportsCol3List.size();
+			ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow3ListCount;i++)
+			{
+				String data = reportsCol3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow3ListArray.add(data);
+				}
+
+			}
+			String actRow3List = reportsRow3ListArray.toString();
+			String expRow3List = "[1.00, 1.00, 2.00, 2.00, 3.00, 3.00, 4.00, 4.00, 5.00, 5.00, 15.00]";
+
+			
+			System.out.println("Actaul Account  :"+actRow3List);
+			System.out.println("Expected Account:"+expRow3List);
+			
+			Thread.sleep(4000);
+
+			int reportsRow4ListCount = reportsCol4List.size();
+			ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow4ListCount;i++)
+			{
+				String data = reportsCol4List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow4ListArray.add(data);
+				}
+
+			}
+			
+			String actRow4List = reportsRow4ListArray.toString();
+			String expRow4List = "[1.00, 1.00, 2.00, 2.00, 3.00, 3.00, 4.00, 4.00, 5.00, 5.00, 15.00]";
+
+			System.out.println("Actual Branch  :"+actRow4List);
+			System.out.println("Expected Branch:"+expRow4List);
+			
+		
+			if ( actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List)
+					 && actRow3List.equalsIgnoreCase(expRow3List) && actRow4List.equalsIgnoreCase(expRow4List)
+					) 
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+			
+
+		}
+		
+		public static boolean checkSalesGroupedByDepartment() throws InterruptedException
+		{
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
+			financialsReportsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesAndPurchasesReportMenu));
+			salesAndPurchasesReportMenu.click();
+			
+			
+			scrollToElementJSE(salesGroupedByDepartmentReport);
+			Thread.sleep(2000);
+			ClickUsingJs(salesGroupedByDepartmentReport);
+			
+			/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesGroupedByDepartmentReport));
+			salesGroupedByDepartmentReport.click();*/
+		
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			sl_DateOptionDropdown.click();
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reportaccountTxt));
+			reportaccountTxt.click();
+			Thread.sleep(1000);
+			reportaccountTxt.sendKeys(Keys.SPACE);
+			
+			int reportaccountTxtListCount = reportaccountTxtList.size();
+			
+			for(int i=0;i<reportaccountTxtListCount;i++)
+			{
+				String data = reportaccountTxtList.get(i).getText();
+				
+				if(data.equalsIgnoreCase("Sales - Computers"))
+				{
+					reportaccountTxtList.get(i).click();
+				}
+			}
+			
+			reportaccountTxt.sendKeys(Keys.TAB);
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			
+			Thread.sleep(2000);
+
+			int reportsRow1ListCount = reportsRow1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsRow1List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[C1, C1, 2.00, 2.00]";
+
+
+
+			int reportsRow2ListCount = reportsRow2List.size();
+			ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow2ListCount;i++)
+			{
+				String data = reportsRow2List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow2ListArray.add(data);
+				}
+
+
+			}
+			String actRow2List = reportsRow2ListArray.toString();
+			String expRow2List = "[C1, BALL, 1.00, 1.00]";
+
+
+
+			int reportsRow3ListCount = reportsRow3List.size();
+			ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow3ListCount;i++)
+			{
+				String data = reportsRow3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow3ListArray.add(data);
+				}
+
+			}
+			String actRow3List = reportsRow3ListArray.toString();
+			String expRow3List = "[C1, Doll, 5.00, 5.00]";
+
+
+
+			int reportsRow4ListCount = reportsRow4List.size();
+			ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow4ListCount;i++)
+			{
+				String data = reportsRow4List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow4ListArray.add(data);
+				}
+
+			}
+			String actRow4List = reportsRow4ListArray.toString();
+			String expRow4List = "[C1, C2, 3.00, 3.00]";
+
+			System.out.println(actRow1List);
+			System.out.println(expRow1List);
+
+			System.out.println(actRow2List);
+			System.out.println(expRow2List);
+
+			System.out.println(actRow3List);
+			System.out.println(expRow3List);
+
+			System.out.println(actRow4List);
+			System.out.println(expRow4List);
+
+		
+			if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List) 
+					&& actRow4List.equalsIgnoreCase(expRow4List))
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+			
+
+		}
+		
+		public static boolean checkPurchasesGroupedByVendor() throws InterruptedException
+		{
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
+			financialsReportsMenu.click();
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesAndPurchasesReportMenu));
+			salesAndPurchasesReportMenu.click();
+			
+			scrollToElementJSE(purchasesGroupedByVendorReport);
+			Thread.sleep(2000);
+			ClickUsingJs(purchasesGroupedByVendorReport);
+
+			/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchasesGroupedByVendorReport));
+			purchasesGroupedByVendorReport.click();*/
+
+
+			Thread.sleep(2000);
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			sl_DateOptionDropdown.click();
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reportaccountTxt));
+			reportaccountTxt.click();
+			reportaccountTxt.sendKeys(Keys.SPACE);
+
+			int reportaccountTxtListCount = reportaccountTxtList.size();
+
+			for(int i=0;i<reportaccountTxtListCount;i++)
+			{
+				String data = reportaccountTxtList.get(i).getText();
+
+				if(data.equalsIgnoreCase("Purchase"))
+				{
+					reportaccountTxtList.get(i).click();
+				}
+			}
+
+			reportaccountTxt.sendKeys(Keys.TAB);
+
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			
+
+			Thread.sleep(2000);
+			int reportsRow1ListCount = reportsCol1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsCol1List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+			
+			
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[Vendor A, Vendor A, Vendor A, Vendor A, Vendor A, Grand Total]";
+
+			System.out.println("Actaul Voucher  :"+actRow1List);
+			System.out.println("Expected Voucher:"+expRow1List);
+
+			Thread.sleep(2000);
+
+			int reportsRow2ListCount = reportsCol2List.size();
+			ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow2ListCount;i++)
+			{
+				String data = reportsCol2List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow2ListArray.add(data);
+				}
+
+			}
+			
+			
+			String actRow2List = reportsRow2ListArray.toString();
+			String expRow2List = "[BALL, C1, C2, CAM, Doll]";
+
+			System.out.println("Actaul Voucher  :"+actRow2List);
+			System.out.println("Expected Voucher:"+expRow2List);
+			
+			int reportsRow3ListCount = reportsCol3List.size();
+			ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow3ListCount;i++)
+			{
+				String data = reportsCol3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow3ListArray.add(data);
+				}
+
+			}
+			String actRow3List = reportsRow3ListArray.toString();
+			String expRow3List = "[10.00, 10.00, 10.00, 10.00, 10.00, 50.00, 50.00]";
+
+			
+			System.out.println("Actaul Account  :"+actRow3List);
+			System.out.println("Expected Account:"+expRow3List);
+			
+			Thread.sleep(4000);
+
+			int reportsRow4ListCount = reportsCol4List.size();
+			ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow4ListCount;i++)
+			{
+				String data = reportsCol4List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow4ListArray.add(data);
+				}
+
+			}
+			
+			String actRow4List = reportsRow4ListArray.toString();
+			String expRow4List = "[100.00, 100.00, 100.00, 100.00, 100.00, 500.00, 500.00]";
+
+			System.out.println("Actual Branch  :"+actRow4List);
+			System.out.println("Expected Branch:"+expRow4List);
+			
+		
+			if ( actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List)
+					 && actRow3List.equalsIgnoreCase(expRow3List) && actRow4List.equalsIgnoreCase(expRow4List)
+					) 
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+			
+
+		}
+		
+		public static boolean checkPurchasesGroupedByItem() throws InterruptedException
+		{
+
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
+			financialsReportsMenu.click();
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesAndPurchasesReportMenu));
+			salesAndPurchasesReportMenu.click();
+			
+			scrollToElementJSE(purchasesGroupedByProductReport);
+			Thread.sleep(2000);
+			ClickUsingJs(purchasesGroupedByProductReport);
+
+			/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchasesGroupedByProductReport));
+			purchasesGroupedByProductReport.click();*/
+			
+			
+			Thread.sleep(2000);
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			sl_DateOptionDropdown.click();
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reportaccountTxt));
+			reportaccountTxt.click();
+			reportaccountTxt.sendKeys(Keys.SPACE);
+
+			int reportaccountTxtListCount = reportaccountTxtList.size();
+
+			for(int i=0;i<reportaccountTxtListCount;i++)
+			{
+				String data = reportaccountTxtList.get(i).getText();
+
+				if(data.equalsIgnoreCase("Purchase"))
+				{
+					reportaccountTxtList.get(i).click();
+				}
+			}
+
+			reportaccountTxt.sendKeys(Keys.TAB);
+
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			
+
+			Thread.sleep(2000);
+			int reportsRow1ListCount = reportsCol1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsCol1List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+			
+			
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[BALL, C1, C2, CAM, Doll, Grand Total]";
+
+			System.out.println("Actaul Voucher  :"+actRow1List);
+			System.out.println("Expected Voucher:"+expRow1List);
+
+			Thread.sleep(2000);
+
+			int reportsRow2ListCount = reportsCol2List.size();
+			ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow2ListCount;i++)
+			{
+				String data = reportsCol2List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow2ListArray.add(data);
+				}
+
+			}
+			
+			
+			String actRow2List = reportsRow2ListArray.toString();
+			String expRow2List = "[Vendor A, Vendor A, Vendor A, Vendor A, Vendor A]";
+
+			System.out.println("Actaul Voucher  :"+actRow2List);
+			System.out.println("Expected Voucher:"+expRow2List);
+			
+			int reportsRow3ListCount = reportsCol3List.size();
+			ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow3ListCount;i++)
+			{
+				String data = reportsCol3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow3ListArray.add(data);
+				}
+
+			}
+			String actRow3List = reportsRow3ListArray.toString();
+			String expRow3List = "[10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 50.00]";
+
+			
+			System.out.println("Actaul Account  :"+actRow3List);
+			System.out.println("Expected Account:"+expRow3List);
+			
+			Thread.sleep(4000);
+
+			int reportsRow4ListCount = reportsCol4List.size();
+			ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow4ListCount;i++)
+			{
+				String data = reportsCol4List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow4ListArray.add(data);
+				}
+
+			}
+			
+			String actRow4List = reportsRow4ListArray.toString();
+			String expRow4List = "[100.00, 100.00, 100.00, 100.00, 100.00, 100.00, 100.00, 100.00, 100.00, 100.00, 500.00]";
+
+			System.out.println("Actual Branch  :"+actRow4List);
+			System.out.println("Expected Branch:"+expRow4List);
+			
+		
+			if ( actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List)
+					 && actRow3List.equalsIgnoreCase(expRow3List) && actRow4List.equalsIgnoreCase(expRow4List)
+					) 
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		
+		}
+		
+		public static boolean checkPurchasesGroupedByDepartment() throws InterruptedException
+		{
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
+			financialsReportsMenu.click();
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesAndPurchasesReportMenu));
+			salesAndPurchasesReportMenu.click();
+
+			
+			scrollToElementJSE(purchasesGroupedByDepartmentReport);
+			Thread.sleep(2000);
+			ClickUsingJs(purchasesGroupedByDepartmentReport);
+			
+		/*	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchasesGroupedByDepartmentReport));
+			purchasesGroupedByDepartmentReport.click();*/
+
+
+			Thread.sleep(2000);
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			sl_DateOptionDropdown.click();
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reportaccountTxt));
+			reportaccountTxt.click();
+			reportaccountTxt.sendKeys(Keys.SPACE);
+
+			int reportaccountTxtListCount = reportaccountTxtList.size();
+
+			for(int i=0;i<reportaccountTxtListCount;i++)
+			{
+				String data = reportaccountTxtList.get(i).getText();
+
+				if(data.equalsIgnoreCase("Purchase"))
+				{
+					reportaccountTxtList.get(i).click();
+				}
+			}
+
+			reportaccountTxt.sendKeys(Keys.TAB);
+
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+
+
+			Thread.sleep(2000);
+			int reportsRow1ListCount = reportsCol1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsCol1List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[C1, C1, C1, C1, C1, Grand Total]";
+
+			System.out.println("Actaul Voucher  :"+actRow1List);
+			System.out.println("Expected Voucher:"+expRow1List);
+
+			Thread.sleep(2000);
+
+			int reportsRow2ListCount = reportsCol2List.size();
+			ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow2ListCount;i++)
+			{
+				String data = reportsCol2List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow2ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow2List = reportsRow2ListArray.toString();
+			String expRow2List = "[BALL, C1, Doll, C2, CAM]";
+
+			System.out.println("Actaul Voucher  :"+actRow2List);
+			System.out.println("Expected Voucher:"+expRow2List);
+
+			int reportsRow3ListCount = reportsCol3List.size();
+			ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow3ListCount;i++)
+			{
+				String data = reportsCol3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow3ListArray.add(data);
+				}
+
+			}
+			String actRow3List = reportsRow3ListArray.toString();
+			String expRow3List = "[10.00, 10.00, 10.00, 10.00, 10.00, 50.00, 50.00]";
+
+
+			System.out.println("Actaul Account  :"+actRow3List);
+			System.out.println("Expected Account:"+expRow3List);
+
+			Thread.sleep(4000);
+
+			int reportsRow4ListCount = reportsCol4List.size();
+			ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow4ListCount;i++)
+			{
+				String data = reportsCol4List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow4ListArray.add(data);
+				}
+
+			}
+
+			String actRow4List = reportsRow4ListArray.toString();
+			String expRow4List = "[100.00, 100.00, 100.00, 100.00, 100.00, 500.00, 500.00]";
+
+			System.out.println("Actual Branch  :"+actRow4List);
+			System.out.println("Expected Branch:"+expRow4List);
+
+
+			if ( actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List)
+					&& actRow3List.equalsIgnoreCase(expRow3List) && actRow4List.equalsIgnoreCase(expRow4List)
+					) 
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+
+
+		}
+		
+		public static boolean checkPeakAndLowBlanceAmount() throws InterruptedException
+		{
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
+			financialsReportsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(MiscellaneousAnalysisReportMenu));
+			MiscellaneousAnalysisReportMenu.click();
+			
+			scrollToElementJSE(peakAndLowBalancesReport);
+			Thread.sleep(2000);
+			ClickUsingJs(peakAndLowBalancesReport);
+			
+			/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(peakAndLowBalancesReport));
+			peakAndLowBalancesReport.click();*/
+			
+			Thread.sleep(2000);
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			sl_DateOptionDropdown.click();
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+			sl_SelectAllChkBox.click();
+			
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			
+			int reportsRow1ListCount = reportsRow1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsRow1List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[Bank, 27/07/2022, 27/07/2022, 1.00, 27/07/2022, 27/07/2022, 1.00]";
+
+
+
+			int reportsRow2ListCount = reportsRow2List.size();
+			ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow2ListCount;i++)
+			{
+				String data = reportsRow2List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow2ListArray.add(data);
+				}
+
+
+			}
+			String actRow2List = reportsRow2ListArray.toString();
+			String expRow2List = "[C2, 27/07/2022, 27/07/2022, 5.00, 27/07/2022, 27/07/2022, 5.00]";
+
+
+
+			int reportsRow3ListCount = reportsRow3List.size();
+			ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow3ListCount;i++)
+			{
+				String data = reportsRow3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow3ListArray.add(data);
+				}
+
+			}
+			String actRow3List = reportsRow3ListArray.toString();
+			String expRow3List = "[Cash, 27/07/2022, 27/07/2022, 1.00, 27/07/2022, 27/07/2022, 1.00]";
+
+			int reportsRow4ListCount = reportsRow4List.size();
+			ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow4ListCount;i++)
+			{
+				String data = reportsRow4List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow4ListArray.add(data);
+				}
+
+			}
+			String actRow4List = reportsRow4ListArray.toString();
+			String expRow4List = "[CustVend, 0, 0, 27/07/2022, 5.00, 27/07/2022, 5.00]";
+			
+			int reportsRow5ListCount = reportsRow5List.size();
+			ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow5ListCount;i++)
+			{
+				String data = reportsRow5List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow5ListArray.add(data);
+				}
+
+			}
+			String actRow5List = reportsRow5ListArray.toString();
+			String expRow5List = "[G2, 27/07/2022, 27/07/2022, 5.00, 27/07/2022, 27/07/2022, 5.00]";
+
+
+
+			int reportsRow6ListCount = reportsRow6List.size();
+			ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow6ListCount;i++)
+			{
+				String data = reportsRow6List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow6ListArray.add(data);
+				}
+
+
+			}
+			String actRow6List = reportsRow6ListArray.toString();
+			String expRow6List = "[Opening Balances Control A/C, 31/03/2022, 1.00, 31/03/2022, 1.00, 0, 0]";
+
+
+
+			int reportsRow7ListCount = reportsRow7List.size();
+			ArrayList<String> reportsRow7ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow7ListCount;i++)
+			{
+				String data = reportsRow7List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow7ListArray.add(data);
+				}
+
+			}
+			String actRow7List = reportsRow7ListArray.toString();
+			String expRow7List = "[Sales - Computers, 0, 0, 27/07/2022, 1.00, 27/07/2022, 1.00]";
+
+
+
+			int reportsRow8ListCount = reportsRow8List.size();
+			ArrayList<String> reportsRow8ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow8ListCount;i++)
+			{
+				String data = reportsRow8List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow8ListArray.add(data);
+				}
+
+			}
+			String actRow8List = reportsRow8ListArray.toString();
+			String expRow8List = "[Vendor A, 0, 0, 21/07/2022, 500.00, 21/07/2022, 500.00]";
+			
+			int reportsRow9ListCount = reportsRow9List.size();
+			ArrayList<String> reportsRow9ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow9ListCount;i++)
+			{
+				String data = reportsRow9List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow9ListArray.add(data);
+				}
+
+			}
+			String actRow9List = reportsRow9ListArray.toString();
+			String expRow9List = "[Grand Total, 1.00, 13.00, 506.00, 518.00]";
+
+
+			System.out.println(actRow1List);
+			
+			System.out.println(expRow1List);
+
+			System.out.println(actRow2List);
+			
+			System.out.println(expRow2List);
+
+			System.out.println(actRow3List);
+			System.out.println(expRow3List);
+
+			System.out.println(actRow4List);
+			System.out.println(expRow4List);
+
+			System.out.println(actRow5List);
+			System.out.println(expRow5List);
+			
+
+			System.out.println(actRow6List);
+			System.out.println(expRow6List);
+			
+			System.out.println(actRow7List);
+			System.out.println(expRow7List);
+
+			System.out.println(actRow8List);
+			System.out.println(expRow8List);
+			
+
+			System.out.println(actRow9List);
+			System.out.println(expRow9List);
+		
+			
+			
+			if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List)
+					&& actRow3List.equalsIgnoreCase(expRow3List) && actRow4List.equalsIgnoreCase(expRow4List)&&
+					actRow5List.equalsIgnoreCase(expRow5List) && actRow6List.equalsIgnoreCase(expRow6List)
+					&& actRow7List.equalsIgnoreCase(expRow7List) && actRow8List.equalsIgnoreCase(expRow8List) &&
+					actRow9List.equalsIgnoreCase(expRow9List)) 
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+			
+		
+		}
+		
+		public static boolean checkComparativeAnalysisReport() throws InterruptedException
+		{
+			Thread.sleep(2000);
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
+			financialsReportsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(MiscellaneousAnalysisReportMenu));
+			MiscellaneousAnalysisReportMenu.click();
+		
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(comprativeAnalysisReport));
+			comprativeAnalysisReport.click();
+			
+			Thread.sleep(2000);
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			sl_DateOptionDropdown.click();
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+			sl_SelectAllChkBox.click();
+			
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			
+
+
+			int reportsRow1ListCount = reportsRow1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsRow1List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[Cash, 1.00, 1.00]";
+
+
+
+			int reportsRow2ListCount = reportsRow2List.size();
+			ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow2ListCount;i++)
+			{
+				String data = reportsRow2List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow2ListArray.add(data);
+				}
+
+
+			}
+			String actRow2List = reportsRow2ListArray.toString();
+			String expRow2List = "[Bank, 1.00, 1.00]";
+
+
+
+			int reportsRow3ListCount = reportsRow3List.size();
+			ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow3ListCount;i++)
+			{
+				String data = reportsRow3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow3ListArray.add(data);
+				}
+
+			}
+			String actRow3List = reportsRow3ListArray.toString();
+			String expRow3List = "[Sales - Computers, 11.00, 11.00]";
+
+
+
+			int reportsRow4ListCount = reportsRow4List.size();
+			ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow4ListCount;i++)
+			{
+				String data = reportsRow4List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow4ListArray.add(data);
+				}
+
+			}
+			String actRow4List = reportsRow4ListArray.toString();
+			String expRow4List = "[Purchase, 496.00, 496.00]";
+			
+			int reportsRow5ListCount = reportsRow5List.size();
+			ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow5ListCount;i++)
+			{
+				String data = reportsRow5List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow5ListArray.add(data);
+				}
+
+			}
+			String actRow5List = reportsRow5ListArray.toString();
+			String expRow5List = "[Inventory Trade, 5.00, 5.00]";
+
+
+
+			int reportsRow6ListCount = reportsRow6List.size();
+			ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow6ListCount;i++)
+			{
+				String data = reportsRow6List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow6ListArray.add(data);
+				}
+
+
+			}
+			String actRow6List = reportsRow6ListArray.toString();
+			String expRow6List = "[Vendor A, 501.00, 501.00]";
+
+
+
+			int reportsRow7ListCount = reportsRow7List.size();
+			ArrayList<String> reportsRow7ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow7ListCount;i++)
+			{
+				String data = reportsRow7List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow7ListArray.add(data);
+				}
+
+			}
+			String actRow7List = reportsRow7ListArray.toString();
+			String expRow7List = "[Cost of goods sold - Computers, 5.00, 5.00]";
+
+
+
+			int reportsRow8ListCount = reportsRow8List.size();
+			ArrayList<String> reportsRow8ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow8ListCount;i++)
+			{
+				String data = reportsRow8List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow8ListArray.add(data);
+				}
+
+			}
+			String actRow8List = reportsRow8ListArray.toString();
+			String expRow8List = "[CustVend, 5.00, 5.00]";
+			
+			int reportsRow9ListCount = reportsRow9List.size();
+			ArrayList<String> reportsRow9ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow9ListCount;i++)
+			{
+				String data = reportsRow9List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow9ListArray.add(data);
+				}
+
+			}
+			String actRow9List = reportsRow9ListArray.toString();
+			String expRow9List = "[C1, 1.00]";
+
+
+
+			int reportsRow10ListCount = reportsRow10List.size();
+			ArrayList<String> reportsRow10ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow10ListCount;i++)
+			{
+				String data = reportsRow10List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow10ListArray.add(data);
+				}
+
+			}
+			String actRow10List = reportsRow10ListArray.toString();
+			String expRow10List = "[G1, 1.00]";
+			
+			int reportsRow11ListCount = reportsRow11List.size();
+			ArrayList<String> reportsRow11ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow11ListCount;i++)
+			{
+				String data = reportsRow11List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow11ListArray.add(data);
+				}
+
+			}
+			String actRow11List = reportsRow11ListArray.toString();
+			String expRow11List = "[G2, 9.00, 9.00]";
+
+
+
+			int reportsRow12ListCount = reportsRow12List.size();
+			ArrayList<String> reportsRow12ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow12ListCount;i++)
+			{
+				String data = reportsRow12List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow12ListArray.add(data);
+				}
+
+
+			}
+			String actRow12List = reportsRow12ListArray.toString();
+			String expRow12List = "[Opening Balances Control A/C OBC, 3.00]";
+
+
+
+			int reportsRow13ListCount = reportsRow13List.size();
+			ArrayList<String> reportsRow13ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow13ListCount;i++)
+			{
+				String data = reportsRow13List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow13ListArray.add(data);
+				}
+
+			}
+			String actRow13List = reportsRow13ListArray.toString();
+			String expRow13List = "[Customer A 122-001, 1.00]";
+
+			
+			int reportsRow14ListCount = reportsRow14List.size();
+			ArrayList<String> reportsRow14ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow14ListCount;i++)
+			{
+				String data = reportsRow14List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow14ListArray.add(data);
+				}
+
+			}
+			String actRow14List = reportsRow14ListArray.toString();
+			String expRow14List = "[Grand Total]";
+
+		    System.out.println(actRow1List);
+			
+			System.out.println(expRow1List);
+
+			System.out.println(actRow2List);
+			
+			System.out.println(expRow2List);
+
+			System.out.println(actRow3List);
+			System.out.println(expRow3List);
+
+			System.out.println(actRow4List);
+			System.out.println(expRow4List);
+
+			System.out.println(actRow5List);
+			System.out.println(expRow5List);
+			
+
+			System.out.println(actRow6List);
+			System.out.println(expRow6List);
+			
+			System.out.println(actRow7List);
+			System.out.println(expRow7List);
+
+			System.out.println(actRow8List);
+			System.out.println(expRow8List);
+			
+
+			System.out.println(actRow9List);
+			System.out.println(expRow9List);
+		
+			
+			System.out.println(actRow10List);
+			System.out.println(expRow10List);
+			
+
+			System.out.println(actRow11List);
+			System.out.println(expRow11List);
+			
+			System.out.println(actRow12List);
+			System.out.println(expRow12List);
+
+			System.out.println(actRow13List);
+			System.out.println(expRow13List);
+			
+			System.out.println(actRow14List);
+			System.out.println(expRow14List);
+			
+
+			if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List)
+					&& actRow3List.equalsIgnoreCase(expRow3List) && actRow4List.equalsIgnoreCase(expRow4List)&&
+					actRow5List.equalsIgnoreCase(expRow5List) && actRow6List.equalsIgnoreCase(expRow6List)
+					&& actRow7List.equalsIgnoreCase(expRow7List) && actRow8List.equalsIgnoreCase(expRow8List) &&
+					actRow9List.equalsIgnoreCase(expRow9List) && actRow10List.equalsIgnoreCase(expRow10List)
+					&& actRow11List.equalsIgnoreCase(expRow11List) && actRow12List.equalsIgnoreCase(expRow12List)&&
+					actRow13List.equalsIgnoreCase(expRow13List) && actRow14List.equalsIgnoreCase(expRow14List)) 
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+			
+		
+		
+		}
+		
+		public static boolean checkTransactionsTypeAnalysis() throws InterruptedException
+		{
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
+			financialsReportsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(MiscellaneousAnalysisReportMenu));
+			MiscellaneousAnalysisReportMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(transactionsTypeAnalysisReport));
+			transactionsTypeAnalysisReport.click();
+			
+			Thread.sleep(2000);
+			
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			sl_DateOptionDropdown.click();
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+			sl_SelectAllChkBox.click();
+			
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			
+
+			boolean novalidationConfirmationMessage =validationConfirmationMessage.getText().isEmpty();
+		
+			String actvalidationConfirmationMessage = Boolean.toString(novalidationConfirmationMessage);
+			String expvalidationConfirmationMessage = "true";
+			
+			System.out.println("validationConfirmationMessage : "+actvalidationConfirmationMessage+" Value Expected : "+expvalidationConfirmationMessage);
+			
+			Thread.sleep(2000);
+			
 		if (actvalidationConfirmationMessage.equalsIgnoreCase(expvalidationConfirmationMessage)) 
 		{
 			return true;
@@ -17977,8986 +17249,8915 @@ public class FocusFinancialsEERReportPage extends BaseEngine
 		{
 			return false;
 		}
-
-	}
-	
-	public static boolean checkInterestCalculationReport() throws InterruptedException
-	{
-		Thread.sleep(3000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
-		financialsReportsMenu.click();
+		}
 		
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(MiscellaneousAnalysisReportMenu));
-		MiscellaneousAnalysisReportMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(interestCalculationReport));
-		interestCalculationReport.click();
-		
-		Thread.sleep(2000);
-		
-		boolean novalidationConfirmationMessage =validationConfirmationMessage.getText().isEmpty();
-		
-		String actvalidationConfirmationMessage = Boolean.toString(novalidationConfirmationMessage);
-		String expvalidationConfirmationMessage = "true";
-		
-		System.out.println("validationConfirmationMessage : "+actvalidationConfirmationMessage+" Value Expected : "+expvalidationConfirmationMessage);
-		
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		sl_DateOptionDropdown.click();
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
-		
+		public static boolean checkABCAnalysisAmountReport() throws InterruptedException
+		{
+			Thread.sleep(3000);
+			getDriver().navigate().refresh();
+			Thread.sleep(2000);
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
+			financialsReportsMenu.click();
+			
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(MiscellaneousAnalysisReportMenu));
+			MiscellaneousAnalysisReportMenu.click();
+			
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(abcAnalysisReport));
+			abcAnalysisReport.click();
+			
+			Thread.sleep(2000);
+			
+			boolean novalidationConfirmationMessage =validationConfirmationMessage.getText().isEmpty();
+			
+			String actvalidationConfirmationMessage = Boolean.toString(novalidationConfirmationMessage);
+			String expvalidationConfirmationMessage = "true";
+			
+			System.out.println("validationConfirmationMessage : "+actvalidationConfirmationMessage+" Value Expected : "+expvalidationConfirmationMessage);
+			
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			sl_DateOptionDropdown.click();
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+			sl_SelectAllChkBox.click();
+			
+						
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
 					
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-				
-		boolean novalidationConfirmationMessage1 =validationConfirmationMessage.getText().isEmpty();
-		String actvalidationConfirmationMessage1 = Boolean.toString(novalidationConfirmationMessage1);
-		String expvalidationConfirmationMessage1 = "true";
-		
-		System.out.println("validationConfirmationMessage1 : "+actvalidationConfirmationMessage1+" Value Expected : "+expvalidationConfirmationMessage1);
-		
-
-		Thread.sleep(2000);
-		int reportsRow1ListCount = reportsCol1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsCol1List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-		
-		
-
-
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[BankACC, CashACC, Opening Balances Control A/C, H1, H2, CustomerACC, PurchaseACC, A1, A2, B1, B2, SalesACC, E1, E2, F1, F2, D1, D2, VendorACC]";
-
-		System.out.println("Actaul Voucher  :"+actRow1List);
-		System.out.println("Expected Voucher:"+expRow1List);
-
-		Thread.sleep(2000);
-
-		int reportsRow2ListCount = reportsCol2List.size();
-		ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow2ListCount;i++)
-		{
-			String data = reportsCol2List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow2ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow2List = reportsRow2ListArray.toString();
-		String expRow2List = "[0.07, 0.07, 0.99, 0.03, 0.09, 0.07, 0.06, 0.44, 0.07, 0.07, 0.07, 0.05, 0.11, 0.07, 0.06, 0.06, 0.29, 0.06, 0.06]";
-
-		System.out.println("Actaul Voucher  :"+actRow2List);
-		System.out.println("Expected Voucher:"+expRow2List);
-
-		Thread.sleep(2000);
-		
-		report_NextBtn.click();
-		Thread.sleep(2000);
-		
-
-		String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
-		String afterPath="]//td[2]";
-		int k;
-		
-		Thread.sleep(2000);
-		
-		int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
-		
-		for(  k=1;k<rows1;k++)
-		{
-			String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
+			boolean novalidationConfirmationMessage1 =validationConfirmationMessage.getText().isEmpty();
+			String actvalidationConfirmationMessage1 = Boolean.toString(novalidationConfirmationMessage1);
+			String expvalidationConfirmationMessage1 = "true";
 			
-			if(text1.contains("Grand Total"))
+			System.out.println("validationConfirmationMessage1 : "+actvalidationConfirmationMessage1+" Value Expected : "+expvalidationConfirmationMessage1);
+			
+			if (actvalidationConfirmationMessage.equalsIgnoreCase(expvalidationConfirmationMessage)) 
 			{
-				int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-				System.err.println("count"+rowCount);
-			break;
-			}	
-			}
-	
-		int Row1ListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-		ArrayList<String> Row1ListArray = new ArrayList<String>();
-		for(int i=1;i<Row1ListCount;i++)
-		{
-			String data = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).get(i).getText();
-			Row1ListArray.add(data);
-		}
-		String actList = Row1ListArray.toString();
-		String expList = "[Grand Total, 0.22]";
-		
-		System.out.println("actRow1List"+actList);
-		System.out.println("expRow1List"+expList);
-		
-		
-		if (actvalidationConfirmationMessage.equalsIgnoreCase(expvalidationConfirmationMessage) 
-				&& actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) 
-				&& actList.equalsIgnoreCase(expList)) 
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-
-	
-	}
-		
-	public static boolean checkMasterInfoOfAccountReport() throws InterruptedException
-	{
-		getDriver().navigate().refresh();
-		Thread.sleep(2000);
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
-		financialsReportsMenu.click();
-		
-		//Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(mastersInformationMenu));
-		mastersInformationMenu.click();
-		
-		Thread.sleep(2000);
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterInfoMenu));
-		masterInfoMenu.click();
-	
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		sl_DateOptionDropdown.click();
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
-				
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		
-
-		Thread.sleep(2000);
-		int reportsRow1ListCount = reportsCol1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsCol1List.get(i).getText().trim();
-			if(data.isEmpty() == false )
+				return true;
+			} 
+			else 
 			{
-				reportsRow1ListArray.add(data);
+				return false;
 			}
 
 		}
-
-
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[BankACC, CashACC, Opening Balances Control A/C, H, H1, H2, CustomerACC, PurchaseACC, A, A1, A2, B, B1, B2, SalesACC, E, E1, E2, F]";
-
-		System.out.println("Actaul Voucher  :"+actRow1List);
-		System.out.println("Expected Voucher:"+expRow1List);
-
-		Thread.sleep(2000);
 		
-		report_NextBtn.click();
-		Thread.sleep(2000);
-		
-		Thread.sleep(2000);
-		int reportspage2Row1ListCount = reportsCol1List.size();
-		ArrayList<String> reportspage2Row1ListArray = new ArrayList<String>();
-		for(int i=0;i<reportspage2Row1ListCount;i++)
+		public static boolean checkInterestCalculationReport() throws InterruptedException
 		{
-			String data = reportsCol1List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportspage2Row1ListArray.add(data);
-			}
-
-		}
-
-
-		String actpage2Row1List = reportspage2Row1ListArray.toString();
-		String exppage2Row1List = "[F1, F2, D, D1, D2, VendorACC]";
-
-		System.out.println("Actaul Voucher  :"+actpage2Row1List);
-		System.out.println("Expected Voucher:"+exppage2Row1List);
-		
-		
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actpage2Row1List.equalsIgnoreCase(exppage2Row1List))
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-	
-	}
-	
-	
-	public static boolean checkProductLableReport() throws InterruptedException
-	{
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
-		financialsReportsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(mastersInformationMenu));
-		mastersInformationMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(productLabelMenu));
-		productLabelMenu.click();
-		
-		
-		boolean novalidationConfirmationMessage =validationConfirmationMessage.getText().isEmpty();
-		
-		String actvalidationConfirmationMessage = Boolean.toString(novalidationConfirmationMessage);
-		String expvalidationConfirmationMessage = "true";
-		
-		System.out.println("validationConfirmationMessage : "+actvalidationConfirmationMessage+" Value Expected : "+expvalidationConfirmationMessage);
-		
-		Thread.sleep(1500);
-		
-		boolean actdocumentTxt    					=documentTxt.isDisplayed();
-		boolean actlayoutTxt						=layoutTxt.isDisplayed();
-		boolean actdocumentRadioBtn					=documentRadioBtn.isDisplayed();
-		boolean actitemRadioBtn					    =itemRadioBtn.isDisplayed();
-		
-		
-		boolean actpl_printBtn       = pl_printBtn.isDisplayed();
-		boolean actpl_CloseBtn       = pl_CloseBtn.isDisplayed();
-		
-		
-		// Expected
-		
-		boolean expdocumentTxt    					=true;
-		boolean explayoutTxt						=true;
-		boolean expdocumentRadioBtn					=true;
-		boolean expitemRadioBtn					    =true;
-		
-	
-		boolean exppl_printBtn       = true;
-		boolean exppl_CloseBtn       = true;
-		
-		System.out.println("************************************checkProductLabelOptions******************************************");
-		
-		System.out.println("documentTxt     		 	:   "+actdocumentTxt			+" Value Expected : "+expdocumentTxt);
-		System.out.println("layoutTxt     		 		:   "+actlayoutTxt				+" Value Expected : "+explayoutTxt);
-		System.out.println("documentRadioBtn     		:   "+actdocumentRadioBtn		+" Value Expected : "+expdocumentRadioBtn);
-		System.out.println("itemRadioBtn     		 	:   "+actitemRadioBtn			+" Value Expected : "+expitemRadioBtn);
-		
-		//System.out.println("pl_previewBtn     		 	:   "+actpl_previewBtn			+" Value Expected : "+exppl_previewBtn);
-		System.out.println("pl_printBtn     		 	:   "+actpl_printBtn			+" Value Expected : "+exppl_printBtn);
-		System.out.println("pl_CloseBtn     		 	:   "+actpl_CloseBtn			+" Value Expected : "+exppl_CloseBtn);
-		
-		boolean actMethod=actdocumentTxt==expdocumentTxt && actlayoutTxt==explayoutTxt && actdocumentRadioBtn==expdocumentRadioBtn && actitemRadioBtn==expitemRadioBtn
-				 && actpl_printBtn==exppl_printBtn && actpl_CloseBtn==exppl_CloseBtn;
-		
-		String actResult=Boolean.toString(actMethod);
-		String expResult="true";
-		
-		if(actvalidationConfirmationMessage.equalsIgnoreCase(expvalidationConfirmationMessage) && actResult.equalsIgnoreCase(expResult))
-		{
-			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(pl_CloseBtn));
-			pl_CloseBtn.click();
-			return true;
-		}
-		else
-		{
-			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(pl_CloseBtn));
-			pl_CloseBtn.click();
-			return false;
-		}
-
-	}
-	
-	
-	public static boolean checkUnitConversionReport() throws InterruptedException
-	{
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
-		financialsReportsMenu.click();
-		
-	    Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(mastersInformationMenu));
-		mastersInformationMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(unitConversionMenu));
-		unitConversionMenu.click();
-		
-		
-		boolean novalidationConfirmationMessage =validationConfirmationMessage.getText().isEmpty();
-		
-		String actvalidationConfirmationMessage = Boolean.toString(novalidationConfirmationMessage);
-		String expvalidationConfirmationMessage = "true";
-		
-		System.out.println("validationConfirmationMessage : "+actvalidationConfirmationMessage+" Value Expected : "+expvalidationConfirmationMessage);
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		sl_DateOptionDropdown.click();
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
-		
+			Thread.sleep(3000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
+			financialsReportsMenu.click();
+			
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(MiscellaneousAnalysisReportMenu));
+			MiscellaneousAnalysisReportMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(interestCalculationReport));
+			interestCalculationReport.click();
+			
+			Thread.sleep(2000);
+			
+			boolean novalidationConfirmationMessage =validationConfirmationMessage.getText().isEmpty();
+			
+			String actvalidationConfirmationMessage = Boolean.toString(novalidationConfirmationMessage);
+			String expvalidationConfirmationMessage = "true";
+			
+			System.out.println("validationConfirmationMessage : "+actvalidationConfirmationMessage+" Value Expected : "+expvalidationConfirmationMessage);
+			
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			sl_DateOptionDropdown.click();
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+			sl_SelectAllChkBox.click();
+			
+						
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
 					
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
+			boolean novalidationConfirmationMessage1 =validationConfirmationMessage.getText().isEmpty();
+			String actvalidationConfirmationMessage1 = Boolean.toString(novalidationConfirmationMessage1);
+			String expvalidationConfirmationMessage1 = "true";
+			
+			System.out.println("validationConfirmationMessage1 : "+actvalidationConfirmationMessage1+" Value Expected : "+expvalidationConfirmationMessage1);
+			
+
+			Thread.sleep(2000);
+			int reportsRow1ListCount = reportsCol1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsCol1List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+			
+			
+
+
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[Cash, Bank, Inventory Trade, Customer A, CustVend, Opening Balances Control A/C, G1, G2, Purchase, Cost of goods sold - Computers, Sales - Computers, Vendor A, C1, Grand Total]";
+
+			System.out.println("Actaul Voucher  :"+actRow1List);
+			System.out.println("Expected Voucher:"+expRow1List);
+
+			Thread.sleep(2000);
+
+			int reportsRow2ListCount = reportsCol2List.size();
+			ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow2ListCount-1;i++)
+			{
+				String data = reportsCol2List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow2ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow2List = reportsRow2ListArray.toString();
+			String expRow2List = "[0.09, 0.09, 0.45, 0.15, 0.45, 2.23, 0.06, 0.81, 46.24, 0.45, 0.99, 46.70, 0.06]";
+
+			System.out.println("Actaul Voucher  :"+actRow2List);
+			System.out.println("Expected Voucher:"+expRow2List);
+
+			
+			
+			if (actvalidationConfirmationMessage.equalsIgnoreCase(expvalidationConfirmationMessage) 
+					&& actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) 
+					) 
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+
+		
+		}
+			
+		public static boolean checkMasterInfoOfAccountReport() throws InterruptedException
+		{
+			getDriver().navigate().refresh();
+			Thread.sleep(2000);
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
+			financialsReportsMenu.click();
+			
+			//Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(mastersInformationMenu));
+			mastersInformationMenu.click();
+			
+			Thread.sleep(2000);
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterInfoMenu));
+			masterInfoMenu.click();
+		
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			sl_DateOptionDropdown.click();
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+			sl_SelectAllChkBox.click();
+					
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			
+
+			Thread.sleep(2000);
+			int reportsRow1ListCount = reportsCol1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsCol1List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[aa, rathod, ASSETS, Fixed Assets, Office Equipment, Land and Building, Vehicles, Current Assets, Cash & bank, Cash, Bank, Inventories, Inventory FG, Inventory RM, Inventory Trade, Accounts Receivable, Customer A, Customer B]";
+
+			System.out.println("Actaul Voucher  :"+actRow1List);
+			System.out.println("Expected Voucher:"+expRow1List);
+
+			Thread.sleep(2000);
+			
+			report_NextBtn.click();
+			Thread.sleep(2000);
+			
+			Thread.sleep(2000);
+			int reportspage2Row1ListCount = reportsCol1List.size();
+			ArrayList<String> reportspage2Row1ListArray = new ArrayList<String>();
+			for(int i=0;i<reportspage2Row1ListCount;i++)
+			{
+				String data = reportsCol1List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportspage2Row1ListArray.add(data);
+				}
+
+			}
+
+
+			String actpage2Row1List = reportspage2Row1ListArray.toString();
+			String exppage2Row1List = "[Customer C, Investments, Fixed Deposit Investment, CustVend, CONTROL ACCOUNTS, Journal Entries Control A/C, Opening Balances Control A/C, Profit/Loss A/C, G, G1, G2, EXPENSES, Direct Expenses, Purchase, Cost of goods sold - Electronics, Cost of goods sold - Computers, Cost of goods sold - HA, Indirect Expenses]";
+
+			System.out.println("Actaul Voucher  :"+actpage2Row1List);
+			System.out.println("Expected Voucher:"+exppage2Row1List);
+			
+			
+			if (actRow1List.equalsIgnoreCase(expRow1List) && actpage2Row1List.equalsIgnoreCase(exppage2Row1List))
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+		
+		}
+		
+		
+		public static boolean checkProductLableReport() throws InterruptedException
+		{
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
+			financialsReportsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(mastersInformationMenu));
+			mastersInformationMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(productLabelMenu));
+			productLabelMenu.click();
+			
+			
+			boolean novalidationConfirmationMessage =validationConfirmationMessage.getText().isEmpty();
+			
+			String actvalidationConfirmationMessage = Boolean.toString(novalidationConfirmationMessage);
+			String expvalidationConfirmationMessage = "true";
+			
+			System.out.println("validationConfirmationMessage : "+actvalidationConfirmationMessage+" Value Expected : "+expvalidationConfirmationMessage);
+			
+			Thread.sleep(1500);
+			
+			boolean actdocumentTxt    					=documentTxt.isDisplayed();
+			boolean actlayoutTxt						=layoutTxt.isDisplayed();
+			boolean actdocumentRadioBtn					=documentRadioBtn.isDisplayed();
+			boolean actitemRadioBtn					    =itemRadioBtn.isDisplayed();
+			
+			
+			boolean actpl_printBtn       = pl_printBtn.isDisplayed();
+			boolean actpl_CloseBtn       = pl_CloseBtn.isDisplayed();
+			
+			
+			// Expected
+			
+			boolean expdocumentTxt    					=true;
+			boolean explayoutTxt						=true;
+			boolean expdocumentRadioBtn					=true;
+			boolean expitemRadioBtn					    =true;
+			
+		
+			boolean exppl_printBtn       = true;
+			boolean exppl_CloseBtn       = true;
+			
+			System.out.println("************************************checkProductLabelOptions******************************************");
+			
+			System.out.println("documentTxt     		 	:   "+actdocumentTxt			+" Value Expected : "+expdocumentTxt);
+			System.out.println("layoutTxt     		 		:   "+actlayoutTxt				+" Value Expected : "+explayoutTxt);
+			System.out.println("documentRadioBtn     		:   "+actdocumentRadioBtn		+" Value Expected : "+expdocumentRadioBtn);
+			System.out.println("itemRadioBtn     		 	:   "+actitemRadioBtn			+" Value Expected : "+expitemRadioBtn);
+			
+			//System.out.println("pl_previewBtn     		 	:   "+actpl_previewBtn			+" Value Expected : "+exppl_previewBtn);
+			System.out.println("pl_printBtn     		 	:   "+actpl_printBtn			+" Value Expected : "+exppl_printBtn);
+			System.out.println("pl_CloseBtn     		 	:   "+actpl_CloseBtn			+" Value Expected : "+exppl_CloseBtn);
+			
+			boolean actMethod=actdocumentTxt==expdocumentTxt && actlayoutTxt==explayoutTxt && actdocumentRadioBtn==expdocumentRadioBtn && actitemRadioBtn==expitemRadioBtn
+					 && actpl_printBtn==exppl_printBtn && actpl_CloseBtn==exppl_CloseBtn;
+			
+			String actResult=Boolean.toString(actMethod);
+			String expResult="true";
+			
+			if(actvalidationConfirmationMessage.equalsIgnoreCase(expvalidationConfirmationMessage) && actResult.equalsIgnoreCase(expResult))
+			{
+				getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(pl_CloseBtn));
+				pl_CloseBtn.click();
+				return true;
+			}
+			else
+			{
+				getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(pl_CloseBtn));
+				pl_CloseBtn.click();
+				return false;
+			}
+
+		}
+		
+		
+		public static boolean checkUnitConversionReport() throws InterruptedException
+		{
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
+			financialsReportsMenu.click();
+			
+		    Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(mastersInformationMenu));
+			mastersInformationMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(unitConversionMenu));
+			unitConversionMenu.click();
+			
+			
+			boolean novalidationConfirmationMessage =validationConfirmationMessage.getText().isEmpty();
+			
+			String actvalidationConfirmationMessage = Boolean.toString(novalidationConfirmationMessage);
+			String expvalidationConfirmationMessage = "true";
+			
+			System.out.println("validationConfirmationMessage : "+actvalidationConfirmationMessage+" Value Expected : "+expvalidationConfirmationMessage);
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			sl_DateOptionDropdown.click();
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+			sl_SelectAllChkBox.click();
+			
+						
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+					
+			boolean novalidationConfirmationMessage1 =validationConfirmationMessage.getText().isEmpty();
+			String actvalidationConfirmationMessage1 = Boolean.toString(novalidationConfirmationMessage1);
+			String expvalidationConfirmationMessage1 = "true";
+			
+			System.out.println("validationConfirmationMessage1 : "+actvalidationConfirmationMessage1+" Value Expected : "+expvalidationConfirmationMessage1);
+			
+			boolean actReportTable = reportsTable.getText().isEmpty();
+			boolean expReportTable = true;
+			
+			System.out.println(actReportTable);
+			System.out.println(expReportTable);
+			
+			if (actvalidationConfirmationMessage.equalsIgnoreCase(expvalidationConfirmationMessage) &&
+					actvalidationConfirmationMessage1.equalsIgnoreCase(expvalidationConfirmationMessage1) && 
+					actReportTable==expReportTable) 
+			{
+			
+				getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_CloseBtn));
+				sl_CloseBtn.click();
+				return true;
+			}
+			else
+			{
 				
-		boolean novalidationConfirmationMessage1 =validationConfirmationMessage.getText().isEmpty();
-		String actvalidationConfirmationMessage1 = Boolean.toString(novalidationConfirmationMessage1);
-		String expvalidationConfirmationMessage1 = "true";
+				getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_CloseBtn));
+				sl_CloseBtn.click();
+				return false;
+			}
 		
-		System.out.println("validationConfirmationMessage1 : "+actvalidationConfirmationMessage1+" Value Expected : "+expvalidationConfirmationMessage1);
-		
-		boolean actReportTable = reportsTable.getText().isEmpty();
-		boolean expReportTable = true;
-		
-		System.out.println(actReportTable);
-		System.out.println(expReportTable);
-		
-		if (actvalidationConfirmationMessage.equalsIgnoreCase(expvalidationConfirmationMessage) &&
-				actvalidationConfirmationMessage1.equalsIgnoreCase(expvalidationConfirmationMessage1) && 
-				actReportTable==expReportTable) 
-		{
-		
-			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_CloseBtn));
-			sl_CloseBtn.click();
-			return true;
 		}
-		else
+		
+		public static boolean checkSkidDefinitionReport() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 		{
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
 			
-			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_CloseBtn));
-			sl_CloseBtn.click();
-			return false;
-		}
-	
-	}
-	
-	public static boolean checkSkidDefinitionReport() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
-	{
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
+			financialsReportsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(mastersInformationMenu));
+			mastersInformationMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(skidDefinitionMenu));
+			skidDefinitionMenu.click();
+			
+			boolean novalidationConfirmationMessage =validationConfirmationMessage.getText().isEmpty();
+			
+			String actvalidationConfirmationMessage = Boolean.toString(novalidationConfirmationMessage);
+			String expvalidationConfirmationMessage = "true";
+			
+			System.out.println("validationConfirmationMessage : "+actvalidationConfirmationMessage+" Value Expected : "+expvalidationConfirmationMessage);
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
-		financialsReportsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(mastersInformationMenu));
-		mastersInformationMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(skidDefinitionMenu));
-		skidDefinitionMenu.click();
-		
-		boolean novalidationConfirmationMessage =validationConfirmationMessage.getText().isEmpty();
-		
-		String actvalidationConfirmationMessage = Boolean.toString(novalidationConfirmationMessage);
-		String expvalidationConfirmationMessage = "true";
-		
-		System.out.println("validationConfirmationMessage : "+actvalidationConfirmationMessage+" Value Expected : "+expvalidationConfirmationMessage);
-	
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(skid));
-		boolean actskid    				  = skid.isDisplayed();
-		boolean actprefixTxt			  = prefixTxt.isDisplayed();
-		boolean actstartingNoTxt		  = startingNoTxt.isDisplayed();
-		boolean actenableReprintChkBox	  = enableReprintChkBox.isDisplayed();
-		boolean actquantityTxt            = quantityTxt.isDisplayed();
-		boolean actsd_PreviewBtn          = sd_PreviewBtn.isDisplayed();
-		boolean actsd_printBtn            = sd_PrintBtn.isDisplayed();
-		boolean actsd_CloseBtn            = sd_CloseBtn.isDisplayed();
-		
-		
-		// Expected
-		
-		boolean expskid    				  = true;
-		boolean expprefixTxt		  	  = true;
-		boolean expstartingNoTxt		  = true;
-		boolean expenableReprintChkBox	  = true;
-		boolean expquantityTxt            = true;
-		boolean expsd_PreviewBtn          = true;
-		boolean expsd_printBtn            = true;
-		boolean expsd_CloseBtn            = true;
-		
-		System.out.println("************************************checkSkidDefinitionOptions******************************************");
-		
-		System.out.println("skid     		 	      :   "+actskid			      +" Value Expected : "+expskid);
-		System.out.println("prefixTxt     		 	  :   "+actprefixTxt		  +" Value Expected : "+expprefixTxt);
-		System.out.println("startingNoTxt     		  :   "+actstartingNoTxt	  +" Value Expected : "+expstartingNoTxt);
-		System.out.println("enableReprintChkBox       :   "+actenableReprintChkBox+" Value Expected : "+expenableReprintChkBox);
-		System.out.println("quantityTxt     		  :   "+actquantityTxt		  +" Value Expected : "+expquantityTxt);
-		System.out.println("sd_PreviewBtn     		  :   "+actsd_PreviewBtn	  +" Value Expected : "+expsd_PreviewBtn);
-		System.out.println("sd_printBtn     		  :   "+actsd_printBtn		  +" Value Expected : "+expsd_printBtn);
-		System.out.println("sd_CloseBtn     		  :   "+actsd_CloseBtn		  +" Value Expected : "+expsd_CloseBtn);
-		
-		
-		
-		boolean actMethod=actskid==expskid && actprefixTxt==expprefixTxt && actstartingNoTxt==expstartingNoTxt && actenableReprintChkBox==expenableReprintChkBox
-				&& actquantityTxt==expquantityTxt && actsd_PreviewBtn==expsd_PreviewBtn && actsd_printBtn==expsd_printBtn && actsd_CloseBtn==expsd_CloseBtn;
-		
-		
-		
-		String actResult=Boolean.toString(actMethod);
-		String expResult="true";
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(skid));
+			boolean actskid    				  = skid.isDisplayed();
+			boolean actprefixTxt			  = prefixTxt.isDisplayed();
+			boolean actstartingNoTxt		  = startingNoTxt.isDisplayed();
+			boolean actenableReprintChkBox	  = enableReprintChkBox.isDisplayed();
+			boolean actquantityTxt            = quantityTxt.isDisplayed();
+			boolean actsd_PreviewBtn          = sd_PreviewBtn.isDisplayed();
+			boolean actsd_printBtn            = sd_PrintBtn.isDisplayed();
+			boolean actsd_CloseBtn            = sd_CloseBtn.isDisplayed();
+			
+			
+			// Expected
+			
+			boolean expskid    				  = true;
+			boolean expprefixTxt		  	  = true;
+			boolean expstartingNoTxt		  = true;
+			boolean expenableReprintChkBox	  = true;
+			boolean expquantityTxt            = true;
+			boolean expsd_PreviewBtn          = true;
+			boolean expsd_printBtn            = true;
+			boolean expsd_CloseBtn            = true;
+			
+			System.out.println("************************************checkSkidDefinitionOptions******************************************");
+			
+			System.out.println("skid     		 	      :   "+actskid			      +" Value Expected : "+expskid);
+			System.out.println("prefixTxt     		 	  :   "+actprefixTxt		  +" Value Expected : "+expprefixTxt);
+			System.out.println("startingNoTxt     		  :   "+actstartingNoTxt	  +" Value Expected : "+expstartingNoTxt);
+			System.out.println("enableReprintChkBox       :   "+actenableReprintChkBox+" Value Expected : "+expenableReprintChkBox);
+			System.out.println("quantityTxt     		  :   "+actquantityTxt		  +" Value Expected : "+expquantityTxt);
+			System.out.println("sd_PreviewBtn     		  :   "+actsd_PreviewBtn	  +" Value Expected : "+expsd_PreviewBtn);
+			System.out.println("sd_printBtn     		  :   "+actsd_printBtn		  +" Value Expected : "+expsd_printBtn);
+			System.out.println("sd_CloseBtn     		  :   "+actsd_CloseBtn		  +" Value Expected : "+expsd_CloseBtn);
+			
+			
+			
+			boolean actMethod=actskid==expskid && actprefixTxt==expprefixTxt && actstartingNoTxt==expstartingNoTxt && actenableReprintChkBox==expenableReprintChkBox
+					&& actquantityTxt==expquantityTxt && actsd_PreviewBtn==expsd_PreviewBtn && actsd_printBtn==expsd_printBtn && actsd_CloseBtn==expsd_CloseBtn;
+			
+			
+			
+			String actResult=Boolean.toString(actMethod);
+			String expResult="true";
 
-		//Thread.sleep(1000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sd_CloseBtn));
-		sd_CloseBtn.click();
-		
-		if(actvalidationConfirmationMessage.equalsIgnoreCase(expvalidationConfirmationMessage) && actResult.equalsIgnoreCase(expResult))
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-	
-	
-	public static boolean checkAuditTrailTransactionsOfOpeningBalances() throws InterruptedException
-	{
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-
-		//Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
-		financialsReportsMenu.click();
-
-		//Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(auditTrailMenu));
-		auditTrailMenu.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(auditTrailtransactionsReport));
-		auditTrailtransactionsReport.click();
-
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		sl_DateOptionDropdown.click();
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reportVoucherTxt));
-		reportVoucherTxt.click();
-		reportVoucherTxt.sendKeys(Keys.SPACE);
-
-		int reportVoucherTxtListCount = reportVoucherTxtList.size();
-
-		for(int i=0;i<reportVoucherTxtListCount;i++)
-		{
-			String data = reportVoucherTxtList.get(i).getText();
-
-			if(data.equalsIgnoreCase("Opening Balances"))
+			//Thread.sleep(1000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sd_CloseBtn));
+			sd_CloseBtn.click();
+			
+			if(actvalidationConfirmationMessage.equalsIgnoreCase(expvalidationConfirmationMessage) && actResult.equalsIgnoreCase(expResult))
 			{
-				reportVoucherTxtList.get(i).click();
+				return true;
+			}
+			else
+			{
+				return false;
 			}
 		}
-
-		reportVoucherTxt.sendKeys(Keys.TAB);
-
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-
-
-		int reportsRow1ListCount = reportsRow1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsRow1List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[OpeBal : 1, 26/07/2022, 16:16:42, Opening Balances Control A/C, 1.00, Unchecked, Modified, RER]";
-
-
-
-		int reportsRow2ListCount = reportsRow2List.size();
-		ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow2ListCount;i++)
-		{
-			String data = reportsRow2List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow2ListArray.add(data);
-			}
-
-
-		}
-		String actRow2List = reportsRow2ListArray.toString();
-		String expRow2List = "[OpeBal : 1, 26/07/2022, 16:17:27, Opening Balances Control A/C, 1.00, Unchecked, Modified, RER]";
-
-
-
-		int reportsRow3ListCount = reportsRow3List.size();
-		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow3ListCount;i++)
-		{
-			String data = reportsRow3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow3ListArray.add(data);
-			}
-
-		}
-		String actRow3List = reportsRow3ListArray.toString();
-		String expRow3List = "[Grand Total, 2.00]";
-
-
-	    System.out.println(actRow1List);
-		System.out.println(expRow1List);
-
-		System.out.println(actRow2List);
-		System.out.println(expRow2List);
-
-		System.out.println(actRow3List);
-		System.out.println(expRow3List);
-
 		
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List))
+		
+		public static boolean checkAuditTrailTransactionsOfOpeningBalances() throws InterruptedException
 		{
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+
+			//Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
+			financialsReportsMenu.click();
+
+			//Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(auditTrailMenu));
+			auditTrailMenu.click();
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(auditTrailtransactionsReport));
+			auditTrailtransactionsReport.click();
+
+
+			Thread.sleep(2000);
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			sl_DateOptionDropdown.click();
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reportVoucherTxt));
+			reportVoucherTxt.click();
+			reportVoucherTxt.sendKeys(Keys.SPACE);
+
+			int reportVoucherTxtListCount = reportVoucherTxtList.size();
+
+			for(int i=0;i<reportVoucherTxtListCount;i++)
+			{
+				String data = reportVoucherTxtList.get(i).getText();
+
+				if(data.equalsIgnoreCase("Purchases Vouchers"))
+				{
+					reportVoucherTxtList.get(i).click();
+				}
+			}
+
+			reportVoucherTxt.sendKeys(Keys.TAB);
+
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+
+
+			int reportsRow1ListCount = reportsRow1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsRow1List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[PurVou : 7, 27/07/2022, 13:27:39, Vendor A, 1.00, Unchecked, Modified, EER]";
+
+
+
+			int reportsRow2ListCount = reportsRow2List.size();
+			ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow2ListCount;i++)
+			{
+				String data = reportsRow2List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow2ListArray.add(data);
+				}
+
+
+			}
+			String actRow2List = reportsRow2ListArray.toString();
+			String expRow2List = "[PurVou : 7, 27/07/2022, 15:15:10, Vendor A, 10.00, Unchecked, Modified, EER]";
+
+
+
+			int reportsRow3ListCount = reportsRow3List.size();
+			ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow3ListCount;i++)
+			{
+				String data = reportsRow3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow3ListArray.add(data);
+				}
+
+			}
+			String actRow3List = reportsRow3ListArray.toString();
+			String expRow3List = "[PurVou : 11, 27/07/2022, 15:15:45, C2, 1.00, Unchecked, Modified, EER]";
+			
+			int reportsRow4ListCount = reportsRow4List.size();
+			ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow4ListCount;i++)
+			{
+				String data = reportsRow4List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow4ListArray.add(data);
+				}
+
+			}
+			String actRow4List = reportsRow4ListArray.toString();
+			String expRow4List = "[PurVou : 12, 27/07/2022, 13:25:16, CustVend, 1.00, Unchecked, Modified, EER]";
+			
+			
+			int reportsRow5ListCount = reportsRow5List.size();
+			ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow5ListCount;i++)
+			{
+				String data = reportsRow5List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow5ListArray.add(data);
+				}
+
+			}
+			String actRow5List = reportsRow5ListArray.toString();
+			String expRow5List = "[PurVou : 12, 27/07/2022, 15:16:02, CustVend, 1.00, Unchecked, Modified, EER]";
+			
+			
+			int reportsRow6ListCount = reportsRow6List.size();
+			ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow6ListCount;i++)
+			{
+				String data = reportsRow6List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow6ListArray.add(data);
+				}
+
+			}
+			String actRow6List = reportsRow6ListArray.toString();
+			String expRow6List = "[Grand Total, 14.00]";
+			
+			
+			
+
+
+		    System.out.println(actRow1List);
+			System.out.println(expRow1List);
+
+			System.out.println(actRow2List);
+			System.out.println(expRow2List);
+
+			System.out.println(actRow3List);
+			System.out.println(expRow3List);
+
+			
+			System.out.println(actRow4List);
+			System.out.println(expRow4List);
+
+			
+			
+			System.out.println(actRow5List);
+			System.out.println(expRow5List);
+
+			
+			System.out.println(actRow6List);
+			System.out.println(expRow6List);
+
+			
+			if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) 
+					&& actRow3List.equalsIgnoreCase(expRow3List) && actRow4List.equalsIgnoreCase(expRow4List)
+					&& actRow5List.equalsIgnoreCase(expRow5List) && actRow6List.equalsIgnoreCase(expRow6List))
+			{
+					
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+
+		}
+		
+		public static boolean checkAuditTrailLoginsOfUsers() throws InterruptedException
+		{
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
+			financialsReportsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(auditTrailMenu));
+			auditTrailMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(aAuditTrailloginsReport));
+			aAuditTrailloginsReport.click();
+			
+			
+			boolean novalidationConfirmationMessage =validationConfirmationMessage.getText().isEmpty();
+			String actvalidationConfirmationMessage = Boolean.toString(novalidationConfirmationMessage);
+			String expvalidationConfirmationMessage = "true";
+			
+			System.out.println("validationConfirmationMessage : "+actvalidationConfirmationMessage+" Value Expected : "+expvalidationConfirmationMessage);
+			Thread.sleep(2000);
+		
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			sl_DateOptionDropdown.click();
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reportUsersTxt));
+			reportUsersTxt.click();
+			reportUsersTxt.sendKeys(Keys.SPACE);
+			
+			int reportUsersTxtListCount = reportUsersTxtList.size();
+			
+			for(int i=0;i<reportUsersTxtListCount;i++)
+			{
+				String data = reportUsersTxtList.get(i).getText();
 				
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-
-	}
-	
-	public static boolean checkAuditTrailLoginsOfUsers() throws InterruptedException
-	{
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
-		financialsReportsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(auditTrailMenu));
-		auditTrailMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(aAuditTrailloginsReport));
-		aAuditTrailloginsReport.click();
-		
-		
-		boolean novalidationConfirmationMessage =validationConfirmationMessage.getText().isEmpty();
-		String actvalidationConfirmationMessage = Boolean.toString(novalidationConfirmationMessage);
-		String expvalidationConfirmationMessage = "true";
-		
-		System.out.println("validationConfirmationMessage : "+actvalidationConfirmationMessage+" Value Expected : "+expvalidationConfirmationMessage);
-		Thread.sleep(2000);
-	
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		sl_DateOptionDropdown.click();
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reportUsersTxt));
-		reportUsersTxt.click();
-		reportUsersTxt.sendKeys(Keys.SPACE);
-		
-		int reportUsersTxtListCount = reportUsersTxtList.size();
-		
-		for(int i=0;i<reportUsersTxtListCount;i++)
-		{
-			String data = reportUsersTxtList.get(i).getText();
+				if(data.equalsIgnoreCase("UserAllOptionsST"))
+				{
+					reportUsersTxtList.get(i).click();
+				}
+			}
 			
-			if(data.equalsIgnoreCase("UserAllOptionsST"))
-			{
-				reportUsersTxtList.get(i).click();
-			}
-		}
-		
-		reportUsersTxt.sendKeys(Keys.TAB);
-		
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		
-		boolean novalidationConfirmationMessage1 =validationConfirmationMessage.getText().isEmpty();
-		String actvalidationConfirmationMessage1 = Boolean.toString(novalidationConfirmationMessage1);
-		String expvalidationConfirmationMessage1 = "true";
-		
-		System.out.println("validationConfirmationMessage1 : "+actvalidationConfirmationMessage1+" Value Expected : "+expvalidationConfirmationMessage1);
-		
-		Thread.sleep(2000);
-		
-		boolean ReportTable =reportTable.isDisplayed();
-		String actReportTable = Boolean.toString(ReportTable);
-		String expReportTable = "true";
-		
-		
-		if (actvalidationConfirmationMessage.equalsIgnoreCase(expvalidationConfirmationMessage) && actReportTable.equalsIgnoreCase(expReportTable)) 
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-	
-	}
-	
-	public static boolean checkAccountQueryReport() throws InterruptedException
-	{
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
-		financialsReportsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accountQuery));
-		accountQuery.click();
-		
-		boolean novalidationConfirmationMessage =validationConfirmationMessage.getText().isEmpty();
-		
-		String actvalidationConfirmationMessage = Boolean.toString(novalidationConfirmationMessage);
-		String expvalidationConfirmationMessage = "true";
-		
-		
-		System.out.println("validationConfirmationMessage : "+actvalidationConfirmationMessage+" Value Expected : "+expvalidationConfirmationMessage);
+			reportUsersTxt.sendKeys(Keys.TAB);
 			
-		Thread.sleep(1500);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accountQueryTxt));
-		accountQueryTxt.click();
-		accountQueryTxt.sendKeys("BankACC");
-		Thread.sleep(1500);
-		
-		accountQueryTxt.sendKeys(Keys.TAB);
-		
-		Thread.sleep(1500);
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(getAccountDetailsBtn));
-		getAccountDetailsBtn.click();
-		
-
-		Thread.sleep(2500);
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(AQ_OpnBal));
-		String actAQ_OpnBal				        =AQ_OpnBal.getText();
-		String actAQ_Credit		                =AQ_Credit.getText();
-		String actAQ_Debit				        =AQ_Debit.getText();
-		String actAQ_Balance			        =AQ_Balance.getText();
-		
-		String expAQ_OpnBal				        ="0.00";
-		String expAQ_Credit		                ="2.00";
-		String expAQ_Debit				        ="2.00";
-		String expAQ_Balance			        ="0.00";
-		
-		System.out.println("************************************checkAccountQueryOfBRCOGSACCINVAccount*************************************");
-		
-		System.out.println("AQ_OpnBal     		 :   "+actAQ_OpnBal			+" Value Expected : "+expAQ_OpnBal);
-		System.out.println("AQ_Credit            :   "+actAQ_Credit			+" Value Expected : "+expAQ_Credit);
-		System.out.println("AQ_Debit     		 :   "+actAQ_Debit			+" Value Expected : "+expAQ_Debit);
-		System.out.println("AQ_Balance     	     :   "+actAQ_Balance		+" Value Expected : "+expAQ_Balance);
-
-		ArrayList<String>  creditList1 = new ArrayList<String>(); 
-
-		int count=CreditTransactionsTableR1.size();
-
-		System.err.println(count);
-
-		for(int i=0 ; i < count ;i++)
-		{
-			String data=CreditTransactionsTableR1.get(i).getText();
-			creditList1.add(data);
-
-		}
-
-		String actcreditListR1 = creditList1.toString();
-		String expcreditListR1 = "[25-07-2022, Pmt : 1, H2, 1.00]";
-
-		System.out.println("actcreditList"+actcreditListR1);
-		System.out.println("expcreditList"+expcreditListR1);
-
-		
-		ArrayList<String>  creditList2 = new ArrayList<String>(); 
-
-		int count2=CreditTransactionsTableR2.size();
-
-		System.err.println(count2);
-
-		for(int i=0 ; i < count2 ;i++)
-		{
-			String data=CreditTransactionsTableR2.get(i).getText();
-			creditList2.add(data);
-
-		}
-
-		String actcreditListR2 = creditList2.toString();
-		String expcreditListR2 = "[21-07-2022, PurVou : 9, A1, 1.00]";
-
-		System.out.println("actcreditList"+actcreditListR2);
-		System.out.println("expcreditList"+expcreditListR2);
-
-		
-		
-
-		ArrayList<String>  DebitList1 = new ArrayList<String>(); 
-
-		int count3=debitTransactionsTableR1.size();
-
-		System.err.println(count3);
-
-		for(int i=0 ; i < count3 ;i++)
-		{
-			String data=debitTransactionsTableR1.get(i).getText();
-			DebitList1.add(data);
-
-		}
-
-		String actDebitListR1 = DebitList1.toString();
-		String expDebitListR1 = "[25-07-2022, SalInv : 2, E1, 1.00]";
-
-		System.out.println("actDebitList"+actDebitListR1);
-		System.out.println("expDebitList"+expDebitListR1);
-
-		
-		ArrayList<String>  DebitList2 = new ArrayList<String>(); 
-
-		int count4=debitTransactionsTableR2.size();
-
-		System.err.println(count4);
-
-		for(int i=0 ; i < count4 ;i++)
-		{
-			String data=debitTransactionsTableR2.get(i).getText();
-			DebitList2.add(data);
-
-		}
-
-		String actDebitListR2 = DebitList2.toString();
-		String expDebitListR2 = "[22-07-2022, Rct : 1, CustomerACC, 1.00]";
-
-		System.out.println("actDebitList"+actDebitListR2);
-		System.out.println("expDebitList"+expDebitListR2);
-
-		
-		ArrayList<String>  DebitList3 = new ArrayList<String>(); 
-
-		int count5=debitTransactionsTableR3.size();
-
-		System.err.println(count5);
-
-		for(int i=0 ; i < count5 ;i++)
-		{
-			String data=debitTransactionsTableR3.get(i).getText();
-			DebitList3.add(data);
-
-		}
-
-		String actDebitListR3 = DebitList3.toString();
-		String expDebitListR3 = "[31-03-2022, OpeBal : 1, Opening Balances Control A/C, 1.00]";
-
-		System.out.println("actDebitList"+actDebitListR3);
-		System.out.println("expDebitList"+expDebitListR3);
-
-		Thread.sleep(2000);
-		departmentBillWiseToggle.click();
-		Thread.sleep(2000);
-		
-		
-		ArrayList<String>  tagList1 = new ArrayList<String>(); 
-
-		int count1=TagTransactionTableR1.size();
-
-		System.err.println(count1);
-
-		for(int i=0 ; i < count1 ;i++)
-		{
-			String data=TagTransactionTableR1.get(i).getText();
-			tagList1.add(data);
-
-		}
-
-		String acttagListR1 = tagList1.toString();
-		String exptagListR1 = "[1, A1, 2.00 Dr]";
-
-		System.out.println("acttagList"+acttagListR1);
-		System.out.println("exptagList"+exptagListR1);
-		
-		
-		ArrayList<String>  tagList2 = new ArrayList<String>(); 
-
-		int tcount2=TagTransactionTableR2.size();
-
-		System.err.println(tcount2);
-
-		for(int i=0 ; i < tcount2 ;i++)
-		{
-			String data=TagTransactionTableR2.get(i).getText();
-			tagList2.add(data);
-
-		}
-
-		String acttagListR2 = tagList2.toString();
-		String exptagListR2 = "[2, D2, 1.00 Cr]";
-
-		System.out.println("acttagList"+acttagListR2);
-		System.out.println("exptagList"+exptagListR2);
-		
-		ArrayList<String>  tagList3 = new ArrayList<String>(); 
-
-		int tcount3=TagTransactionTableR3.size();
-
-		System.err.println(tcount3);
-
-		for(int i=0 ; i < tcount3 ;i++)
-		{
-			String data=TagTransactionTableR3.get(i).getText();
-			tagList3.add(data);
-
-		}
-
-		String acttagListR3 = tagList3.toString();
-		String exptagListR3 = "[3, 1.00 Dr]";
-
-		System.out.println("acttagList"+acttagListR3);
-		System.out.println("exptagList"+exptagListR3);
-		
-		
-		
-		if (actAQ_OpnBal.equalsIgnoreCase(expAQ_OpnBal) && actAQ_Credit.equalsIgnoreCase(expAQ_Credit)
-					&& actAQ_Debit.equalsIgnoreCase(expAQ_Debit) && actAQ_Balance.equalsIgnoreCase(expAQ_Balance)
-					&& actcreditListR1.equalsIgnoreCase(expcreditListR1) && actcreditListR2.equalsIgnoreCase(expcreditListR2)
-					&& actDebitListR1.endsWith(expDebitListR1) && actDebitListR2.equalsIgnoreCase(expDebitListR2) 
-					&& actDebitListR3.equalsIgnoreCase(expDebitListR3) && acttagListR1.equalsIgnoreCase(exptagListR1)
-					&& acttagListR2.equalsIgnoreCase(exptagListR2) && acttagListR3.equalsIgnoreCase(exptagListR3))
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-		
-	}
-
-	public boolean checkTransactionAuthorizationReport() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
-	{
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
-		financialsReportsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(transactionAuthorizationReport));
-		transactionAuthorizationReport.click();
-		
-		boolean novalidationConfirmationMessage =validationConfirmationMessage.getText().isEmpty();
-		
-		String actvalidationConfirmationMessage = Boolean.toString(novalidationConfirmationMessage);
-		String expvalidationConfirmationMessage = "true";
-		
-		System.out.println("validationConfirmationMessage : "+actvalidationConfirmationMessage+" Value Expected : "+expvalidationConfirmationMessage);
-		
-		//Thread.sleep(1500);
-	
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		sl_DateOptionDropdown.click();
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reportVoucherTxt));
-		reportVoucherTxt.click();
-		reportVoucherTxt.sendKeys(Keys.SPACE);
-		
-		int reportVoucherTxtListCount = reportVoucherTxtList.size();
-		
-		for(int i=0;i<reportVoucherTxtListCount;i++)
-		{
-			String data = reportVoucherTxtList.get(i).getText();
 			
-			if(data.equalsIgnoreCase("Purchase Voucher VAT"))
-			{
-				reportVoucherTxtList.get(i).click();
-			}
-		}
-		
-		reportVoucherTxt.sendKeys(Keys.TAB);
-		
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		
-		Thread.sleep(2000);
-		
-		boolean novalidationConfirmationMessage1 =validationConfirmationMessage.getText().isEmpty();
-		
-		String actvalidationConfirmationMessage1 = Boolean.toString(novalidationConfirmationMessage1);
-		String expvalidationConfirmationMessage1 = "true";
-		
-		System.out.println("validationConfirmationMessage : "+actvalidationConfirmationMessage+" Value Expected : "+expvalidationConfirmationMessage);
-		
-		boolean actReportTable = reportsTable.getText().isEmpty();
-		boolean expReportTable = true;
-		
-		System.out.println(actReportTable);
-		System.out.println(expReportTable);
-		
-		if (actvalidationConfirmationMessage.equalsIgnoreCase(expvalidationConfirmationMessage) &&
-				actvalidationConfirmationMessage1.equalsIgnoreCase(expvalidationConfirmationMessage1) && 
-				actReportTable==expReportTable) 
-		{
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
 			
-			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_CloseBtn));
-			sl_CloseBtn.click();
-			return true;
-		}
-		else
-		{
+			boolean novalidationConfirmationMessage1 =validationConfirmationMessage.getText().isEmpty();
+			String actvalidationConfirmationMessage1 = Boolean.toString(novalidationConfirmationMessage1);
+			String expvalidationConfirmationMessage1 = "true";
 			
-			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_CloseBtn));
-			sl_CloseBtn.click();
-			return false;
-		}
-	}
-	
-	public boolean checkMasterAuthorizationReport() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
-	{
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
-		financialsReportsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterAuthorizationReport));
-		masterAuthorizationReport.click();
-		
-		boolean novalidationConfirmationMessage =validationConfirmationMessage.getText().isEmpty();
-		
-		String actvalidationConfirmationMessage = Boolean.toString(novalidationConfirmationMessage);
-		String expvalidationConfirmationMessage = "true";
-		
-		System.out.println("validationConfirmationMessage : "+actvalidationConfirmationMessage+" Value Expected : "+expvalidationConfirmationMessage);
-		
-		Thread.sleep(1500);
-	
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		sl_DateOptionDropdown.click();
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		
-		boolean novalidationConfirmationMessage1 =validationConfirmationMessage.getText().isEmpty();
-		
-		String actvalidationConfirmationMessage1 = Boolean.toString(novalidationConfirmationMessage1);
-		String expvalidationConfirmationMessage1 = "true";
-		
-		System.out.println("validationConfirmationMessage : "+actvalidationConfirmationMessage+" Value Expected : "+expvalidationConfirmationMessage);
-		Thread.sleep(2000);
-		
-		boolean actReportTable = reportsTable.getText().isEmpty();
-		boolean expReportTable = true;
-		
-		System.out.println(actReportTable);
-		System.out.println(expReportTable);
-		
-		if (actvalidationConfirmationMessage.equalsIgnoreCase(expvalidationConfirmationMessage) &&
-				actvalidationConfirmationMessage1.equalsIgnoreCase(expvalidationConfirmationMessage1) && 
-				actReportTable==expReportTable) 
-		{
-		
+			System.out.println("validationConfirmationMessage1 : "+actvalidationConfirmationMessage1+" Value Expected : "+expvalidationConfirmationMessage1);
 			
-			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_CloseBtn));
-			sl_CloseBtn.click();
-			return true;
-		}
-		else
-		{
+			Thread.sleep(2000);
 			
-			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_CloseBtn));
-			sl_CloseBtn.click();
-			return false;
-		}
-	}
-	
-	//receivable payable analysis
-	
-	public static boolean checkCustomerListingOfOutstandingBillsReport() throws InterruptedException
-	{	
-		Thread.sleep(2000);
-		getDriver().navigate().refresh();
-		Thread.sleep(2000);
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(receivableAndPayableAnalysisMenu));
-		receivableAndPayableAnalysisMenu.click();
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerDetailMenu));
-		customerDetailMenu.click();
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerDetailsCustomerListingOfOutstandingBillsReport));
-		customerDetailsCustomerListingOfOutstandingBillsReport.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-
-		Thread.sleep(3000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
-		Thread.sleep(2000);
-
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		Thread.sleep(2000);
-
-
-		Thread.sleep(2000);
-		int reportsRow1ListCount = reportsCol1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsCol1List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[H1 H801, OpeBal:1, SalInv:1, SalInv:5, SalRet:1, Sub Total, H2 H802, OpeBal:1, SalInv:6, Pmt:1, CreNts:1, Sub Total, CustomerACC CAC001, OpeBal:1, Rct:1, SalInv:4, NJv:1, Sub Total, Grand Total]";
-
-		System.out.println("Actaul Voucher  :"+actRow1List);
-		System.out.println("Expected Voucher:"+expRow1List);
-
-		Thread.sleep(2000);
-
-
-		Thread.sleep(2000);
-		int reportsRow3ListCount = reportsCol3List.size();
-		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow3ListCount;i++)
-		{
-			String data = reportsCol3List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow3ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow3List = reportsRow3ListArray.toString();
-		String expRow3List = "[H1, H1, H1, H1, H2, H2, H2, H2, CustomerACC, CustomerACC, CustomerACC, CustomerACC]";
-
-		System.out.println("Actaul Voucher  :"+actRow3List);
-		System.out.println("Expected Voucher:"+expRow3List);
-
-		Thread.sleep(2000);
-
-
-		Thread.sleep(2000);
-		int reportsRow4ListCount = reportsCol4List.size();
-		ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow4ListCount;i++)
-		{
-			String data = reportsCol4List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow4ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[1.00, 4.00, 1.00, 11.00, 5.00, 1.00, 1.00, 1.00, 1.00, 4.00, 1.00, 1.00, 1.00, 1.00, 2.00, 1.00]";
-
-		System.out.println("Actaul Voucher  :"+actRow4List);
-		System.out.println("Expected Voucher:"+expRow4List);
-
-
-		Thread.sleep(2000);
-
-
-		Thread.sleep(2000);
-		int reportsRow5ListCount = reportsCol5List.size();
-		ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow5ListCount;i++)
-		{
-			String data = reportsCol5List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow5ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow5List = reportsRow5ListArray.toString();
-		String expRow5List = "[1.00, 4.00, 1.00, 11.00, 5.00, 1.00, 1.00, 1.00, 1.00, 4.00, 1.00, 1.00, 1.00, 1.00, 2.00, 1.00]";
-
-		System.out.println("Actaul Voucher  :"+actRow5List);
-		System.out.println("Expected Voucher:"+expRow5List);
-
-
-
-		Thread.sleep(2000);
-		int reportsRow6ListCount = reportsCol6List.size();
-		ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow6ListCount;i++)
-		{
-			String data = reportsCol6List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow6ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow6List = reportsRow6ListArray.toString();
-		String expRow6List = "[1.00, 5.00, 6.00, 5.00, 5.00, 1.00, 2.00, 3.00, 4.00, 4.00, 1.00, 1.00, 2.00, 2.00, 21.00]";
-
-		System.out.println("Actaul Voucher  :"+actRow6List);
-		System.out.println("Expected Voucher:"+expRow6List);
-
-
-		ArrayList<String>  AllDatapage1 = new ArrayList<String>(); 
-
-		int count=stockLedgerTable.size();
-
-		System.err.println(count);
-
-		for(int i=0 ; i < count ;i++)
-		{
-			String style= stockLedgerTable.get(i).getAttribute("style");
-			if(style.contains("overflow: visible; font-weight: bold; background-color:"))
-			{
-				String data=stockLedgerTable.get(i).getText();
-				AllDatapage1.add(data);
-			}
-		}
-
-		String actAllDatapage1 = AllDatapage1.toString();
-		String expAllDatapage1 = "[H1 H801, H2 H802, CustomerACC CAC001]";
-
-		System.out.println("actAllDatapage1"+actAllDatapage1);
-		System.out.println("expAllDatapage1"+expAllDatapage1);
-
-		/*
-		int reportsRow6ListCount = reportsRow6List.size();
-		ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow6ListCount-1;i++)
-		{
-			String data = reportsRow6List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow6ListArray.add(data);
-			}
-
-		}
-		String actRow6List = reportsRow6ListArray.toString();
-		String expRow6List = "[Sub Total, 5.00, 5.00, 5.00, 5.00, 5.00, 5.00, 219]";
-
-
-		System.out.println(actRow6List);
-		System.out.println(expRow6List);
-
-
-		int reportsRow12ListCount = reportsRow12List.size();
-		ArrayList<String> reportsRow12ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow12ListCount-1;i++)
-		{
-			String data = reportsRow12List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow12ListArray.add(data);
-			}
-
-		}
-		String actRow12List = reportsRow12ListArray.toString();
-		String expRow12List = "[Sub Total, 4.00, 4.00, 4.00, 2.00, 4.00, 4.00, 215]";
-
-
-		System.out.println(actRow12List);
-		System.out.println(expRow12List);
-
-		int reportsRow18ListCount = reportsRow18List.size();
-		ArrayList<String> reportsRow18ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow18ListCount-1;i++)
-		{
-			String data = reportsRow18List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow18ListArray.add(data);
-			}
-
-		}
-		String actRow18List = reportsRow18ListArray.toString();
-		String expRow18List = "[Sub Total, 2.00, 2.00, 2.00, 2.00, 2.00, 2.00, 218]";
-
-
-		System.out.println(actRow18List);
-		System.out.println(expRow18List);
-
-
-		 */
-		/*
-		String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
-		String afterPath="]//td[2]";
-		int k;
-
-		Thread.sleep(2000);
-
-		int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
-
-		for(  k=1;k<rows1;k++)
-		{
-			String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
-
-			if(text1.contains("Grand Total"))
-			{
-				int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-				System.err.println("count"+rowCount);
-				break;
-			}	
-		}
-
-		int Row1ListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-		ArrayList<String> Row1ListArray = new ArrayList<String>();
-		for(int i=1;i<Row1ListCount-3;i++)
-		{
-			String data = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).get(i).getText();
-			Row1ListArray.add(data);
-		}
-		String actRowList =Row1ListArray.toString();
-		String expRowList = "[Grand Total, , , 1.00, 1.00, 21.00, , 1.00, 1.00, 1.00, , , , , , 652, , ]";
-
-		System.out.println("actRow1List"+actRowList);
-		System.out.println("expRow1List"+expRowList);
-		 */
-
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow3List.equalsIgnoreCase(expRow3List) && 
-				actRow4List.equalsIgnoreCase(expRow4List)  && actRow5List.equalsIgnoreCase(expRow5List) &&
-				actRow6List.equalsIgnoreCase(expRow6List) /*&& actRow12List.equalsIgnoreCase(expRow12List)
-				&& actRow18List.equalsIgnoreCase(expRow18List) && actAllDatapage1.equalsIgnoreCase(expAllDatapage1) 
-				&& actRowList.equalsIgnoreCase(expRowList)*/)
-
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-
-	}
-	
-	
-	public static boolean checkCustomerStatementsReport() throws InterruptedException
-	{
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(receivableAndPayableAnalysisMenu));
-		receivableAndPayableAnalysisMenu.click();
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerDetailMenu));
-		customerDetailMenu.click();
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerDetailsCustomerStatementsReport));
-		customerDetailsCustomerStatementsReport.click();
-		
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-
-		Thread.sleep(1000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
-
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		Thread.sleep(2000);
-
-
-		Thread.sleep(2000);
-		int reportsRow1ListCount = reportsCol1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsCol1List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[H1 H801, OpeBal:1, SalInv:1, SalInv:5, SalRet:1, Sub Total, H2 H802, OpeBal:1, SalInv:6, Pmt:1, CreNts:1, Sub Total, CustomerACC CAC001, OpeBal:1, Rct:1, SalInv:4, NJv:1, Sub Total, Grand Total]";
-
-		System.out.println("Actaul Voucher  :"+actRow1List);
-		System.out.println("Expected Voucher:"+expRow1List);
-
-		Thread.sleep(2000);
-
-
-		Thread.sleep(2000);
-		int reportsRow3ListCount = reportsCol3List.size();
-		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow3ListCount;i++)
-		{
-			String data = reportsCol3List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow3ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow3List = reportsRow3ListArray.toString();
-		String expRow3List = "[H1, H1, H1, H1, H2, H2, H2, H2, CustomerACC, CustomerACC, CustomerACC, CustomerACC]";
-
-		System.out.println("Actaul Voucher  :"+actRow3List);
-		System.out.println("Expected Voucher:"+expRow3List);
-
-		Thread.sleep(2000);
-		
-
-		Thread.sleep(2000);
-		int reportsRow4ListCount = reportsCol4List.size();
-		ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow4ListCount;i++)
-		{
-			String data = reportsCol4List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow4ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[1.00, 4.00, 1.00, 11.00, 5.00, 1.00, 1.00, 1.00, 1.00, 4.00, 1.00, 1.00, 1.00, 1.00, 2.00, 1.00]";
-
-		System.out.println("Actaul Voucher  :"+actRow4List);
-		System.out.println("Expected Voucher:"+expRow4List);
-
-
-		Thread.sleep(2000);
-		
-
-		Thread.sleep(2000);
-		int reportsRow7ListCount = reportsCol7List.size();
-		ArrayList<String> reportsRow7ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow7ListCount;i++)
-		{
-			String data = reportsCol7List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow7ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow7List = reportsRow7ListArray.toString();
-		String expRow7List = "[1.00, 4.00, 1.00, 11.00, 5.00, 1.00, 1.00, 1.00, 1.00, 4.00, 1.00, 1.00, 1.00, 1.00, 2.00, 1.00]";
-
-		System.out.println("Actaul Voucher  :"+actRow7List);
-		System.out.println("Expected Voucher:"+expRow7List);
-		
-
-
-		Thread.sleep(2000);
-		int reportsRow8ListCount = reportsCol8List.size();
-		ArrayList<String> reportsRow8ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow8ListCount;i++)
-		{
-			String data = reportsCol8List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow8ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow8List = reportsRow8ListArray.toString();
-		String expRow8List = "[1.00, 5.00, 6.00, 5.00, 7.00, 1.00, 2.00, 3.00, 4.00, 10.00, 1.00, 1.00, 2.00, 4.00, 21.00]";
-
-		System.out.println("Actaul Voucher  :"+actRow8List);
-		System.out.println("Expected Voucher:"+expRow8List);
-		
-		
-		ArrayList<String>  AllDatapage1 = new ArrayList<String>(); 
-
-		int count=stockLedgerTable.size();
-
-		System.err.println(count);
-
-		for(int i=0 ; i < count ;i++)
-		{
-			String style= stockLedgerTable.get(i).getAttribute("style");
-			if(style.contains("overflow: visible; font-weight: bold; background-color:"))
-			{
-				String data=stockLedgerTable.get(i).getText();
-				AllDatapage1.add(data);
-			}
-		}
-
-		String actAllDatapage1 = AllDatapage1.toString();
-		String expAllDatapage1 = "[H1 H801, H2 H802, CustomerACC CAC001]";
-
-		System.out.println("actAllDatapage1"+actAllDatapage1);
-		System.out.println("expAllDatapage1"+expAllDatapage1);
-
-/*
-		int reportsRow6ListCount = reportsRow6List.size();
-		ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow6ListCount-1;i++)
-		{
-			String data = reportsRow6List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow6ListArray.add(data);
-			}
-
-		}
-		String actRow6List = reportsRow6ListArray.toString();
-		String expRow6List = "[Sub Total, 5.00, 5.00, 5.00, 5.00, 5.00, 5.00, 219]";
-
-
-		System.out.println(actRow6List);
-		System.out.println(expRow6List);
-
-
-		int reportsRow12ListCount = reportsRow12List.size();
-		ArrayList<String> reportsRow12ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow12ListCount-1;i++)
-		{
-			String data = reportsRow12List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow12ListArray.add(data);
-			}
-
-		}
-		String actRow12List = reportsRow12ListArray.toString();
-		String expRow12List = "[Sub Total, 4.00, 4.00, 4.00, 2.00, 4.00, 4.00, 215]";
-
-
-		System.out.println(actRow12List);
-		System.out.println(expRow12List);
-
-		int reportsRow18ListCount = reportsRow18List.size();
-		ArrayList<String> reportsRow18ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow18ListCount-1;i++)
-		{
-			String data = reportsRow18List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow18ListArray.add(data);
-			}
-
-		}
-		String actRow18List = reportsRow18ListArray.toString();
-		String expRow18List = "[Sub Total, 2.00, 2.00, 2.00, 2.00, 2.00, 2.00, 218]";
-
-
-		System.out.println(actRow18List);
-		System.out.println(expRow18List);
-
-
-*/
-/*
-		String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
-		String afterPath="]//td[2]";
-		int k;
-
-		Thread.sleep(2000);
-
-		int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
-
-		for(  k=1;k<rows1;k++)
-		{
-			String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
-
-			if(text1.contains("Grand Total"))
-			{
-				int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-				System.err.println("count"+rowCount);
-				break;
-			}	
-		}
-
-		int Row1ListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-		ArrayList<String> Row1ListArray = new ArrayList<String>();
-		for(int i=1;i<Row1ListCount-3;i++)
-		{
-			String data = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).get(i).getText();
-			Row1ListArray.add(data);
-		}
-		String actRowList =Row1ListArray.toString();
-		String expRowList = "[Grand Total, , , 1.00, 1.00, 21.00, , 1.00, 1.00, 1.00, , , , , , 652, , ]";
-
-		System.out.println("actRow1List"+actRowList);
-		System.out.println("expRow1List"+expRowList);
-*/
-
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow3List.equalsIgnoreCase(expRow3List) && 
-				actRow4List.equalsIgnoreCase(expRow4List)  && actRow7List.equalsIgnoreCase(expRow7List) &&
-				actRow8List.equalsIgnoreCase(expRow8List) /*&& actRow12List.equalsIgnoreCase(expRow12List)
-				&& actRow18List.equalsIgnoreCase(expRow18List) && actAllDatapage1.equalsIgnoreCase(expAllDatapage1) 
-				&& actRowList.equalsIgnoreCase(expRowList)*/)
-
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-
-	
-	}
-	public static boolean checkCustomerDueDateAnalysis() throws InterruptedException
-	{	
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(receivableAndPayableAnalysisMenu));
-		receivableAndPayableAnalysisMenu.click();
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerDetailMenu));
-		customerDetailMenu.click();
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerDetailsCustomerDueDateAnalysisReport));
-		customerDetailsCustomerDueDateAnalysisReport.click();
-		
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-
-		Thread.sleep(1000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
-
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		Thread.sleep(2000);
-
-		Thread.sleep(2000);
-		int reportsRow1ListCount = reportsCol1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsCol1List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[H1 H801, OpeBal:1, SalInv:1, SalInv:5, SalRet:1, Sub Total, H2 H802, OpeBal:1, SalInv:6, Pmt:1, CreNts:1, Sub Total, CustomerACC CAC001, OpeBal:1, Rct:1, SalInv:4, NJv:1, Sub Total, Grand Total]";
-
-		System.out.println("Actaul Voucher  :"+actRow1List);
-		System.out.println("Expected Voucher:"+expRow1List);
-
-		Thread.sleep(2000);
-
-
-		Thread.sleep(2000);
-		int reportsRow3ListCount = reportsCol3List.size();
-		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow3ListCount;i++)
-		{
-			String data = reportsCol3List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow3ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow3List = reportsRow3ListArray.toString();
-		String expRow3List = "[H1, H1, H1, H1, H2, H2, H2, H2, CustomerACC, CustomerACC, CustomerACC, CustomerACC]";
-
-		System.out.println("Actaul Voucher  :"+actRow3List);
-		System.out.println("Expected Voucher:"+expRow3List);
-
-		Thread.sleep(2000);
-		
-
-		Thread.sleep(2000);
-		int reportsRow4ListCount = reportsCol4List.size();
-		ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow4ListCount;i++)
-		{
-			String data = reportsCol4List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow4ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[1.00, 4.00, 1.00, 11.00, 5.00, 1.00, 1.00, 1.00, 1.00, 4.00, 1.00, 1.00, 1.00, 1.00, 2.00, 1.00]";
-
-		System.out.println("Actaul Voucher  :"+actRow4List);
-		System.out.println("Expected Voucher:"+expRow4List);
-
-
-		Thread.sleep(2000);
-		
-
-		Thread.sleep(2000);
-		int reportsRow7ListCount = reportsCol7List.size();
-		ArrayList<String> reportsRow7ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow7ListCount;i++)
-		{
-			String data = reportsCol7List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow7ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow7List = reportsRow7ListArray.toString();
-		String expRow7List = "[1.00, 4.00, 1.00, 11.00, 5.00, 1.00, 1.00, 1.00, 1.00, 4.00, 1.00, 1.00, 1.00, 1.00, 2.00, 1.00]";
-
-		System.out.println("Actaul Voucher  :"+actRow7List);
-		System.out.println("Expected Voucher:"+expRow7List);
-		
-
-
-		Thread.sleep(2000);
-		int reportsRow8ListCount = reportsCol8List.size();
-		ArrayList<String> reportsRow8ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow8ListCount;i++)
-		{
-			String data = reportsCol8List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow8ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow8List = reportsRow8ListArray.toString();
-		String expRow8List = "[1.00, 5.00, 6.00, 5.00, 7.00, 1.00, 2.00, 3.00, 4.00, 10.00, 1.00, 1.00, 2.00, 4.00, 21.00]";
-
-		System.out.println("Actaul Voucher  :"+actRow8List);
-		System.out.println("Expected Voucher:"+expRow8List);
-		
-		
-		ArrayList<String>  AllDatapage1 = new ArrayList<String>(); 
-
-		int count=stockLedgerTable.size();
-
-		System.err.println(count);
-
-		for(int i=0 ; i < count ;i++)
-		{
-			String style= stockLedgerTable.get(i).getAttribute("style");
-			if(style.contains("overflow: visible; font-weight: bold; background-color:"))
-			{
-				String data=stockLedgerTable.get(i).getText();
-				AllDatapage1.add(data);
-			}
-		}
-
-		String actAllDatapage1 = AllDatapage1.toString();
-		String expAllDatapage1 = "[H1 H801, H2 H802, CustomerACC CAC001]";
-
-		System.out.println("actAllDatapage1"+actAllDatapage1);
-		System.out.println("expAllDatapage1"+expAllDatapage1);
-
-/*
-		int reportsRow6ListCount = reportsRow6List.size();
-		ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow6ListCount-1;i++)
-		{
-			String data = reportsRow6List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow6ListArray.add(data);
-			}
-
-		}
-		String actRow6List = reportsRow6ListArray.toString();
-		String expRow6List = "[Sub Total, 5.00, 5.00, 5.00, 5.00, 5.00, 5.00, 219]";
-
-
-		System.out.println(actRow6List);
-		System.out.println(expRow6List);
-
-
-		int reportsRow12ListCount = reportsRow12List.size();
-		ArrayList<String> reportsRow12ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow12ListCount-1;i++)
-		{
-			String data = reportsRow12List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow12ListArray.add(data);
-			}
-
-		}
-		String actRow12List = reportsRow12ListArray.toString();
-		String expRow12List = "[Sub Total, 4.00, 4.00, 4.00, 2.00, 4.00, 4.00, 215]";
-
-
-		System.out.println(actRow12List);
-		System.out.println(expRow12List);
-
-		int reportsRow18ListCount = reportsRow18List.size();
-		ArrayList<String> reportsRow18ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow18ListCount-1;i++)
-		{
-			String data = reportsRow18List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow18ListArray.add(data);
-			}
-
-		}
-		String actRow18List = reportsRow18ListArray.toString();
-		String expRow18List = "[Sub Total, 2.00, 2.00, 2.00, 2.00, 2.00, 2.00, 218]";
-
-
-		System.out.println(actRow18List);
-		System.out.println(expRow18List);
-
-
-*/
-/*
-		String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
-		String afterPath="]//td[2]";
-		int k;
-
-		Thread.sleep(2000);
-
-		int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
-
-		for(  k=1;k<rows1;k++)
-		{
-			String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
-
-			if(text1.contains("Grand Total"))
-			{
-				int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-				System.err.println("count"+rowCount);
-				break;
-			}	
-		}
-
-		int Row1ListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-		ArrayList<String> Row1ListArray = new ArrayList<String>();
-		for(int i=1;i<Row1ListCount-3;i++)
-		{
-			String data = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).get(i).getText();
-			Row1ListArray.add(data);
-		}
-		String actRowList =Row1ListArray.toString();
-		String expRowList = "[Grand Total, , , 1.00, 1.00, 21.00, , 1.00, 1.00, 1.00, , , , , , 652, , ]";
-
-		System.out.println("actRow1List"+actRowList);
-		System.out.println("expRow1List"+expRowList);
-*/
-
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow3List.equalsIgnoreCase(expRow3List) && 
-				actRow4List.equalsIgnoreCase(expRow4List)  && actRow7List.equalsIgnoreCase(expRow7List) &&
-				actRow8List.equalsIgnoreCase(expRow8List) /*&& actRow12List.equalsIgnoreCase(expRow12List)
-				&& actRow18List.equalsIgnoreCase(expRow18List) && actAllDatapage1.equalsIgnoreCase(expAllDatapage1) 
-				&& actRowList.equalsIgnoreCase(expRowList)*/)
-
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-
-	
-	}
-	public static boolean checkCustomerAgeingDetailAnalysis() throws InterruptedException
-	{
-		
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(receivableAndPayableAnalysisMenu));
-		receivableAndPayableAnalysisMenu.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerDetailMenu));
-		customerDetailMenu.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerDetailsCustomerAgeingDetailsReport));
-		customerDetailsCustomerAgeingDetailsReport.click();
-		
-		
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-
-		Thread.sleep(1000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
-
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		Thread.sleep(2000);
-
-
-		Thread.sleep(2000);
-		int reportsRow1ListCount = reportsCol1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsCol1List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[H1 H801, OpeBal:1, SalInv:1, SalInv:5, SalRet:1, Sub Total, H2 H802, OpeBal:1, SalInv:6, Pmt:1, CreNts:1, Sub Total, CustomerACC CAC001, OpeBal:1, Rct:1, SalInv:4, NJv:1, Sub Total, Grand Total]";
-
-		System.out.println("Actaul Voucher  :"+actRow1List);
-		System.out.println("Expected Voucher:"+expRow1List);
-
-		Thread.sleep(2000);
-
-
-		Thread.sleep(2000);
-		int reportsRow3ListCount = reportsCol3List.size();
-		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow3ListCount;i++)
-		{
-			String data = reportsCol3List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow3ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow3List = reportsRow3ListArray.toString();
-		String expRow3List = "[H1, H1, H1, H1, H2, H2, H2, H2, CustomerACC, CustomerACC, CustomerACC, CustomerACC]";
-
-		System.out.println("Actaul Voucher  :"+actRow3List);
-		System.out.println("Expected Voucher:"+expRow3List);
-
-		Thread.sleep(2000);
-		
-
-		Thread.sleep(2000);
-		int reportsRow4ListCount = reportsCol4List.size();
-		ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow4ListCount;i++)
-		{
-			String data = reportsCol4List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow4ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[1.00, 4.00, 1.00, 11.00, 5.00, 1.00, 1.00, 1.00, 1.00, 4.00, 1.00, 1.00, 1.00, 1.00, 2.00, 1.00]";
-
-		System.out.println("Actaul Voucher  :"+actRow4List);
-		System.out.println("Expected Voucher:"+expRow4List);
-
-
-		Thread.sleep(2000);
-		
-
-		Thread.sleep(2000);
-		int reportsRow5ListCount = reportsCol5List.size();
-		ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow5ListCount;i++)
-		{
-			String data = reportsCol5List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow5ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow5List = reportsRow5ListArray.toString();
-		String expRow5List = "[1.00, 4.00, 1.00, 11.00, 5.00, 1.00, 1.00, 1.00, 1.00, 4.00, 1.00, 1.00, 1.00, 1.00, 2.00, 1.00]";
-
-		System.out.println("Actaul Voucher  :"+actRow5List);
-		System.out.println("Expected Voucher:"+expRow5List);
-		
-
-
-		Thread.sleep(2000);
-		int reportsRow6ListCount = reportsCol6List.size();
-		ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow6ListCount;i++)
-		{
-			String data = reportsCol6List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow6ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow6List = reportsRow6ListArray.toString();
-		String expRow6List = "[1.00, 5.00, 6.00, 5.00, 7.00, 1.00, 2.00, 3.00, 4.00, 10.00, 1.00, 1.00, 2.00, 4.00, 21.00]";
-
-		System.out.println("Actaul Voucher  :"+actRow6List);
-		System.out.println("Expected Voucher:"+expRow6List);
-		
-		
-		ArrayList<String>  AllDatapage1 = new ArrayList<String>(); 
-
-		int count=stockLedgerTable.size();
-
-		System.err.println(count);
-
-		for(int i=0 ; i < count ;i++)
-		{
-			String style= stockLedgerTable.get(i).getAttribute("style");
-			if(style.contains("overflow: visible; font-weight: bold; background-color:"))
-			{
-				String data=stockLedgerTable.get(i).getText();
-				AllDatapage1.add(data);
-			}
-		}
-
-		String actAllDatapage1 = AllDatapage1.toString();
-		String expAllDatapage1 = "[H1 H801, H2 H802, CustomerACC CAC001]";
-
-		System.out.println("actAllDatapage1"+actAllDatapage1);
-		System.out.println("expAllDatapage1"+expAllDatapage1);
-
-/*
-		int reportsRow6ListCount = reportsRow6List.size();
-		ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow6ListCount-1;i++)
-		{
-			String data = reportsRow6List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow6ListArray.add(data);
-			}
-
-		}
-		String actRow6List = reportsRow6ListArray.toString();
-		String expRow6List = "[Sub Total, 5.00, 5.00, 5.00, 5.00, 5.00, 5.00, 219]";
-
-
-		System.out.println(actRow6List);
-		System.out.println(expRow6List);
-
-
-		int reportsRow12ListCount = reportsRow12List.size();
-		ArrayList<String> reportsRow12ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow12ListCount-1;i++)
-		{
-			String data = reportsRow12List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow12ListArray.add(data);
-			}
-
-		}
-		String actRow12List = reportsRow12ListArray.toString();
-		String expRow12List = "[Sub Total, 4.00, 4.00, 4.00, 2.00, 4.00, 4.00, 215]";
-
-
-		System.out.println(actRow12List);
-		System.out.println(expRow12List);
-
-		int reportsRow18ListCount = reportsRow18List.size();
-		ArrayList<String> reportsRow18ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow18ListCount-1;i++)
-		{
-			String data = reportsRow18List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow18ListArray.add(data);
-			}
-
-		}
-		String actRow18List = reportsRow18ListArray.toString();
-		String expRow18List = "[Sub Total, 2.00, 2.00, 2.00, 2.00, 2.00, 2.00, 218]";
-
-
-		System.out.println(actRow18List);
-		System.out.println(expRow18List);
-
-
-*/
-/*
-		String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
-		String afterPath="]//td[2]";
-		int k;
-
-		Thread.sleep(2000);
-
-		int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
-
-		for(  k=1;k<rows1;k++)
-		{
-			String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
-
-			if(text1.contains("Grand Total"))
-			{
-				int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-				System.err.println("count"+rowCount);
-				break;
-			}	
-		}
-
-		int Row1ListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-		ArrayList<String> Row1ListArray = new ArrayList<String>();
-		for(int i=1;i<Row1ListCount-3;i++)
-		{
-			String data = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).get(i).getText();
-			Row1ListArray.add(data);
-		}
-		String actRowList =Row1ListArray.toString();
-		String expRowList = "[Grand Total, , , 1.00, 1.00, 21.00, , 1.00, 1.00, 1.00, , , , , , 652, , ]";
-
-		System.out.println("actRow1List"+actRowList);
-		System.out.println("expRow1List"+expRowList);
-*/
-
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow3List.equalsIgnoreCase(expRow3List) && 
-				actRow4List.equalsIgnoreCase(expRow4List)  && actRow5List.equalsIgnoreCase(expRow5List) &&
-				actRow6List.equalsIgnoreCase(expRow6List) /*&& actRow12List.equalsIgnoreCase(expRow12List)
-				&& actRow18List.equalsIgnoreCase(expRow18List) && actAllDatapage1.equalsIgnoreCase(expAllDatapage1) 
-				&& actRowList.equalsIgnoreCase(expRowList)*/)
-
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-
-	
-	}
-	
-	public static boolean checkCustomerAgeingDetailByDueDate() throws InterruptedException
-	{
-
-
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(receivableAndPayableAnalysisMenu));
-		receivableAndPayableAnalysisMenu.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerDetailMenu));
-		customerDetailMenu.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerDetailsCustomerDetailAgeingByDueDateReport));
-		customerDetailsCustomerDetailAgeingByDueDateReport.click();
-		
-		
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-
-		Thread.sleep(1000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
-
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		Thread.sleep(2000);
-
-
-		Thread.sleep(2000);
-		int reportsRow1ListCount = reportsCol1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsCol1List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[H1 H801, OpeBal:1, SalInv:1, SalInv:5, SalRet:1, Sub Total, H2 H802, OpeBal:1, SalInv:6, Pmt:1, CreNts:1, Sub Total, CustomerACC CAC001, OpeBal:1, Rct:1, SalInv:4, NJv:1, Sub Total, Grand Total]";
-
-		System.out.println("Actaul Voucher  :"+actRow1List);
-		System.out.println("Expected Voucher:"+expRow1List);
-
-		Thread.sleep(2000);
-
-
-		Thread.sleep(2000);
-		int reportsRow3ListCount = reportsCol3List.size();
-		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow3ListCount;i++)
-		{
-			String data = reportsCol3List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow3ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow3List = reportsRow3ListArray.toString();
-		String expRow3List = "[H1, H1, H1, H1, H2, H2, H2, H2, CustomerACC, CustomerACC, CustomerACC, CustomerACC]";
-
-		System.out.println("Actaul Voucher  :"+actRow3List);
-		System.out.println("Expected Voucher:"+expRow3List);
-
-		Thread.sleep(2000);
-
-
-		Thread.sleep(2000);
-		int reportsRow4ListCount = reportsCol4List.size();
-		ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow4ListCount;i++)
-		{
-			String data = reportsCol4List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow4ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[1.00, 4.00, 1.00, 11.00, 5.00, 1.00, 1.00, 1.00, 1.00, 4.00, 1.00, 1.00, 1.00, 1.00, 2.00, 1.00]";
-
-		System.out.println("Actaul Voucher  :"+actRow4List);
-		System.out.println("Expected Voucher:"+expRow4List);
-
-		Thread.sleep(2000);
-
-		
-
-		Thread.sleep(2000);
-		int reportsRow5ListCount = reportsCol5List.size();
-		ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow5ListCount;i++)
-		{
-			String data = reportsCol5List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow5ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow5List = reportsRow5ListArray.toString();
-		String expRow5List = "[1.00, 4.00, 1.00, 11.00, 5.00, 1.00, 1.00, 1.00, 1.00, 4.00, 1.00, 1.00, 1.00, 1.00, 2.00, 1.00]";
-
-		System.out.println("Actaul Voucher  :"+actRow5List);
-		System.out.println("Expected Voucher:"+expRow5List);
-
-		Thread.sleep(2000);
-
-
-		Thread.sleep(2000);
-		int reportsRow6ListCount = reportsCol6List.size();
-		ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow6ListCount;i++)
-		{
-			String data = reportsCol6List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow6ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow6List = reportsRow6ListArray.toString();
-		String expRow6List = "[1.00, 5.00, 6.00, 5.00, 7.00, 1.00, 2.00, 3.00, 4.00, 10.00, 1.00, 1.00, 2.00, 4.00, 21.00]";
-
-		System.out.println("Actaul Voucher  :"+actRow6List);
-		System.out.println("Expected Voucher:"+expRow6List);
-
-		Thread.sleep(2000);
-
-
-		ArrayList<String>  AllDatapage1 = new ArrayList<String>(); 
-
-		int count=stockLedgerTable.size();
-
-		System.err.println(count);
-
-		for(int i=0 ; i < count ;i++)
-		{
-			String style= stockLedgerTable.get(i).getAttribute("style");
-			if(style.contains("overflow: visible; font-weight: bold; background-color:"))
-			{
-				String data=stockLedgerTable.get(i).getText();
-				AllDatapage1.add(data);
-			}
-		}
-
-		String actAllDatapage1 = AllDatapage1.toString();
-		String expAllDatapage1 = "[H1 H801, H2 H802, CustomerACC CAC001]";
-
-		System.out.println("actAllDatapage1"+actAllDatapage1);
-		System.out.println("expAllDatapage1"+expAllDatapage1);
-
-/*
-		int reportsRow6ListCount = reportsRow6List.size();
-		ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow6ListCount;i++)
-		{
-			String data = reportsRow6List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow6ListArray.add(data);
-			}
-
-		}
-		String actRow6List = reportsRow6ListArray.toString();
-		String expRow6List = "[Sub Total, 5.00, 5.00, 7.00, 219, 5.00, 5.00, 6.00, 1.00, 5.00, 6.00, 1.00, 5.00]";
-
-
-		System.out.println(actRow6List);
-		System.out.println(expRow6List);
-
-
-		int reportsRow12ListCount = reportsRow12List.size();
-		ArrayList<String> reportsRow12ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow12ListCount;i++)
-		{
-			String data = reportsRow12List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow12ListArray.add(data);
-			}
-
-		}
-		String actRow12List = reportsRow12ListArray.toString();
-		String expRow12List = "[Sub Total, 2.00, 2.00, 4.00, 218, 2.00, 2.00, 1.00, 1.00, 2.00, 1.00, 1.00, 2.00]";
-
-
-		System.out.println(actRow12List);
-		System.out.println(expRow12List);
-
-		int reportsRow18ListCount = reportsRow18List.size();
-		ArrayList<String> reportsRow18ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow18ListCount;i++)
-		{
-			String data = reportsRow18List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow18ListArray.add(data);
-			}
-
-		}
-		String actRow18List = reportsRow18ListArray.toString();
-		String expRow18List = "[Sub Total, 2.00, 2.00, 4.00, 218, 2.00, 2.00, 1.00, 1.00, 2.00, 1.00, 1.00, 2.00]";
-
-
-		System.out.println(actRow18List);
-		System.out.println(expRow18List);
-
-
-*/
-
-		/*String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
-		String afterPath="]//td[2]";
-		int k;
-
-		Thread.sleep(2000);
-
-		int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
-
-		for(  k=1;k<rows1;k++)
-		{
-			String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
-
-			if(text1.contains("Grand Total"))
-			{
-				int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-				System.err.println("count"+rowCount);
-				break;
-			}	
-		}
-
-		int Row1ListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-		ArrayList<String> Row1ListArray = new ArrayList<String>();
-		for(int i=1;i<Row1ListCount;i++)
-		{
-			String data = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).get(i).getText();
-			Row1ListArray.add(data);
-		}
-		String actRowList =Row1ListArray.toString();
-		String expRowList = "[Grand Total, , , 1.00, 1.00, 21.00, 652, 1.00, 1.00, 2.00, , , , 3.00, , , , 1.00, 2.00, , , , 3.00, , , , 1.00, , , , , , , , , , , ]";
-
-		System.out.println("actRow1List"+actRowList);
-		System.out.println("expRow1List"+expRowList);
-
-*/
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow3List.equalsIgnoreCase(expRow3List) &&
-				actRow4List.equalsIgnoreCase(expRow4List) && actRow5List.equalsIgnoreCase(expRow5List)
-				 && actRow6List.equalsIgnoreCase(expRow6List)
-				/*actRow6List.equalsIgnoreCase(expRow6List) && actRow12List.equalsIgnoreCase(expRow12List)
-				&& actRow18List.equalsIgnoreCase(expRow18List)*/ && actAllDatapage1.equalsIgnoreCase(expAllDatapage1) 
-				/*&& actRowList.equalsIgnoreCase(expRowList)*/)
-
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-
-	}
-	
-	public static boolean checkCustomerOverDueAnalysis() throws InterruptedException
-	{
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(receivableAndPayableAnalysisMenu));
-		receivableAndPayableAnalysisMenu.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerDetailMenu));
-		customerDetailMenu.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerDetailsCustomerOverdueAnalysisReport));
-		customerDetailsCustomerOverdueAnalysisReport.click();
-		
-		
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-
-		Thread.sleep(1000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
-
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		Thread.sleep(2000);
-
-
-		Thread.sleep(2000);
-		int reportsRow1ListCount = reportsCol1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsCol1List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[H1 H801, OpeBal:1, SalInv:1, SalInv:5, SalRet:1, Sub Total, H2 H802, OpeBal:1, SalInv:6, Pmt:1, CreNts:1, Sub Total, CustomerACC CAC001, OpeBal:1, Rct:1, SalInv:4, NJv:1, Sub Total, Grand Total]";
-
-		System.out.println("Actaul Voucher  :"+actRow1List);
-		System.out.println("Expected Voucher:"+expRow1List);
-
-		Thread.sleep(2000);
-
-
-		Thread.sleep(2000);
-		int reportsRow3ListCount = reportsCol3List.size();
-		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow3ListCount;i++)
-		{
-			String data = reportsCol3List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow3ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow3List = reportsRow3ListArray.toString();
-		String expRow3List = "[H1, H1, H1, H1, H2, H2, H2, H2, CustomerACC, CustomerACC, CustomerACC, CustomerACC]";
-
-		System.out.println("Actaul Voucher  :"+actRow3List);
-		System.out.println("Expected Voucher:"+expRow3List);
-		
-
-		Thread.sleep(2000);
-		int reportsRow4ListCount = reportsCol4List.size();
-		ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow4ListCount;i++)
-		{
-			String data = reportsCol4List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow4ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[1.00, 4.00, 1.00, 11.00, 5.00, 1.00, 1.00, 1.00, 1.00, 4.00, 1.00, 1.00, 1.00, 1.00, 2.00, 1.00]";
-
-		System.out.println("Actaul Voucher  :"+actRow4List);
-		System.out.println("Expected Voucher:"+expRow4List);
-
-		Thread.sleep(2000);
-		
-
-		Thread.sleep(2000);
-		int reportsRow5ListCount = reportsCol5List.size();
-		ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow5ListCount;i++)
-		{
-			String data = reportsCol5List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow5ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow5List = reportsRow5ListArray.toString();
-		String expRow5List = "[1.00, 4.00, 1.00, 11.00, 5.00, 1.00, 1.00, 1.00, 1.00, 4.00, 1.00, 1.00, 1.00, 1.00, 2.00, 1.00]";
-
-		System.out.println("Actaul Voucher  :"+actRow5List);
-		System.out.println("Expected Voucher:"+expRow5List);
-		
-
-		
-
-		Thread.sleep(2000);
-		int reportsRow7ListCount = reportsCol7List.size();
-		ArrayList<String> reportsRow7ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow7ListCount;i++)
-		{
-			String data = reportsCol7List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow7ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow7List = reportsRow7ListArray.toString();
-		String expRow7List = "[1.00, 5.00, 6.00, 5.00, 7.00, 1.00, 2.00, 3.00, 4.00, 10.00, 1.00, 1.00, 2.00, 4.00, 21.00]";
-
-		System.out.println("Actaul Voucher  :"+actRow7List);
-		System.out.println("Expected Voucher:"+expRow7List);
-		
-		
-
-
-		ArrayList<String>  AllDatapage1 = new ArrayList<String>(); 
-
-		int count=stockLedgerTable.size();
-
-		System.err.println(count);
-
-		for(int i=0 ; i < count ;i++)
-		{
-			String style= stockLedgerTable.get(i).getAttribute("style");
-			if(style.contains("overflow: visible; font-weight: bold; background-color:"))
-			{
-				String data=stockLedgerTable.get(i).getText();
-				AllDatapage1.add(data);
-			}
-		}
-
-		String actAllDatapage1 = AllDatapage1.toString();
-		String expAllDatapage1 = "[H1 H801, H2 H802, CustomerACC CAC001]";
-
-		System.out.println("actAllDatapage1"+actAllDatapage1);
-		System.out.println("expAllDatapage1"+expAllDatapage1);
-
-/*
-		int reportsRow6ListCount = reportsRow6List.size();
-		ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow6ListCount;i++)
-		{
-			String data = reportsRow6List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow6ListArray.add(data);
-			}
-
-		}
-		String actRow6List = reportsRow6ListArray.toString();
-		String expRow6List = "[Sub Total, 5.00, 5.00, 207, 7.00, 6.00, 1.00, 5.00]";
-
-
-		System.out.println(actRow6List);
-		System.out.println(expRow6List);
-
-
-		int reportsRow12ListCount = reportsRow12List.size();
-		ArrayList<String> reportsRow12ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow12ListCount;i++)
-		{
-			String data = reportsRow12List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow12ListArray.add(data);
-			}
-
-		}
-		String actRow12List = reportsRow12ListArray.toString();
-		String expRow12List = "[Sub Total, 4.00, 4.00, 203, 10.00, 3.00, 1.00, 4.00]";
-
-
-		System.out.println(actRow12List);
-		System.out.println(expRow12List);
-
-		int reportsRow18ListCount = reportsRow18List.size();
-		ArrayList<String> reportsRow18ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow18ListCount;i++)
-		{
-			String data = reportsRow18List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow18ListArray.add(data);
-			}
-
-		}
-		String actRow18List = reportsRow18ListArray.toString();
-		String expRow18List = "[Sub Total, 2.00, 2.00, 206, 4.00, 1.00, 1.00, 2.00]";
-
-
-		System.out.println(actRow18List);
-		System.out.println(expRow18List);
-
-*/
-/*
-
-		String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
-		String afterPath="]//td[2]";
-		int k;
-
-		Thread.sleep(2000);
-
-		int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
-
-		for(  k=1;k<rows1;k++)
-		{
-			String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
-
-			if(text1.contains("Grand Total"))
-			{
-				int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-				System.err.println("count"+rowCount);
-				break;
-			}	
-		}
-
-		int Row1ListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-		ArrayList<String> Row1ListArray = new ArrayList<String>();
-		for(int i=1;i<Row1ListCount;i++)
-		{
-			String data = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).get(i).getText();
-			Row1ListArray.add(data);
-		}
-		String actRowList =Row1ListArray.toString();
-		String expRowList = "[Grand Total, , , 1.00, 1.00, 616, 21.00, , 2.00, , , , 3.00, , , , 1.00, ]";
-
-		System.out.println("actRow1List"+actRowList);
-		System.out.println("expRow1List"+expRowList);
-
-*/
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow3List.equalsIgnoreCase(expRow3List) && 
-				actRow4List.equalsIgnoreCase(expRow4List) && actRow5List.equalsIgnoreCase(expRow5List)
-				&& actRow7List.equalsIgnoreCase(expRow7List)
-				/*actRow6List.equalsIgnoreCase(expRow6List) && actRow12List.equalsIgnoreCase(expRow12List)
-				&& actRow18List.equalsIgnoreCase(expRow18List) */&& actAllDatapage1.equalsIgnoreCase(expAllDatapage1) 
-				/*&& actRowList.equalsIgnoreCase(expRowList)*/)
-
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-
-	}
-	
-	
-	//Customer summary
-	
-	
-	public static boolean checkCustomerAgeingSummaryReport()
-	{
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(receivableAndPayableAnalysisMenu));
-		receivableAndPayableAnalysisMenu.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerSummaryMenu));
-		customerSummaryMenu.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerSummaryCustomerAgeingSummaryReport));
-		customerSummaryCustomerAgeingSummaryReport.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-
-
-
-		int reportscol1ListCount = reportsCol1List.size();
-		ArrayList<String> reportscol1ListArray = new ArrayList<String>();
-		for(int i=0;i<reportscol1ListCount;i++)
-		{
-			String data = reportsCol1List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportscol1ListArray.add(data);
-			}
-
-		}
-		String actcol1List = reportscol1ListArray.toString();
-		String expcol1List = "[H1, H2, CustomerACC, Grand Total]";
-
-
-
-		int reportscol2ListCount = reportsCol2List.size();
-		ArrayList<String> reportscol2ListArray = new ArrayList<String>();
-		for(int i=0;i<reportscol2ListCount;i++)
-		{
-			String data = reportsCol2List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportscol2ListArray.add(data);
-			}
-
-
-		}
-		String actcol2List = reportscol2ListArray.toString();
-		String expcol2List = "[5.00, 4.00, 2.00, 1.00]";
-
-
-
-		int reportscol3ListCount = reportsCol3List.size();
-		ArrayList<String> reportscol3ListArray = new ArrayList<String>();
-		for(int i=0;i<reportscol3ListCount;i++)
-		{
-			String data = reportsCol3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportscol3ListArray.add(data);
-			}
-
-		}
-		String actcol3List = reportscol3ListArray.toString();
-		String expcol3List = "[5.00, 4.00, 2.00, 1.00]";
-
-
-
-		int reportscol6ListCount = reportsCol6List.size();
-		ArrayList<String> reportscol6ListArray = new ArrayList<String>();
-		for(int i=0;i<reportscol6ListCount;i++)
-		{
-			String data = reportsCol6List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportscol6ListArray.add(data);
-			}
-
-		}
-		String actcol6List = reportscol6ListArray.toString();
-		String expcol6List = "[5.00, 4.00, 2.00, 1.00]";
-
-
-		System.out.println(actcol1List);
-		System.out.println(expcol1List);
-
-		System.out.println(actcol2List);
-		System.out.println(expcol2List);
-
-		System.out.println(actcol3List);
-		System.out.println(expcol3List);
-
-		System.out.println(actcol6List);
-		System.out.println(expcol6List);
-
-
-
-		if (actcol1List.equalsIgnoreCase(expcol1List) && actcol2List.equalsIgnoreCase(expcol2List) && actcol3List.equalsIgnoreCase(expcol3List) 
-				&& actcol6List.equalsIgnoreCase(expcol6List))
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-
-	}
-	
-	public static boolean checkCustomerSummaryAgeingByDueDateReport() throws InterruptedException
-	{
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(receivableAndPayableAnalysisMenu));
-		receivableAndPayableAnalysisMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerSummaryMenu));
-		customerSummaryMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerSummaryAgeingByDueDateReport));
-		customerSummaryAgeingByDueDateReport.click();
-		
-		Thread.sleep(2000);
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
-		
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		
-
-
-		int reportscol1ListCount = reportsCol1List.size();
-		ArrayList<String> reportscol1ListArray = new ArrayList<String>();
-		for(int i=0;i<reportscol1ListCount;i++)
-		{
-			String data = reportsCol1List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportscol1ListArray.add(data);
-			}
-
-		}
-		String actcol1List = reportscol1ListArray.toString();
-		String expcol1List = "[H1, H2, CustomerACC, Grand Total]";
-
-
-
-		int reportscol2ListCount = reportsCol2List.size();
-		ArrayList<String> reportscol2ListArray = new ArrayList<String>();
-		for(int i=0;i<reportscol2ListCount;i++)
-		{
-			String data = reportsCol2List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportscol2ListArray.add(data);
-			}
-
-
-		}
-		String actcol2List = reportscol2ListArray.toString();
-		String expcol2List = "[5.00, 4.00, 2.00, 1.00]";
-
-
-
-		int reportscol3ListCount = reportsCol3List.size();
-		ArrayList<String> reportscol3ListArray = new ArrayList<String>();
-		for(int i=0;i<reportscol3ListCount;i++)
-		{
-			String data = reportsCol3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportscol3ListArray.add(data);
-			}
-
-		}
-		String actcol3List = reportscol3ListArray.toString();
-		String expcol3List = "[5.00, 4.00, 2.00, 1.00]";
-
-
-
-		int reportscol6ListCount = reportsCol6List.size();
-		ArrayList<String> reportscol6ListArray = new ArrayList<String>();
-		for(int i=0;i<reportscol6ListCount;i++)
-		{
-			String data = reportsCol6List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportscol6ListArray.add(data);
-			}
-
-		}
-		String actcol6List = reportscol6ListArray.toString();
-		String expcol6List = "[5.00, 4.00, 2.00, 1.00]";
-
-
-		System.out.println(actcol1List);
-		System.out.println(expcol1List);
-
-		System.out.println(actcol2List);
-		System.out.println(expcol2List);
-
-		System.out.println(actcol3List);
-		System.out.println(expcol3List);
-
-		System.out.println(actcol6List);
-		System.out.println(expcol6List);
-
-
-
-		if (actcol1List.equalsIgnoreCase(expcol1List) && actcol2List.equalsIgnoreCase(expcol2List) && actcol3List.equalsIgnoreCase(expcol3List) 
-				&& actcol6List.equalsIgnoreCase(expcol6List))
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-
-	}
-	
-	public static boolean checkCustomerOverDueSummaryReport() throws InterruptedException
-	{
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(receivableAndPayableAnalysisMenu));
-		receivableAndPayableAnalysisMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerSummaryMenu));
-		customerSummaryMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerSummaryCustomerOverDueSummeryReport));
-		customerSummaryCustomerOverDueSummeryReport.click();
-		
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
-		
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-
-
-		int reportscol1ListCount = reportsCol1List.size();
-		ArrayList<String> reportscol1ListArray = new ArrayList<String>();
-		for(int i=0;i<reportscol1ListCount;i++)
-		{
-			String data = reportsCol1List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportscol1ListArray.add(data);
-			}
-
-		}
-		String actcol1List = reportscol1ListArray.toString();
-		String expcol1List = "[H1, H2, CustomerACC, Grand Total]";
-
-
-
-		int reportscol2ListCount = reportsCol2List.size();
-		ArrayList<String> reportscol2ListArray = new ArrayList<String>();
-		for(int i=0;i<reportscol2ListCount;i++)
-		{
-			String data = reportsCol2List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportscol2ListArray.add(data);
-			}
-
-
-		}
-		String actcol2List = reportscol2ListArray.toString();
-		String expcol2List = "[5.00, 4.00, 2.00, 1.00]";
-
-
-
-		int reportscol3ListCount = reportsCol3List.size();
-		ArrayList<String> reportscol3ListArray = new ArrayList<String>();
-		for(int i=0;i<reportscol3ListCount;i++)
-		{
-			String data = reportsCol3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportscol3ListArray.add(data);
-			}
-
-		}
-		String actcol3List = reportscol3ListArray.toString();
-		String expcol3List = "[5.00, 4.00, 2.00, 1.00]";
-
-
-
-		int reportscol6ListCount = reportsCol14List.size();
-		ArrayList<String> reportscol6ListArray = new ArrayList<String>();
-		for(int i=0;i<reportscol6ListCount;i++)
-		{
-			String data = reportsCol14List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportscol6ListArray.add(data);
-			}
-
-		}
-		String actcol6List = reportscol6ListArray.toString();
-		String expcol6List = "[5.00, 4.00, 2.00, 1.00]";
-
-
-		System.out.println(actcol1List);
-		System.out.println(expcol1List);
-
-		System.out.println(actcol2List);
-		System.out.println(expcol2List);
-
-		System.out.println(actcol3List);
-		System.out.println(expcol3List);
-
-		System.out.println(actcol6List);
-		System.out.println(expcol6List);
-
-
-
-		if (actcol1List.equalsIgnoreCase(expcol1List) && actcol2List.equalsIgnoreCase(expcol2List) && actcol3List.equalsIgnoreCase(expcol3List) 
-				&& actcol6List.equalsIgnoreCase(expcol6List))
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-
-	}
-	
-	public static boolean checkCustomerBillWiseSummaryReport() throws InterruptedException
-	{
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(receivableAndPayableAnalysisMenu));
-		receivableAndPayableAnalysisMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerSummaryMenu));
-		customerSummaryMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerSummaryCustomerBillWiseSummeryReport));
-		customerSummaryCustomerBillWiseSummeryReport.click();
-		
-		
-		Thread.sleep(2000);
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
-		
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		
-
-
-		int reportscol1ListCount = reportsCol1List.size();
-		ArrayList<String> reportscol1ListArray = new ArrayList<String>();
-		for(int i=0;i<reportscol1ListCount;i++)
-		{
-			String data = reportsCol1List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportscol1ListArray.add(data);
-			}
-
-		}
-		String actcol1List = reportscol1ListArray.toString();
-		String expcol1List = "[H1, H2, CustomerACC, Grand Total]";
-
-
-
-		int reportscol2ListCount = reportsCol2List.size();
-		ArrayList<String> reportscol2ListArray = new ArrayList<String>();
-		for(int i=0;i<reportscol2ListCount;i++)
-		{
-			String data = reportsCol2List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportscol2ListArray.add(data);
-			}
-
-
-		}
-		String actcol2List = reportscol2ListArray.toString();
-		String expcol2List = "[6.00, 4.00, 3.00, 13.00]";
-
-
-
-		int reportscol3ListCount = reportsCol3List.size();
-		ArrayList<String> reportscol3ListArray = new ArrayList<String>();
-		for(int i=0;i<reportscol3ListCount;i++)
-		{
-			String data = reportsCol3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportscol3ListArray.add(data);
-			}
-
-		}
-		String actcol3List = reportscol3ListArray.toString();
-		String expcol3List = "[11.00, 1.00, 12.00]";
-
-
-
-
-		System.out.println(actcol1List);
-		System.out.println(expcol1List);
-
-		System.out.println(actcol2List);
-		System.out.println(expcol2List);
-
-		System.out.println(actcol3List);
-		System.out.println(expcol3List);
-
-		
-		if (actcol1List.equalsIgnoreCase(expcol1List) && actcol2List.equalsIgnoreCase(expcol2List) && actcol3List.equalsIgnoreCase(expcol3List) 
-				)
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-
-		
-	}
-	
-	public static boolean checkVendorListingOfOutStandingBills() throws InterruptedException
-	{
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(receivableAndPayableAnalysisMenu));
-		receivableAndPayableAnalysisMenu.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorDetailMenu));
-		vendorDetailMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorDetailsVendorListingOfOutstandingBillsReport));
-		vendorDetailsVendorListingOfOutstandingBillsReport.click();
-		
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-
-		Thread.sleep(3000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
-		Thread.sleep(3000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		Thread.sleep(2000);
-
-
-		Thread.sleep(2000);
-		int reportsRow1ListCount = reportsCol1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsCol1List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[D1 D401, OpeBal:1, PurVou:1, PurVou:6, Sub Total, D2 D402, OpeBal:1, PurVou:10, PurRet:1, DebNts:1, Sub Total, VendorACC VAC001, OpeBal:1, PurVou:2, NJv:1, Sub Total, Grand Total]";
-
-		System.out.println("Actaul Voucher  :"+actRow1List);
-		System.out.println("Expected Voucher:"+expRow1List);
-
-		Thread.sleep(2000);
-
-
-		Thread.sleep(2000);
-		int reportsRow3ListCount = reportsCol3List.size();
-		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow3ListCount;i++)
-		{
-			String data = reportsCol3List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow3ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow3List = reportsRow3ListArray.toString();
-		String expRow3List = "[D1, D1, D1, D2, D2, D2, D2, VendorACC, VendorACC, VendorACC]";
-
-		System.out.println("Actaul Voucher  :"+actRow3List);
-		System.out.println("Expected Voucher:"+expRow3List);
-
-		Thread.sleep(2000);
-
-		
-
-
-		Thread.sleep(2000);
-		int reportsRow4ListCount = reportsCol4List.size();
-		ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow4ListCount;i++)
-		{
-			String data = reportsCol4List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow4ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[1.00, 29.00, 1.00, 29.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 28.00]";
-
-		System.out.println("Actaul Voucher  :"+actRow4List);
-		System.out.println("Expected Voucher:"+expRow4List);
-
-		Thread.sleep(2000);
-		
-		
-
-
-		Thread.sleep(2000);
-		int reportsRow5ListCount = reportsCol5List.size();
-		ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow5ListCount;i++)
-		{
-			String data = reportsCol5List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow5ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow5List = reportsRow5ListArray.toString();
-		String expRow5List = "[1.00, 29.00, 1.00, 29.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 28.00]";
-
-		System.out.println("Actaul Voucher  :"+actRow5List);
-		System.out.println("Expected Voucher:"+expRow5List);
-
-		Thread.sleep(2000);
-		
-
-
-		Thread.sleep(2000);
-		int reportsRow6ListCount = reportsCol6List.size();
-		ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow6ListCount;i++)
-		{
-			String data = reportsCol6List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow6ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow6List = reportsRow6ListArray.toString();
-		String expRow6List = "[1.00, 28.00, 29.00, 29.00, 1.00, 1.00, 1.00, 1.00, 1.00, 52.00]";
-
-		System.out.println("Actaul Voucher  :"+actRow6List);
-		System.out.println("Expected Voucher:"+expRow6List);
-
-		Thread.sleep(2000);
-
-
-
-		ArrayList<String>  AllDatapage1 = new ArrayList<String>(); 
-
-		int count=stockLedgerTable.size();
-
-		System.err.println(count);
-
-		for(int i=0 ; i < count ;i++)
-		{
-			String style= stockLedgerTable.get(i).getAttribute("style");
-			if(style.contains("overflow: visible; font-weight: bold; background-color:"))
-			{
-				String data=stockLedgerTable.get(i).getText();
-				AllDatapage1.add(data);
-			}
-		}
-
-		String actAllDatapage1 = AllDatapage1.toString();
-		String expAllDatapage1 = "[D1 D401, D2 D402, VendorACC VAC001]";
-
-		System.out.println("actAllDatapage1"+actAllDatapage1);
-		System.out.println("expAllDatapage1"+expAllDatapage1);
-
-/*
-		int reportsRow5ListCount = reportsRow5List.size();
-		ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow5ListCount;i++)
-		{
-			String data = reportsRow5List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow5ListArray.add(data);
-			}
-
-		}
-		String actRow5List = reportsRow5ListArray.toString();
-		String expRow5List = "[Sub Total, 29.00, 29.00, 29.00, 29.00, 29.00, 29.00, 190]";
-
-
-		System.out.println(actRow5List);
-		System.out.println(expRow5List);
-
-
-		int reportsRow11ListCount = reportsRow11List.size();
-		ArrayList<String> reportsRow11ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow11ListCount;i++)
-		{
-			String data = reportsRow11List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow11ListArray.add(data);
-			}
-
-		}
-		String actRow11List = reportsRow11ListArray.toString();
-		String expRow11List = "[Sub Total, 2.00, 202]";
-
-
-		System.out.println(actRow11List);
-		System.out.println(expRow11List);
-
-		int reportsRow16ListCount = reportsRow16List.size();
-		ArrayList<String> reportsRow16ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow16ListCount;i++)
-		{
-			String data = reportsRow16List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow16ListArray.add(data);
-			}
-
-		}
-		String actRow16List = reportsRow16ListArray.toString();
-		String expRow16List = "[Sub Total, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 185]";
-
-
-		System.out.println(actRow16List);
-		System.out.println(expRow16List);
-
-
-
-
-		String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
-		String afterPath="]//td[2]";
-		int k;
-
-		Thread.sleep(2000);
-
-		int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
-
-		for(  k=1;k<rows1;k++)
-		{
-			String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
-
-			if(text1.contains("Grand Total"))
-			{
-				int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-				System.err.println("count"+rowCount);
-				break;
-			}	
-		}
-
-		int Row1ListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-		ArrayList<String> Row1ListArray = new ArrayList<String>();
-		for(int i=1;i<Row1ListCount;i++)
-		{
-			String data = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).get(i).getText();
-			Row1ListArray.add(data);
-		}
-		String actRowList =Row1ListArray.toString();
-		String expRowList = "[Grand Total, , , 28.00, 28.00, 52.00, , 26.00, 28.00, 28.00, , , , , , 577, , ]";
-
-		System.out.println("actRow1List"+actRowList);
-		System.out.println("expRow1List"+expRowList);
-*/
-
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow3List.equalsIgnoreCase(expRow3List) &&
-				actRow4List.equalsIgnoreCase(expRow4List) &&
-				actRow5List.equalsIgnoreCase(expRow5List) && actRow6List.equalsIgnoreCase(expRow6List)/*&& actRow11List.equalsIgnoreCase(expRow11List)
-				&& actRow16List.equalsIgnoreCase(expRow16List) */&& actAllDatapage1.equalsIgnoreCase(expAllDatapage1) 
-				/*&& actRowList.equalsIgnoreCase(expRowList)*/)
-
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-
-	
-	}
-	
-	public static boolean checkVendorStatementsReport() throws InterruptedException
-	{
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(receivableAndPayableAnalysisMenu));
-		receivableAndPayableAnalysisMenu.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorDetailMenu));
-		vendorDetailMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorDetailsVendorStatementsReport));
-		vendorDetailsVendorStatementsReport.click();
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-
-		Thread.sleep(3000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		Thread.sleep(2000);
-
-
-		Thread.sleep(2000);
-		int reportsRow1ListCount = reportsCol1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsCol1List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[D1 D401, OpeBal:1, PurVou:1, PurVou:6, Sub Total, D2 D402, OpeBal:1, PurVou:10, PurRet:1, DebNts:1, Sub Total, VendorACC VAC001, OpeBal:1, PurVou:2, NJv:1, Sub Total, Grand Total]";
-
-		System.out.println("Actaul Voucher  :"+actRow1List);
-		System.out.println("Expected Voucher:"+expRow1List);
-
-		Thread.sleep(2000);
-
-
-		Thread.sleep(2000);
-		int reportsRow3ListCount = reportsCol3List.size();
-		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow3ListCount;i++)
-		{
-			String data = reportsCol3List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow3ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow3List = reportsRow3ListArray.toString();
-		String expRow3List = "[D1, D1, D1, D2, D2, D2, D2, VendorACC, VendorACC, VendorACC]";
-
-		System.out.println("Actaul Voucher  :"+actRow3List);
-		System.out.println("Expected Voucher:"+expRow3List);
-
-		Thread.sleep(2000);
-
-		
-
-
-		Thread.sleep(2000);
-		int reportsRow4ListCount = reportsCol4List.size();
-		ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow4ListCount;i++)
-		{
-			String data = reportsCol4List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow4ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[1.00, 29.00, 1.00, 29.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 28.00]";
-
-		System.out.println("Actaul Voucher  :"+actRow4List);
-		System.out.println("Expected Voucher:"+expRow4List);
-
-		Thread.sleep(2000);
-		
-		
-
-
-		Thread.sleep(2000);
-		int reportsRow7ListCount = reportsCol7List.size();
-		ArrayList<String> reportsRow7ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow7ListCount;i++)
-		{
-			String data = reportsCol7List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow7ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow7List = reportsRow7ListArray.toString();
-		String expRow7List = "[1.00, 29.00, 1.00, 29.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 28.00]";
-
-		System.out.println("Actaul Voucher  :"+actRow7List);
-		System.out.println("Expected Voucher:"+expRow7List);
-
-		Thread.sleep(2000);
-		
-
-
-		Thread.sleep(2000);
-		int reportsRow8ListCount = reportsCol8List.size();
-		ArrayList<String> reportsRow8ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow8ListCount;i++)
-		{
-			String data = reportsCol8List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow8ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow8List = reportsRow8ListArray.toString();
-		String expRow8List = "[1.00, 28.00, 29.00, 56.00, 1.00, 1.00, 2.00, 1.00, 1.00, 2.00, 52.00]";
-
-		System.out.println("Actaul Voucher  :"+actRow8List);
-		System.out.println("Expected Voucher:"+expRow8List);
-
-		Thread.sleep(2000);
-
-
-
-		ArrayList<String>  AllDatapage1 = new ArrayList<String>(); 
-
-		int count=stockLedgerTable.size();
-
-		System.err.println(count);
-
-		for(int i=0 ; i < count ;i++)
-		{
-			String style= stockLedgerTable.get(i).getAttribute("style");
-			if(style.contains("overflow: visible; font-weight: bold; background-color:"))
-			{
-				String data=stockLedgerTable.get(i).getText();
-				AllDatapage1.add(data);
-			}
-		}
-
-		String actAllDatapage1 = AllDatapage1.toString();
-		String expAllDatapage1 = "[D1 D401, D2 D402, VendorACC VAC001]";
-
-		System.out.println("actAllDatapage1"+actAllDatapage1);
-		System.out.println("expAllDatapage1"+expAllDatapage1);
-
-/*
-		int reportsRow5ListCount = reportsRow5List.size();
-		ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow5ListCount;i++)
-		{
-			String data = reportsRow5List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow5ListArray.add(data);
-			}
-
-		}
-		String actRow5List = reportsRow5ListArray.toString();
-		String expRow5List = "[Sub Total, 29.00, 29.00, 29.00, 29.00, 29.00, 29.00, 190]";
-
-
-		System.out.println(actRow5List);
-		System.out.println(expRow5List);
-
-
-		int reportsRow11ListCount = reportsRow11List.size();
-		ArrayList<String> reportsRow11ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow11ListCount;i++)
-		{
-			String data = reportsRow11List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow11ListArray.add(data);
-			}
-
-		}
-		String actRow11List = reportsRow11ListArray.toString();
-		String expRow11List = "[Sub Total, 2.00, 202]";
-
-
-		System.out.println(actRow11List);
-		System.out.println(expRow11List);
-
-		int reportsRow16ListCount = reportsRow16List.size();
-		ArrayList<String> reportsRow16ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow16ListCount;i++)
-		{
-			String data = reportsRow16List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow16ListArray.add(data);
-			}
-
-		}
-		String actRow16List = reportsRow16ListArray.toString();
-		String expRow16List = "[Sub Total, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 185]";
-
-
-		System.out.println(actRow16List);
-		System.out.println(expRow16List);
-
-
-
-
-		String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
-		String afterPath="]//td[2]";
-		int k;
-
-		Thread.sleep(2000);
-
-		int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
-
-		for(  k=1;k<rows1;k++)
-		{
-			String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
-
-			if(text1.contains("Grand Total"))
-			{
-				int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-				System.err.println("count"+rowCount);
-				break;
-			}	
-		}
-
-		int Row1ListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-		ArrayList<String> Row1ListArray = new ArrayList<String>();
-		for(int i=1;i<Row1ListCount;i++)
-		{
-			String data = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).get(i).getText();
-			Row1ListArray.add(data);
-		}
-		String actRowList =Row1ListArray.toString();
-		String expRowList = "[Grand Total, , , 28.00, 28.00, 52.00, , 26.00, 28.00, 28.00, , , , , , 577, , ]";
-
-		System.out.println("actRow1List"+actRowList);
-		System.out.println("expRow1List"+expRowList);
-*/
-
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow3List.equalsIgnoreCase(expRow3List) &&
-				actRow4List.equalsIgnoreCase(expRow4List) &&
-				actRow7List.equalsIgnoreCase(expRow7List) && actRow8List.equalsIgnoreCase(expRow8List)/*&& actRow11List.equalsIgnoreCase(expRow11List)
-				&& actRow16List.equalsIgnoreCase(expRow16List) */&& actAllDatapage1.equalsIgnoreCase(expAllDatapage1) 
-				/*&& actRowList.equalsIgnoreCase(expRowList)*/)
-
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-
-	
-	}
-	
-	public static boolean checkVendorDueDateAnalysisReport() throws InterruptedException
-	{
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(receivableAndPayableAnalysisMenu));
-		receivableAndPayableAnalysisMenu.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorDetailMenu));
-		vendorDetailMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorDetailsVendorDueDateAnalysisReport));
-		vendorDetailsVendorDueDateAnalysisReport.click();
-		
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-
-		Thread.sleep(3000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		Thread.sleep(2000);
-
-		Thread.sleep(2000);
-		int reportsRow1ListCount = reportsCol1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsCol1List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[D1 D401, OpeBal:1, PurVou:1, PurVou:6, Sub Total, D2 D402, OpeBal:1, PurVou:10, PurRet:1, DebNts:1, Sub Total, VendorACC VAC001, OpeBal:1, PurVou:2, NJv:1, Sub Total, Grand Total]";
-
-		System.out.println("Actaul Voucher  :"+actRow1List);
-		System.out.println("Expected Voucher:"+expRow1List);
-
-		Thread.sleep(2000);
-
-
-		Thread.sleep(2000);
-		int reportsRow3ListCount = reportsCol3List.size();
-		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow3ListCount;i++)
-		{
-			String data = reportsCol3List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow3ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow3List = reportsRow3ListArray.toString();
-		String expRow3List = "[D1, D1, D1, D2, D2, D2, D2, VendorACC, VendorACC, VendorACC]";
-
-		System.out.println("Actaul Voucher  :"+actRow3List);
-		System.out.println("Expected Voucher:"+expRow3List);
-
-		Thread.sleep(2000);
-
-		
-
-
-		Thread.sleep(2000);
-		int reportsRow4ListCount = reportsCol4List.size();
-		ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow4ListCount;i++)
-		{
-			String data = reportsCol4List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow4ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[1.00, 29.00, 1.00, 29.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 28.00]";
-
-		System.out.println("Actaul Voucher  :"+actRow4List);
-		System.out.println("Expected Voucher:"+expRow4List);
-
-		Thread.sleep(2000);
-		
-		
-
-
-		Thread.sleep(2000);
-		int reportsRow7ListCount = reportsCol7List.size();
-		ArrayList<String> reportsRow7ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow7ListCount;i++)
-		{
-			String data = reportsCol7List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow7ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow7List = reportsRow7ListArray.toString();
-		String expRow7List = "[1.00, 29.00, 1.00, 29.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 28.00]";
-
-		System.out.println("Actaul Voucher  :"+actRow7List);
-		System.out.println("Expected Voucher:"+expRow7List);
-
-		Thread.sleep(2000);
-		
-
-
-		Thread.sleep(2000);
-		int reportsRow8ListCount = reportsCol8List.size();
-		ArrayList<String> reportsRow8ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow8ListCount;i++)
-		{
-			String data = reportsCol8List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow8ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow8List = reportsRow8ListArray.toString();
-		String expRow8List = "[1.00, 28.00, 29.00, 56.00, 1.00, 1.00, 2.00, 1.00, 1.00, 2.00, 52.00]";
-
-		System.out.println("Actaul Voucher  :"+actRow8List);
-		System.out.println("Expected Voucher:"+expRow8List);
-
-		Thread.sleep(2000);
-
-
-
-		ArrayList<String>  AllDatapage1 = new ArrayList<String>(); 
-
-		int count=stockLedgerTable.size();
-
-		System.err.println(count);
-
-		for(int i=0 ; i < count ;i++)
-		{
-			String style= stockLedgerTable.get(i).getAttribute("style");
-			if(style.contains("overflow: visible; font-weight: bold; background-color:"))
-			{
-				String data=stockLedgerTable.get(i).getText();
-				AllDatapage1.add(data);
-			}
-		}
-
-		String actAllDatapage1 = AllDatapage1.toString();
-		String expAllDatapage1 = "[D1 D401, D2 D402, VendorACC VAC001]";
-
-		System.out.println("actAllDatapage1"+actAllDatapage1);
-		System.out.println("expAllDatapage1"+expAllDatapage1);
-
-/*
-		int reportsRow5ListCount = reportsRow5List.size();
-		ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow5ListCount;i++)
-		{
-			String data = reportsRow5List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow5ListArray.add(data);
-			}
-
-		}
-		String actRow5List = reportsRow5ListArray.toString();
-		String expRow5List = "[Sub Total, 29.00, 29.00, 29.00, 29.00, 29.00, 29.00, 190]";
-
-
-		System.out.println(actRow5List);
-		System.out.println(expRow5List);
-
-
-		int reportsRow11ListCount = reportsRow11List.size();
-		ArrayList<String> reportsRow11ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow11ListCount;i++)
-		{
-			String data = reportsRow11List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow11ListArray.add(data);
-			}
-
-		}
-		String actRow11List = reportsRow11ListArray.toString();
-		String expRow11List = "[Sub Total, 2.00, 202]";
-
-
-		System.out.println(actRow11List);
-		System.out.println(expRow11List);
-
-		int reportsRow16ListCount = reportsRow16List.size();
-		ArrayList<String> reportsRow16ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow16ListCount;i++)
-		{
-			String data = reportsRow16List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow16ListArray.add(data);
-			}
-
-		}
-		String actRow16List = reportsRow16ListArray.toString();
-		String expRow16List = "[Sub Total, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 185]";
-
-
-		System.out.println(actRow16List);
-		System.out.println(expRow16List);
-
-
-
-
-		String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
-		String afterPath="]//td[2]";
-		int k;
-
-		Thread.sleep(2000);
-
-		int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
-
-		for(  k=1;k<rows1;k++)
-		{
-			String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
-
-			if(text1.contains("Grand Total"))
-			{
-				int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-				System.err.println("count"+rowCount);
-				break;
-			}	
-		}
-
-		int Row1ListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-		ArrayList<String> Row1ListArray = new ArrayList<String>();
-		for(int i=1;i<Row1ListCount;i++)
-		{
-			String data = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).get(i).getText();
-			Row1ListArray.add(data);
-		}
-		String actRowList =Row1ListArray.toString();
-		String expRowList = "[Grand Total, , , 28.00, 28.00, 52.00, , 26.00, 28.00, 28.00, , , , , , 577, , ]";
-
-		System.out.println("actRow1List"+actRowList);
-		System.out.println("expRow1List"+expRowList);
-*/
-
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow3List.equalsIgnoreCase(expRow3List) &&
-				actRow4List.equalsIgnoreCase(expRow4List) &&
-				actRow7List.equalsIgnoreCase(expRow7List) && actRow8List.equalsIgnoreCase(expRow8List)/*&& actRow11List.equalsIgnoreCase(expRow11List)
-				&& actRow16List.equalsIgnoreCase(expRow16List) */&& actAllDatapage1.equalsIgnoreCase(expAllDatapage1) 
-				/*&& actRowList.equalsIgnoreCase(expRowList)*/)
-
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-
-	
-	}
-	
-	public static boolean checkVendorAgeingDetailsAnalysis() throws InterruptedException
-	{
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(receivableAndPayableAnalysisMenu));
-		receivableAndPayableAnalysisMenu.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorDetailMenu));
-		vendorDetailMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorDetailsVendorAgeingDetailsReport));
-		vendorDetailsVendorAgeingDetailsReport.click();
-		
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-
-		Thread.sleep(3000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		Thread.sleep(2000);
-
-
-
-		Thread.sleep(2000);
-		int reportsRow1ListCount = reportsCol1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsCol1List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[D1 D401, OpeBal:1, PurVou:1, PurVou:6, Sub Total, D2 D402, OpeBal:1, PurVou:10, PurRet:1, DebNts:1, Sub Total, VendorACC VAC001, OpeBal:1, PurVou:2, NJv:1, Sub Total, Grand Total]";
-
-		System.out.println("Actaul Voucher  :"+actRow1List);
-		System.out.println("Expected Voucher:"+expRow1List);
-
-		Thread.sleep(2000);
-
-
-		Thread.sleep(2000);
-		int reportsRow3ListCount = reportsCol3List.size();
-		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow3ListCount;i++)
-		{
-			String data = reportsCol3List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow3ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow3List = reportsRow3ListArray.toString();
-		String expRow3List = "[D1, D1, D1, D2, D2, D2, D2, VendorACC, VendorACC, VendorACC]";
-
-		System.out.println("Actaul Voucher  :"+actRow3List);
-		System.out.println("Expected Voucher:"+expRow3List);
-
-		Thread.sleep(2000);
-
-		
-
-
-		Thread.sleep(2000);
-		int reportsRow4ListCount = reportsCol4List.size();
-		ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow4ListCount;i++)
-		{
-			String data = reportsCol4List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow4ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[1.00, 29.00, 1.00, 29.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 28.00]";
-
-		System.out.println("Actaul Voucher  :"+actRow4List);
-		System.out.println("Expected Voucher:"+expRow4List);
-
-		Thread.sleep(2000);
-		
-		
-
-
-		Thread.sleep(2000);
-		int reportsRow5ListCount = reportsCol5List.size();
-		ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow5ListCount;i++)
-		{
-			String data = reportsCol5List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow5ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow5List = reportsRow5ListArray.toString();
-		String expRow5List = "[1.00, 29.00, 1.00, 29.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 28.00]";
-
-		System.out.println("Actaul Voucher  :"+actRow5List);
-		System.out.println("Expected Voucher:"+expRow5List);
-
-		Thread.sleep(2000);
-		
-
-
-		Thread.sleep(2000);
-		int reportsRow6ListCount = reportsCol6List.size();
-		ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow6ListCount;i++)
-		{
-			String data = reportsCol6List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow6ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow6List = reportsRow6ListArray.toString();
-		String expRow6List = "[1.00, 28.00, 29.00, 56.00, 1.00, 1.00, 2.00, 1.00, 1.00, 2.00, 52.00]";
-
-		System.out.println("Actaul Voucher  :"+actRow6List);
-		System.out.println("Expected Voucher:"+expRow6List);
-
-		Thread.sleep(2000);
-
-
-
-		ArrayList<String>  AllDatapage1 = new ArrayList<String>(); 
-
-		int count=stockLedgerTable.size();
-
-		System.err.println(count);
-
-		for(int i=0 ; i < count ;i++)
-		{
-			String style= stockLedgerTable.get(i).getAttribute("style");
-			if(style.contains("overflow: visible; font-weight: bold; background-color:"))
-			{
-				String data=stockLedgerTable.get(i).getText();
-				AllDatapage1.add(data);
-			}
-		}
-
-		String actAllDatapage1 = AllDatapage1.toString();
-		String expAllDatapage1 = "[D1 D401, D2 D402, VendorACC VAC001]";
-
-		System.out.println("actAllDatapage1"+actAllDatapage1);
-		System.out.println("expAllDatapage1"+expAllDatapage1);
-
-/*
-		int reportsRow5ListCount = reportsRow5List.size();
-		ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow5ListCount;i++)
-		{
-			String data = reportsRow5List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow5ListArray.add(data);
-			}
-
-		}
-		String actRow5List = reportsRow5ListArray.toString();
-		String expRow5List = "[Sub Total, 29.00, 29.00, 29.00, 29.00, 29.00, 29.00, 190]";
-
-
-		System.out.println(actRow5List);
-		System.out.println(expRow5List);
-
-
-		int reportsRow11ListCount = reportsRow11List.size();
-		ArrayList<String> reportsRow11ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow11ListCount;i++)
-		{
-			String data = reportsRow11List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow11ListArray.add(data);
-			}
-
-		}
-		String actRow11List = reportsRow11ListArray.toString();
-		String expRow11List = "[Sub Total, 2.00, 202]";
-
-
-		System.out.println(actRow11List);
-		System.out.println(expRow11List);
-
-		int reportsRow16ListCount = reportsRow16List.size();
-		ArrayList<String> reportsRow16ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow16ListCount;i++)
-		{
-			String data = reportsRow16List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow16ListArray.add(data);
-			}
-
-		}
-		String actRow16List = reportsRow16ListArray.toString();
-		String expRow16List = "[Sub Total, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 185]";
-
-
-		System.out.println(actRow16List);
-		System.out.println(expRow16List);
-
-
-
-
-		String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
-		String afterPath="]//td[2]";
-		int k;
-
-		Thread.sleep(2000);
-
-		int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
-
-		for(  k=1;k<rows1;k++)
-		{
-			String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
-
-			if(text1.contains("Grand Total"))
-			{
-				int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-				System.err.println("count"+rowCount);
-				break;
-			}	
-		}
-
-		int Row1ListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-		ArrayList<String> Row1ListArray = new ArrayList<String>();
-		for(int i=1;i<Row1ListCount;i++)
-		{
-			String data = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).get(i).getText();
-			Row1ListArray.add(data);
-		}
-		String actRowList =Row1ListArray.toString();
-		String expRowList = "[Grand Total, , , 28.00, 28.00, 52.00, , 26.00, 28.00, 28.00, , , , , , 577, , ]";
-
-		System.out.println("actRow1List"+actRowList);
-		System.out.println("expRow1List"+expRowList);
-*/
-
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow3List.equalsIgnoreCase(expRow3List) &&
-				actRow4List.equalsIgnoreCase(expRow4List) &&
-				actRow5List.equalsIgnoreCase(expRow5List) && actRow6List.equalsIgnoreCase(expRow6List)/*&& actRow11List.equalsIgnoreCase(expRow11List)
-				&& actRow16List.equalsIgnoreCase(expRow16List) */&& actAllDatapage1.equalsIgnoreCase(expAllDatapage1) 
-				/*&& actRowList.equalsIgnoreCase(expRowList)*/)
-
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-
-	
-	}
-	
-	public static boolean checkVendorAgeingDetailByDueDateReport() throws InterruptedException
-	{
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(receivableAndPayableAnalysisMenu));
-		receivableAndPayableAnalysisMenu.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorDetailMenu));
-		vendorDetailMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorDetailsVendorDetailsAgeingByDueDateReport));
-		vendorDetailsVendorDetailsAgeingByDueDateReport.click();
-		
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-
-		Thread.sleep(3000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		Thread.sleep(2000);
-
-
-
-		Thread.sleep(2000);
-		int reportsRow1ListCount = reportsCol1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsCol1List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[D1 D401, OpeBal:1, PurVou:1, PurVou:6, Sub Total, D2 D402, OpeBal:1, PurVou:10, PurRet:1, DebNts:1, Sub Total, VendorACC VAC001, OpeBal:1, PurVou:2, NJv:1, Sub Total, Grand Total]";
-
-		System.out.println("Actaul Voucher  :"+actRow1List);
-		System.out.println("Expected Voucher:"+expRow1List);
-
-		Thread.sleep(2000);
-
-
-		Thread.sleep(2000);
-		int reportsRow3ListCount = reportsCol3List.size();
-		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow3ListCount;i++)
-		{
-			String data = reportsCol3List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow3ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow3List = reportsRow3ListArray.toString();
-		String expRow3List = "[D1, D1, D1, D2, D2, D2, D2, VendorACC, VendorACC, VendorACC]";
-
-		System.out.println("Actaul Voucher  :"+actRow3List);
-		System.out.println("Expected Voucher:"+expRow3List);
-
-		Thread.sleep(2000);
-
-		
-
-
-		Thread.sleep(2000);
-		int reportsRow4ListCount = reportsCol4List.size();
-		ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow4ListCount;i++)
-		{
-			String data = reportsCol4List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow4ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[1.00, 29.00, 1.00, 29.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 28.00]";
-
-		System.out.println("Actaul Voucher  :"+actRow4List);
-		System.out.println("Expected Voucher:"+expRow4List);
-
-		Thread.sleep(2000);
-		
-		
-
-
-		Thread.sleep(2000);
-		int reportsRow5ListCount = reportsCol5List.size();
-		ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow5ListCount;i++)
-		{
-			String data = reportsCol5List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow5ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow5List = reportsRow5ListArray.toString();
-		String expRow5List = "[1.00, 29.00, 1.00, 29.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 28.00]";
-
-		System.out.println("Actaul Voucher  :"+actRow5List);
-		System.out.println("Expected Voucher:"+expRow5List);
-
-		Thread.sleep(2000);
-		
-
-
-		Thread.sleep(2000);
-		int reportsRow6ListCount = reportsCol6List.size();
-		ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow6ListCount;i++)
-		{
-			String data = reportsCol6List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow6ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow6List = reportsRow6ListArray.toString();
-		String expRow6List = "[1.00, 28.00, 29.00, 56.00, 1.00, 1.00, 2.00, 1.00, 1.00, 2.00, 52.00]";
-
-		System.out.println("Actaul Voucher  :"+actRow6List);
-		System.out.println("Expected Voucher:"+expRow6List);
-
-		Thread.sleep(2000);
-
-
-
-		ArrayList<String>  AllDatapage1 = new ArrayList<String>(); 
-
-		int count=stockLedgerTable.size();
-
-		System.err.println(count);
-
-		for(int i=0 ; i < count ;i++)
-		{
-			String style= stockLedgerTable.get(i).getAttribute("style");
-			if(style.contains("overflow: visible; font-weight: bold; background-color:"))
-			{
-				String data=stockLedgerTable.get(i).getText();
-				AllDatapage1.add(data);
-			}
-		}
-
-		String actAllDatapage1 = AllDatapage1.toString();
-		String expAllDatapage1 = "[D1 D401, D2 D402, VendorACC VAC001]";
-
-		System.out.println("actAllDatapage1"+actAllDatapage1);
-		System.out.println("expAllDatapage1"+expAllDatapage1);
-
-/*
-		int reportsRow5ListCount = reportsRow5List.size();
-		ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow5ListCount;i++)
-		{
-			String data = reportsRow5List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow5ListArray.add(data);
-			}
-
-		}
-		String actRow5List = reportsRow5ListArray.toString();
-		String expRow5List = "[Sub Total, 29.00, 29.00, 29.00, 29.00, 29.00, 29.00, 190]";
-
-
-		System.out.println(actRow5List);
-		System.out.println(expRow5List);
-
-
-		int reportsRow11ListCount = reportsRow11List.size();
-		ArrayList<String> reportsRow11ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow11ListCount;i++)
-		{
-			String data = reportsRow11List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow11ListArray.add(data);
-			}
-
-		}
-		String actRow11List = reportsRow11ListArray.toString();
-		String expRow11List = "[Sub Total, 2.00, 202]";
-
-
-		System.out.println(actRow11List);
-		System.out.println(expRow11List);
-
-		int reportsRow16ListCount = reportsRow16List.size();
-		ArrayList<String> reportsRow16ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow16ListCount;i++)
-		{
-			String data = reportsRow16List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow16ListArray.add(data);
-			}
-
-		}
-		String actRow16List = reportsRow16ListArray.toString();
-		String expRow16List = "[Sub Total, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 185]";
-
-
-		System.out.println(actRow16List);
-		System.out.println(expRow16List);
-
-
-
-
-		String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
-		String afterPath="]//td[2]";
-		int k;
-
-		Thread.sleep(2000);
-
-		int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
-
-		for(  k=1;k<rows1;k++)
-		{
-			String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
-
-			if(text1.contains("Grand Total"))
-			{
-				int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-				System.err.println("count"+rowCount);
-				break;
-			}	
-		}
-
-		int Row1ListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-		ArrayList<String> Row1ListArray = new ArrayList<String>();
-		for(int i=1;i<Row1ListCount;i++)
-		{
-			String data = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).get(i).getText();
-			Row1ListArray.add(data);
-		}
-		String actRowList =Row1ListArray.toString();
-		String expRowList = "[Grand Total, , , 28.00, 28.00, 52.00, , 26.00, 28.00, 28.00, , , , , , 577, , ]";
-
-		System.out.println("actRow1List"+actRowList);
-		System.out.println("expRow1List"+expRowList);
-*/
-
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow3List.equalsIgnoreCase(expRow3List) &&
-				actRow4List.equalsIgnoreCase(expRow4List) &&
-				actRow5List.equalsIgnoreCase(expRow5List) && actRow6List.equalsIgnoreCase(expRow6List)/*&& actRow11List.equalsIgnoreCase(expRow11List)
-				&& actRow16List.equalsIgnoreCase(expRow16List) */&& actAllDatapage1.equalsIgnoreCase(expAllDatapage1) 
-				/*&& actRowList.equalsIgnoreCase(expRowList)*/)
-
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-
-	
-	}
-	
-	public static boolean checkVendorOverDueAnalysisReport() throws InterruptedException
-	{
-		Thread.sleep(2000);
-		getDriver().navigate().refresh();
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(receivableAndPayableAnalysisMenu));
-		receivableAndPayableAnalysisMenu.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorDetailMenu));
-		vendorDetailMenu.click();
-		
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorDetailsVendorOverdueAnalysisReport));
-		vendorDetailsVendorOverdueAnalysisReport.click();
-		
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-
-		Thread.sleep(3000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		Thread.sleep(2000);
-
-
-
-		Thread.sleep(2000);
-		int reportsRow1ListCount = reportsCol1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsCol1List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[D1 D401, OpeBal:1, PurVou:1, PurVou:6, Sub Total, D2 D402, OpeBal:1, PurVou:10, PurRet:1, DebNts:1, Sub Total, VendorACC VAC001, OpeBal:1, PurVou:2, NJv:1, Sub Total, Grand Total]";
-
-		System.out.println("Actaul Voucher  :"+actRow1List);
-		System.out.println("Expected Voucher:"+expRow1List);
-
-		Thread.sleep(2000);
-
-
-		Thread.sleep(2000);
-		int reportsRow3ListCount = reportsCol3List.size();
-		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow3ListCount;i++)
-		{
-			String data = reportsCol3List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow3ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow3List = reportsRow3ListArray.toString();
-		String expRow3List = "[D1, D1, D1, D2, D2, D2, D2, VendorACC, VendorACC, VendorACC]";
-
-		System.out.println("Actaul Voucher  :"+actRow3List);
-		System.out.println("Expected Voucher:"+expRow3List);
-
-		Thread.sleep(2000);
-
-		
-
-
-		Thread.sleep(2000);
-		int reportsRow4ListCount = reportsCol4List.size();
-		ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow4ListCount;i++)
-		{
-			String data = reportsCol4List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow4ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[1.00, 1.00, 29.00, 29.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 28.00]";
-
-		System.out.println("Actaul Voucher  :"+actRow4List);
-		System.out.println("Expected Voucher:"+expRow4List);
-
-		Thread.sleep(2000);
-		
-		
-
-
-		Thread.sleep(2000);
-		int reportsRow5ListCount = reportsCol5List.size();
-		ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow5ListCount;i++)
-		{
-			String data = reportsCol5List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow5ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow5List = reportsRow5ListArray.toString();
-		String expRow5List = "[1.00, 1.00, 29.00, 29.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 28.00]";
-
-		System.out.println("Actaul Voucher  :"+actRow5List);
-		System.out.println("Expected Voucher:"+expRow5List);
-
-		Thread.sleep(2000);
-		
-
-
-		Thread.sleep(2000);
-		int reportsRow6ListCount = reportsCol7List.size();
-		ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow6ListCount;i++)
-		{
-			String data = reportsCol7List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow6ListArray.add(data);
-			}
-
-		}
-
-
-		String actRow6List = reportsRow6ListArray.toString();
-		String expRow6List = "[1.00, 28.00, 29.00, 56.00, 1.00, 1.00, 2.00, 1.00, 1.00, 2.00, 52.00]";
-
-		System.out.println("Actaul Voucher  :"+actRow6List);
-		System.out.println("Expected Voucher:"+expRow6List);
-
-		Thread.sleep(2000);
-
-
-
-		ArrayList<String>  AllDatapage1 = new ArrayList<String>(); 
-
-		int count=stockLedgerTable.size();
-
-		System.err.println(count);
-
-		for(int i=0 ; i < count ;i++)
-		{
-			String style= stockLedgerTable.get(i).getAttribute("style");
-			if(style.contains("overflow: visible; font-weight: bold; background-color:"))
-			{
-				String data=stockLedgerTable.get(i).getText();
-				AllDatapage1.add(data);
-			}
-		}
-
-		String actAllDatapage1 = AllDatapage1.toString();
-		String expAllDatapage1 = "[D1 D401, D2 D402, VendorACC VAC001]";
-
-		System.out.println("actAllDatapage1"+actAllDatapage1);
-		System.out.println("expAllDatapage1"+expAllDatapage1);
-
-/*
-		int reportsRow5ListCount = reportsRow5List.size();
-		ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow5ListCount;i++)
-		{
-			String data = reportsRow5List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow5ListArray.add(data);
-			}
-
-		}
-		String actRow5List = reportsRow5ListArray.toString();
-		String expRow5List = "[Sub Total, 29.00, 29.00, 29.00, 29.00, 29.00, 29.00, 190]";
-
-
-		System.out.println(actRow5List);
-		System.out.println(expRow5List);
-
-
-		int reportsRow11ListCount = reportsRow11List.size();
-		ArrayList<String> reportsRow11ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow11ListCount;i++)
-		{
-			String data = reportsRow11List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow11ListArray.add(data);
-			}
-
-		}
-		String actRow11List = reportsRow11ListArray.toString();
-		String expRow11List = "[Sub Total, 2.00, 202]";
-
-
-		System.out.println(actRow11List);
-		System.out.println(expRow11List);
-
-		int reportsRow16ListCount = reportsRow16List.size();
-		ArrayList<String> reportsRow16ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow16ListCount;i++)
-		{
-			String data = reportsRow16List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow16ListArray.add(data);
-			}
-
-		}
-		String actRow16List = reportsRow16ListArray.toString();
-		String expRow16List = "[Sub Total, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 185]";
-
-
-		System.out.println(actRow16List);
-		System.out.println(expRow16List);
-
-
-
-
-		String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
-		String afterPath="]//td[2]";
-		int k;
-
-		Thread.sleep(2000);
-
-		int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
-
-		for(  k=1;k<rows1;k++)
-		{
-			String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
-
-			if(text1.contains("Grand Total"))
-			{
-				int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-				System.err.println("count"+rowCount);
-				break;
-			}	
-		}
-
-		int Row1ListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
-		ArrayList<String> Row1ListArray = new ArrayList<String>();
-		for(int i=1;i<Row1ListCount;i++)
-		{
-			String data = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).get(i).getText();
-			Row1ListArray.add(data);
-		}
-		String actRowList =Row1ListArray.toString();
-		String expRowList = "[Grand Total, , , 28.00, 28.00, 52.00, , 26.00, 28.00, 28.00, , , , , , 577, , ]";
-
-		System.out.println("actRow1List"+actRowList);
-		System.out.println("expRow1List"+expRowList);
-*/
-
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow3List.equalsIgnoreCase(expRow3List) &&
-				actRow4List.equalsIgnoreCase(expRow4List) &&
-				actRow5List.equalsIgnoreCase(expRow5List) && actRow6List.equalsIgnoreCase(expRow6List)/*&& actRow11List.equalsIgnoreCase(expRow11List)
-				&& actRow16List.equalsIgnoreCase(expRow16List) */&& actAllDatapage1.equalsIgnoreCase(expAllDatapage1) 
-				/*&& actRowList.equalsIgnoreCase(expRowList)*/)
-
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-
-	
-	}
-	
-	
-	public static boolean checkVendorAgeingSummaryAnalysisReport() throws InterruptedException
-	{
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(receivableAndPayableAnalysisMenu));
-		receivableAndPayableAnalysisMenu.click();
-		
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorSummaryMenu));
-		vendorSummaryMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorSummeryVendorAgeingSummaryReport));
-		vendorSummeryVendorAgeingSummaryReport.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		
-
-
-		int reportsCol1ListCount = reportsCol1List.size();
-		ArrayList<String> reportsCol1ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsCol1ListCount;i++)
-		{
-			String data = reportsCol1List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsCol1ListArray.add(data);
-			}
-
-		}
-		String actCol1List = reportsCol1ListArray.toString();
-		String expCol1List = "[D1, VendorACC, Grand Total]";
-
-
-
-		int reportsCol2ListCount = reportsCol2List.size();
-		ArrayList<String> reportsCol2ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsCol2ListCount;i++)
-		{
-			String data = reportsCol2List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsCol2ListArray.add(data);
-			}
-
-
-		}
-		String actCol2List = reportsCol2ListArray.toString();
-		String expCol2List = "[29.00, 1.00, 28.00]";
-
-
-
-		int reportsCol3ListCount = reportsCol3List.size();
-		ArrayList<String> reportsCol3ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsCol3ListCount;i++)
-		{
-			String data = reportsCol3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsCol3ListArray.add(data);
-			}
-
-		}
-		String actCol3List = reportsCol3ListArray.toString();
-		String expCol3List = "[29.00, 1.00, 28.00]";
-
-		
-
-		int reportsCol6ListCount = reportsCol6List.size();
-		ArrayList<String> reportsCol6ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsCol6ListCount;i++)
-		{
-			String data = reportsCol6List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsCol6ListArray.add(data);
-			}
-
-		}
-		String actCol6List = reportsCol6ListArray.toString();
-		String expCol6List = "[29.00, 1.00, 28.00]";
-
-
-		
-		System.out.println(actCol1List);
-		System.out.println(expCol1List);
-
-		System.out.println(actCol2List);
-		System.out.println(expCol2List);
-
-		System.out.println(actCol3List);
-		System.out.println(expCol3List);
-
-		System.out.println(actCol6List);
-		System.out.println(expCol6List);
-		
-		
-	
-		if (actCol1List.equalsIgnoreCase(expCol1List) && actCol2List.equalsIgnoreCase(expCol2List) 
-				&& actCol3List.equalsIgnoreCase(expCol3List) && actCol6List.equalsIgnoreCase(expCol6List)  )
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-		
-	
-	}
-	
-	public static boolean checkVendorSummaryAgeingByDueDateReport() throws InterruptedException
-	{
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(receivableAndPayableAnalysisMenu));
-		receivableAndPayableAnalysisMenu.click();
-		
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorSummaryMenu));
-		vendorSummaryMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorSummeryVendorSummaryAgeingByDueDateReport));
-		vendorSummeryVendorSummaryAgeingByDueDateReport.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		
-
-
-		int reportsCol1ListCount = reportsCol1List.size();
-		ArrayList<String> reportsCol1ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsCol1ListCount;i++)
-		{
-			String data = reportsCol1List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsCol1ListArray.add(data);
-			}
-
-		}
-		String actCol1List = reportsCol1ListArray.toString();
-		String expCol1List = "[D1, VendorACC, Grand Total]";
-
-
-
-		int reportsCol2ListCount = reportsCol2List.size();
-		ArrayList<String> reportsCol2ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsCol2ListCount;i++)
-		{
-			String data = reportsCol2List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsCol2ListArray.add(data);
-			}
-
-
-		}
-		String actCol2List = reportsCol2ListArray.toString();
-		String expCol2List = "[29.00, 1.00, 28.00]";
-
-
-
-		int reportsCol3ListCount = reportsCol3List.size();
-		ArrayList<String> reportsCol3ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsCol3ListCount;i++)
-		{
-			String data = reportsCol3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsCol3ListArray.add(data);
-			}
-
-		}
-		String actCol3List = reportsCol3ListArray.toString();
-		String expCol3List = "[29.00, 1.00, 28.00]";
-
-		
-
-		int reportsCol6ListCount = reportsCol6List.size();
-		ArrayList<String> reportsCol6ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsCol6ListCount;i++)
-		{
-			String data = reportsCol6List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsCol6ListArray.add(data);
-			}
-
-		}
-		String actCol6List = reportsCol6ListArray.toString();
-		String expCol6List = "[29.00, 1.00, 28.00]";
-
-
-		
-		System.out.println(actCol1List);
-		System.out.println(expCol1List);
-
-		System.out.println(actCol2List);
-		System.out.println(expCol2List);
-
-		System.out.println(actCol3List);
-		System.out.println(expCol3List);
-
-		System.out.println(actCol6List);
-		System.out.println(expCol6List);
-		
-		
-	
-		if (actCol1List.equalsIgnoreCase(expCol1List) && actCol2List.equalsIgnoreCase(expCol2List) 
-				&& actCol3List.equalsIgnoreCase(expCol3List) && actCol6List.equalsIgnoreCase(expCol6List)  )
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-		
-	}
-	
-	public static boolean checkVendorOverDueSummaryReport() throws InterruptedException
-	{
-
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(receivableAndPayableAnalysisMenu));
-		receivableAndPayableAnalysisMenu.click();
-		
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorSummaryMenu));
-		vendorSummaryMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorSummeryVendorOverdueSummaryReport));
-		vendorSummeryVendorOverdueSummaryReport.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-
-
-		int reportsCol1ListCount = reportsCol1List.size();
-		ArrayList<String> reportsCol1ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsCol1ListCount;i++)
-		{
-			String data = reportsCol1List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsCol1ListArray.add(data);
-			}
-
-		}
-		String actCol1List = reportsCol1ListArray.toString();
-		String expCol1List = "[D1, VendorACC, Grand Total]";
-
-
-
-		int reportsCol2ListCount = reportsCol2List.size();
-		ArrayList<String> reportsCol2ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsCol2ListCount;i++)
-		{
-			String data = reportsCol2List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsCol2ListArray.add(data);
-			}
-
-
-		}
-		String actCol2List = reportsCol2ListArray.toString();
-		String expCol2List = "[28.00, 1.00, 27.00]";
-
-
-
-		int reportsCol3ListCount = reportsCol3List.size();
-		ArrayList<String> reportsCol3ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsCol3ListCount;i++)
-		{
-			String data = reportsCol3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsCol3ListArray.add(data);
-			}
-
-		}
-		String actCol3List = reportsCol3ListArray.toString();
-		String expCol3List = "[28.00, 1.00, 27.00]";
-
-		System.out.println(actCol1List);
-		System.out.println(expCol1List);
-
-		System.out.println(actCol2List);
-		System.out.println(expCol2List);
-
-		System.out.println(actCol3List);
-		System.out.println(expCol3List);
-
-	
-		if (actCol1List.equalsIgnoreCase(expCol1List) && actCol2List.equalsIgnoreCase(expCol2List) 
-				&& actCol3List.equalsIgnoreCase(expCol3List))
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-		
-	}
-	
-	public static boolean checkVendorBillWiseSummaryReport() throws InterruptedException
-	{
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(receivableAndPayableAnalysisMenu));
-		receivableAndPayableAnalysisMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorSummaryMenu));
-		vendorSummaryMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorSummeryVendorBillWiseSummaryReport));
-		vendorSummeryVendorBillWiseSummaryReport.click();
-		
-		
-		Thread.sleep(2000);
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
-		
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		
-		int reportsRow1ListCount = reportsRow1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsRow1List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[D1, 1.00, 33.00, D401]";
-
-
-
-		int reportsRow2ListCount = reportsRow2List.size();
-		ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow2ListCount;i++)
-		{
-			String data = reportsRow2List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow2ListArray.add(data);
-			}
-
-
-		}
-		String actRow2List = reportsRow2ListArray.toString();
-		String expRow2List = "[D2, 2.00, 2.00, D402]";
-
-
-
-		int reportsRow3ListCount = reportsRow3List.size();
-		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow3ListCount;i++)
-		{
-			String data = reportsRow3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow3ListArray.add(data);
-			}
-
-		}
-		String actRow3List = reportsRow3ListArray.toString();
-		String expRow3List = "[VendorACC, 2.00, 1.00, VAC001]";
-
-
-
-		int reportsRow4ListCount = reportsRow4List.size();
-		ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow4ListCount;i++)
-		{
-			String data = reportsRow4List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow4ListArray.add(data);
-			}
-
-		}
-		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[Grand Total, 5.00, 36.00]";
-
-		System.out.println(actRow1List);
-		System.out.println(expRow1List);
-
-		System.out.println(actRow2List);
-		System.out.println(expRow2List);
-
-		System.out.println(actRow3List);
-		System.out.println(expRow3List);
-
-		System.out.println(actRow4List);
-		System.out.println(expRow4List);
-
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List) 
-				&& actRow4List.equalsIgnoreCase(expRow4List))
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-		
-	}
-	
-	public static boolean checkTrailBalanceReport() throws InterruptedException
-	{   
-		Thread.sleep(2000);
-		getDriver().navigate().refresh();
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsFinalAccountsMenu));
-		financialsFinalAccountsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(trialBalanceReport));
-		trialBalanceReport.click();
-	
-		Thread.sleep(1500);
-	
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		
-
-		int reportsRow1ListCount = reportsRow1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsRow1List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[BankACC, BAC001, BankACC, 1.00, 1.00, 2.00, 2.00, 1.00, 1.00, 2.00, 2.00]";
-
-
-
-		int reportsRow2ListCount = reportsRow2List.size();
-		ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow2ListCount;i++)
-		{
-			String data = reportsRow2List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow2ListArray.add(data);
-			}
-
-
-		}
-		String actRow2List = reportsRow2ListArray.toString();
-		String expRow2List = "[CashACC, CASH001, CashACC, 1.00, 1.00, 2.00, 1.00, 1.00, 1.00, 2.00, 1.00, 2.56, 2.56]";
-
-
-
-		int reportsRow3ListCount = reportsRow3List.size();
-		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow3ListCount;i++)
-		{
-			String data = reportsRow3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow3ListArray.add(data);
-			}
-
-		}
-		String actRow3List = reportsRow3ListArray.toString();
-		String expRow3List = "[CONTROL ACCOUNTS, CA, CONTROL ACCOUNTS, 18.00, 18.00, 18.00, 18.00]";
-
-
-
-		int reportsRow4ListCount = reportsRow4List.size();
-		ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow4ListCount;i++)
-		{
-			String data = reportsRow4List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow4ListArray.add(data);
-			}
-
-		}
-		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[Opening Balances Control A/C, OBC, Opening Balances Control A/C, 18.00, 18.00, 18.00, 18.00]";
-
-
-
-		int reportsRow5ListCount = reportsRow5List.size();
-		ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow5ListCount;i++)
-		{
-			String data = reportsRow5List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow5ListArray.add(data);
-			}
-		}
-		String actRow5List = reportsRow5ListArray.toString();
-		String expRow5List = "[G, G700, G, 3.00, 2.00, 1.00, 8.00, 11.00, 3.00, 2.00, 1.00, 8.00, 11.00, 7.69, 7.69]";
-		
-
-		int reportsRow6ListCount = reportsRow6List.size();
-		ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow6ListCount;i++)
-		{
-			String data = reportsRow6List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow6ListArray.add(data);
-			}
-		}
-		String actRow6List = reportsRow6ListArray.toString();
-		String expRow6List = "[H, H800, H, 3.00, 2.00, 1.00, 8.00, 11.00, 3.00, 2.00, 1.00, 8.00, 11.00, 7.69, 7.69]";
-		
-		
-		//
-
-
-		int reportsRow7ListCount = reportsRow7List.size();
-		ArrayList<String> reportsRow7ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow7ListCount;i++)
-		{
-			String data = reportsRow7List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow7ListArray.add(data);
-			}
-
-		}
-		String actRow7List = reportsRow7ListArray.toString();
-		String expRow7List = "[H1, H801, H1, 6.00, 1.00, 5.00, 5.00, 11.00, 6.00, 1.00, 5.00, 5.00, 11.00, 15.38, 15.38]";
-
-
-
-		int reportsRow8ListCount = reportsRow8List.size();
-		ArrayList<String> reportsRow8ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow8ListCount;i++)
-		{
-			String data = reportsRow8List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow8ListArray.add(data);
-			}
-
-		}
-		String actRow8List = reportsRow8ListArray.toString();
-		String expRow8List = "[H2, H802, H2, 3.00, 1.00, 4.00, 3.00, 3.00, 1.00, 4.00, 3.00, 7.69, 7.69]";
-
-
-
-		int reportsRow9ListCount = reportsRow9List.size();
-		ArrayList<String> reportsRow9ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow9ListCount;i++)
-		{
-			String data = reportsRow9List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow9ListArray.add(data);
-			}
-		}
-		String actRow9List = reportsRow9ListArray.toString();
-		String expRow9List = "[CustomerACC, CAC001, CustomerACC, 1.00, 1.00, 2.00, 2.00, 1.00, 1.00, 1.00, 2.00, 2.00, 1.00, 2.56, 2.56]";
-		
-		
-		///
-
-		int reportsRow10ListCount = reportsRow10List.size();
-		ArrayList<String> reportsRow10ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow10ListCount;i++)
-		{
-			String data = reportsRow10List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow10ListArray.add(data);
-			}
-
-		}
-		String actRow10List = reportsRow10ListArray.toString();
-		String expRow10List = "[PurchaseACC, PAC001, PurchaseACC, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 2.56, 2.56]";
-
-
-
-		int reportsRow11ListCount = reportsRow11List.size();
-		ArrayList<String> reportsRow11ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow11ListCount;i++)
-		{
-			String data = reportsRow11List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow11ListArray.add(data);
-			}
-
-
-		}
-		String actRow11List = reportsRow11ListArray.toString();
-		String expRow11List = "[A, A100, A, 33.00, 4.00, 37.00, 35.00, 2.00, 33.00, 4.00, 37.00, 35.00, 2.00, 84.62, 84.62]";
-
-
-
-		int reportsRow12ListCount = reportsRow12List.size();
-		ArrayList<String> reportsRow12ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow12ListCount;i++)
-		{
-			String data = reportsRow12List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow12ListArray.add(data);
-			}
-
-		}
-		String actRow12List = reportsRow12ListArray.toString();
-		String expRow12List = "[A1, A101, A1, 33.00, 1.00, 34.00, 34.00, 1.00, 33.00, 1.00, 34.00, 34.00, 1.00, 84.62, 84.62]";
-
-
-
-		int reportsRow13ListCount = reportsRow13List.size();
-		ArrayList<String> reportsRow13ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow13ListCount;i++)
-		{
-			String data = reportsRow13List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow13ListArray.add(data);
-			}
-
-		}
-		String actRow13List = reportsRow13ListArray.toString();
-		String expRow13List = "[A2, A102, A2, 1.00, 1.00, 1.00, 1.00]";
-
-
-
-		int reportsRow14ListCount = reportsRow14List.size();
-		ArrayList<String> reportsRow14ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow14ListCount;i++)
-		{
-			String data = reportsRow14List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow14ListArray.add(data);
-			}
-		}
-		String actRow14List = reportsRow14ListArray.toString();
-		String expRow14List = "[B, B200, B, 2.00, 2.00, 1.00, 1.00, 2.00, 2.00, 1.00, 1.00]";
-		
-
-		int reportsRow15ListCount = reportsRow15List.size();
-		ArrayList<String> reportsRow15ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow15ListCount;i++)
-		{
-			String data = reportsRow15List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow15ListArray.add(data);
-			}
-		}
-		String actRow15List = reportsRow15ListArray.toString();
-		String expRow15List = "[B1, B201, B1, 1.00, 1.00, 1.00, 1.00]";
-		
-		
-
-		int reportsRow16ListCount = reportsRow16List.size();
-		ArrayList<String> reportsRow16ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow16ListCount;i++)
-		{
-			String data = reportsRow16List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow16ListArray.add(data);
-			}
-
-		}
-		String actRow16List = reportsRow16ListArray.toString();
-		String expRow16List = "[B2, B202, B2, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00]";
-
-
-
-		int reportsRow17ListCount = reportsRow17List.size();
-		ArrayList<String> reportsRow17ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow17ListCount;i++)
-		{
-			String data = reportsRow17List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow17ListArray.add(data);
-			}
-
-		}
-		String actRow17List = reportsRow17ListArray.toString();
-		String expRow17List = "[SalesACC, SAC001, SalesACC, 2.00, 1.00, 1.00, 2.00, 2.00, 1.00, 1.00, 2.00, 5.13, 5.13]";
-
-
-
-		int reportsRow18ListCount = reportsRow18List.size();
-		ArrayList<String> reportsRow18ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow18ListCount;i++)
-		{
-			String data = reportsRow18List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow18ListArray.add(data);
-			}
-		}
-		String actRow18List = reportsRow18ListArray.toString();
-		String expRow18List = "[E, E500, E, 4.00, 4.00, 8.00, 12.00, 8.00, 4.00, 4.00, 8.00, 12.00, 8.00, 10.26, 10.26]";
-		
-		int reportsRow19ListCount = reportsRow19List.size();
-		ArrayList<String> reportsRow19ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow19ListCount;i++)
-		{
-			String data = reportsRow19List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow19ListArray.add(data);
-			}
-		}
-		String actRow19List = reportsRow19ListArray.toString();
-		String expRow19List = "[E1, E501, E1, 6.00, 1.00, 7.00, 11.00, 5.00, 6.00, 1.00, 7.00, 11.00, 5.00, 15.38, 15.38]";
-		
-		Thread.sleep(2000);
-		report_NextBtn.click();
-		Thread.sleep(2000);
-		
-		
-
-		int reportspage2Row1ListCount = reportsrow1List.size();
-		ArrayList<String> reportspage2Row1ListArray = new ArrayList<String>();
-		for(int i=1;i<reportspage2Row1ListCount;i++)
-		{
-			String data = reportsrow1List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportspage2Row1ListArray.add(data);
-			}
-
-		}
-		String actpage2Row1List = reportspage2Row1ListArray.toString();
-		String exppage2Row1List = "[E2, E502, E2, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00]";
-
-
-
-		int reportspage2Row2ListCount = reportsrow2List.size();
-		ArrayList<String> reportspage2Row2ListArray = new ArrayList<String>();
-		for(int i=1;i<reportspage2Row2ListCount;i++)
-		{
-			String data = reportsrow2List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportspage2Row2ListArray.add(data);
-			}
-
-
-		}
-		String actpage2Row2List = reportspage2Row2ListArray.toString();
-		String exppage2Row2List = "[F, F600, F, 2.00, 2.00, 2.00, 2.00, 2.00, 2.00, 5.13, 5.13]";
-
-
-
-		int reportspage2Row3ListCount = reportsrow3List.size();
-		ArrayList<String> reportspage2Row3ListArray = new ArrayList<String>();
-		for(int i=1;i<reportspage2Row3ListCount;i++)
-		{
-			String data = reportsrow3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportspage2Row3ListArray.add(data);
-			}
-
-		}
-		String actpage2Row3List = reportspage2Row3ListArray.toString();
-		String exppage2Row3List = "[F1, F601, F1, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 2.56, 2.56]";
-
-
-
-		int reportspage2Row4ListCount = reportsrow4List.size();
-		ArrayList<String> reportspage2Row4ListArray = new ArrayList<String>();
-		for(int i=1;i<reportspage2Row4ListCount;i++)
-		{
-			String data = reportsrow4List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportspage2Row4ListArray.add(data);
-			}
-
-		}
-		String actpage2Row4List = reportspage2Row4ListArray.toString();
-		String exppage2Row4List = "[F2, F602, F2, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 2.56, 2.56]";
-
-
-
-		int reportspage2Row5ListCount = reportsRow5List.size();
-		ArrayList<String> reportspage2Row5ListArray = new ArrayList<String>();
-		for(int i=1;i<reportspage2Row5ListCount;i++)
-		{
-			String data = reportsRow5List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportspage2Row5ListArray.add(data);
-			}
-		}
-		String actpage2Row5List = reportspage2Row5ListArray.toString();
-		String exppage2Row5List = "[C, C300, C, 33.00, 2.00, 31.00, 1.00, 34.00, 33.00, 2.00, 31.00, 1.00, 34.00, 84.62, 84.62]";
-		
-
-		int reportspage2Row6ListCount = reportsRow6List.size();
-		ArrayList<String> reportspage2Row6ListArray = new ArrayList<String>();
-		for(int i=1;i<reportspage2Row6ListCount;i++)
-		{
-			String data = reportsRow6List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportspage2Row6ListArray.add(data);
-			}
-		}
-		String actpage2Row6List = reportspage2Row6ListArray.toString();
-		String exppage2Row6List = "[D, D400, D, 33.00, 2.00, 31.00, 1.00, 34.00, 33.00, 2.00, 31.00, 1.00, 34.00, 84.62, 84.62]";
-		
-		
-		//
-
-
-		int reportspage2Row7ListCount = reportsRow7List.size();
-		ArrayList<String> reportspage2Row7ListArray = new ArrayList<String>();
-		for(int i=1;i<reportspage2Row7ListCount;i++)
-		{
-			String data = reportsRow7List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportspage2Row7ListArray.add(data);
-			}
-
-		}
-		String actpage2Row7List = reportspage2Row7ListArray.toString();
-		String exppage2Row7List = "[D1, D401, D1, 32.00, 1.00, 31.00, 32.00, 32.00, 1.00, 31.00, 32.00, 82.05, 82.05]";
-
-
-
-		int reportspage2Row8ListCount = reportsRow8List.size();
-		ArrayList<String> reportspage2Row8ListArray = new ArrayList<String>();
-		for(int i=1;i<reportspage2Row8ListCount;i++)
-		{
-			String data = reportsRow8List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportspage2Row8ListArray.add(data);
-			}
-
-		}
-		String actpage2Row8List = reportspage2Row8ListArray.toString();
-		String exppage2Row8List = "[D2, D402, D2, 1.00, 1.00, 1.00, 2.00, 1.00, 1.00, 1.00, 2.00, 2.56, 2.56]";
-
-
-
-		int reportspage2Row9ListCount = reportsRow9List.size();
-		ArrayList<String> reportspage2Row9ListArray = new ArrayList<String>();
-		for(int i=1;i<reportspage2Row9ListCount;i++)
-		{
-			String data = reportsRow9List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportspage2Row9ListArray.add(data);
-			}
-		}
-		String actpage2Row9List = reportspage2Row9ListArray.toString();
-		String exppage2Row9List = "[VendorACC, VAC001, VendorACC, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00]";
-		
-
-		int reportspage2Row10ListCount = reportsRow10List.size();
-		ArrayList<String> reportspage2Row10ListArray = new ArrayList<String>();
-		for(int i=1;i<reportspage2Row10ListCount;i++)
-		{
-			String data = reportsRow10List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportspage2Row10ListArray.add(data);
-			}
-		}
-		String actpage2Row10List = reportspage2Row10ListArray.toString();
-		String exppage2Row10List = "[Grand Total, 39.00, 39.00, 18.00, 18.00, 51.00, 51.00, 62.00, 62.00, 39.00, 39.00, 18.00, 18.00, 51.00, 51.00, 62.00, 62.00]";
-		
-		System.out.println(actRow1List);
-		System.out.println(expRow1List);
-
-		System.out.println(actRow2List);
-		System.out.println(expRow2List);
-
-		System.out.println(actRow3List);
-		System.out.println(expRow3List);
-
-		System.out.println(actRow4List);
-		System.out.println(expRow4List);
-
-		System.out.println(actRow5List);
-		System.out.println(expRow5List);
-		
-
-		System.out.println(actRow6List);
-		System.out.println(expRow6List);
-		
-		System.out.println(actRow7List);
-		System.out.println(expRow7List);
-
-		System.out.println(actRow8List);
-		System.out.println(expRow8List);
-		
-
-		System.out.println(actRow9List);
-		System.out.println(expRow9List);
-		
-		
-		System.out.println(actRow10List);
-		System.out.println(expRow10List);
-
-		System.out.println(actRow11List);
-		System.out.println(expRow11List);
-
-		System.out.println(actRow12List);
-		System.out.println(expRow12List);
-
-		System.out.println(actRow13List);
-		System.out.println(expRow13List);
-
-		System.out.println(actRow14List);
-		System.out.println(expRow14List);
-		
-
-		System.out.println(actRow15List);
-		System.out.println(expRow15List);
-		
-		System.out.println(actRow16List);
-		System.out.println(expRow16List);
-
-		System.out.println(actRow17List);
-		System.out.println(expRow17List);
-		
-
-		System.out.println(actRow18List);
-		System.out.println(expRow18List);
-		
-		System.out.println(actRow19List);
-		System.out.println(expRow19List);
-		
-		System.out.println(actpage2Row1List);
-		System.out.println(exppage2Row1List);
-
-		System.out.println(actpage2Row2List);
-		System.out.println(exppage2Row2List);
-
-		System.out.println(actpage2Row3List);
-		System.out.println(exppage2Row3List);
-
-		System.out.println(actpage2Row4List);
-		System.out.println(exppage2Row4List);
-
-		System.out.println(actpage2Row5List);
-		System.out.println(exppage2Row5List);
-		
-
-		System.out.println(actpage2Row6List);
-		System.out.println(exppage2Row6List);
-		
-		System.out.println(actpage2Row7List);
-		System.out.println(exppage2Row7List);
-
-		System.out.println(actpage2Row8List);
-		System.out.println(exppage2Row8List);
-		
-
-		System.out.println(actpage2Row9List);
-		System.out.println(exppage2Row9List);
-		
-		System.out.println(actpage2Row10List);
-		System.out.println(exppage2Row10List);
-		
-		
-
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List) 
-				&& actRow4List.equalsIgnoreCase(expRow4List) && actRow5List.equalsIgnoreCase(expRow5List)&& 
-				actRow6List.equalsIgnoreCase(expRow6List)
-				&& actRow7List.equalsIgnoreCase(expRow7List) && actRow8List.equalsIgnoreCase(expRow8List)&& 
-				actRow9List.equalsIgnoreCase(expRow9List) &&
-				actRow10List.equalsIgnoreCase(expRow10List) && actRow11List.equalsIgnoreCase(expRow11List)
-				&& actRow12List.equalsIgnoreCase(expRow12List) && actRow13List.equalsIgnoreCase(expRow13List)
-				&& actRow14List.equalsIgnoreCase(expRow14List) && actRow15List.equalsIgnoreCase(expRow15List)
-				&& actRow16List.equalsIgnoreCase(expRow16List) && actRow17List.equalsIgnoreCase(expRow17List)
-				&& actRow18List.equalsIgnoreCase(expRow18List) && actRow19List.equalsIgnoreCase(expRow19List)
+			boolean ReportTable =reportTable.isDisplayed();
+			String actReportTable = Boolean.toString(ReportTable);
+			String expReportTable = "true";
+			
+			
+			if (actvalidationConfirmationMessage.equalsIgnoreCase(expvalidationConfirmationMessage) && actReportTable.equalsIgnoreCase(expReportTable)) 
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+		
+		}
+		
+		public static boolean checkAccountQueryReport() throws InterruptedException
+		{
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
+			financialsReportsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accountQuery));
+			accountQuery.click();
+			
+			boolean novalidationConfirmationMessage =validationConfirmationMessage.getText().isEmpty();
+			
+			String actvalidationConfirmationMessage = Boolean.toString(novalidationConfirmationMessage);
+			String expvalidationConfirmationMessage = "true";
+			
+			
+			System.out.println("validationConfirmationMessage : "+actvalidationConfirmationMessage+" Value Expected : "+expvalidationConfirmationMessage);
 				
-				&&actpage2Row1List.equalsIgnoreCase(exppage2Row1List) && actpage2Row2List.equalsIgnoreCase(exppage2Row2List)
-				&&actpage2Row3List.equalsIgnoreCase(exppage2Row3List) && actpage2Row4List.equalsIgnoreCase(exppage2Row4List)
-				&&actpage2Row5List.equalsIgnoreCase(exppage2Row5List) && actpage2Row6List.equalsIgnoreCase(exppage2Row6List)
-				&& actpage2Row7List.equalsIgnoreCase(exppage2Row7List) && actpage2Row8List.equalsIgnoreCase(exppage2Row8List)
-				&& actpage2Row9List.equalsIgnoreCase(exppage2Row9List) && actpage2Row10List.equalsIgnoreCase(exppage2Row10List))
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-	
-		
-		
-	}
-	
-	public static boolean checkProfitAndLossReport() throws InterruptedException
-	{
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsFinalAccountsMenu));
-		financialsFinalAccountsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(profitandLossReport));
-		profitandLossReport.click();
-	
-	
-		Thread.sleep(1500);
-	
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		
-
-		int reportsRow1ListCount = reportsRow1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsRow1List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[PurchaseACC, PAC001, PurchaseACC, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 33.33, 33.33]";
-
-		int reportsRow2ListCount = reportsRow2List.size();
-		ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow2ListCount;i++)
-		{
-			String data = reportsRow2List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow2ListArray.add(data);
-			}
-
-
-		}
-		String actRow2List = reportsRow2ListArray.toString();
-		String expRow2List = "[A, A100, A, 33.00, 4.00, 37.00, 35.00, 2.00, 33.00, 4.00, 37.00, 35.00, 2.00, 89.19, 89.19]";
-
-		int reportsRow3ListCount = reportsRow3List.size();
-		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow3ListCount;i++)
-		{
-			String data = reportsRow3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow3ListArray.add(data);
-			}
-
-		}
-		String actRow3List = reportsRow3ListArray.toString();
-		String expRow3List = "[A1, A101, A1, 33.00, 1.00, 34.00, 34.00, 1.00, 33.00, 1.00, 34.00, 34.00, 1.00, 89.19, 89.19]";
-
-
-
-		int reportsRow4ListCount = reportsRow4List.size();
-		ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow4ListCount;i++)
-		{
-			String data = reportsRow4List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow4ListArray.add(data);
-			}
-
-		}
-		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[A2, A102, A2, 1.00, 1.00, 1.00, 1.00]";
-
-
-
-		int reportsRow5ListCount = reportsRow5List.size();
-		ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow5ListCount;i++)
-		{
-			String data = reportsRow5List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow5ListArray.add(data);
-			}
-		}
-		String actRow5List = reportsRow5ListArray.toString();
-		String expRow5List = "[B, B200, B, 2.00, 2.00, 1.00, 1.00, 2.00, 2.00, 1.00, 1.00]";
-		
-
-		int reportsRow6ListCount = reportsRow6List.size();
-		ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow6ListCount;i++)
-		{
-			String data = reportsRow6List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow6ListArray.add(data);
-			}
-		}
-		String actRow6List = reportsRow6ListArray.toString();
-		String expRow6List = "[B1, B201, B1, 1.00, 1.00, 1.00, 1.00]";
-		
-		
-		//
-
-
-		int reportsRow7ListCount = reportsRow7List.size();
-		ArrayList<String> reportsRow7ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow7ListCount;i++)
-		{
-			String data = reportsRow7List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow7ListArray.add(data);
-			}
-
-		}
-		String actRow7List = reportsRow7ListArray.toString();
-		String expRow7List = "[B2, B202, B2, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00]";
-
-
-
-		int reportsRow8ListCount = reportsRow8List.size();
-		ArrayList<String> reportsRow8ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow8ListCount;i++)
-		{
-			String data = reportsRow8List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow8ListArray.add(data);
-			}
-
-		}
-		String actRow8List = reportsRow8ListArray.toString();
-		String expRow8List = "[SalesACC, SAC001, SalesACC, 2.00, 1.00, 1.00, 2.00, 2.00, 1.00, 1.00, 2.00, 66.67, 66.67]";
-
-
-
-		int reportsRow9ListCount = reportsRow9List.size();
-		ArrayList<String> reportsRow9ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow9ListCount;i++)
-		{
-			String data = reportsRow9List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow9ListArray.add(data);
-			}
-		}
-		String actRow9List = reportsRow9ListArray.toString();
-		String expRow9List = "[E, E500, E, 4.00, 4.00, 8.00, 12.00, 8.00, 4.00, 4.00, 8.00, 12.00, 8.00, 10.81, 10.81]";
-		
-		
-		///
-
-		int reportsRow10ListCount = reportsRow10List.size();
-		ArrayList<String> reportsRow10ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow10ListCount;i++)
-		{
-			String data = reportsRow10List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow10ListArray.add(data);
-			}
-
-		}
-		String actRow10List = reportsRow10ListArray.toString();
-		String expRow10List = "[E1, E501, E1, 6.00, 1.00, 7.00, 11.00, 5.00, 6.00, 1.00, 7.00, 11.00, 5.00, 16.22, 16.22]";
-
-
-
-		int reportsRow11ListCount = reportsRow11List.size();
-		ArrayList<String> reportsRow11ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow11ListCount;i++)
-		{
-			String data = reportsRow11List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow11ListArray.add(data);
-			}
-
-
-		}
-		String actRow11List = reportsRow11ListArray.toString();
-		String expRow11List = "[E2, E502, E2, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00]";
-
-
-
-		int reportsRow12ListCount = reportsRow12List.size();
-		ArrayList<String> reportsRow12ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow12ListCount;i++)
-		{
-			String data = reportsRow12List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow12ListArray.add(data);
-			}
-
-		}
-		String actRow12List = reportsRow12ListArray.toString();
-		String expRow12List = "[F, F600, F, 2.00, 2.00, 2.00, 2.00, 2.00, 2.00, 66.67, 66.67]";
-
-
-
-		int reportsRow13ListCount = reportsRow13List.size();
-		ArrayList<String> reportsRow13ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow13ListCount;i++)
-		{
-			String data = reportsRow13List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow13ListArray.add(data);
-			}
-
-		}
-		String actRow13List = reportsRow13ListArray.toString();
-		String expRow13List = "[F1, F601, F1, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 33.33, 33.33]";
-
-
-
-		int reportsRow14ListCount = reportsRow14List.size();
-		ArrayList<String> reportsRow14ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow14ListCount;i++)
-		{
-			String data = reportsRow14List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow14ListArray.add(data);
-			}
-		}
-		String actRow14List = reportsRow14ListArray.toString();
-		String expRow14List = "[F2, F602, F2, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 33.33, 33.33]";
-		
-
-		int reportsRow15ListCount = reportsRow15List.size();
-		ArrayList<String> reportsRow15ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow15ListCount;i++)
-		{
-			String data = reportsRow15List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow15ListArray.add(data);
-			}
-		}
-		String actRow15List = reportsRow15ListArray.toString();
-		String expRow15List = "[Excess of Expenditure over Income, (34.00), (10.00), (44.00), (34.00), (34.00), (10.00), (44.00), (34.00)]";
-		
-		
-
-		int reportsRow16ListCount = reportsRow16List.size();
-		ArrayList<String> reportsRow16ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow16ListCount;i++)
-		{
-			String data = reportsRow16List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow16ListArray.add(data);
-			}
-
-		}
-		String actRow16List = reportsRow16ListArray.toString();
-		String expRow16List = "[Grand Total, 37.00, 37.00, 10.00, 10.00, 45.00, 45.00, 47.00, 47.00, 37.00, 37.00, 10.00, 10.00, 45.00, 45.00, 47.00, 47.00]";
-		
-		
-		
-		System.out.println(actRow1List);
-		System.out.println(expRow1List);
-
-		System.out.println(actRow2List);
-		System.out.println(expRow2List);
-
-		System.out.println(actRow3List);
-		System.out.println(expRow3List);
-
-		System.out.println(actRow4List);
-		System.out.println(expRow4List);
-
-		System.out.println(actRow5List);
-		System.out.println(expRow5List);
-		
-
-		System.out.println(actRow6List);
-		System.out.println(expRow6List);
-		
-		System.out.println(actRow7List);
-		System.out.println(expRow7List);
-
-		System.out.println(actRow8List);
-		System.out.println(expRow8List);
-		
-
-		System.out.println(actRow9List);
-		System.out.println(expRow9List);
-		
-		
-		System.out.println(actRow10List);
-		System.out.println(expRow10List);
-
-		System.out.println(actRow11List);
-		System.out.println(expRow11List);
-
-		System.out.println(actRow12List);
-		System.out.println(expRow12List);
-
-		System.out.println(actRow13List);
-		System.out.println(expRow13List);
-
-		System.out.println(actRow14List);
-		System.out.println(expRow14List);
-		
-
-		System.out.println(actRow15List);
-		System.out.println(expRow15List);
-		
-		System.out.println(actRow16List);
-		System.out.println(expRow16List);
-
-
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List) 
-				&& actRow4List.equalsIgnoreCase(expRow4List) && actRow5List.equalsIgnoreCase(expRow5List)&& 
-				actRow6List.equalsIgnoreCase(expRow6List)
-				&& actRow7List.equalsIgnoreCase(expRow7List) && actRow8List.equalsIgnoreCase(expRow8List)&& 
-				actRow9List.equalsIgnoreCase(expRow9List) &&
-				actRow10List.equalsIgnoreCase(expRow10List) && actRow11List.equalsIgnoreCase(expRow11List)
-				&& actRow12List.equalsIgnoreCase(expRow12List) && actRow13List.equalsIgnoreCase(expRow13List)
-				&& actRow14List.equalsIgnoreCase(expRow14List) && actRow15List.equalsIgnoreCase(expRow15List)
-				&& actRow16List.equalsIgnoreCase(expRow16List)) 
-				{
-					return true;
-				} 
-		else 
-		{
-			return false;
-		}
-
-	}
-	
-	public static boolean checkTradingAccountReport() throws InterruptedException
-	{
-
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsFinalAccountsMenu));
-		financialsFinalAccountsMenu.click();
-		
-		Thread.sleep(1500);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(tradingAccountReport));
-		tradingAccountReport.click();
-		
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
-	
-		Thread.sleep(1500);
-	
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		
-
-		int reportsRow1ListCount = reportsRow1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsRow1List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[PurchaseACC, PAC001, PurchaseACC, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 33.33, 33.33]";
-
-		int reportsRow2ListCount = reportsRow2List.size();
-		ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow2ListCount;i++)
-		{
-			String data = reportsRow2List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow2ListArray.add(data);
-			}
-
-
-		}
-		String actRow2List = reportsRow2ListArray.toString();
-		String expRow2List = "[A, A100, A, 33.00, 4.00, 37.00, 35.00, 2.00, 33.00, 4.00, 37.00, 35.00, 2.00, 89.19, 89.19]";
-
-		int reportsRow3ListCount = reportsRow3List.size();
-		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow3ListCount;i++)
-		{
-			String data = reportsRow3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow3ListArray.add(data);
-			}
-
-		}
-		String actRow3List = reportsRow3ListArray.toString();
-		String expRow3List = "[A1, A101, A1, 33.00, 1.00, 34.00, 34.00, 1.00, 33.00, 1.00, 34.00, 34.00, 1.00, 89.19, 89.19]";
-
-
-
-		int reportsRow4ListCount = reportsRow4List.size();
-		ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow4ListCount;i++)
-		{
-			String data = reportsRow4List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow4ListArray.add(data);
-			}
-
-		}
-		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[A2, A102, A2, 1.00, 1.00, 1.00, 1.00]";
-
-
-
-		int reportsRow5ListCount = reportsRow5List.size();
-		ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow5ListCount;i++)
-		{
-			String data = reportsRow5List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow5ListArray.add(data);
-			}
-		}
-		String actRow5List = reportsRow5ListArray.toString();
-		String expRow5List = "[B, B200, B, 2.00, 2.00, 1.00, 1.00, 2.00, 2.00, 1.00, 1.00]";
-		
-
-		int reportsRow6ListCount = reportsRow6List.size();
-		ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow6ListCount;i++)
-		{
-			String data = reportsRow6List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow6ListArray.add(data);
-			}
-		}
-		String actRow6List = reportsRow6ListArray.toString();
-		String expRow6List = "[B1, B201, B1, 1.00, 1.00, 1.00, 1.00]";
-		
-		
-		//
-
-
-		int reportsRow7ListCount = reportsRow7List.size();
-		ArrayList<String> reportsRow7ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow7ListCount;i++)
-		{
-			String data = reportsRow7List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow7ListArray.add(data);
-			}
-
-		}
-		String actRow7List = reportsRow7ListArray.toString();
-		String expRow7List = "[B2, B202, B2, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00]";
-
-
-
-		int reportsRow8ListCount = reportsRow8List.size();
-		ArrayList<String> reportsRow8ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow8ListCount;i++)
-		{
-			String data = reportsRow8List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow8ListArray.add(data);
-			}
-
-		}
-		String actRow8List = reportsRow8ListArray.toString();
-		String expRow8List = "[SalesACC, SAC001, SalesACC, 2.00, 1.00, 1.00, 2.00, 2.00, 1.00, 1.00, 2.00, 66.67, 66.67]";
-
-
-
-		int reportsRow9ListCount = reportsRow9List.size();
-		ArrayList<String> reportsRow9ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow9ListCount;i++)
-		{
-			String data = reportsRow9List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow9ListArray.add(data);
-			}
-		}
-		String actRow9List = reportsRow9ListArray.toString();
-		String expRow9List = "[E, E500, E, 4.00, 4.00, 8.00, 12.00, 8.00, 4.00, 4.00, 8.00, 12.00, 8.00, 10.81, 10.81]";
-		
-		
-		///
-
-		int reportsRow10ListCount = reportsRow10List.size();
-		ArrayList<String> reportsRow10ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow10ListCount;i++)
-		{
-			String data = reportsRow10List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow10ListArray.add(data);
-			}
-
-		}
-		String actRow10List = reportsRow10ListArray.toString();
-		String expRow10List = "[E1, E501, E1, 6.00, 1.00, 7.00, 11.00, 5.00, 6.00, 1.00, 7.00, 11.00, 5.00, 16.22, 16.22]";
-
-
-
-		int reportsRow11ListCount = reportsRow11List.size();
-		ArrayList<String> reportsRow11ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow11ListCount;i++)
-		{
-			String data = reportsRow11List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow11ListArray.add(data);
-			}
-
-
-		}
-		String actRow11List = reportsRow11ListArray.toString();
-		String expRow11List = "[E2, E502, E2, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00]";
-
-
-
-		int reportsRow12ListCount = reportsRow12List.size();
-		ArrayList<String> reportsRow12ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow12ListCount;i++)
-		{
-			String data = reportsRow12List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow12ListArray.add(data);
-			}
-
-		}
-		String actRow12List = reportsRow12ListArray.toString();
-		String expRow12List = "[F, F600, F, 2.00, 2.00, 2.00, 2.00, 2.00, 2.00, 66.67, 66.67]";
-
-
-
-		int reportsRow13ListCount = reportsRow13List.size();
-		ArrayList<String> reportsRow13ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow13ListCount;i++)
-		{
-			String data = reportsRow13List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow13ListArray.add(data);
-			}
-
-		}
-		String actRow13List = reportsRow13ListArray.toString();
-		String expRow13List = "[F1, F601, F1, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 33.33, 33.33]";
-
-
-
-		int reportsRow14ListCount = reportsRow14List.size();
-		ArrayList<String> reportsRow14ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow14ListCount;i++)
-		{
-			String data = reportsRow14List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow14ListArray.add(data);
-			}
-		}
-		String actRow14List = reportsRow14ListArray.toString();
-		String expRow14List = "[F2, F602, F2, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 33.33, 33.33]";
-		
-
-		int reportsRow15ListCount = reportsRow15List.size();
-		ArrayList<String> reportsRow15ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow15ListCount;i++)
-		{
-			String data = reportsRow15List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow15ListArray.add(data);
-			}
-		}
-		String actRow15List = reportsRow15ListArray.toString();
-		String expRow15List = "[Gross loss, (34.00), (10.00), (44.00), (34.00), (34.00), (10.00), (44.00), (34.00)]";
-		
-		
-
-		int reportsRow16ListCount = reportsRow16List.size();
-		ArrayList<String> reportsRow16ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow16ListCount;i++)
-		{
-			String data = reportsRow16List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow16ListArray.add(data);
-			}
-
-		}
-		String actRow16List = reportsRow16ListArray.toString();
-		String expRow16List = "[Grand Total, 37.00, 37.00, 10.00, 10.00, 45.00, 45.00, 47.00, 47.00, 37.00, 37.00, 10.00, 10.00, 45.00, 45.00, 47.00, 47.00]";
-		
-		
-		
-		System.out.println(actRow1List);
-		System.out.println(expRow1List);
-
-		System.out.println(actRow2List);
-		System.out.println(expRow2List);
-
-		System.out.println(actRow3List);
-		System.out.println(expRow3List);
-
-		System.out.println(actRow4List);
-		System.out.println(expRow4List);
-
-		System.out.println(actRow5List);
-		System.out.println(expRow5List);
-		
-
-		System.out.println(actRow6List);
-		System.out.println(expRow6List);
-		
-		System.out.println(actRow7List);
-		System.out.println(expRow7List);
-
-		System.out.println(actRow8List);
-		System.out.println(expRow8List);
-		
-
-		System.out.println(actRow9List);
-		System.out.println(expRow9List);
-		
-		
-		System.out.println(actRow10List);
-		System.out.println(expRow10List);
-
-		System.out.println(actRow11List);
-		System.out.println(expRow11List);
-
-		System.out.println(actRow12List);
-		System.out.println(expRow12List);
-
-		System.out.println(actRow13List);
-		System.out.println(expRow13List);
-
-		System.out.println(actRow14List);
-		System.out.println(expRow14List);
-		
-
-		System.out.println(actRow15List);
-		System.out.println(expRow15List);
-		
-		System.out.println(actRow16List);
-		System.out.println(expRow16List);
-
-
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List) 
-				&& actRow4List.equalsIgnoreCase(expRow4List) && actRow5List.equalsIgnoreCase(expRow5List)&& 
-				actRow6List.equalsIgnoreCase(expRow6List)
-				&& actRow7List.equalsIgnoreCase(expRow7List) && actRow8List.equalsIgnoreCase(expRow8List)&& 
-				actRow9List.equalsIgnoreCase(expRow9List) &&
-				actRow10List.equalsIgnoreCase(expRow10List) && actRow11List.equalsIgnoreCase(expRow11List)
-				&& actRow12List.equalsIgnoreCase(expRow12List) && actRow13List.equalsIgnoreCase(expRow13List)
-				&& actRow14List.equalsIgnoreCase(expRow14List) && actRow15List.equalsIgnoreCase(expRow15List)
-				&& actRow16List.equalsIgnoreCase(expRow16List)) 
-				{
-					return true;
-				} 
-		else 
-		{
-			return false;
-		}
-
-	
-	}
-
-	public static boolean checkTrandingAndProfitAndLoss() throws InterruptedException
-	{
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsFinalAccountsMenu));
-		financialsFinalAccountsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(tradingandProfitAndLossReport));
-		tradingandProfitAndLossReport.click();
-		
-
-	
-		Thread.sleep(1500);
-	
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		
-
-		int reportsRow1ListCount = reportsRow1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsRow1List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[SalesACC, SAC001, SalesACC, 2.00, 1.00, 1.00, 2.00, 2.00, 1.00, 1.00, 2.00, 66.67, 66.67]";
-
-		int reportsRow2ListCount = reportsRow2List.size();
-		ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow2ListCount;i++)
-		{
-			String data = reportsRow2List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow2ListArray.add(data);
-			}
-
-
-		}
-		String actRow2List = reportsRow2ListArray.toString();
-		String expRow2List = "[E, E500, E, 4.00, 4.00, 8.00, 12.00, 8.00, 4.00, 4.00, 8.00, 12.00, 8.00, 10.81, 10.81]";
-
-		int reportsRow3ListCount = reportsRow3List.size();
-		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow3ListCount;i++)
-		{
-			String data = reportsRow3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow3ListArray.add(data);
-			}
-
-		}
-		String actRow3List = reportsRow3ListArray.toString();
-		String expRow3List = "[E1, E501, E1, 6.00, 1.00, 7.00, 11.00, 5.00, 6.00, 1.00, 7.00, 11.00, 5.00, 16.22, 16.22]";
-
-
-
-		int reportsRow4ListCount = reportsRow4List.size();
-		ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow4ListCount;i++)
-		{
-			String data = reportsRow4List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow4ListArray.add(data);
-			}
-
-		}
-		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[E2, E502, E2, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00]";
-
-
-
-		int reportsRow5ListCount = reportsRow5List.size();
-		ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow5ListCount;i++)
-		{
-			String data = reportsRow5List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow5ListArray.add(data);
-			}
-		}
-		String actRow5List = reportsRow5ListArray.toString();
-		String expRow5List = "[F, F600, F, 2.00, 2.00, 2.00, 2.00, 2.00, 2.00, 66.67, 66.67]";
-		
-
-		int reportsRow6ListCount = reportsRow6List.size();
-		ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow6ListCount;i++)
-		{
-			String data = reportsRow6List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow6ListArray.add(data);
-			}
-		}
-		String actRow6List = reportsRow6ListArray.toString();
-		String expRow6List = "[F1, F601, F1, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 33.33, 33.33]";
-		
-		
-		//
-
-
-		int reportsRow7ListCount = reportsRow7List.size();
-		ArrayList<String> reportsRow7ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow7ListCount;i++)
-		{
-			String data = reportsRow7List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow7ListArray.add(data);
-			}
-
-		}
-		String actRow7List = reportsRow7ListArray.toString();
-		String expRow7List = "[F2, F602, F2, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 33.33, 33.33]";
-
-
-
-		int reportsRow8ListCount = reportsRow8List.size();
-		ArrayList<String> reportsRow8ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow8ListCount;i++)
-		{
-			String data = reportsRow8List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow8ListArray.add(data);
-			}
-
-		}
-		String actRow8List = reportsRow8ListArray.toString();
-		String expRow8List = "[PurchaseACC, PAC001, PurchaseACC, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 33.33, 33.33]";
-
-
-
-		int reportsRow9ListCount = reportsRow9List.size();
-		ArrayList<String> reportsRow9ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow9ListCount;i++)
-		{
-			String data = reportsRow9List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow9ListArray.add(data);
-			}
-		}
-		String actRow9List = reportsRow9ListArray.toString();
-		String expRow9List = "[A, A100, A, 33.00, 4.00, 37.00, 35.00, 2.00, 33.00, 4.00, 37.00, 35.00, 2.00, 89.19, 89.19]";
-		
-		
-		///
-
-		int reportsRow10ListCount = reportsRow10List.size();
-		ArrayList<String> reportsRow10ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow10ListCount;i++)
-		{
-			String data = reportsRow10List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow10ListArray.add(data);
-			}
-
-		}
-		String actRow10List = reportsRow10ListArray.toString();
-		String expRow10List = "[A1, A101, A1, 33.00, 1.00, 34.00, 34.00, 1.00, 33.00, 1.00, 34.00, 34.00, 1.00, 89.19, 89.19]";
-
-
-
-		int reportsRow11ListCount = reportsRow11List.size();
-		ArrayList<String> reportsRow11ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow11ListCount;i++)
-		{
-			String data = reportsRow11List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow11ListArray.add(data);
-			}
-
-
-		}
-		String actRow11List = reportsRow11ListArray.toString();
-		String expRow11List = "[A2, A102, A2, 1.00, 1.00, 1.00, 1.00]";
-
-
-
-		int reportsRow12ListCount = reportsRow12List.size();
-		ArrayList<String> reportsRow12ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow12ListCount;i++)
-		{
-			String data = reportsRow12List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow12ListArray.add(data);
-			}
-
-		}
-		String actRow12List = reportsRow12ListArray.toString();
-		String expRow12List = "[B, B200, B, 2.00, 2.00, 1.00, 1.00, 2.00, 2.00, 1.00, 1.00]";
-
-
-
-		int reportsRow13ListCount = reportsRow13List.size();
-		ArrayList<String> reportsRow13ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow13ListCount;i++)
-		{
-			String data = reportsRow13List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow13ListArray.add(data);
-			}
-
-		}
-		String actRow13List = reportsRow13ListArray.toString();
-		String expRow13List = "[B1, B201, B1, 1.00, 1.00, 1.00, 1.00]";
-
-
-
-		int reportsRow14ListCount = reportsRow14List.size();
-		ArrayList<String> reportsRow14ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow14ListCount;i++)
-		{
-			String data = reportsRow14List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow14ListArray.add(data);
-			}
-		}
-		String actRow14List = reportsRow14ListArray.toString();
-		String expRow14List = "[B2, B202, B2, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00]";
-		
-
-		int reportsRow15ListCount = reportsRow15List.size();
-		ArrayList<String> reportsRow15ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow15ListCount;i++)
-		{
-			String data = reportsRow15List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow15ListArray.add(data);
-			}
-		}
-		String actRow15List = reportsRow15ListArray.toString();
-		String expRow15List = "[Loss for the period, (34.00), (10.00), (44.00), (34.00), (34.00), (10.00), (44.00), (34.00)]";
-		
-		
-
-		int reportsRow16ListCount = reportsRow16List.size();
-		ArrayList<String> reportsRow16ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow16ListCount;i++)
-		{
-			String data = reportsRow16List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow16ListArray.add(data);
-			}
-
-		}
-		String actRow16List = reportsRow16ListArray.toString();
-		String expRow16List = "[Grand Total, 37.00, 37.00, 10.00, 10.00, 45.00, 45.00, 47.00, 47.00, 37.00, 37.00, 10.00, 10.00, 45.00, 45.00, 47.00, 47.00]";
-		
-		
-		
-		System.out.println(actRow1List);
-		System.out.println(expRow1List);
-
-		System.out.println(actRow2List);
-		System.out.println(expRow2List);
-
-		System.out.println(actRow3List);
-		System.out.println(expRow3List);
-
-		System.out.println(actRow4List);
-		System.out.println(expRow4List);
-
-		System.out.println(actRow5List);
-		System.out.println(expRow5List);
-		
-
-		System.out.println(actRow6List);
-		System.out.println(expRow6List);
-		
-		System.out.println(actRow7List);
-		System.out.println(expRow7List);
-
-		System.out.println(actRow8List);
-		System.out.println(expRow8List);
-		
-
-		System.out.println(actRow9List);
-		System.out.println(expRow9List);
-		
-		
-		System.out.println(actRow10List);
-		System.out.println(expRow10List);
-
-		System.out.println(actRow11List);
-		System.out.println(expRow11List);
-
-		System.out.println(actRow12List);
-		System.out.println(expRow12List);
-
-		System.out.println(actRow13List);
-		System.out.println(expRow13List);
-
-		System.out.println(actRow14List);
-		System.out.println(expRow14List);
-		
-
-		System.out.println(actRow15List);
-		System.out.println(expRow15List);
-		
-		System.out.println(actRow16List);
-		System.out.println(expRow16List);
-
-
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List) 
-				&& actRow4List.equalsIgnoreCase(expRow4List) && actRow5List.equalsIgnoreCase(expRow5List)&& 
-				actRow6List.equalsIgnoreCase(expRow6List)
-				&& actRow7List.equalsIgnoreCase(expRow7List) && actRow8List.equalsIgnoreCase(expRow8List)&& 
-				actRow9List.equalsIgnoreCase(expRow9List) &&
-				actRow10List.equalsIgnoreCase(expRow10List) && actRow11List.equalsIgnoreCase(expRow11List)
-				&& actRow12List.equalsIgnoreCase(expRow12List) && actRow13List.equalsIgnoreCase(expRow13List)
-				&& actRow14List.equalsIgnoreCase(expRow14List) && actRow15List.equalsIgnoreCase(expRow15List)
-				&& actRow16List.equalsIgnoreCase(expRow16List)) 
-				{
-					return true;
-				} 
-		else 
-		{
-			return false;
-		}
-
-	
-		
-	}
-	
-	public static boolean checkBalanceSheetReport() throws InterruptedException
-	{
-
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsFinalAccountsMenu));
-		financialsFinalAccountsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(balanceSheetReport));
-		balanceSheetReport.click();
-	
-	
-		Thread.sleep(1500);
-	
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		
-
-		int reportsRow1ListCount = reportsRow1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsRow1List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[BankACC, BAC001, BankACC, 1.00, 1.00, 2.00, 2.00, 1.00, 1.00, 2.00, 2.00]";
-
-		int reportsRow2ListCount = reportsRow2List.size();
-		ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow2ListCount;i++)
-		{
-			String data = reportsRow2List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow2ListArray.add(data);
-			}
-
-
-		}
-		String actRow2List = reportsRow2ListArray.toString();
-		String expRow2List = "[CashACC, CASH001, CashACC, 1.00, 1.00, 2.00, 1.00, 1.00, 1.00, 2.00, 1.00, 50.00, 50.00]";
-
-		int reportsRow3ListCount = reportsRow3List.size();
-		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow3ListCount;i++)
-		{
-			String data = reportsRow3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow3ListArray.add(data);
-			}
-
-		}
-		String actRow3List = reportsRow3ListArray.toString();
-		String expRow3List = "[CONTROL ACCOUNTS, CA, CONTROL ACCOUNTS, 18.00, 18.00, 18.00, 18.00]";
-
-
-
-		int reportsRow4ListCount = reportsRow4List.size();
-		ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow4ListCount;i++)
-		{
-			String data = reportsRow4List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow4ListArray.add(data);
-			}
-
-		}
-		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[Opening Balances Control A/C, OBC, Opening Balances Control A/C, 18.00, 18.00, 18.00, 18.00]";
-
-
-
-		int reportsRow5ListCount = reportsRow5List.size();
-		ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow5ListCount;i++)
-		{
-			String data = reportsRow5List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow5ListArray.add(data);
-			}
-		}
-		String actRow5List = reportsRow5ListArray.toString();
-		String expRow5List = "[G, G700, G, 3.00, 2.00, 1.00, 8.00, 11.00, 3.00, 2.00, 1.00, 8.00, 11.00, 8.33, 8.33]";
-		
-
-		int reportsRow6ListCount = reportsRow6List.size();
-		ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow6ListCount;i++)
-		{
-			String data = reportsRow6List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow6ListArray.add(data);
-			}
-		}
-		String actRow6List = reportsRow6ListArray.toString();
-		String expRow6List = "[H, H800, H, 3.00, 2.00, 1.00, 8.00, 11.00, 3.00, 2.00, 1.00, 8.00, 11.00, 8.33, 8.33]";
-		
-		
-		//
-
-
-		int reportsRow7ListCount = reportsRow7List.size();
-		ArrayList<String> reportsRow7ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow7ListCount;i++)
-		{
-			String data = reportsRow7List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow7ListArray.add(data);
-			}
-
-		}
-		String actRow7List = reportsRow7ListArray.toString();
-		String expRow7List = "[H1, H801, H1, 6.00, 1.00, 5.00, 5.00, 11.00, 6.00, 1.00, 5.00, 5.00, 11.00, 16.67, 16.67]";
-
-
-
-		int reportsRow8ListCount = reportsRow8List.size();
-		ArrayList<String> reportsRow8ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow8ListCount;i++)
-		{
-			String data = reportsRow8List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow8ListArray.add(data);
-			}
-
-		}
-		String actRow8List = reportsRow8ListArray.toString();
-		String expRow8List = "[H2, H802, H2, 3.00, 1.00, 4.00, 3.00, 3.00, 1.00, 4.00, 3.00, 150.00, 150.00]";
-
-
-
-		int reportsRow9ListCount = reportsRow9List.size();
-		ArrayList<String> reportsRow9ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow9ListCount;i++)
-		{
-			String data = reportsRow9List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow9ListArray.add(data);
-			}
-		}
-		String actRow9List = reportsRow9ListArray.toString();
-		String expRow9List = "[CustomerACC, CAC001, CustomerACC, 1.00, 1.00, 2.00, 2.00, 1.00, 1.00, 1.00, 2.00, 2.00, 1.00, 50.00, 50.00]";
-		
-		
-		///
-
-		int reportsRow10ListCount = reportsRow10List.size();
-		ArrayList<String> reportsRow10ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow10ListCount;i++)
-		{
-			String data = reportsRow10List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow10ListArray.add(data);
-			}
-
-		}
-		String actRow10List = reportsRow10ListArray.toString();
-		String expRow10List = "[C, C300, C, 33.00, 2.00, 31.00, 1.00, 34.00, 33.00, 2.00, 31.00, 1.00, 34.00, 91.67, 91.67]";
-
-
-
-		int reportsRow11ListCount = reportsRow11List.size();
-		ArrayList<String> reportsRow11ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow11ListCount;i++)
-		{
-			String data = reportsRow11List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow11ListArray.add(data);
-			}
-
-
-		}
-		String actRow11List = reportsRow11ListArray.toString();
-		String expRow11List = "[D, D400, D, 33.00, 2.00, 31.00, 1.00, 34.00, 33.00, 2.00, 31.00, 1.00, 34.00, 91.67, 91.67]";
-
-
-
-		int reportsRow12ListCount = reportsRow12List.size();
-		ArrayList<String> reportsRow12ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow12ListCount;i++)
-		{
-			String data = reportsRow12List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow12ListArray.add(data);
-			}
-
-		}
-		String actRow12List = reportsRow12ListArray.toString();
-		String expRow12List = "[D1, D401, D1, 32.00, 1.00, 31.00, 32.00, 32.00, 1.00, 31.00, 32.00, 88.89, 88.89]";
-
-
-
-		int reportsRow13ListCount = reportsRow13List.size();
-		ArrayList<String> reportsRow13ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow13ListCount;i++)
-		{
-			String data = reportsRow13List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow13ListArray.add(data);
-			}
-
-		}
-		String actRow13List = reportsRow13ListArray.toString();
-		String expRow13List = "[D2, D402, D2, 1.00, 1.00, 1.00, 2.00, 1.00, 1.00, 1.00, 2.00, 2.78, 2.78]";
+			Thread.sleep(1500);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accountQueryTxt));
+			accountQueryTxt.click();
+			accountQueryTxt.sendKeys("Bank");
+			Thread.sleep(1500);
+			
+			accountQueryTxt.sendKeys(Keys.TAB);
+			
+			Thread.sleep(1500);
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(getAccountDetailsBtn));
+			getAccountDetailsBtn.click();
+			
 
+			Thread.sleep(3500);
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(AQ_OpnBal));
+			String actAQ_OpnBal				        =AQ_OpnBal.getText();
+			String actAQ_Credit		                =AQ_Credit.getText();
+			String actAQ_Debit				        =AQ_Debit.getText();
+			String actAQ_Balance			        =AQ_Balance.getText();
+			
+			String expAQ_OpnBal				        ="0.00";
+			String expAQ_Credit		                ="0.00";
+			String expAQ_Debit				        ="0.00";
+			String expAQ_Balance			        ="0.00";
+			
+			System.out.println("************************************checkAccountQueryOfBRCOGSACCINVAccount*************************************");
+			
+			System.out.println("AQ_OpnBal     		 :   "+actAQ_OpnBal			+" Value Expected : "+expAQ_OpnBal);
+			System.out.println("AQ_Credit            :   "+actAQ_Credit			+" Value Expected : "+expAQ_Credit);
+			System.out.println("AQ_Debit     		 :   "+actAQ_Debit			+" Value Expected : "+expAQ_Debit);
+			System.out.println("AQ_Balance     	     :   "+actAQ_Balance		+" Value Expected : "+expAQ_Balance);
+			
+			Thread.sleep(1200);
+			LastCreditTransactionExpBtn.click();
+			Thread.sleep(1200);
 
+			ArrayList<String>  creditList1 = new ArrayList<String>(); 
 
-		int reportsRow14ListCount = reportsRow14List.size();
-		ArrayList<String> reportsRow14ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow14ListCount;i++)
-		{
-			String data = reportsRow14List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow14ListArray.add(data);
-			}
-		}
-		String actRow14List = reportsRow14ListArray.toString();
-		String expRow14List = "[VendorACC, VAC001, VendorACC, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00]";
-		
-
-		int reportsRow15ListCount = reportsRow15List.size();
-		ArrayList<String> reportsRow15ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow15ListCount;i++)
-		{
-			String data = reportsRow15List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow15ListArray.add(data);
-			}
-		}
-		String actRow15List = reportsRow15ListArray.toString();
-		String expRow15List = "[Excess of Expenditure over Income, 34.00, 10.00, 44.00, 34.00, 34.00, 44.00, 34.00]";
-		
-		
-
-		int reportsRow16ListCount = reportsRow16List.size();
-		ArrayList<String> reportsRow16ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow16ListCount;i++)
-		{
-			String data = reportsRow16List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow16ListArray.add(data);
-			}
-
-		}
-		String actRow16List = reportsRow16ListArray.toString();
-		String expRow16List = "[Grand Total, 36.00, 36.00, 18.00, 18.00, 50.00, 50.00, 49.00, 49.00, 36.00, 36.00, 18.00, 18.00, 50.00, 50.00, 49.00, 49.00]";
-		
-		
-		
-		System.out.println(actRow1List);
-		System.out.println(expRow1List);
-
-		System.out.println(actRow2List);
-		System.out.println(expRow2List);
-
-		System.out.println(actRow3List);
-		System.out.println(expRow3List);
-
-		System.out.println(actRow4List);
-		System.out.println(expRow4List);
-
-		System.out.println(actRow5List);
-		System.out.println(expRow5List);
-		
-
-		System.out.println(actRow6List);
-		System.out.println(expRow6List);
-		
-		System.out.println(actRow7List);
-		System.out.println(expRow7List);
-
-		System.out.println(actRow8List);
-		System.out.println(expRow8List);
-		
-
-		System.out.println(actRow9List);
-		System.out.println(expRow9List);
-		
-		
-		System.out.println(actRow10List);
-		System.out.println(expRow10List);
-
-		System.out.println(actRow11List);
-		System.out.println(expRow11List);
-
-		System.out.println(actRow12List);
-		System.out.println(expRow12List);
-
-		System.out.println(actRow13List);
-		System.out.println(expRow13List);
-
-		System.out.println(actRow14List);
-		System.out.println(expRow14List);
-		
-
-		System.out.println(actRow15List);
-		System.out.println(expRow15List);
-		
-		System.out.println(actRow16List);
-		System.out.println(expRow16List);
-
-
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List) 
-				&& actRow4List.equalsIgnoreCase(expRow4List) && actRow5List.equalsIgnoreCase(expRow5List)&& 
-				actRow6List.equalsIgnoreCase(expRow6List)
-				&& actRow7List.equalsIgnoreCase(expRow7List) && actRow8List.equalsIgnoreCase(expRow8List)&& 
-				actRow9List.equalsIgnoreCase(expRow9List) &&
-				actRow10List.equalsIgnoreCase(expRow10List) && actRow11List.equalsIgnoreCase(expRow11List)
-				&& actRow12List.equalsIgnoreCase(expRow12List) && actRow13List.equalsIgnoreCase(expRow13List)
-				&& actRow14List.equalsIgnoreCase(expRow14List) && actRow15List.equalsIgnoreCase(expRow15List)
-				&& actRow16List.equalsIgnoreCase(expRow16List)) 
-				{
-					return true;
-				} 
-		else 
-		{
-			return false;
-		}
-
-	
-	}
-	
-	public static boolean checkSchedulesReports() throws InterruptedException
-	{
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsFinalAccountsMenu));
-		financialsFinalAccountsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(finalAccountSchedulesReport));
-		finalAccountSchedulesReport.click();
-		
-
-		Thread.sleep(1500);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
-	
-		Thread.sleep(1500);
-		Thread.sleep(1500);
-	
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		
-
-		int reportsRow1ListCount = reportsRow1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsRow1List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[BankACC, BAC001, BankACC, 1.00, 1.00, 2.00, 2.00, 1.00, 1.00, 2.00, 2.00]";
-
-
-
-		int reportsRow2ListCount = reportsRow2List.size();
-		ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow2ListCount;i++)
-		{
-			String data = reportsRow2List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow2ListArray.add(data);
-			}
-
-
-		}
-		String actRow2List = reportsRow2ListArray.toString();
-		String expRow2List = "[CashACC, CASH001, CashACC, 1.00, 1.00, 2.00, 1.00, 1.00, 1.00, 2.00, 1.00, 2.56, 2.56]";
-
-
-
-		int reportsRow3ListCount = reportsRow3List.size();
-		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow3ListCount;i++)
-		{
-			String data = reportsRow3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow3ListArray.add(data);
-			}
-
-		}
-		String actRow3List = reportsRow3ListArray.toString();
-		String expRow3List = "[CONTROL ACCOUNTS, CA, CONTROL ACCOUNTS, 18.00, 18.00, 18.00, 18.00]";
-
-
-
-		int reportsRow4ListCount = reportsRow4List.size();
-		ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow4ListCount;i++)
-		{
-			String data = reportsRow4List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow4ListArray.add(data);
-			}
-
-		}
-		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[Opening Balances Control A/C, OBC, Opening Balances Control A/C, 18.00, 18.00, 18.00, 18.00]";
-
-
-
-		int reportsRow5ListCount = reportsRow5List.size();
-		ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow5ListCount;i++)
-		{
-			String data = reportsRow5List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow5ListArray.add(data);
-			}
-		}
-		String actRow5List = reportsRow5ListArray.toString();
-		String expRow5List = "[G, G700, G, 3.00, 2.00, 1.00, 8.00, 11.00, 3.00, 2.00, 1.00, 8.00, 11.00, 7.69, 7.69]";
-		
-
-		int reportsRow6ListCount = reportsRow6List.size();
-		ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow6ListCount;i++)
-		{
-			String data = reportsRow6List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow6ListArray.add(data);
-			}
-		}
-		String actRow6List = reportsRow6ListArray.toString();
-		String expRow6List = "[H, H800, H, 3.00, 2.00, 1.00, 8.00, 11.00, 3.00, 2.00, 1.00, 8.00, 11.00, 7.69, 7.69]";
-		
-		
-		//
-
-
-		int reportsRow7ListCount = reportsRow7List.size();
-		ArrayList<String> reportsRow7ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow7ListCount;i++)
-		{
-			String data = reportsRow7List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow7ListArray.add(data);
-			}
-
-		}
-		String actRow7List = reportsRow7ListArray.toString();
-		String expRow7List = "[H1, H801, H1, 6.00, 1.00, 5.00, 5.00, 11.00, 6.00, 1.00, 5.00, 5.00, 11.00, 15.38, 15.38]";
-
+			int count=CreditTransactionsTableR1.size();
 
+			System.err.println(count);
 
-		int reportsRow8ListCount = reportsRow8List.size();
-		ArrayList<String> reportsRow8ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow8ListCount;i++)
-		{
-			String data = reportsRow8List.get(i).getText().trim();
-			if(data.isEmpty() == false)
+			for(int i=0 ; i < count ;i++)
 			{
-				reportsRow8ListArray.add(data);
-			}
-
-		}
-		String actRow8List = reportsRow8ListArray.toString();
-		String expRow8List = "[H2, H802, H2, 3.00, 1.00, 4.00, 3.00, 3.00, 1.00, 4.00, 3.00, 7.69, 7.69]";
-
-
+				String data=CreditTransactionsTableR1.get(i).getText();
+				creditList1.add(data);
 
-		int reportsRow9ListCount = reportsRow9List.size();
-		ArrayList<String> reportsRow9ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow9ListCount;i++)
-		{
-			String data = reportsRow9List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow9ListArray.add(data);
-			}
-		}
-		String actRow9List = reportsRow9ListArray.toString();
-		String expRow9List = "[CustomerACC, CAC001, CustomerACC, 1.00, 1.00, 2.00, 2.00, 1.00, 1.00, 1.00, 2.00, 2.00, 1.00, 2.56, 2.56]";
-		
-		
-		///
-
-		int reportsRow10ListCount = reportsRow10List.size();
-		ArrayList<String> reportsRow10ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow10ListCount;i++)
-		{
-			String data = reportsRow10List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow10ListArray.add(data);
 			}
-
-		}
-		String actRow10List = reportsRow10ListArray.toString();
-		String expRow10List = "[PurchaseACC, PAC001, PurchaseACC, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 2.56, 2.56]";
-
 
-
-		int reportsRow11ListCount = reportsRow11List.size();
-		ArrayList<String> reportsRow11ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow11ListCount;i++)
-		{
-			String data = reportsRow11List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow11ListArray.add(data);
-			}
+			String actcreditListR1 = creditList1.toString();
+			String expcreditListR1 = "[27-07-2022, CreNts : 2, CustVend, 1.00]";
 
+			System.out.println("actcreditList"+actcreditListR1);
+			System.out.println("expcreditList"+expcreditListR1);
 
-		}
-		String actRow11List = reportsRow11ListArray.toString();
-		String expRow11List = "[A, A100, A, 33.00, 4.00, 37.00, 35.00, 2.00, 33.00, 4.00, 37.00, 35.00, 2.00, 84.62, 84.62]";
+			
+			
+			LastCreditTransactionExpBtn.click();
+			Thread.sleep(1200);
+			LastDebitTransactionExpBtn.click();
+			Thread.sleep(1200);
+			
+			ArrayList<String>  DebitList1 = new ArrayList<String>(); 
 
+			int count3=debitTransactionsTableR1.size();
 
+			System.err.println(count3);
 
-		int reportsRow12ListCount = reportsRow12List.size();
-		ArrayList<String> reportsRow12ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow12ListCount;i++)
-		{
-			String data = reportsRow12List.get(i).getText().trim();
-			if(data.isEmpty() == false)
+			for(int i=0 ; i < count3 ;i++)
 			{
-				reportsRow12ListArray.add(data);
-			}
-
-		}
-		String actRow12List = reportsRow12ListArray.toString();
-		String expRow12List = "[A1, A101, A1, 33.00, 1.00, 34.00, 34.00, 1.00, 33.00, 1.00, 34.00, 34.00, 1.00, 84.62, 84.62]";
-
+				String data=debitTransactionsTableR1.get(i).getText();
+				DebitList1.add(data);
 
-
-		int reportsRow13ListCount = reportsRow13List.size();
-		ArrayList<String> reportsRow13ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow13ListCount;i++)
-		{
-			String data = reportsRow13List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow13ListArray.add(data);
 			}
-
-		}
-		String actRow13List = reportsRow13ListArray.toString();
-		String expRow13List = "[A2, A102, A2, 1.00, 1.00, 1.00, 1.00]";
-
 
+			String actDebitListR1 = DebitList1.toString();
+			String expDebitListR1 = "[27-07-2022, Rct : 2, C2, 1.00]";
 
-		int reportsRow14ListCount = reportsRow14List.size();
-		ArrayList<String> reportsRow14ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow14ListCount;i++)
-		{
-			String data = reportsRow14List.get(i).getText().trim();
+			System.out.println("actDebitList"+actDebitListR1);
+			System.out.println("expDebitList"+expDebitListR1);
 
-			if(data.isEmpty() == false)
-			{
-				reportsRow14ListArray.add(data);
-			}
-		}
-		String actRow14List = reportsRow14ListArray.toString();
-		String expRow14List = "[B, B200, B, 2.00, 2.00, 1.00, 1.00, 2.00, 2.00, 1.00, 1.00]";
-		
+			
+			ArrayList<String>  DebitList2 = new ArrayList<String>(); 
 
-		int reportsRow15ListCount = reportsRow15List.size();
-		ArrayList<String> reportsRow15ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow15ListCount;i++)
-		{
-			String data = reportsRow15List.get(i).getText().trim();
+			int count4=debitTransactionsTableR2.size();
 
-			if(data.isEmpty() == false)
-			{
-				reportsRow15ListArray.add(data);
-			}
-		}
-		String actRow15List = reportsRow15ListArray.toString();
-		String expRow15List = "[B1, B201, B1, 1.00, 1.00, 1.00, 1.00]";
-		
-		
+			System.err.println(count4);
 
-		int reportsRow16ListCount = reportsRow16List.size();
-		ArrayList<String> reportsRow16ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow16ListCount;i++)
-		{
-			String data = reportsRow16List.get(i).getText().trim();
-			if(data.isEmpty() == false)
+			for(int i=0 ; i < count4 ;i++)
 			{
-				reportsRow16ListArray.add(data);
-			}
-
-		}
-		String actRow16List = reportsRow16ListArray.toString();
-		String expRow16List = "[B2, B202, B2, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00]";
-
+				String data=debitTransactionsTableR2.get(i).getText();
+				DebitList2.add(data);
 
-
-		int reportsRow17ListCount = reportsRow17List.size();
-		ArrayList<String> reportsRow17ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow17ListCount;i++)
-		{
-			String data = reportsRow17List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow17ListArray.add(data);
 			}
-
-		}
-		String actRow17List = reportsRow17ListArray.toString();
-		String expRow17List = "[SalesACC, SAC001, SalesACC, 2.00, 1.00, 1.00, 2.00, 2.00, 1.00, 1.00, 2.00, 5.13, 5.13]";
 
+			String actDebitListR2 = DebitList2.toString();
+			String expDebitListR2 = "[27-07-2022, Rct : 2, G2, 1.00]";
 
+			System.out.println("actDebitList"+actDebitListR2);
+			System.out.println("expDebitList"+expDebitListR2);
 
-		int reportsRow18ListCount = reportsRow18List.size();
-		ArrayList<String> reportsRow18ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow18ListCount;i++)
-		{
-			String data = reportsRow18List.get(i).getText().trim();
+			
+			Thread.sleep(2000);
+			deptWiseBalBtn.click();
+			Thread.sleep(2000);
+			
+			
+			ArrayList<String>  tagList1 = new ArrayList<String>(); 
 
-			if(data.isEmpty() == false)
-			{
-				reportsRow18ListArray.add(data);
-			}
-		}
-		String actRow18List = reportsRow18ListArray.toString();
-		String expRow18List = "[E, E500, E, 4.00, 4.00, 8.00, 12.00, 8.00, 4.00, 4.00, 8.00, 12.00, 8.00, 10.26, 10.26]";
-		
-		int reportsRow19ListCount = reportsRow19List.size();
-		ArrayList<String> reportsRow19ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow19ListCount;i++)
-		{
-			String data = reportsRow19List.get(i).getText().trim();
+			int count1=TagTransactionTableR1.size();
 
-			if(data.isEmpty() == false)
-			{
-				reportsRow19ListArray.add(data);
-			}
-		}
-		String actRow19List = reportsRow19ListArray.toString();
-		String expRow19List = "[E1, E501, E1, 6.00, 1.00, 7.00, 11.00, 5.00, 6.00, 1.00, 7.00, 11.00, 5.00, 15.38, 15.38]";
-		
-		Thread.sleep(2000);
-		report_NextBtn.click();
-		Thread.sleep(2000);
-		
-		
+			System.err.println(count1);
 
-		int reportspage2Row1ListCount = reportsrow1List.size();
-		ArrayList<String> reportspage2Row1ListArray = new ArrayList<String>();
-		for(int i=1;i<reportspage2Row1ListCount;i++)
-		{
-			String data = reportsrow1List.get(i).getText().trim();
-			if(data.isEmpty() == false)
+			for(int i=0 ; i < count1 ;i++)
 			{
-				reportspage2Row1ListArray.add(data);
-			}
-
-		}
-		String actpage2Row1List = reportspage2Row1ListArray.toString();
-		String exppage2Row1List = "[E2, E502, E2, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00]";
-
+				String data=TagTransactionTableR1.get(i).getText();
+				tagList1.add(data);
 
-
-		int reportspage2Row2ListCount = reportsrow2List.size();
-		ArrayList<String> reportspage2Row2ListArray = new ArrayList<String>();
-		for(int i=1;i<reportspage2Row2ListCount;i++)
-		{
-			String data = reportsrow2List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportspage2Row2ListArray.add(data);
 			}
 
+			String acttagListR1 = tagList1.toString();
+			String exptagListR1 = "[1, C2, 2.00 Dr]";
 
-		}
-		String actpage2Row2List = reportspage2Row2ListArray.toString();
-		String exppage2Row2List = "[F, F600, F, 2.00, 2.00, 2.00, 2.00, 2.00, 2.00, 5.13, 5.13]";
+			System.out.println("acttagList"+acttagListR1);
+			System.out.println("exptagList"+exptagListR1);
+			
+			
+			ArrayList<String>  tagList2 = new ArrayList<String>(); 
 
+			int tcount2=TagTransactionTableR2.size();
 
+			System.err.println(tcount2);
 
-		int reportspage2Row3ListCount = reportsrow3List.size();
-		ArrayList<String> reportspage2Row3ListArray = new ArrayList<String>();
-		for(int i=1;i<reportspage2Row3ListCount;i++)
-		{
-			String data = reportsrow3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
+			for(int i=0 ; i < tcount2 ;i++)
 			{
-				reportspage2Row3ListArray.add(data);
-			}
+				String data=TagTransactionTableR2.get(i).getText();
+				tagList2.add(data);
 
-		}
-		String actpage2Row3List = reportspage2Row3ListArray.toString();
-		String exppage2Row3List = "[F1, F601, F1, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 2.56, 2.56]";
-
-
-
-		int reportspage2Row4ListCount = reportsrow4List.size();
-		ArrayList<String> reportspage2Row4ListArray = new ArrayList<String>();
-		for(int i=1;i<reportspage2Row4ListCount;i++)
-		{
-			String data = reportsrow4List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportspage2Row4ListArray.add(data);
 			}
 
-		}
-		String actpage2Row4List = reportspage2Row4ListArray.toString();
-		String exppage2Row4List = "[F2, F602, F2, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 2.56, 2.56]";
+			String acttagListR2 = tagList2.toString();
+			String exptagListR2 = "[2, C1, 1.00 Cr]";
 
+			System.out.println("acttagList"+acttagListR2);
+			System.out.println("exptagList"+exptagListR2);
+			
+			ArrayList<String>  tagList3 = new ArrayList<String>(); 
 
+			int tcount3=TagTransactionTableR3.size();
 
-		int reportspage2Row5ListCount = reportsRow5List.size();
-		ArrayList<String> reportspage2Row5ListArray = new ArrayList<String>();
-		for(int i=1;i<reportspage2Row5ListCount;i++)
-		{
-			String data = reportsRow5List.get(i).getText().trim();
+			System.err.println(tcount3);
 
-			if(data.isEmpty() == false)
+			for(int i=0 ; i < tcount3 ;i++)
 			{
-				reportspage2Row5ListArray.add(data);
-			}
-		}
-		String actpage2Row5List = reportspage2Row5ListArray.toString();
-		String exppage2Row5List = "[C, C300, C, 33.00, 2.00, 31.00, 1.00, 34.00, 33.00, 2.00, 31.00, 1.00, 34.00, 84.62, 84.62]";
-		
-
-		int reportspage2Row6ListCount = reportsRow6List.size();
-		ArrayList<String> reportspage2Row6ListArray = new ArrayList<String>();
-		for(int i=1;i<reportspage2Row6ListCount;i++)
-		{
-			String data = reportsRow6List.get(i).getText().trim();
+				String data=TagTransactionTableR3.get(i).getText();
+				tagList3.add(data);
 
-			if(data.isEmpty() == false)
-			{
-				reportspage2Row6ListArray.add(data);
 			}
-		}
-		String actpage2Row6List = reportspage2Row6ListArray.toString();
-		String exppage2Row6List = "[D, D400, D, 33.00, 2.00, 31.00, 1.00, 34.00, 33.00, 2.00, 31.00, 1.00, 34.00, 84.62, 84.62]";
-		
-		
-		//
 
+			String acttagListR3 = tagList3.toString();
+			String exptagListR3 = "[3, 1.00 Dr]";
 
-		int reportspage2Row7ListCount = reportsRow7List.size();
-		ArrayList<String> reportspage2Row7ListArray = new ArrayList<String>();
-		for(int i=1;i<reportspage2Row7ListCount;i++)
-		{
-			String data = reportsRow7List.get(i).getText().trim();
-			if(data.isEmpty() == false)
+			System.out.println("acttagList"+acttagListR3);
+			System.out.println("exptagList"+exptagListR3);
+			
+			
+			
+			if (actAQ_OpnBal.equalsIgnoreCase(expAQ_OpnBal) && actAQ_Credit.equalsIgnoreCase(expAQ_Credit)
+						&& actAQ_Debit.equalsIgnoreCase(expAQ_Debit) && actAQ_Balance.equalsIgnoreCase(expAQ_Balance)
+						&& actcreditListR1.equalsIgnoreCase(expcreditListR1) 
+						&& actDebitListR1.endsWith(expDebitListR1) && actDebitListR2.equalsIgnoreCase(expDebitListR2) 
+					    && acttagListR1.equalsIgnoreCase(exptagListR1)
+					    && acttagListR2.equalsIgnoreCase(exptagListR2) && acttagListR3.equalsIgnoreCase(exptagListR3))
 			{
-				reportspage2Row7ListArray.add(data);
-			}
-
-		}
-		String actpage2Row7List = reportspage2Row7ListArray.toString();
-		String exppage2Row7List = "[D1, D401, D1, 32.00, 1.00, 31.00, 32.00, 32.00, 1.00, 31.00, 32.00, 82.05, 82.05]";
-
-
-
-		int reportspage2Row8ListCount = reportsRow8List.size();
-		ArrayList<String> reportspage2Row8ListArray = new ArrayList<String>();
-		for(int i=1;i<reportspage2Row8ListCount;i++)
-		{
-			String data = reportsRow8List.get(i).getText().trim();
-			if(data.isEmpty() == false)
+				return true;
+			} 
+			else 
 			{
-				reportspage2Row8ListArray.add(data);
+				return false;
 			}
-
+			
 		}
-		String actpage2Row8List = reportspage2Row8ListArray.toString();
-		String exppage2Row8List = "[D2, D402, D2, 1.00, 1.00, 1.00, 2.00, 1.00, 1.00, 1.00, 2.00, 2.56, 2.56]";
-
-
 
-		int reportspage2Row9ListCount = reportsRow9List.size();
-		ArrayList<String> reportspage2Row9ListArray = new ArrayList<String>();
-		for(int i=1;i<reportspage2Row9ListCount;i++)
+		public boolean checkTransactionAuthorizationReport() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 		{
-			String data = reportsRow9List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportspage2Row9ListArray.add(data);
-			}
-		}
-		String actpage2Row9List = reportspage2Row9ListArray.toString();
-		String exppage2Row9List = "[VendorACC, VAC001, VendorACC, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00]";
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
+			financialsReportsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(transactionAuthorizationReport));
+			transactionAuthorizationReport.click();
+			
+			boolean novalidationConfirmationMessage =validationConfirmationMessage.getText().isEmpty();
+			
+			String actvalidationConfirmationMessage = Boolean.toString(novalidationConfirmationMessage);
+			String expvalidationConfirmationMessage = "true";
+			
+			System.out.println("validationConfirmationMessage : "+actvalidationConfirmationMessage+" Value Expected : "+expvalidationConfirmationMessage);
+			
+			//Thread.sleep(1500);
 		
-
-		int reportspage2Row10ListCount = reportsRow10List.size();
-		ArrayList<String> reportspage2Row10ListArray = new ArrayList<String>();
-		for(int i=1;i<reportspage2Row10ListCount;i++)
-		{
-			String data = reportsRow10List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			sl_DateOptionDropdown.click();
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reportVoucherTxt));
+			reportVoucherTxt.click();
+			reportVoucherTxt.sendKeys(Keys.SPACE);
+			
+			int reportVoucherTxtListCount = reportVoucherTxtList.size();
+			
+			for(int i=0;i<reportVoucherTxtListCount;i++)
 			{
-				reportspage2Row10ListArray.add(data);
-			}
-		}
-		String actpage2Row10List = reportspage2Row10ListArray.toString();
-		String exppage2Row10List = "[Grand Total, 39.00, 39.00, 18.00, 18.00, 51.00, 51.00, 62.00, 62.00, 39.00, 39.00, 18.00, 18.00, 51.00, 51.00, 62.00, 62.00]";
-		
-		System.out.println(actRow1List);
-		System.out.println(expRow1List);
-
-		System.out.println(actRow2List);
-		System.out.println(expRow2List);
-
-		System.out.println(actRow3List);
-		System.out.println(expRow3List);
-
-		System.out.println(actRow4List);
-		System.out.println(expRow4List);
-
-		System.out.println(actRow5List);
-		System.out.println(expRow5List);
-		
-
-		System.out.println(actRow6List);
-		System.out.println(expRow6List);
-		
-		System.out.println(actRow7List);
-		System.out.println(expRow7List);
-
-		System.out.println(actRow8List);
-		System.out.println(expRow8List);
-		
-
-		System.out.println(actRow9List);
-		System.out.println(expRow9List);
-		
-		
-		System.out.println(actRow10List);
-		System.out.println(expRow10List);
-
-		System.out.println(actRow11List);
-		System.out.println(expRow11List);
-
-		System.out.println(actRow12List);
-		System.out.println(expRow12List);
-
-		System.out.println(actRow13List);
-		System.out.println(expRow13List);
-
-		System.out.println(actRow14List);
-		System.out.println(expRow14List);
-		
-
-		System.out.println(actRow15List);
-		System.out.println(expRow15List);
-		
-		System.out.println(actRow16List);
-		System.out.println(expRow16List);
-
-		System.out.println(actRow17List);
-		System.out.println(expRow17List);
-		
-
-		System.out.println(actRow18List);
-		System.out.println(expRow18List);
-		
-		System.out.println(actRow19List);
-		System.out.println(expRow19List);
-		
-		System.out.println(actpage2Row1List);
-		System.out.println(exppage2Row1List);
-
-		System.out.println(actpage2Row2List);
-		System.out.println(exppage2Row2List);
-
-		System.out.println(actpage2Row3List);
-		System.out.println(exppage2Row3List);
-
-		System.out.println(actpage2Row4List);
-		System.out.println(exppage2Row4List);
-
-		System.out.println(actpage2Row5List);
-		System.out.println(exppage2Row5List);
-		
-
-		System.out.println(actpage2Row6List);
-		System.out.println(exppage2Row6List);
-		
-		System.out.println(actpage2Row7List);
-		System.out.println(exppage2Row7List);
-
-		System.out.println(actpage2Row8List);
-		System.out.println(exppage2Row8List);
-		
-
-		System.out.println(actpage2Row9List);
-		System.out.println(exppage2Row9List);
-		
-		System.out.println(actpage2Row10List);
-		System.out.println(exppage2Row10List);
-		
-		
-
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List) 
-				&& actRow4List.equalsIgnoreCase(expRow4List) && actRow5List.equalsIgnoreCase(expRow5List)&& 
-				actRow6List.equalsIgnoreCase(expRow6List)
-				&& actRow7List.equalsIgnoreCase(expRow7List) && actRow8List.equalsIgnoreCase(expRow8List)&& 
-				actRow9List.equalsIgnoreCase(expRow9List) &&
-				actRow10List.equalsIgnoreCase(expRow10List) && actRow11List.equalsIgnoreCase(expRow11List)
-				&& actRow12List.equalsIgnoreCase(expRow12List) && actRow13List.equalsIgnoreCase(expRow13List)
-				&& actRow14List.equalsIgnoreCase(expRow14List) && actRow15List.equalsIgnoreCase(expRow15List)
-				&& actRow16List.equalsIgnoreCase(expRow16List) && actRow17List.equalsIgnoreCase(expRow17List)
-				&& actRow18List.equalsIgnoreCase(expRow18List) && actRow19List.equalsIgnoreCase(expRow19List)
+				String data = reportVoucherTxtList.get(i).getText();
 				
-				&&actpage2Row1List.equalsIgnoreCase(exppage2Row1List) && actpage2Row2List.equalsIgnoreCase(exppage2Row2List)
-				&&actpage2Row3List.equalsIgnoreCase(exppage2Row3List) && actpage2Row4List.equalsIgnoreCase(exppage2Row4List)
-				&&actpage2Row5List.equalsIgnoreCase(exppage2Row5List) && actpage2Row6List.equalsIgnoreCase(exppage2Row6List)
-				&& actpage2Row7List.equalsIgnoreCase(exppage2Row7List) && actpage2Row8List.equalsIgnoreCase(exppage2Row8List)
-				&& actpage2Row9List.equalsIgnoreCase(exppage2Row9List) && actpage2Row10List.equalsIgnoreCase(exppage2Row10List))
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
+				if(data.equalsIgnoreCase("Purchase Voucher VAT"))
+				{
+					reportVoucherTxtList.get(i).click();
+				}
+			}
+			
+			reportVoucherTxt.sendKeys(Keys.TAB);
+			
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			
+			Thread.sleep(2000);
+			
+			boolean novalidationConfirmationMessage1 =validationConfirmationMessage.getText().isEmpty();
+			
+			String actvalidationConfirmationMessage1 = Boolean.toString(novalidationConfirmationMessage1);
+			String expvalidationConfirmationMessage1 = "true";
+			
+			System.out.println("validationConfirmationMessage : "+actvalidationConfirmationMessage+" Value Expected : "+expvalidationConfirmationMessage);
+			
+			boolean actReportTable = reportsTable.getText().isEmpty();
+			boolean expReportTable = true;
+			
+			System.out.println(actReportTable);
+			System.out.println(expReportTable);
+			
+			if (actvalidationConfirmationMessage.equalsIgnoreCase(expvalidationConfirmationMessage) &&
+					actvalidationConfirmationMessage1.equalsIgnoreCase(expvalidationConfirmationMessage1) && 
+					actReportTable==expReportTable) 
+			{
+				
+				getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_CloseBtn));
+				sl_CloseBtn.click();
+				return true;
+			}
+			else
+			{
+				
+				getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_CloseBtn));
+				sl_CloseBtn.click();
+				return false;
+			}
 		}
-	
-	}
-	
-	public static boolean checkFundFlowReport() throws InterruptedException
-	{
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsFinalAccountsMenu));
-		financialsFinalAccountsMenu.click();
+		public boolean checkMasterAuthorizationReport() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
+		{
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
+			financialsReportsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterAuthorizationReport));
+			masterAuthorizationReport.click();
+			
+			boolean novalidationConfirmationMessage =validationConfirmationMessage.getText().isEmpty();
+			
+			String actvalidationConfirmationMessage = Boolean.toString(novalidationConfirmationMessage);
+			String expvalidationConfirmationMessage = "true";
+			
+			System.out.println("validationConfirmationMessage : "+actvalidationConfirmationMessage+" Value Expected : "+expvalidationConfirmationMessage);
+			
+			Thread.sleep(1500);
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(fundFlowReport));
-		fundFlowReport.click();
-	
-		Thread.sleep(1500);
-	
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			sl_DateOptionDropdown.click();
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			
+			boolean novalidationConfirmationMessage1 =validationConfirmationMessage.getText().isEmpty();
+			
+			String actvalidationConfirmationMessage1 = Boolean.toString(novalidationConfirmationMessage1);
+			String expvalidationConfirmationMessage1 = "true";
+			
+			System.out.println("validationConfirmationMessage : "+actvalidationConfirmationMessage+" Value Expected : "+expvalidationConfirmationMessage);
+			Thread.sleep(2000);
+			
+			boolean actReportTable = reportsTable.getText().isEmpty();
+			boolean expReportTable = true;
+			
+			System.out.println(actReportTable);
+			System.out.println(expReportTable);
+			
+			if (actvalidationConfirmationMessage.equalsIgnoreCase(expvalidationConfirmationMessage) &&
+					actvalidationConfirmationMessage1.equalsIgnoreCase(expvalidationConfirmationMessage1) && 
+					actReportTable==expReportTable) 
+			{
+			
+				
+				getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_CloseBtn));
+				sl_CloseBtn.click();
+				return true;
+			}
+			else
+			{
+				
+				getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_CloseBtn));
+				sl_CloseBtn.click();
+				return false;
+			}
+		}
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
+		//receivable payable analysis
 		
+		public static boolean checkCustomerListingOfOutstandingBillsReport() throws InterruptedException
+		{	
+			Thread.sleep(2000);
+			getDriver().navigate().refresh();
+			Thread.sleep(2000);
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(receivableAndPayableAnalysisMenu));
+			receivableAndPayableAnalysisMenu.click();
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerDetailMenu));
+			customerDetailMenu.click();
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerDetailsCustomerListingOfOutstandingBillsReport));
+			customerDetailsCustomerListingOfOutstandingBillsReport.click();
 
-		int reportsRow1ListCount = reportsRow1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsRow1List.get(i).getText().trim();
-			if(data.isEmpty() == false)
+			Thread.sleep(2000);
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+
+			Thread.sleep(3000);
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+			sl_SelectAllChkBox.click();
+			Thread.sleep(2000);
+
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			Thread.sleep(2000);
+
+
+			Thread.sleep(2000);
+			int reportsRow1ListCount = reportsCol1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow1ListCount;i++)
 			{
-				reportsRow1ListArray.add(data);
-			}
+				String data = reportsCol1List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow1ListArray.add(data);
+				}
 
-		}
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[BankACC, BAC001, BankACC, 1.00, 1.00, 2.00, 2.00, 1.00, 1.00, 2.00, 2.00]";
-
-		int reportsRow2ListCount = reportsRow2List.size();
-		ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow2ListCount;i++)
-		{
-			String data = reportsRow2List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow2ListArray.add(data);
-			}
-
-
-		}
-		String actRow2List = reportsRow2ListArray.toString();
-		String expRow2List = "[CashACC, CASH001, CashACC, 1.00, 1.00, 2.00, 1.00, 1.00, 1.00, 2.00, 1.00, 50.00, 50.00]";
-
-		int reportsRow3ListCount = reportsRow3List.size();
-		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow3ListCount;i++)
-		{
-			String data = reportsRow3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow3ListArray.add(data);
-			}
-
-		}
-		String actRow3List = reportsRow3ListArray.toString();
-		String expRow3List = "[CONTROL ACCOUNTS, CA, CONTROL ACCOUNTS, 18.00, 18.00, 18.00, 18.00]";
-
-
-
-		int reportsRow4ListCount = reportsRow4List.size();
-		ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow4ListCount;i++)
-		{
-			String data = reportsRow4List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow4ListArray.add(data);
-			}
-
-		}
-		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[Opening Balances Control A/C, OBC, Opening Balances Control A/C, 18.00, 18.00, 18.00, 18.00]";
-
-
-
-		int reportsRow5ListCount = reportsRow5List.size();
-		ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow5ListCount;i++)
-		{
-			String data = reportsRow5List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow5ListArray.add(data);
-			}
-		}
-		String actRow5List = reportsRow5ListArray.toString();
-		String expRow5List = "[G, G700, G, 3.00, 2.00, 1.00, 8.00, 11.00, 3.00, 2.00, 1.00, 8.00, 11.00, 8.33, 8.33]";
-		
-
-		int reportsRow6ListCount = reportsRow6List.size();
-		ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow6ListCount;i++)
-		{
-			String data = reportsRow6List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow6ListArray.add(data);
-			}
-		}
-		String actRow6List = reportsRow6ListArray.toString();
-		String expRow6List = "[H, H800, H, 3.00, 2.00, 1.00, 8.00, 11.00, 3.00, 2.00, 1.00, 8.00, 11.00, 8.33, 8.33]";
-		
-		
-		//
-
-
-		int reportsRow7ListCount = reportsRow7List.size();
-		ArrayList<String> reportsRow7ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow7ListCount;i++)
-		{
-			String data = reportsRow7List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow7ListArray.add(data);
-			}
-
-		}
-		String actRow7List = reportsRow7ListArray.toString();
-		String expRow7List = "[H1, H801, H1, 6.00, 1.00, 5.00, 5.00, 11.00, 6.00, 1.00, 5.00, 5.00, 11.00, 16.67, 16.67]";
-
-
-
-		int reportsRow8ListCount = reportsRow8List.size();
-		ArrayList<String> reportsRow8ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow8ListCount;i++)
-		{
-			String data = reportsRow8List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow8ListArray.add(data);
-			}
-
-		}
-		String actRow8List = reportsRow8ListArray.toString();
-		String expRow8List = "[H2, H802, H2, 3.00, 1.00, 4.00, 3.00, 3.00, 1.00, 4.00, 3.00, 150.00, 150.00]";
-
-
-
-		int reportsRow9ListCount = reportsRow9List.size();
-		ArrayList<String> reportsRow9ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow9ListCount;i++)
-		{
-			String data = reportsRow9List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow9ListArray.add(data);
-			}
-		}
-		String actRow9List = reportsRow9ListArray.toString();
-		String expRow9List = "[CustomerACC, CAC001, CustomerACC, 1.00, 1.00, 2.00, 2.00, 1.00, 1.00, 1.00, 2.00, 2.00, 1.00, 50.00, 50.00]";
-		
-		
-		///
-
-		int reportsRow10ListCount = reportsRow10List.size();
-		ArrayList<String> reportsRow10ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow10ListCount;i++)
-		{
-			String data = reportsRow10List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow10ListArray.add(data);
-			}
-
-		}
-		String actRow10List = reportsRow10ListArray.toString();
-		String expRow10List = "[C, C300, C, 33.00, 2.00, 31.00, 1.00, 34.00, 33.00, 2.00, 31.00, 1.00, 34.00, 91.67, 91.67]";
-
-
-
-		int reportsRow11ListCount = reportsRow11List.size();
-		ArrayList<String> reportsRow11ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow11ListCount;i++)
-		{
-			String data = reportsRow11List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow11ListArray.add(data);
 			}
 
 
-		}
-		String actRow11List = reportsRow11ListArray.toString();
-		String expRow11List = "[D, D400, D, 33.00, 2.00, 31.00, 1.00, 34.00, 33.00, 2.00, 31.00, 1.00, 34.00, 91.67, 91.67]";
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[Customer A [122-001], OpeBal:2, Sub Total, CustVend [CV001], PurVou:12, CreNts:2, DebNts:2, Sub Total, G1 [G701], OpeBal:2, Pmt:2, Sub Total, G2 [G702], SalInv:7, Rct:2, SalRet:2, Sub Total, Grand Total]";
+
+			System.out.println("Actaul Voucher  :"+actRow1List);
+			System.out.println("Expected Voucher:"+expRow1List);
+
+			Thread.sleep(2000);
 
 
-
-		int reportsRow12ListCount = reportsRow12List.size();
-		ArrayList<String> reportsRow12ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow12ListCount;i++)
-		{
-			String data = reportsRow12List.get(i).getText().trim();
-			if(data.isEmpty() == false)
+			Thread.sleep(2000);
+			int reportsRow3ListCount = reportsCol3List.size();
+			ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow3ListCount;i++)
 			{
-				reportsRow12ListArray.add(data);
+				String data = reportsCol3List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow3ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow3List = reportsRow3ListArray.toString();
+			String expRow3List = "[Customer A, CustVend, CustVend, CustVend, G1, G1, G2, G2, G2]";
+
+			System.out.println("Actaul Voucher  :"+actRow3List);
+			System.out.println("Expected Voucher:"+expRow3List);
+
+			Thread.sleep(2000);
+
+
+			Thread.sleep(2000);
+			int reportsRow4ListCount = reportsCol4List.size();
+			ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow4ListCount;i++)
+			{
+				String data = reportsCol4List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow4ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow4List = reportsRow4ListArray.toString();
+			String expRow4List = "[1.00, 1.00, 5.00, 1.00, 1.00, 5.00, 1.00, 1.00, 15.00, 1.00, 5.00, 9.00, 3.00]";
+
+			System.out.println("Actaul Voucher  :"+actRow4List);
+			System.out.println("Expected Voucher:"+expRow4List);
+
+
+			Thread.sleep(2000);
+
+
+			Thread.sleep(2000);
+			int reportsRow5ListCount = reportsCol5List.size();
+			ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow5ListCount;i++)
+			{
+				String data = reportsCol5List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow5ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow5List = reportsRow5ListArray.toString();
+			String expRow5List = "[1.00, 1.00, 5.00, 1.00, 1.00, 5.00, 1.00, 1.00, 15.00, 1.00, 5.00, 9.00, 3.00]";
+
+			System.out.println("Actaul Voucher  :"+actRow5List);
+			System.out.println("Expected Voucher:"+expRow5List);
+
+
+
+			Thread.sleep(2000);
+			int reportsRow6ListCount = reportsCol6List.size();
+			ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow6ListCount;i++)
+			{
+				String data = reportsCol6List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow6ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow6List = reportsRow6ListArray.toString();
+			String expRow6List = "[1.00, 1.00, 5.00, 4.00, 5.00, 5.00, 1.00, 15.00, 14.00, 9.00, 9.00, 22.00]";
+
+			System.out.println("Actaul Voucher  :"+actRow6List);
+			System.out.println("Expected Voucher:"+expRow6List);
+
+
+			ArrayList<String>  AllDatapage1 = new ArrayList<String>(); 
+
+			int count=stockLedgerTable.size();
+
+			System.err.println(count);
+
+			for(int i=0 ; i < count ;i++)
+			{
+				String style= stockLedgerTable.get(i).getAttribute("style");
+				if(style.contains("overflow: visible; font-weight: bold; background-color:"))
+				{
+					String data=stockLedgerTable.get(i).getText();
+					AllDatapage1.add(data);
+				}
+			}
+
+			String actAllDatapage1 = AllDatapage1.toString();
+			String expAllDatapage1 = "[Customer A [122-001], CustVend [CV001], G1 [G701], G2 [G702]]";
+
+			System.out.println("actAllDatapage1"+actAllDatapage1);
+			System.out.println("expAllDatapage1"+expAllDatapage1);
+
+			/*
+			int reportsRow6ListCount = reportsRow6List.size();
+			ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow6ListCount-1;i++)
+			{
+				String data = reportsRow6List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow6ListArray.add(data);
+				}
+
+			}
+			String actRow6List = reportsRow6ListArray.toString();
+			String expRow6List = "[Sub Total, 5.00, 5.00, 5.00, 5.00, 5.00, 5.00, 219]";
+
+
+			System.out.println(actRow6List);
+			System.out.println(expRow6List);
+
+
+			int reportsRow12ListCount = reportsRow12List.size();
+			ArrayList<String> reportsRow12ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow12ListCount-1;i++)
+			{
+				String data = reportsRow12List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow12ListArray.add(data);
+				}
+
+			}
+			String actRow12List = reportsRow12ListArray.toString();
+			String expRow12List = "[Sub Total, 4.00, 4.00, 4.00, 2.00, 4.00, 4.00, 215]";
+
+
+			System.out.println(actRow12List);
+			System.out.println(expRow12List);
+
+			int reportsRow18ListCount = reportsRow18List.size();
+			ArrayList<String> reportsRow18ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow18ListCount-1;i++)
+			{
+				String data = reportsRow18List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow18ListArray.add(data);
+				}
+
+			}
+			String actRow18List = reportsRow18ListArray.toString();
+			String expRow18List = "[Sub Total, 2.00, 2.00, 2.00, 2.00, 2.00, 2.00, 218]";
+
+
+			System.out.println(actRow18List);
+			System.out.println(expRow18List);
+
+
+			 */
+			/*
+			String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
+			String afterPath="]//td[2]";
+			int k;
+
+			Thread.sleep(2000);
+
+			int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
+
+			for(  k=1;k<rows1;k++)
+			{
+				String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
+
+				if(text1.contains("Grand Total"))
+				{
+					int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
+					System.err.println("count"+rowCount);
+					break;
+				}	
+			}
+
+			int Row1ListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
+			ArrayList<String> Row1ListArray = new ArrayList<String>();
+			for(int i=1;i<Row1ListCount-3;i++)
+			{
+				String data = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).get(i).getText();
+				Row1ListArray.add(data);
+			}
+			String actRowList =Row1ListArray.toString();
+			String expRowList = "[Grand Total, , , 1.00, 1.00, 21.00, , 1.00, 1.00, 1.00, , , , , , 652, , ]";
+
+			System.out.println("actRow1List"+actRowList);
+			System.out.println("expRow1List"+expRowList);
+			 */
+
+			if (actRow3List.equalsIgnoreCase(expRow3List) && 
+					actRow4List.equalsIgnoreCase(expRow4List)  && actRow5List.equalsIgnoreCase(expRow5List) &&
+					actRow6List.equalsIgnoreCase(expRow6List) /*&& actRow12List.equalsIgnoreCase(expRow12List)
+					&& actRow18List.equalsIgnoreCase(expRow18List) && actAllDatapage1.equalsIgnoreCase(expAllDatapage1) 
+					&& actRowList.equalsIgnoreCase(expRowList)*/)
+
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
 			}
 
 		}
-		String actRow12List = reportsRow12ListArray.toString();
-		String expRow12List = "[D1, D401, D1, 32.00, 1.00, 31.00, 32.00, 32.00, 1.00, 31.00, 32.00, 88.89, 88.89]";
-
-
-
-		int reportsRow13ListCount = reportsRow13List.size();
-		ArrayList<String> reportsRow13ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow13ListCount;i++)
+		
+		
+		public static boolean checkCustomerStatementsReport() throws InterruptedException
 		{
-			String data = reportsRow13List.get(i).getText().trim();
-			if(data.isEmpty() == false)
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(receivableAndPayableAnalysisMenu));
+			receivableAndPayableAnalysisMenu.click();
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerDetailMenu));
+			customerDetailMenu.click();
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerDetailsCustomerStatementsReport));
+			customerDetailsCustomerStatementsReport.click();
+			
+			Thread.sleep(2000);
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+
+			Thread.sleep(1000);
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+			sl_SelectAllChkBox.click();
+
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			Thread.sleep(2000);
+
+
+			Thread.sleep(2000);
+			int reportsRow1ListCount = reportsCol1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow1ListCount;i++)
 			{
-				reportsRow13ListArray.add(data);
+				String data = reportsCol1List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[Customer A [122-001], OpeBal:2, Sub Total, CustVend [CV001], PurVou:12, CreNts:2, DebNts:2, Sub Total, G1 [G701], OpeBal:2, Pmt:2, Sub Total, G2 [G702], SalInv:7, Rct:2, SalRet:2, Sub Total]";
+
+			System.out.println("Actaul Voucher  :"+actRow1List);
+			System.out.println("Expected Voucher:"+expRow1List);
+
+			Thread.sleep(2000);
+
+
+			Thread.sleep(2000);
+			int reportsRow3ListCount = reportsCol3List.size();
+			ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow3ListCount;i++)
+			{
+				String data = reportsCol3List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow3ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow3List = reportsRow3ListArray.toString();
+			String expRow3List = "[Customer A, CustVend, CustVend, CustVend, G1, G1, G2, G2, G2]";
+
+			System.out.println("Actaul Voucher  :"+actRow3List);
+			System.out.println("Expected Voucher:"+expRow3List);
+
+			Thread.sleep(2000);
+			
+
+			Thread.sleep(2000);
+			int reportsRow4ListCount = reportsCol4List.size();
+			ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow4ListCount;i++)
+			{
+				String data = reportsCol4List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow4ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow4List = reportsRow4ListArray.toString();
+			String expRow4List = "[1.00, 1.00, 5.00, 1.00, 1.00, 5.00, 1.00, 1.00, 15.00, 1.00, 5.00, 9.00]";
+
+			System.out.println("Actaul Voucher  :"+actRow4List);
+			System.out.println("Expected Voucher:"+expRow4List);
+
+
+			Thread.sleep(2000);
+			
+
+			Thread.sleep(2000);
+			int reportsRow7ListCount = reportsCol7List.size();
+			ArrayList<String> reportsRow7ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow7ListCount;i++)
+			{
+				String data = reportsCol7List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow7ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow7List = reportsRow7ListArray.toString();
+			String expRow7List = "[1.00, 1.00, 5.00, 1.00, 1.00, 5.00, 1.00, 1.00, 15.00, 1.00, 5.00, 9.00]";
+
+			System.out.println("Actaul Voucher  :"+actRow7List);
+			System.out.println("Expected Voucher:"+expRow7List);
+			
+
+
+			Thread.sleep(2000);
+			int reportsRow8ListCount = reportsCol8List.size();
+			ArrayList<String> reportsRow8ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow8ListCount;i++)
+			{
+				String data = reportsCol8List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow8ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow8List = reportsRow8ListArray.toString();
+			String expRow8List = "[1.00, 1.00, 5.00, 4.00, 5.00, 14.00, 1.00, 1.00, 15.00, 14.00, 9.00, 38.00]";
+
+			System.out.println("Actaul Voucher  :"+actRow8List);
+			System.out.println("Expected Voucher:"+expRow8List);
+			
+			
+			ArrayList<String>  AllDatapage1 = new ArrayList<String>(); 
+
+			int count=stockLedgerTable.size();
+
+			System.err.println(count);
+
+			for(int i=0 ; i < count ;i++)
+			{
+				String style= stockLedgerTable.get(i).getAttribute("style");
+				if(style.contains("overflow: visible; font-weight: bold; background-color:"))
+				{
+					String data=stockLedgerTable.get(i).getText();
+					AllDatapage1.add(data);
+				}
+			}
+
+			String actAllDatapage1 = AllDatapage1.toString();
+			String expAllDatapage1 = "[Customer A [122-001], CustVend [CV001], G1 [G701], G2 [G702]]";
+
+			System.out.println("actAllDatapage1"+actAllDatapage1);
+			System.out.println("expAllDatapage1"+expAllDatapage1);
+
+	/*
+			int reportsRow6ListCount = reportsRow6List.size();
+			ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow6ListCount-1;i++)
+			{
+				String data = reportsRow6List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow6ListArray.add(data);
+				}
+
+			}
+			String actRow6List = reportsRow6ListArray.toString();
+			String expRow6List = "[Sub Total, 5.00, 5.00, 5.00, 5.00, 5.00, 5.00, 219]";
+
+
+			System.out.println(actRow6List);
+			System.out.println(expRow6List);
+
+
+			int reportsRow12ListCount = reportsRow12List.size();
+			ArrayList<String> reportsRow12ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow12ListCount-1;i++)
+			{
+				String data = reportsRow12List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow12ListArray.add(data);
+				}
+
+			}
+			String actRow12List = reportsRow12ListArray.toString();
+			String expRow12List = "[Sub Total, 4.00, 4.00, 4.00, 2.00, 4.00, 4.00, 215]";
+
+
+			System.out.println(actRow12List);
+			System.out.println(expRow12List);
+
+			int reportsRow18ListCount = reportsRow18List.size();
+			ArrayList<String> reportsRow18ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow18ListCount-1;i++)
+			{
+				String data = reportsRow18List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow18ListArray.add(data);
+				}
+
+			}
+			String actRow18List = reportsRow18ListArray.toString();
+			String expRow18List = "[Sub Total, 2.00, 2.00, 2.00, 2.00, 2.00, 2.00, 218]";
+
+
+			System.out.println(actRow18List);
+			System.out.println(expRow18List);
+
+
+	*/
+	/*
+			String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
+			String afterPath="]//td[2]";
+			int k;
+
+			Thread.sleep(2000);
+
+			int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
+
+			for(  k=1;k<rows1;k++)
+			{
+				String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
+
+				if(text1.contains("Grand Total"))
+				{
+					int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
+					System.err.println("count"+rowCount);
+					break;
+				}	
+			}
+
+			int Row1ListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
+			ArrayList<String> Row1ListArray = new ArrayList<String>();
+			for(int i=1;i<Row1ListCount-3;i++)
+			{
+				String data = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).get(i).getText();
+				Row1ListArray.add(data);
+			}
+			String actRowList =Row1ListArray.toString();
+			String expRowList = "[Grand Total, , , 1.00, 1.00, 21.00, , 1.00, 1.00, 1.00, , , , , , 652, , ]";
+
+			System.out.println("actRow1List"+actRowList);
+			System.out.println("expRow1List"+expRowList);
+	*/
+
+			if (actRow3List.equalsIgnoreCase(expRow3List) && 
+					actRow4List.equalsIgnoreCase(expRow4List)  && actRow7List.equalsIgnoreCase(expRow7List) &&
+					actRow8List.equalsIgnoreCase(expRow8List) /*&& actRow12List.equalsIgnoreCase(expRow12List)
+					&& actRow18List.equalsIgnoreCase(expRow18List) && actAllDatapage1.equalsIgnoreCase(expAllDatapage1) 
+					&& actRowList.equalsIgnoreCase(expRowList)*/)
+
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+
+		
+		}
+		public static boolean checkCustomerDueDateAnalysis() throws InterruptedException
+		{	
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(receivableAndPayableAnalysisMenu));
+			receivableAndPayableAnalysisMenu.click();
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerDetailMenu));
+			customerDetailMenu.click();
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerDetailsCustomerDueDateAnalysisReport));
+			customerDetailsCustomerDueDateAnalysisReport.click();
+			
+			Thread.sleep(2000);
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+
+			Thread.sleep(1000);
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+			sl_SelectAllChkBox.click();
+
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			Thread.sleep(2000);
+
+			Thread.sleep(2000);
+			int reportsRow1ListCount = reportsCol1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsCol1List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[Customer A [122-001], OpeBal:2, Sub Total, CustVend [CV001], PurVou:12, CreNts:2, DebNts:2, Sub Total, G1 [G701], OpeBal:2, Pmt:2, Sub Total, G2 [G702], SalInv:7, Rct:2, SalRet:2, Sub Total]";
+
+			System.out.println("Actaul Voucher  :"+actRow1List);
+			System.out.println("Expected Voucher:"+expRow1List);
+
+			Thread.sleep(2000);
+
+
+			Thread.sleep(2000);
+			int reportsRow3ListCount = reportsCol3List.size();
+			ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow3ListCount;i++)
+			{
+				String data = reportsCol3List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow3ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow3List = reportsRow3ListArray.toString();
+			String expRow3List = "[Customer A, CustVend, CustVend, CustVend, G1, G1, G2, G2, G2]";
+
+			System.out.println("Actaul Voucher  :"+actRow3List);
+			System.out.println("Expected Voucher:"+expRow3List);
+
+			Thread.sleep(2000);
+			
+
+			Thread.sleep(2000);
+			int reportsRow4ListCount = reportsCol4List.size();
+			ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow4ListCount;i++)
+			{
+				String data = reportsCol4List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow4ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow4List = reportsRow4ListArray.toString();
+			String expRow4List = "[1.00, 1.00, 5.00, 1.00, 1.00, 5.00, 1.00, 1.00, 15.00, 1.00, 5.00, 9.00]";
+
+			System.out.println("Actaul Voucher  :"+actRow4List);
+			System.out.println("Expected Voucher:"+expRow4List);
+
+
+			Thread.sleep(2000);
+			
+
+			Thread.sleep(2000);
+			int reportsRow7ListCount = reportsCol7List.size();
+			ArrayList<String> reportsRow7ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow7ListCount;i++)
+			{
+				String data = reportsCol7List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow7ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow7List = reportsRow7ListArray.toString();
+			String expRow7List = "[1.00, 1.00, 5.00, 1.00, 1.00, 5.00, 1.00, 1.00, 15.00, 1.00, 5.00, 9.00]";
+
+			System.out.println("Actaul Voucher  :"+actRow7List);
+			System.out.println("Expected Voucher:"+expRow7List);
+			
+
+
+			Thread.sleep(2000);
+			int reportsRow8ListCount = reportsCol8List.size();
+			ArrayList<String> reportsRow8ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow8ListCount;i++)
+			{
+				String data = reportsCol8List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow8ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow8List = reportsRow8ListArray.toString();
+			String expRow8List = "[1.00, 1.00, 5.00, 4.00, 5.00, 14.00, 1.00, 1.00, 15.00, 14.00, 9.00, 38.00]";
+
+			System.out.println("Actaul Voucher  :"+actRow8List);
+			System.out.println("Expected Voucher:"+expRow8List);
+			
+			
+			ArrayList<String>  AllDatapage1 = new ArrayList<String>(); 
+
+			int count=stockLedgerTable.size();
+
+			System.err.println(count);
+
+			for(int i=0 ; i < count ;i++)
+			{
+				String style= stockLedgerTable.get(i).getAttribute("style");
+				if(style.contains("overflow: visible; font-weight: bold; background-color:"))
+				{
+					String data=stockLedgerTable.get(i).getText();
+					AllDatapage1.add(data);
+				}
+			}
+
+			String actAllDatapage1 = AllDatapage1.toString();
+			String expAllDatapage1 = "[Customer A [122-001], CustVend [CV001], G1 [G701], G2 [G702]]";
+
+			System.out.println("actAllDatapage1"+actAllDatapage1);
+			System.out.println("expAllDatapage1"+expAllDatapage1);
+
+	/*
+			int reportsRow6ListCount = reportsRow6List.size();
+			ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow6ListCount-1;i++)
+			{
+				String data = reportsRow6List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow6ListArray.add(data);
+				}
+
+			}
+			String actRow6List = reportsRow6ListArray.toString();
+			String expRow6List = "[Sub Total, 5.00, 5.00, 5.00, 5.00, 5.00, 5.00, 219]";
+
+
+			System.out.println(actRow6List);
+			System.out.println(expRow6List);
+
+
+			int reportsRow12ListCount = reportsRow12List.size();
+			ArrayList<String> reportsRow12ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow12ListCount-1;i++)
+			{
+				String data = reportsRow12List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow12ListArray.add(data);
+				}
+
+			}
+			String actRow12List = reportsRow12ListArray.toString();
+			String expRow12List = "[Sub Total, 4.00, 4.00, 4.00, 2.00, 4.00, 4.00, 215]";
+
+
+			System.out.println(actRow12List);
+			System.out.println(expRow12List);
+
+			int reportsRow18ListCount = reportsRow18List.size();
+			ArrayList<String> reportsRow18ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow18ListCount-1;i++)
+			{
+				String data = reportsRow18List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow18ListArray.add(data);
+				}
+
+			}
+			String actRow18List = reportsRow18ListArray.toString();
+			String expRow18List = "[Sub Total, 2.00, 2.00, 2.00, 2.00, 2.00, 2.00, 218]";
+
+
+			System.out.println(actRow18List);
+			System.out.println(expRow18List);
+
+
+	*/
+	/*
+			String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
+			String afterPath="]//td[2]";
+			int k;
+
+			Thread.sleep(2000);
+
+			int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
+
+			for(  k=1;k<rows1;k++)
+			{
+				String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
+
+				if(text1.contains("Grand Total"))
+				{
+					int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
+					System.err.println("count"+rowCount);
+					break;
+				}	
+			}
+
+			int Row1ListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
+			ArrayList<String> Row1ListArray = new ArrayList<String>();
+			for(int i=1;i<Row1ListCount-3;i++)
+			{
+				String data = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).get(i).getText();
+				Row1ListArray.add(data);
+			}
+			String actRowList =Row1ListArray.toString();
+			String expRowList = "[Grand Total, , , 1.00, 1.00, 21.00, , 1.00, 1.00, 1.00, , , , , , 652, , ]";
+
+			System.out.println("actRow1List"+actRowList);
+			System.out.println("expRow1List"+expRowList);
+	*/
+
+			if (actRow3List.equalsIgnoreCase(expRow3List) && 
+					actRow4List.equalsIgnoreCase(expRow4List)  && actRow7List.equalsIgnoreCase(expRow7List) &&
+					actRow8List.equalsIgnoreCase(expRow8List) /*&& actRow12List.equalsIgnoreCase(expRow12List)
+					&& actRow18List.equalsIgnoreCase(expRow18List) && actAllDatapage1.equalsIgnoreCase(expAllDatapage1) 
+					&& actRowList.equalsIgnoreCase(expRowList)*/)
+
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+
+		
+		}
+		public static boolean checkCustomerAgeingDetailAnalysis() throws InterruptedException
+		{
+			
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(receivableAndPayableAnalysisMenu));
+			receivableAndPayableAnalysisMenu.click();
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerDetailMenu));
+			customerDetailMenu.click();
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerDetailsCustomerAgeingDetailsReport));
+			customerDetailsCustomerAgeingDetailsReport.click();
+			
+			
+			Thread.sleep(2000);
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+
+			Thread.sleep(1000);
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+			sl_SelectAllChkBox.click();
+
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			Thread.sleep(2000);
+
+
+			Thread.sleep(2000);
+			int reportsRow1ListCount = reportsCol1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsCol1List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[Customer A [122-001], OpeBal:2, Sub Total, CustVend [CV001], PurVou:12, CreNts:2, DebNts:2, Sub Total, G1 [G701], OpeBal:2, Pmt:2, Sub Total, G2 [G702], SalInv:7, Rct:2, SalRet:2, Sub Total]";
+
+			System.out.println("Actaul Voucher  :"+actRow1List);
+			System.out.println("Expected Voucher:"+expRow1List);
+
+			Thread.sleep(2000);
+
+
+			Thread.sleep(2000);
+			int reportsRow3ListCount = reportsCol3List.size();
+			ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow3ListCount;i++)
+			{
+				String data = reportsCol3List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow3ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow3List = reportsRow3ListArray.toString();
+			String expRow3List = "[Customer A, CustVend, CustVend, CustVend, G1, G1, G2, G2, G2]";
+
+			System.out.println("Actaul Voucher  :"+actRow3List);
+			System.out.println("Expected Voucher:"+expRow3List);
+
+			Thread.sleep(2000);
+			
+
+			Thread.sleep(2000);
+			int reportsRow4ListCount = reportsCol4List.size();
+			ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow4ListCount;i++)
+			{
+				String data = reportsCol4List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow4ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow4List = reportsRow4ListArray.toString();
+			String expRow4List = "[1.00, 1.00, 5.00, 1.00, 1.00, 5.00, 1.00, 1.00, 15.00, 1.00, 5.00, 9.00]";
+
+			System.out.println("Actaul Voucher  :"+actRow4List);
+			System.out.println("Expected Voucher:"+expRow4List);
+
+
+			Thread.sleep(2000);
+			
+
+			Thread.sleep(2000);
+			int reportsRow5ListCount = reportsCol5List.size();
+			ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow5ListCount;i++)
+			{
+				String data = reportsCol5List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow5ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow5List = reportsRow5ListArray.toString();
+			String expRow5List = "[1.00, 1.00, 5.00, 1.00, 1.00, 5.00, 1.00, 1.00, 15.00, 1.00, 5.00, 9.00]";
+
+			System.out.println("Actaul Voucher  :"+actRow5List);
+			System.out.println("Expected Voucher:"+expRow5List);
+			
+
+
+			Thread.sleep(2000);
+			int reportsRow6ListCount = reportsCol6List.size();
+			ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow6ListCount;i++)
+			{
+				String data = reportsCol6List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow6ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow6List = reportsRow6ListArray.toString();
+			String expRow6List = "[1.00, 1.00, 5.00, 4.00, 5.00, 14.00, 1.00, 1.00, 15.00, 14.00, 9.00, 38.00]";
+
+			System.out.println("Actaul Voucher  :"+actRow6List);
+			System.out.println("Expected Voucher:"+expRow6List);
+			
+			
+			ArrayList<String>  AllDatapage1 = new ArrayList<String>(); 
+
+			int count=stockLedgerTable.size();
+
+			System.err.println(count);
+
+			for(int i=0 ; i < count ;i++)
+			{
+				String style= stockLedgerTable.get(i).getAttribute("style");
+				if(style.contains("overflow: visible; font-weight: bold; background-color:"))
+				{
+					String data=stockLedgerTable.get(i).getText();
+					AllDatapage1.add(data);
+				}
+			}
+
+			String actAllDatapage1 = AllDatapage1.toString();
+			String expAllDatapage1 = "[Customer A [122-001], CustVend [CV001], G1 [G701], G2 [G702]]";
+
+			System.out.println("actAllDatapage1"+actAllDatapage1);
+			System.out.println("expAllDatapage1"+expAllDatapage1);
+
+	/*
+			int reportsRow6ListCount = reportsRow6List.size();
+			ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow6ListCount-1;i++)
+			{
+				String data = reportsRow6List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow6ListArray.add(data);
+				}
+
+			}
+			String actRow6List = reportsRow6ListArray.toString();
+			String expRow6List = "[Sub Total, 5.00, 5.00, 5.00, 5.00, 5.00, 5.00, 219]";
+
+
+			System.out.println(actRow6List);
+			System.out.println(expRow6List);
+
+
+			int reportsRow12ListCount = reportsRow12List.size();
+			ArrayList<String> reportsRow12ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow12ListCount-1;i++)
+			{
+				String data = reportsRow12List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow12ListArray.add(data);
+				}
+
+			}
+			String actRow12List = reportsRow12ListArray.toString();
+			String expRow12List = "[Sub Total, 4.00, 4.00, 4.00, 2.00, 4.00, 4.00, 215]";
+
+
+			System.out.println(actRow12List);
+			System.out.println(expRow12List);
+
+			int reportsRow18ListCount = reportsRow18List.size();
+			ArrayList<String> reportsRow18ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow18ListCount-1;i++)
+			{
+				String data = reportsRow18List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow18ListArray.add(data);
+				}
+
+			}
+			String actRow18List = reportsRow18ListArray.toString();
+			String expRow18List = "[Sub Total, 2.00, 2.00, 2.00, 2.00, 2.00, 2.00, 218]";
+
+
+			System.out.println(actRow18List);
+			System.out.println(expRow18List);
+
+
+	*/
+	/*
+			String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
+			String afterPath="]//td[2]";
+			int k;
+
+			Thread.sleep(2000);
+
+			int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
+
+			for(  k=1;k<rows1;k++)
+			{
+				String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
+
+				if(text1.contains("Grand Total"))
+				{
+					int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
+					System.err.println("count"+rowCount);
+					break;
+				}	
+			}
+
+			int Row1ListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
+			ArrayList<String> Row1ListArray = new ArrayList<String>();
+			for(int i=1;i<Row1ListCount-3;i++)
+			{
+				String data = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).get(i).getText();
+				Row1ListArray.add(data);
+			}
+			String actRowList =Row1ListArray.toString();
+			String expRowList = "[Grand Total, , , 1.00, 1.00, 21.00, , 1.00, 1.00, 1.00, , , , , , 652, , ]";
+
+			System.out.println("actRow1List"+actRowList);
+			System.out.println("expRow1List"+expRowList);
+	*/
+
+			if (actRow3List.equalsIgnoreCase(expRow3List) && 
+					actRow4List.equalsIgnoreCase(expRow4List)  && actRow5List.equalsIgnoreCase(expRow5List) &&
+					actRow6List.equalsIgnoreCase(expRow6List) /*&& actRow12List.equalsIgnoreCase(expRow12List)
+					&& actRow18List.equalsIgnoreCase(expRow18List) && actAllDatapage1.equalsIgnoreCase(expAllDatapage1) 
+					&& actRowList.equalsIgnoreCase(expRowList)*/)
+
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+
+		
+		}
+		
+		public static boolean checkCustomerAgeingDetailByDueDate() throws InterruptedException
+		{
+
+
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(receivableAndPayableAnalysisMenu));
+			receivableAndPayableAnalysisMenu.click();
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerDetailMenu));
+			customerDetailMenu.click();
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerDetailsCustomerDetailAgeingByDueDateReport));
+			customerDetailsCustomerDetailAgeingByDueDateReport.click();
+			
+			
+			Thread.sleep(2000);
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+
+			Thread.sleep(1000);
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+			sl_SelectAllChkBox.click();
+
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			Thread.sleep(2000);
+
+
+			Thread.sleep(2000);
+			int reportsRow1ListCount = reportsCol1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsCol1List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[Customer A [122-001], OpeBal:2, Sub Total, CustVend [CV001], PurVou:12, CreNts:2, DebNts:2, Sub Total, G1 [G701], OpeBal:2, Pmt:2, Sub Total, G2 [G702], SalInv:7, Rct:2, SalRet:2, Sub Total]";
+
+			System.out.println("Actaul Voucher  :"+actRow1List);
+			System.out.println("Expected Voucher:"+expRow1List);
+
+			Thread.sleep(2000);
+
+
+			Thread.sleep(2000);
+			int reportsRow3ListCount = reportsCol3List.size();
+			ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow3ListCount;i++)
+			{
+				String data = reportsCol3List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow3ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow3List = reportsRow3ListArray.toString();
+			String expRow3List = "[Customer A, CustVend, CustVend, CustVend, G1, G1, G2, G2, G2]";
+
+			System.out.println("Actaul Voucher  :"+actRow3List);
+			System.out.println("Expected Voucher:"+expRow3List);
+
+			Thread.sleep(2000);
+
+
+			Thread.sleep(2000);
+			int reportsRow4ListCount = reportsCol4List.size();
+			ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow4ListCount;i++)
+			{
+				String data = reportsCol4List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow4ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow4List = reportsRow4ListArray.toString();
+			String expRow4List = "[1.00, 1.00, 5.00, 1.00, 1.00, 5.00, 1.00, 1.00, 15.00, 1.00, 5.00, 9.00]";
+
+			System.out.println("Actaul Voucher  :"+actRow4List);
+			System.out.println("Expected Voucher:"+expRow4List);
+
+			Thread.sleep(2000);
+
+			
+
+			Thread.sleep(2000);
+			int reportsRow5ListCount = reportsCol5List.size();
+			ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow5ListCount;i++)
+			{
+				String data = reportsCol5List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow5ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow5List = reportsRow5ListArray.toString();
+			String expRow5List = "[1.00, 1.00, 5.00, 1.00, 1.00, 5.00, 1.00, 1.00, 15.00, 1.00, 5.00, 9.00]";
+
+			System.out.println("Actaul Voucher  :"+actRow5List);
+			System.out.println("Expected Voucher:"+expRow5List);
+
+			Thread.sleep(2000);
+
+
+			Thread.sleep(2000);
+			int reportsRow6ListCount = reportsCol6List.size();
+			ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow6ListCount;i++)
+			{
+				String data = reportsCol6List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow6ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow6List = reportsRow6ListArray.toString();
+			String expRow6List = "[1.00, 1.00, 5.00, 4.00, 5.00, 14.00, 1.00, 1.00, 15.00, 14.00, 9.00, 38.00]";
+
+			System.out.println("Actaul Voucher  :"+actRow6List);
+			System.out.println("Expected Voucher:"+expRow6List);
+
+			Thread.sleep(2000);
+
+
+			ArrayList<String>  AllDatapage1 = new ArrayList<String>(); 
+
+			int count=stockLedgerTable.size();
+
+			System.err.println(count);
+
+			for(int i=0 ; i < count ;i++)
+			{
+				String style= stockLedgerTable.get(i).getAttribute("style");
+				if(style.contains("overflow: visible; font-weight: bold; background-color:"))
+				{
+					String data=stockLedgerTable.get(i).getText();
+					AllDatapage1.add(data);
+				}
+			}
+
+			String actAllDatapage1 = AllDatapage1.toString();
+			String expAllDatapage1 = "[Customer A [122-001], CustVend [CV001], G1 [G701], G2 [G702]]";
+
+			System.out.println("actAllDatapage1"+actAllDatapage1);
+			System.out.println("expAllDatapage1"+expAllDatapage1);
+
+	/*
+			int reportsRow6ListCount = reportsRow6List.size();
+			ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow6ListCount;i++)
+			{
+				String data = reportsRow6List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow6ListArray.add(data);
+				}
+
+			}
+			String actRow6List = reportsRow6ListArray.toString();
+			String expRow6List = "[Sub Total, 5.00, 5.00, 7.00, 219, 5.00, 5.00, 6.00, 1.00, 5.00, 6.00, 1.00, 5.00]";
+
+
+			System.out.println(actRow6List);
+			System.out.println(expRow6List);
+
+
+			int reportsRow12ListCount = reportsRow12List.size();
+			ArrayList<String> reportsRow12ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow12ListCount;i++)
+			{
+				String data = reportsRow12List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow12ListArray.add(data);
+				}
+
+			}
+			String actRow12List = reportsRow12ListArray.toString();
+			String expRow12List = "[Sub Total, 2.00, 2.00, 4.00, 218, 2.00, 2.00, 1.00, 1.00, 2.00, 1.00, 1.00, 2.00]";
+
+
+			System.out.println(actRow12List);
+			System.out.println(expRow12List);
+
+			int reportsRow18ListCount = reportsRow18List.size();
+			ArrayList<String> reportsRow18ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow18ListCount;i++)
+			{
+				String data = reportsRow18List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow18ListArray.add(data);
+				}
+
+			}
+			String actRow18List = reportsRow18ListArray.toString();
+			String expRow18List = "[Sub Total, 2.00, 2.00, 4.00, 218, 2.00, 2.00, 1.00, 1.00, 2.00, 1.00, 1.00, 2.00]";
+
+
+			System.out.println(actRow18List);
+			System.out.println(expRow18List);
+
+
+	*/
+
+			/*String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
+			String afterPath="]//td[2]";
+			int k;
+
+			Thread.sleep(2000);
+
+			int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
+
+			for(  k=1;k<rows1;k++)
+			{
+				String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
+
+				if(text1.contains("Grand Total"))
+				{
+					int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
+					System.err.println("count"+rowCount);
+					break;
+				}	
+			}
+
+			int Row1ListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
+			ArrayList<String> Row1ListArray = new ArrayList<String>();
+			for(int i=1;i<Row1ListCount;i++)
+			{
+				String data = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).get(i).getText();
+				Row1ListArray.add(data);
+			}
+			String actRowList =Row1ListArray.toString();
+			String expRowList = "[Grand Total, , , 1.00, 1.00, 21.00, 652, 1.00, 1.00, 2.00, , , , 3.00, , , , 1.00, 2.00, , , , 3.00, , , , 1.00, , , , , , , , , , , ]";
+
+			System.out.println("actRow1List"+actRowList);
+			System.out.println("expRow1List"+expRowList);
+
+	*/
+			if (actRow1List.equalsIgnoreCase(expRow1List) && actRow3List.equalsIgnoreCase(expRow3List) &&
+					actRow4List.equalsIgnoreCase(expRow4List) && actRow5List.equalsIgnoreCase(expRow5List)
+					 && actRow6List.equalsIgnoreCase(expRow6List)
+					/*actRow6List.equalsIgnoreCase(expRow6List) && actRow12List.equalsIgnoreCase(expRow12List)
+					&& actRow18List.equalsIgnoreCase(expRow18List)*/ && actAllDatapage1.equalsIgnoreCase(expAllDatapage1) 
+					/*&& actRowList.equalsIgnoreCase(expRowList)*/)
+
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
 			}
 
 		}
-		String actRow13List = reportsRow13ListArray.toString();
-		String expRow13List = "[D2, D402, D2, 1.00, 1.00, 1.00, 2.00, 1.00, 1.00, 1.00, 2.00, 2.78, 2.78]";
-
-
-
-		int reportsRow14ListCount = reportsRow14List.size();
-		ArrayList<String> reportsRow14ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow14ListCount;i++)
+		
+		public static boolean checkCustomerOverDueAnalysis() throws InterruptedException
 		{
-			String data = reportsRow14List.get(i).getText().trim();
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
 
-			if(data.isEmpty() == false)
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(receivableAndPayableAnalysisMenu));
+			receivableAndPayableAnalysisMenu.click();
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerDetailMenu));
+			customerDetailMenu.click();
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerDetailsCustomerOverdueAnalysisReport));
+			customerDetailsCustomerOverdueAnalysisReport.click();
+			
+			
+			Thread.sleep(2000);
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+
+			Thread.sleep(1000);
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+			sl_SelectAllChkBox.click();
+
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			Thread.sleep(2000);
+
+
+			Thread.sleep(2000);
+			int reportsRow1ListCount = reportsCol1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow1ListCount;i++)
 			{
-				reportsRow14ListArray.add(data);
-			}
-		}
-		String actRow14List = reportsRow14ListArray.toString();
-		String expRow14List = "[VendorACC, VAC001, VendorACC, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00]";
-		
+				String data = reportsCol1List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow1ListArray.add(data);
+				}
 
-		int reportsRow15ListCount = reportsRow15List.size();
-		ArrayList<String> reportsRow15ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow15ListCount;i++)
+			}
+
+
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[Customer A [122-001], OpeBal:2, Sub Total, CustVend [CV001], DebNts:2, CreNts:2, PurVou:12, Sub Total, G1 [G701], OpeBal:2, Pmt:2, Sub Total, G2 [G702], SalInv:7, Rct:2, SalRet:2, Sub Total]";
+
+			System.out.println("Actaul Voucher  :"+actRow1List);
+			System.out.println("Expected Voucher:"+expRow1List);
+
+			Thread.sleep(2000);
+
+
+			Thread.sleep(2000);
+			int reportsRow3ListCount = reportsCol3List.size();
+			ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow3ListCount;i++)
+			{
+				String data = reportsCol3List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow3ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow3List = reportsRow3ListArray.toString();
+			String expRow3List = "[Customer A, CustVend, CustVend, CustVend, G1, G1, G2, G2, G2]";
+
+			System.out.println("Actaul Voucher  :"+actRow3List);
+			System.out.println("Expected Voucher:"+expRow3List);
+			
+
+			Thread.sleep(2000);
+			int reportsRow4ListCount = reportsCol4List.size();
+			ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow4ListCount;i++)
+			{
+				String data = reportsCol4List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow4ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow4List = reportsRow4ListArray.toString();
+			String expRow4List = "[1.00, 1.00, 1.00, 1.00, 5.00, 5.00, 1.00, 1.00, 15.00, 1.00, 5.00, 9.00]";
+
+			System.out.println("Actaul Voucher  :"+actRow4List);
+			System.out.println("Expected Voucher:"+expRow4List);
+
+			Thread.sleep(2000);
+			
+
+			Thread.sleep(2000);
+			int reportsRow5ListCount = reportsCol5List.size();
+			ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow5ListCount;i++)
+			{
+				String data = reportsCol5List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow5ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow5List = reportsRow5ListArray.toString();
+			String expRow5List = "[1.00, 1.00, 1.00, 1.00, 5.00, 5.00, 1.00, 1.00, 15.00, 1.00, 5.00, 9.00]";
+
+			System.out.println("Actaul Voucher  :"+actRow5List);
+			System.out.println("Expected Voucher:"+expRow5List);
+			
+
+			
+
+			Thread.sleep(2000);
+			int reportsRow7ListCount = reportsCol7List.size();
+			ArrayList<String> reportsRow7ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow7ListCount;i++)
+			{
+				String data = reportsCol7List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow7ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow7List = reportsRow7ListArray.toString();
+			String expRow7List = "[1.00, 1.00, 1.00, 5.00, 6.00, 1.00, 1.00, 15.00, 14.00, 9.00, 38.00]";
+
+			System.out.println("Actaul Voucher  :"+actRow7List);
+			System.out.println("Expected Voucher:"+expRow7List);
+			
+			
+
+
+			ArrayList<String>  AllDatapage1 = new ArrayList<String>(); 
+
+			int count=stockLedgerTable.size();
+
+			System.err.println(count);
+
+			for(int i=0 ; i < count ;i++)
+			{
+				String style= stockLedgerTable.get(i).getAttribute("style");
+				if(style.contains("overflow: visible; font-weight: bold; background-color:"))
+				{
+					String data=stockLedgerTable.get(i).getText();
+					AllDatapage1.add(data);
+				}
+			}
+
+			String actAllDatapage1 = AllDatapage1.toString();
+			String expAllDatapage1 = "[Customer A [122-001], CustVend [CV001], G1 [G701], G2 [G702]]";
+
+			System.out.println("actAllDatapage1"+actAllDatapage1);
+			System.out.println("expAllDatapage1"+expAllDatapage1);
+
+	/*
+			int reportsRow6ListCount = reportsRow6List.size();
+			ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow6ListCount;i++)
+			{
+				String data = reportsRow6List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow6ListArray.add(data);
+				}
+
+			}
+			String actRow6List = reportsRow6ListArray.toString();
+			String expRow6List = "[Sub Total, 5.00, 5.00, 207, 7.00, 6.00, 1.00, 5.00]";
+
+
+			System.out.println(actRow6List);
+			System.out.println(expRow6List);
+
+
+			int reportsRow12ListCount = reportsRow12List.size();
+			ArrayList<String> reportsRow12ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow12ListCount;i++)
+			{
+				String data = reportsRow12List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow12ListArray.add(data);
+				}
+
+			}
+			String actRow12List = reportsRow12ListArray.toString();
+			String expRow12List = "[Sub Total, 4.00, 4.00, 203, 10.00, 3.00, 1.00, 4.00]";
+
+
+			System.out.println(actRow12List);
+			System.out.println(expRow12List);
+
+			int reportsRow18ListCount = reportsRow18List.size();
+			ArrayList<String> reportsRow18ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow18ListCount;i++)
+			{
+				String data = reportsRow18List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow18ListArray.add(data);
+				}
+
+			}
+			String actRow18List = reportsRow18ListArray.toString();
+			String expRow18List = "[Sub Total, 2.00, 2.00, 206, 4.00, 1.00, 1.00, 2.00]";
+
+
+			System.out.println(actRow18List);
+			System.out.println(expRow18List);
+
+	*/
+	/*
+
+			String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
+			String afterPath="]//td[2]";
+			int k;
+
+			Thread.sleep(2000);
+
+			int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
+
+			for(  k=1;k<rows1;k++)
+			{
+				String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
+
+				if(text1.contains("Grand Total"))
+				{
+					int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
+					System.err.println("count"+rowCount);
+					break;
+				}	
+			}
+
+			int Row1ListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
+			ArrayList<String> Row1ListArray = new ArrayList<String>();
+			for(int i=1;i<Row1ListCount;i++)
+			{
+				String data = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).get(i).getText();
+				Row1ListArray.add(data);
+			}
+			String actRowList =Row1ListArray.toString();
+			String expRowList = "[Grand Total, , , 1.00, 1.00, 616, 21.00, , 2.00, , , , 3.00, , , , 1.00, ]";
+
+			System.out.println("actRow1List"+actRowList);
+			System.out.println("expRow1List"+expRowList);
+
+	*/
+			if (actRow1List.equalsIgnoreCase(expRow1List) && actRow3List.equalsIgnoreCase(expRow3List) && 
+					actRow4List.equalsIgnoreCase(expRow4List) && actRow5List.equalsIgnoreCase(expRow5List)
+					&& actRow7List.equalsIgnoreCase(expRow7List)
+					/*actRow6List.equalsIgnoreCase(expRow6List) && actRow12List.equalsIgnoreCase(expRow12List)
+					&& actRow18List.equalsIgnoreCase(expRow18List) */&& actAllDatapage1.equalsIgnoreCase(expAllDatapage1) 
+					/*&& actRowList.equalsIgnoreCase(expRowList)*/)
+
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+
+		}
+		
+		
+		//Customer summary
+		
+		
+		public static boolean checkCustomerAgeingSummaryReport()
 		{
-			String data = reportsRow15List.get(i).getText().trim();
 
-			if(data.isEmpty() == false)
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(receivableAndPayableAnalysisMenu));
+			receivableAndPayableAnalysisMenu.click();
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerSummaryMenu));
+			customerSummaryMenu.click();
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerSummaryCustomerAgeingSummaryReport));
+			customerSummaryCustomerAgeingSummaryReport.click();
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+			sl_SelectAllChkBox.click();
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+
+
+
+			int reportscol1ListCount = reportsCol1List.size();
+			ArrayList<String> reportscol1ListArray = new ArrayList<String>();
+			for(int i=0;i<reportscol1ListCount;i++)
 			{
-				reportsRow15ListArray.add(data);
-			}
-		}
-		String actRow15List = reportsRow15ListArray.toString();
-		String expRow15List = "[Loss for the period, 34.00, 10.00, 44.00, 34.00, 34.00, 44.00, 34.00]";
-		
-		
+				String data = reportsCol1List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportscol1ListArray.add(data);
+				}
 
-		int reportsRow16ListCount = reportsRow16List.size();
-		ArrayList<String> reportsRow16ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow16ListCount;i++)
+			}
+			String actcol1List = reportscol1ListArray.toString();
+			String expcol1List = "[Customer A, CustVend, G2, Grand Total]";
+
+
+
+			int reportscol2ListCount = reportsCol2List.size();
+			ArrayList<String> reportscol2ListArray = new ArrayList<String>();
+			for(int i=0;i<reportscol2ListCount;i++)
+			{
+				String data = reportsCol2List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportscol2ListArray.add(data);
+				}
+
+
+			}
+			String actcol2List = reportscol2ListArray.toString();
+			String expcol2List = "[1.00, 5.00, 9.00, 3.00]";
+
+
+
+			int reportscol3ListCount = reportsCol3List.size();
+			ArrayList<String> reportscol3ListArray = new ArrayList<String>();
+			for(int i=0;i<reportscol3ListCount;i++)
+			{
+				String data = reportsCol3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportscol3ListArray.add(data);
+				}
+
+			}
+			String actcol3List = reportscol3ListArray.toString();
+			String expcol3List = "[1.00, 5.00, 9.00, 3.00]";
+
+
+
+			int reportscol6ListCount = reportsCol6List.size();
+			ArrayList<String> reportscol6ListArray = new ArrayList<String>();
+			for(int i=0;i<reportscol6ListCount;i++)
+			{
+				String data = reportsCol6List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportscol6ListArray.add(data);
+				}
+
+			}
+			String actcol6List = reportscol6ListArray.toString();
+			String expcol6List = "[1.00, 5.00, 9.00, 3.00]";
+
+
+			System.out.println(actcol1List);
+			System.out.println(expcol1List);
+
+			System.out.println(actcol2List);
+			System.out.println(expcol2List);
+
+			System.out.println(actcol3List);
+			System.out.println(expcol3List);
+
+			System.out.println(actcol6List);
+			System.out.println(expcol6List);
+
+
+
+			if (actcol1List.equalsIgnoreCase(expcol1List) && actcol2List.equalsIgnoreCase(expcol2List) && actcol3List.equalsIgnoreCase(expcol3List) 
+					&& actcol6List.equalsIgnoreCase(expcol6List))
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+
+		}
+		
+		public static boolean checkCustomerSummaryAgeingByDueDateReport() throws InterruptedException
 		{
-			String data = reportsRow16List.get(i).getText().trim();
-			if(data.isEmpty() == false)
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(receivableAndPayableAnalysisMenu));
+			receivableAndPayableAnalysisMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerSummaryMenu));
+			customerSummaryMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerSummaryAgeingByDueDateReport));
+			customerSummaryAgeingByDueDateReport.click();
+			
+			Thread.sleep(2000);
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+			sl_SelectAllChkBox.click();
+			
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			
+
+
+			int reportscol1ListCount = reportsCol1List.size();
+			ArrayList<String> reportscol1ListArray = new ArrayList<String>();
+			for(int i=0;i<reportscol1ListCount;i++)
 			{
-				reportsRow16ListArray.add(data);
+				String data = reportsCol1List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportscol1ListArray.add(data);
+				}
+
+			}
+			String actcol1List = reportscol1ListArray.toString();
+			String expcol1List = "[Customer A, CustVend, G2, Grand Total]";
+
+
+
+			int reportscol2ListCount = reportsCol2List.size();
+			ArrayList<String> reportscol2ListArray = new ArrayList<String>();
+			for(int i=0;i<reportscol2ListCount;i++)
+			{
+				String data = reportsCol2List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportscol2ListArray.add(data);
+				}
+
+
+			}
+			String actcol2List = reportscol2ListArray.toString();
+			String expcol2List = "[1.00, 5.00, 9.00, 3.00]";
+
+
+
+			int reportscol3ListCount = reportsCol3List.size();
+			ArrayList<String> reportscol3ListArray = new ArrayList<String>();
+			for(int i=0;i<reportscol3ListCount;i++)
+			{
+				String data = reportsCol3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportscol3ListArray.add(data);
+				}
+
+			}
+			String actcol3List = reportscol3ListArray.toString();
+			String expcol3List = "[1.00, 5.00, 9.00, 3.00]";
+
+
+
+			int reportscol6ListCount = reportsCol6List.size();
+			ArrayList<String> reportscol6ListArray = new ArrayList<String>();
+			for(int i=0;i<reportscol6ListCount;i++)
+			{
+				String data = reportsCol6List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportscol6ListArray.add(data);
+				}
+
+			}
+			String actcol6List = reportscol6ListArray.toString();
+			String expcol6List = "[1.00, 5.00, 9.00, 3.00]";
+
+
+			System.out.println(actcol1List);
+			System.out.println(expcol1List);
+
+			System.out.println(actcol2List);
+			System.out.println(expcol2List);
+
+			System.out.println(actcol3List);
+			System.out.println(expcol3List);
+
+			System.out.println(actcol6List);
+			System.out.println(expcol6List);
+
+
+
+			if (actcol1List.equalsIgnoreCase(expcol1List) && actcol2List.equalsIgnoreCase(expcol2List) && actcol3List.equalsIgnoreCase(expcol3List) 
+					&& actcol6List.equalsIgnoreCase(expcol6List))
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
 			}
 
 		}
-		String actRow16List = reportsRow16ListArray.toString();
-		String expRow16List = "[Grand Total, 36.00, 36.00, 18.00, 18.00, 50.00, 50.00, 49.00, 49.00, 36.00, 36.00, 18.00, 18.00, 50.00, 50.00, 49.00, 49.00]";
+		
+		public static boolean checkCustomerOverDueSummaryReport() throws InterruptedException
+		{
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(receivableAndPayableAnalysisMenu));
+			receivableAndPayableAnalysisMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerSummaryMenu));
+			customerSummaryMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerSummaryCustomerOverDueSummeryReport));
+			customerSummaryCustomerOverDueSummeryReport.click();
+			
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+			sl_SelectAllChkBox.click();
+			
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+
+
+			int reportscol1ListCount = reportsCol1List.size();
+			ArrayList<String> reportscol1ListArray = new ArrayList<String>();
+			for(int i=0;i<reportscol1ListCount;i++)
+			{
+				String data = reportsCol1List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportscol1ListArray.add(data);
+				}
+
+			}
+			String actcol1List = reportscol1ListArray.toString();
+			String expcol1List = "[Customer A, CustVend, G2, Grand Total]";
+
+
+
+			int reportscol2ListCount = reportsCol2List.size();
+			ArrayList<String> reportscol2ListArray = new ArrayList<String>();
+			for(int i=0;i<reportscol2ListCount;i++)
+			{
+				String data = reportsCol2List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportscol2ListArray.add(data);
+				}
+
+
+			}
+			String actcol2List = reportscol2ListArray.toString();
+			String expcol2List = "[1.00, 5.00, 9.00, 3.00]";
+
+
+
+			int reportscol3ListCount = reportsCol3List.size();
+			ArrayList<String> reportscol3ListArray = new ArrayList<String>();
+			for(int i=0;i<reportscol3ListCount;i++)
+			{
+				String data = reportsCol3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportscol3ListArray.add(data);
+				}
+
+			}
+			String actcol3List = reportscol3ListArray.toString();
+			String expcol3List = "[1.00, 5.00, 9.00, 3.00]";
+
+
+
+			int reportscol6ListCount = reportsCol14List.size();
+			ArrayList<String> reportscol6ListArray = new ArrayList<String>();
+			for(int i=0;i<reportscol6ListCount;i++)
+			{
+				String data = reportsCol14List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportscol6ListArray.add(data);
+				}
+
+			}
+			String actcol6List = reportscol6ListArray.toString();
+			String expcol6List = "[1.00, 5.00, 9.00, 3.00]";
+
+
+			System.out.println(actcol1List);
+			System.out.println(expcol1List);
+
+			System.out.println(actcol2List);
+			System.out.println(expcol2List);
+
+			System.out.println(actcol3List);
+			System.out.println(expcol3List);
+
+			System.out.println(actcol6List);
+			System.out.println(expcol6List);
+
+
+
+			if (actcol1List.equalsIgnoreCase(expcol1List) && actcol2List.equalsIgnoreCase(expcol2List) && actcol3List.equalsIgnoreCase(expcol3List) 
+					&& actcol6List.equalsIgnoreCase(expcol6List))
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+
+		}
+		
+		public static boolean checkCustomerBillWiseSummaryReport() throws InterruptedException
+		{
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(receivableAndPayableAnalysisMenu));
+			receivableAndPayableAnalysisMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerSummaryMenu));
+			customerSummaryMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerSummaryCustomerBillWiseSummeryReport));
+			customerSummaryCustomerBillWiseSummeryReport.click();
+			
+			
+			Thread.sleep(2000);
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+			sl_SelectAllChkBox.click();
+			
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			
+
+
+			int reportscol1ListCount = reportsCol1List.size();
+			ArrayList<String> reportscol1ListArray = new ArrayList<String>();
+			for(int i=0;i<reportscol1ListCount;i++)
+			{
+				String data = reportsCol1List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportscol1ListArray.add(data);
+				}
+
+			}
+			String actcol1List = reportscol1ListArray.toString();
+			String expcol1List = "[Customer A, CustVend, G1, G2, Grand Total]";
+
+
+
+			int reportscol2ListCount = reportsCol2List.size();
+			ArrayList<String> reportscol2ListArray = new ArrayList<String>();
+			for(int i=0;i<reportscol2ListCount;i++)
+			{
+				String data = reportsCol2List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportscol2ListArray.add(data);
+				}
+
+
+			}
+			String actcol2List = reportscol2ListArray.toString();
+			String expcol2List = "[1.00, 1.00, 15.00, 17.00]";
+
+
+
+			int reportscol3ListCount = reportsCol3List.size();
+			ArrayList<String> reportscol3ListArray = new ArrayList<String>();
+			for(int i=0;i<reportscol3ListCount;i++)
+			{
+				String data = reportsCol3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportscol3ListArray.add(data);
+				}
+
+			}
+			String actcol3List = reportscol3ListArray.toString();
+			String expcol3List = "[1.00, 6.00, 1.00, 6.00, 14.00]";
+
+
+
+
+			System.out.println(actcol1List);
+			System.out.println(expcol1List);
+
+			System.out.println(actcol2List);
+			System.out.println(expcol2List);
+
+			System.out.println(actcol3List);
+			System.out.println(expcol3List);
+
+			
+			if (actcol1List.equalsIgnoreCase(expcol1List) && actcol2List.equalsIgnoreCase(expcol2List) && actcol3List.equalsIgnoreCase(expcol3List) 
+					)
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+
+			
+		}
+		
+		public static boolean checkVendorListingOfOutStandingBills() throws InterruptedException
+		{
+			Thread.sleep(2500);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(receivableAndPayableAnalysisMenu));
+			receivableAndPayableAnalysisMenu.click();
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorDetailMenu));
+			vendorDetailMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorDetailsVendorListingOfOutstandingBillsReport));
+			vendorDetailsVendorListingOfOutstandingBillsReport.click();
+			
+			Thread.sleep(2000);
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+
+			Thread.sleep(3000);
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+			sl_SelectAllChkBox.click();
+			Thread.sleep(3000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			Thread.sleep(2000);
+
+
+			Thread.sleep(2000);
+			int reportsRow1ListCount = reportsCol1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsCol1List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[CustVend CV001, PurVou:12, CreNts:2, DebNts:2, Sub Total, Vendor A 033-001, PurVou:7, Sub Total, C1 C301, OpeBal:2, Pmt:2, Sub Total, C2 C302, PurVou:11, Rct:2, PurRet:2, NJv:2, Sub Total]";
+
+			System.out.println("Actaul Voucher  :"+actRow1List);
+			System.out.println("Expected Voucher:"+expRow1List);
+
+			Thread.sleep(2000);
+
+
+			Thread.sleep(2000);
+			int reportsRow3ListCount = reportsCol3List.size();
+			ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow3ListCount;i++)
+			{
+				String data = reportsCol3List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow3ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow3List = reportsRow3ListArray.toString();
+			String expRow3List = "[CustVend, CustVend, CustVend, Vendor A, C1, C1, C2, C2, C2, C2]";
+
+			System.out.println("Actaul Voucher  :"+actRow3List);
+			System.out.println("Expected Voucher:"+expRow3List);
+
+			Thread.sleep(2000);
+
+			
+
+
+			Thread.sleep(2000);
+			int reportsRow4ListCount = reportsCol4List.size();
+			ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow4ListCount;i++)
+			{
+				String data = reportsCol4List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow4ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow4List = reportsRow4ListArray.toString();
+			String expRow4List = "[5.00, 1.00, 1.00, 5.00, 500.00, 500.00, 1.00, 1.00, 5.00, 1.00, 5.00, 1.00]";
+
+			System.out.println("Actaul Voucher  :"+actRow4List);
+			System.out.println("Expected Voucher:"+expRow4List);
+
+			Thread.sleep(2000);
+			
+			ArrayList<String>  AllDatapage1 = new ArrayList<String>(); 
+
+			int count=stockLedgerTable.size();
+
+			System.err.println(count);
+
+			for(int i=0 ; i < count ;i++)
+			{
+				String style= stockLedgerTable.get(i).getAttribute("style");
+				if(style.contains("overflow: visible; font-weight: bold; background-color:"))
+				{
+					String data=stockLedgerTable.get(i).getText();
+					AllDatapage1.add(data);
+				}
+			}
+
+			String actAllDatapage1 = AllDatapage1.toString();
+			String expAllDatapage1 = "[CustVend CV001, Vendor A 033-001, C1 C301, C2 C302]";
+
+			System.out.println("actAllDatapage1"+actAllDatapage1);
+			System.out.println("expAllDatapage1"+expAllDatapage1);
+			
+			
+
+
+
+			if (actRow1List.equalsIgnoreCase(expRow1List) && actRow3List.equalsIgnoreCase(expRow3List) &&
+					actRow4List.equalsIgnoreCase(expRow4List) && actAllDatapage1.equalsIgnoreCase(expAllDatapage1) 
+					)
+
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+
+		
+		}
+		
+		public static boolean checkVendorStatementsReport() throws InterruptedException
+		{
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(receivableAndPayableAnalysisMenu));
+			receivableAndPayableAnalysisMenu.click();
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorDetailMenu));
+			vendorDetailMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorDetailsVendorStatementsReport));
+			vendorDetailsVendorStatementsReport.click();
+			Thread.sleep(2000);
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+
+			Thread.sleep(3000);
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+			sl_SelectAllChkBox.click();
+
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			Thread.sleep(4000);
+
+
+			Thread.sleep(2000);
+			int reportsRow1ListCount = reportsCol1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsCol1List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[CustVend CV001, PurVou:12, CreNts:2, DebNts:2, Sub Total, Vendor A 033-001, PurVou:7, Sub Total, C1 C301, OpeBal:2, Pmt:2, Sub Total, C2 C302, PurVou:11, Rct:2, PurRet:2, NJv:2]";
+
+			System.out.println("Actaul Voucher  :"+actRow1List);
+			System.out.println("Expected Voucher:"+expRow1List);
+
+			Thread.sleep(2000);
+
+
+			Thread.sleep(2000);
+			int reportsRow3ListCount = reportsCol3List.size();
+			ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow3ListCount;i++)
+			{
+				String data = reportsCol3List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow3ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow3List = reportsRow3ListArray.toString();
+			String expRow3List = "[CustVend, CustVend, CustVend, Vendor A, C1, C1, C2, C2, C2, C2]";
+
+			System.out.println("Actaul Voucher  :"+actRow3List);
+			System.out.println("Expected Voucher:"+expRow3List);
+
+			Thread.sleep(2000);
+
+			
+
+
+			Thread.sleep(2000);
+			int reportsRow4ListCount = reportsCol4List.size();
+			ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow4ListCount;i++)
+			{
+				String data = reportsCol4List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow4ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow4List = reportsRow4ListArray.toString();
+			String expRow4List = "[5.00, 1.00, 1.00, 5.00, 500.00, 500.00, 1.00, 1.00, 5.00, 1.00, 5.00, 1.00]";
+
+			System.out.println("Actaul Voucher  :"+actRow4List);
+			System.out.println("Expected Voucher:"+expRow4List);
+
+			Thread.sleep(2000);
+			
+			
+
+
+			Thread.sleep(2000);
+			int reportsRow7ListCount = reportsCol7List.size();
+			ArrayList<String> reportsRow7ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow7ListCount;i++)
+			{
+				String data = reportsCol7List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow7ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow7List = reportsRow7ListArray.toString();
+			String expRow7List = "[5.00, 1.00, 1.00, 5.00, 500.00, 500.00, 1.00, 1.00, 5.00, 1.00, 5.00, 1.00]";
+
+			System.out.println("Actaul Voucher  :"+actRow7List);
+			System.out.println("Expected Voucher:"+expRow7List);
+
+			Thread.sleep(2000);
+			
+
+
+			Thread.sleep(2000);
+			int reportsRow8ListCount = reportsCol8List.size();
+			ArrayList<String> reportsRow8ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow8ListCount;i++)
+			{
+				String data = reportsCol8List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow8ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow8List = reportsRow8ListArray.toString();
+			String expRow8List = "[5.00, 4.00, 5.00, 14.00, 500.00, 500.00, 1.00, 1.00, 5.00, 6.00, 1.00]";
+
+			System.out.println("Actaul Voucher  :"+actRow8List);
+			System.out.println("Expected Voucher:"+expRow8List);
+
+			Thread.sleep(2000);
+
+
+
+			ArrayList<String>  AllDatapage1 = new ArrayList<String>(); 
+
+			int count=stockLedgerTable.size();
+
+			System.err.println(count);
+
+			for(int i=0 ; i < count ;i++)
+			{
+				String style= stockLedgerTable.get(i).getAttribute("style");
+				if(style.contains("overflow: visible; font-weight: bold; background-color:"))
+				{
+					String data=stockLedgerTable.get(i).getText();
+					AllDatapage1.add(data);
+				}
+			}
+
+			String actAllDatapage1 = AllDatapage1.toString();
+			String expAllDatapage1 = "[CustVend CV001, Vendor A 033-001, C1 C301, C2 C302]";
+
+			System.out.println("actAllDatapage1"+actAllDatapage1);
+			System.out.println("expAllDatapage1"+expAllDatapage1);
+
+	/*
+			int reportsRow5ListCount = reportsRow5List.size();
+			ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow5ListCount;i++)
+			{
+				String data = reportsRow5List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow5ListArray.add(data);
+				}
+
+			}
+			String actRow5List = reportsRow5ListArray.toString();
+			String expRow5List = "[Sub Total, 29.00, 29.00, 29.00, 29.00, 29.00, 29.00, 190]";
+
+
+			System.out.println(actRow5List);
+			System.out.println(expRow5List);
+
+
+			int reportsRow11ListCount = reportsRow11List.size();
+			ArrayList<String> reportsRow11ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow11ListCount;i++)
+			{
+				String data = reportsRow11List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow11ListArray.add(data);
+				}
+
+			}
+			String actRow11List = reportsRow11ListArray.toString();
+			String expRow11List = "[Sub Total, 2.00, 202]";
+
+
+			System.out.println(actRow11List);
+			System.out.println(expRow11List);
+
+			int reportsRow16ListCount = reportsRow16List.size();
+			ArrayList<String> reportsRow16ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow16ListCount;i++)
+			{
+				String data = reportsRow16List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow16ListArray.add(data);
+				}
+
+			}
+			String actRow16List = reportsRow16ListArray.toString();
+			String expRow16List = "[Sub Total, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 185]";
+
+
+			System.out.println(actRow16List);
+			System.out.println(expRow16List);
+
+
+
+
+			String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
+			String afterPath="]//td[2]";
+			int k;
+
+			Thread.sleep(2000);
+
+			int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
+
+			for(  k=1;k<rows1;k++)
+			{
+				String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
+
+				if(text1.contains("Grand Total"))
+				{
+					int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
+					System.err.println("count"+rowCount);
+					break;
+				}	
+			}
+
+			int Row1ListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
+			ArrayList<String> Row1ListArray = new ArrayList<String>();
+			for(int i=1;i<Row1ListCount;i++)
+			{
+				String data = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).get(i).getText();
+				Row1ListArray.add(data);
+			}
+			String actRowList =Row1ListArray.toString();
+			String expRowList = "[Grand Total, , , 28.00, 28.00, 52.00, , 26.00, 28.00, 28.00, , , , , , 577, , ]";
+
+			System.out.println("actRow1List"+actRowList);
+			System.out.println("expRow1List"+expRowList);
+	*/
+
+			if (actRow1List.equalsIgnoreCase(expRow1List) && actRow3List.equalsIgnoreCase(expRow3List) &&
+					actRow4List.equalsIgnoreCase(expRow4List) &&
+					actRow7List.equalsIgnoreCase(expRow7List) && actRow8List.equalsIgnoreCase(expRow8List)/*&& actRow11List.equalsIgnoreCase(expRow11List)
+					&& actRow16List.equalsIgnoreCase(expRow16List) */&& actAllDatapage1.equalsIgnoreCase(expAllDatapage1) 
+					/*&& actRowList.equalsIgnoreCase(expRowList)*/)
+
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+
+		
+		}
+		
+		public static boolean checkVendorDueDateAnalysisReport() throws InterruptedException
+		{
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(receivableAndPayableAnalysisMenu));
+			receivableAndPayableAnalysisMenu.click();
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorDetailMenu));
+			vendorDetailMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorDetailsVendorDueDateAnalysisReport));
+			vendorDetailsVendorDueDateAnalysisReport.click();
+			
+			Thread.sleep(2000);
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+
+			Thread.sleep(3000);
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+			sl_SelectAllChkBox.click();
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			Thread.sleep(2000);
+
+			Thread.sleep(2000);
+			int reportsRow1ListCount = reportsCol1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsCol1List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[CustVend CV001, PurVou:12, CreNts:2, DebNts:2, Sub Total, Vendor A 033-001, PurVou:7, Sub Total, C1 C301, OpeBal:2, Pmt:2, Sub Total, C2 C302, PurVou:11, Rct:2, PurRet:2, NJv:2]";
+
+			System.out.println("Actaul Voucher  :"+actRow1List);
+			System.out.println("Expected Voucher:"+expRow1List);
+
+			Thread.sleep(2000);
+
+
+			Thread.sleep(2000);
+			int reportsRow3ListCount = reportsCol3List.size();
+			ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow3ListCount;i++)
+			{
+				String data = reportsCol3List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow3ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow3List = reportsRow3ListArray.toString();
+			String expRow3List = "[CustVend, CustVend, CustVend, Vendor A, C1, C1, C2, C2, C2, C2]";
+
+			System.out.println("Actaul Voucher  :"+actRow3List);
+			System.out.println("Expected Voucher:"+expRow3List);
+
+			Thread.sleep(2000);
+
+			
+
+
+			Thread.sleep(2000);
+			int reportsRow4ListCount = reportsCol4List.size();
+			ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow4ListCount;i++)
+			{
+				String data = reportsCol4List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow4ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow4List = reportsRow4ListArray.toString();
+			String expRow4List = "[5.00, 1.00, 1.00, 5.00, 500.00, 500.00, 1.00, 1.00, 5.00, 1.00, 5.00, 1.00]";
+
+			System.out.println("Actaul Voucher  :"+actRow4List);
+			System.out.println("Expected Voucher:"+expRow4List);
+
+			Thread.sleep(2000);
+			
+			
+
+
+			Thread.sleep(2000);
+			int reportsRow7ListCount = reportsCol7List.size();
+			ArrayList<String> reportsRow7ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow7ListCount;i++)
+			{
+				String data = reportsCol7List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow7ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow7List = reportsRow7ListArray.toString();
+			String expRow7List = "[5.00, 1.00, 1.00, 5.00, 500.00, 500.00, 1.00, 1.00, 5.00, 1.00, 5.00, 1.00]";
+
+			System.out.println("Actaul Voucher  :"+actRow7List);
+			System.out.println("Expected Voucher:"+expRow7List);
+
+			Thread.sleep(2000);
+			
+
+
+			Thread.sleep(2000);
+			int reportsRow8ListCount = reportsCol8List.size();
+			ArrayList<String> reportsRow8ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow8ListCount;i++)
+			{
+				String data = reportsCol8List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow8ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow8List = reportsRow8ListArray.toString();
+			String expRow8List = "[5.00, 4.00, 5.00, 14.00, 500.00, 500.00, 1.00, 1.00, 5.00, 6.00, 1.00]";
+
+			System.out.println("Actaul Voucher  :"+actRow8List);
+			System.out.println("Expected Voucher:"+expRow8List);
+
+			Thread.sleep(2000);
+
+
+
+			ArrayList<String>  AllDatapage1 = new ArrayList<String>(); 
+
+			int count=stockLedgerTable.size();
+
+			System.err.println(count);
+
+			for(int i=0 ; i < count ;i++)
+			{
+				String style= stockLedgerTable.get(i).getAttribute("style");
+				if(style.contains("overflow: visible; font-weight: bold; background-color:"))
+				{
+					String data=stockLedgerTable.get(i).getText();
+					AllDatapage1.add(data);
+				}
+			}
+
+			String actAllDatapage1 = AllDatapage1.toString();
+			String expAllDatapage1 = "[CustVend CV001, Vendor A 033-001, C1 C301, C2 C302]";
+
+			System.out.println("actAllDatapage1"+actAllDatapage1);
+			System.out.println("expAllDatapage1"+expAllDatapage1);
+
+	/*
+			int reportsRow5ListCount = reportsRow5List.size();
+			ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow5ListCount;i++)
+			{
+				String data = reportsRow5List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow5ListArray.add(data);
+				}
+
+			}
+			String actRow5List = reportsRow5ListArray.toString();
+			String expRow5List = "[Sub Total, 29.00, 29.00, 29.00, 29.00, 29.00, 29.00, 190]";
+
+
+			System.out.println(actRow5List);
+			System.out.println(expRow5List);
+
+
+			int reportsRow11ListCount = reportsRow11List.size();
+			ArrayList<String> reportsRow11ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow11ListCount;i++)
+			{
+				String data = reportsRow11List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow11ListArray.add(data);
+				}
+
+			}
+			String actRow11List = reportsRow11ListArray.toString();
+			String expRow11List = "[Sub Total, 2.00, 202]";
+
+
+			System.out.println(actRow11List);
+			System.out.println(expRow11List);
+
+			int reportsRow16ListCount = reportsRow16List.size();
+			ArrayList<String> reportsRow16ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow16ListCount;i++)
+			{
+				String data = reportsRow16List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow16ListArray.add(data);
+				}
+
+			}
+			String actRow16List = reportsRow16ListArray.toString();
+			String expRow16List = "[Sub Total, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 185]";
+
+
+			System.out.println(actRow16List);
+			System.out.println(expRow16List);
+
+
+
+
+			String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
+			String afterPath="]//td[2]";
+			int k;
+
+			Thread.sleep(2000);
+
+			int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
+
+			for(  k=1;k<rows1;k++)
+			{
+				String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
+
+				if(text1.contains("Grand Total"))
+				{
+					int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
+					System.err.println("count"+rowCount);
+					break;
+				}	
+			}
+
+			int Row1ListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
+			ArrayList<String> Row1ListArray = new ArrayList<String>();
+			for(int i=1;i<Row1ListCount;i++)
+			{
+				String data = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).get(i).getText();
+				Row1ListArray.add(data);
+			}
+			String actRowList =Row1ListArray.toString();
+			String expRowList = "[Grand Total, , , 28.00, 28.00, 52.00, , 26.00, 28.00, 28.00, , , , , , 577, , ]";
+
+			System.out.println("actRow1List"+actRowList);
+			System.out.println("expRow1List"+expRowList);
+	*/
+
+			if (actRow1List.equalsIgnoreCase(expRow1List) && actRow3List.equalsIgnoreCase(expRow3List) &&
+					actRow4List.equalsIgnoreCase(expRow4List) &&
+					actRow7List.equalsIgnoreCase(expRow7List) && actRow8List.equalsIgnoreCase(expRow8List)/*&& actRow11List.equalsIgnoreCase(expRow11List)
+					&& actRow16List.equalsIgnoreCase(expRow16List) */&& actAllDatapage1.equalsIgnoreCase(expAllDatapage1) 
+					/*&& actRowList.equalsIgnoreCase(expRowList)*/)
+
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+
+		
+		}
+		
+		public static boolean checkVendorAgeingDetailsAnalysis() throws InterruptedException
+		{
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(receivableAndPayableAnalysisMenu));
+			receivableAndPayableAnalysisMenu.click();
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorDetailMenu));
+			vendorDetailMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorDetailsVendorAgeingDetailsReport));
+			vendorDetailsVendorAgeingDetailsReport.click();
+			
+			Thread.sleep(2000);
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+
+			Thread.sleep(3000);
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+			sl_SelectAllChkBox.click();
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			Thread.sleep(2000);
+
+
+
+			Thread.sleep(2000);
+			int reportsRow1ListCount = reportsCol1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsCol1List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[CustVend CV001, PurVou:12, CreNts:2, DebNts:2, Sub Total, Vendor A 033-001, PurVou:7, Sub Total, C1 C301, OpeBal:2, Pmt:2, Sub Total, C2 C302, PurVou:11, Rct:2, PurRet:2, NJv:2]";
+
+			System.out.println("Actaul Voucher  :"+actRow1List);
+			System.out.println("Expected Voucher:"+expRow1List);
+
+			Thread.sleep(2000);
+
+
+			Thread.sleep(2000);
+			int reportsRow3ListCount = reportsCol3List.size();
+			ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow3ListCount;i++)
+			{
+				String data = reportsCol3List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow3ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow3List = reportsRow3ListArray.toString();
+			String expRow3List = "[CustVend, CustVend, CustVend, Vendor A, C1, C1, C2, C2, C2, C2]";
+
+			System.out.println("Actaul Voucher  :"+actRow3List);
+			System.out.println("Expected Voucher:"+expRow3List);
+
+			Thread.sleep(2000);
+
+			
+
+
+			Thread.sleep(2000);
+			int reportsRow4ListCount = reportsCol4List.size();
+			ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow4ListCount;i++)
+			{
+				String data = reportsCol4List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow4ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow4List = reportsRow4ListArray.toString();
+			String expRow4List = "[5.00, 1.00, 1.00, 5.00, 500.00, 500.00, 1.00, 1.00, 5.00, 1.00, 5.00, 1.00]";
+
+			System.out.println("Actaul Voucher  :"+actRow4List);
+			System.out.println("Expected Voucher:"+expRow4List);
+
+			Thread.sleep(2000);
+			
+			
+
+
+			Thread.sleep(2000);
+			int reportsRow5ListCount = reportsCol5List.size();
+			ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow5ListCount;i++)
+			{
+				String data = reportsCol5List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow5ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow5List = reportsRow5ListArray.toString();
+			String expRow5List = "[5.00, 1.00, 1.00, 5.00, 500.00, 500.00, 1.00, 1.00, 5.00, 1.00, 5.00, 1.00]";
+
+			System.out.println("Actaul Voucher  :"+actRow5List);
+			System.out.println("Expected Voucher:"+expRow5List);
+
+			Thread.sleep(2000);
+			
+
+
+			Thread.sleep(2000);
+			int reportsRow6ListCount = reportsCol6List.size();
+			ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow6ListCount;i++)
+			{
+				String data = reportsCol6List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow6ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow6List = reportsRow6ListArray.toString();
+			String expRow6List = "[5.00, 4.00, 5.00, 14.00, 500.00, 500.00, 1.00, 1.00, 5.00, 6.00, 1.00]";
+
+			System.out.println("Actaul Voucher  :"+actRow6List);
+			System.out.println("Expected Voucher:"+expRow6List);
+
+			Thread.sleep(2000);
+
+
+
+			ArrayList<String>  AllDatapage1 = new ArrayList<String>(); 
+
+			int count=stockLedgerTable.size();
+
+			System.err.println(count);
+
+			for(int i=0 ; i < count ;i++)
+			{
+				String style= stockLedgerTable.get(i).getAttribute("style");
+				if(style.contains("overflow: visible; font-weight: bold; background-color:"))
+				{
+					String data=stockLedgerTable.get(i).getText();
+					AllDatapage1.add(data);
+				}
+			}
+
+			String actAllDatapage1 = AllDatapage1.toString();
+			String expAllDatapage1 = "[CustVend CV001, Vendor A 033-001, C1 C301, C2 C302]";
+
+			System.out.println("actAllDatapage1"+actAllDatapage1);
+			System.out.println("expAllDatapage1"+expAllDatapage1);
+
+	/*
+			int reportsRow5ListCount = reportsRow5List.size();
+			ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow5ListCount;i++)
+			{
+				String data = reportsRow5List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow5ListArray.add(data);
+				}
+
+			}
+			String actRow5List = reportsRow5ListArray.toString();
+			String expRow5List = "[Sub Total, 29.00, 29.00, 29.00, 29.00, 29.00, 29.00, 190]";
+
+
+			System.out.println(actRow5List);
+			System.out.println(expRow5List);
+
+
+			int reportsRow11ListCount = reportsRow11List.size();
+			ArrayList<String> reportsRow11ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow11ListCount;i++)
+			{
+				String data = reportsRow11List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow11ListArray.add(data);
+				}
+
+			}
+			String actRow11List = reportsRow11ListArray.toString();
+			String expRow11List = "[Sub Total, 2.00, 202]";
+
+
+			System.out.println(actRow11List);
+			System.out.println(expRow11List);
+
+			int reportsRow16ListCount = reportsRow16List.size();
+			ArrayList<String> reportsRow16ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow16ListCount;i++)
+			{
+				String data = reportsRow16List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow16ListArray.add(data);
+				}
+
+			}
+			String actRow16List = reportsRow16ListArray.toString();
+			String expRow16List = "[Sub Total, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 185]";
+
+
+			System.out.println(actRow16List);
+			System.out.println(expRow16List);
+
+
+
+
+			String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
+			String afterPath="]//td[2]";
+			int k;
+
+			Thread.sleep(2000);
+
+			int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
+
+			for(  k=1;k<rows1;k++)
+			{
+				String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
+
+				if(text1.contains("Grand Total"))
+				{
+					int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
+					System.err.println("count"+rowCount);
+					break;
+				}	
+			}
+
+			int Row1ListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
+			ArrayList<String> Row1ListArray = new ArrayList<String>();
+			for(int i=1;i<Row1ListCount;i++)
+			{
+				String data = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).get(i).getText();
+				Row1ListArray.add(data);
+			}
+			String actRowList =Row1ListArray.toString();
+			String expRowList = "[Grand Total, , , 28.00, 28.00, 52.00, , 26.00, 28.00, 28.00, , , , , , 577, , ]";
+
+			System.out.println("actRow1List"+actRowList);
+			System.out.println("expRow1List"+expRowList);
+	*/
+
+			if (actRow1List.equalsIgnoreCase(expRow1List) && actRow3List.equalsIgnoreCase(expRow3List) &&
+					actRow4List.equalsIgnoreCase(expRow4List) &&
+					actRow5List.equalsIgnoreCase(expRow5List) && actRow6List.equalsIgnoreCase(expRow6List)/*&& actRow11List.equalsIgnoreCase(expRow11List)
+					&& actRow16List.equalsIgnoreCase(expRow16List) */&& actAllDatapage1.equalsIgnoreCase(expAllDatapage1) 
+					/*&& actRowList.equalsIgnoreCase(expRowList)*/)
+
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+
+		
+		}
+		
+		public static boolean checkVendorAgeingDetailByDueDateReport() throws InterruptedException
+		{
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(receivableAndPayableAnalysisMenu));
+			receivableAndPayableAnalysisMenu.click();
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorDetailMenu));
+			vendorDetailMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorDetailsVendorDetailsAgeingByDueDateReport));
+			vendorDetailsVendorDetailsAgeingByDueDateReport.click();
+			
+			Thread.sleep(2000);
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+
+			Thread.sleep(3000);
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+			sl_SelectAllChkBox.click();
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			Thread.sleep(2000);
+
+
+
+			Thread.sleep(2000);
+			int reportsRow1ListCount = reportsCol1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsCol1List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[CustVend CV001, PurVou:12, CreNts:2, DebNts:2, Sub Total, Vendor A 033-001, PurVou:7, Sub Total, C1 C301, OpeBal:2, Pmt:2, Sub Total, C2 C302, PurVou:11, Rct:2, PurRet:2, NJv:2]";
+
+			System.out.println("Actaul Voucher  :"+actRow1List);
+			System.out.println("Expected Voucher:"+expRow1List);
+
+			Thread.sleep(2000);
+
+
+			Thread.sleep(2000);
+			int reportsRow3ListCount = reportsCol3List.size();
+			ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow3ListCount;i++)
+			{
+				String data = reportsCol3List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow3ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow3List = reportsRow3ListArray.toString();
+			String expRow3List = "[CustVend, CustVend, CustVend, Vendor A, C1, C1, C2, C2, C2, C2]";
+
+			System.out.println("Actaul Voucher  :"+actRow3List);
+			System.out.println("Expected Voucher:"+expRow3List);
+
+			Thread.sleep(2000);
+
+			
+
+
+			Thread.sleep(2000);
+			int reportsRow4ListCount = reportsCol4List.size();
+			ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow4ListCount;i++)
+			{
+				String data = reportsCol4List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow4ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow4List = reportsRow4ListArray.toString();
+			String expRow4List = "[5.00, 1.00, 1.00, 5.00, 500.00, 500.00, 1.00, 1.00, 5.00, 1.00, 5.00, 1.00]";
+
+			System.out.println("Actaul Voucher  :"+actRow4List);
+			System.out.println("Expected Voucher:"+expRow4List);
+
+			Thread.sleep(2000);
+			
+			
+
+
+			Thread.sleep(2000);
+			int reportsRow5ListCount = reportsCol5List.size();
+			ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow5ListCount;i++)
+			{
+				String data = reportsCol5List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow5ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow5List = reportsRow5ListArray.toString();
+			String expRow5List = "[5.00, 1.00, 1.00, 5.00, 500.00, 500.00, 1.00, 1.00, 5.00, 1.00, 5.00, 1.00]";
+
+			System.out.println("Actaul Voucher  :"+actRow5List);
+			System.out.println("Expected Voucher:"+expRow5List);
+
+			Thread.sleep(2000);
+			
+
+
+			Thread.sleep(2000);
+			int reportsRow6ListCount = reportsCol6List.size();
+			ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow6ListCount;i++)
+			{
+				String data = reportsCol6List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow6ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow6List = reportsRow6ListArray.toString();
+			String expRow6List = "[5.00, 4.00, 5.00, 14.00, 500.00, 500.00, 1.00, 1.00, 5.00, 6.00, 1.00]";
+
+			System.out.println("Actaul Voucher  :"+actRow6List);
+			System.out.println("Expected Voucher:"+expRow6List);
+
+			Thread.sleep(2000);
+
+
+
+			ArrayList<String>  AllDatapage1 = new ArrayList<String>(); 
+
+			int count=stockLedgerTable.size();
+
+			System.err.println(count);
+
+			for(int i=0 ; i < count ;i++)
+			{
+				String style= stockLedgerTable.get(i).getAttribute("style");
+				if(style.contains("overflow: visible; font-weight: bold; background-color:"))
+				{
+					String data=stockLedgerTable.get(i).getText();
+					AllDatapage1.add(data);
+				}
+			}
+
+			String actAllDatapage1 = AllDatapage1.toString();
+			String expAllDatapage1 = "[CustVend CV001, Vendor A 033-001, C1 C301, C2 C302]";
+
+			System.out.println("actAllDatapage1"+actAllDatapage1);
+			System.out.println("expAllDatapage1"+expAllDatapage1);
+
+	/*
+			int reportsRow5ListCount = reportsRow5List.size();
+			ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow5ListCount;i++)
+			{
+				String data = reportsRow5List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow5ListArray.add(data);
+				}
+
+			}
+			String actRow5List = reportsRow5ListArray.toString();
+			String expRow5List = "[Sub Total, 29.00, 29.00, 29.00, 29.00, 29.00, 29.00, 190]";
+
+
+			System.out.println(actRow5List);
+			System.out.println(expRow5List);
+
+
+			int reportsRow11ListCount = reportsRow11List.size();
+			ArrayList<String> reportsRow11ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow11ListCount;i++)
+			{
+				String data = reportsRow11List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow11ListArray.add(data);
+				}
+
+			}
+			String actRow11List = reportsRow11ListArray.toString();
+			String expRow11List = "[Sub Total, 2.00, 202]";
+
+
+			System.out.println(actRow11List);
+			System.out.println(expRow11List);
+
+			int reportsRow16ListCount = reportsRow16List.size();
+			ArrayList<String> reportsRow16ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow16ListCount;i++)
+			{
+				String data = reportsRow16List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow16ListArray.add(data);
+				}
+
+			}
+			String actRow16List = reportsRow16ListArray.toString();
+			String expRow16List = "[Sub Total, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 185]";
+
+
+			System.out.println(actRow16List);
+			System.out.println(expRow16List);
+
+
+
+
+			String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
+			String afterPath="]//td[2]";
+			int k;
+
+			Thread.sleep(2000);
+
+			int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
+
+			for(  k=1;k<rows1;k++)
+			{
+				String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
+
+				if(text1.contains("Grand Total"))
+				{
+					int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
+					System.err.println("count"+rowCount);
+					break;
+				}	
+			}
+
+			int Row1ListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
+			ArrayList<String> Row1ListArray = new ArrayList<String>();
+			for(int i=1;i<Row1ListCount;i++)
+			{
+				String data = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).get(i).getText();
+				Row1ListArray.add(data);
+			}
+			String actRowList =Row1ListArray.toString();
+			String expRowList = "[Grand Total, , , 28.00, 28.00, 52.00, , 26.00, 28.00, 28.00, , , , , , 577, , ]";
+
+			System.out.println("actRow1List"+actRowList);
+			System.out.println("expRow1List"+expRowList);
+	*/
+
+			if (actRow1List.equalsIgnoreCase(expRow1List) && actRow3List.equalsIgnoreCase(expRow3List) &&
+					actRow4List.equalsIgnoreCase(expRow4List) &&
+					actRow5List.equalsIgnoreCase(expRow5List) && actRow6List.equalsIgnoreCase(expRow6List)/*&& actRow11List.equalsIgnoreCase(expRow11List)
+					&& actRow16List.equalsIgnoreCase(expRow16List) */&& actAllDatapage1.equalsIgnoreCase(expAllDatapage1) 
+					/*&& actRowList.equalsIgnoreCase(expRowList)*/)
+
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+
+		
+		}
+		
+		public static boolean checkVendorOverDueAnalysisReport() throws InterruptedException
+		{
+			Thread.sleep(2000);
+			getDriver().navigate().refresh();
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(receivableAndPayableAnalysisMenu));
+			receivableAndPayableAnalysisMenu.click();
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorDetailMenu));
+			vendorDetailMenu.click();
+			
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorDetailsVendorOverdueAnalysisReport));
+			vendorDetailsVendorOverdueAnalysisReport.click();
+			
+			Thread.sleep(2000);
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+
+			Thread.sleep(3000);
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+			sl_SelectAllChkBox.click();
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			Thread.sleep(2000);
+
+
+
+			Thread.sleep(2000);
+			int reportsRow1ListCount = reportsCol1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsCol1List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[CustVend CV001, PurVou:12, DebNts:2, CreNts:2, Sub Total, Vendor A 033-001, PurVou:7, Sub Total, C1 C301, OpeBal:2, Pmt:2, Sub Total, C2 C302, NJv:2, PurVou:11, PurRet:2, Rct:2, Sub Total, Grand Total]";
+
+			System.out.println("Actaul Voucher  :"+actRow1List);
+			System.out.println("Expected Voucher:"+expRow1List);
+
+			Thread.sleep(2000);
+
+
+			Thread.sleep(2000);
+			int reportsRow3ListCount = reportsCol3List.size();
+			ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow3ListCount;i++)
+			{
+				String data = reportsCol3List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow3ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow3List = reportsRow3ListArray.toString();
+			String expRow3List = "[CustVend, CustVend, CustVend, Vendor A, C1, C1, C2, C2, C2, C2]";
+
+			System.out.println("Actaul Voucher  :"+actRow3List);
+			System.out.println("Expected Voucher:"+expRow3List);
+
+			Thread.sleep(2000);
+
+			
+
+
+			Thread.sleep(2000);
+			int reportsRow4ListCount = reportsCol4List.size();
+			ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow4ListCount;i++)
+			{
+				String data = reportsCol4List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow4ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow4List = reportsRow4ListArray.toString();
+			String expRow4List = "[5.00, 1.00, 1.00, 5.00, 501.00, 501.00, 1.00, 1.00, 1.00, 5.00, 5.00, 1.00, 505.00]";
+
+			System.out.println("Actaul Voucher  :"+actRow4List);
+			System.out.println("Expected Voucher:"+expRow4List);
+
+			Thread.sleep(2000);
+			
+			
+
+
+			Thread.sleep(2000);
+			int reportsRow5ListCount = reportsCol5List.size();
+			ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow5ListCount;i++)
+			{
+				String data = reportsCol5List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow5ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow5List = reportsRow5ListArray.toString();
+			String expRow5List = "[5.00, 1.00, 1.00, 5.00, 501.00, 501.00, 1.00, 1.00, 1.00, 5.00, 5.00, 1.00, 505.00]";
+
+			System.out.println("Actaul Voucher  :"+actRow5List);
+			System.out.println("Expected Voucher:"+expRow5List);
+
+			Thread.sleep(2000);
+			
+
+
+			Thread.sleep(2000);
+			int reportsRow6ListCount = reportsCol7List.size();
+			ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsRow6ListCount;i++)
+			{
+				String data = reportsCol7List.get(i).getText().trim();
+				if(data.isEmpty() == false )
+				{
+					reportsRow6ListArray.add(data);
+				}
+
+			}
+
+
+			String actRow6List = reportsRow6ListArray.toString();
+			String expRow6List = "[5.00, 6.00, 5.00, 16.00, 501.00, 501.00, 1.00, 1.00, 1.00, 4.00, 1.00, 2.00, 519.00]";
+
+			System.out.println("Actaul Voucher  :"+actRow6List);
+			System.out.println("Expected Voucher:"+expRow6List);
+
+			Thread.sleep(2000);
+
+
+
+			ArrayList<String>  AllDatapage1 = new ArrayList<String>(); 
+
+			int count=stockLedgerTable.size();
+
+			System.err.println(count);
+
+			for(int i=0 ; i < count ;i++)
+			{
+				String style= stockLedgerTable.get(i).getAttribute("style");
+				if(style.contains("overflow: visible; font-weight: bold; background-color:"))
+				{
+					String data=stockLedgerTable.get(i).getText();
+					AllDatapage1.add(data);
+				}
+			}
+
+			String actAllDatapage1 = AllDatapage1.toString();
+			String expAllDatapage1 = "[CustVend CV001, Vendor A 033-001, C1 C301, C2 C302]";
+
+			System.out.println("actAllDatapage1"+actAllDatapage1);
+			System.out.println("expAllDatapage1"+expAllDatapage1);
+
+	/*
+			int reportsRow5ListCount = reportsRow5List.size();
+			ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow5ListCount;i++)
+			{
+				String data = reportsRow5List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow5ListArray.add(data);
+				}
+
+			}
+			String actRow5List = reportsRow5ListArray.toString();
+			String expRow5List = "[Sub Total, 29.00, 29.00, 29.00, 29.00, 29.00, 29.00, 190]";
+
+
+			System.out.println(actRow5List);
+			System.out.println(expRow5List);
+
+
+			int reportsRow11ListCount = reportsRow11List.size();
+			ArrayList<String> reportsRow11ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow11ListCount;i++)
+			{
+				String data = reportsRow11List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow11ListArray.add(data);
+				}
+
+			}
+			String actRow11List = reportsRow11ListArray.toString();
+			String expRow11List = "[Sub Total, 2.00, 202]";
+
+
+			System.out.println(actRow11List);
+			System.out.println(expRow11List);
+
+			int reportsRow16ListCount = reportsRow16List.size();
+			ArrayList<String> reportsRow16ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow16ListCount;i++)
+			{
+				String data = reportsRow16List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow16ListArray.add(data);
+				}
+
+			}
+			String actRow16List = reportsRow16ListArray.toString();
+			String expRow16List = "[Sub Total, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 185]";
+
+
+			System.out.println(actRow16List);
+			System.out.println(expRow16List);
+
+
+
+
+			String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
+			String afterPath="]//td[2]";
+			int k;
+
+			Thread.sleep(2000);
+
+			int rows1=getDriver().findElements(By.xpath("//table[@class='CommonReportTable']//tbody//tr")).size();
+
+			for(  k=1;k<rows1;k++)
+			{
+				String text1=getDriver().findElement(By.xpath(beforePath + k + afterPath)).getText();
+
+				if(text1.contains("Grand Total"))
+				{
+					int rowCount=(getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
+					System.err.println("count"+rowCount);
+					break;
+				}	
+			}
+
+			int Row1ListCount = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).size();
+			ArrayList<String> Row1ListArray = new ArrayList<String>();
+			for(int i=1;i<Row1ListCount;i++)
+			{
+				String data = (getDriver().findElements(By.xpath(beforePath + k +"]//td"))).get(i).getText();
+				Row1ListArray.add(data);
+			}
+			String actRowList =Row1ListArray.toString();
+			String expRowList = "[Grand Total, , , 28.00, 28.00, 52.00, , 26.00, 28.00, 28.00, , , , , , 577, , ]";
+
+			System.out.println("actRow1List"+actRowList);
+			System.out.println("expRow1List"+expRowList);
+	*/
+
+			if (actRow1List.equalsIgnoreCase(expRow1List) && actRow3List.equalsIgnoreCase(expRow3List) &&
+					actRow4List.equalsIgnoreCase(expRow4List) &&
+					actRow5List.equalsIgnoreCase(expRow5List) && actRow6List.equalsIgnoreCase(expRow6List)/*&& actRow11List.equalsIgnoreCase(expRow11List)
+					&& actRow16List.equalsIgnoreCase(expRow16List) */&& actAllDatapage1.equalsIgnoreCase(expAllDatapage1) 
+					/*&& actRowList.equalsIgnoreCase(expRowList)*/)
+
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+
+		
+		}
 		
 		
+		public static boolean checkVendorAgeingSummaryAnalysisReport() throws InterruptedException
+		{
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(receivableAndPayableAnalysisMenu));
+			receivableAndPayableAnalysisMenu.click();
+			
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorSummaryMenu));
+			vendorSummaryMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorSummeryVendorAgeingSummaryReport));
+			vendorSummeryVendorAgeingSummaryReport.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+			sl_SelectAllChkBox.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			
+
+
+			int reportsCol1ListCount = reportsCol1List.size();
+			ArrayList<String> reportsCol1ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsCol1ListCount;i++)
+			{
+				String data = reportsCol1List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsCol1ListArray.add(data);
+				}
+
+			}
+			String actCol1List = reportsCol1ListArray.toString();
+			String expCol1List = "[CustVend, Vendor A, Grand Total]";
+
+
+
+			int reportsCol2ListCount = reportsCol2List.size();
+			ArrayList<String> reportsCol2ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsCol2ListCount;i++)
+			{
+				String data = reportsCol2List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsCol2ListArray.add(data);
+				}
+
+
+			}
+			String actCol2List = reportsCol2ListArray.toString();
+			String expCol2List = "[5.00, 501.00, 505.00]";
+
+
+
+			int reportsCol3ListCount = reportsCol3List.size();
+			ArrayList<String> reportsCol3ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsCol3ListCount;i++)
+			{
+				String data = reportsCol3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsCol3ListArray.add(data);
+				}
+
+			}
+			String actCol3List = reportsCol3ListArray.toString();
+			String expCol3List = "[5.00, 501.00, 505.00]";
+
+			
+
+			int reportsCol6ListCount = reportsCol6List.size();
+			ArrayList<String> reportsCol6ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsCol6ListCount;i++)
+			{
+				String data = reportsCol6List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsCol6ListArray.add(data);
+				}
+
+			}
+			String actCol6List = reportsCol6ListArray.toString();
+			String expCol6List = "[5.00, 501.00, 505.00]";
+
+
+			
+			System.out.println(actCol1List);
+			System.out.println(expCol1List);
+
+			System.out.println(actCol2List);
+			System.out.println(expCol2List);
+
+			System.out.println(actCol3List);
+			System.out.println(expCol3List);
+
+			System.out.println(actCol6List);
+			System.out.println(expCol6List);
+			
+			
 		
-		System.out.println(actRow1List);
-		System.out.println(expRow1List);
+			if (actCol1List.equalsIgnoreCase(expCol1List) && actCol2List.equalsIgnoreCase(expCol2List) 
+					&& actCol3List.equalsIgnoreCase(expCol3List) && actCol6List.equalsIgnoreCase(expCol6List)  )
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+			
+		
+		}
+		
+		public static boolean checkVendorSummaryAgeingByDueDateReport() throws InterruptedException
+		{
 
-		System.out.println(actRow2List);
-		System.out.println(expRow2List);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(receivableAndPayableAnalysisMenu));
+			receivableAndPayableAnalysisMenu.click();
+			
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorSummaryMenu));
+			vendorSummaryMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorSummeryVendorSummaryAgeingByDueDateReport));
+			vendorSummeryVendorSummaryAgeingByDueDateReport.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+			sl_SelectAllChkBox.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			
 
-		System.out.println(actRow3List);
-		System.out.println(expRow3List);
 
-		System.out.println(actRow4List);
-		System.out.println(expRow4List);
+			int reportsCol1ListCount = reportsCol1List.size();
+			ArrayList<String> reportsCol1ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsCol1ListCount;i++)
+			{
+				String data = reportsCol1List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsCol1ListArray.add(data);
+				}
 
-		System.out.println(actRow5List);
-		System.out.println(expRow5List);
+			}
+			String actCol1List = reportsCol1ListArray.toString();
+			String expCol1List = "[CustVend, Vendor A, Grand Total]";
+
+
+
+			int reportsCol2ListCount = reportsCol2List.size();
+			ArrayList<String> reportsCol2ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsCol2ListCount;i++)
+			{
+				String data = reportsCol2List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsCol2ListArray.add(data);
+				}
+
+
+			}
+			String actCol2List = reportsCol2ListArray.toString();
+			String expCol2List = "[5.00, 501.00, 505.00]";
+
+
+
+			int reportsCol3ListCount = reportsCol3List.size();
+			ArrayList<String> reportsCol3ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsCol3ListCount;i++)
+			{
+				String data = reportsCol3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsCol3ListArray.add(data);
+				}
+
+			}
+			String actCol3List = reportsCol3ListArray.toString();
+			String expCol3List = "[5.00, 501.00, 505.00]";
+
+			
+
+			int reportsCol6ListCount = reportsCol6List.size();
+			ArrayList<String> reportsCol6ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsCol6ListCount;i++)
+			{
+				String data = reportsCol6List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsCol6ListArray.add(data);
+				}
+
+			}
+			String actCol6List = reportsCol6ListArray.toString();
+			String expCol6List = "[5.00, 501.00, 505.00]";
+
+
+			
+			System.out.println(actCol1List);
+			System.out.println(expCol1List);
+
+			System.out.println(actCol2List);
+			System.out.println(expCol2List);
+
+			System.out.println(actCol3List);
+			System.out.println(expCol3List);
+
+			System.out.println(actCol6List);
+			System.out.println(expCol6List);
+			
+			
+		
+			if (actCol1List.equalsIgnoreCase(expCol1List) && actCol2List.equalsIgnoreCase(expCol2List) 
+					&& actCol3List.equalsIgnoreCase(expCol3List) && actCol6List.equalsIgnoreCase(expCol6List)  )
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+			
+		}
+		
+		public static boolean checkVendorOverDueSummaryReport() throws InterruptedException
+		{
+
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(receivableAndPayableAnalysisMenu));
+			receivableAndPayableAnalysisMenu.click();
+			
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorSummaryMenu));
+			vendorSummaryMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorSummeryVendorOverdueSummaryReport));
+			vendorSummeryVendorOverdueSummaryReport.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+			sl_SelectAllChkBox.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+
+
+			int reportsCol1ListCount = reportsCol1List.size();
+			ArrayList<String> reportsCol1ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsCol1ListCount;i++)
+			{
+				String data = reportsCol1List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsCol1ListArray.add(data);
+				}
+
+			}
+			String actCol1List = reportsCol1ListArray.toString();
+			String expCol1List = "[CustVend, Vendor A, Grand Total]";
+
+
+
+			int reportsCol2ListCount = reportsCol2List.size();
+			ArrayList<String> reportsCol2ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsCol2ListCount;i++)
+			{
+				String data = reportsCol2List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsCol2ListArray.add(data);
+				}
+
+
+			}
+			String actCol2List = reportsCol2ListArray.toString();
+			String expCol2List = "[5.00, 501.00, 505.00]";
+
+
+
+			int reportsCol3ListCount = reportsCol3List.size();
+			ArrayList<String> reportsCol3ListArray = new ArrayList<String>();
+			for(int i=0;i<reportsCol3ListCount;i++)
+			{
+				String data = reportsCol3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsCol3ListArray.add(data);
+				}
+
+			}
+			String actCol3List = reportsCol3ListArray.toString();
+			String expCol3List = "[5.00, 501.00, 505.00]";
+
+			System.out.println(actCol1List);
+			System.out.println(expCol1List);
+
+			System.out.println(actCol2List);
+			System.out.println(expCol2List);
+
+			System.out.println(actCol3List);
+			System.out.println(expCol3List);
+
+		
+			if (actCol1List.equalsIgnoreCase(expCol1List) && actCol2List.equalsIgnoreCase(expCol2List) 
+					&& actCol3List.equalsIgnoreCase(expCol3List))
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+			
+		}
+		
+		public static boolean checkVendorBillWiseSummaryReport() throws InterruptedException
+		{
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(receivableAndPayableAnalysisMenu));
+			receivableAndPayableAnalysisMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorSummaryMenu));
+			vendorSummaryMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorSummeryVendorBillWiseSummaryReport));
+			vendorSummeryVendorBillWiseSummaryReport.click();
+			
+			
+			Thread.sleep(2000);
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+			sl_SelectAllChkBox.click();
+			
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			
+			int reportsRow1ListCount = reportsRow1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsRow1List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[CustVend, 1.00, 6.00, CV001]";
+
+
+
+			int reportsRow2ListCount = reportsRow2List.size();
+			ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow2ListCount;i++)
+			{
+				String data = reportsRow2List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow2ListArray.add(data);
+				}
+
+
+			}
+			String actRow2List = reportsRow2ListArray.toString();
+			String expRow2List = "[Vendor A, 500.00, 033-001]";
+
+
+
+			int reportsRow3ListCount = reportsRow3List.size();
+			ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow3ListCount;i++)
+			{
+				String data = reportsRow3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow3ListArray.add(data);
+				}
+
+			}
+			String actRow3List = reportsRow3ListArray.toString();
+			String expRow3List = "[C1, 1.00, 1.00, C301]";
+
+
+
+			int reportsRow4ListCount = reportsRow4List.size();
+			ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow4ListCount;i++)
+			{
+				String data = reportsRow4List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow4ListArray.add(data);
+				}
+
+			}
+			String actRow4List = reportsRow4ListArray.toString();
+			String expRow4List = "[C2, 6.00, 6.00, C302]";
+			
+			
+			int reportsRow5ListCount = reportsRow5List.size();
+			ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow5ListCount;i++)
+			{
+				String data = reportsRow5List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow5ListArray.add(data);
+				}
+
+			}
+			String actRow5List = reportsRow5ListArray.toString();
+			String expRow5List = "[Grand Total, 8.00, 513.00]";
+
+
+			System.out.println(actRow1List);
+			System.out.println(expRow1List);
+
+			System.out.println(actRow2List);
+			System.out.println(expRow2List);
+
+			System.out.println(actRow3List);
+			System.out.println(expRow3List);
+
+			System.out.println(actRow4List);
+			System.out.println(expRow4List);
+			
+			System.out.println(actRow5List);
+			System.out.println(expRow5List);
+
+			if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List) 
+					&& actRow4List.equalsIgnoreCase(expRow4List))
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+			
+		}
+		
+		public static boolean checkTrailBalanceReport() throws InterruptedException
+		{   
+			Thread.sleep(2000);
+			getDriver().navigate().refresh();
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsFinalAccountsMenu));
+			financialsFinalAccountsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(trialBalanceReport));
+			trialBalanceReport.click();
+		
+			Thread.sleep(1500);
+		
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			
+
+			int reportsRow1ListCount = reportsRow1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsRow1List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[ASSETS, 001, ASSETS, 5.00, 1.00, 4.00, 5.00, 5.00, 1.00, 4.00, 5.00, 0.97, 0.97]";
+
+
+
+			int reportsRow2ListCount = reportsRow2List.size();
+			ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow2ListCount;i++)
+			{
+				String data = reportsRow2List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow2ListArray.add(data);
+				}
+
+
+			}
+			String actRow2List = reportsRow2ListArray.toString();
+			String expRow2List = "[Current Assets, 012, Current Assets, 5.00, 1.00, 4.00, 5.00, 5.00, 1.00, 4.00, 5.00, 0.97, 0.97]";
+
+
+
+			int reportsRow3ListCount = reportsRow3List.size();
+			ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow3ListCount;i++)
+			{
+				String data = reportsRow3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow3ListArray.add(data);
+				}
+
+			}
+			String actRow3List = reportsRow3ListArray.toString();
+			String expRow3List = "[Cash, 121-002, Cash, 1.00, 1.00, 1.00, 2.00, 1.00, 1.00, 1.00, 2.00, 0.19, 0.19]";
+
+
+
+			int reportsRow4ListCount = reportsRow4List.size();
+			ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow4ListCount;i++)
+			{
+				String data = reportsRow4List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow4ListArray.add(data);
+				}
+
+			}
+			String actRow4List = reportsRow4ListArray.toString();
+			String expRow4List = "[Bank, 121-001, Bank, 1.00, 1.00, 2.00, 1.00, 1.00, 1.00, 2.00, 1.00, 0.19, 0.19]";
+
+
+
+			int reportsRow5ListCount = reportsRow5List.size();
+			ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow5ListCount;i++)
+			{
+				String data = reportsRow5List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow5ListArray.add(data);
+				}
+			}
+			String actRow5List = reportsRow5ListArray.toString();
+			String expRow5List = "[Inventories, 120, Inventories, 5.00, 5.00, 5.00, 5.00, 5.00, 5.00, 0.97, 0.97]";
+			
+
+			int reportsRow6ListCount = reportsRow6List.size();
+			ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow6ListCount;i++)
+			{
+				String data = reportsRow6List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow6ListArray.add(data);
+				}
+			}
+			String actRow6List = reportsRow6ListArray.toString();
+			String expRow6List = "[Inventory Trade, 120-003, Inventory Trade, 5.00, 5.00, 5.00, 5.00, 5.00, 5.00, 0.97, 0.97]";
+			
+			
+			//
+
+
+			int reportsRow7ListCount = reportsRow7List.size();
+			ArrayList<String> reportsRow7ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow7ListCount;i++)
+			{
+				String data = reportsRow7List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow7ListArray.add(data);
+				}
+
+			}
+			String actRow7List = reportsRow7ListArray.toString();
+			String expRow7List = "[Accounts Receivable, 122, Accounts Receivable, 1.00, 1.00, 1.00, 1.00]";
+
+
+
+			int reportsRow8ListCount = reportsRow8List.size();
+			ArrayList<String> reportsRow8ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow8ListCount;i++)
+			{
+				String data = reportsRow8List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow8ListArray.add(data);
+				}
+
+			}
+			String actRow8List = reportsRow8ListArray.toString();
+			String expRow8List = "[Customer A, 122-001, Customer A, 1.00, 1.00, 1.00, 1.00]";
+
+
+
+			int reportsRow9ListCount = reportsRow9List.size();
+			ArrayList<String> reportsRow9ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow9ListCount;i++)
+			{
+				String data = reportsRow9List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow9ListArray.add(data);
+				}
+			}
+			String actRow9List = reportsRow9ListArray.toString();
+			String expRow9List = "[CustVend, CV001, CustVend, 5.00, 5.00, 1.00, 6.00, 5.00, 5.00, 1.00, 6.00, 0.97, 0.97]";
+			
+			
+			///
+
+			int reportsRow10ListCount = reportsRow10List.size();
+			ArrayList<String> reportsRow10ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow10ListCount;i++)
+			{
+				String data = reportsRow10List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow10ListArray.add(data);
+				}
+
+			}
+			String actRow10List = reportsRow10ListArray.toString();
+			String expRow10List = "[CONTROL ACCOUNTS, CA, CONTROL ACCOUNTS, 3.00, 3.00, 3.00, 3.00]";
+
+
+
+			int reportsRow11ListCount = reportsRow11List.size();
+			ArrayList<String> reportsRow11ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow11ListCount;i++)
+			{
+				String data = reportsRow11List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow11ListArray.add(data);
+				}
+
+
+			}
+			String actRow11List = reportsRow11ListArray.toString();
+			String expRow11List = "[Opening Balances Control A/C, OBC, Opening Balances Control A/C, 3.00, 3.00, 3.00, 3.00]";
+
+
+
+			int reportsRow12ListCount = reportsRow12List.size();
+			ArrayList<String> reportsRow12ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow12ListCount;i++)
+			{
+				String data = reportsRow12List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow12ListArray.add(data);
+				}
+
+			}
+			String actRow12List = reportsRow12ListArray.toString();
+			String expRow12List = "[G, G700, G, 10.00, 1.00, 9.00, 16.00, 6.00, 10.00, 1.00, 9.00, 16.00, 6.00, 1.94, 1.94]";
+
+
+
+			int reportsRow13ListCount = reportsRow13List.size();
+			ArrayList<String> reportsRow13ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow13ListCount;i++)
+			{
+				String data = reportsRow13List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow13ListArray.add(data);
+				}
+
+			}
+			String actRow13List = reportsRow13ListArray.toString();
+			String expRow13List = "[G1, G701, G1, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 0.19, 0.19]";
+
+
+
+			int reportsRow14ListCount = reportsRow14List.size();
+			ArrayList<String> reportsRow14ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow14ListCount;i++)
+			{
+				String data = reportsRow14List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow14ListArray.add(data);
+				}
+			}
+			String actRow14List = reportsRow14ListArray.toString();
+			String expRow14List = "[G2, G702, G2, 9.00, 9.00, 15.00, 6.00, 9.00, 9.00, 15.00, 6.00, 1.74, 1.74]";
+			
+
+			int reportsRow15ListCount = reportsRow15List.size();
+			ArrayList<String> reportsRow15ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow15ListCount;i++)
+			{
+				String data = reportsRow15List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow15ListArray.add(data);
+				}
+			}
+			String actRow15List = reportsRow15ListArray.toString();
+			String expRow15List = "[EXPENSES, 009, EXPENSES, 500.00, 500.00, 505.00, 5.00, 500.00, 500.00, 505.00, 5.00, 96.90, 96.90]";
+			
+			
+
+			int reportsRow16ListCount = reportsRow16List.size();
+			ArrayList<String> reportsRow16ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow16ListCount;i++)
+			{
+				String data = reportsRow16List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow16ListArray.add(data);
+				}
+
+			}
+			String actRow16List = reportsRow16ListArray.toString();
+			String expRow16List = "[Direct Expenses, 091, Direct Expenses, 500.00, 500.00, 505.00, 5.00, 500.00, 500.00, 505.00, 5.00, 96.90, 96.90]";
+
+
+
+			int reportsRow17ListCount = reportsRow17List.size();
+			ArrayList<String> reportsRow17ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow17ListCount;i++)
+			{
+				String data = reportsRow17List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow17ListArray.add(data);
+				}
+
+			}
+			String actRow17List = reportsRow17ListArray.toString();
+			String expRow17List = "[Purchase, 091-002, Purchase, 495.00, 495.00, 500.00, 5.00, 495.00, 495.00, 500.00, 5.00, 95.93, 95.93]";
+
+
+
+			int reportsRow18ListCount = reportsRow18List.size();
+			ArrayList<String> reportsRow18ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow18ListCount;i++)
+			{
+				String data = reportsRow18List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow18ListArray.add(data);
+				}
+			}
+			String actRow18List = reportsRow18ListArray.toString();
+			String expRow18List = "[Cost of goods sold - Computers, 091-003, Cost of goods sold - Computers, 5.00, 5.00, 5.00, 5.00, 5.00, 5.00, 0.97, 0.97]";
+			
+			int reportsRow19ListCount = reportsRow19List.size();
+			ArrayList<String> reportsRow19ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow19ListCount;i++)
+			{
+				String data = reportsRow19List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow19ListArray.add(data);
+				}
+			}
+			String actRow19List = reportsRow19ListArray.toString();
+			String expRow19List = "[REVENUE, 007, REVENUE, 11.00, 11.00, 5.00, 16.00, 11.00, 11.00, 5.00, 16.00, 2.13, 2.13]";
+			
+			Thread.sleep(2000);
+			report_NextBtn.click();
+			Thread.sleep(2000);
+			
+			
+
+			int reportspage2Row1ListCount = reportsrow1List.size();
+			ArrayList<String> reportspage2Row1ListArray = new ArrayList<String>();
+			for(int i=1;i<reportspage2Row1ListCount;i++)
+			{
+				String data = reportsrow1List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportspage2Row1ListArray.add(data);
+				}
+
+			}
+			String actpage2Row1List = reportspage2Row1ListArray.toString();
+			String exppage2Row1List = "[SALES, 071, SALES, 11.00, 11.00, 5.00, 16.00, 11.00, 11.00, 5.00, 16.00, 2.13, 2.13]";
+
+
+
+			int reportspage2Row2ListCount = reportsrow2List.size();
+			ArrayList<String> reportspage2Row2ListArray = new ArrayList<String>();
+			for(int i=1;i<reportspage2Row2ListCount;i++)
+			{
+				String data = reportsrow2List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportspage2Row2ListArray.add(data);
+				}
+
+
+			}
+			String actpage2Row2List = reportspage2Row2ListArray.toString();
+			String exppage2Row2List = "[Sales - Computers, 071-001, Sales - Computers, 11.00, 11.00, 5.00, 16.00, 11.00, 11.00, 5.00, 16.00, 2.13, 2.13]";
+
+
+
+			int reportspage2Row3ListCount = reportsrow3List.size();
+			ArrayList<String> reportspage2Row3ListArray = new ArrayList<String>();
+			for(int i=1;i<reportspage2Row3ListCount;i++)
+			{
+				String data = reportsrow3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportspage2Row3ListArray.add(data);
+				}
+
+			}
+			String actpage2Row3List = reportspage2Row3ListArray.toString();
+			String exppage2Row3List = "[LIABILITIES, 003, LIABILITIES, 500.00, 500.00, 500.00, 500.00, 500.00, 500.00, 96.90, 96.90]";
+
+
+
+			int reportspage2Row4ListCount = reportsrow4List.size();
+			ArrayList<String> reportspage2Row4ListArray = new ArrayList<String>();
+			for(int i=1;i<reportspage2Row4ListCount;i++)
+			{
+				String data = reportsrow4List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportspage2Row4ListArray.add(data);
+				}
+
+			}
+			String actpage2Row4List = reportspage2Row4ListArray.toString();
+			String exppage2Row4List = "[Trade Payable, 033, Trade Payable, 500.00, 500.00, 500.00, 500.00, 500.00, 500.00, 96.90, 96.90]";
+
+
+
+			int reportspage2Row5ListCount = reportsRow5List.size();
+			ArrayList<String> reportspage2Row5ListArray = new ArrayList<String>();
+			for(int i=1;i<reportspage2Row5ListCount;i++)
+			{
+				String data = reportsRow5List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportspage2Row5ListArray.add(data);
+				}
+			}
+			String actpage2Row5List = reportspage2Row5ListArray.toString();
+			String exppage2Row5List = "[Vendor A, 033-001, Vendor A, 500.00, 500.00, 500.00, 500.00, 500.00, 500.00, 96.90, 96.90]";
+			
+
+			int reportspage2Row6ListCount = reportsRow6List.size();
+			ArrayList<String> reportspage2Row6ListArray = new ArrayList<String>();
+			for(int i=1;i<reportspage2Row6ListCount;i++)
+			{
+				String data = reportsRow6List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportspage2Row6ListArray.add(data);
+				}
+			}
+			String actpage2Row6List = reportspage2Row6ListArray.toString();
+			String exppage2Row6List = "[C, C300, C, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 0.19, 0.19]";
+			
+			
+			//
+
+
+			int reportspage2Row7ListCount = reportsRow7List.size();
+			ArrayList<String> reportspage2Row7ListArray = new ArrayList<String>();
+			for(int i=1;i<reportspage2Row7ListCount;i++)
+			{
+				String data = reportsRow7List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportspage2Row7ListArray.add(data);
+				}
+
+			}
+			String actpage2Row7List = reportspage2Row7ListArray.toString();
+			String exppage2Row7List = "[C1, C301, C1, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 0.19, 0.19]";
+
+
+
+			int reportspage2Row8ListCount = reportsRow8List.size();
+			ArrayList<String> reportspage2Row8ListArray = new ArrayList<String>();
+			for(int i=1;i<reportspage2Row8ListCount;i++)
+			{
+				String data = reportsRow8List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportspage2Row8ListArray.add(data);
+				}
+
+			}
+			String actpage2Row8List = reportspage2Row8ListArray.toString();
+			String exppage2Row8List = "[Grand Total, 516.00, 516.00, 3.00, 3.00, 516.00, 516.00, 533.00, 533.00, 516.00, 516.00, 3.00, 3.00, 516.00, 516.00, 533.00, 533.00]";
+
+
+
+			System.out.println(actRow1List);
+			System.out.println(expRow1List);
+
+			System.out.println(actRow2List);
+			System.out.println(expRow2List);
+
+			System.out.println(actRow3List);
+			System.out.println(expRow3List);
+
+			System.out.println(actRow4List);
+			System.out.println(expRow4List);
+
+			System.out.println(actRow5List);
+			System.out.println(expRow5List);
+			
+
+			System.out.println(actRow6List);
+			System.out.println(expRow6List);
+			
+			System.out.println(actRow7List);
+			System.out.println(expRow7List);
+
+			System.out.println(actRow8List);
+			System.out.println(expRow8List);
+			
+
+			System.out.println(actRow9List);
+			System.out.println(expRow9List);
+			
+			
+			System.out.println(actRow10List);
+			System.out.println(expRow10List);
+
+			System.out.println(actRow11List);
+			System.out.println(expRow11List);
+
+			System.out.println(actRow12List);
+			System.out.println(expRow12List);
+
+			System.out.println(actRow13List);
+			System.out.println(expRow13List);
+
+			System.out.println(actRow14List);
+			System.out.println(expRow14List);
+			
+
+			System.out.println(actRow15List);
+			System.out.println(expRow15List);
+			
+			System.out.println(actRow16List);
+			System.out.println(expRow16List);
+
+			System.out.println(actRow17List);
+			System.out.println(expRow17List);
+			
+
+			System.out.println(actRow18List);
+			System.out.println(expRow18List);
+			
+			System.out.println(actRow19List);
+			System.out.println(expRow19List);
+			
+			System.out.println(actpage2Row1List);
+			System.out.println(exppage2Row1List);
+
+			System.out.println(actpage2Row2List);
+			System.out.println(exppage2Row2List);
+
+			System.out.println(actpage2Row3List);
+			System.out.println(exppage2Row3List);
+
+			System.out.println(actpage2Row4List);
+			System.out.println(exppage2Row4List);
+
+			System.out.println(actpage2Row5List);
+			System.out.println(exppage2Row5List);
+			
+
+			System.out.println(actpage2Row6List);
+			System.out.println(exppage2Row6List);
+			
+			System.out.println(actpage2Row7List);
+			System.out.println(exppage2Row7List);
+
+			System.out.println(actpage2Row8List);
+			System.out.println(exppage2Row8List);
+			
+
+			
+
+			if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List) 
+					&& actRow4List.equalsIgnoreCase(expRow4List) && actRow5List.equalsIgnoreCase(expRow5List)&& 
+					actRow6List.equalsIgnoreCase(expRow6List)
+					&& actRow7List.equalsIgnoreCase(expRow7List) && actRow8List.equalsIgnoreCase(expRow8List)&& 
+					actRow9List.equalsIgnoreCase(expRow9List) &&
+					actRow10List.equalsIgnoreCase(expRow10List) && actRow11List.equalsIgnoreCase(expRow11List)
+					&& actRow12List.equalsIgnoreCase(expRow12List) && actRow13List.equalsIgnoreCase(expRow13List)
+					&& actRow14List.equalsIgnoreCase(expRow14List) && actRow15List.equalsIgnoreCase(expRow15List)
+					&& actRow16List.equalsIgnoreCase(expRow16List) && actRow17List.equalsIgnoreCase(expRow17List)
+					&& actRow18List.equalsIgnoreCase(expRow18List) && actRow19List.equalsIgnoreCase(expRow19List)
+					
+					&&actpage2Row1List.equalsIgnoreCase(exppage2Row1List) && actpage2Row2List.equalsIgnoreCase(exppage2Row2List)
+					&&actpage2Row3List.equalsIgnoreCase(exppage2Row3List) && actpage2Row4List.equalsIgnoreCase(exppage2Row4List)
+					&&actpage2Row5List.equalsIgnoreCase(exppage2Row5List) && actpage2Row6List.equalsIgnoreCase(exppage2Row6List)
+					&& actpage2Row7List.equalsIgnoreCase(exppage2Row7List) && actpage2Row8List.equalsIgnoreCase(exppage2Row8List))
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+		
+			
+			
+		}
+		
+		public static boolean checkProfitAndLossReport() throws InterruptedException
+		{
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsFinalAccountsMenu));
+			financialsFinalAccountsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(profitandLossReport));
+			profitandLossReport.click();
+		
+		
+			Thread.sleep(1500);
+		
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			
+
+			int reportsRow1ListCount = reportsRow1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsRow1List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[PurchaseACC, PAC001, PurchaseACC, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 33.33, 33.33]";
+
+			int reportsRow2ListCount = reportsRow2List.size();
+			ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow2ListCount;i++)
+			{
+				String data = reportsRow2List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow2ListArray.add(data);
+				}
+
+
+			}
+			String actRow2List = reportsRow2ListArray.toString();
+			String expRow2List = "[A, A100, A, 33.00, 4.00, 37.00, 35.00, 2.00, 33.00, 4.00, 37.00, 35.00, 2.00, 89.19, 89.19]";
+
+			int reportsRow3ListCount = reportsRow3List.size();
+			ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow3ListCount;i++)
+			{
+				String data = reportsRow3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow3ListArray.add(data);
+				}
+
+			}
+			String actRow3List = reportsRow3ListArray.toString();
+			String expRow3List = "[A1, A101, A1, 33.00, 1.00, 34.00, 34.00, 1.00, 33.00, 1.00, 34.00, 34.00, 1.00, 89.19, 89.19]";
+
+
+
+			int reportsRow4ListCount = reportsRow4List.size();
+			ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow4ListCount;i++)
+			{
+				String data = reportsRow4List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow4ListArray.add(data);
+				}
+
+			}
+			String actRow4List = reportsRow4ListArray.toString();
+			String expRow4List = "[A2, A102, A2, 1.00, 1.00, 1.00, 1.00]";
+
+
+
+			int reportsRow5ListCount = reportsRow5List.size();
+			ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow5ListCount;i++)
+			{
+				String data = reportsRow5List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow5ListArray.add(data);
+				}
+			}
+			String actRow5List = reportsRow5ListArray.toString();
+			String expRow5List = "[B, B200, B, 2.00, 2.00, 1.00, 1.00, 2.00, 2.00, 1.00, 1.00]";
+			
+
+			int reportsRow6ListCount = reportsRow6List.size();
+			ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow6ListCount;i++)
+			{
+				String data = reportsRow6List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow6ListArray.add(data);
+				}
+			}
+			String actRow6List = reportsRow6ListArray.toString();
+			String expRow6List = "[B1, B201, B1, 1.00, 1.00, 1.00, 1.00]";
+			
+			
+			//
+
+
+			int reportsRow7ListCount = reportsRow7List.size();
+			ArrayList<String> reportsRow7ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow7ListCount;i++)
+			{
+				String data = reportsRow7List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow7ListArray.add(data);
+				}
+
+			}
+			String actRow7List = reportsRow7ListArray.toString();
+			String expRow7List = "[B2, B202, B2, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00]";
+
+
+
+			int reportsRow8ListCount = reportsRow8List.size();
+			ArrayList<String> reportsRow8ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow8ListCount;i++)
+			{
+				String data = reportsRow8List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow8ListArray.add(data);
+				}
+
+			}
+			String actRow8List = reportsRow8ListArray.toString();
+			String expRow8List = "[SalesACC, SAC001, SalesACC, 2.00, 1.00, 1.00, 2.00, 2.00, 1.00, 1.00, 2.00, 66.67, 66.67]";
+
+
+
+			int reportsRow9ListCount = reportsRow9List.size();
+			ArrayList<String> reportsRow9ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow9ListCount;i++)
+			{
+				String data = reportsRow9List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow9ListArray.add(data);
+				}
+			}
+			String actRow9List = reportsRow9ListArray.toString();
+			String expRow9List = "[E, E500, E, 4.00, 4.00, 8.00, 12.00, 8.00, 4.00, 4.00, 8.00, 12.00, 8.00, 10.81, 10.81]";
+			
+			
+			///
+
+			int reportsRow10ListCount = reportsRow10List.size();
+			ArrayList<String> reportsRow10ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow10ListCount;i++)
+			{
+				String data = reportsRow10List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow10ListArray.add(data);
+				}
+
+			}
+			String actRow10List = reportsRow10ListArray.toString();
+			String expRow10List = "[E1, E501, E1, 6.00, 1.00, 7.00, 11.00, 5.00, 6.00, 1.00, 7.00, 11.00, 5.00, 16.22, 16.22]";
+
+
+
+			int reportsRow11ListCount = reportsRow11List.size();
+			ArrayList<String> reportsRow11ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow11ListCount;i++)
+			{
+				String data = reportsRow11List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow11ListArray.add(data);
+				}
+
+
+			}
+			String actRow11List = reportsRow11ListArray.toString();
+			String expRow11List = "[E2, E502, E2, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00]";
+
+
+
+			int reportsRow12ListCount = reportsRow12List.size();
+			ArrayList<String> reportsRow12ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow12ListCount;i++)
+			{
+				String data = reportsRow12List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow12ListArray.add(data);
+				}
+
+			}
+			String actRow12List = reportsRow12ListArray.toString();
+			String expRow12List = "[F, F600, F, 2.00, 2.00, 2.00, 2.00, 2.00, 2.00, 66.67, 66.67]";
+
+
+
+			int reportsRow13ListCount = reportsRow13List.size();
+			ArrayList<String> reportsRow13ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow13ListCount;i++)
+			{
+				String data = reportsRow13List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow13ListArray.add(data);
+				}
+
+			}
+			String actRow13List = reportsRow13ListArray.toString();
+			String expRow13List = "[F1, F601, F1, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 33.33, 33.33]";
+
+
+
+			int reportsRow14ListCount = reportsRow14List.size();
+			ArrayList<String> reportsRow14ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow14ListCount;i++)
+			{
+				String data = reportsRow14List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow14ListArray.add(data);
+				}
+			}
+			String actRow14List = reportsRow14ListArray.toString();
+			String expRow14List = "[F2, F602, F2, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 33.33, 33.33]";
+			
+
+			int reportsRow15ListCount = reportsRow15List.size();
+			ArrayList<String> reportsRow15ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow15ListCount;i++)
+			{
+				String data = reportsRow15List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow15ListArray.add(data);
+				}
+			}
+			String actRow15List = reportsRow15ListArray.toString();
+			String expRow15List = "[Excess of Expenditure over Income, (34.00), (10.00), (44.00), (34.00), (34.00), (10.00), (44.00), (34.00)]";
+			
+			
+
+			int reportsRow16ListCount = reportsRow16List.size();
+			ArrayList<String> reportsRow16ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow16ListCount;i++)
+			{
+				String data = reportsRow16List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow16ListArray.add(data);
+				}
+
+			}
+			String actRow16List = reportsRow16ListArray.toString();
+			String expRow16List = "[Grand Total, 37.00, 37.00, 10.00, 10.00, 45.00, 45.00, 47.00, 47.00, 37.00, 37.00, 10.00, 10.00, 45.00, 45.00, 47.00, 47.00]";
+			
+			
+			
+			System.out.println(actRow1List);
+			System.out.println(expRow1List);
+
+			System.out.println(actRow2List);
+			System.out.println(expRow2List);
+
+			System.out.println(actRow3List);
+			System.out.println(expRow3List);
+
+			System.out.println(actRow4List);
+			System.out.println(expRow4List);
+
+			System.out.println(actRow5List);
+			System.out.println(expRow5List);
+			
+
+			System.out.println(actRow6List);
+			System.out.println(expRow6List);
+			
+			System.out.println(actRow7List);
+			System.out.println(expRow7List);
+
+			System.out.println(actRow8List);
+			System.out.println(expRow8List);
+			
+
+			System.out.println(actRow9List);
+			System.out.println(expRow9List);
+			
+			
+			System.out.println(actRow10List);
+			System.out.println(expRow10List);
+
+			System.out.println(actRow11List);
+			System.out.println(expRow11List);
+
+			System.out.println(actRow12List);
+			System.out.println(expRow12List);
+
+			System.out.println(actRow13List);
+			System.out.println(expRow13List);
+
+			System.out.println(actRow14List);
+			System.out.println(expRow14List);
+			
+
+			System.out.println(actRow15List);
+			System.out.println(expRow15List);
+			
+			System.out.println(actRow16List);
+			System.out.println(expRow16List);
+
+
+			if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List) 
+					&& actRow4List.equalsIgnoreCase(expRow4List) && actRow5List.equalsIgnoreCase(expRow5List)&& 
+					actRow6List.equalsIgnoreCase(expRow6List)
+					&& actRow7List.equalsIgnoreCase(expRow7List) && actRow8List.equalsIgnoreCase(expRow8List)&& 
+					actRow9List.equalsIgnoreCase(expRow9List) &&
+					actRow10List.equalsIgnoreCase(expRow10List) && actRow11List.equalsIgnoreCase(expRow11List)
+					&& actRow12List.equalsIgnoreCase(expRow12List) && actRow13List.equalsIgnoreCase(expRow13List)
+					&& actRow14List.equalsIgnoreCase(expRow14List) && actRow15List.equalsIgnoreCase(expRow15List)
+					&& actRow16List.equalsIgnoreCase(expRow16List)) 
+					{
+						return true;
+					} 
+			else 
+			{
+				return false;
+			}
+
+		}
+		
+		public static boolean checkTradingAccountReport() throws InterruptedException
+		{
+
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsFinalAccountsMenu));
+			financialsFinalAccountsMenu.click();
+			
+			Thread.sleep(1500);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(tradingAccountReport));
+			tradingAccountReport.click();
+			
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+			sl_SelectAllChkBox.click();
+		
+			Thread.sleep(1500);
+		
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			
+
+			int reportsRow1ListCount = reportsRow1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsRow1List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[PurchaseACC, PAC001, PurchaseACC, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 33.33, 33.33]";
+
+			int reportsRow2ListCount = reportsRow2List.size();
+			ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow2ListCount;i++)
+			{
+				String data = reportsRow2List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow2ListArray.add(data);
+				}
+
+
+			}
+			String actRow2List = reportsRow2ListArray.toString();
+			String expRow2List = "[A, A100, A, 33.00, 4.00, 37.00, 35.00, 2.00, 33.00, 4.00, 37.00, 35.00, 2.00, 89.19, 89.19]";
+
+			int reportsRow3ListCount = reportsRow3List.size();
+			ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow3ListCount;i++)
+			{
+				String data = reportsRow3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow3ListArray.add(data);
+				}
+
+			}
+			String actRow3List = reportsRow3ListArray.toString();
+			String expRow3List = "[A1, A101, A1, 33.00, 1.00, 34.00, 34.00, 1.00, 33.00, 1.00, 34.00, 34.00, 1.00, 89.19, 89.19]";
+
+
+
+			int reportsRow4ListCount = reportsRow4List.size();
+			ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow4ListCount;i++)
+			{
+				String data = reportsRow4List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow4ListArray.add(data);
+				}
+
+			}
+			String actRow4List = reportsRow4ListArray.toString();
+			String expRow4List = "[A2, A102, A2, 1.00, 1.00, 1.00, 1.00]";
+
+
+
+			int reportsRow5ListCount = reportsRow5List.size();
+			ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow5ListCount;i++)
+			{
+				String data = reportsRow5List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow5ListArray.add(data);
+				}
+			}
+			String actRow5List = reportsRow5ListArray.toString();
+			String expRow5List = "[B, B200, B, 2.00, 2.00, 1.00, 1.00, 2.00, 2.00, 1.00, 1.00]";
+			
+
+			int reportsRow6ListCount = reportsRow6List.size();
+			ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow6ListCount;i++)
+			{
+				String data = reportsRow6List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow6ListArray.add(data);
+				}
+			}
+			String actRow6List = reportsRow6ListArray.toString();
+			String expRow6List = "[B1, B201, B1, 1.00, 1.00, 1.00, 1.00]";
+			
+			
+			//
+
+
+			int reportsRow7ListCount = reportsRow7List.size();
+			ArrayList<String> reportsRow7ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow7ListCount;i++)
+			{
+				String data = reportsRow7List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow7ListArray.add(data);
+				}
+
+			}
+			String actRow7List = reportsRow7ListArray.toString();
+			String expRow7List = "[B2, B202, B2, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00]";
+
+
+
+			int reportsRow8ListCount = reportsRow8List.size();
+			ArrayList<String> reportsRow8ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow8ListCount;i++)
+			{
+				String data = reportsRow8List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow8ListArray.add(data);
+				}
+
+			}
+			String actRow8List = reportsRow8ListArray.toString();
+			String expRow8List = "[SalesACC, SAC001, SalesACC, 2.00, 1.00, 1.00, 2.00, 2.00, 1.00, 1.00, 2.00, 66.67, 66.67]";
+
+
+
+			int reportsRow9ListCount = reportsRow9List.size();
+			ArrayList<String> reportsRow9ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow9ListCount;i++)
+			{
+				String data = reportsRow9List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow9ListArray.add(data);
+				}
+			}
+			String actRow9List = reportsRow9ListArray.toString();
+			String expRow9List = "[E, E500, E, 4.00, 4.00, 8.00, 12.00, 8.00, 4.00, 4.00, 8.00, 12.00, 8.00, 10.81, 10.81]";
+			
+			
+			///
+
+			int reportsRow10ListCount = reportsRow10List.size();
+			ArrayList<String> reportsRow10ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow10ListCount;i++)
+			{
+				String data = reportsRow10List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow10ListArray.add(data);
+				}
+
+			}
+			String actRow10List = reportsRow10ListArray.toString();
+			String expRow10List = "[E1, E501, E1, 6.00, 1.00, 7.00, 11.00, 5.00, 6.00, 1.00, 7.00, 11.00, 5.00, 16.22, 16.22]";
+
+
+
+			int reportsRow11ListCount = reportsRow11List.size();
+			ArrayList<String> reportsRow11ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow11ListCount;i++)
+			{
+				String data = reportsRow11List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow11ListArray.add(data);
+				}
+
+
+			}
+			String actRow11List = reportsRow11ListArray.toString();
+			String expRow11List = "[E2, E502, E2, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00]";
+
+
+
+			int reportsRow12ListCount = reportsRow12List.size();
+			ArrayList<String> reportsRow12ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow12ListCount;i++)
+			{
+				String data = reportsRow12List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow12ListArray.add(data);
+				}
+
+			}
+			String actRow12List = reportsRow12ListArray.toString();
+			String expRow12List = "[F, F600, F, 2.00, 2.00, 2.00, 2.00, 2.00, 2.00, 66.67, 66.67]";
+
+
+
+			int reportsRow13ListCount = reportsRow13List.size();
+			ArrayList<String> reportsRow13ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow13ListCount;i++)
+			{
+				String data = reportsRow13List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow13ListArray.add(data);
+				}
+
+			}
+			String actRow13List = reportsRow13ListArray.toString();
+			String expRow13List = "[F1, F601, F1, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 33.33, 33.33]";
+
+
+
+			int reportsRow14ListCount = reportsRow14List.size();
+			ArrayList<String> reportsRow14ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow14ListCount;i++)
+			{
+				String data = reportsRow14List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow14ListArray.add(data);
+				}
+			}
+			String actRow14List = reportsRow14ListArray.toString();
+			String expRow14List = "[F2, F602, F2, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 33.33, 33.33]";
+			
+
+			int reportsRow15ListCount = reportsRow15List.size();
+			ArrayList<String> reportsRow15ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow15ListCount;i++)
+			{
+				String data = reportsRow15List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow15ListArray.add(data);
+				}
+			}
+			String actRow15List = reportsRow15ListArray.toString();
+			String expRow15List = "[Gross loss, (34.00), (10.00), (44.00), (34.00), (34.00), (10.00), (44.00), (34.00)]";
+			
+			
+
+			int reportsRow16ListCount = reportsRow16List.size();
+			ArrayList<String> reportsRow16ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow16ListCount;i++)
+			{
+				String data = reportsRow16List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow16ListArray.add(data);
+				}
+
+			}
+			String actRow16List = reportsRow16ListArray.toString();
+			String expRow16List = "[Grand Total, 37.00, 37.00, 10.00, 10.00, 45.00, 45.00, 47.00, 47.00, 37.00, 37.00, 10.00, 10.00, 45.00, 45.00, 47.00, 47.00]";
+			
+			
+			
+			System.out.println(actRow1List);
+			System.out.println(expRow1List);
+
+			System.out.println(actRow2List);
+			System.out.println(expRow2List);
+
+			System.out.println(actRow3List);
+			System.out.println(expRow3List);
+
+			System.out.println(actRow4List);
+			System.out.println(expRow4List);
+
+			System.out.println(actRow5List);
+			System.out.println(expRow5List);
+			
+
+			System.out.println(actRow6List);
+			System.out.println(expRow6List);
+			
+			System.out.println(actRow7List);
+			System.out.println(expRow7List);
+
+			System.out.println(actRow8List);
+			System.out.println(expRow8List);
+			
+
+			System.out.println(actRow9List);
+			System.out.println(expRow9List);
+			
+			
+			System.out.println(actRow10List);
+			System.out.println(expRow10List);
+
+			System.out.println(actRow11List);
+			System.out.println(expRow11List);
+
+			System.out.println(actRow12List);
+			System.out.println(expRow12List);
+
+			System.out.println(actRow13List);
+			System.out.println(expRow13List);
+
+			System.out.println(actRow14List);
+			System.out.println(expRow14List);
+			
+
+			System.out.println(actRow15List);
+			System.out.println(expRow15List);
+			
+			System.out.println(actRow16List);
+			System.out.println(expRow16List);
+
+
+			if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List) 
+					&& actRow4List.equalsIgnoreCase(expRow4List) && actRow5List.equalsIgnoreCase(expRow5List)&& 
+					actRow6List.equalsIgnoreCase(expRow6List)
+					&& actRow7List.equalsIgnoreCase(expRow7List) && actRow8List.equalsIgnoreCase(expRow8List)&& 
+					actRow9List.equalsIgnoreCase(expRow9List) &&
+					actRow10List.equalsIgnoreCase(expRow10List) && actRow11List.equalsIgnoreCase(expRow11List)
+					&& actRow12List.equalsIgnoreCase(expRow12List) && actRow13List.equalsIgnoreCase(expRow13List)
+					&& actRow14List.equalsIgnoreCase(expRow14List) && actRow15List.equalsIgnoreCase(expRow15List)
+					&& actRow16List.equalsIgnoreCase(expRow16List)) 
+					{
+						return true;
+					} 
+			else 
+			{
+				return false;
+			}
+
+		
+		}
+
+		public static boolean checkTrandingAndProfitAndLoss() throws InterruptedException
+		{
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsFinalAccountsMenu));
+			financialsFinalAccountsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(tradingandProfitAndLossReport));
+			tradingandProfitAndLossReport.click();
+			
+
+		
+			Thread.sleep(1500);
+		
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			
+
+			int reportsRow1ListCount = reportsRow1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsRow1List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[Sales - Computers, 071-001, Sales - Computers, 11.00, 11.00, 5.00, 16.00, 11.00, 11.00, 5.00, 16.00]";
+
+			int reportsRow2ListCount = reportsRow2List.size();
+			ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow2ListCount;i++)
+			{
+				String data = reportsRow2List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow2ListArray.add(data);
+				}
+
+
+			}
+			String actRow2List = reportsRow2ListArray.toString();
+			String expRow2List = "[Purchase, 091-002, Purchase, 495.00, 495.00, 500.00, 5.00, 495.00, 495.00, 500.00, 5.00]";
+
+			int reportsRow3ListCount = reportsRow3List.size();
+			ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow3ListCount;i++)
+			{
+				String data = reportsRow3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow3ListArray.add(data);
+				}
+
+			}
+			String actRow3List = reportsRow3ListArray.toString();
+			String expRow3List = "[E1, E501, E1, 6.00, 1.00, 7.00, 11.00, 5.00, 6.00, 1.00, 7.00, 11.00, 5.00, 16.22, 16.22]";
+
+
+
+			int reportsRow4ListCount = reportsRow4List.size();
+			ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow4ListCount;i++)
+			{
+				String data = reportsRow4List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow4ListArray.add(data);
+				}
+
+			}
+			String actRow4List = reportsRow4ListArray.toString();
+			String expRow4List = "[E2, E502, E2, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00]";
+
+
+
+			int reportsRow5ListCount = reportsRow5List.size();
+			ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow5ListCount;i++)
+			{
+				String data = reportsRow5List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow5ListArray.add(data);
+				}
+			}
+			String actRow5List = reportsRow5ListArray.toString();
+			String expRow5List = "[F, F600, F, 2.00, 2.00, 2.00, 2.00, 2.00, 2.00, 66.67, 66.67]";
+			
+
+			int reportsRow6ListCount = reportsRow6List.size();
+			ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow6ListCount;i++)
+			{
+				String data = reportsRow6List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow6ListArray.add(data);
+				}
+			}
+			String actRow6List = reportsRow6ListArray.toString();
+			String expRow6List = "[F1, F601, F1, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 33.33, 33.33]";
+			
+			
+			//
+
+
+			int reportsRow7ListCount = reportsRow7List.size();
+			ArrayList<String> reportsRow7ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow7ListCount;i++)
+			{
+				String data = reportsRow7List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow7ListArray.add(data);
+				}
+
+			}
+			String actRow7List = reportsRow7ListArray.toString();
+			String expRow7List = "[F2, F602, F2, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 33.33, 33.33]";
+
+
+
+			int reportsRow8ListCount = reportsRow8List.size();
+			ArrayList<String> reportsRow8ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow8ListCount;i++)
+			{
+				String data = reportsRow8List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow8ListArray.add(data);
+				}
+
+			}
+			String actRow8List = reportsRow8ListArray.toString();
+			String expRow8List = "[PurchaseACC, PAC001, PurchaseACC, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 33.33, 33.33]";
+
+
+
+			int reportsRow9ListCount = reportsRow9List.size();
+			ArrayList<String> reportsRow9ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow9ListCount;i++)
+			{
+				String data = reportsRow9List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow9ListArray.add(data);
+				}
+			}
+			String actRow9List = reportsRow9ListArray.toString();
+			String expRow9List = "[A, A100, A, 33.00, 4.00, 37.00, 35.00, 2.00, 33.00, 4.00, 37.00, 35.00, 2.00, 89.19, 89.19]";
+			
+			
+			///
+
+			int reportsRow10ListCount = reportsRow10List.size();
+			ArrayList<String> reportsRow10ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow10ListCount;i++)
+			{
+				String data = reportsRow10List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow10ListArray.add(data);
+				}
+
+			}
+			String actRow10List = reportsRow10ListArray.toString();
+			String expRow10List = "[A1, A101, A1, 33.00, 1.00, 34.00, 34.00, 1.00, 33.00, 1.00, 34.00, 34.00, 1.00, 89.19, 89.19]";
+
+
+
+			int reportsRow11ListCount = reportsRow11List.size();
+			ArrayList<String> reportsRow11ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow11ListCount;i++)
+			{
+				String data = reportsRow11List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow11ListArray.add(data);
+				}
+
+
+			}
+			String actRow11List = reportsRow11ListArray.toString();
+			String expRow11List = "[A2, A102, A2, 1.00, 1.00, 1.00, 1.00]";
+
+
+
+			int reportsRow12ListCount = reportsRow12List.size();
+			ArrayList<String> reportsRow12ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow12ListCount;i++)
+			{
+				String data = reportsRow12List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow12ListArray.add(data);
+				}
+
+			}
+			String actRow12List = reportsRow12ListArray.toString();
+			String expRow12List = "[B, B200, B, 2.00, 2.00, 1.00, 1.00, 2.00, 2.00, 1.00, 1.00]";
+
+
+
+			int reportsRow13ListCount = reportsRow13List.size();
+			ArrayList<String> reportsRow13ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow13ListCount;i++)
+			{
+				String data = reportsRow13List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow13ListArray.add(data);
+				}
+
+			}
+			String actRow13List = reportsRow13ListArray.toString();
+			String expRow13List = "[B1, B201, B1, 1.00, 1.00, 1.00, 1.00]";
+
+
+
+			int reportsRow14ListCount = reportsRow14List.size();
+			ArrayList<String> reportsRow14ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow14ListCount;i++)
+			{
+				String data = reportsRow14List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow14ListArray.add(data);
+				}
+			}
+			String actRow14List = reportsRow14ListArray.toString();
+			String expRow14List = "[B2, B202, B2, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00]";
+			
+
+			int reportsRow15ListCount = reportsRow15List.size();
+			ArrayList<String> reportsRow15ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow15ListCount;i++)
+			{
+				String data = reportsRow15List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow15ListArray.add(data);
+				}
+			}
+			String actRow15List = reportsRow15ListArray.toString();
+			String expRow15List = "[Loss for the period, (34.00), (10.00), (44.00), (34.00), (34.00), (10.00), (44.00), (34.00)]";
+			
+			
+
+			int reportsRow16ListCount = reportsRow16List.size();
+			ArrayList<String> reportsRow16ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow16ListCount;i++)
+			{
+				String data = reportsRow16List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow16ListArray.add(data);
+				}
+
+			}
+			String actRow16List = reportsRow16ListArray.toString();
+			String expRow16List = "[Grand Total, 37.00, 37.00, 10.00, 10.00, 45.00, 45.00, 47.00, 47.00, 37.00, 37.00, 10.00, 10.00, 45.00, 45.00, 47.00, 47.00]";
+			
+			
+			
+			System.out.println(actRow1List);
+			System.out.println(expRow1List);
+
+			System.out.println(actRow2List);
+			System.out.println(expRow2List);
+
+			System.out.println(actRow3List);
+			System.out.println(expRow3List);
+
+			System.out.println(actRow4List);
+			System.out.println(expRow4List);
+
+			System.out.println(actRow5List);
+			System.out.println(expRow5List);
+			
+
+			System.out.println(actRow6List);
+			System.out.println(expRow6List);
+			
+			System.out.println(actRow7List);
+			System.out.println(expRow7List);
+
+			System.out.println(actRow8List);
+			System.out.println(expRow8List);
+			
+
+			System.out.println(actRow9List);
+			System.out.println(expRow9List);
+			
+			
+			System.out.println(actRow10List);
+			System.out.println(expRow10List);
+
+			System.out.println(actRow11List);
+			System.out.println(expRow11List);
+
+			System.out.println(actRow12List);
+			System.out.println(expRow12List);
+
+			System.out.println(actRow13List);
+			System.out.println(expRow13List);
+
+			System.out.println(actRow14List);
+			System.out.println(expRow14List);
+			
+
+			System.out.println(actRow15List);
+			System.out.println(expRow15List);
+			
+			System.out.println(actRow16List);
+			System.out.println(expRow16List);
+
+
+			if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List) 
+					&& actRow4List.equalsIgnoreCase(expRow4List) && actRow5List.equalsIgnoreCase(expRow5List)&& 
+					actRow6List.equalsIgnoreCase(expRow6List)
+					&& actRow7List.equalsIgnoreCase(expRow7List) && actRow8List.equalsIgnoreCase(expRow8List)&& 
+					actRow9List.equalsIgnoreCase(expRow9List) &&
+					actRow10List.equalsIgnoreCase(expRow10List) && actRow11List.equalsIgnoreCase(expRow11List)
+					&& actRow12List.equalsIgnoreCase(expRow12List) && actRow13List.equalsIgnoreCase(expRow13List)
+					&& actRow14List.equalsIgnoreCase(expRow14List) && actRow15List.equalsIgnoreCase(expRow15List)
+					&& actRow16List.equalsIgnoreCase(expRow16List)) 
+					{
+						return true;
+					} 
+			else 
+			{
+				return false;
+			}
+
+		
+			
+		}
+		
+		public static boolean checkBalanceSheetReport() throws InterruptedException
+		{
+
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsFinalAccountsMenu));
+			financialsFinalAccountsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(balanceSheetReport));
+			balanceSheetReport.click();
+		
+		
+			Thread.sleep(1500);
+		
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			
+
+			int reportsRow1ListCount = reportsRow1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsRow1List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[ASSETS, 001, ASSETS, 5.00, 1.00, 4.00, 5.00, 5.00, 1.00, 4.00, 5.00, 31.25, 31.25]";
+
+			int reportsRow2ListCount = reportsRow2List.size();
+			ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow2ListCount;i++)
+			{
+				String data = reportsRow2List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow2ListArray.add(data);
+				}
+
+
+			}
+			String actRow2List = reportsRow2ListArray.toString();
+			String expRow2List = "[Current Assets, 012, Current Assets, 5.00, 1.00, 4.00, 5.00, 5.00, 1.00, 4.00, 5.00, 31.25, 31.25]";
+
+			int reportsRow3ListCount = reportsRow3List.size();
+			ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow3ListCount;i++)
+			{
+				String data = reportsRow3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow3ListArray.add(data);
+				}
+
+			}
+			String actRow3List = reportsRow3ListArray.toString();
+			String expRow3List = "[Cash, 121-002, Cash, 1.00, 1.00, 1.00, 2.00, 1.00, 1.00, 1.00, 2.00, 0.20, 0.20]";
+
+
+
+			int reportsRow4ListCount = reportsRow4List.size();
+			ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow4ListCount;i++)
+			{
+				String data = reportsRow4List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow4ListArray.add(data);
+				}
+
+			}
+			String actRow4List = reportsRow4ListArray.toString();
+			String expRow4List = "[Bank, 121-001, Bank, 1.00, 1.00, 2.00, 1.00, 1.00, 1.00, 2.00, 1.00, 6.25, 6.25]";
+
+
+
+			int reportsRow5ListCount = reportsRow5List.size();
+			ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow5ListCount;i++)
+			{
+				String data = reportsRow5List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow5ListArray.add(data);
+				}
+			}
+			String actRow5List = reportsRow5ListArray.toString();
+			String expRow5List = "[Inventories, 120, Inventories, 5.00, 5.00, 5.00, 5.00, 5.00, 5.00, 31.25, 31.25]";
+			
+
+			int reportsRow6ListCount = reportsRow6List.size();
+			ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow6ListCount;i++)
+			{
+				String data = reportsRow6List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow6ListArray.add(data);
+				}
+			}
+			String actRow6List = reportsRow6ListArray.toString();
+			String expRow6List = "[Inventory Trade, 120-003, Inventory Trade, 5.00, 5.00, 5.00, 5.00, 5.00, 5.00, 31.25, 31.25]";
+			
+			
+			//
+
+
+			int reportsRow7ListCount = reportsRow7List.size();
+			ArrayList<String> reportsRow7ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow7ListCount;i++)
+			{
+				String data = reportsRow7List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow7ListArray.add(data);
+				}
+
+			}
+			String actRow7List = reportsRow7ListArray.toString();
+			String expRow7List = "[Accounts Receivable, 122, Accounts Receivable, 1.00, 1.00, 1.00, 1.00]";
+
+
+
+			int reportsRow8ListCount = reportsRow8List.size();
+			ArrayList<String> reportsRow8ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow8ListCount;i++)
+			{
+				String data = reportsRow8List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow8ListArray.add(data);
+				}
+
+			}
+			String actRow8List = reportsRow8ListArray.toString();
+			String expRow8List = "[Customer A, 122-001, Customer A, 1.00, 1.00, 1.00, 1.00]";
+
+
+
+			int reportsRow9ListCount = reportsRow9List.size();
+			ArrayList<String> reportsRow9ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow9ListCount;i++)
+			{
+				String data = reportsRow9List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow9ListArray.add(data);
+				}
+			}
+			String actRow9List = reportsRow9ListArray.toString();
+			String expRow9List = "[CustVend, CV001, CustVend, 5.00, 5.00, 1.00, 6.00, 5.00, 5.00, 1.00, 6.00, 0.99, 0.99]";
+			
+			
+			///
+
+			int reportsRow10ListCount = reportsRow10List.size();
+			ArrayList<String> reportsRow10ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow10ListCount;i++)
+			{
+				String data = reportsRow10List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow10ListArray.add(data);
+				}
+
+			}
+			String actRow10List = reportsRow10ListArray.toString();
+			String expRow10List = "[CONTROL ACCOUNTS, CA, CONTROL ACCOUNTS, 3.00, 3.00, 3.00, 3.00]";
+
+
+
+			int reportsRow11ListCount = reportsRow11List.size();
+			ArrayList<String> reportsRow11ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow11ListCount;i++)
+			{
+				String data = reportsRow11List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow11ListArray.add(data);
+				}
+
+
+			}
+			String actRow11List = reportsRow11ListArray.toString();
+			String expRow11List = "[Opening Balances Control A/C, OBC, Opening Balances Control A/C, 3.00, 3.00, 3.00, 3.00]";
+
+
+
+			int reportsRow12ListCount = reportsRow12List.size();
+			ArrayList<String> reportsRow12ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow12ListCount;i++)
+			{
+				String data = reportsRow12List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow12ListArray.add(data);
+				}
+
+			}
+			String actRow12List = reportsRow12ListArray.toString();
+			String expRow12List = "[G, G700, G, 10.00, 1.00, 9.00, 16.00, 6.00, 10.00, 1.00, 9.00, 16.00, 6.00, 62.50, 62.50]";
+
+
+
+			int reportsRow13ListCount = reportsRow13List.size();
+			ArrayList<String> reportsRow13ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow13ListCount;i++)
+			{
+				String data = reportsRow13List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow13ListArray.add(data);
+				}
+
+			}
+			String actRow13List = reportsRow13ListArray.toString();
+			String expRow13List = "[G1, G701, G1, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 6.25, 6.25]";
+
+
+
+			int reportsRow14ListCount = reportsRow14List.size();
+			ArrayList<String> reportsRow14ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow14ListCount;i++)
+			{
+				String data = reportsRow14List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow14ListArray.add(data);
+				}
+			}
+			String actRow14List = reportsRow14ListArray.toString();
+			String expRow14List = "[G2, G702, G2, 9.00, 9.00, 15.00, 6.00, 9.00, 9.00, 15.00, 6.00, 56.25, 56.25]";
+			
+
+			int reportsRow15ListCount = reportsRow15List.size();
+			ArrayList<String> reportsRow15ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow15ListCount;i++)
+			{
+				String data = reportsRow15List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow15ListArray.add(data);
+				}
+			}
+			String actRow15List = reportsRow15ListArray.toString();
+			String expRow15List = "[LIABILITIES, 003, LIABILITIES, 500.00, 500.00, 500.00, 500.00, 500.00, 500.00, 99.01, 99.01]";
+			
+			
+
+			int reportsRow16ListCount = reportsRow16List.size();
+			ArrayList<String> reportsRow16ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow16ListCount;i++)
+			{
+				String data = reportsRow16List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow16ListArray.add(data);
+				}
+
+			}
+			String actRow16List = reportsRow16ListArray.toString();
+			String expRow16List = "[Trade Payable, 033, Trade Payable, 500.00, 500.00, 500.00, 500.00, 500.00, 500.00, 99.01, 99.01]";
+			
+			
+			
+			System.out.println(actRow1List);
+			System.out.println(expRow1List);
+
+			System.out.println(actRow2List);
+			System.out.println(expRow2List);
+
+			System.out.println(actRow3List);
+			System.out.println(expRow3List);
+
+			System.out.println(actRow4List);
+			System.out.println(expRow4List);
+
+			System.out.println(actRow5List);
+			System.out.println(expRow5List);
+			
+
+			System.out.println(actRow6List);
+			System.out.println(expRow6List);
+			
+			System.out.println(actRow7List);
+			System.out.println(expRow7List);
+
+			System.out.println(actRow8List);
+			System.out.println(expRow8List);
+			
+
+			System.out.println(actRow9List);
+			System.out.println(expRow9List);
+			
+			
+			System.out.println(actRow10List);
+			System.out.println(expRow10List);
+
+			System.out.println(actRow11List);
+			System.out.println(expRow11List);
+
+			System.out.println(actRow12List);
+			System.out.println(expRow12List);
+
+			System.out.println(actRow13List);
+			System.out.println(expRow13List);
+
+			System.out.println(actRow14List);
+			System.out.println(expRow14List);
+			
+
+			System.out.println(actRow15List);
+			System.out.println(expRow15List);
+			
+			System.out.println(actRow16List);
+			System.out.println(expRow16List);
+
+
+			if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List) 
+					&& actRow4List.equalsIgnoreCase(expRow4List) && actRow5List.equalsIgnoreCase(expRow5List)&& 
+					actRow6List.equalsIgnoreCase(expRow6List)
+					&& actRow7List.equalsIgnoreCase(expRow7List) && actRow8List.equalsIgnoreCase(expRow8List)&& 
+					actRow9List.equalsIgnoreCase(expRow9List) &&
+					actRow10List.equalsIgnoreCase(expRow10List) && actRow11List.equalsIgnoreCase(expRow11List)
+					&& actRow12List.equalsIgnoreCase(expRow12List) && actRow13List.equalsIgnoreCase(expRow13List)
+					&& actRow14List.equalsIgnoreCase(expRow14List) && actRow15List.equalsIgnoreCase(expRow15List)
+					&& actRow16List.equalsIgnoreCase(expRow16List)) 
+					{
+						return true;
+					} 
+			else 
+			{
+				return false;
+			}
+
+		
+		}
+		
+		public static boolean checkSchedulesReports() throws InterruptedException
+		{
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsFinalAccountsMenu));
+			financialsFinalAccountsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(finalAccountSchedulesReport));
+			finalAccountSchedulesReport.click();
+			
+
+			Thread.sleep(1500);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+			sl_SelectAllChkBox.click();
+		
+			Thread.sleep(1500);
+			Thread.sleep(1500);
+		
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			
+
+			int reportsRow1ListCount = reportsRow1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsRow1List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[ASSETS, 001, ASSETS, 5.00, 1.00, 4.00, 5.00, 5.00, 1.00, 4.00, 5.00, 0.97, 0.97]";
+
+
+
+			int reportsRow2ListCount = reportsRow2List.size();
+			ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow2ListCount;i++)
+			{
+				String data = reportsRow2List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow2ListArray.add(data);
+				}
+
+
+			}
+			String actRow2List = reportsRow2ListArray.toString();
+			String expRow2List = "[Current Assets, 012, Current Assets, 5.00, 1.00, 4.00, 5.00, 5.00, 1.00, 4.00, 5.00, 0.97, 0.97]";
+
+
+
+			int reportsRow3ListCount = reportsRow3List.size();
+			ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow3ListCount;i++)
+			{
+				String data = reportsRow3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow3ListArray.add(data);
+				}
+
+			}
+			String actRow3List = reportsRow3ListArray.toString();
+			String expRow3List = "[Cash, 121-002, Cash, 1.00, 1.00, 1.00, 2.00, 1.00, 1.00, 1.00, 2.00, 0.19, 0.19]";
+
+
+
+			int reportsRow4ListCount = reportsRow4List.size();
+			ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow4ListCount;i++)
+			{
+				String data = reportsRow4List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow4ListArray.add(data);
+				}
+
+			}
+			String actRow4List = reportsRow4ListArray.toString();
+			String expRow4List = "[Bank, 121-001, Bank, 1.00, 1.00, 2.00, 1.00, 1.00, 1.00, 2.00, 1.00, 0.19, 0.19]";
+
+
+
+			int reportsRow5ListCount = reportsRow5List.size();
+			ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow5ListCount;i++)
+			{
+				String data = reportsRow5List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow5ListArray.add(data);
+				}
+			}
+			String actRow5List = reportsRow5ListArray.toString();
+			String expRow5List = "[Inventories, 120, Inventories, 5.00, 5.00, 5.00, 5.00, 5.00, 5.00, 0.97, 0.97]";
+			
+
+			int reportsRow6ListCount = reportsRow6List.size();
+			ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow6ListCount;i++)
+			{
+				String data = reportsRow6List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow6ListArray.add(data);
+				}
+			}
+			String actRow6List = reportsRow6ListArray.toString();
+			String expRow6List = "[Inventory Trade, 120-003, Inventory Trade, 5.00, 5.00, 5.00, 5.00, 5.00, 5.00, 0.97, 0.97]";
+			
+			
+			//
+
+
+			int reportsRow7ListCount = reportsRow7List.size();
+			ArrayList<String> reportsRow7ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow7ListCount;i++)
+			{
+				String data = reportsRow7List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow7ListArray.add(data);
+				}
+
+			}
+			String actRow7List = reportsRow7ListArray.toString();
+			String expRow7List = "[Accounts Receivable, 122, Accounts Receivable, 1.00, 1.00, 1.00, 1.00]";
+
+
+
+			int reportsRow8ListCount = reportsRow8List.size();
+			ArrayList<String> reportsRow8ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow8ListCount;i++)
+			{
+				String data = reportsRow8List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow8ListArray.add(data);
+				}
+
+			}
+			String actRow8List = reportsRow8ListArray.toString();
+			String expRow8List = "[Customer A, 122-001, Customer A, 1.00, 1.00, 1.00, 1.00]";
+
+
+
+			int reportsRow9ListCount = reportsRow9List.size();
+			ArrayList<String> reportsRow9ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow9ListCount;i++)
+			{
+				String data = reportsRow9List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow9ListArray.add(data);
+				}
+			}
+			String actRow9List = reportsRow9ListArray.toString();
+			String expRow9List = "[CustVend, CV001, CustVend, 5.00, 5.00, 1.00, 6.00, 5.00, 5.00, 1.00, 6.00, 0.97, 0.97]";
+			
+			
+			///
+
+			int reportsRow10ListCount = reportsRow10List.size();
+			ArrayList<String> reportsRow10ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow10ListCount;i++)
+			{
+				String data = reportsRow10List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow10ListArray.add(data);
+				}
+
+			}
+			String actRow10List = reportsRow10ListArray.toString();
+			String expRow10List = "[CONTROL ACCOUNTS, CA, CONTROL ACCOUNTS, 3.00, 3.00, 3.00, 3.00]";
+
+
+
+			int reportsRow11ListCount = reportsRow11List.size();
+			ArrayList<String> reportsRow11ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow11ListCount;i++)
+			{
+				String data = reportsRow11List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow11ListArray.add(data);
+				}
+
+
+			}
+			String actRow11List = reportsRow11ListArray.toString();
+			String expRow11List = "[Opening Balances Control A/C, OBC, Opening Balances Control A/C, 3.00, 3.00, 3.00, 3.00]";
+
+
+
+			int reportsRow12ListCount = reportsRow12List.size();
+			ArrayList<String> reportsRow12ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow12ListCount;i++)
+			{
+				String data = reportsRow12List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow12ListArray.add(data);
+				}
+
+			}
+			String actRow12List = reportsRow12ListArray.toString();
+			String expRow12List = "[G, G700, G, 10.00, 1.00, 9.00, 16.00, 6.00, 10.00, 1.00, 9.00, 16.00, 6.00, 1.94, 1.94]";
+
+
+
+			int reportsRow13ListCount = reportsRow13List.size();
+			ArrayList<String> reportsRow13ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow13ListCount;i++)
+			{
+				String data = reportsRow13List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow13ListArray.add(data);
+				}
+
+			}
+			String actRow13List = reportsRow13ListArray.toString();
+			String expRow13List = "[G1, G701, G1, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 0.19, 0.19]";
+
+
+
+			int reportsRow14ListCount = reportsRow14List.size();
+			ArrayList<String> reportsRow14ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow14ListCount;i++)
+			{
+				String data = reportsRow14List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow14ListArray.add(data);
+				}
+			}
+			String actRow14List = reportsRow14ListArray.toString();
+			String expRow14List = "[G2, G702, G2, 9.00, 9.00, 15.00, 6.00, 9.00, 9.00, 15.00, 6.00, 1.74, 1.74]";
+			
+
+			int reportsRow15ListCount = reportsRow15List.size();
+			ArrayList<String> reportsRow15ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow15ListCount;i++)
+			{
+				String data = reportsRow15List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow15ListArray.add(data);
+				}
+			}
+			String actRow15List = reportsRow15ListArray.toString();
+			String expRow15List = "[EXPENSES, 009, EXPENSES, 500.00, 500.00, 505.00, 5.00, 500.00, 500.00, 505.00, 5.00, 96.90, 96.90]";
+			
+			
+
+			int reportsRow16ListCount = reportsRow16List.size();
+			ArrayList<String> reportsRow16ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow16ListCount;i++)
+			{
+				String data = reportsRow16List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow16ListArray.add(data);
+				}
+
+			}
+			String actRow16List = reportsRow16ListArray.toString();
+			String expRow16List = "[Direct Expenses, 091, Direct Expenses, 500.00, 500.00, 505.00, 5.00, 500.00, 500.00, 505.00, 5.00, 96.90, 96.90]";
+
+
+
+			int reportsRow17ListCount = reportsRow17List.size();
+			ArrayList<String> reportsRow17ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow17ListCount;i++)
+			{
+				String data = reportsRow17List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow17ListArray.add(data);
+				}
+
+			}
+			String actRow17List = reportsRow17ListArray.toString();
+			String expRow17List = "[Purchase, 091-002, Purchase, 495.00, 495.00, 500.00, 5.00, 495.00, 495.00, 500.00, 5.00, 95.93, 95.93]";
+
+
+
+			int reportsRow18ListCount = reportsRow18List.size();
+			ArrayList<String> reportsRow18ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow18ListCount;i++)
+			{
+				String data = reportsRow18List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow18ListArray.add(data);
+				}
+			}
+			String actRow18List = reportsRow18ListArray.toString();
+			String expRow18List = "[Cost of goods sold - Computers, 091-003, Cost of goods sold - Computers, 5.00, 5.00, 5.00, 5.00, 5.00, 5.00, 0.97, 0.97]";
+			
+			int reportsRow19ListCount = reportsRow19List.size();
+			ArrayList<String> reportsRow19ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow19ListCount;i++)
+			{
+				String data = reportsRow19List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow19ListArray.add(data);
+				}
+			}
+			String actRow19List = reportsRow19ListArray.toString();
+			String expRow19List = "[REVENUE, 007, REVENUE, 11.00, 11.00, 5.00, 16.00, 11.00, 11.00, 5.00, 16.00, 2.13, 2.13]";
+			
+			Thread.sleep(2000);
+			report_NextBtn.click();
+			Thread.sleep(2000);
+			
+			
+
+			int reportspage2Row1ListCount = reportsrow1List.size();
+			ArrayList<String> reportspage2Row1ListArray = new ArrayList<String>();
+			for(int i=1;i<reportspage2Row1ListCount;i++)
+			{
+				String data = reportsrow1List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportspage2Row1ListArray.add(data);
+				}
+
+			}
+			String actpage2Row1List = reportspage2Row1ListArray.toString();
+			String exppage2Row1List = "[SALES, 071, SALES, 11.00, 11.00, 5.00, 16.00, 11.00, 11.00, 5.00, 16.00, 2.13, 2.13]";
+
+
+
+			int reportspage2Row2ListCount = reportsrow2List.size();
+			ArrayList<String> reportspage2Row2ListArray = new ArrayList<String>();
+			for(int i=1;i<reportspage2Row2ListCount;i++)
+			{
+				String data = reportsrow2List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportspage2Row2ListArray.add(data);
+				}
+
+
+			}
+			String actpage2Row2List = reportspage2Row2ListArray.toString();
+			String exppage2Row2List = "[Sales - Computers, 071-001, Sales - Computers, 11.00, 11.00, 5.00, 16.00, 11.00, 11.00, 5.00, 16.00, 2.13, 2.13]";
+
+
+
+			int reportspage2Row3ListCount = reportsrow3List.size();
+			ArrayList<String> reportspage2Row3ListArray = new ArrayList<String>();
+			for(int i=1;i<reportspage2Row3ListCount;i++)
+			{
+				String data = reportsrow3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportspage2Row3ListArray.add(data);
+				}
+
+			}
+			String actpage2Row3List = reportspage2Row3ListArray.toString();
+			String exppage2Row3List = "[LIABILITIES, 003, LIABILITIES, 500.00, 500.00, 500.00, 500.00, 500.00, 500.00, 96.90, 96.90]";
+
+
+
+			int reportspage2Row4ListCount = reportsrow4List.size();
+			ArrayList<String> reportspage2Row4ListArray = new ArrayList<String>();
+			for(int i=1;i<reportspage2Row4ListCount;i++)
+			{
+				String data = reportsrow4List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportspage2Row4ListArray.add(data);
+				}
+
+			}
+			String actpage2Row4List = reportspage2Row4ListArray.toString();
+			String exppage2Row4List = "[Trade Payable, 033, Trade Payable, 500.00, 500.00, 500.00, 500.00, 500.00, 500.00, 96.90, 96.90]";
+
+
+
+			int reportspage2Row5ListCount = reportsRow5List.size();
+			ArrayList<String> reportspage2Row5ListArray = new ArrayList<String>();
+			for(int i=1;i<reportspage2Row5ListCount;i++)
+			{
+				String data = reportsRow5List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportspage2Row5ListArray.add(data);
+				}
+			}
+			String actpage2Row5List = reportspage2Row5ListArray.toString();
+			String exppage2Row5List = "[Vendor A, 033-001, Vendor A, 500.00, 500.00, 500.00, 500.00, 500.00, 500.00, 96.90, 96.90]";
+			
+
+			int reportspage2Row6ListCount = reportsRow6List.size();
+			ArrayList<String> reportspage2Row6ListArray = new ArrayList<String>();
+			for(int i=1;i<reportspage2Row6ListCount;i++)
+			{
+				String data = reportsRow6List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportspage2Row6ListArray.add(data);
+				}
+			}
+			String actpage2Row6List = reportspage2Row6ListArray.toString();
+			String exppage2Row6List = "[C, C300, C, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 0.19, 0.19]";
+			
+			
+			//
+
+
+			int reportspage2Row7ListCount = reportsRow7List.size();
+			ArrayList<String> reportspage2Row7ListArray = new ArrayList<String>();
+			for(int i=1;i<reportspage2Row7ListCount;i++)
+			{
+				String data = reportsRow7List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportspage2Row7ListArray.add(data);
+				}
+
+			}
+			String actpage2Row7List = reportspage2Row7ListArray.toString();
+			String exppage2Row7List = "[C1, C301, C1, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 0.19, 0.19]";
+
+
+
+			int reportspage2Row8ListCount = reportsRow8List.size();
+			ArrayList<String> reportspage2Row8ListArray = new ArrayList<String>();
+			for(int i=1;i<reportspage2Row8ListCount;i++)
+			{
+				String data = reportsRow8List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportspage2Row8ListArray.add(data);
+				}
+
+			}
+			String actpage2Row8List = reportspage2Row8ListArray.toString();
+			String exppage2Row8List = "[Grand Total, 516.00, 516.00, 3.00, 3.00, 516.00, 516.00, 533.00, 533.00, 516.00, 516.00, 3.00, 3.00, 516.00, 516.00, 533.00, 533.00]";
+
+
+
+			System.out.println(actRow1List);
+			System.out.println(expRow1List);
+
+			System.out.println(actRow2List);
+			System.out.println(expRow2List);
+
+			System.out.println(actRow3List);
+			System.out.println(expRow3List);
+
+			System.out.println(actRow4List);
+			System.out.println(expRow4List);
+
+			System.out.println(actRow5List);
+			System.out.println(expRow5List);
+			
+
+			System.out.println(actRow6List);
+			System.out.println(expRow6List);
+			
+			System.out.println(actRow7List);
+			System.out.println(expRow7List);
+
+			System.out.println(actRow8List);
+			System.out.println(expRow8List);
+			
+
+			System.out.println(actRow9List);
+			System.out.println(expRow9List);
+			
+			
+			System.out.println(actRow10List);
+			System.out.println(expRow10List);
+
+			System.out.println(actRow11List);
+			System.out.println(expRow11List);
+
+			System.out.println(actRow12List);
+			System.out.println(expRow12List);
+
+			System.out.println(actRow13List);
+			System.out.println(expRow13List);
+
+			System.out.println(actRow14List);
+			System.out.println(expRow14List);
+			
+
+			System.out.println(actRow15List);
+			System.out.println(expRow15List);
+			
+			System.out.println(actRow16List);
+			System.out.println(expRow16List);
+
+			System.out.println(actRow17List);
+			System.out.println(expRow17List);
+			
+
+			System.out.println(actRow18List);
+			System.out.println(expRow18List);
+			
+			System.out.println(actRow19List);
+			System.out.println(expRow19List);
+			
+			System.out.println(actpage2Row1List);
+			System.out.println(exppage2Row1List);
+
+			System.out.println(actpage2Row2List);
+			System.out.println(exppage2Row2List);
+
+			System.out.println(actpage2Row3List);
+			System.out.println(exppage2Row3List);
+
+			System.out.println(actpage2Row4List);
+			System.out.println(exppage2Row4List);
+
+			System.out.println(actpage2Row5List);
+			System.out.println(exppage2Row5List);
+			
+
+			System.out.println(actpage2Row6List);
+			System.out.println(exppage2Row6List);
+			
+			System.out.println(actpage2Row7List);
+			System.out.println(exppage2Row7List);
+
+			System.out.println(actpage2Row8List);
+			System.out.println(exppage2Row8List);
+			
+
+			if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List) 
+					&& actRow4List.equalsIgnoreCase(expRow4List) && actRow5List.equalsIgnoreCase(expRow5List)&& 
+					actRow6List.equalsIgnoreCase(expRow6List)
+					&& actRow7List.equalsIgnoreCase(expRow7List) && actRow8List.equalsIgnoreCase(expRow8List)&& 
+					actRow9List.equalsIgnoreCase(expRow9List) &&
+					actRow10List.equalsIgnoreCase(expRow10List) && actRow11List.equalsIgnoreCase(expRow11List)
+					&& actRow12List.equalsIgnoreCase(expRow12List) && actRow13List.equalsIgnoreCase(expRow13List)
+					&& actRow14List.equalsIgnoreCase(expRow14List) && actRow15List.equalsIgnoreCase(expRow15List)
+					&& actRow16List.equalsIgnoreCase(expRow16List) && actRow17List.equalsIgnoreCase(expRow17List)
+					&& actRow18List.equalsIgnoreCase(expRow18List) && actRow19List.equalsIgnoreCase(expRow19List)
+					
+					&&actpage2Row1List.equalsIgnoreCase(exppage2Row1List) && actpage2Row2List.equalsIgnoreCase(exppage2Row2List)
+					&&actpage2Row3List.equalsIgnoreCase(exppage2Row3List) && actpage2Row4List.equalsIgnoreCase(exppage2Row4List)
+					&&actpage2Row5List.equalsIgnoreCase(exppage2Row5List) && actpage2Row6List.equalsIgnoreCase(exppage2Row6List)
+					&& actpage2Row7List.equalsIgnoreCase(exppage2Row7List) && actpage2Row8List.equalsIgnoreCase(exppage2Row8List))
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+		
+		}
+		
+		public static boolean checkFundFlowReport() throws InterruptedException
+		{
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsFinalAccountsMenu));
+			financialsFinalAccountsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(fundFlowReport));
+			fundFlowReport.click();
+		
+			Thread.sleep(1500);
+		
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			
+
+			int reportsRow1ListCount = reportsRow1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsRow1List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[BankACC, BAC001, BankACC, 1.00, 1.00, 2.00, 2.00, 1.00, 1.00, 2.00, 2.00]";
+
+			int reportsRow2ListCount = reportsRow2List.size();
+			ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow2ListCount;i++)
+			{
+				String data = reportsRow2List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow2ListArray.add(data);
+				}
+
+
+			}
+			String actRow2List = reportsRow2ListArray.toString();
+			String expRow2List = "[CashACC, CASH001, CashACC, 1.00, 1.00, 2.00, 1.00, 1.00, 1.00, 2.00, 1.00, 50.00, 50.00]";
+
+			int reportsRow3ListCount = reportsRow3List.size();
+			ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow3ListCount;i++)
+			{
+				String data = reportsRow3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow3ListArray.add(data);
+				}
+
+			}
+			String actRow3List = reportsRow3ListArray.toString();
+			String expRow3List = "[CONTROL ACCOUNTS, CA, CONTROL ACCOUNTS, 18.00, 18.00, 18.00, 18.00]";
+
+
+
+			int reportsRow4ListCount = reportsRow4List.size();
+			ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow4ListCount;i++)
+			{
+				String data = reportsRow4List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow4ListArray.add(data);
+				}
+
+			}
+			String actRow4List = reportsRow4ListArray.toString();
+			String expRow4List = "[Opening Balances Control A/C, OBC, Opening Balances Control A/C, 18.00, 18.00, 18.00, 18.00]";
+
+
+
+			int reportsRow5ListCount = reportsRow5List.size();
+			ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow5ListCount;i++)
+			{
+				String data = reportsRow5List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow5ListArray.add(data);
+				}
+			}
+			String actRow5List = reportsRow5ListArray.toString();
+			String expRow5List = "[G, G700, G, 3.00, 2.00, 1.00, 8.00, 11.00, 3.00, 2.00, 1.00, 8.00, 11.00, 8.33, 8.33]";
+			
+
+			int reportsRow6ListCount = reportsRow6List.size();
+			ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow6ListCount;i++)
+			{
+				String data = reportsRow6List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow6ListArray.add(data);
+				}
+			}
+			String actRow6List = reportsRow6ListArray.toString();
+			String expRow6List = "[H, H800, H, 3.00, 2.00, 1.00, 8.00, 11.00, 3.00, 2.00, 1.00, 8.00, 11.00, 8.33, 8.33]";
+			
+			
+			//
+
+
+			int reportsRow7ListCount = reportsRow7List.size();
+			ArrayList<String> reportsRow7ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow7ListCount;i++)
+			{
+				String data = reportsRow7List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow7ListArray.add(data);
+				}
+
+			}
+			String actRow7List = reportsRow7ListArray.toString();
+			String expRow7List = "[H1, H801, H1, 6.00, 1.00, 5.00, 5.00, 11.00, 6.00, 1.00, 5.00, 5.00, 11.00, 16.67, 16.67]";
+
+
+
+			int reportsRow8ListCount = reportsRow8List.size();
+			ArrayList<String> reportsRow8ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow8ListCount;i++)
+			{
+				String data = reportsRow8List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow8ListArray.add(data);
+				}
+
+			}
+			String actRow8List = reportsRow8ListArray.toString();
+			String expRow8List = "[H2, H802, H2, 3.00, 1.00, 4.00, 3.00, 3.00, 1.00, 4.00, 3.00, 150.00, 150.00]";
+
+
+
+			int reportsRow9ListCount = reportsRow9List.size();
+			ArrayList<String> reportsRow9ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow9ListCount;i++)
+			{
+				String data = reportsRow9List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow9ListArray.add(data);
+				}
+			}
+			String actRow9List = reportsRow9ListArray.toString();
+			String expRow9List = "[CustomerACC, CAC001, CustomerACC, 1.00, 1.00, 2.00, 2.00, 1.00, 1.00, 1.00, 2.00, 2.00, 1.00, 50.00, 50.00]";
+			
+			
+			///
+
+			int reportsRow10ListCount = reportsRow10List.size();
+			ArrayList<String> reportsRow10ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow10ListCount;i++)
+			{
+				String data = reportsRow10List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow10ListArray.add(data);
+				}
+
+			}
+			String actRow10List = reportsRow10ListArray.toString();
+			String expRow10List = "[C, C300, C, 33.00, 2.00, 31.00, 1.00, 34.00, 33.00, 2.00, 31.00, 1.00, 34.00, 91.67, 91.67]";
+
+
+
+			int reportsRow11ListCount = reportsRow11List.size();
+			ArrayList<String> reportsRow11ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow11ListCount;i++)
+			{
+				String data = reportsRow11List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow11ListArray.add(data);
+				}
+
+
+			}
+			String actRow11List = reportsRow11ListArray.toString();
+			String expRow11List = "[D, D400, D, 33.00, 2.00, 31.00, 1.00, 34.00, 33.00, 2.00, 31.00, 1.00, 34.00, 91.67, 91.67]";
+
+
+
+			int reportsRow12ListCount = reportsRow12List.size();
+			ArrayList<String> reportsRow12ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow12ListCount;i++)
+			{
+				String data = reportsRow12List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow12ListArray.add(data);
+				}
+
+			}
+			String actRow12List = reportsRow12ListArray.toString();
+			String expRow12List = "[D1, D401, D1, 32.00, 1.00, 31.00, 32.00, 32.00, 1.00, 31.00, 32.00, 88.89, 88.89]";
+
+
+
+			int reportsRow13ListCount = reportsRow13List.size();
+			ArrayList<String> reportsRow13ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow13ListCount;i++)
+			{
+				String data = reportsRow13List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow13ListArray.add(data);
+				}
+
+			}
+			String actRow13List = reportsRow13ListArray.toString();
+			String expRow13List = "[D2, D402, D2, 1.00, 1.00, 1.00, 2.00, 1.00, 1.00, 1.00, 2.00, 2.78, 2.78]";
+
+
+
+			int reportsRow14ListCount = reportsRow14List.size();
+			ArrayList<String> reportsRow14ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow14ListCount;i++)
+			{
+				String data = reportsRow14List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow14ListArray.add(data);
+				}
+			}
+			String actRow14List = reportsRow14ListArray.toString();
+			String expRow14List = "[VendorACC, VAC001, VendorACC, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00]";
+			
+
+			int reportsRow15ListCount = reportsRow15List.size();
+			ArrayList<String> reportsRow15ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow15ListCount;i++)
+			{
+				String data = reportsRow15List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow15ListArray.add(data);
+				}
+			}
+			String actRow15List = reportsRow15ListArray.toString();
+			String expRow15List = "[Loss for the period, 34.00, 10.00, 44.00, 34.00, 34.00, 44.00, 34.00]";
+			
+			
+
+			int reportsRow16ListCount = reportsRow16List.size();
+			ArrayList<String> reportsRow16ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow16ListCount;i++)
+			{
+				String data = reportsRow16List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow16ListArray.add(data);
+				}
+
+			}
+			String actRow16List = reportsRow16ListArray.toString();
+			String expRow16List = "[Grand Total, 36.00, 36.00, 18.00, 18.00, 50.00, 50.00, 49.00, 49.00, 36.00, 36.00, 18.00, 18.00, 50.00, 50.00, 49.00, 49.00]";
+			
+			
+			
+			System.out.println(actRow1List);
+			System.out.println(expRow1List);
+
+			System.out.println(actRow2List);
+			System.out.println(expRow2List);
+
+			System.out.println(actRow3List);
+			System.out.println(expRow3List);
+
+			System.out.println(actRow4List);
+			System.out.println(expRow4List);
+
+			System.out.println(actRow5List);
+			System.out.println(expRow5List);
+			
+
+			System.out.println(actRow6List);
+			System.out.println(expRow6List);
+			
+			System.out.println(actRow7List);
+			System.out.println(expRow7List);
+
+			System.out.println(actRow8List);
+			System.out.println(expRow8List);
+			
+
+			System.out.println(actRow9List);
+			System.out.println(expRow9List);
+			
+			
+			System.out.println(actRow10List);
+			System.out.println(expRow10List);
+
+			System.out.println(actRow11List);
+			System.out.println(expRow11List);
+
+			System.out.println(actRow12List);
+			System.out.println(expRow12List);
+
+			System.out.println(actRow13List);
+			System.out.println(expRow13List);
+
+			System.out.println(actRow14List);
+			System.out.println(expRow14List);
+			
+
+			System.out.println(actRow15List);
+			System.out.println(expRow15List);
+			
+			System.out.println(actRow16List);
+			System.out.println(expRow16List);
+
+
+			if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List) 
+					&& actRow4List.equalsIgnoreCase(expRow4List) && actRow5List.equalsIgnoreCase(expRow5List)&& 
+					actRow6List.equalsIgnoreCase(expRow6List)
+					&& actRow7List.equalsIgnoreCase(expRow7List) && actRow8List.equalsIgnoreCase(expRow8List)&& 
+					actRow9List.equalsIgnoreCase(expRow9List) &&
+					actRow10List.equalsIgnoreCase(expRow10List) && actRow11List.equalsIgnoreCase(expRow11List)
+					&& actRow12List.equalsIgnoreCase(expRow12List) && actRow13List.equalsIgnoreCase(expRow13List)
+					&& actRow14List.equalsIgnoreCase(expRow14List) && actRow15List.equalsIgnoreCase(expRow15List)
+					&& actRow16List.equalsIgnoreCase(expRow16List)) 
+					{
+						return true;
+					} 
+			else 
+			{
+				return false;
+			}
+
+		
+		}
+		
+		public static boolean checkCashFlowReport() throws InterruptedException
+		{
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsFinalAccountsMenu));
+			financialsFinalAccountsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(cashFlowReport));
+			cashFlowReport.click();
+		
+			Thread.sleep(1500);
+		
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			
+
+			int reportsRow1ListCount = reportsRow1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsRow1List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[CashACC, CASH001, CashACC, 1.00, 1.00, 2.00, 1.00, 1.00, 1.00, 2.00, 1.00, 100.00, 100.00]";
+
+			int reportsRow2ListCount = reportsRow2List.size();
+			ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow2ListCount;i++)
+			{
+				String data = reportsRow2List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow2ListArray.add(data);
+				}
+
+
+			}
+			String actRow2List = reportsRow2ListArray.toString();
+			String expRow2List = "[Loss for the period, (1.00), (1.00), (2.00), (1.00), (1.00), (1.00), (2.00), (1.00)]";
+
+			int reportsRow3ListCount = reportsRow3List.size();
+			ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow3ListCount;i++)
+			{
+				String data = reportsRow3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow3ListArray.add(data);
+				}
+
+			}
+			String actRow3List = reportsRow3ListArray.toString();
+			String expRow3List = "[Grand Total, 1.00, 1.00, 1.00, 1.00, 2.00, 2.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 2.00, 2.00, 1.00, 1.00]";
+			
+			System.out.println(actRow1List);
+			System.out.println(expRow1List);
+
+			System.out.println(actRow2List);
+			System.out.println(expRow2List);
+
+			System.out.println(actRow3List);
+			System.out.println(expRow3List);
+			
+			if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List) ) 
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+
+		}
+		
+		//cash flow analysis
+		
+		
+		public static boolean checkAdvanceCashFlowReport() throws InterruptedException
+		{
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsFinalAccountsMenu));
+			financialsFinalAccountsMenu.click();
+			
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(advanceCashFlowReport));
+			advanceCashFlowReport.click();
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			Thread.sleep(2000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			Thread.sleep(2000);
+
+			int reportsRow1ListCount = reportsRow1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsRow1List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[Net Income, 535.00]";
+
+			int reportsRow2ListCount = reportsRow2List.size();
+			ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow2ListCount;i++)
+			{
+				String data = reportsRow2List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow2ListArray.add(data);
+				}
+
+
+			}
+			String actRow2List = reportsRow2ListArray.toString();
+			String expRow2List = "[Begining Cash Balance]";
+
+			int reportsRow3ListCount = reportsRow3List.size();
+			ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow3ListCount;i++)
+			{
+				String data = reportsRow3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow3ListArray.add(data);
+				}
+
+			}
+			String actRow3List = reportsRow3ListArray.toString();
+			String expRow3List = "[Total Change in Cash, 535.00]";
+			
+			
+			int reportsRow4ListCount = reportsRow4List.size();
+			ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow4ListCount;i++)
+			{
+				String data = reportsRow4List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow4ListArray.add(data);
+				}
+
+			}
+			String actRow4List = reportsRow4ListArray.toString();
+			String expRow4List = "[Ending Cash Balance, 535.00]";
+			
+			System.out.println(actRow1List);
+			System.out.println(expRow1List);
+
+			System.out.println(actRow2List);
+			System.out.println(expRow2List);
+
+			System.out.println(actRow3List);
+			System.out.println(expRow3List);
+			
+			System.out.println(actRow4List);
+			System.out.println(expRow4List);
+			
+			if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List)
+					&& actRow4List.equalsIgnoreCase(expRow4List)) 
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+
+			
+		}
+		
+		public static boolean checkIncomeExpensesTrendReport() throws InterruptedException
+		{
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsFinalAccountsMenu));
+			financialsFinalAccountsMenu.click();
+			
+			Thread.sleep(4000);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(incomeExpenseTrendsReport));
+			incomeExpenseTrendsReport.click();
+			
+			Thread.sleep(1500);
+		
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			Thread.sleep(1500);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+			sl_SelectAllChkBox.click();
+			Thread.sleep(1500);
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			
+
+			int reportsRow1ListCount = reportsRow1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsRow1List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[March, 10.00]";
+
+			int reportsRow2ListCount = reportsRow2List.size();
+			ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow2ListCount;i++)
+			{
+				String data = reportsRow2List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow2ListArray.add(data);
+				}
+
+
+			}
+			String actRow2List = reportsRow2ListArray.toString();
+			String expRow2List = "[July, 13.00, 45.00]";
+
+			int reportsRow3ListCount = reportsRow3List.size();
+			ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow3ListCount;i++)
+			{
+				String data = reportsRow3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow3ListArray.add(data);
+				}
+
+			}
+			String actRow3List = reportsRow3ListArray.toString();
+			String expRow3List = "[Grand Total, 13.00, 55.00]";
+			
+			System.out.println(actRow1List);
+			System.out.println(expRow1List);
+
+			System.out.println(actRow2List);
+			System.out.println(expRow2List);
+
+			System.out.println(actRow3List);
+			System.out.println(expRow3List);
+			
+			if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List) ) 
+			{
+				return true;
+			} 
+			else 
+			{
+				return false;
+			}
+
+		
+		}
+		
+		public static boolean checkReceivableAndPayableReport() throws InterruptedException
+		{
+			Thread.sleep(2000);
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+			financialsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsFinalAccountsMenu));
+			financialsFinalAccountsMenu.click();
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(receivablePayableReport));
+			receivablePayableReport.click();
+
+			Thread.sleep(1500);
+		
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+			Select s=new Select(sl_DateOptionDropdown);
+			s.selectByValue("1");
+			
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
+			sl_OkBtn.click();
+			
+
+			int reportsRow1ListCount = reportsRow1List.size();
+			ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow1ListCount;i++)
+			{
+				String data = reportsRow1List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow1ListArray.add(data);
+				}
+
+			}
+			String actRow1List = reportsRow1ListArray.toString();
+			String expRow1List = "[PurchaseACC, PAC001, PurchaseACC, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 33.33, 33.33]";
+
+			int reportsRow2ListCount = reportsRow2List.size();
+			ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow2ListCount;i++)
+			{
+				String data = reportsRow2List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow2ListArray.add(data);
+				}
+
+
+			}
+			String actRow2List = reportsRow2ListArray.toString();
+			String expRow2List = "[A, A100, A, 33.00, 4.00, 37.00, 35.00, 2.00, 33.00, 4.00, 37.00, 35.00, 2.00, 89.19, 89.19]";
+
+			int reportsRow3ListCount = reportsRow3List.size();
+			ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow3ListCount;i++)
+			{
+				String data = reportsRow3List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow3ListArray.add(data);
+				}
+
+			}
+			String actRow3List = reportsRow3ListArray.toString();
+			String expRow3List = "[A1, A101, A1, 33.00, 1.00, 34.00, 34.00, 1.00, 33.00, 1.00, 34.00, 34.00, 1.00, 89.19, 89.19]";
+
+
+
+			int reportsRow4ListCount = reportsRow4List.size();
+			ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow4ListCount;i++)
+			{
+				String data = reportsRow4List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow4ListArray.add(data);
+				}
+
+			}
+			String actRow4List = reportsRow4ListArray.toString();
+			String expRow4List = "[A2, A102, A2, 1.00, 1.00, 1.00, 1.00]";
+
+
+
+			int reportsRow5ListCount = reportsRow5List.size();
+			ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow5ListCount;i++)
+			{
+				String data = reportsRow5List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow5ListArray.add(data);
+				}
+			}
+			String actRow5List = reportsRow5ListArray.toString();
+			String expRow5List = "[B, B200, B, 2.00, 2.00, 1.00, 1.00, 2.00, 2.00, 1.00, 1.00]";
+			
+
+			int reportsRow6ListCount = reportsRow6List.size();
+			ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow6ListCount;i++)
+			{
+				String data = reportsRow6List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow6ListArray.add(data);
+				}
+			}
+			String actRow6List = reportsRow6ListArray.toString();
+			String expRow6List = "[B1, B201, B1, 1.00, 1.00, 1.00, 1.00]";
+			
+			
+			//
+
+
+			int reportsRow7ListCount = reportsRow7List.size();
+			ArrayList<String> reportsRow7ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow7ListCount;i++)
+			{
+				String data = reportsRow7List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow7ListArray.add(data);
+				}
+
+			}
+			String actRow7List = reportsRow7ListArray.toString();
+			String expRow7List = "[B2, B202, B2, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00]";
+
+
+
+			int reportsRow8ListCount = reportsRow8List.size();
+			ArrayList<String> reportsRow8ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow8ListCount;i++)
+			{
+				String data = reportsRow8List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow8ListArray.add(data);
+				}
+
+			}
+			String actRow8List = reportsRow8ListArray.toString();
+			String expRow8List = "[SalesACC, SAC001, SalesACC, 2.00, 1.00, 1.00, 2.00, 2.00, 1.00, 1.00, 2.00, 66.67, 66.67]";
+
+
+
+			int reportsRow9ListCount = reportsRow9List.size();
+			ArrayList<String> reportsRow9ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow9ListCount;i++)
+			{
+				String data = reportsRow9List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow9ListArray.add(data);
+				}
+			}
+			String actRow9List = reportsRow9ListArray.toString();
+			String expRow9List = "[E, E500, E, 4.00, 4.00, 8.00, 12.00, 8.00, 4.00, 4.00, 8.00, 12.00, 8.00, 10.81, 10.81]";
+			
+			
+			///
+
+			int reportsRow10ListCount = reportsRow10List.size();
+			ArrayList<String> reportsRow10ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow10ListCount;i++)
+			{
+				String data = reportsRow10List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow10ListArray.add(data);
+				}
+
+			}
+			String actRow10List = reportsRow10ListArray.toString();
+			String expRow10List = "[E1, E501, E1, 6.00, 1.00, 7.00, 11.00, 5.00, 6.00, 1.00, 7.00, 11.00, 5.00, 16.22, 16.22]";
+
+
+
+			int reportsRow11ListCount = reportsRow11List.size();
+			ArrayList<String> reportsRow11ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow11ListCount;i++)
+			{
+				String data = reportsRow11List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow11ListArray.add(data);
+				}
+
+
+			}
+			String actRow11List = reportsRow11ListArray.toString();
+			String expRow11List = "[E2, E502, E2, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00]";
+
+
+
+			int reportsRow12ListCount = reportsRow12List.size();
+			ArrayList<String> reportsRow12ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow12ListCount;i++)
+			{
+				String data = reportsRow12List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow12ListArray.add(data);
+				}
+
+			}
+			String actRow12List = reportsRow12ListArray.toString();
+			String expRow12List = "[F, F600, F, 2.00, 2.00, 2.00, 2.00, 2.00, 2.00, 66.67, 66.67]";
+
+
+
+			int reportsRow13ListCount = reportsRow13List.size();
+			ArrayList<String> reportsRow13ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow13ListCount;i++)
+			{
+				String data = reportsRow13List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow13ListArray.add(data);
+				}
+
+			}
+			String actRow13List = reportsRow13ListArray.toString();
+			String expRow13List = "[F1, F601, F1, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 33.33, 33.33]";
+
+
+
+			int reportsRow14ListCount = reportsRow14List.size();
+			ArrayList<String> reportsRow14ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow14ListCount;i++)
+			{
+				String data = reportsRow14List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow14ListArray.add(data);
+				}
+			}
+			String actRow14List = reportsRow14ListArray.toString();
+			String expRow14List = "[F2, F602, F2, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 33.33, 33.33]";
+			
+
+			int reportsRow15ListCount = reportsRow15List.size();
+			ArrayList<String> reportsRow15ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow15ListCount;i++)
+			{
+				String data = reportsRow15List.get(i).getText().trim();
+
+				if(data.isEmpty() == false)
+				{
+					reportsRow15ListArray.add(data);
+				}
+			}
+			String actRow15List = reportsRow15ListArray.toString();
+			String expRow15List = "[Excess of Expenditure over Income, (34.00), (10.00), (44.00), (34.00), (34.00), (10.00), (44.00), (34.00)]";
+			
+			
+
+			int reportsRow16ListCount = reportsRow16List.size();
+			ArrayList<String> reportsRow16ListArray = new ArrayList<String>();
+			for(int i=1;i<reportsRow16ListCount;i++)
+			{
+				String data = reportsRow16List.get(i).getText().trim();
+				if(data.isEmpty() == false)
+				{
+					reportsRow16ListArray.add(data);
+				}
+
+			}
+			String actRow16List = reportsRow16ListArray.toString();
+			String expRow16List = "[Grand Total, 37.00, 37.00, 10.00, 10.00, 45.00, 45.00, 47.00, 47.00, 37.00, 37.00, 10.00, 10.00, 45.00, 45.00, 47.00, 47.00]";
+			
+			
+			
+			System.out.println(actRow1List);
+			System.out.println(expRow1List);
+
+			System.out.println(actRow2List);
+			System.out.println(expRow2List);
+
+			System.out.println(actRow3List);
+			System.out.println(expRow3List);
+
+			System.out.println(actRow4List);
+			System.out.println(expRow4List);
+
+			System.out.println(actRow5List);
+			System.out.println(expRow5List);
+			
+
+			System.out.println(actRow6List);
+			System.out.println(expRow6List);
+			
+			System.out.println(actRow7List);
+			System.out.println(expRow7List);
+
+			System.out.println(actRow8List);
+			System.out.println(expRow8List);
+			
+
+			System.out.println(actRow9List);
+			System.out.println(expRow9List);
+			
+			
+			System.out.println(actRow10List);
+			System.out.println(expRow10List);
+
+			System.out.println(actRow11List);
+			System.out.println(expRow11List);
+
+			System.out.println(actRow12List);
+			System.out.println(expRow12List);
+
+			System.out.println(actRow13List);
+			System.out.println(expRow13List);
+
+			System.out.println(actRow14List);
+			System.out.println(expRow14List);
+			
+
 		
 
-		System.out.println(actRow6List);
-		System.out.println(expRow6List);
+			if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List) 
+					&& actRow4List.equalsIgnoreCase(expRow4List) && actRow5List.equalsIgnoreCase(expRow5List)&& 
+					actRow6List.equalsIgnoreCase(expRow6List)
+					&& actRow7List.equalsIgnoreCase(expRow7List) && actRow8List.equalsIgnoreCase(expRow8List)&& 
+					actRow9List.equalsIgnoreCase(expRow9List) &&
+					actRow10List.equalsIgnoreCase(expRow10List) && actRow11List.equalsIgnoreCase(expRow11List)
+					&& actRow12List.equalsIgnoreCase(expRow12List) && actRow13List.equalsIgnoreCase(expRow13List)
+					&& actRow14List.equalsIgnoreCase(expRow14List)) 
+					{
+						return true;
+					} 
+			else 
+			{
+				return false;
+			}
+
 		
-		System.out.println(actRow7List);
-		System.out.println(expRow7List);
-
-		System.out.println(actRow8List);
-		System.out.println(expRow8List);
-		
-
-		System.out.println(actRow9List);
-		System.out.println(expRow9List);
+		}
 		
 		
-		System.out.println(actRow10List);
-		System.out.println(expRow10List);
+		public static boolean checkRestrictedLayoutVisibilityOfPVEER() throws InterruptedException
+		{
+				Thread.sleep(2500);
+				getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+				financialsMenu.click();
 
-		System.out.println(actRow11List);
-		System.out.println(expRow11List);
+				getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionMenu));
+				financialsTransactionMenu.click();
 
-		System.out.println(actRow12List);
-		System.out.println(expRow12List);
+				getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionsPurchaseMenu));
+				financialsTransactionsPurchaseMenu.click();
 
-		System.out.println(actRow13List);
-		System.out.println(expRow13List);
+				getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVoucher));
+				purchaseVoucher.click();
+				Thread.sleep(2500);
+			
+				int count = grid_VoucherNoList.size();
 
-		System.out.println(actRow14List);
-		System.out.println(expRow14List);
-		
+				for (int i = 0; i < count; i++) 
+				{
+					String VoucherNo = grid_VoucherNoList.get(i).getText();
 
-		System.out.println(actRow15List);
-		System.out.println(expRow15List);
-		
-		System.out.println(actRow16List);
-		System.out.println(expRow16List);
+					if (VoucherNo.equalsIgnoreCase("7")) 
+					{
+						if (grid_CheckBoxList.get(i).isSelected()==false) 
+						{
+							grid_CheckBoxList.get(i).click();
+							break;
+						}
+					}
+				}      
 
-
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List) 
-				&& actRow4List.equalsIgnoreCase(expRow4List) && actRow5List.equalsIgnoreCase(expRow5List)&& 
-				actRow6List.equalsIgnoreCase(expRow6List)
-				&& actRow7List.equalsIgnoreCase(expRow7List) && actRow8List.equalsIgnoreCase(expRow8List)&& 
-				actRow9List.equalsIgnoreCase(expRow9List) &&
-				actRow10List.equalsIgnoreCase(expRow10List) && actRow11List.equalsIgnoreCase(expRow11List)
-				&& actRow12List.equalsIgnoreCase(expRow12List) && actRow13List.equalsIgnoreCase(expRow13List)
-				&& actRow14List.equalsIgnoreCase(expRow14List) && actRow15List.equalsIgnoreCase(expRow15List)
-				&& actRow16List.equalsIgnoreCase(expRow16List)) 
+				getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
+				printBtn.click();
+				
+				getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
+				LayoutNameTxt.click();
+				Thread.sleep(1200);
+				LayoutNameTxt.sendKeys(Keys.SPACE);
+				
+				int count2 = LayoutList.size();
+				System.out.println("count2:"+count2);
+				
+				ArrayList<String> LayoutList2 = new ArrayList<String>();
+				
+				for(int i=0; i< count2; i++)
+				{
+					 String data = LayoutList.get(i).getText();
+					 
+					 LayoutList2.add(data);
+				}
+				
+				String actLayoutList = LayoutList2.toString();
+				String expLayoutList = "[21072022]";
+				
+				System.out.println("actLayoutList:"+actLayoutList);
+				System.out.println("expLayoutList:"+expLayoutList);
+				
+				if (actLayoutList.equalsIgnoreCase(expLayoutList))
 				{
 					return true;
-				} 
-		else 
-		{
-			return false;
-		}
-
-	
-	}
-	
-	public static boolean checkCashFlowReport() throws InterruptedException
-	{
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsFinalAccountsMenu));
-		financialsFinalAccountsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(cashFlowReport));
-		cashFlowReport.click();
-	
-		Thread.sleep(1500);
-	
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		
-
-		int reportsRow1ListCount = reportsRow1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsRow1List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[CashACC, CASH001, CashACC, 1.00, 1.00, 2.00, 1.00, 1.00, 1.00, 2.00, 1.00, 100.00, 100.00]";
-
-		int reportsRow2ListCount = reportsRow2List.size();
-		ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow2ListCount;i++)
-		{
-			String data = reportsRow2List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow2ListArray.add(data);
-			}
-
-
-		}
-		String actRow2List = reportsRow2ListArray.toString();
-		String expRow2List = "[Loss for the period, (1.00), (1.00), (2.00), (1.00), (1.00), (1.00), (2.00), (1.00)]";
-
-		int reportsRow3ListCount = reportsRow3List.size();
-		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow3ListCount;i++)
-		{
-			String data = reportsRow3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow3ListArray.add(data);
-			}
-
-		}
-		String actRow3List = reportsRow3ListArray.toString();
-		String expRow3List = "[Grand Total, 1.00, 1.00, 1.00, 1.00, 2.00, 2.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 2.00, 2.00, 1.00, 1.00]";
-		
-		System.out.println(actRow1List);
-		System.out.println(expRow1List);
-
-		System.out.println(actRow2List);
-		System.out.println(expRow2List);
-
-		System.out.println(actRow3List);
-		System.out.println(expRow3List);
-		
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List) ) 
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-
-	}
-	
-	//cash flow analysis
-	
-	
-	public static boolean checkAdvanceCashFlowReport() throws InterruptedException
-	{
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsFinalAccountsMenu));
-		financialsFinalAccountsMenu.click();
-		
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(advanceCashFlowReport));
-		advanceCashFlowReport.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		Thread.sleep(2000);
-
-		int reportsRow1ListCount = reportsRow1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsRow1List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[Net Income, 535.00]";
-
-		int reportsRow2ListCount = reportsRow2List.size();
-		ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow2ListCount;i++)
-		{
-			String data = reportsRow2List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow2ListArray.add(data);
-			}
-
-
-		}
-		String actRow2List = reportsRow2ListArray.toString();
-		String expRow2List = "[Begining Cash Balance]";
-
-		int reportsRow3ListCount = reportsRow3List.size();
-		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow3ListCount;i++)
-		{
-			String data = reportsRow3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow3ListArray.add(data);
-			}
-
-		}
-		String actRow3List = reportsRow3ListArray.toString();
-		String expRow3List = "[Total Change in Cash, 535.00]";
-		
-		
-		int reportsRow4ListCount = reportsRow4List.size();
-		ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow4ListCount;i++)
-		{
-			String data = reportsRow4List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow4ListArray.add(data);
-			}
-
-		}
-		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[Ending Cash Balance, 535.00]";
-		
-		System.out.println(actRow1List);
-		System.out.println(expRow1List);
-
-		System.out.println(actRow2List);
-		System.out.println(expRow2List);
-
-		System.out.println(actRow3List);
-		System.out.println(expRow3List);
-		
-		System.out.println(actRow4List);
-		System.out.println(expRow4List);
-		
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List)
-				&& actRow4List.equalsIgnoreCase(expRow4List)) 
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-
-		
-	}
-	
-	public static boolean checkIncomeExpensesTrendReport() throws InterruptedException
-	{
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsFinalAccountsMenu));
-		financialsFinalAccountsMenu.click();
-		
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(incomeExpenseTrendsReport));
-		incomeExpenseTrendsReport.click();
-		
-		Thread.sleep(1500);
-	
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		Thread.sleep(1500);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
-		Thread.sleep(1500);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		
-
-		int reportsRow1ListCount = reportsRow1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsRow1List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[March, 10.00]";
-
-		int reportsRow2ListCount = reportsRow2List.size();
-		ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow2ListCount;i++)
-		{
-			String data = reportsRow2List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow2ListArray.add(data);
-			}
-
-
-		}
-		String actRow2List = reportsRow2ListArray.toString();
-		String expRow2List = "[July, 13.00, 45.00]";
-
-		int reportsRow3ListCount = reportsRow3List.size();
-		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow3ListCount;i++)
-		{
-			String data = reportsRow3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow3ListArray.add(data);
-			}
-
-		}
-		String actRow3List = reportsRow3ListArray.toString();
-		String expRow3List = "[Grand Total, 13.00, 55.00]";
-		
-		System.out.println(actRow1List);
-		System.out.println(expRow1List);
-
-		System.out.println(actRow2List);
-		System.out.println(expRow2List);
-
-		System.out.println(actRow3List);
-		System.out.println(expRow3List);
-		
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List) ) 
-		{
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-
-	
-	}
-	
-	public static boolean checkReceivableAndPayableReport() throws InterruptedException
-	{
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsFinalAccountsMenu));
-		financialsFinalAccountsMenu.click();
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(receivablePayableReport));
-		receivablePayableReport.click();
-
-		Thread.sleep(1500);
-	
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-		Select s=new Select(sl_DateOptionDropdown);
-		s.selectByValue("1");
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
-		sl_OkBtn.click();
-		
-
-		int reportsRow1ListCount = reportsRow1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsRow1List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[PurchaseACC, PAC001, PurchaseACC, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 33.33, 33.33]";
-
-		int reportsRow2ListCount = reportsRow2List.size();
-		ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow2ListCount;i++)
-		{
-			String data = reportsRow2List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow2ListArray.add(data);
-			}
-
-
-		}
-		String actRow2List = reportsRow2ListArray.toString();
-		String expRow2List = "[A, A100, A, 33.00, 4.00, 37.00, 35.00, 2.00, 33.00, 4.00, 37.00, 35.00, 2.00, 89.19, 89.19]";
-
-		int reportsRow3ListCount = reportsRow3List.size();
-		ArrayList<String> reportsRow3ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow3ListCount;i++)
-		{
-			String data = reportsRow3List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow3ListArray.add(data);
-			}
-
-		}
-		String actRow3List = reportsRow3ListArray.toString();
-		String expRow3List = "[A1, A101, A1, 33.00, 1.00, 34.00, 34.00, 1.00, 33.00, 1.00, 34.00, 34.00, 1.00, 89.19, 89.19]";
-
-
-
-		int reportsRow4ListCount = reportsRow4List.size();
-		ArrayList<String> reportsRow4ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow4ListCount;i++)
-		{
-			String data = reportsRow4List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow4ListArray.add(data);
-			}
-
-		}
-		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[A2, A102, A2, 1.00, 1.00, 1.00, 1.00]";
-
-
-
-		int reportsRow5ListCount = reportsRow5List.size();
-		ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow5ListCount;i++)
-		{
-			String data = reportsRow5List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow5ListArray.add(data);
-			}
-		}
-		String actRow5List = reportsRow5ListArray.toString();
-		String expRow5List = "[B, B200, B, 2.00, 2.00, 1.00, 1.00, 2.00, 2.00, 1.00, 1.00]";
-		
-
-		int reportsRow6ListCount = reportsRow6List.size();
-		ArrayList<String> reportsRow6ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow6ListCount;i++)
-		{
-			String data = reportsRow6List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow6ListArray.add(data);
-			}
-		}
-		String actRow6List = reportsRow6ListArray.toString();
-		String expRow6List = "[B1, B201, B1, 1.00, 1.00, 1.00, 1.00]";
-		
-		
-		//
-
-
-		int reportsRow7ListCount = reportsRow7List.size();
-		ArrayList<String> reportsRow7ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow7ListCount;i++)
-		{
-			String data = reportsRow7List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow7ListArray.add(data);
-			}
-
-		}
-		String actRow7List = reportsRow7ListArray.toString();
-		String expRow7List = "[B2, B202, B2, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00]";
-
-
-
-		int reportsRow8ListCount = reportsRow8List.size();
-		ArrayList<String> reportsRow8ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow8ListCount;i++)
-		{
-			String data = reportsRow8List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow8ListArray.add(data);
-			}
-
-		}
-		String actRow8List = reportsRow8ListArray.toString();
-		String expRow8List = "[SalesACC, SAC001, SalesACC, 2.00, 1.00, 1.00, 2.00, 2.00, 1.00, 1.00, 2.00, 66.67, 66.67]";
-
-
-
-		int reportsRow9ListCount = reportsRow9List.size();
-		ArrayList<String> reportsRow9ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow9ListCount;i++)
-		{
-			String data = reportsRow9List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow9ListArray.add(data);
-			}
-		}
-		String actRow9List = reportsRow9ListArray.toString();
-		String expRow9List = "[E, E500, E, 4.00, 4.00, 8.00, 12.00, 8.00, 4.00, 4.00, 8.00, 12.00, 8.00, 10.81, 10.81]";
-		
-		
-		///
-
-		int reportsRow10ListCount = reportsRow10List.size();
-		ArrayList<String> reportsRow10ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow10ListCount;i++)
-		{
-			String data = reportsRow10List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow10ListArray.add(data);
-			}
-
-		}
-		String actRow10List = reportsRow10ListArray.toString();
-		String expRow10List = "[E1, E501, E1, 6.00, 1.00, 7.00, 11.00, 5.00, 6.00, 1.00, 7.00, 11.00, 5.00, 16.22, 16.22]";
-
-
-
-		int reportsRow11ListCount = reportsRow11List.size();
-		ArrayList<String> reportsRow11ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow11ListCount;i++)
-		{
-			String data = reportsRow11List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow11ListArray.add(data);
-			}
-
-
-		}
-		String actRow11List = reportsRow11ListArray.toString();
-		String expRow11List = "[E2, E502, E2, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00]";
-
-
-
-		int reportsRow12ListCount = reportsRow12List.size();
-		ArrayList<String> reportsRow12ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow12ListCount;i++)
-		{
-			String data = reportsRow12List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow12ListArray.add(data);
-			}
-
-		}
-		String actRow12List = reportsRow12ListArray.toString();
-		String expRow12List = "[F, F600, F, 2.00, 2.00, 2.00, 2.00, 2.00, 2.00, 66.67, 66.67]";
-
-
-
-		int reportsRow13ListCount = reportsRow13List.size();
-		ArrayList<String> reportsRow13ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow13ListCount;i++)
-		{
-			String data = reportsRow13List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow13ListArray.add(data);
-			}
-
-		}
-		String actRow13List = reportsRow13ListArray.toString();
-		String expRow13List = "[F1, F601, F1, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 33.33, 33.33]";
-
-
-
-		int reportsRow14ListCount = reportsRow14List.size();
-		ArrayList<String> reportsRow14ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow14ListCount;i++)
-		{
-			String data = reportsRow14List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow14ListArray.add(data);
-			}
-		}
-		String actRow14List = reportsRow14ListArray.toString();
-		String expRow14List = "[F2, F602, F2, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 33.33, 33.33]";
-		
-
-		int reportsRow15ListCount = reportsRow15List.size();
-		ArrayList<String> reportsRow15ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow15ListCount;i++)
-		{
-			String data = reportsRow15List.get(i).getText().trim();
-
-			if(data.isEmpty() == false)
-			{
-				reportsRow15ListArray.add(data);
-			}
-		}
-		String actRow15List = reportsRow15ListArray.toString();
-		String expRow15List = "[Excess of Expenditure over Income, (34.00), (10.00), (44.00), (34.00), (34.00), (10.00), (44.00), (34.00)]";
-		
-		
-
-		int reportsRow16ListCount = reportsRow16List.size();
-		ArrayList<String> reportsRow16ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsRow16ListCount;i++)
-		{
-			String data = reportsRow16List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow16ListArray.add(data);
-			}
-
-		}
-		String actRow16List = reportsRow16ListArray.toString();
-		String expRow16List = "[Grand Total, 37.00, 37.00, 10.00, 10.00, 45.00, 45.00, 47.00, 47.00, 37.00, 37.00, 10.00, 10.00, 45.00, 45.00, 47.00, 47.00]";
-		
-		
-		
-		System.out.println(actRow1List);
-		System.out.println(expRow1List);
-
-		System.out.println(actRow2List);
-		System.out.println(expRow2List);
-
-		System.out.println(actRow3List);
-		System.out.println(expRow3List);
-
-		System.out.println(actRow4List);
-		System.out.println(expRow4List);
-
-		System.out.println(actRow5List);
-		System.out.println(expRow5List);
-		
-
-		System.out.println(actRow6List);
-		System.out.println(expRow6List);
-		
-		System.out.println(actRow7List);
-		System.out.println(expRow7List);
-
-		System.out.println(actRow8List);
-		System.out.println(expRow8List);
-		
-
-		System.out.println(actRow9List);
-		System.out.println(expRow9List);
-		
-		
-		System.out.println(actRow10List);
-		System.out.println(expRow10List);
-
-		System.out.println(actRow11List);
-		System.out.println(expRow11List);
-
-		System.out.println(actRow12List);
-		System.out.println(expRow12List);
-
-		System.out.println(actRow13List);
-		System.out.println(expRow13List);
-
-		System.out.println(actRow14List);
-		System.out.println(expRow14List);
-		
-
-	
-
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) && actRow3List.equalsIgnoreCase(expRow3List) 
-				&& actRow4List.equalsIgnoreCase(expRow4List) && actRow5List.equalsIgnoreCase(expRow5List)&& 
-				actRow6List.equalsIgnoreCase(expRow6List)
-				&& actRow7List.equalsIgnoreCase(expRow7List) && actRow8List.equalsIgnoreCase(expRow8List)&& 
-				actRow9List.equalsIgnoreCase(expRow9List) &&
-				actRow10List.equalsIgnoreCase(expRow10List) && actRow11List.equalsIgnoreCase(expRow11List)
-				&& actRow12List.equalsIgnoreCase(expRow12List) && actRow13List.equalsIgnoreCase(expRow13List)
-				&& actRow14List.equalsIgnoreCase(expRow14List)) 
+				}
+				else 
 				{
-					return true;
-				} 
-		else 
-		{
-			return false;
+					return false;
+				}
+			
 		}
 
-	
-	}
-	
 	
 	public static boolean checklogout() throws InterruptedException
 	{
 		Thread.sleep(3000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(userNameDisplay));
-		  userNameDisplay.click();
-		 
-		  getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(logoutOption));
-		  logoutOption.click();
-		  
-		  Thread.sleep(2000);
-		  
-		  boolean actUserLoginPage              = username.isDisplayed() && username.isEnabled()
-                                                  && password.isDisplayed() && password.isEnabled();
-                                         
-		  boolean expUserLoginPage              = true;
-		  
-		  if(actUserLoginPage==expUserLoginPage)  
-	      {
+		getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(LogoutDropdown));
+		LogoutDropdown.click();
+
+		Thread.sleep(2000);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(logoutOption));
+		logoutOption.click();
+
+		Thread.sleep(2000);
+
+		boolean actUserLoginPage              = username.isDisplayed() && username.isEnabled()
+				&& password.isDisplayed() && password.isEnabled();
+
+		boolean expUserLoginPage              = true;
+
+		if(actUserLoginPage==expUserLoginPage)  
+		{
 			System.out.println("***Test Pass: Login Successfull***");
-			
+
 			return true;
-		  }
-	      else
-	      {
-	  	 
-			System.out.println("***Test Fail: Login Not Successfull***");
-			
-			return false;
-		  }
 		}
+		else
+		{
+
+			System.out.println("***Test Fail: Login Not Successfull***");
+
+			return false;
+		}
+	}
 	
 	
 public FocusFinancialsEERReportPage(WebDriver driver) 

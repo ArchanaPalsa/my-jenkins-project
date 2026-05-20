@@ -27,7 +27,7 @@ _AU3RecordSetup()
 
 
 _WinWaitActivate("Open","Namespace Tree Contr")
-Send("D:\FocusWebSuite\FocusAI\autoIt\ImportFiles\Account.xlsx")
+Send(@WorkingDir&"\autoIt\ImportFiles\Account.xlsx")
 Send("{Enter}")
 
 #comments-start

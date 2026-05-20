@@ -136,6 +136,8 @@ public class LoginPageOld extends BaseEngine
 	
  public static boolean checkBrowserIsOpen() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
  {
+	 
+	 //currentTimeWithDateTimewithDay();
    excelReader=new ExcelReader(POJOUtility.getExcelPath());
   xlfile=getBaseDir()+"\\src\\main\\resources\\testdata\\FocusTestData.xlsx";
 	
@@ -155,13 +157,13 @@ public class LoginPageOld extends BaseEngine
    if(actConvertBooleanValue==expConvertBooleanValue)
    {
 		System.out.println("Pass : Browser has Lanunched");
-		excelReader.setCellData(xlfile, xlSheetName, 5, 9, resPass);
+		//excelReader.setCellData(xlfile, xlSheetName, 5, 9, resPass);
 		return true;
    }
    else
    {
 		System.out.println("Fail : Browser has not Launched");
-		excelReader.setCellData(xlfile, xlSheetName, 5, 9, resFail);
+		//excelReader.setCellData(xlfile, xlSheetName, 5, 9, resFail);
 		return false;
 	}	
  }
@@ -170,15 +172,16 @@ public class LoginPageOld extends BaseEngine
 	
   public static boolean checkLoginPageTitleByURLInputInBrowser() throws EncryptedDocumentException, InvalidFormatException, IOException 
   {
-	excelReader=new ExcelReader(POJOUtility.getExcelPath());
-	xlfile=getBaseDir()+"\\src\\main\\resources\\testdata\\FocusTestData.xlsx";
+	//excelReader=new ExcelReader(POJOUtility.getExcelPath());
+	//xlfile=getBaseDir()+"\\src\\main\\resources\\testdata\\FocusTestData.xlsx";
 	
 	System.out.println("*************************************** checkLoginScreenTitleByURLInputInBrowser *********************************************************");
 	         
-    String actURLValue="http://localhost/FocusX#";
+   // String actURLValue="http://localhost/FocusX#";
+	//String actURLValue="https://focus-qa-118/focusx";
  
-    enterUrl(actURLValue);
-   
+    enterUrl("http://localhost/FocusX#");
+	//enterUrl("https://focus-qa-118/focusxNew");
     String actLoginTitle = getDriver().getTitle();
     String expLoginTitle="Focus";
 
@@ -186,12 +189,12 @@ public class LoginPageOld extends BaseEngine
    
     if(actLoginTitle.equalsIgnoreCase(expLoginTitle))
     {
-	   excelReader.setCellData(xlfile, "LoginPage", 6, 9, resPass);
+	   //excelReader.setCellData(xlfile, "LoginPage", 6, 9, resPass);
 	   return true;
     }
     else
     {
-	   excelReader.setCellData(xlfile, "LoginPage", 6, 9, resFail);
+	   //excelReader.setCellData(xlfile, "LoginPage", 6, 9, resFail);
 	   return false;
     }   	       
    }

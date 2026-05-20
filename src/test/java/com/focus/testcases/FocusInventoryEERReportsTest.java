@@ -90,7 +90,9 @@ public class FocusInventoryEERReportsTest extends BaseEngine
 		 firp=new FocusInventoryEERReportsPage(getDriver());
 		 Assert.assertEquals(firp.checkStockValuationReportByProduct(), true);
 	 }
-	 
+
+	
+	
 	 @Test(priority=108)
 	 public void checkStockValuationReportByProductByInventoryTag() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
@@ -133,7 +135,7 @@ public class FocusInventoryEERReportsTest extends BaseEngine
 		 Assert.assertEquals(firp.checkStockAnalysisByBatchReport(), true);
 	 }
 	 
-	 @Test(priority=114)
+	 @Test(priority=114)//
 	 public void checkStockAnalysisByRMAReport() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
 		 firp=new FocusInventoryEERReportsPage(getDriver());
@@ -189,7 +191,7 @@ public class FocusInventoryEERReportsTest extends BaseEngine
 		 Assert.assertEquals(firp.checkAgeingAnalysisByBatchReport(), true);
 	 }
 	 
-	 @Test(priority=122)
+	 @Test(priority=122)//
 	 public void checkStockAgeingAnalysisByRMAReport() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
 		 firp=new FocusInventoryEERReportsPage(getDriver());

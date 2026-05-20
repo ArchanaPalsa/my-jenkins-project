@@ -22,23 +22,36 @@ public class ReportDesignerTest extends BaseEngine
 		RDP=new ReportDesignerPage(getDriver());
 		Assert.assertEquals(RDP.checkLogin(), true);	
 	}
-
-
-   @Test(priority=81)
+	
+	@Test(priority=81)
 	public void checkRestoreCompany() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	{
 		RDP=new ReportDesignerPage(getDriver());
 		Assert.assertEquals(RDP.checkRestoreCompany(), true);
 	}
 
-	@Test(priority=90)
+	@Test(priority=82)
 	public void checkNavigateToReportDesginer() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
 		RDP=new ReportDesignerPage(getDriver());
 		Assert.assertEquals(RDP.checkNavigateToReportDesginer(), true);	
 	}
-
-
+	
+	@Test(priority=83)
+	public void checkDefaultReportDetails() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
+	{
+		RDP=new ReportDesignerPage(getDriver());
+		Assert.assertEquals(RDP.checkDefaultReportDetails(), true);	
+	}
+	
+	@Test(priority=84)
+	public void checkEditAndAddFieldsInDefaultReport() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
+	{
+		RDP=new ReportDesignerPage(getDriver());
+		Assert.assertEquals(RDP.checkEditAndAddFieldsInDefaultReport(), true);	
+	}
+	
+	
 	@Test(priority=91)
 	public void checkSavingReportDesignerOfAllTransactionsOfDocumentClass() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
@@ -87,7 +100,7 @@ public class ReportDesignerTest extends BaseEngine
 	{
 		RDP=new ReportDesignerPage(getDriver());
 		Assert.assertEquals(RDP.checkReportAllTransactionsOfDocumentTypeOfRecepitsVATType(), true);
-	}                   
+	}                 
 
 
 	@Test(priority=98)
@@ -104,6 +117,8 @@ public class ReportDesignerTest extends BaseEngine
 		RDP=new ReportDesignerPage(getDriver());
 		Assert.assertEquals(RDP.checkReportAccountingTransactionsOfAnAccountDetails(), true);
 	} 
+	
+	
 
 	@Test(priority=100)
 	public void checkSavingAccountingTransactionsOfAccountingTagDetails() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
@@ -112,7 +127,7 @@ public class ReportDesignerTest extends BaseEngine
 		Assert.assertEquals(RDP.checkSavingAccountingTransactionsOfAccountingTagDetails(), true);
 	} 
 
-	@Test(priority=101)
+	@Test(priority=101)//col focus x issue with the no.of columns.
 	public void checkReportAccountingTransactionsOfAnAccountingTagDetails() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	{
 		RDP=new ReportDesignerPage(getDriver());
@@ -133,7 +148,7 @@ public class ReportDesignerTest extends BaseEngine
 	{
 		RDP=new ReportDesignerPage(getDriver());
 		Assert.assertEquals(RDP.checkReportAccountingTrasactionsofInventoryTagDetails(), true);
-	} 
+	}
 
 	@Test(priority=104)
 	public void checkSavingAccountingTransactionsoFTagDetails() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
@@ -158,7 +173,7 @@ public class ReportDesignerTest extends BaseEngine
 	} 
 
 
-	@Test(priority=107)
+	@Test(priority=107)//col
 	public void checkReportAllAccountsByTagDetails() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		RDP=new ReportDesignerPage(getDriver());
@@ -186,7 +201,7 @@ public class ReportDesignerTest extends BaseEngine
 		Assert.assertEquals(RDP.checkSavingRDWithAllProductsBTagDetails(), true);
 	}
 
-	@Test(priority=112)
+	@Test(priority=112)//col
 	public void checkReportAllProductsByTagDetails() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		RDP=new ReportDesignerPage(getDriver());
@@ -201,7 +216,7 @@ public class ReportDesignerTest extends BaseEngine
 		Assert.assertEquals(RDP.checkSavingRDWithInventoryTransactionsDetailsDetails(), true);
 	}
 
-	@Test(priority=115)
+	@Test(priority=115)//col
 	public void checkReportInventoryTransactionsDetails() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		RDP=new ReportDesignerPage(getDriver());
@@ -215,7 +230,7 @@ public class ReportDesignerTest extends BaseEngine
 		Assert.assertEquals(RDP.checkSavingRDWithInventoryTransactionsOfProductDetails(), true);
 	}
 
-	@Test(priority=117)
+	@Test(priority=117)//col
 	public void checkReportInventoryTransactionsOfProductDetails() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		RDP=new ReportDesignerPage(getDriver());
@@ -314,6 +329,8 @@ public class ReportDesignerTest extends BaseEngine
 		RDP=new ReportDesignerPage(getDriver());
 		Assert.assertEquals(RDP.checkExportOptionreportDesging(), true);
 	}
+	
+
 
 	@Test(priority=132)
 	public void checkSavingRDReportsWihParameter() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
@@ -361,13 +378,15 @@ public class ReportDesignerTest extends BaseEngine
 		Assert.assertEquals(RDP.checkSavingReportDesigningWithQuaeery(), true);
 	}
 
-	@Test(priority=141)
+	@Test(priority=141)//
 	public void checkReportWithQuaeryreport() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	{
 		RDP=new ReportDesignerPage(getDriver());
 		Assert.assertEquals(RDP.checkReportWithQuaeryreport(), true);
 	}
 
+	
+	
 	@Test(priority=142)
 	public void checkCustomizeDateFormatInLedgerReport() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	{
@@ -388,9 +407,6 @@ public class ReportDesignerTest extends BaseEngine
 		RDP=new ReportDesignerPage(getDriver());
 		Assert.assertEquals(RDP.checkSaveAReportForValidationRowFormattingTab(), true);
 	}
-
-
-
 
 
 	//Cubes
@@ -437,7 +453,7 @@ public class ReportDesignerTest extends BaseEngine
 		RDP=new ReportDesignerPage(getDriver());
 		Assert.assertEquals(RDP.checkReportForCreatedInventoryTransactionsOfATagCube(), true);
 	}
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 	/*
@@ -535,12 +551,13 @@ public class ReportDesignerTest extends BaseEngine
 	{
 		RDP=new ReportDesignerPage(getDriver());
 		Assert.assertEquals(RDP.checkRdWithCubesTypeAddingProgrammableFiled(), true);
-	}
+	}*/
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	 */
-
+	
+	
 	@Test(priority=214)
 	public void CheckAddingFilterInFiledsCreatedCustomizationTab() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
@@ -548,8 +565,7 @@ public class ReportDesignerTest extends BaseEngine
 		Assert.assertEquals(RDP.CheckAddingFilterInFiledsCreatedCustomizationTab(), true);
 	}
 
-
-	@Test(priority=215)
+	@Test(priority=215)//col
 	public void checkReportMRWithFilter() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		RDP=new ReportDesignerPage(getDriver());
@@ -564,7 +580,7 @@ public class ReportDesignerTest extends BaseEngine
 	}
 
 
-	@Test(priority=217)
+	@Test(priority=217)//col
 	public void checkReportMRAfterChangesInCustomizationtab() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		RDP=new ReportDesignerPage(getDriver());
@@ -579,7 +595,7 @@ public class ReportDesignerTest extends BaseEngine
 	}
 
 
-	@Test(priority=219)
+	@Test(priority=219)//col
 	public void checkReportMRAfterChangesAlignmentAndSignInColoumnFiels() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		RDP=new ReportDesignerPage(getDriver());
@@ -593,13 +609,15 @@ public class ReportDesignerTest extends BaseEngine
 		RDP=new ReportDesignerPage(getDriver());
 		Assert.assertEquals(RDP.checkSortingOptionInReportDesgining(), true);
 	}
-	@Test(priority=221)
+	@Test(priority=221)//col
 	public void checkReportMRAfterChangesAInSortingTAB() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		RDP=new ReportDesignerPage(getDriver());
 		Assert.assertEquals(RDP.checkReportMRAfterChangesAInSortingTAB(), true);
 	}
 
+	
+	
 
 	@Test(priority=400)
 	public void checklogout() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
@@ -608,13 +626,148 @@ public class ReportDesignerTest extends BaseEngine
 		Assert.assertEquals(RDP.checklogout(), true);
 	}
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	@Test(priority=420)//col
+	public void checkLoginForRD2() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+	{
+		RDP=new ReportDesignerPage(getDriver());
+		Assert.assertEquals(RDP.checkLoginForRD2(), true);
+	}
 
-	// @Test(priority=225) In complete 
+
+	@Test(priority=421)
+	public void checkRestoreCompanyForRD2() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	{
+		RDP=new ReportDesignerPage(getDriver());
+		Assert.assertEquals(RDP.checkRestoreCompanyForRD2(), true);
+	}
+	
+	@Test(priority=422)//
+	public void checkReportDesignerForQuantityFilter() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+	{
+		RDP=new ReportDesignerPage(getDriver());
+		Assert.assertEquals(RDP.checkReportDesignerForQuantityFilter(), true);
+	}
+
+
+	@Test(priority=423)
+	public void checkQuantityFilteronWarehouse() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+	{
+		RDP=new ReportDesignerPage(getDriver());
+		Assert.assertEquals(RDP.checkQuantityFilteronWarehouse(), true);
+	
+	}
+	
+	@Test(priority=424)
+	public void checkValidateQuantityFilterOnWarehouse() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+	{
+		RDP=new ReportDesignerPage(getDriver());
+		Assert.assertEquals(RDP.checkValidateQuantityFilterOnWarehouse(), true);
+	
+	}
+	
+	//1
+	@Test(priority=425)
+	public void checkCustomizeReportDesignerForRDItemParameter() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+	{
+		RDP=new ReportDesignerPage(getDriver());
+		Assert.assertEquals(RDP.checkCustomizeReportDesignerForRDItemParameter(), true);
+	
+	}
+	
+	
+	@Test(priority=427)
+	public void checklogoutRD2() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+	{
+		RDP=new ReportDesignerPage(getDriver());
+		Assert.assertEquals(RDP.checklogout(), true);
+	}
+
+	
+
+	@Test(priority=428)//col
+	public void checkLoginForRD2Again() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+	{
+		RDP=new ReportDesignerPage(getDriver());
+		Assert.assertEquals(RDP.checkLoginForRD2(), true);
+	}
+	
+
+	@Test(priority=429)
+	public void checkApplyFilterInDataSetTabForItemWithParameterRD() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+	{
+		RDP=new ReportDesignerPage(getDriver());
+		Assert.assertEquals(RDP.checkApplyFilterInDataSetTabForItemWithParameterRD(), true);
+	
+	}
+	
+	@Test(priority=430)
+	public void checkRDReportForItemFilterAsItemParameter() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+	{
+		RDP=new ReportDesignerPage(getDriver());
+		Assert.assertEquals(RDP.checkRDReportForItemFilterAsItemParameter(), true);
+	
+	}
+	
+	@Test(priority=431)
+	public void checkPrintPDFForAnotherItemForItemParameterRD() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	{
+		RDP=new ReportDesignerPage(getDriver());
+		Assert.assertEquals(RDP.checkPrintPDFForAnotherItemForItemParameterRD(), true);
+	
+	}
+	
+	
+	
+	@Test(priority=438)
+	public void checkCreateReportForMonthWiseData() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	{
+		RDP=new ReportDesignerPage(getDriver());
+		Assert.assertEquals(RDP.checkCreateReportForMonthWiseData(), true);
+	
+	}
+	
+	@Test(priority=439)
+	public void checkCreatedMonthlyReportDetails() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	{
+		RDP=new ReportDesignerPage(getDriver());
+		Assert.assertEquals(RDP.checkCreatedMonthlyReportDetails(), true);
+	
+	}
+	
+	@Test(priority=440)
+	public void checkCreateReportDesignerForMultipleTransactionSets() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	{
+		RDP=new ReportDesignerPage(getDriver());
+		Assert.assertEquals(RDP.checkCreateReportDesignerForMultipleTransactionSets(), true);
+	
+	}
+	
+	@Test(priority=441)
+	public void checkChangeNetAmountForEachIndividualVouchers() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	{
+		RDP=new ReportDesignerPage(getDriver());
+		Assert.assertEquals(RDP.checkChangeNetAmountForEachIndividualVouchers(), true);
+	
+	}
+	
+	@Test(priority=442)
+	public void checkCreatedMultipleTransactionSetsReportDetails() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	{
+		RDP=new ReportDesignerPage(getDriver());
+		Assert.assertEquals(RDP.checkCreatedMultipleTransactionSetsReportDetails(), true);
+	
+	}
+	
+	//@Test(priority=225) In complete 
 	public void checkSavingReportDesginerOnBasisOFCustomization() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		RDP=new ReportDesignerPage(getDriver());
 		Assert.assertEquals(RDP.checkSavingReportDesginerOnBasisOFCustomization(), true);
 	}
-
-
+	
 }
+
+

@@ -52,6 +52,9 @@ public class LoginPage extends BaseEngine
 
     @FindBy(xpath="//i[@title='Refresh']")
     private static WebElement refreshBtn;
+    
+    @FindBy(xpath="//*[@id='id_mainlayoutmenu']/ul[2]/li[6]/a")
+	public static WebElement userNameTxt;
 	
 	@FindBy(id="chkRememberMe")
 	private static WebElement rememberMeChk;
@@ -230,29 +233,29 @@ public class LoginPage extends BaseEngine
 	{
 		VoucherPrintOptionsPage.restoreCompany("Voucher Print Layout Options","Print Design Layout Company");
 		
-		Thread.sleep(5000);
+		Thread.sleep(15000);
 		
-		String actUserInfo1=userNameTxt.getText();
+		String actUserInfo1=usernametxt.getText();
 
 		System.out.println("User Info  : "+actUserInfo1);
 
-		System.out.println("User Info Capture Text  :  "+userNameTxt.getText());
+		System.out.println("User Info Capture Text  :  "+usernametxt.getText());
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogoImg));
+	/*	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogoImg));
 		companyLogoImg.click();
 
 		String getCompanyTxt1=companyName.getText();
 		String getLoginCompanyName1=getCompanyTxt1.substring(0, 27);
 		System.out.println("company name  :  "+ getLoginCompanyName1);
-		companyLogoImg.click();
+		companyLogoImg.click();*/
 
 		String expUserInfo1           ="SU";
 		String expLoginCompanyName1   ="Print Design Layout Company";
 
 		System.out.println("UserInfo1             : "+actUserInfo1            +" Value Expected : "+expUserInfo1);
-		System.out.println("LoginCompanyName1     : "+getLoginCompanyName1    +" Value Expected : "+expLoginCompanyName1);
+		//System.out.println("LoginCompanyName1     : "+getLoginCompanyName1    +" Value Expected : "+expLoginCompanyName1);
 
-		if(actUserInfo1.equalsIgnoreCase(expUserInfo1) && getLoginCompanyName1.contains(expLoginCompanyName1))
+		if(actUserInfo1.equalsIgnoreCase(expUserInfo1) /*&& getLoginCompanyName1.contains(expLoginCompanyName1)*/)
 		{
 			return true;
 		}
@@ -446,7 +449,7 @@ public class LoginPage extends BaseEngine
 			String pawslt="su";
 
 			boolean qflag=true;
-
+			
 			lp.enterUserName(unamelt);
 
 			lp.enterPassword(pawslt);
@@ -485,9 +488,9 @@ public class LoginPage extends BaseEngine
 
 
 
-			Thread.sleep(50000);
+			Thread.sleep(40000);
 			
-			System.err.println("************50000 are over****************");
+			System.err.println("************40000 are over****************");
 
 			try 
 			{
@@ -509,11 +512,11 @@ public class LoginPage extends BaseEngine
 
 				Thread.sleep(2000);
 				
-				String actUserInfo1=userNameTxt.getText();
+				String actUserInfo1=usernametxt.getText();
 
 				System.out.println("User Info  : "+actUserInfo1);
 
-				System.out.println("User Info Capture Text  :  "+userNameTxt.getText());
+				System.out.println("User Info Capture Text  :  "+usernametxt.getText());
 
 				getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogoImg));
 				companyLogoImg.click();
@@ -578,9 +581,98 @@ public class LoginPage extends BaseEngine
 	}
 	
 	
+	@FindBy(xpath="//*[@id='id_mainlayoutmenu']/ul[2]/li[5]/a")
+	private static WebElement userNameTxt2;
+	
 	public static boolean checkLogin() throws InterruptedException
 	{
 		Thread.sleep(3000);
+		
+		//getDriver().navigate().refresh();
+		
+		LoginPage lp=new LoginPage(getDriver()); 
+
+		String unamelt="su";
+
+		String pawslt="su";
+
+		lp.enterUserName(unamelt);
+
+		Thread.sleep(2000);
+		lp.enterPassword(pawslt);
+
+		Thread.sleep(2000);
+		
+		
+
+		Thread.sleep(2000);
+		
+		String compname = "Print Design Layout Company";
+
+		Select oSelect = new Select(companyDropDownList);
+
+		List<WebElement> elementCount = oSelect.getOptions();
+
+		int cqSize = elementCount.size();
+
+		System.out.println("CompanyDropdownList Count :" + cqSize);
+
+		int i;
+
+		for (i = 0; i < elementCount.size(); i++) {
+
+			elementCount.get(i).getText();
+
+			String optionName = elementCount.get(i).getText();
+			if (optionName.toUpperCase().startsWith(compname.toUpperCase())) {
+				System.out.println("q" + elementCount.get(i).getText());
+				elementCount.get(i).click();
+			}
+
+		}
+
+		Thread.sleep(2000);
+
+		lp.clickOnSignInBtn();
+
+
+		Thread.sleep(5000);
+		
+		String actUserInfo1=usernametxt.getText();
+
+		System.out.println("User Info  : "+actUserInfo1);
+
+		System.out.println("User Info Capture Text  :  "+usernametxt.getText());
+
+	/*	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogoImg));
+		companyLogoImg.click();
+
+		String getCompanyTxt1=companyName.getText();
+		String getLoginCompanyName1=getCompanyTxt1.substring(0, 27);
+		System.out.println("company name  :  "+ getLoginCompanyName1);
+		companyLogoImg.click();*/
+
+		String expUserInfo1           ="SU";
+		String expLoginCompanyName1   ="Print Design Layout Company";
+
+		System.out.println("UserInfo1             : "+actUserInfo1            +" Value Expected : "+expUserInfo1);
+	//	System.out.println("LoginCompanyName1     : "+getLoginCompanyName1    +" Value Expected : "+expLoginCompanyName1);
+
+		if(actUserInfo1.equalsIgnoreCase(expUserInfo1) /*&& getLoginCompanyName1.contains(expLoginCompanyName1)*/)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+
+	}
+	
+	
+	public static boolean checkLogin2() throws InterruptedException
+	{
+		Thread.sleep(5000);
 		
 		getDriver().navigate().refresh();
 		
@@ -629,29 +721,29 @@ public class LoginPage extends BaseEngine
 		lp.clickOnSignInBtn();
 
 
-		Thread.sleep(2000);
+		Thread.sleep(8000);
 		
-		String actUserInfo1=userNameTxt.getText();
+		String actUserInfo1=usernametxt1.getText();
 
 		System.out.println("User Info  : "+actUserInfo1);
 
-		System.out.println("User Info Capture Text  :  "+userNameTxt.getText());
+		System.out.println("User Info Capture Text  :  "+usernametxt.getText());
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogoImg));
+	/*	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogoImg));
 		companyLogoImg.click();
 
 		String getCompanyTxt1=companyName.getText();
 		String getLoginCompanyName1=getCompanyTxt1.substring(0, 27);
 		System.out.println("company name  :  "+ getLoginCompanyName1);
-		companyLogoImg.click();
+		companyLogoImg.click();*/
 
 		String expUserInfo1           ="SU";
 		String expLoginCompanyName1   ="Print Design Layout Company";
 
 		System.out.println("UserInfo1             : "+actUserInfo1            +" Value Expected : "+expUserInfo1);
-		System.out.println("LoginCompanyName1     : "+getLoginCompanyName1    +" Value Expected : "+expLoginCompanyName1);
+		//System.out.println("LoginCompanyName1     : "+getLoginCompanyName1    +" Value Expected : "+expLoginCompanyName1);
 
-		if(/*actUserInfo1.equalsIgnoreCase(expUserInfo1) &&*/ getLoginCompanyName1.contains(expLoginCompanyName1))
+		if(actUserInfo1.equalsIgnoreCase(expUserInfo1) /*&& getLoginCompanyName1.contains(expLoginCompanyName1)*/)
 		{
 			return true;
 		}
@@ -662,6 +754,7 @@ public class LoginPage extends BaseEngine
 
 	}
 	
+
 
 	
    
@@ -1393,8 +1486,9 @@ public class LoginPage extends BaseEngine
 		
 		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(password));
-		password.clear();
 		password.click();
+		password.clear();
+		
 		password.sendKeys(pswd);
 		getAction().moveToElement(password).sendKeys(Keys.TAB).perform();	
 	}

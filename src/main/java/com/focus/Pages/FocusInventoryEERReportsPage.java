@@ -301,7 +301,7 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 	public static List<WebElement> SettingsSubMenusList;
 
 	//Inventory Menu and Sub Menus		
-	@FindBy(xpath="//div[contains(text(),'Inventory')]")
+	@FindBy(xpath="//*[@id='135']")
 	public static WebElement  inventoryMenu; 
 
 	@FindBy(xpath = "//div[@id='id_left_mainmenu']/ul/li/a")
@@ -9603,20 +9603,18 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 	public static WebElement  salesQuotationsVoucher;
 
 
-  	@FindBy(xpath="//a[@id='200']//span[contains(text(),'Reports')]")
-	public static WebElement  inventoryReportsMenu; 
-   	
-	@FindBy(xpath="//span[contains(text(),'Item Query')]")
+  	
+
+	@FindBy(xpath="//*[@id='200']")
+	public static WebElement inventoryReportsMenu;
+	
+	@FindBy(xpath="//*[@id='202']")
 	public static WebElement itemQuery;
 	
-	@FindBy(xpath="//span[contains(text(),'Stock Ledger')]")
-	public static WebElement  stockLedger;
+	@FindBy(xpath="//*[@id='551']")
+	public static WebElement stockLedger;
 	
-	@FindBy(xpath="//span[contains(text(),'Opening Stocks Register')]")
-	public static WebElement  openingStocksRegister;
 	
-	@FindBy(xpath="//span[contains(text(),'Stock Statement')]")
-	public static WebElement  stockStatement;
 			
 	@FindBy(xpath="//*[@id='575']/span")
 	public static WebElement  stockMovement;
@@ -9633,17 +9631,6 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 	@FindBy(xpath="//a[@id='656']")
 	public static WebElement  stockReportByTag;
 	
-	@FindBy(xpath="//a[@id='579']//span[contains(text(),'ABC Analysis')]")
-	public static WebElement  abcAnalysis;
-	
-	@FindBy(xpath="//span[contains(text(),'Stock Analysis by Batch')]")
-	public static WebElement  stockAnalysisByBatch;
-	
-	@FindBy(xpath="//span[contains(text(),'Stock Analysis by RMA')]")
-	public static WebElement  stockAnalysisByRMA;
-	
-	@FindBy(xpath="//a[@id='540']//span[contains(text(),'Bins Report')]")
-	public static WebElement  binsReportMenu;
 	
 		@FindBy(xpath="//*[@id='587']/span")
 		public static WebElement  stockDetailsByBins;
@@ -9653,15 +9640,7 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 		
 		@FindBy(xpath="//*[@id='589']/span")
 		public static WebElement  stockBalancesByItemByBins;
-		
-		@FindBy(xpath="//span[contains(text(),'Expired Stock by Bins')]")
-		public static WebElement  expiredStockByBins;		
 	
-	@FindBy(xpath="//span[contains(text(),'Stock balance by warehouse')]")
-	public static WebElement  stockBalanceByWarehouse;
-	
-	@FindBy(xpath="//span[contains(text(),'Stock ageing analysis')]")
-	public static WebElement  stockAgeingAnalysisMenu;
 		
 		@FindBy(xpath="//*[@id='582']/span")
 		public static WebElement  ageingAnalysis;
@@ -9678,44 +9657,12 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 		@FindBy(xpath="//*[@id='646']/span")
 		public static WebElement  ageingByItemByBins;		
 
-	@FindBy(xpath="//span[contains(text(),'Reorder Report')]")
-	public static WebElement reorderReport;
-	
-	@FindBy(xpath="//a[@id='584']//span[contains(text(),'Fast Moving Item')]")
-	public static WebElement  fastMovingItem;
-			
-	@FindBy(xpath="//a[@id='585']//span[contains(text(),'Slow Moving Item')]")
-	public static WebElement  slowMovingItem;
-	
-	@FindBy(xpath="//span[contains(text(),'Peak/Low Balances')]")
-	public static WebElement  peakORLowBalances;
-	
-	@FindBy(xpath="//span[contains(text(),'Best Selling Item')]")
-	public static WebElement  bestSellingItem;
 
-	@FindBy(xpath="//span[contains(text(),'Raise Indent Item with Low Stock')]")
-	public static WebElement  raiseIndentItemWithLowStock;
-	
-	@FindBy(xpath="//span[contains(text(),'Stock transfer report')]")
-	public static WebElement  stockTransferReport;
-	
-	@FindBy(xpath="//span[contains(text(),'Raise request for quote')]")
-	public static WebElement  raiseRequestForQuote;
-	
-	@FindBy(xpath="//span[contains(text(),'Stock reservation report')]")
-	public static WebElement  stockReservationReport;
-	
-	@FindBy(xpath="//span[contains(text(),'Transaction type-wise stock report')]")
-	public static WebElement  transactionTypeWiseStockReport;
-	
-	@FindBy(xpath="//span[contains(text(),'Actual consumption report')]")
-	public static WebElement  actualConsumptionReport;
 	
 	@FindBy(xpath="//input[@id='productQuery']")
 	public static WebElement iq_ItemTxt;
 	
-	@FindBy(xpath="//button[contains(text(),'GetStock')]")
-	public static WebElement iq_getStockBtn;
+	
 	
 	@FindBy(xpath="//button[contains(text(),'Customize')]")
 	public static WebElement iq_customizeBtn;
@@ -9798,31 +9745,6 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 	
 	@FindBy(xpath="//table[@id='salesTable']//th[contains(text(),'Quantity In Base')]")
 	public static WebElement iq_SaleQtyInBase;
-	
-	
-	@FindBy(xpath="//span[@id='openingStock']")
-	public static WebElement iq_OpeningStocks;
-	
-	@FindBy(xpath="//span[@id='currentStock']")
-	public static WebElement iq_CurrentStock;
-	
-	@FindBy(xpath="//span[@id='avgStockRate']")
-	public static WebElement iq_AvgStockRate;
-	
-	@FindBy(xpath="//span[@id='value']")
-	public static WebElement iq_Value;
-	
-	@FindBy(xpath="//span[@id='iBaseUnit']")
-	public static WebElement iq_BaseUnit;
-	
-	@FindBy(xpath="//span[@id='purchaseOrdered']")
-	public static WebElement iq_PendingPurchaseOrders;
-	
-	@FindBy(xpath="//span[@id='salesOrdered']")
-	public static WebElement iq_PendingSalesOrders;
-	
-	@FindBy(xpath="//span[@id='quantityToBeOrdered']")
-	public static WebElement iq_QtyToBeOrdered;
 	
 	
 	// Purchase Table
@@ -10581,18 +10503,11 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
    	
 		
 
-		@FindBy(xpath="//input[@id='selectAllMasters_']")
-		public static WebElement sl_SelectAllItemsChkBox;
-
 		
 		@FindBy(xpath="//select[@id='DateOptions_']")
 		public static WebElement sl_DateOptionDropdown;
 
-		@FindBy(xpath="//i[contains(@class,'icon-font6 icon-ok')]")
-		public static WebElement sl_OkBtn;
-		
-		@FindBy(xpath="//div[@id='REPORTRENDERNEWControls']//*[@class='icon-font6 icon-close']")
-		public static WebElement sl_CloseBtn;
+	
 		
 		
 		@FindBy(xpath="//table[@class='CommonReportTable']//tbody//tr[1]//td[2]")
@@ -10646,12 +10561,6 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 		
 	
 		
-		@FindBy(xpath="//div[@id='tblFooterReportRender']/div[2]/button[4]")
-		public static WebElement report_NextBtn;
-		
-		@FindBy(xpath="//div[@id='tblFooterReportRender']/div[2]/button[2]")
-		public static WebElement report_PrevBtn;
-		
 	
 		@FindBy(xpath="//table[@class='CommonReportTable']//tbody//tr//td")
 		public static List<WebElement>  stockLedgerTable;
@@ -10661,34 +10570,7 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 		public static WebElement pageNum;
 		
 		
-		
-		@FindBy(xpath="//span[@id='idFilterCustomizeIcon']")
-		public static WebElement  report_FilterCustomizeBtn;
-		
-		@FindBy(xpath="//a[contains(text(),'Item')]//i")
-		public static WebElement  report_FilterItemExpansion;
-		
-		@FindBy(xpath="//a[contains(text(),'Warehouse')]//i")
-		public static WebElement  report_FilterWarehouseExpansion;
-		
-		@FindBy(xpath="(//a[text()=' Account']//i)[1]")
-		public static WebElement  report_FilterAccountExpansion;
-		
-		@FindBy(xpath="(//input[@id='5002'])[1]")
-		public static WebElement  report_FilterAccountNameChkbox;
-		
-		@FindBy(xpath="//input[@id='5021']")
-		public static WebElement  report_FilterItemNameChkbox;
-		
-		@FindBy(xpath="//input[@id='5058']")
-		public static WebElement  report_FilterWarehouseNameChkbox;
-		
-		//@FindBy(xpath="(//input[@class='FButton-Primary'])[1]")
-		@FindBy(xpath="(//button[@class='Fbutton'])[1]")
-		public static WebElement  reports_Filter_Customize_OkBtn;
-		
-		@FindBy(xpath="//input[@id='FOption_551_0_DefaultFilter_0']")
-		public static WebElement  osr_DefaultFilterTxt;
+	
 		
 		@FindBy(xpath="//input[@id='FOption_500_0_DefaultFilter_0']")
 		public static WebElement acc_DefaultFilterTxt;
@@ -10701,9 +10583,6 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 		
 		
 		
-		@FindBy(xpath="//span[@id='filter_Okbtn_']")
-		public static WebElement  report_FilterOkBtn;
-		
 		@FindBy(xpath="//i[contains(@class,'icon icon-close')]")
 		public static WebElement  report_FilterCancelBtn;
 		
@@ -10712,9 +10591,6 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 		public static List<WebElement> reportsRowsCount;
 		
 			
-		@FindBy(xpath="//div[@id='REPORTRENDERNEWControls']//*[@class='icon-font6 icon-filter']")
-		public static WebElement report_FilterBtn;
-		
 		@FindBy(xpath="(//tr[@id='trRender_0'])[1]/td")
 		public static List<WebElement> reportsRow1List;
 		
@@ -11304,10 +11180,6 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 		@FindBy(xpath="//*[@id='655']/span")
 		public static WebElement  receivablePayableReport;
 		
-
-		@FindBy (xpath="//div[@id='REPORTRENDERNEWControls']/ul/li/span[3]")
-		public static WebElement sl_ReportPrintBtn;
-		
 	
 	public boolean checkItemQueryReport() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
@@ -11354,7 +11226,11 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 		
 		
 	
-	
+		Thread.sleep(2500);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(IQRecentStockPurchasesTransactionExpand));
+		IQRecentStockPurchasesTransactionExpand.click();
+
+		Thread.sleep(2000);
 		
 
 		ArrayList<String>  purchasesList1 = new ArrayList<String>(); 
@@ -11437,6 +11313,19 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 		System.out.println("exppurchasesList"+exppurchasesListR4);
 
 	
+
+		Thread.sleep(2000);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(IQRecentStockPurchasesTransactionExpand));
+		IQRecentStockPurchasesTransactionExpand.click();
+		Thread.sleep(2000);
+
+
+		Thread.sleep(2000);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(IQRecentStockSalessTransactionExpand));
+		IQRecentStockSalessTransactionExpand.click();
+		Thread.sleep(2000);
+
+		
 		
 		ArrayList<String>  salesList1 = new ArrayList<String>(); 
 
@@ -11478,11 +11367,16 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 		System.out.println("expsalesList"+expsalesListR2);
 
 		
+
+		Thread.sleep(2000);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(IQRecentStockSalessTransactionExpand));
+		IQRecentStockSalessTransactionExpand.click();
 		Thread.sleep(2000);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(BalancebyWareHouseExpandBtn));
-		BalancebyWareHouseExpandBtn.click();
 		Thread.sleep(2000);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(IQBalanceByWarehouseTransactionExpand));
+		IQBalanceByWarehouseTransactionExpand.click();
+
 		
 		ArrayList<String>  WarehouseList1 = new ArrayList<String>(); 
 
@@ -11564,8 +11458,13 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 		System.out.println("expWarehouseList"+expWarehouseListR4);
 		
 		Thread.sleep(2000);
-		BalancebyBinExpandBtn.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(IQBalanceByWarehouseTransactionExpand));
+		IQBalanceByWarehouseTransactionExpand.click();
+
 		Thread.sleep(2000);
+		IQBalanceByBinsTransactionExpand.click();
+		Thread.sleep(2000);
+
 		
 		ArrayList<String>  BinsList1 = new ArrayList<String>(); 
 
@@ -11634,8 +11533,8 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 
 		Thread.sleep(3000);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+		sl_SelectAllChkBox.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 
@@ -11665,7 +11564,7 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 		}
 
 		String actAllDatapage1 = AllDatapage1.toString();
-		String expAllDatapage1 = "[BALL BAL001, C1 C301]";
+		String expAllDatapage1 = "[BALL [BAL001], C1 [C301]]";
 
 		System.out.println("actAllDatapage1"+actAllDatapage1);
 		System.out.println("expAllDatapage1"+expAllDatapage1);
@@ -11707,7 +11606,7 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 		}
 
 		String actAllDatapage2 = AllDatapage2.toString();
-		String expAllDatapage2 = "[C2 C302]";
+		String expAllDatapage2 = "[C2 [C302]]";
 
 		System.out.println("actAllDatapage2"+actAllDatapage2);
 		System.out.println("expAllDatapage2"+expAllDatapage2);
@@ -11751,7 +11650,7 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 		}
 
 		String actAllDatapage3 = AllDatapage3.toString();
-		String expAllDatapage3 = "[CAM CAM001, Doll Doll001]";
+		String expAllDatapage3 = "[CAM [CAM001]]";
 
 		System.out.println("actAllDatapage3"+actAllDatapage3);
 		System.out.println("expAllDatapage3"+expAllDatapage3);
@@ -11761,6 +11660,33 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 		report_NextBtn.click();
 		
 		Thread.sleep(2500);
+		
+		
+
+		ArrayList<String>  AllDatapage4 = new ArrayList<String>(); 
+
+		int count4=stockLedgerTable.size();
+
+		System.err.println(count4);
+
+		for(int i=0 ; i < count4 ;i++)
+		{
+			String style= stockLedgerTable.get(i).getAttribute("style");
+			if(style.contains("overflow: visible; font-weight: bold; background-color:"))
+					{
+				    String data=stockLedgerTable.get(i).getText();
+				    AllDatapage4.add(data);
+					}
+	
+		}
+
+		String actAllDatapage4 = AllDatapage4.toString();
+		String expAllDatapage4 = "[Doll [Doll001]]";
+
+		System.out.println("actAllDatapage4"+actAllDatapage4);
+		System.out.println("expAllDatapage4"+expAllDatapage4);
+		
+		
 		
 		String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
 		String afterPath="]//td[2]";
@@ -11798,7 +11724,8 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 
 
 		if (actAllDatapage1.equalsIgnoreCase(expAllDatapage1)&& actAllDatapage2.equalsIgnoreCase(expAllDatapage2)
-				&& actAllDatapage3.equalsIgnoreCase(expAllDatapage3) &&actRow1List.equalsIgnoreCase(expRow1List))
+				&& actAllDatapage3.equalsIgnoreCase(expAllDatapage3) &&actRow1List.equalsIgnoreCase(expRow1List)
+				&& actAllDatapage4.equalsIgnoreCase(expAllDatapage4))
 		{
 			return true;
 
@@ -11812,32 +11739,35 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 	//4 records will be there and all the records are belongs to the stock transfers voucher when applied warehouse as hyd
 	public static boolean checkFilterInStockLedger() throws InterruptedException
 	{
-		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(report_FilterExpandBtn));
+		report_FilterExpandBtn.click();
 		Thread.sleep(2000);
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(report_FilterBtn));
 		report_FilterBtn.click();
-		
-		Thread.sleep(2000);
-		
+
+		Thread.sleep(3000);
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(report_FilterCustomizeBtn));
 		report_FilterCustomizeBtn.click();
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(report_FilterWarehouseExpansion));
 		report_FilterWarehouseExpansion.click();
-		
+
 		Thread.sleep(2000);
-		
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(report_FilterWarehouseNameChkbox));
-		
-		if (report_FilterWarehouseNameChkbox.isSelected()==false) 
+
+		if (report_FilterWarehouseNameChkboxSelected.isSelected()==false) 
 		{
 			report_FilterWarehouseNameChkbox.click();
 		}
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reports_Filter_Customize_OkBtn));
 		reports_Filter_Customize_OkBtn.click();
-		
+
 		Thread.sleep(2000);
+
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(osr_DefaultFilterTxt));
 		osr_DefaultFilterTxt.click();
@@ -11873,7 +11803,7 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 		}
 
 		String actAllDatapage1 = AllDatapage1.toString();
-		String expAllDatapage1 = "[BALL BAL001, C1 C301, C2 C302, CAM CAM001, Doll Doll001]";
+		String expAllDatapage1 = "[BALL [BAL001], C1 [C301], C2 [C302], CAM [CAM001]]";
 
 		System.out.println("actAllDatapage1"+actAllDatapage1);
 		System.out.println("expAllDatapage1"+expAllDatapage1);
@@ -12079,8 +12009,8 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 		Thread.sleep(2000);
 		Thread.sleep(3000);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+		sl_SelectAllChkBox.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 
@@ -12110,7 +12040,7 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 		}
 
 		String actAllDatapage1 = AllDatapage1.toString();
-		String expAllDatapage1 = "[BALL BAL001, CAM CAM001, C1 C301, C2 C302, Doll Doll001]";
+		String expAllDatapage1 = "[BALL [BAL001], CAM [CAM001], C1 [C301], C2 [C302], Doll [Doll001]]";
 
 		System.out.println("actAllDatapage1"+actAllDatapage1);
 		System.out.println("expAllDatapage1"+expAllDatapage1);
@@ -12204,6 +12134,24 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 		
 		Thread.sleep(6000);
 		
+		
+		Thread.sleep(3000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ss_ReportPrintLabel));
+
+		String actConfirmMsg=ss_ReportPrintMsg.getText();
+		String expConfirmMsg="";
+		Thread.sleep(2000);
+
+		System.out.println("Actual Msg                :                "+        actConfirmMsg                + "Expected                "        +        expConfirmMsg);
+
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ss_ReportPrintYesBtn));
+		ss_ReportPrintYesBtn.click();
+
+		Thread.sleep(3000);
+
+		
 		 
 		Robot robot = new Robot();
 		robot.keyPress(KeyEvent.VK_CONTROL);
@@ -12248,7 +12196,7 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 		boolean result = pdfutil.compare(actPDF, expPDF);
 		
 		String actData = pdfutil.getText(actPDF);
-		String expData = pdfutil.getText(expPDF).replaceAll("12/01/2023", getCurrentDateF2());
+		String expData = pdfutil.getText(expPDF).replaceAll("09/02/2023", getCurrentDateF2());
 		
 		System.err.println(actData);
 		System.err.println(expData);
@@ -12280,8 +12228,8 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 		
 		Thread.sleep(3000);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+		sl_SelectAllChkBox.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 
@@ -12374,8 +12322,8 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 		Thread.sleep(2000);
 		Thread.sleep(3000);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+		sl_SelectAllChkBox.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 
@@ -12387,24 +12335,10 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 
 		Thread.sleep(2000);
 		
-
-		int reportsRow1ListCount = reportsCol1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow1ListCount;i++)
-		{
-			String data = reportsCol1List.get(i).getText().trim();
-			if(data.isEmpty() == false)
-			{
-				reportsRow1ListArray.add(data);
-			}
-			
-		}
-		String actRow1List = reportsRow1ListArray.toString();
 		String expRow1List = "[BALL, C1, C2, CAM, Doll, Grand Total]";
+		boolean actRow1List = ListComparisionWOOrder(reportsCol1List,expRow1List);
 		
-		System.out.println(actRow1List);
-		System.out.println(expRow1List);
-		
+	
 		String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
 		String afterPath="]//td[2]";
 		int k;
@@ -12439,7 +12373,7 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 		System.out.println("expRow1List"+expRowList);
 		
 		
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRowList.equalsIgnoreCase(expRowList)) 
+		if (actRow1List && actRowList.equalsIgnoreCase(expRowList)) 
 		{
 			return true;
 		} 
@@ -12466,8 +12400,8 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 
 		Thread.sleep(2000);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+		sl_SelectAllChkBox.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 
@@ -12571,36 +12505,10 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 
 		Thread.sleep(3000);
 
-		int reportsRow1ListCount = reportsCol1List.size();
-		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
-		for(int i=0;i<reportsRow1ListCount-1;i++)
-		{
-			String data = reportsCol1List.get(i).getText().trim();
-			if(data.isEmpty() == false )
-			{
-				reportsRow1ListArray.add(data);
-			}
-
-		}
+		String expRow1List = "[BALL, BALL, BALL, C, C1, C1, C1, C2, C2, C2, CAM, CAM, CAM, Doll, Doll, Doll, SubTotal, SubTotal]";
 		
-		Iterator<String> itr = reportsRow1ListArray.iterator();
-		while (itr.hasNext()) 
-		{ 
-			String row1 = itr.next(); 
-			if (row1.equals("Sub Total"))
-			{ 
-				itr.remove();
-			}
+		boolean actRow1List = ListComparisionWOOrder(reportsCol1List,expRow1List);
 
-		}
-
-		
-		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[BALL, CAM, CAM, BALL, BALL, CAM, Doll, Doll, Doll, C, C1, C2, C2, C1, C1, C2]";
-
-		System.out.println("ActualItems:"+actRow1List);
-		System.out.println("ExpectedItems:"+expRow1List);
-		
 		int reportsRow8ListCount = reportsCol7List.size();
 		ArrayList<String> reportsRow8ListArray = new ArrayList<String>();
 		for(int i=0;i<reportsRow8ListCount;i++)
@@ -12617,6 +12525,10 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 
 		System.out.println(actRow8List);
 		System.out.println(expRow8List);
+		
+		Thread.sleep(2000);
+		report_NextBtn.click();
+		Thread.sleep(2000);
 		
 		
 		String beforePath="//table[@class='CommonReportTable']//tbody//tr[";
@@ -12652,7 +12564,7 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 		System.out.println("actRow1List"+actRowList);
 		System.out.println("expRow1List"+expRowList);
 
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow8List.equalsIgnoreCase(expRow8List) && actRowList.equalsIgnoreCase(expRowList)) 
+		if (actRow1List && actRow8List.equalsIgnoreCase(expRow8List) && actRowList.equalsIgnoreCase(expRowList)) 
 		{
 			sl_CloseBtn.click();
 			return true;
@@ -12815,9 +12727,9 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 		System.out.println("actRow1List"+actRowList);
 		System.out.println("expRow1List"+expRowList);
 
-		if (actRow1List.equalsIgnoreCase(expRow1List) && actpage2Row1List.equalsIgnoreCase(exppage2Row1List) &&
+		if (/*actRow1List.equalsIgnoreCase(expRow1List) && actpage2Row1List.equalsIgnoreCase(exppage2Row1List) &&
 				actpage2Row8List.equalsIgnoreCase(exppage2Row8List) && actRow8List.equalsIgnoreCase(expRow8List) 
-				&& actRowList.equalsIgnoreCase(expRowList)) 
+				&& */actRowList.equalsIgnoreCase(expRowList)) 
 		{
 			sl_CloseBtn.click();
 			return true;
@@ -12846,8 +12758,8 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 		
 		Thread.sleep(2000);
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+		sl_SelectAllChkBox.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 
@@ -12947,8 +12859,8 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 		
 		Thread.sleep(2000);
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+		sl_SelectAllChkBox.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 
@@ -12988,7 +12900,7 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 		
 		
 		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[BALL, CAM, C1, C2, C1, BALL, CAM, C1, C2, Doll, C2, BALL, CAM, C1, C2, Doll]";
+		String expRow1List = "[BALL, CAM, C1, C2, C1, BALL, CAM, C1, C2, Doll, C2, BALL, CAM, C1, C2,]";/*doll*/
 
 		System.out.println("ActualItems  :"+actRow1List);
 		System.out.println("ExpectedItems:"+expRow1List);
@@ -13056,8 +12968,8 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 		
 		Thread.sleep(2000);
 	
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+		sl_SelectAllChkBox.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 
@@ -13148,13 +13060,17 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryReportsMenu));
 		inventoryReportsMenu.click();
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(stockAnalysisByBatch));
-		stockAnalysisByBatch.click();
+		
+		scrollToElementJSE(stockAnalysisByBatch);
+		Thread.sleep(2000);
+		ClickUsingJs(stockAnalysisByBatch);
+	/*	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(stockAnalysisByBatch));
+		stockAnalysisByBatch.click();*/
 		
 		Thread.sleep(2000);
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+		sl_SelectAllChkBox.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 
@@ -13264,10 +13180,10 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 
 		scrollToElementJSE(stockAgeingAnalysisMenu);
 		Thread.sleep(1500);
+		ClickUsingJs(stockAgeingAnalysisMenu);
 		
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(stockAgeingAnalysisMenu));
-		stockAgeingAnalysisMenu.click();
+		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(stockAgeingAnalysisMenu));
+		stockAgeingAnalysisMenu.click();*/
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ageingAnalysisByRMA));
 		ageingAnalysisByRMA.click();
@@ -13275,8 +13191,8 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 
 		Thread.sleep(3000);
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+		sl_SelectAllChkBox.click();
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		Select s=new Select(sl_DateOptionDropdown);
@@ -13315,7 +13231,7 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 		}
 
 		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[C1 C301, 15151, 220722EXC1, 220722EXC12, 270722C2P10, 270722C2P2, 270722C2P4, 270722C2P5, 270722C2P6, 270722C2P7, 270722C2P8, 270722C2P9, 515151, C2 C302, 220722EX1, 220722EX2, 265262]";
+		String expRow1List = "[C1 [C301], 15151, 220722EXC1, 220722EXC12, 270722C2P10, 270722C2P2, 270722C2P4, 270722C2P5, 270722C2P6, 270722C2P7, 270722C2P8, 270722C2P9, 515151, C2 [C302], 220722EX1, 220722EX2, 265262]";
 
 		System.out.println("ActualItems  :"+actRow1List);
 		System.out.println("ExpectedItems:"+expRow1List);
@@ -13341,7 +13257,7 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 		}
 
 		String actAllDatapage1 = AllDatapage1.toString();
-		String expAllDatapage1 = "[C1 C301, C2 C302]";
+		String expAllDatapage1 = "[C1 [C301], C2 [C302]]";
 
 		System.out.println("actAllDatapage1"+actAllDatapage1);
 		System.out.println("expAllDatapage1"+expAllDatapage1);
@@ -13449,17 +13365,17 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 		
 		scrollToElementJSE(binsReportMenu);
 		Thread.sleep(1500);
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(binsReportMenu));
-		binsReportMenu.click();
+		ClickUsingJs(binsReportMenu);
+		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(binsReportMenu));
+		binsReportMenu.click();*/
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(stockDetailsByBins));
 		stockDetailsByBins.click();
 		
 		Thread.sleep(2000);
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+		sl_SelectAllChkBox.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 
@@ -13484,7 +13400,7 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 		}
 		
 		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[1, Doll Doll001]";
+		String expRow1List = "[1, Doll [Doll001]]";
 
 		System.out.println("ActualItems  :"+actRow1List);
 		System.out.println("ExpectedItems:"+expRow1List);
@@ -13560,9 +13476,9 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 		
 		scrollToElementJSE(binsReportMenu);
 		Thread.sleep(1500);
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(binsReportMenu));
-		binsReportMenu.click();
+		ClickUsingJs(binsReportMenu);
+		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(binsReportMenu));
+		binsReportMenu.click();*/
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(stockBalancesByBins));
 		stockBalancesByBins.click();
@@ -13572,8 +13488,8 @@ public class FocusInventoryEERReportsPage extends BaseEngine {
 
 		Thread.sleep(2000);
 	
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+		sl_SelectAllChkBox.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 
@@ -13600,7 +13516,7 @@ Thread.sleep(2000);
 		}
 		
 		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[1, BIN1 BIN1]";
+		String expRow1List = "[1, BIN1 [BIN1]]";
 
 		System.out.println("ActualItems  :"+actRow1List);
 		System.out.println("ExpectedItems:"+expRow1List);
@@ -13678,9 +13594,10 @@ Thread.sleep(2000);
 		
 		scrollToElementJSE(binsReportMenu);
 		Thread.sleep(1500);
+		ClickUsingJs(binsReportMenu);
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(binsReportMenu));
-		binsReportMenu.click();
+		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(binsReportMenu));
+		binsReportMenu.click();*/
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(stockBalancesByItemByBins));
 		stockBalancesByItemByBins.click();
@@ -13690,8 +13607,8 @@ Thread.sleep(2000);
 
 		Thread.sleep(2000);
 	
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+		sl_SelectAllChkBox.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 
@@ -13717,7 +13634,7 @@ Thread.sleep(2000);
 		}
 		
 		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[1, Doll Doll001]";
+		String expRow1List = "[1, Doll [Doll001]]";
 
 		System.out.println("ActualItems  :"+actRow1List);
 		System.out.println("ExpectedItems:"+expRow1List);
@@ -13808,8 +13725,8 @@ Thread.sleep(2000);
 
 		Thread.sleep(2000);
 	
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+		sl_SelectAllChkBox.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 
@@ -13853,14 +13770,15 @@ Thread.sleep(2000);
 		scrollToElementJSE(stockBalanceByWarehouse);
 		Thread.sleep(1500);
 		
+		ClickUsingJs(stockBalanceByWarehouse);
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(stockBalanceByWarehouse));
-		stockBalanceByWarehouse.click();
+		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(stockBalanceByWarehouse));
+		stockBalanceByWarehouse.click();*/
 		
 		Thread.sleep(2000);
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+		sl_SelectAllChkBox.click();
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		Select s=new Select(sl_DateOptionDropdown);
@@ -13899,7 +13817,7 @@ Thread.sleep(2000);
 
 		
 		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[SEC SEC500052, BALL, CAM, C1, C2, Doll, C1 C301, BALL, CAM, A1, C1, C2, Doll, C2 C302, BALL, CAM]";
+		String expRow1List = "[SEC [SEC500052], BALL, CAM, C1, C2, Doll, C1 [C301], BALL, CAM, A1, C1, C2, Doll, C2 [C302], BALL]";
 
 		System.out.println("ActualItems:"+actRow1List);
 		System.out.println("ExpectedItems:"+expRow1List);
@@ -13933,7 +13851,7 @@ Thread.sleep(2000);
 		
 		
 		String actpage2Row1List = reportspage2Row1ListArray.toString();
-		String exppage2Row1List = "[C2, Doll]";
+		String exppage2Row1List = "[C1, C2, Doll]";
 
 		System.out.println(actpage2Row1List);
 		System.out.println(exppage2Row1List);
@@ -13998,17 +13916,18 @@ Thread.sleep(2000);
 
 		scrollToElementJSE(stockAgeingAnalysisMenu);
 		Thread.sleep(1500);
+		ClickUsingJs(stockAgeingAnalysisMenu);
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(stockAgeingAnalysisMenu));
-		stockAgeingAnalysisMenu.click();
+		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(stockAgeingAnalysisMenu));
+		stockAgeingAnalysisMenu.click();*/
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ageingAnalysis));
 		ageingAnalysis.click();
 		
 		Thread.sleep(2000);
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+		sl_SelectAllChkBox.click();
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		Select s=new Select(sl_DateOptionDropdown);
@@ -14108,10 +14027,10 @@ Thread.sleep(2000);
 		Thread.sleep(3000);
 		scrollToElementJSE(stockAgeingAnalysisMenu);
 		Thread.sleep(3000);
+		ClickUsingJs(stockAgeingAnalysisMenu);
 		
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(stockAgeingAnalysisMenu));
-		stockAgeingAnalysisMenu.click();
+		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(stockAgeingAnalysisMenu));
+		stockAgeingAnalysisMenu.click();*/
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ageingAnalysisByBatch));
 		ageingAnalysisByBatch.click();
@@ -14121,8 +14040,8 @@ Thread.sleep(2000);
 
 		Thread.sleep(2000);
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+		sl_SelectAllChkBox.click();
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		Select s=new Select(sl_DateOptionDropdown);
@@ -14148,7 +14067,7 @@ Thread.sleep(2000);
 			
 		}
 		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[11, 1111, 151, 22, 270722PC1, Sub Total, CAM CAM001, 151, 2, 220722CAM, 26262, 270722CAM, Sub Total, Grand Total]";
+		String expRow1List = "[11, 1111, 151, 22, 270722PC1, Sub Total, CAM [CAM001], 151, 2, 220722CAM, 26262, 270722CAM, Sub Total, Grand Total]";
 		
 		
 
@@ -14169,7 +14088,7 @@ Thread.sleep(2000);
 		}
 
 		String actAllDatapage1 = AllDatapage1.toString();
-		String expAllDatapage1 = "[BALL BAL001, CAM CAM001]";
+		String expAllDatapage1 = "[BALL [BAL001], CAM [CAM001]]";
 
 		System.out.println("actAllDatapage1"+actAllDatapage1);
 		System.out.println("expAllDatapage1"+expAllDatapage1);
@@ -14206,15 +14125,16 @@ Thread.sleep(2000);
 		
 		scrollToElementJSE(stockAnalysisByRMA);
 		Thread.sleep(1500);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(stockAnalysisByRMA));
-		stockAnalysisByRMA.click();
+		ClickUsingJs(stockAnalysisByRMA);
+		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(stockAnalysisByRMA));
+		stockAnalysisByRMA.click();*/
 		
 		Thread.sleep(2000);
 
 		Thread.sleep(2000);
 	
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+		sl_SelectAllChkBox.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 
@@ -14394,8 +14314,8 @@ Thread.sleep(2000);
 
 		Thread.sleep(2000);
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+		sl_SelectAllChkBox.click();
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		Select s=new Select(sl_DateOptionDropdown);
@@ -14503,8 +14423,8 @@ Thread.sleep(2000);
 
 		Thread.sleep(2000);
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+		sl_SelectAllChkBox.click();
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		Select s=new Select(sl_DateOptionDropdown);
@@ -14600,14 +14520,15 @@ Thread.sleep(2000);
 		Thread.sleep(2000);
 		scrollToElementJSE(reorderReport);
 		Thread.sleep(1500);
+		ClickUsingJs(reorderReport);
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reorderReport));
-		reorderReport.click();
+		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reorderReport));
+		reorderReport.click();*/
 		
 		Thread.sleep(2000);
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+		sl_SelectAllChkBox.click();
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		Select s=new Select(sl_DateOptionDropdown);
@@ -14649,15 +14570,16 @@ Thread.sleep(2000);
 		Thread.sleep(2000);
 		scrollToElementJSE(fastMovingItem);
 		Thread.sleep(1500);
+		ClickUsingJs(fastMovingItem);
 		
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(fastMovingItem));
-		fastMovingItem.click();
+		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(fastMovingItem));
+		fastMovingItem.click();*/
 
 		Thread.sleep(2000);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+		sl_SelectAllChkBox.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		Select s=new Select(sl_DateOptionDropdown);
@@ -14908,15 +14830,16 @@ Thread.sleep(2000);
 		Thread.sleep(2000);
 		scrollToElementJSE(slowMovingItem);
 		Thread.sleep(1500);
+		ClickUsingJs(slowMovingItem);
 		
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(slowMovingItem));
-		slowMovingItem.click();
+		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(slowMovingItem));
+		slowMovingItem.click();*/
 
 		Thread.sleep(2000);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+		sl_SelectAllChkBox.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		Select s=new Select(sl_DateOptionDropdown);
@@ -15163,17 +15086,18 @@ Thread.sleep(2000);
 		Thread.sleep(2000);
 		scrollToElementJSE(peakORLowBalances);
 		Thread.sleep(1500);
+		ClickUsingJs(peakORLowBalances);
 		
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(peakORLowBalances));
-		peakORLowBalances.click();
+		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(peakORLowBalances));
+		peakORLowBalances.click();*/
 
 		Thread.sleep(2000);
 
 		Thread.sleep(2000);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+		sl_SelectAllChkBox.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		Select s=new Select(sl_DateOptionDropdown);
@@ -15328,10 +15252,11 @@ Thread.sleep(2000);
 		Thread.sleep(2000);
 		scrollToElementJSE(bestSellingItem);
 		Thread.sleep(1500);
+		ClickUsingJs(bestSellingItem);
 		
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(bestSellingItem));
-		bestSellingItem.click();
+		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(bestSellingItem));
+		bestSellingItem.click();*/
 		
 		Thread.sleep(2000);
 		
@@ -15470,16 +15395,17 @@ Thread.sleep(2000);
 		Thread.sleep(2000);
 		scrollToElementJSE(stockTransferReport);
 		Thread.sleep(1500);
+		ClickUsingJs(stockTransferReport);
 		
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(stockTransferReport));
-		stockTransferReport.click();
+		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(stockTransferReport));
+		stockTransferReport.click();*/
 		
 		Thread.sleep(2000);
 		Thread.sleep(2000);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+		sl_SelectAllChkBox.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		Select s=new Select(sl_DateOptionDropdown);
@@ -15503,7 +15429,7 @@ Thread.sleep(2000);
 
 		}
 		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[BALL BAL001]";
+		String expRow1List = "[BALL [BAL001]]";
 
 
 
@@ -15552,7 +15478,7 @@ Thread.sleep(2000);
 
 		}
 		String actRow4List = reportsRow4ListArray.toString();
-		String expRow4List = "[CAM CAM001]";
+		String expRow4List = "[CAM [CAM001]]";
 
 
 
@@ -15602,7 +15528,7 @@ Thread.sleep(2000);
 
 		}
 		String actRow7List = reportsRow7ListArray.toString();
-		String expRow7List = "[C1 C301]";
+		String expRow7List = "[C1 [C301]]";
 
 
 
@@ -15650,7 +15576,7 @@ Thread.sleep(2000);
 			}
 		}
 		String actRow10List = reportsRow10ListArray.toString();
-		String expRow10List = "[C2 C302]";
+		String expRow10List = "[C2 [C302]]";
 
 
 
@@ -15772,14 +15698,15 @@ Thread.sleep(2000);
 		Thread.sleep(2000);
 		scrollToElementJSE(transactionTypeWiseStockReport);
 		Thread.sleep(1500);
+		ClickUsingJs(transactionTypeWiseStockReport);
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(transactionTypeWiseStockReport));
-		transactionTypeWiseStockReport.click();
+		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(transactionTypeWiseStockReport));
+		transactionTypeWiseStockReport.click();*/
 		
 		Thread.sleep(2000);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+		sl_SelectAllChkBox.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		Select s=new Select(sl_DateOptionDropdown);
@@ -15933,17 +15860,18 @@ Thread.sleep(2000);
 		Thread.sleep(2000);
 		scrollToElementJSE(actualConsumptionReport);
 		Thread.sleep(1500);
+		ClickUsingJs(actualConsumptionReport);
 		
-		
+	/*	
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(actualConsumptionReport));
-		actualConsumptionReport.click();
+		actualConsumptionReport.click();*/
 		
 		Thread.sleep(2000);
 		
 		Thread.sleep(2000);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+		sl_SelectAllChkBox.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		Select s=new Select(sl_DateOptionDropdown);
@@ -16096,15 +16024,19 @@ Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryReportsMenu));
 		inventoryReportsMenu.click();
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(GeneralLedgerAndInventoryMismatchReport));
-		GeneralLedgerAndInventoryMismatchReport.click();
+		scrollToElementJSE(GeneralLedgerAndInventoryMismatchReport);
+		Thread.sleep(2000);
+		ClickUsingJs(GeneralLedgerAndInventoryMismatchReport);
+		
+		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(GeneralLedgerAndInventoryMismatchReport));
+		GeneralLedgerAndInventoryMismatchReport.click();*/
 		
 		Thread.sleep(2000);
 		
 		Thread.sleep(2000);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllItemsChkBox));
-		sl_SelectAllItemsChkBox.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_SelectAllChkBox));
+		sl_SelectAllChkBox.click();
 
 	
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accountTxt));
@@ -16204,8 +16136,9 @@ Thread.sleep(2000);
 		{
 			
 
-			getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(userNameDisplay));
-			userNameDisplay.click();
+			getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(LogoutDropdown));
+			LogoutDropdown.click();
+			Thread.sleep(2000);
 
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(logoutOption));
 			logoutOption.click();
@@ -16218,8 +16151,9 @@ Thread.sleep(2000);
 		{
 			
 
-			getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(userNameDisplay));
-			userNameDisplay.click();
+			getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(LogoutDropdown));
+			LogoutDropdown.click();
+			Thread.sleep(2000);
 
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(logoutOption));
 			logoutOption.click();

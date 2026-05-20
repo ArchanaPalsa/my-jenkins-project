@@ -2,11 +2,13 @@ package com.focus.Pages;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -560,6 +562,40 @@ public class DepartmentCodeIncrementPage extends BaseEngine {
 			password.clear();
 			Thread.sleep(2000);
 			password.sendKeys(pawslt);
+			
+			String compname="Account Properties And Customization";
+			
+			Select oSelect = new Select(companyDropDownList);
+			 
+			List <WebElement> elementCount = oSelect.getOptions();
+			
+			int cqSize = elementCount.size();
+			 
+			int zqSize=cSize+1;
+			 
+			System.out.println("CompanyDropdownList Count :"+cqSize);
+			 
+			System.out.println("Company dropdown is :"+ zqSize);
+		 
+		 
+			//Select dropdown= new Select(lp.companyDropDownList);
+		    int i;
+			  
+			//List<WebElement> list = dropdown.getOptions();
+
+			//List<String> text = new ArrayList<>();
+			for(i=0; i<elementCount.size(); i++) 
+			{
+				elementCount.get(i).getText();
+				String optionName = elementCount.get(i).getText();
+				if(optionName.toUpperCase().startsWith(compname.toUpperCase()))
+				{
+					System.out.println("q"+elementCount.get(i).getText());
+					elementCount.get(i).click();
+				}	
+			}
+
+			
 		    
 		    lp.clickOnSignInBtn();
 		    
@@ -569,16 +605,16 @@ public class DepartmentCodeIncrementPage extends BaseEngine {
 		    
 		    Thread.sleep(8000);
 		          
-		    getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(userNameTxt));
-		    userNameTxt.click();
+		    getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(usernametxt1));
+		    //usernametxt.click();
 		           	
-			String userInfo=userNameTxt.getText();
+			String userInfo=usernametxt1.getText();
 			
 			System.out.println("User Info : "+userInfo);
 			
-			System.out.println("User Info Capture Text :"+userNameTxt.getText());
+			System.out.println("User Info Capture Text :"+usernametxt1.getText());
 			
-			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogo));
+		/*	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogo));
 			
 			companyLogo.click();
 			
@@ -586,7 +622,7 @@ public class DepartmentCodeIncrementPage extends BaseEngine {
 			String getLoginCompanyName=getCompanyTxt.substring(0, 19);
 			System.out.println("company name :"+ getLoginCompanyName);
 			companyLogo.click();
-			
+			*/
 			
 		    
 		    String expuserInfo            ="SU";
@@ -595,7 +631,7 @@ public class DepartmentCodeIncrementPage extends BaseEngine {
 			System.out.println("***********************************checkLogoutAndLoginAfterEnablingMandatoryCheckboxInFieldsProperties*********************************");
 		    
 		    System.out.println("User Info                        : "+userInfo               +"  value expected  "+expuserInfo);
-		    System.out.println("Login Company Name               : "+getLoginCompanyName    +"  value expected  "+expLoginCompanyName);
+		  //  System.out.println("Login Company Name               : "+getLoginCompanyName    +"  value expected  "+expLoginCompanyName);
 		   
 		  
 			if(userInfo.equalsIgnoreCase(expuserInfo) /*&& getLoginCompanyName.equalsIgnoreCase(expLoginCompanyName)*/)
@@ -793,12 +829,12 @@ public class DepartmentCodeIncrementPage extends BaseEngine {
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(departmentMenu));
 			departmentMenu.click();
 			 
-
+			checkValidationMessage("");
 			Thread.sleep(2000);
 
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterAddGroupBtn));	
 			masterAddGroupBtn.click();
-
+			checkValidationMessage("");
 			Thread.sleep(2000);
 
 
@@ -819,6 +855,7 @@ public class DepartmentCodeIncrementPage extends BaseEngine {
 			String actSaveAccountMessage = checkValidationMessage(expSaveAccountMessage);
 
 			Thread.sleep(2000);
+			checkValidationMessage("");
 			closeBtn.click();
 			Thread.sleep(3000);
 
@@ -842,7 +879,7 @@ public class DepartmentCodeIncrementPage extends BaseEngine {
 
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterAddGroupBtn));	
 			masterAddGroupBtn.click();
-
+			checkValidationMessage("");
 			Thread.sleep(2000);
 
 			//leveltwo
@@ -863,6 +900,7 @@ public class DepartmentCodeIncrementPage extends BaseEngine {
 			checkValidationMessage(expSaveAccountMessage);
 
 			Thread.sleep(2000);
+			checkValidationMessage("");
 			closeBtn.click();
 			Thread.sleep(3000);
 
@@ -892,6 +930,7 @@ public class DepartmentCodeIncrementPage extends BaseEngine {
 
 			closeBtnAfterSave.click();
 
+			Thread.sleep(8000);
 
 			//level3
 			int count3 = WmasterGridBodyName.size();
@@ -1205,6 +1244,8 @@ public class DepartmentCodeIncrementPage extends BaseEngine {
 
 			Thread.sleep(2000);
 			
+			checkValidationMessage("");
+			
 			int count = WmasterGridBodyName.size();
 			
 			ArrayList<String> departmentNames = new ArrayList<String>();
@@ -1227,6 +1268,8 @@ public class DepartmentCodeIncrementPage extends BaseEngine {
 			masterNewBtn.click();
 
 			Thread.sleep(2000);
+			
+			checkValidationMessage("");
 
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(nameTxt));
 			nameTxt.sendKeys("LevelOneChildOne");
@@ -1295,7 +1338,7 @@ public class DepartmentCodeIncrementPage extends BaseEngine {
 			Thread.sleep(2000);
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(departmentMenu));
 			departmentMenu.click();
-			 
+			checkValidationMessage("");
 			Thread.sleep(2000);
 			
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterSearchTxt));
@@ -1327,7 +1370,7 @@ public class DepartmentCodeIncrementPage extends BaseEngine {
 			
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterNewBtn));
 			masterNewBtn.click();
-
+			checkValidationMessage("");
 			Thread.sleep(2000);
 
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(nameTxt));

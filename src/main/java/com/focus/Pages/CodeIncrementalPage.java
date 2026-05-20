@@ -61,27 +61,27 @@ public class CodeIncrementalPage extends BaseEngine
 	public static boolean checkLogin() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		
-		Thread.sleep(3000);
+		Thread.sleep(1500);
 		LoginPage lp=new LoginPage(getDriver()); 
 			
 	    String unamelt="su";
 	  
 	    String pawslt="su";
 	    
-	    Thread.sleep(3000);
+	    Thread.sleep(1500);
 	    getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(username));
 	    username.click();
-	    Thread.sleep(2000);
+	    Thread.sleep(1500);
 		username.clear();
-	    Thread.sleep(2000);
+	    Thread.sleep(1500);
 	    username.sendKeys(unamelt);
 	    getAction().moveToElement(username).sendKeys(Keys.TAB).perform();
 
 	    getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(password));
 		password.click();
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		password.clear();
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		password.sendKeys(pawslt);
 	    
 		String compname="Account Properties And Customization";
@@ -119,29 +119,24 @@ public class CodeIncrementalPage extends BaseEngine
 
 	    lp.clickOnSignInBtn();
 	    
-	    //checkRefershPopOnlogin();
 	    
-	    //checkPopUpWindow();
-	    
-	    Thread.sleep(5000);
+	    Thread.sleep(6000);
 	          
-	    getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(userNameDisplay));
-	   	userNameDisplay.click();
-	           	
-		String userInfo=userNameDisplay.getText();
+	  
+		String userInfo=usernametxt.getText();
 		
 		System.out.println("User Info : "+userInfo);
 		
-		System.out.println("User Info Capture Text :"+userNameDisplay.getText());
+		System.out.println("User Info Capture Text :"+usernametxt.getText());
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogo));
+	/*	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogo));
 		
 		companyLogo.click();
 		
 		String getCompanyTxt=companyName.getText();
-		String getLoginCompanyName=getCompanyTxt.substring(0, 19);
+		String getLoginCompanyName=getCompanyTxt.substring(0, 36);
 		System.out.println("company name :"+ getLoginCompanyName);
-		companyName.click();
+		companyName.click();*/
 		
 	
 	    
@@ -151,7 +146,7 @@ public class CodeIncrementalPage extends BaseEngine
 		System.out.println("***********************************checkLogin*********************************");
 	    
 		 System.out.println("User Info                        : "+userInfo               +"  value expected  "+expuserInfo);
-		    System.out.println("Login Company Name               : "+getLoginCompanyName    +"  value expected  "+expLoginCompanyName);
+		//    System.out.println("Login Company Name               : "+getLoginCompanyName    +"  value expected  "+expLoginCompanyName);
 		   
 			if(userInfo.equalsIgnoreCase(expuserInfo) /*&& getLoginCompanyName.equalsIgnoreCase(expLoginCompanyName)*/)
 			{	
@@ -164,10 +159,10 @@ public class CodeIncrementalPage extends BaseEngine
 		 }
 
 	
-	@FindBy(xpath="//*[@id='all_TabsField']/div[10]//ul//li[1]//a//i")
+	@FindBy(xpath="//*[@id='all_TabsField']//i[@class='icon-save hiconright2']")
 	public static WebElement headerDetailsSaveBtn;
 
-	@FindBy(xpath="//*[@id='iAcceptanceac']")
+	@FindBy(xpath="//*[@id='iCurrencyId']")
 	public static WebElement currencyTxt;
 	
 	
@@ -176,32 +171,32 @@ public class CodeIncrementalPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(homeMenu));
 		homeMenu.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(mastersMenu));
 		mastersMenu.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accounts));
 		accounts.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(1500);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterRibbonToExpandOptions));		
 		masterRibbonToExpandOptions.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(2500);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterCustamizemasterBtn));	
 		masterCustamizemasterBtn.click();
 
-		Thread.sleep(4000);
+		Thread.sleep(2500);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(generalTab));	
 		generalTab.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(generalMainTab));
 		generalMainTab.click();
 
@@ -218,12 +213,12 @@ public class CodeIncrementalPage extends BaseEngine
 			} 
 		}
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
 		extraFields_PropertiesTab.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		
 		Select bd = new Select(extraFields_PropertiesBehaviourDropdown);
 		bd.selectByVisibleText("Incremental");
@@ -235,7 +230,7 @@ public class CodeIncrementalPage extends BaseEngine
 		System.out.println("actTableInc:  "+actTableInc  + "expected value : "+expTableInc);
 		
 		IncCol1Row1.click();
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		
 		Select typeDD = new Select(IncTypeDropdown);
 		typeDD.selectByVisibleText("Incremental");
@@ -256,7 +251,7 @@ public class CodeIncrementalPage extends BaseEngine
 		Thread.sleep(1000);
 		IncNoOfTxt.sendKeys(Keys.TAB);
 		
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		
 		String actOpTxt = OutputTxt.getText();
 		String expOpTxt = "Output : 000001";
@@ -277,7 +272,7 @@ public class CodeIncrementalPage extends BaseEngine
 		System.out.println("expMessage: "+expMessage);
 		
 		
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(headerDetailsSaveBtn));
 		headerDetailsSaveBtn.click();
 
@@ -302,10 +297,14 @@ public class CodeIncrementalPage extends BaseEngine
 
 	public static boolean checkCreateAccountMasterToVerifyCodeIncrement() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		
 		getDriver().navigate().refresh();
-		Thread.sleep(3000);
+		Thread.sleep(1500);
+		
+		checkValidationMessage("No Dashlate Available for this Dashboard");
+		
+		Thread.sleep(1500);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(homeMenu));
 		homeMenu.click();
@@ -316,32 +315,41 @@ public class CodeIncrementalPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accounts));
 		accounts.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(2500);
+		
+		checkValidationMessage("");
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterNewBtn));
 		masterNewBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 
+		checkValidationMessage("");
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(nameTxt));
 		nameTxt.sendKeys("IncrementOne");
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		nameTxt.sendKeys(Keys.TAB);
-
-		currencyTxt.click();
-		Thread.sleep(2000);
-		currencyTxt.click();
+		Thread.sleep(1500);
 		
 		Thread.sleep(2000);
+		currencyTxt.click();
+		Thread.sleep(1500);
+		currencyTxt.click();
+		
+		Thread.sleep(1500);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
-
+		Thread.sleep(1500);
+		
 		String expSaveAccountMessage = "Saved Successfully";	
 		String actSaveAccountMessage = checkValidationMessage(expSaveAccountMessage);
 		
-		Thread.sleep(2000);
+		Thread.sleep(1500);
+		
+		checkValidationMessage("");
 		closeBtn.click();
-		Thread.sleep(3000);
+		Thread.sleep(4000);
 		
 		int count = masterGridBodyName.size();
 		
@@ -357,47 +365,53 @@ public class CodeIncrementalPage extends BaseEngine
 			{
 				Thread.sleep(1000);
 				getAction().doubleClick(masterGridBodyName.get(i)).build().perform();
+				Thread.sleep(3000);
 				System.out.println("Yes incrementOne is displayed...");
 				break;
 			}
 			
 		}
 		
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		String actCodeTxt1 = codeTxt.getAttribute("value");
 		String expCodeTxt1 = "009004";
 
 		System.out.println("actCodeTxt1: "+actCodeTxt1 +"expCodeTxt1:  "+expCodeTxt1);
 		
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		closeBtnAfterSave.click();
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterNewBtn));
 		masterNewBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
+		
+		checkValidationMessage("");
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(nameTxt));
 		nameTxt.sendKeys("IncrementTwo");
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		nameTxt.sendKeys(Keys.TAB);
-
+		Thread.sleep(1500);
+		
 		currencyTxt.click();
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		currencyTxt.click();
 		
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
-
+		Thread.sleep(1500);
 		checkValidationMessage(expSaveAccountMessage);
 
 		
-		Thread.sleep(2000);
+		Thread.sleep(1500);
+		
+		checkValidationMessage("");
 		closeBtn.click();
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		
 		for (int i = 0; i < count; i++) 
 		{
@@ -408,48 +422,53 @@ public class CodeIncrementalPage extends BaseEngine
 			{
 				Thread.sleep(1000);
 				getAction().doubleClick(masterGridBodyName.get(i)).build().perform();
+				Thread.sleep(3000);
 				break;
 			}
 			
 		}
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		String actCodeTxt2 = codeTxt.getAttribute("value");
 		String expCodeTxt2 = "009005";
 
 		System.out.println("actCodeTxt2: "+actCodeTxt2 +"expCodeTxt2:  "+expCodeTxt2);
 		
-		Thread.sleep(2000);
+		Thread.sleep(1500);
+		
+		checkValidationMessage("");
 		closeBtnAfterSave.click();
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterNewBtn));
 		masterNewBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(3000);
+		checkValidationMessage("");
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(nameTxt));
 		nameTxt.sendKeys("IncrementThree");
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		nameTxt.sendKeys(Keys.TAB);
-
+		Thread.sleep(1500);
+		
 		currencyTxt.click();
 		
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		currencyTxt.click();
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
-
+		Thread.sleep(1500);
 		checkValidationMessage(expSaveAccountMessage);
 		
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		
-
-		Thread.sleep(2000);
+		checkValidationMessage("");
+		Thread.sleep(1500);
 		closeBtn.click();
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		
 
 		for (int i = 0; i < count; i++) 
@@ -461,21 +480,22 @@ public class CodeIncrementalPage extends BaseEngine
 			{
 				Thread.sleep(1000);
 				getAction().doubleClick(masterGridBodyName.get(i)).build().perform();
+				Thread.sleep(3000);
 				break;
 			}
 		}
 		
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		String actCodeTxt3 = codeTxt.getAttribute("value");
 		String expCodeTxt3 = "009006";
 
 
 		System.out.println("actCodeTxt3: "+actCodeTxt3 +"expCodeTxt3:  "+expCodeTxt3);
 
-		
-		Thread.sleep(2000);
+		checkValidationMessage("");
+		Thread.sleep(1500);
 		closeBtnAfterSave.click();
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 		
 		if (actCodeTxt1.equalsIgnoreCase(expCodeTxt1) && actCodeTxt2.equalsIgnoreCase(expCodeTxt2) 
 				&& actCodeTxt3.equalsIgnoreCase(expCodeTxt3))
@@ -492,7 +512,7 @@ public class CodeIncrementalPage extends BaseEngine
 	public static boolean checkSavedAccountsInGrid() throws InterruptedException
 	{
 		
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(homeMenu));
 		homeMenu.click();
@@ -503,7 +523,7 @@ public class CodeIncrementalPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accounts));
 		accounts.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		
 		int count = masterGridBodyName.size();
 		boolean accountVisiblity = false;
@@ -534,36 +554,41 @@ public class CodeIncrementalPage extends BaseEngine
 	
 	public static boolean checkRemoveIncrementalForCode() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
-		Thread.sleep(2000);
+		Thread.sleep(1500);
+		
+		getDriver().navigate().refresh();
+		Thread.sleep(1200);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(homeMenu));
 		homeMenu.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(mastersMenu));
 		mastersMenu.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accounts));
 		accounts.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(1500);
+		
+		checkValidationMessage("");
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterRibbonToExpandOptions));		
 		masterRibbonToExpandOptions.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterCustamizemasterBtn));	
 		masterCustamizemasterBtn.click();
 
-		Thread.sleep(4000);
+		Thread.sleep(2500);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(generalTab));	
 		generalTab.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(generalMainTab));
 		generalMainTab.click();
 
@@ -580,12 +605,12 @@ public class CodeIncrementalPage extends BaseEngine
 			} 
 		}
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
 		extraFields_PropertiesTab.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		
 
 		Select bd = new Select(extraFields_PropertiesBehaviourDropdown);
@@ -595,6 +620,7 @@ public class CodeIncrementalPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
 		extraFields_OkBtn.click();
 		
+		Thread.sleep(2500);
 		
 		String expMessage="Field Updated Successfully";
 		
@@ -605,10 +631,12 @@ public class CodeIncrementalPage extends BaseEngine
 		System.out.println("expMessage: "+expMessage);
 		
 		
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(headerDetailsSaveBtn));
 		headerDetailsSaveBtn.click();
 
+		Thread.sleep(1500);
+		
 		String expMessageOnSave = "Master updated successfully";
 		String actMessageOnSave=checkValidationMessage(expMessageOnSave);
 
@@ -633,14 +661,18 @@ public class CodeIncrementalPage extends BaseEngine
 
 	public static boolean checkLogoutAndLoginAfterCustomization() throws InterruptedException
 	{	
-		Thread.sleep(3000);
+		Thread.sleep(1500);
+		getDriver().navigate().refresh();
+		Thread.sleep(1200);
+		getAction().moveToElement(LogoutDropdown).build().perform();
+		Thread.sleep(1200);
 		getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(LogoutDropdown));
 		LogoutDropdown.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(logoutOption));
 		logoutOption.click();
 		
-		Thread.sleep(4000);
+		Thread.sleep(2500);
 		
 		LoginPage lp=new LoginPage(getDriver()); 
 			
@@ -650,17 +682,17 @@ public class CodeIncrementalPage extends BaseEngine
 	    
 	    getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(username));
 	    username.click();
-	    Thread.sleep(2000);
+	    Thread.sleep(1500);
 		username.clear();
-	    Thread.sleep(2000);
+	    Thread.sleep(1500);
 	    username.sendKeys(unamelt);
 	    //getAction().moveToElement(username).sendKeys(Keys.TAB).perform();
 
 	    /*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(password));
 		password.click();
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		password.clear();*/
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		password.sendKeys(pawslt);
 		String compname="Account Properties And Customization";
 		
@@ -700,27 +732,24 @@ public class CodeIncrementalPage extends BaseEngine
 	    
 	    //checkPopUpWindow();
 	    
-	    Thread.sleep(3000);
+	    Thread.sleep(1500);
 	    
 	    reLogin(unamelt, pawslt, "Account Properties And Customization");
-	          
-	    getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(userNameTxt));
-	    userNameTxt.click();
-	           	
-		String userInfo=userNameTxt.getText();
+	    
+		String userInfo=usernametxt.getText();
 		
 		System.out.println("User Info : "+userInfo);
 		
-		System.out.println("User Info Capture Text :"+userNameTxt.getText());
+		System.out.println("User Info Capture Text :"+usernametxt.getText());
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogoImg));
+	/*	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogoImg));
 		
 		companyLogoImg.click();
 		
 		String getCompanyTxt=companyName.getText();
 		String getLoginCompanyName=getCompanyTxt.substring(0, 36);
 		System.out.println("company name :"+ getLoginCompanyName);
-		companyLogoImg.click();
+		companyLogoImg.click();*/
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(dashboardName));
 		
@@ -737,7 +766,7 @@ public class CodeIncrementalPage extends BaseEngine
 		System.out.println("***********************************checkLogin*********************************");
 	    
 	    System.out.println("User Info                        : "+userInfo               +"  value expected  "+expuserInfo);
-	    System.out.println("Login Company Name               : "+getLoginCompanyName    +"  value expected  "+expLoginCompanyName);
+	   // System.out.println("Login Company Name               : "+getLoginCompanyName    +"  value expected  "+expLoginCompanyName);
 	    System.out.println("Dashboard                        : "+getDashboard           +"  value expected  "+expDashboard);
 	   
 	  
@@ -763,37 +792,37 @@ public class CodeIncrementalPage extends BaseEngine
 	public static boolean checkSaveCopyFromParentAndIncrementalForGroupAccounts() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(homeMenu));
 		homeMenu.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(mastersMenu));
 		mastersMenu.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accounts));
 		accounts.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(1500);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterRibbonToExpandOptions));		
 		masterRibbonToExpandOptions.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 
 	
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterCustamizemasterBtn));	
 		masterCustamizemasterBtn.click();
 
-		Thread.sleep(4000);
+		Thread.sleep(2500);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(generalTab));	
 		generalTab.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(generalMainTab));
 		generalMainTab.click();
 
@@ -810,12 +839,12 @@ public class CodeIncrementalPage extends BaseEngine
 			} 
 		}
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
 		extraFields_PropertiesTab.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		
 		if (extraFields_PropertiesCopyFromParentChekboxSelected.isSelected() ==false) 
 		{
@@ -825,7 +854,7 @@ public class CodeIncrementalPage extends BaseEngine
 		boolean actCFP = extraFields_PropertiesCopyFromParentChekboxSelected.isSelected();
 		boolean expCFP = true;
 		
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		
 		Select bd = new Select(extraFields_PropertiesBehaviourDropdown);
 		bd.selectByVisibleText("Incremental");
@@ -837,7 +866,7 @@ public class CodeIncrementalPage extends BaseEngine
 		System.out.println("actTableInc:  "+actTableInc  + "expected value : "+expTableInc);
 		
 		IncCol1Row1.click();
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		
 		Select typeDD = new Select(IncTypeDropdown);
 		typeDD.selectByVisibleText("Field");
@@ -845,7 +874,7 @@ public class CodeIncrementalPage extends BaseEngine
 		
 		IncTypeDropdown.sendKeys(Keys.TAB);
 		
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		
 		Select valueDD = new Select(valueDropdown);
 		valueDD.selectByVisibleText("sCode");
@@ -862,7 +891,7 @@ public class CodeIncrementalPage extends BaseEngine
 		Thread.sleep(1000);
 		IncNoOfTxt.sendKeys(Keys.TAB);
 		
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		
 		
 		typeDD.selectByVisibleText("Incremental");
@@ -883,7 +912,7 @@ public class CodeIncrementalPage extends BaseEngine
 		Thread.sleep(1000);
 		IncNoOfTxt.sendKeys(Keys.TAB);
 		
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		
 		String actOpTxt = OutputTxt.getText();
 		String expOpTxt = "Output : XXXXXXX00000001";
@@ -904,7 +933,7 @@ public class CodeIncrementalPage extends BaseEngine
 		System.out.println("expMessage: "+expMessage);
 		
 		
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(headerDetailsSaveBtn));
 		headerDetailsSaveBtn.click();
 
@@ -939,12 +968,12 @@ public class CodeIncrementalPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accounts));
 		accounts.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterAddGroupBtn));	
 		masterAddGroupBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 
 
 
@@ -954,18 +983,18 @@ public class CodeIncrementalPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(codeTxt));
 		codeTxt.sendKeys("LevelCode");
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
 
 		String expSaveAccountMessage = "Saved Successfully";	
 		String actSaveAccountMessage = checkValidationMessage(expSaveAccountMessage);
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		closeBtn.click();
-		Thread.sleep(3000);
+		Thread.sleep(4000);
 
 		int count = masterGridBodyName.size();
 
@@ -978,38 +1007,45 @@ public class CodeIncrementalPage extends BaseEngine
 			{
 				Thread.sleep(1000);
 				getAction().doubleClick(masterGridBodyName.get(i)).build().perform();
+				Thread.sleep(3000);
 			}
 			break;
 		}
 
 
-		Thread.sleep(3000);
+		Thread.sleep(1500);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterAddGroupBtn));	
 		masterAddGroupBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
+		
+		checkValidationMessage("");
 
 		//leveltwo
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(nameTxt));
 		nameTxt.sendKeys("CopyFromParentAndIncrementLevelTwo");
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		nameTxt.sendKeys(Keys.TAB);
+		
+		Thread.sleep(1500);
 
 		currencyTxt.click();
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		currencyTxt.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
-
+		Thread.sleep(1500);
+		
 		checkValidationMessage(expSaveAccountMessage);
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
+		checkValidationMessage("");
 		closeBtn.click();
-		Thread.sleep(3000);
+		Thread.sleep(4000);
 
 		int count2 = masterGridBodyName.size();
 	
@@ -1026,9 +1062,10 @@ public class CodeIncrementalPage extends BaseEngine
 			}
 		}
 
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 		masterEditBtn.click();
-		Thread.sleep(5000);
+		checkValidationMessage("");
+		Thread.sleep(2500);
 
 		String actCodeTxt1 = codeTxt.getAttribute("value");
 		String expCodeTxt1 = "evelCode00000001";
@@ -1037,6 +1074,7 @@ public class CodeIncrementalPage extends BaseEngine
 
 		closeBtnAfterSave.click();
 
+		Thread.sleep(4000);
 
 		//level3
 		int count3 = masterGridBodyName.size();
@@ -1050,35 +1088,39 @@ public class CodeIncrementalPage extends BaseEngine
 			{
 				Thread.sleep(1000);
 				getAction().doubleClick(masterGridBodyName.get(i)).build().perform();
+				Thread.sleep(3000);
 			}
 		}
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterAddGroupBtn));	
 		masterAddGroupBtn.click();
 
-		Thread.sleep(2000);
-
+		Thread.sleep(1500);
+		checkValidationMessage("");
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(nameTxt));
 		nameTxt.sendKeys("CopyFromParentAndIncrementLevelThree");
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		nameTxt.sendKeys(Keys.TAB);
-
+		Thread.sleep(1500);
+		
 		currencyTxt.click();
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		currencyTxt.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
-
+		Thread.sleep(1500);
 		checkValidationMessage(expSaveAccountMessage);
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
+		checkValidationMessage("");
 		closeBtn.click();
-		Thread.sleep(3000);
+		Thread.sleep(4000);
 
 		int count4 = masterGridBodyName.size();
 		for (int i = 0; i < count4; i++) 
@@ -1094,10 +1136,12 @@ public class CodeIncrementalPage extends BaseEngine
 			}
 		}
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		masterEditBtn.click();
-		Thread.sleep(5000);
-
+		Thread.sleep(2500);
+		
+		checkValidationMessage("");
+		
 		String actCodeTxt2 = codeTxt.getAttribute("value");
 		String expCodeTxt2 = "velCode000000001";
 
@@ -1105,6 +1149,8 @@ public class CodeIncrementalPage extends BaseEngine
 
 
 		closeBtnAfterSave.click();
+		Thread.sleep(4000);
+		
 
 		//level4
 
@@ -1119,35 +1165,41 @@ public class CodeIncrementalPage extends BaseEngine
 			{
 				Thread.sleep(1000);
 				getAction().doubleClick(masterGridBodyName.get(i)).build().perform();
+				Thread.sleep(3000);
 			}
 		}
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterAddGroupBtn));	
 		masterAddGroupBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 
+		checkValidationMessage("");
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(nameTxt));
 		nameTxt.sendKeys("CopyFromParentAndIncrementLevelFour");
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		nameTxt.sendKeys(Keys.TAB);
-
+		Thread.sleep(2500);
+		
 		currencyTxt.click();
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		currencyTxt.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
 
 		checkValidationMessage(expSaveAccountMessage);
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
+		
+		checkValidationMessage("");
 		closeBtn.click();
-		Thread.sleep(3000);
+		Thread.sleep(1500);
 
 		int count6 = masterGridBodyName.size();
 		for (int i = 0; i < count6; i++) 
@@ -1163,10 +1215,11 @@ public class CodeIncrementalPage extends BaseEngine
 			}
 		}
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		masterEditBtn.click();
-		Thread.sleep(5000);
-
+		Thread.sleep(2500);
+		checkValidationMessage("");
+		
 		String actCodeTxt3 = codeTxt.getAttribute("value");
 		String expCodeTxt3 = "elCode0000000001";
 
@@ -1174,6 +1227,8 @@ public class CodeIncrementalPage extends BaseEngine
 
 
 		closeBtnAfterSave.click();
+		
+		Thread.sleep(4000);
 
 		//level5
 
@@ -1189,35 +1244,41 @@ public class CodeIncrementalPage extends BaseEngine
 			{
 				Thread.sleep(1000);
 				getAction().doubleClick(masterGridBodyName.get(i)).build().perform();
+				Thread.sleep(3000);
+				break;
 			}
 		}
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterAddGroupBtn));	
 		masterAddGroupBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 
+		checkValidationMessage("");
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(nameTxt));
 		nameTxt.sendKeys("CopyFromParentAndIncrementLevelFive");
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		nameTxt.sendKeys(Keys.TAB);
 
 		currencyTxt.click();
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		currencyTxt.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
 
 		checkValidationMessage(expSaveAccountMessage);
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
+		checkValidationMessage("");
 		closeBtn.click();
-		Thread.sleep(3000);
+		
+		Thread.sleep(4000);
 
 		int count8 = masterGridBodyName.size();
 		for (int i = 0; i < count8; i++) 
@@ -1230,12 +1291,13 @@ public class CodeIncrementalPage extends BaseEngine
 			{
 				Thread.sleep(1000);
 				masterGridBodyChkbox.get(i).click();
+				break;
 			}
 		}
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		masterEditBtn.click();
-		Thread.sleep(5000);
+		Thread.sleep(2500);
 
 		String actCodeTxt4 = codeTxt.getAttribute("value");
 		String expCodeTxt4 = "lCode00000000001";
@@ -1244,6 +1306,8 @@ public class CodeIncrementalPage extends BaseEngine
 
 
 		closeBtnAfterSave.click();
+		
+		Thread.sleep(4000);
 
 		//level6
 
@@ -1259,35 +1323,42 @@ public class CodeIncrementalPage extends BaseEngine
 			{
 				Thread.sleep(1000);
 				getAction().doubleClick(masterGridBodyName.get(i)).build().perform();
+				Thread.sleep(2500);
+				break;
 			}
 		}
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterAddGroupBtn));	
 		masterAddGroupBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
+		
+		checkValidationMessage("");
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(nameTxt));
 		nameTxt.sendKeys("CopyFromParentAndIncrementLevelSix");
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		nameTxt.sendKeys(Keys.TAB);
 
 		currencyTxt.click();
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		currencyTxt.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
 
 		checkValidationMessage(expSaveAccountMessage);
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
+		
+		checkValidationMessage("");
+		
 		closeBtn.click();
-		Thread.sleep(3000);
+		Thread.sleep(1500);
 
 		int count10 = masterGridBodyName.size();
 		for (int i = 0; i < count10; i++) 
@@ -1302,10 +1373,11 @@ public class CodeIncrementalPage extends BaseEngine
 			}
 		}
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		masterEditBtn.click();
-		Thread.sleep(5000);
-
+		Thread.sleep(2500);
+		checkValidationMessage("");
+		
 		String actCodeTxt5 = codeTxt.getAttribute("value");
 		String expCodeTxt5 = "Code000000000001";
 
@@ -1314,7 +1386,7 @@ public class CodeIncrementalPage extends BaseEngine
 
 		closeBtnAfterSave.click();
 
-
+		checkValidationMessage("");
 
 		if (actCodeTxt1.equalsIgnoreCase(expCodeTxt1) && actCodeTxt2.equalsIgnoreCase(expCodeTxt2) 
 				&& actCodeTxt3.equalsIgnoreCase(expCodeTxt3) && actCodeTxt4.equalsIgnoreCase(expCodeTxt4)
@@ -1332,7 +1404,7 @@ public class CodeIncrementalPage extends BaseEngine
 
 	public static boolean checkSaveNormalAccInLevelOne() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(homeMenu));
 		homeMenu.click();
 
@@ -1343,6 +1415,8 @@ public class CodeIncrementalPage extends BaseEngine
 		accounts.click();
 
 		Thread.sleep(2000);
+		
+		checkValidationMessage("");
 		
 		int count = masterGridBodyName.size();
 		
@@ -1358,34 +1432,42 @@ public class CodeIncrementalPage extends BaseEngine
 			{
 				Thread.sleep(1000);
 				getAction().doubleClick(masterGridBodyName.get(i)).build().perform();
+				break;
 			}
-			break;
+			
 		}
 		
+		Thread.sleep(2500);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterNewBtn));
 		masterNewBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(2500);
+		
+		checkValidationMessage("");
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(nameTxt));
+		nameTxt.click();
 		nameTxt.sendKeys("LevelOneChildOne");
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		nameTxt.sendKeys(Keys.TAB);
 
 		currencyTxt.click();
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		currencyTxt.click();
 		
-		Thread.sleep(2000);
+		
+		Thread.sleep(1500);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
 
 		String expSaveAccountMessage = "Saved Successfully";	
 		String actSaveAccountMessage = checkValidationMessage(expSaveAccountMessage);
 		
-		Thread.sleep(2000);
+		Thread.sleep(1500);
+		
+		checkValidationMessage("");
 		closeBtn.click();
-		Thread.sleep(3000);
+		Thread.sleep(1500);
 		
 		
 		
@@ -1422,28 +1504,28 @@ public class CodeIncrementalPage extends BaseEngine
 	{
 		getDriver().navigate().refresh();
 		
-		Thread.sleep(3000);
+		Thread.sleep(1500);
 		
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(homeMenu));
 		getAction().moveToElement(homeMenu).click().build().perform();
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(mastersMenu));
 		mastersMenu.click();
 		
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accounts));
 		accounts.click();
-		
-		Thread.sleep(3000);
+		checkValidationMessage("");
+		Thread.sleep(4000);
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterSearchTxt));
 		masterSearchTxt.click();
 		masterSearchTxt.sendKeys("CopyFromParentAndIncrementLevelFour");
 		masterSearchTxt.sendKeys(Keys.ENTER);
 		
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		
 		int count = masterGridBodyName.size();
 		
@@ -1459,7 +1541,7 @@ public class CodeIncrementalPage extends BaseEngine
 				Thread.sleep(1000);
 				
 				getAction().doubleClick(masterGridBodyChkbox.get(i)).build().perform();
-				
+				break;
 			}
 		}
 		
@@ -1467,30 +1549,37 @@ public class CodeIncrementalPage extends BaseEngine
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterNewBtn));
 		masterNewBtn.click();
-
-		Thread.sleep(2000);
-
+		checkValidationMessage("");
+		Thread.sleep(4000);
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(nameTxt));
+		nameTxt.click();
 		nameTxt.sendKeys("LevelFourChildOne");
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		nameTxt.sendKeys(Keys.TAB);
-
+		Thread.sleep(1500);
+		
+		getAction().moveToElement(currencyTxt).build().perform();
+		Thread.sleep(1500);
 		currencyTxt.click();
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		currencyTxt.click();
 		
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
 
 		String expSaveAccountMessage = "Saved Successfully";	
 		String actSaveAccountMessage = checkValidationMessage(expSaveAccountMessage);
 		
-		Thread.sleep(2000);
+		Thread.sleep(1500);
+		
 		closeBtn.click();
-		Thread.sleep(3000);
+		Thread.sleep(1500);
 		
+		checkValidationMessage("");
 		
+		Thread.sleep(2000);
 		
 		int codecount = masterGridBodyCode.size();
 		
@@ -1522,6 +1611,413 @@ public class CodeIncrementalPage extends BaseEngine
 		
 		
 	}
+	
+	public static boolean checkSaveCodeIncrementalWithUserInput() throws EncryptedDocumentException, InvalidFormatException, InterruptedException, IOException
+	{
+
+		int count = fieldCaptionTxtList.size();
+
+		for (int i = 0; i < count; i++) 
+		{
+			String data = fieldCaptionTxtList.get(i).getText();
+
+			if (data.equalsIgnoreCase("Code")) 
+			{
+				editFieldList.get(i).click();
+				break;
+			} 
+		}
+
+		Thread.sleep(1500);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
+		extraFields_PropertiesTab.click();
+
+		Thread.sleep(1500);
+		
+		Select bd = new Select(extraFields_PropertiesBehaviourDropdown);
+		bd.selectByVisibleText("Incremental");
+		
+		
+		boolean actTableInc = incrementalTable.isDisplayed();
+		boolean expTableInc = true;
+		
+		System.out.println("actTableInc:  "+actTableInc  + "expected value : "+expTableInc);
+		
+		IncCol1Row1.click();
+		Thread.sleep(1500);
+		
+		Select typeDD = new Select(IncTypeDropdown);
+		typeDD.selectByVisibleText("User Input");
+		Thread.sleep(1000);
+		
+		IncTypeDropdown.sendKeys(Keys.TAB);
+		
+		Thread.sleep(1500);
+		
+		IncValueTxtForUIP.sendKeys("IncUserInput");
+		IncValueTxtForUIP.sendKeys(Keys.TAB);
+		
+		IncStartingTxt.sendKeys("0");
+		Thread.sleep(1000);
+		IncStartingTxt.sendKeys(Keys.TAB);
+		
+		
+		IncNoOfTxt.sendKeys("7");
+		Thread.sleep(1000);
+		IncNoOfTxt.sendKeys(Keys.TAB);
+		
+		Thread.sleep(1500);
+		
+		
+		typeDD.selectByVisibleText("Character Input");
+		Thread.sleep(1000);
+		IncTypeDropdown.sendKeys(Keys.TAB);
+		
+		Thread.sleep(1500);
+		Select charDD = new Select(CharactersDropdown);
+		charDD.selectByVisibleText("-");
+		
+		CharactersDropdown.sendKeys(Keys.TAB);
+		
+		IncStartingTxt.sendKeys("0");
+		Thread.sleep(1000);
+		IncStartingTxt.sendKeys(Keys.TAB);
+		
+		
+		IncNoOfTxt.sendKeys("1");
+		Thread.sleep(1000);
+		IncNoOfTxt.sendKeys(Keys.TAB);
+		
+		Thread.sleep(1500);
+		
+		
+		typeDD.selectByVisibleText("Incremental");
+		Thread.sleep(1000);
+		
+		IncTypeDropdown.sendKeys(Keys.TAB);
+		
+		IncValueTxt.sendKeys("1");
+		Thread.sleep(1000);
+		IncValueTxt.sendKeys(Keys.TAB);
+		
+		IncStartingTxt.sendKeys("0");
+		Thread.sleep(1000);
+		IncStartingTxt.sendKeys(Keys.TAB);
+		
+		
+		IncNoOfTxt.sendKeys("5");
+		Thread.sleep(1000);
+		IncNoOfTxt.sendKeys(Keys.TAB);
+		
+		Thread.sleep(1500);
+		
+		String actOpTxt = OutputTxt.getText();
+		String expOpTxt = "Output : IncUser-00001";
+		
+		
+		System.out.println("actOpTxt:  "+actOpTxt  + "expected value : "+expOpTxt);
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
+		extraFields_OkBtn.click();
+		
+		
+		String expMessage="Field Updated Successfully";
+		
+		String actMessage=checkValidationMessage(expMessage);
+		
+		
+		System.out.println("actMessage: "+actMessage);
+		System.out.println("expMessage: "+expMessage);
+		
+		
+		Thread.sleep(1500);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(headerDetailsSaveBtn));
+		headerDetailsSaveBtn.click();
+
+		String expMessageOnSave = "Master updated successfully";
+		String actMessageOnSave=checkValidationMessage(expMessageOnSave);
+
+	
+
+		if (actOpTxt.equalsIgnoreCase(expOpTxt) && actMessage.equalsIgnoreCase(expMessage) && actMessageOnSave.equalsIgnoreCase(expMessageOnSave))
+		{
+			System.out.println(" Test Pass: code Customization Field done ");
+			return true;
+		}
+		else
+		{
+			System.out.println(" Test Fail: code Customization Field not done ");
+			return false;
+
+		}
+		
+	}
+	
+	public static boolean checkSaveAccountMasterToVerifyUserInputIncrement() throws EncryptedDocumentException, InvalidFormatException, InterruptedException, IOException
+	{
+
+		Thread.sleep(1500);
+
+		getDriver().navigate().refresh();
+		Thread.sleep(1500);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(homeMenu));
+		homeMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(mastersMenu));
+		mastersMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accounts));
+		accounts.click();
+		Thread.sleep(4000);
+		checkValidationMessage("");
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterNewBtn));
+		masterNewBtn.click();
+		Thread.sleep(4000);
+		checkValidationMessage("");
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(nameTxt));
+		nameTxt.click();
+		nameTxt.sendKeys("IncrementWithUI");
+		Thread.sleep(1500);
+		nameTxt.sendKeys(Keys.TAB);
+		Thread.sleep(1500);
+		
+		getAction().moveToElement(CurrencyField).build().perform();
+		Thread.sleep(1500);
+		CurrencyField.click();
+		Thread.sleep(1500);
+		//CurrencyField.click();
+		
+		//Thread.sleep(1500);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
+		SaveBtn.click();
+
+		String expSaveAccountMessage = "Saved Successfully";	
+		String actSaveAccountMessage = checkValidationMessage(expSaveAccountMessage);
+		
+		Thread.sleep(1500);
+		checkValidationMessage("");
+		closeBtn.click();
+		Thread.sleep(2000);
+		
+		int count = masterGridBodyName.size();
+		
+		ArrayList<String> AccountNames = new ArrayList<String>();
+		
+		for (int i = 0; i < count; i++) 
+		{
+			Thread.sleep(1000);
+			String data = masterGridBodyName.get(i).getText();
+			AccountNames.add(data);
+		
+			if (data.equalsIgnoreCase("IncrementWithUI")) 
+			{
+				Thread.sleep(1000);
+				getAction().doubleClick(masterGridBodyName.get(i)).build().perform();
+				System.out.println("Yes IncrementWithUI is displayed...");
+				break;
+			}
+			
+		}
+		
+		Thread.sleep(1500);
+		String actCodeTxt1 = codeTxt.getAttribute("value");
+		String expCodeTxt1 = "IncUser-00001";
+
+		System.out.println("actCodeTxt1: "+actCodeTxt1 +"expCodeTxt1:  "+expCodeTxt1);
+		
+		Thread.sleep(1500);
+		closeBtnAfterSave.click();
+		Thread.sleep(2000);
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterNewBtn));
+		masterNewBtn.click();
+
+		Thread.sleep(2000);
+		checkValidationMessage("");
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(nameTxt));
+		nameTxt.click();
+		nameTxt.sendKeys("IncrementWithUITwo");
+		Thread.sleep(1500);
+		nameTxt.sendKeys(Keys.TAB);
+
+		getAction().moveToElement(CurrencyField).build().perform();
+		Thread.sleep(2000);
+		CurrencyField.click();
+		Thread.sleep(1500);
+		CurrencyField.click();
+		
+		Thread.sleep(1500);
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
+		SaveBtn.click();
+
+		checkValidationMessage(expSaveAccountMessage);
+
+		
+		Thread.sleep(1500);
+		closeBtn.click();
+		Thread.sleep(1500);
+		checkValidationMessage("");
+		
+		for (int i = 0; i < count; i++) 
+		{
+			String data = masterGridBodyName.get(i).getText();
+			AccountNames.add(data);
+		
+			if (data.equalsIgnoreCase("IncrementWithUITwo")) 
+			{
+				Thread.sleep(1000);
+				getAction().doubleClick(masterGridBodyName.get(i)).build().perform();
+				break;
+			}
+			
+		}
+		Thread.sleep(1500);
+		String actCodeTxt2 = codeTxt.getAttribute("value");
+		String expCodeTxt2 = "IncUser-00002";
+
+		System.out.println("actCodeTxt2: "+actCodeTxt2 +"expCodeTxt2:  "+expCodeTxt2);
+		
+		Thread.sleep(1500);
+		closeBtnAfterSave.click();
+		Thread.sleep(1500);
+
+		Thread.sleep(1500);
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterNewBtn));
+		masterNewBtn.click();
+
+		Thread.sleep(2000);
+		
+		checkValidationMessage("");
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(nameTxt));
+		nameTxt.click();
+		nameTxt.sendKeys("IncrementWithUIThree");
+		Thread.sleep(1500);
+		nameTxt.sendKeys(Keys.TAB);
+
+		
+		getAction().moveToElement(CurrencyField).build().perform();
+		Thread.sleep(2000);
+		CurrencyField.click();
+		
+		Thread.sleep(1500);
+		CurrencyField.click();
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
+		SaveBtn.click();
+
+		checkValidationMessage(expSaveAccountMessage);
+		
+		Thread.sleep(1500);
+		
+
+		Thread.sleep(1500);
+		closeBtn.click();
+		Thread.sleep(1500);
+		
+		checkValidationMessage("");
+		for (int i = 0; i < count; i++) 
+		{
+			String data = masterGridBodyName.get(i).getText();
+			AccountNames.add(data);
+		
+			if (data.equalsIgnoreCase("IncrementWithUIThree")) 
+			{
+				Thread.sleep(1000);
+				getAction().doubleClick(masterGridBodyName.get(i)).build().perform();
+				break;
+			}
+		}
+		
+		Thread.sleep(1500);
+		String actCodeTxt3 = codeTxt.getAttribute("value");
+		String expCodeTxt3 = "IncUser-00003";
+
+
+		System.out.println("actCodeTxt3: "+actCodeTxt3 +"expCodeTxt3:  "+expCodeTxt3);
+
+		
+		Thread.sleep(1500);
+		closeBtnAfterSave.click();
+		Thread.sleep(1500);
+		
+		if (actCodeTxt1.equalsIgnoreCase(expCodeTxt1) && actCodeTxt2.equalsIgnoreCase(expCodeTxt2) 
+				&& actCodeTxt3.equalsIgnoreCase(expCodeTxt3))
+		{
+			return true;
+		} 
+		else {
+			return false;
+		}
+
+
+	
+	}
+	
+	
+	public static boolean checkSavedUserInputIncrementAccounts() throws InterruptedException
+	{
+		Thread.sleep(1500);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(homeMenu));
+		homeMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(mastersMenu));
+		mastersMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accounts));
+		accounts.click();
+
+		Thread.sleep(1500);
+		
+		int count = masterGridBodyName.size();
+		
+		ArrayList<String> AccountNames = new ArrayList<String>();
+		ArrayList<String> AccountCode = new ArrayList<String>();
+		
+		for (int i = 0; i < count; i++) 
+		{
+			String data = masterGridBodyName.get(i).getText();
+			String data2 = masterGridBodyCode.get(i).getText();
+			
+			if (data.equalsIgnoreCase("IncrementWithUI")|| data.equalsIgnoreCase("IncrementWithUITwo") || data.equalsIgnoreCase("IncrementWithUIThree")) 
+			{
+				AccountNames.add(data);
+				AccountCode.add(data2);
+			}
+			
+			
+		}
+		
+		String actAccountNames = AccountNames.toString();
+		String expAccountNames = "[IncrementWithUIThree, IncrementWithUITwo, IncrementWithUI]";
+		
+		String actAccountCodes = AccountCode.toString();
+		String expAccountCodes = "[IncUser-00003, IncUser-00002, IncUser-00001]";
+		
+		System.out.println("actAccountNames:"+actAccountNames);
+		System.out.println("expAccountNames:"+expAccountNames);
+		
+		System.out.println("actAccountCodes:"+actAccountCodes);
+		System.out.println("expAccountCodes:"+expAccountCodes);
+		
+		if (actAccountNames.equalsIgnoreCase(expAccountNames) && actAccountCodes.equalsIgnoreCase(expAccountCodes)) 
+		{
+			return true;	
+		}
+		else 
+		{
+			return false;
+		}
+	
+	}
+
 
 	 public CodeIncrementalPage(WebDriver driver)
 	 {

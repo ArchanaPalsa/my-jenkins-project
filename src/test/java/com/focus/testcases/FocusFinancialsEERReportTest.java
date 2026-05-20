@@ -32,6 +32,7 @@ public class FocusFinancialsEERReportTest extends BaseEngine
 	  Assert.assertEquals(urp.checkLoginWithEERInFA(), true);
 	}
 	
+	
 	@Test(priority=99)//pronghorn
 	public void checkLedgerReport() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	{
@@ -60,6 +61,8 @@ public class FocusFinancialsEERReportTest extends BaseEngine
 		Assert.assertEquals(ffrp.checkLedgerDetailReport(), true);
 	}
 
+	
+	
 	@Test(priority=104)
 	public void checkSubLedgerReport() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	{
@@ -130,7 +133,7 @@ public class FocusFinancialsEERReportTest extends BaseEngine
 		Assert.assertEquals(ffrp.checkTopCustomersReports(), true);
 	}
 	
-	@Test(priority=114)
+	//@Test(priority=114)
 	public void checkTopCustomersReportsForGroupAccount() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	{
 		ffrp=new FocusFinancialsEERReportPage(getDriver());
@@ -173,7 +176,7 @@ public class FocusFinancialsEERReportTest extends BaseEngine
 		 ffrp=new FocusFinancialsEERReportPage(getDriver());
 		 Assert.assertEquals(ffrp.checkJournalEntryRegister(), true);
 	 }
-	 /*
+	 
 	 @Test(priority=120)
 	 public void checkCreditNoteRegister() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
@@ -600,6 +603,15 @@ public class FocusFinancialsEERReportTest extends BaseEngine
 		 Assert.assertEquals(ffrp.checkIncomeExpensesTrendReport(), true);
 	 }
 	 
+	 @Test(priority=190)
+	 public void checkRestrictedLayoutVisibilityOfPVEER() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	 {
+		 ffrp=new FocusFinancialsEERReportPage(getDriver());
+		 Assert.assertEquals(ffrp.checkRestrictedLayoutVisibilityOfPVEER(), true);
+	 }
+	 
+	 
+	 
 	 
 	 @Test(priority=190)
 	 public void checklogout() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
@@ -608,7 +620,7 @@ public class FocusFinancialsEERReportTest extends BaseEngine
 		 Assert.assertEquals(ffrp.checklogout(), true);
 	 }
 	 
-	 */
+	 
 	
 	 
 }

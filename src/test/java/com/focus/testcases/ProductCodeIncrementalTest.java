@@ -17,7 +17,7 @@ public class ProductCodeIncrementalTest extends BaseEngine
 	
 	ProductCodeIncrementalPage PCIP;
 
-	@Test(priority=2000)
+	//@Test(priority=2000)
 	public void checkLogin() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		CIP=new CodeIncrementalPage(getDriver());

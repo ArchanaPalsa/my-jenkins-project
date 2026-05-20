@@ -1,1 +1,75 @@
+# Eclipse metadata
+.metadata/
+.recommenders/
+*.tmp
+*.cache
+
+# Build output
 /target/
+/test-output/
+
+# Eclipse files
+.classpath
+.project
+.settings/
+
+# Auto downloaded files
+autolt/
+*.download
+
+# Backup files
+*.fbak
+*.bak
+/backup/
+
+# Screenshots
+/screenshots/
+
+# Log files
+*.log
+debug.log
+
+# Driver files
+/drivers/
+
+# Report files
+/reports/
+
+# Misc
+*.txt
+# Build output
+/target/
+/test-output/
+
+# Eclipse files
+.classpath
+.project
+.settings/
+
+# Auto downloaded files
+autolt/
+*.download
+
+# Backup files
+*.fbak
+*.bak
+/backup/
+
+# Screenshots (large files)
+/screenshots/
+
+# Log files
+*.log
+debug.log
+
+# Driver files
+/drivers/
+
+# Report files
+/reports/
+
+# Misc
+*.txt
+rma.txt
+rma2.txt
+rmaNum.txt

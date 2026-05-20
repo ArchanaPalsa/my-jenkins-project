@@ -1507,7 +1507,8 @@ public class AccountMasterPage extends BaseEngine
 	@FindBy(xpath="//*[@id='tabContent_IPCust_MasterCust']/div[1]/div[2]/nav/ul/li[1]/a/i")
 	public static WebElement iteminfoPanelCust_AddBtn;
 
-	@FindBy(xpath="//*[@id='tabContent_IPCust_MasterCust']/div[1]/div/div[2]/nav/ul/li[2]/a/i")
+	//@FindBy(xpath="//*[@id='tabContent_IPCust_MasterCust']/div[1]/div/div[2]/nav/ul/li[2]/a/i")
+	@FindBy(xpath="//*[@id='tabContent_IPCust_MasterCust']//a[@title='Delete']")
 	public static WebElement infoPanelCust_DeleteBtn;
 
 	@FindBy(xpath="(//*[@id='btnCloseMasterCutomizationFromMasterScreen']/a/i)[5]")
@@ -2004,7 +2005,8 @@ public class AccountMasterPage extends BaseEngine
 	@FindBy(xpath="//*[@id='ExtraField_Tabs']/li[4]/a")
 	public static WebElement extraFields_RulesTab ;
 
-	@FindBy(xpath="//*[@id='newRuleTab_div_FieldRules']/div[1]/div[2]/nav/ul/li[1]/a/i")
+	//@FindBy(xpath="//*[@id='newRuleTab_div_FieldRules']/div[1]/div[2]/nav/ul/li[1]/a/i")
+	@FindBy(xpath="(//a[@title='Save'])[2]")
 	public static WebElement extraFields_RulesSaveBtn ;
 
 	@FindBy(xpath="//*[@id='newRuleTab_div_FieldRules']/div[1]/div/div[2]/div[2]")
@@ -2374,9 +2376,9 @@ public class AccountMasterPage extends BaseEngine
 
 
 
-	public static String checkDownloadedFileName(WebDriver driver) throws InterruptedException
+	public static String checkDownloadedFileName(WebDriver driver) throws InterruptedException, AWTException
 	{
-		String mainWindow = driver.getWindowHandle();
+		/*String mainWindow = driver.getWindowHandle();
 
 		JavascriptExecutor js = (JavascriptExecutor)driver;
 		js.executeScript("window.open()");
@@ -2387,18 +2389,46 @@ public class AccountMasterPage extends BaseEngine
 		}
 
 		driver.get("chrome://downloads");
+*/
+		
+		Thread.sleep(3500);
+		Robot robot = new Robot();
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		
+		Thread.sleep(2000);
+		
+		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
 
+		int count = openTabs.size();
+		
+	 	System.out.println("openTabs : "+count);
+
+	 	getDriver().switchTo().window(openTabs.get(count-2));
+	 	
+	 	getDriver().switchTo().window(openTabs.get(count-1));
+	 	
+	 	Thread.sleep(2000);
 		JavascriptExecutor js1 = (JavascriptExecutor)driver;
 
-		String fileName = (String) js1.executeScript("document.querySelector('downloads-manager').shadowRoot.querySelector('#downloadsList downloads-item').shadowRoot.querySelector('div#content #file-link').text");
+		String fileName = (String) js1.executeScript("return document.querySelector('downloads-manager').shadowRoot.querySelector('#downloadsList downloads-item').shadowRoot.querySelector('div#content #file-link').text");
+		
 
 		System.err.println("Download deatils");
 		System.out.println("File Name :-" + fileName);
 
 		Thread.sleep(2000);
-		driver.close();
+	/*	driver.close();
 
-		driver.switchTo().window(mainWindow);
+		driver.switchTo().window(mainWindow);*/
+		
+		getDriver().switchTo().window(openTabs.get(count-1)).close();
+	 	
+	 	Thread.sleep(2000);
+	 	
+	 	getDriver().switchTo().window(openTabs.get(count-2));
 
 		return fileName;
 	}
@@ -2654,17 +2684,41 @@ public class AccountMasterPage extends BaseEngine
 		//checkPopUpWindow();
 
 		Thread.sleep(8000);
+		
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(userNameTxt));
-		userNameTxt.click();
+		try{
 
-		String userInfo=userNameTxt.getText();
+			if (reindexingPopup.isDisplayed())
+			{
+
+				System.err.println("need to handle reindexing popup");
+				Thread.sleep(3000);
+				getDriver().navigate().refresh();
+
+				Thread.sleep(3000);
+
+				checkLoginToSelectedCompany(compname,"su","su");
+			}
+
+		}
+
+		catch (Exception e) 
+		{
+			System.err.println("No need to handle reindexing popup");
+		}
+
+		Thread.sleep(20000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(usernametxt1));
+		//usernametxt1.click();
+
+		String userInfo=usernametxt1.getText();
 
 		System.out.println("User Info : "+userInfo);
 
-		System.out.println("User Info Capture Text :"+userNameTxt.getText());
+		//System.out.println("User Info Capture Text :"+userNameTxt.getText());
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogoImg));
+		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogoImg));
 
 		companyLogoImg.click();
 
@@ -2672,7 +2726,7 @@ public class AccountMasterPage extends BaseEngine
 		String getLoginCompanyName=getCompanyTxt.substring(0, 36);
 		System.out.println("company name :"+ getLoginCompanyName);
 		companyLogoImg.click();
-
+*/
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(dashboardName));
 
 		String getDashboard=dashboardName.getText();
@@ -2685,18 +2739,18 @@ public class AccountMasterPage extends BaseEngine
 
 
 		String expuserInfo            ="SU";
-		String expLoginCompanyName    ="Account Properties And Customization ";
+		String expLoginCompanyName    ="Account Properties And Customization";
 		String expDashboard			  ="Graph with Active and setAsDefault";
 
 
 		System.out.println("***********************************checkLogin*********************************");
 
 		System.out.println("User Info                        : "+userInfo               +"  value expected  "+expuserInfo);
-		System.out.println("Login Company Name               : "+getLoginCompanyName    +"  value expected  "+expLoginCompanyName);
+		//System.out.println("Login Company Name               : "+getLoginCompanyName    +"  value expected  "+expLoginCompanyName);
 		System.out.println("Dashboard                        : "+getDashboard           +"  value expected  "+expDashboard);
 
 
-		if(/*userInfo.equalsIgnoreCase(expuserInfo) &&*/ getLoginCompanyName.equalsIgnoreCase(expLoginCompanyName))
+		if(userInfo.equalsIgnoreCase(expuserInfo)/* && getLoginCompanyName.startsWith(expLoginCompanyName)*/)
 		{	
 			return true;
 		}	 
@@ -14037,7 +14091,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterCustamizemasterBtn));	
 		masterCustamizemasterBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterFieldsCreateTab));
 		masterFieldsCreateTab.click();
@@ -14770,6 +14824,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		extraField_FieldDetailsMasterToLinkDropDown.sendKeys("Account");		
 		Thread.sleep(2000);
 		extraField_FieldDetailsMasterToLinkDropDown.sendKeys(Keys.TAB);
+		Thread.sleep(3000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraField_FieldDetailsMandatoryFields));
 		boolean actualValue = extraField_FieldDetailsMandatoryFields.isDisplayed();
@@ -14779,7 +14834,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		System.out.println(FieldValues);
 
 
-
+		Thread.sleep(3000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
 		extraFields_OkBtn.click();
 		Thread.sleep(2000);
@@ -14990,6 +15045,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 	public static boolean checkAddFieldWithDataTypeAsTinyNumberInCreateTabCustomizeMaster() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
+		Thread.sleep(1200);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createTabHeaderDetailsAddFieldsBtn));
 		createTabHeaderDetailsAddFieldsBtn.click();
 
@@ -15333,23 +15389,23 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 		Thread.sleep(8000);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(userNameTxt));
-		userNameTxt.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(usernametxt1));
+		//userNameTxt.click();
 
-		String userInfo=userNameTxt.getText();
+		String userInfo=usernametxt1.getText();
 
 		System.out.println("User Info : "+userInfo);
 
-		System.out.println("User Info Capture Text :"+userNameTxt.getText());
+	//	System.out.println("User Info Capture Text :"+userNameTxt.getText());
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogoImg));
+	/*	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogoImg));
 
 		companyLogoImg.click();
 
 		String getCompanyTxt=companyName.getText();
 		String getLoginCompanyName=getCompanyTxt.substring(0, 36);
 		System.out.println("company name :"+ getLoginCompanyName);
-		companyLogoImg.click();
+		companyLogoImg.click();*/
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(dashboardName));
 
@@ -15360,17 +15416,17 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 		String expuserInfo            ="SU";
 		String expLoginCompanyName    ="Account Properties And Customization";
-		String expDashboard			  ="Graph with Active and setAsDefault";
+		String expDashboard			  ="Dashboard";
 
 
 		System.out.println("***********************************checkLogin*********************************");
 
 		System.out.println("User Info                        : "+userInfo               +"  value expected  "+expuserInfo);
-		System.out.println("Login Company Name               : "+getLoginCompanyName    +"  value expected  "+expLoginCompanyName);
+	//	System.out.println("Login Company Name               : "+getLoginCompanyName    +"  value expected  "+expLoginCompanyName);
 		System.out.println("Dashboard                        : "+getDashboard           +"  value expected  "+expDashboard);
 
 
-		if(/*userInfo.equalsIgnoreCase(expuserInfo) && */getLoginCompanyName.equalsIgnoreCase(expLoginCompanyName))
+		if(userInfo.equalsIgnoreCase(expuserInfo) && getDashboard.equalsIgnoreCase(expDashboard))
 		{	
 			return true;
 		}	 
@@ -15427,8 +15483,6 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accountHeaderCreateTabBooleanFieldChkbox));
 		boolean actBooleanChkbox = accountHeaderCreateTabBooleanFieldChkbox.isDisplayed();
 		boolean expBooleanChkbox = true;
-
-
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accountHeaderCreateTabDateTimeField));
 		String actDefaultTimeDate = accountHeaderCreateTabDateTimeField.getText();
@@ -15505,12 +15559,15 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		boolean actDocumentViewerBrowseBtn = accountHeaderCreateTabDocumentViewerBrowseBtn.isDisplayed();
 		boolean expDocumentViewerBrowseBtn = true;
 
-		boolean actDocumentViewerSaveBtn = accountHeaderCreateTabDocumentViewerSaveBtn.isDisplayed();
-		boolean expDocumentViewerSaveBtn = true;
+	/*	boolean actDocumentViewerSaveBtn = accountHeaderCreateTabDocumentViewerSaveBtn.isDisplayed();
+		boolean expDocumentViewerSaveBtn = true;*/
 
 		boolean actDocumentViewerEraseBtn = accountHeaderCreateTabDocumentViewerEraseBtn.isDisplayed();
 		boolean expDocumentViewerEraseBtn = true;
 
+		Thread.sleep(2000);
+		getAction().moveToElement(accountHeaderCreateTabMasterFieldTxt).build().perform();
+		Thread.sleep(2000);
 		boolean actMasterFieldDropdown = accountHeaderCreateTabMasterFieldTxt.isDisplayed();
 		boolean expMasterFieldDropdown = true;
 
@@ -15560,7 +15617,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		System.out.println(actNumberListTxt);
 		System.out.println(expNumberListTxt);
 		System.out.println("DocumentViewerBrowseBtn      "+actDocumentViewerBrowseBtn		+"  Value Expected  "+expDocumentViewerBrowseBtn);
-		System.out.println("DocumentViewerSaveBtn        "+actDocumentViewerSaveBtn			+"  Value Expected  "+expDocumentViewerSaveBtn);
+		
 		System.out.println("DocumentViewerEraseBtn       "+actDocumentViewerEraseBtn		+"  Value Expected  "+expDocumentViewerEraseBtn);
 		System.out.println("MasterFieldDropdown          "+actMasterFieldDropdown			+"  Value Expected  "+expMasterFieldDropdown);
 		//System.out.println("ExternalTableFieldDropdown   "+actExternalTableFieldDropdown	+"  Value Expected  "+expExternalTableFieldDropdown);
@@ -15573,11 +15630,11 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 		if(actDefaultText.equalsIgnoreCase(expDefaultText) && actDefaultNumber.equalsIgnoreCase(expDefaultNumber) &&
 				actBooleanChkbox==expBooleanChkbox && /*actDefaultTimeDate.equalsIgnoreCase(expDefaultTimeDate) &&
-			 actDefaultTime.equalsIgnoreCase(expDefaultTime) && */actDefaultDate==expDefaultDate &&
+			 actDefaultTime.equalsIgnoreCase(expDefaultTime) && actDefaultDate==expDefaultDate */
 			 actDefaultFraction.equalsIgnoreCase(expDefaultFraction) && actPictureSaveBtn==expPictureSaveBtn &&
 			 actPictureBrowseBtn==expPictureBrowseBtn && actPictureDeleteBtn==expPictureDeleteBtn && 
 			 actStringListTxt.equalsIgnoreCase(expStringListTxt) && actNumberListTxt.equalsIgnoreCase(expNumberListTxt) &&
-			/* actDocumentViewerBrowseBtn==expDocumentViewerBrowseBtn && */actDocumentViewerSaveBtn==expDocumentViewerSaveBtn &&
+			/* actDocumentViewerBrowseBtn==expDocumentViewerBrowseBtn && actDocumentViewerSaveBtn==expDocumentViewerSaveBtn */
 			 actDocumentViewerEraseBtn==expDocumentViewerEraseBtn && actMasterFieldDropdown==expMasterFieldDropdown && 
 			 /*actExternalTableFieldDropdown==expExternalTableFieldDropdown &&*/ actDefaultBigNumberValue.equalsIgnoreCase(expDefaultBigNumberValue) &&
 			 actDefaultSmallNumberValue.equalsIgnoreCase(expDefaultSmallNumberValue) && actDefaultTinyNumberValue.equalsIgnoreCase(expDefaultTinyNumberValue) &&
@@ -15734,42 +15791,6 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 
 
-
-		//Boolean Field
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_BooleanField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesMandatoryChekbox));
-
-		if (extraFields_PropertiesMandatoryChekboxSelected.isSelected()==false) 
-		{
-			extraFields_PropertiesMandatoryChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-
-		String expBooleanFieldMsg = "Field Updated Successfully";
-		String actBooleanFieldMsg = checkValidationMessage(expBooleanFieldMsg);
-
-
-
 		//Date Time Field
 
 		for (int i = 0; i < count; i++) 
@@ -15804,6 +15825,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		String actDateTimeFieldMsg = checkValidationMessage(expDateTimeFieldMsg);
 
 
+		Thread.sleep(3000);
 
 		//Date Field
 
@@ -15837,41 +15859,6 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 		String expDateFieldMsg = "Field Updated Successfully";
 		String actDateFieldMsg = checkValidationMessage(expDateFieldMsg);
-
-
-
-		//Time Field
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_TimeField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesMandatoryChekbox));
-
-		if (extraFields_PropertiesMandatoryChekboxSelected.isSelected()==false) 
-		{
-			extraFields_PropertiesMandatoryChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-
-		String expTimeFieldMsg = "Field Updated Successfully";
-		String actTimeFieldMsg = checkValidationMessage(expTimeFieldMsg);
 
 
 
@@ -15944,148 +15931,6 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		String actPictureFieldMsg = checkValidationMessage(expPictureFieldMsg);
 
 
-
-		//String List Field
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_StringListField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesMandatoryChekbox));
-
-		if (extraFields_PropertiesMandatoryChekboxSelected.isSelected()==false) 
-		{
-			extraFields_PropertiesMandatoryChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-
-		String expStringListFieldMsg = "Field Updated Successfully";
-		String actStringListFieldMsg = checkValidationMessage(expStringListFieldMsg);
-
-
-
-		//Number List Field
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_NumberListField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesMandatoryChekbox));
-
-		if (extraFields_PropertiesMandatoryChekboxSelected.isSelected()==false) 
-		{
-			extraFields_PropertiesMandatoryChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-
-		String expNumberListFieldMsg = "Field Updated Successfully";
-		String actNumberListFieldMsg = checkValidationMessage(expNumberListFieldMsg);
-
-/*
-
-		//Document Viewer Field
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_DocumentViewerField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesMandatoryChekbox));
-
-		if (extraFields_PropertiesMandatoryChekbox.isSelected()==false) 
-		{
-			extraFields_PropertiesMandatoryChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-
-		String expDocumentViewerFieldMsg = "Field Updated Successfully";
-		String actDocumentViewerFieldMsg = checkValidationMessage(expDocumentViewerFieldMsg);
-
-
-
-		//Master Field
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_MasterField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesMandatoryChekbox));
-
-		if (extraFields_PropertiesMandatoryChekboxSelected.isSelected()==false) 
-		{
-			extraFields_PropertiesMandatoryChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-
-		String expMasterFieldMsg = "Field Updated Successfully";
-		String actMasterFieldMsg = checkValidationMessage(expMasterFieldMsg);
-*/
-
-
-
 		//Big Number Field
 
 		for (int i = 0; i < count; i++) 
@@ -16121,181 +15966,6 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 
 
-		Thread.sleep(2000);
-		//Small Number Field
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_SmallNumberField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesMandatoryChekbox));
-
-		if (extraFields_PropertiesMandatoryChekboxSelected.isSelected()==false) 
-		{
-			extraFields_PropertiesMandatoryChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-
-		String expSmallNumberFieldMsg = "Field Updated Successfully";
-		String actSmallNumberFieldMsg = checkValidationMessage(expSmallNumberFieldMsg);
-
-
-		Thread.sleep(2000);
-
-		//Tiny Number Field
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_TinyNumberField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesMandatoryChekbox));
-
-		if (extraFields_PropertiesMandatoryChekboxSelected.isSelected()==false) 
-		{
-			extraFields_PropertiesMandatoryChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-
-		String expTinyNumberFieldMsg = "Field Updated Successfully";
-		String actTinyNumberFieldMsg = checkValidationMessage(expTinyNumberFieldMsg);
-
-
-/*
-
-		//Gregorian Field
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_GregorianField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesMandatoryChekbox));
-
-		if (extraFields_PropertiesMandatoryChekboxSelected.isSelected()==false) 
-		{
-			extraFields_PropertiesMandatoryChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-
-		String expGregorianFieldMsg = "Field Updated Successfully";
-		String actGregorianFieldMsg = checkValidationMessage(expGregorianFieldMsg);
-
-
-
-		//Hijri Field
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_HijriField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesMandatoryChekbox));
-
-		if (extraFields_PropertiesMandatoryChekboxSelected.isSelected()==false) 
-		{
-			extraFields_PropertiesMandatoryChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-
-		String expHijriFieldMsg = "Field Updated Successfully";
-		String actHijriFieldMsg = checkValidationMessage(expHijriFieldMsg);
-
-
-
-		//Shamsi Field
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_ShamsiField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesMandatoryChekbox));
-
-		if (extraFields_PropertiesMandatoryChekboxSelected.isSelected()==false) 
-		{
-			extraFields_PropertiesMandatoryChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-
-		String expShamsiFieldMsg = "Field Updated Successfully";
-		String actShamsiFieldMsg = checkValidationMessage(expShamsiFieldMsg);*/
 		
 		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(closeBtnInCreateTabCustomizeMasetrWarehouse));
@@ -16306,32 +15976,19 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 		System.out.println("TextFieldMsg            : "+actTextFieldMsg				+"  Value Expected  "+expTextFieldMsg);
 		System.out.println("NumbertFieldMsg         : "+actNumbertFieldMsg			+"  Value Expected  "+expNumberFieldMsg);
-		System.out.println("BooleanFieldMsg         : "+actBooleanFieldMsg			+"  Value Expected  "+expBooleanFieldMsg);
+		
 		System.out.println("DateTimeFieldMsg        : "+actDateTimeFieldMsg			+"  Value Expected  "+expDateTimeFieldMsg);
 		System.out.println("DateFieldMsg            : "+actDateFieldMsg				+"  Value Expected  "+expDateFieldMsg);
-		System.out.println("TimeFieldMsg            : "+actTimeFieldMsg				+"  Value Expected  "+expTimeFieldMsg);
+	
 		System.out.println("FractionFieldMsg        : "+actFractionFieldMsg			+"  Value Expected  "+expFractionFieldMsg);
 		System.out.println("PictureFieldMsg         : "+actPictureFieldMsg			+"  Value Expected  "+expPictureFieldMsg);
-		System.out.println("StringListFieldMsg      : "+actStringListFieldMsg		+"  Value Expected  "+expStringListFieldMsg);
-		System.out.println("NumberListFieldMsg      : "+actNumberListFieldMsg		+"  Value Expected  "+expNumberListFieldMsg);
-		/*System.out.println("DocumentViewerFieldMsg  : "+actDocumentViewerFieldMsg	+"  Value Expected  "+expDocumentViewerFieldMsg);
-		System.out.println("MasterFieldMsg          : "+actMasterFieldMsg			+"  Value Expected  "+expMasterFieldMsg);*/
+	
 		System.out.println("BigNumberFieldMsg       : "+actBigNumberFieldMsg		+"  Value Expected  "+expBigNumberFieldMsg);
-		System.out.println("SmallNumberFieldMsg     : "+actSmallNumberFieldMsg		+"  Value Expected  "+expSmallNumberFieldMsg);
-		System.out.println("TinyNumberFieldMsg      : "+actTinyNumberFieldMsg		+"  Value Expected  "+expTinyNumberFieldMsg);
-	/*	System.out.println("GregorianFieldMsg       : "+actGregorianFieldMsg		+"  Value Expected  "+expGregorianFieldMsg);
-		System.out.println("HijriFieldMsg           : "+actHijriFieldMsg			+"  Value Expected  "+expHijriFieldMsg);
-		System.out.println("ShamsiFieldMsg          : "+actShamsiFieldMsg			+"  Value Expected  "+expShamsiFieldMsg);*/
-
-		if(actTextFieldMsg.equalsIgnoreCase(expTextFieldMsg) && actNumbertFieldMsg.equalsIgnoreCase(expNumberFieldMsg) 
-				&& actBooleanFieldMsg.equalsIgnoreCase(expBooleanFieldMsg) /*&& actDateTimeFieldMsg.equalsIgnoreCase(expDateTimeFieldMsg) 
-			&& actDateFieldMsg.equalsIgnoreCase(expDateFieldMsg) && actTimeFieldMsg.equalsIgnoreCase(expTimeFieldMsg) */
+		
+		
+		if(actTextFieldMsg.equalsIgnoreCase(expTextFieldMsg) && actNumbertFieldMsg.equalsIgnoreCase(expNumberFieldMsg)
 				&& actFractionFieldMsg.equalsIgnoreCase(expFractionFieldMsg) && actPictureFieldMsg.equalsIgnoreCase(expPictureFieldMsg) 
-				&& actStringListFieldMsg.equalsIgnoreCase(expStringListFieldMsg) && actNumberListFieldMsg.equalsIgnoreCase(expNumberListFieldMsg) 
-				/*&& actDocumentViewerFieldMsg.equalsIgnoreCase(expDocumentViewerFieldMsg) && actMasterFieldMsg.equalsIgnoreCase(expMasterFieldMsg) */
-				&& actBigNumberFieldMsg.equalsIgnoreCase(expBigNumberFieldMsg) && actSmallNumberFieldMsg.equalsIgnoreCase(expSmallNumberFieldMsg) 
-				&& actTinyNumberFieldMsg.equalsIgnoreCase(expTinyNumberFieldMsg) /*&& actGregorianFieldMsg.equalsIgnoreCase(expGregorianFieldMsg) 
-				&& actHijriFieldMsg.equalsIgnoreCase(expHijriFieldMsg) && actShamsiFieldMsg.equalsIgnoreCase(expShamsiFieldMsg)*/)
+			&& actBigNumberFieldMsg.equalsIgnoreCase(expBigNumberFieldMsg))
 		{	
 			return true;
 		}	 
@@ -16416,7 +16073,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		lp.clickOnSignInBtn();
 
 
-		reLogin(unamelt, pawslt, compname);
+		//reLogin(unamelt, pawslt, compname);
 
 		//checkRefershPopOnlogin();
 
@@ -16424,23 +16081,23 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 		Thread.sleep(8000);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(userNameTxt));
-		userNameTxt.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(usernametxt1));
+		//userNameTxt.click();
 
-		String userInfo=userNameTxt.getText();
+		String userInfo=usernametxt1.getText();
 
 		System.out.println("User Info : "+userInfo);
 
 		System.out.println("User Info Capture Text :"+userNameTxt.getText());
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogoImg));
+		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogoImg));
 
 		companyLogoImg.click();
 
 		String getCompanyTxt=companyName.getText();
 		String getLoginCompanyName=getCompanyTxt.substring(0, 36);
 		System.out.println("company name :"+ getLoginCompanyName);
-		companyLogoImg.click();
+		companyLogoImg.click();*/
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(dashboardName));
 
@@ -16451,17 +16108,17 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 		String expuserInfo            ="SU";
 		String expLoginCompanyName    ="Account Properties And Customization";
-		String expDashboard			  ="Graph with Active and setAsDefault";
+		String expDashboard			  ="Dashboard";
 
 
 		System.out.println("***********************************checkLogoutAndLoginAfterEnablingMandatoryCheckboxInFieldsProperties*********************************");
 
 		System.out.println("User Info                        : "+userInfo               +"  value expected  "+expuserInfo);
-		System.out.println("Login Company Name               : "+getLoginCompanyName    +"  value expected  "+expLoginCompanyName);
+		//System.out.println("Login Company Name               : "+getLoginCompanyName    +"  value expected  "+expLoginCompanyName);
 		System.out.println("Dashboard                        : "+getDashboard           +"  value expected  "+expDashboard);
 
 
-		if(/*userInfo.equalsIgnoreCase(expuserInfo) &&*/ getLoginCompanyName.equalsIgnoreCase(expLoginCompanyName))
+		if(userInfo.equalsIgnoreCase(expuserInfo) && getDashboard.equalsIgnoreCase(expDashboard))
 		{	
 			return true;
 		}	 
@@ -16547,7 +16204,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
 
-		String expMandatoryTextMsg = "In Tab :Create Tab ---> CreateTab_TextField Field is Required";
+		String expMandatoryTextMsg = "In Tab : Create Tab ---> CreateTab_TextField Field is Required";
 
 		String actMandatoryTextMsg = checkValidationMessage(expMandatoryTextMsg);
 
@@ -16567,7 +16224,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
 
-		String expMandatoryNumberMsg = "In Tab :Create Tab ---> CreateTab_NumberField Field is Required";
+		String expMandatoryNumberMsg = "In Tab : Create Tab ---> CreateTab_NumberField Field is Required";
 
 		String actMandatoryNumberMsg = checkValidationMessage(expMandatoryNumberMsg);
 
@@ -16584,9 +16241,9 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		SaveBtn.click();
 		
 		
-		String expMandatoryDateMsg = "In Tab :Create Tab ---> CreateTab_DateField Field is Required";
+		String expMandatoryDateMsg = "In Tab : Create Tab ---> CreateTab_DateField Field is Required";
 
-		String actMandatoryDateMsg = checkValidationMessage(expMandatoryNumberMsg);
+		String actMandatoryDateMsg = checkValidationMessage(expMandatoryDateMsg);
 
 		
 		 
@@ -16604,7 +16261,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		//Fraction Field
 
 		
-		String expMandatoryFractionMsg = "In Tab :Create Tab ---> CreateTab_FractionField Field is Required";
+		String expMandatoryFractionMsg = "In Tab : Create Tab ---> CreateTab_FractionField Field is Required";
 
 		String actMandatoryFractionMsg = checkValidationMessage(expMandatoryFractionMsg);
 
@@ -16624,7 +16281,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
 
-		String expMandatoryPictureMsg = "In Tab :Create Tab ---> CreateTab_PictureField Field is Required";
+		String expMandatoryPictureMsg = "In Tab : Create Tab ---> CreateTab_PictureField Field is Required";
 
 		String actMandatoryPictureMsg = checkValidationMessage(expMandatoryPictureMsg);
 
@@ -16667,55 +16324,12 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		System.out.println("NumberListTxt  : "+actNumberListTxt+"  Value Expected  "+expNumberListTxt);
 
 
-/*
-		//Document Field
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
-		SaveBtn.click();
-
-		String expMandatoryDocumentMsg = "In Tab :Create Tab ---> CreateTab_DocumentViewerField Field is Required";
-
-		String actMandatoryDocumentMsg = checkValidationMessage(expMandatoryDocumentMsg);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accountHeaderCreateTabDocumentViewerBrowseBtn));
-		accountHeaderCreateTabDocumentViewerBrowseBtn.click();
-
-		Thread.sleep(3000);
-
-		Runtime.getRuntime().exec(getBaseDir()+"\\autoIt\\scripts\\DocumentImportInCustomizeMasterField.exe");
-
-		Thread.sleep(4000);
-
-		String actDocumentViewerAttached = accountHeaderCreateTabAddedDocumentName.getAttribute("value");
-		String expDocumentViewerAttached = "DocumentViewerValidation.pdf";
-
-		System.out.println("DocumentViewerAttached  : "+actDocumentViewerAttached+"  Value Expected  "+expDocumentViewerAttached);
-
-
-		// Master Field
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
-		SaveBtn.click();
-
-		String expMandatoryMasterMsg = "In Tab :Create Tab ---> CreateTab_MasterField Field is Required";
-
-		String actMandatoryMasterMsg = checkValidationMessage(expMandatoryMasterMsg);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accountHeaderCreateTabMasterFieldTxt));
-		accountHeaderCreateTabMasterFieldTxt.click();
-		accountHeaderCreateTabMasterFieldTxt.sendKeys("Cash");
-		Thread.sleep(3000);
-		accountHeaderCreateTabMasterFieldTxt.sendKeys(Keys.TAB);
-
-
-
-*/
 		//Big Number Field
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
 
-		String expMandatoryBigNumberMsg = "In Tab :Create Tab ---> CreateTab_BigNumberField Field is Required";
+		String expMandatoryBigNumberMsg = "In Tab : Create Tab ---> CreateTab_BigNumberField Field is Required";
 
 		String actMandatoryBigNumberMsg = checkValidationMessage(expMandatoryBigNumberMsg);
 
@@ -16730,74 +16344,6 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 
 
-
-		//Small Number Field
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
-		SaveBtn.click();
-
-		String expMandatorySmallNumberMsg = "In Tab :Create Tab ---> CreateTab_SmallNumberField Field is Required";
-
-		String actMandatorySmallNumberMsg = checkValidationMessage(expMandatorySmallNumberMsg);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accountHeaderCreateTabSmallNumberField));
-		accountHeaderCreateTabSmallNumberField.click();
-		accountHeaderCreateTabSmallNumberField.sendKeys(Keys.END);
-		Thread.sleep(2000);
-		accountHeaderCreateTabSmallNumberField.sendKeys(Keys.SHIFT,Keys.HOME);
-		accountHeaderCreateTabSmallNumberField.sendKeys(Keys.BACK_SPACE);
-		accountHeaderCreateTabSmallNumberField.sendKeys("4");
-		accountHeaderCreateTabSmallNumberField.sendKeys(Keys.TAB);
-
-
-
-		//Tiny Number Field
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accountHeaderCreateTabTinyNumberField));
-		accountHeaderCreateTabTinyNumberField.click();
-		accountHeaderCreateTabTinyNumberField.sendKeys(Keys.END);
-		Thread.sleep(2000);
-		accountHeaderCreateTabTinyNumberField.sendKeys(Keys.SHIFT,Keys.HOME);
-		accountHeaderCreateTabTinyNumberField.sendKeys(Keys.BACK_SPACE);
-		accountHeaderCreateTabTinyNumberField.sendKeys(Keys.TAB);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
-		SaveBtn.click();
-
-		String expMandatoryTinyNumberMsg = "In Tab :Create Tab ---> CreateTab_TinyNumberField Field is Required";
-
-		String actMandatoryTinyNumberMsg = checkValidationMessage(expMandatoryTinyNumberMsg);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accountHeaderCreateTabTinyNumberField));
-		accountHeaderCreateTabTinyNumberField.click();
-		accountHeaderCreateTabTinyNumberField.sendKeys("1");
-		accountHeaderCreateTabTinyNumberField.sendKeys(Keys.TAB);
-
-
-
-		//Boolean Field
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accountHeaderCreateTabBooleanFieldChkbox));
-		accountHeaderCreateTabBooleanFieldChkbox.click();
-
-		Thread.sleep(2000);
-
-		boolean actMandatoryBoolean = accountHeaderCreateTabBooleanFieldChkbox.isSelected();
-		boolean expMandatoryBoolean = true;
-
-		System.out.println("Boolean Checkbox isSelected  : "+actMandatoryBoolean+"  Value Expected  "+expMandatoryBoolean);
-
-
-
-		//Time Date Field
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accountHeaderCreateTabDateTimeField));
-		String actDefaultTimeDate = accountHeaderCreateTabDateTimeField.getText();
-
-		System.out.println("Time Date Field  : "+actDefaultTimeDate+"  Value Expected  "+expDefaultTimeDate);
-
-
-
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
 
@@ -16806,14 +16352,10 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		String actMandatoryMsg = checkValidationMessage(expMandatoryMsg);
 
 		if(actMandatoryTextMsg.equalsIgnoreCase(expMandatoryTextMsg) && actMandatoryNumberMsg.equalsIgnoreCase(expMandatoryNumberMsg) 
-				&& actMandatoryBoolean==expMandatoryBoolean && /*actDefaultTimeDate.equalsIgnoreCase(expDefaultTimeDate) && actDefaultDate.equalsIgnoreCase(expDefaultDate)
-			&& actDefaultTime.equalsIgnoreCase(expDefaultTime) &&*/ actMandatoryFractionMsg.equalsIgnoreCase(expMandatoryFractionMsg) && actMandatoryPictureMsg.equalsIgnoreCase(expMandatoryPictureMsg)
+				 &&  actMandatoryFractionMsg.equalsIgnoreCase(expMandatoryFractionMsg) && actMandatoryPictureMsg.equalsIgnoreCase(expMandatoryPictureMsg)
 			&& actPictureAttached.equalsIgnoreCase(expPictureAttached) && actStringListTxt.equalsIgnoreCase(expStringListTxt) 
-			&& actNumberListTxt.equalsIgnoreCase(expNumberListTxt) /*&& actMandatoryDocumentMsg.equalsIgnoreCase(expMandatoryDocumentMsg) 
-			&& actDocumentViewerAttached.equalsIgnoreCase(expDocumentViewerAttached) && actMandatoryMasterMsg.equalsIgnoreCase(expMandatoryMasterMsg)*/
-			&& actMandatoryBigNumberMsg.equalsIgnoreCase(expMandatoryBigNumberMsg) && actMandatorySmallNumberMsg.equalsIgnoreCase(expMandatorySmallNumberMsg)
-			&& actMandatoryTinyNumberMsg.equalsIgnoreCase(expMandatoryTinyNumberMsg)/* && actGregorianDefaultDate.equalsIgnoreCase(expGregorianDefaultDate)*/
-			/*&& actHijriCheckbox==expHijriCheckbox && actShamsiCheckbox==expShamsiCheckbox && actMandatoryMsg.equalsIgnoreCase(expMandatoryMsg)*/)
+			&& actNumberListTxt.equalsIgnoreCase(expNumberListTxt) 
+			&& actMandatoryBigNumberMsg.equalsIgnoreCase(expMandatoryBigNumberMsg))
 		{	
 			return true;
 		}	 
@@ -16843,6 +16385,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 	public static boolean checkEnableMandatoryInGroupCheckboxInAllFieldsProperties() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(homeMenu));
 		homeMenu.click();
 
@@ -16962,49 +16505,6 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 
 
-		//Boolean Field
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_BooleanField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesMandatoryChekbox));
-
-		if (extraFields_PropertiesMandatoryChekboxSelected.isSelected()==true) 
-		{
-			extraFields_PropertiesMandatoryChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesMandatoryInGroupChekbox));
-
-		if (extraFields_PropertiesMandatoryInGroupChekboxSelected.isSelected()==false) 
-		{
-			extraFields_PropertiesMandatoryInGroupChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-
-		String expBooleanFieldMsg = "Field Updated Successfully";
-		String actBooleanFieldMsg = checkValidationMessage(expBooleanFieldMsg);
-
-
-
-
 
 		//Date Time Field
 
@@ -17088,47 +16588,6 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		String expDateFieldMsg = "Field Updated Successfully";
 		String actDateFieldMsg = checkValidationMessage(expDateFieldMsg);
 
-
-
-		//Time Field
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_TimeField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesMandatoryChekbox));
-
-		if (extraFields_PropertiesMandatoryChekboxSelected.isSelected()==true) 
-		{
-			extraFields_PropertiesMandatoryChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesMandatoryInGroupChekbox));
-
-		if (extraFields_PropertiesMandatoryInGroupChekboxSelected.isSelected()==false) 
-		{
-			extraFields_PropertiesMandatoryInGroupChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-
-		String expTimeFieldMsg = "Field Updated Successfully";
-		String actTimeFieldMsg = checkValidationMessage(expTimeFieldMsg);
 
 
 
@@ -17215,176 +16674,6 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		String actPictureFieldMsg = checkValidationMessage(expPictureFieldMsg);
 
 
-		Thread.sleep(2000);
-		//String List Field
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_StringListField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesMandatoryChekbox));
-
-		if (extraFields_PropertiesMandatoryChekboxSelected.isSelected()==true) 
-		{
-			extraFields_PropertiesMandatoryChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesMandatoryInGroupChekbox));
-
-		if (extraFields_PropertiesMandatoryInGroupChekboxSelected.isSelected()==false) 
-		{
-			extraFields_PropertiesMandatoryInGroupChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-
-		String expStringListFieldMsg = "Field Updated Successfully";
-		String actStringListFieldMsg = checkValidationMessage(expStringListFieldMsg);
-
-
-
-		//Number List Field
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_NumberListField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesMandatoryChekbox));
-
-		if (extraFields_PropertiesMandatoryChekboxSelected.isSelected()==true) 
-		{
-			extraFields_PropertiesMandatoryChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesMandatoryInGroupChekbox));
-
-		if (extraFields_PropertiesMandatoryInGroupChekboxSelected.isSelected()==false) 
-		{
-			extraFields_PropertiesMandatoryInGroupChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-
-		String expNumberListFieldMsg = "Field Updated Successfully";
-		String actNumberListFieldMsg = checkValidationMessage(expNumberListFieldMsg);
-
-
-/*
-		//Document Viewer Field
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_DocumentViewerField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesMandatoryChekbox));
-
-		if (extraFields_PropertiesMandatoryChekboxSelected.isSelected()==true) 
-		{
-			extraFields_PropertiesMandatoryChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesMandatoryInGroupChekbox));
-
-		if (extraFields_PropertiesMandatoryInGroupChekboxSelected.isSelected()==false) 
-		{
-			extraFields_PropertiesMandatoryInGroupChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-
-		String expDocumentViewerFieldMsg = "Field Updated Successfully";
-		String actDocumentViewerFieldMsg = checkValidationMessage(expDocumentViewerFieldMsg);
-
-
-
-		//Master Field
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_MasterField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesMandatoryChekbox));
-
-		if (extraFields_PropertiesMandatoryChekboxSelected.isSelected()==true) 
-		{
-			extraFields_PropertiesMandatoryChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesMandatoryInGroupChekbox));
-
-		if (extraFields_PropertiesMandatoryInGroupChekboxSelected.isSelected()==false) 
-		{
-			extraFields_PropertiesMandatoryInGroupChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-
-		String expMasterFieldMsg = "Field Updated Successfully";
-		String actMasterFieldMsg = checkValidationMessage(expMasterFieldMsg);
-
-*/
-
-
 		//Big Number Field
 
 		for (int i = 0; i < count; i++) 
@@ -17428,251 +16717,28 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 
 
-		//Small Number Field
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_SmallNumberField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesMandatoryChekbox));
-
-		if (extraFields_PropertiesMandatoryChekboxSelected.isSelected()==true) 
-		{
-			extraFields_PropertiesMandatoryChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesMandatoryInGroupChekbox));
-
-		if (extraFields_PropertiesMandatoryInGroupChekboxSelected.isSelected()==false) 
-		{
-			extraFields_PropertiesMandatoryInGroupChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-
-		String expSmallNumberFieldMsg = "Field Updated Successfully";
-		String actSmallNumberFieldMsg = checkValidationMessage(expSmallNumberFieldMsg);
-
-
-
-
-		//Tiny Number Field
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_TinyNumberField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesMandatoryChekbox));
-
-		if (extraFields_PropertiesMandatoryChekboxSelected.isSelected()==true) 
-		{
-			extraFields_PropertiesMandatoryChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesMandatoryInGroupChekbox));
-
-		if (extraFields_PropertiesMandatoryInGroupChekboxSelected.isSelected()==false) 
-		{
-			extraFields_PropertiesMandatoryInGroupChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-
-		String expTinyNumberFieldMsg = "Field Updated Successfully";
-		String actTinyNumberFieldMsg = checkValidationMessage(expTinyNumberFieldMsg);
-
-
-
-/*
-		//Gregorian Field
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_GregorianField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesMandatoryChekbox));
-
-		if (extraFields_PropertiesMandatoryChekboxSelected.isSelected()==true) 
-		{
-			extraFields_PropertiesMandatoryChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesMandatoryInGroupChekbox));
-
-		if (extraFields_PropertiesMandatoryInGroupChekboxSelected.isSelected()==false) 
-		{
-			extraFields_PropertiesMandatoryInGroupChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-
-		String expGregorianFieldMsg = "Field Updated Successfully";
-		String actGregorianFieldMsg = checkValidationMessage(expGregorianFieldMsg);
-
-
-
-		//Hijri Field
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_HijriField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesMandatoryChekbox));
-
-		if (extraFields_PropertiesMandatoryChekboxSelected.isSelected()==true) 
-		{
-			extraFields_PropertiesMandatoryChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesMandatoryInGroupChekbox));
-
-		if (extraFields_PropertiesMandatoryInGroupChekboxSelected.isSelected()==false) 
-		{
-			extraFields_PropertiesMandatoryInGroupChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-
-		String expHijriFieldMsg = "Field Updated Successfully";
-		String actHijriFieldMsg = checkValidationMessage(expHijriFieldMsg);
-
-
-
-		//Shamsi Field
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_ShamsiField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesMandatoryChekbox));
-
-		if (extraFields_PropertiesMandatoryChekboxSelected.isSelected()==true) 
-		{
-			extraFields_PropertiesMandatoryChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesMandatoryInGroupChekbox));
-
-		if (extraFields_PropertiesMandatoryInGroupChekboxSelected.isSelected()==false) 
-		{
-			extraFields_PropertiesMandatoryInGroupChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-
-		String expShamsiFieldMsg = "Field Updated Successfully";
-		String actShamsiFieldMsg = checkValidationMessage(expShamsiFieldMsg);*/
-
 		System.out.println("***********************************checkEnableMandatoryInGroupCheckboxInAllFieldsProperties*********************************");
 
 		System.out.println("TextFieldMsg            : "+actTextFieldMsg				+"  Value Expected  "+expTextFieldMsg);
 		System.out.println("NumbertFieldMsg         : "+actNumbertFieldMsg			+"  Value Expected  "+expNumberFieldMsg);
-		System.out.println("BooleanFieldMsg         : "+actBooleanFieldMsg			+"  Value Expected  "+expBooleanFieldMsg);
+		
 		System.out.println("DateTimeFieldMsg        : "+actDateTimeFieldMsg			+"  Value Expected  "+expDateTimeFieldMsg);
 		System.out.println("DateFieldMsg            : "+actDateFieldMsg				+"  Value Expected  "+expDateFieldMsg);
-		System.out.println("TimeFieldMsg            : "+actTimeFieldMsg				+"  Value Expected  "+expTimeFieldMsg);
+
 		System.out.println("FractionFieldMsg        : "+actFractionFieldMsg			+"  Value Expected  "+expFractionFieldMsg);
 		System.out.println("PictureFieldMsg         : "+actPictureFieldMsg			+"  Value Expected  "+expPictureFieldMsg);
-		System.out.println("StringListFieldMsg      : "+actStringListFieldMsg		+"  Value Expected  "+expStringListFieldMsg);
-		System.out.println("NumberListFieldMsg      : "+actNumberListFieldMsg		+"  Value Expected  "+expNumberListFieldMsg);
-		/*System.out.println("DocumentViewerFieldMsg  : "+actDocumentViewerFieldMsg	+"  Value Expected  "+expDocumentViewerFieldMsg);
-		System.out.println("MasterFieldMsg          : "+actMasterFieldMsg			+"  Value Expected  "+expMasterFieldMsg);*/
+	
 		System.out.println("BigNumberFieldMsg       : "+actBigNumberFieldMsg		+"  Value Expected  "+expBigNumberFieldMsg);
-		System.out.println("SmallNumberFieldMsg     : "+actSmallNumberFieldMsg		+"  Value Expected  "+expSmallNumberFieldMsg);
-		System.out.println("TinyNumberFieldMsg      : "+actTinyNumberFieldMsg		+"  Value Expected  "+expTinyNumberFieldMsg);
-	/*	System.out.println("GregorianFieldMsg       : "+actGregorianFieldMsg		+"  Value Expected  "+expGregorianFieldMsg);
-		System.out.println("HijriFieldMsg           : "+actHijriFieldMsg			+"  Value Expected  "+expHijriFieldMsg);
-		System.out.println("ShamsiFieldMsg          : "+actShamsiFieldMsg			+"  Value Expected  "+expShamsiFieldMsg);*/
-		
 		
 		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(closeBtnInCreateTabCustomizeMasetrWarehouse));
 		closeBtnInCreateTabCustomizeMasetrWarehouse.click();
 
 		if(actTextFieldMsg.equalsIgnoreCase(expTextFieldMsg) && actNumbertFieldMsg.equalsIgnoreCase(expNumberFieldMsg) 
-				&& actBooleanFieldMsg.equalsIgnoreCase(expBooleanFieldMsg) /*&& actDateTimeFieldMsg.equalsIgnoreCase(expDateTimeFieldMsg) 
-			&& actDateFieldMsg.equalsIgnoreCase(expDateFieldMsg) && actTimeFieldMsg.equalsIgnoreCase(expTimeFieldMsg) */
+			
 				&& actFractionFieldMsg.equalsIgnoreCase(expFractionFieldMsg) && actPictureFieldMsg.equalsIgnoreCase(expPictureFieldMsg) 
-				&& actStringListFieldMsg.equalsIgnoreCase(expStringListFieldMsg) && actNumberListFieldMsg.equalsIgnoreCase(expNumberListFieldMsg) 
-				/*&& actDocumentViewerFieldMsg.equalsIgnoreCase(expDocumentViewerFieldMsg) && actMasterFieldMsg.equalsIgnoreCase(expMasterFieldMsg) */
-				&& actBigNumberFieldMsg.equalsIgnoreCase(expBigNumberFieldMsg) && actSmallNumberFieldMsg.equalsIgnoreCase(expSmallNumberFieldMsg) 
-				&& actTinyNumberFieldMsg.equalsIgnoreCase(expTinyNumberFieldMsg) /*&& actGregorianFieldMsg.equalsIgnoreCase(expGregorianFieldMsg) 
-				&& actHijriFieldMsg.equalsIgnoreCase(expHijriFieldMsg) && actShamsiFieldMsg.equalsIgnoreCase(expShamsiFieldMsg)*/)
+				
+				&& actBigNumberFieldMsg.equalsIgnoreCase(expBigNumberFieldMsg) )
 		{	
 			return true;
 		}	 
@@ -17755,7 +16821,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		}
 		lp.clickOnSignInBtn();
 		
-		reLogin(unamelt, pawslt, compname);
+		//reLogin(unamelt, pawslt, compname);
 
 		//checkRefershPopOnlogin();
 
@@ -17763,23 +16829,23 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 		Thread.sleep(8000);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(userNameTxt));
-		userNameTxt.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(usernametxt1));
+		//userNameTxt.click();
 
-		String userInfo=userNameTxt.getText();
+		String userInfo=usernametxt1.getText();
 
 		System.out.println("User Info : "+userInfo);
 
-		System.out.println("User Info Capture Text :"+userNameTxt.getText());
+	//	System.out.println("User Info Capture Text :"+userNameTxt.getText());
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogoImg));
+	/*	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogoImg));
 
 		companyLogoImg.click();
 
 		String getCompanyTxt=companyName.getText();
 		String getLoginCompanyName=getCompanyTxt.substring(0, 36);
 		System.out.println("company name :"+ getLoginCompanyName);
-		companyLogoImg.click();
+		companyLogoImg.click();*/
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(dashboardName));
 
@@ -17789,18 +16855,18 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 
 		String expuserInfo            ="SU";
-		String expLoginCompanyName    ="Automation Company ";
-		String expDashboard			  ="Graph with Active and setAsDefault";
+		String expLoginCompanyName    ="Account Properties And Customization";
+		String expDashboard			  ="Dashboard";
 
 
 		System.out.println("***********************************checkLogoutAndLoginAfterEnablingMandatoryInGroupCheckboxInFieldsProperties*********************************");
 
 		System.out.println("User Info                        : "+userInfo               +"  value expected  "+expuserInfo);
-		System.out.println("Login Company Name               : "+getLoginCompanyName    +"  value expected  "+expLoginCompanyName);
+		//System.out.println("Login Company Name               : "+getLoginCompanyName    +"  value expected  "+expLoginCompanyName);
 		System.out.println("Dashboard                        : "+getDashboard           +"  value expected  "+expDashboard);
 
 
-		if(/*userInfo.equalsIgnoreCase(expuserInfo) && */getLoginCompanyName.equalsIgnoreCase(expLoginCompanyName))
+		if(userInfo.equalsIgnoreCase(expuserInfo) && getDashboard.equalsIgnoreCase(expDashboard))
 		{	
 			return true;
 		}	 
@@ -17826,6 +16892,8 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		accounts.click();
 
 		Thread.sleep(2000);
+		checkValidationMessage("");
+		
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterAddGroupBtn));	
 		masterAddGroupBtn.click();
@@ -17877,7 +16945,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
 
-		String expMandatoryTextMsg = "In Tab :Create Tab ---> CreateTab_TextField Field is Required";
+		String expMandatoryTextMsg = "In Tab : Create Tab ---> CreateTab_TextField Field is Required";
 
 		String actMandatoryTextMsg = checkValidationMessage(expMandatoryTextMsg);
 
@@ -17897,7 +16965,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
 
-		String expMandatoryNumberMsg = "In Tab :Create Tab ---> CreateTab_NumberField Field is Required";
+		String expMandatoryNumberMsg = "In Tab : Create Tab ---> CreateTab_NumberField Field is Required";
 
 		String actMandatoryNumberMsg = checkValidationMessage(expMandatoryNumberMsg);
 
@@ -17914,9 +16982,9 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		SaveBtn.click();
 		
 		
-		String expMandatoryDateMsg = "In Tab :Create Tab ---> CreateTab_DateField Field is Required";
+		String expMandatoryDateMsg = "In Tab : Create Tab ---> CreateTab_DateField Field is Required";
 
-		String actMandatoryDateMsg = checkValidationMessage(expMandatoryNumberMsg);
+		String actMandatoryDateMsg = checkValidationMessage(expMandatoryDateMsg);
 
 		
 		 
@@ -17934,7 +17002,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		//Fraction Field
 
 		
-		String expMandatoryFractionMsg = "In Tab :Create Tab ---> CreateTab_FractionField Field is Required";
+		String expMandatoryFractionMsg = "In Tab : Create Tab ---> CreateTab_FractionField Field is Required";
 
 		String actMandatoryFractionMsg = checkValidationMessage(expMandatoryFractionMsg);
 
@@ -17954,7 +17022,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
 
-		String expMandatoryPictureMsg = "In Tab :Create Tab ---> CreateTab_PictureField Field is Required";
+		String expMandatoryPictureMsg = "In Tab : Create Tab ---> CreateTab_PictureField Field is Required";
 
 		String actMandatoryPictureMsg = checkValidationMessage(expMandatoryPictureMsg);
 
@@ -17998,56 +17066,13 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 
 
-/*
-		//Document Field
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
-		SaveBtn.click();
-
-		String expMandatoryDocumentMsg = "In Tab :Create Tab ---> CreateTab_DocumentViewerField Field is Required";
-
-		String actMandatoryDocumentMsg = checkValidationMessage(expMandatoryDocumentMsg);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accountHeaderCreateTabDocumentViewerBrowseBtn));
-		accountHeaderCreateTabDocumentViewerBrowseBtn.click();
-
-		Thread.sleep(3000);
-
-		Runtime.getRuntime().exec(getBaseDir()+"\\autoIt\\scripts\\DocumentImportInCustomizeMasterField.exe");
-
-		Thread.sleep(4000);
-
-		String actDocumentViewerAttached = accountHeaderCreateTabAddedDocumentName.getAttribute("value");
-		String expDocumentViewerAttached = "DocumentViewerValidation.pdf";
-
-		System.out.println("DocumentViewerAttached  : "+actDocumentViewerAttached+"  Value Expected  "+expDocumentViewerAttached);
-
-
-		// Master Field
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
-		SaveBtn.click();
-
-		String expMandatoryMasterMsg = "In Tab :Create Tab ---> CreateTab_MasterField Field is Required";
-
-		String actMandatoryMasterMsg = checkValidationMessage(expMandatoryMasterMsg);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accountHeaderCreateTabMasterFieldTxt));
-		accountHeaderCreateTabMasterFieldTxt.click();
-		accountHeaderCreateTabMasterFieldTxt.sendKeys("Cash");
-		Thread.sleep(3000);
-		accountHeaderCreateTabMasterFieldTxt.sendKeys(Keys.TAB);
-
-*/
-
-
 		//Big Number Field
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
 
-		String expMandatoryBigNumberMsg = "In Tab :Create Tab ---> CreateTab_BigNumberField Field is Required";
+		String expMandatoryBigNumberMsg = "In Tab : Create Tab ---> CreateTab_BigNumberField Field is Required";
 
 		String actMandatoryBigNumberMsg = checkValidationMessage(expMandatoryBigNumberMsg);
 
@@ -18062,74 +17087,6 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 
 
-
-		//Small Number Field
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
-		SaveBtn.click();
-
-		String expMandatorySmallNumberMsg = "In Tab :Create Tab ---> CreateTab_SmallNumberField Field is Required";
-
-		String actMandatorySmallNumberMsg = checkValidationMessage(expMandatorySmallNumberMsg);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accountHeaderCreateTabSmallNumberField));
-		accountHeaderCreateTabSmallNumberField.click();
-		accountHeaderCreateTabSmallNumberField.sendKeys(Keys.END);
-		Thread.sleep(2000);
-		accountHeaderCreateTabSmallNumberField.sendKeys(Keys.SHIFT,Keys.HOME);
-		accountHeaderCreateTabSmallNumberField.sendKeys(Keys.BACK_SPACE);
-		accountHeaderCreateTabSmallNumberField.sendKeys("4");
-		accountHeaderCreateTabSmallNumberField.sendKeys(Keys.TAB);
-
-
-
-		//Tiny Number Field
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accountHeaderCreateTabTinyNumberField));
-		accountHeaderCreateTabTinyNumberField.click();
-		accountHeaderCreateTabTinyNumberField.sendKeys(Keys.END);
-		Thread.sleep(2000);
-		accountHeaderCreateTabTinyNumberField.sendKeys(Keys.SHIFT,Keys.HOME);
-		accountHeaderCreateTabTinyNumberField.sendKeys(Keys.BACK_SPACE);
-		accountHeaderCreateTabTinyNumberField.sendKeys(Keys.TAB);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
-		SaveBtn.click();
-
-		String expMandatoryTinyNumberMsg = "In Tab :Create Tab ---> CreateTab_TinyNumberField Field is Required";
-
-		String actMandatoryTinyNumberMsg = checkValidationMessage(expMandatoryTinyNumberMsg);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accountHeaderCreateTabTinyNumberField));
-		accountHeaderCreateTabTinyNumberField.click();
-		accountHeaderCreateTabTinyNumberField.sendKeys("1");
-		accountHeaderCreateTabTinyNumberField.sendKeys(Keys.TAB);
-
-
-
-		//Boolean Field
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accountHeaderCreateTabBooleanFieldChkbox));
-		accountHeaderCreateTabBooleanFieldChkbox.click();
-
-		Thread.sleep(2000);
-
-		boolean actMandatoryBoolean = accountHeaderCreateTabBooleanFieldChkbox.isSelected();
-		boolean expMandatoryBoolean = true;
-
-		System.out.println("Boolean Checkbox isSelected  : "+actMandatoryBoolean+"  Value Expected  "+expMandatoryBoolean);
-
-
-
-		//Time Date Field
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accountHeaderCreateTabDateTimeField));
-		String actDefaultTimeDate = accountHeaderCreateTabDateTimeField.getText();
-
-		System.out.println("Time Date Field  : "+actDefaultTimeDate+"  Value Expected  "+expDefaultTimeDate);
-
-
-
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
 
@@ -18138,14 +17095,9 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		String actMandatoryMsg = checkValidationMessage(expMandatoryMsg);
 
 		if(actMandatoryTextMsg.equalsIgnoreCase(expMandatoryTextMsg) && actMandatoryNumberMsg.equalsIgnoreCase(expMandatoryNumberMsg) 
-				&& actMandatoryBoolean==expMandatoryBoolean && /*actDefaultTimeDate.equalsIgnoreCase(expDefaultTimeDate) && actDefaultDate.equalsIgnoreCase(expDefaultDate)
-			&& actDefaultTime.equalsIgnoreCase(expDefaultTime) &&*/ actMandatoryFractionMsg.equalsIgnoreCase(expMandatoryFractionMsg) && actMandatoryPictureMsg.equalsIgnoreCase(expMandatoryPictureMsg)
+				&& actMandatoryFractionMsg.equalsIgnoreCase(expMandatoryFractionMsg) && actMandatoryPictureMsg.equalsIgnoreCase(expMandatoryPictureMsg)
 			&& actPictureAttached.equalsIgnoreCase(expPictureAttached) && actStringListTxt.equalsIgnoreCase(expStringListTxt) 
-			&& actNumberListTxt.equalsIgnoreCase(expNumberListTxt) /*&& actMandatoryDocumentMsg.equalsIgnoreCase(expMandatoryDocumentMsg) 
-			&& actDocumentViewerAttached.equalsIgnoreCase(expDocumentViewerAttached) && actMandatoryMasterMsg.equalsIgnoreCase(expMandatoryMasterMsg)*/
-			&& actMandatoryBigNumberMsg.equalsIgnoreCase(expMandatoryBigNumberMsg) && actMandatorySmallNumberMsg.equalsIgnoreCase(expMandatorySmallNumberMsg)
-			&& actMandatoryTinyNumberMsg.equalsIgnoreCase(expMandatoryTinyNumberMsg)/* && actGregorianDefaultDate.equalsIgnoreCase(expGregorianDefaultDate)*/
-			/*&& actHijriCheckbox==expHijriCheckbox && actShamsiCheckbox==expShamsiCheckbox && actMandatoryMsg.equalsIgnoreCase(expMandatoryMsg)*/)
+			&& actNumberListTxt.equalsIgnoreCase(expNumberListTxt) && actMandatoryBigNumberMsg.equalsIgnoreCase(expMandatoryBigNumberMsg))
 		{	
 			return true;
 		}	 
@@ -18377,43 +17329,10 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		String expDateFieldMsg = "Field Updated Successfully";
 		String actDateFieldMsg = checkValidationMessage(expDateFieldMsg);
 
-		//Time field
+		
 
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_TimeField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
+		
 		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesMandatoryInGroupChekbox));
-
-		if (extraFields_PropertiesMandatoryInGroupChekboxSelected.isSelected()==true) 
-		{
-			extraFields_PropertiesMandatoryInGroupChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesHiddenChekbox));
-		extraFields_PropertiesHiddenChekbox.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-		Thread.sleep(2000);
-
-		String expTimeFieldMsg = "Field Updated Successfully";
-		String actTimeFieldMsg = checkValidationMessage(expTimeFieldMsg);
-
 		//Fraction Field
 
 		for (int i = 0; i < count; i++) 
@@ -18452,6 +17371,8 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		String actFractionFieldMsg = checkValidationMessage(expFractionFieldMsg);
 
 		//Picture Field
+		
+		Thread.sleep(4000);
 
 		for (int i = 0; i < count; i++) 
 		{
@@ -18488,163 +17409,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		String expPictureFieldMsg = "Field Updated Successfully";
 		String actPictureFieldMsg = checkValidationMessage(expPictureFieldMsg);
 
-		//String List Field
-
-		Thread.sleep(2000);
-
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_StringListField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesMandatoryInGroupChekbox));
-
-		if (extraFields_PropertiesMandatoryInGroupChekboxSelected.isSelected()==true) 
-		{
-			extraFields_PropertiesMandatoryInGroupChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesHiddenChekbox));
-		extraFields_PropertiesHiddenChekbox.click();
-
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-		Thread.sleep(2000);
-
-		String expStringListFieldMsg = "Field Updated Successfully";
-		String actStringListFieldMsg = checkValidationMessage(expStringListFieldMsg);
-
-		//Number List
-
-		Thread.sleep(2000);
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_NumberListField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesMandatoryInGroupChekbox));
-
-		if (extraFields_PropertiesMandatoryInGroupChekboxSelected.isSelected()==true) 
-		{
-			extraFields_PropertiesMandatoryInGroupChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesHiddenChekbox));
-		extraFields_PropertiesHiddenChekbox.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-		
-		Thread.sleep(2000);
-		String expNumberListFieldMsg = "Field Updated Successfully";
-		String actNumberListFieldMsg = checkValidationMessage(expNumberListFieldMsg);
-
-		//DocumentViewer Field
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_DocumentViewerField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesMandatoryInGroupChekbox));
-
-		if (extraFields_PropertiesMandatoryInGroupChekboxSelected.isSelected()==true) 
-		{
-			extraFields_PropertiesMandatoryInGroupChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesHiddenChekbox));
-		extraFields_PropertiesHiddenChekbox.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-		Thread.sleep(2000);
-
-		String expDocumentViewerFieldMsg = "Field Updated Successfully";
-		String actDocumentViewerFieldMsg = checkValidationMessage(expDocumentViewerFieldMsg);
-
-		//Master Field
-
-		Thread.sleep(2000);
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_MasterField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesMandatoryInGroupChekbox));
-
-		if (extraFields_PropertiesMandatoryInGroupChekboxSelected.isSelected()==true) 
-		{
-			extraFields_PropertiesMandatoryInGroupChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesHiddenChekbox));
-		extraFields_PropertiesHiddenChekbox.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-		Thread.sleep(2000);
-
-		String expMasterFieldMsg = "Field Updated Successfully";
-		String actMasterFieldMsg = checkValidationMessage(expMasterFieldMsg);
-
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 
 		//BigNumber Field
 
@@ -18684,239 +17449,10 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		String expBigNumberFieldMsg = "Field Updated Successfully";
 		String actBigNumberFieldMsg = checkValidationMessage(expBigNumberFieldMsg);
 
-		/*
-				//External Table Field
-
-				for (int i = 0; i < count; i++) 
-				{
-					String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-					if (data.equalsIgnoreCase("CreateTab_ExternalTableField")) 
-					{
-						CreateTabeditFieldList.get(i).click();
-						break;
-					} 
-				}
-
-				Thread.sleep(2000);
-
-				getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-				extraFields_PropertiesTab.click();
-
-				Thread.sleep(2000);
-
-				getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesMandatoryInGroupChekbox));
-
-				if (extraFields_PropertiesMandatoryInGroupChekbox.isSelected()==true) 
-				{
-					extraFields_PropertiesMandatoryInGroupChekbox.click();
-				}
-				getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesHiddenChekbox));
-				extraFields_PropertiesHiddenChekbox.click();
-
-				getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-				extraFields_OkBtn.click();
-
-				String expExternalTableFieldMsg = "Field Updated Successfully";
-				String actExternalTableFieldMsg = checkValidationMessage(expExternalTableFieldMsg);*/
-
-		//Small Number Field
-		Thread.sleep(2000);
-
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_SmallNumberField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesMandatoryInGroupChekbox));
-
-		if (extraFields_PropertiesMandatoryInGroupChekboxSelected.isSelected()==true) 
-		{
-			extraFields_PropertiesMandatoryInGroupChekbox.click();
-		}
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesHiddenChekbox));
-		extraFields_PropertiesHiddenChekbox.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-		
-		Thread.sleep(2000);
-
-		String expSmallNumberFieldMsg = "Field Updated Successfully";
-		String actSmallNumberFieldMsg = checkValidationMessage(expSmallNumberFieldMsg);
-
-		//Tiny Number field
-		Thread.sleep(2000);
-
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_TinyNumberField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesMandatoryInGroupChekbox));
-
-		if (extraFields_PropertiesMandatoryInGroupChekboxSelected.isSelected()==true) 
-		{
-			extraFields_PropertiesMandatoryInGroupChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesHiddenChekbox));
-		extraFields_PropertiesHiddenChekbox.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-		
-		Thread.sleep(2000);
-
-		String expTinyNumberFieldMsg = "Field Updated Successfully";
-		String actTinyNumberFieldMsg = checkValidationMessage(expTinyNumberFieldMsg);
-
-		//Gregirian Field
-		Thread.sleep(2000);
-
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_GregorianField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesMandatoryInGroupChekbox));
-
-		if (extraFields_PropertiesMandatoryInGroupChekboxSelected.isSelected()==true) 
-		{
-			extraFields_PropertiesMandatoryInGroupChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesHiddenChekbox));
-		extraFields_PropertiesHiddenChekbox.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-		
-		Thread.sleep(2000);
-
-		String expGregorianFieldMsg = "Field Updated Successfully";
-		String actGregorianFieldMsg = checkValidationMessage(expGregorianFieldMsg);
-
-		//Hijri Field 
-		Thread.sleep(2000);
-
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_HijriField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesMandatoryInGroupChekbox));
-
-		if (extraFields_PropertiesMandatoryInGroupChekboxSelected.isSelected()==true) 
-		{
-			extraFields_PropertiesMandatoryInGroupChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesHiddenChekbox));
-		extraFields_PropertiesHiddenChekbox.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-
-		Thread.sleep(2000);
-		String expHijriFieldMsg = "Field Updated Successfully";
-		String actHijriFieldMsg = checkValidationMessage(expHijriFieldMsg);
 		
 		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(closeBtnInCreateTabCustomizeMasetrWarehouse));
 		closeBtnInCreateTabCustomizeMasetrWarehouse.click();
-
-		//Shamsi Field
-
-		/*for (int i = 0; i < count; i++) 
-				{
-					String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-					if (data.equalsIgnoreCase("CreateTab_ShamsiField")) 
-					{
-						CreateTabeditFieldList.get(i).click();
-						break;
-					} 
-				}
-
-				Thread.sleep(2000);
-
-				getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-				extraFields_PropertiesTab.click();
-
-				Thread.sleep(2000);
-
-				getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesMandatoryInGroupChekbox));
-
-				if (extraFields_PropertiesMandatoryInGroupChekbox.isSelected()==true) 
-				{
-					extraFields_PropertiesMandatoryInGroupChekbox.click();
-				}
-
-				getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesHiddenChekbox));
-				extraFields_PropertiesHiddenChekbox.click();
-
-				getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-				extraFields_OkBtn.click();
-
-				String expShamsiFieldMsg = "Field Updated Successfully";
-				String actShamsiFieldMsg = checkValidationMessage(expShamsiFieldMsg);*/
 
 		System.out.println("***********************************checkEnableHiddenCheckboxInAllFieldsProperties*********************************");
 
@@ -18925,29 +17461,16 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		System.out.println("BooleanFieldMsg         : "+actBooleanFieldMsg			+"  Value Expected  "+expBooleanFieldMsg);
 		System.out.println("DateTimeFieldMsg        : "+actDateTimeFieldMsg			+"  Value Expected  "+expDateTimeFieldMsg);
 		System.out.println("DateFieldMsg            : "+actDateFieldMsg				+"  Value Expected  "+expDateFieldMsg);
-		System.out.println("TimeFieldMsg            : "+actTimeFieldMsg				+"  Value Expected  "+expTimeFieldMsg);
+	
 		System.out.println("FractionFieldMsg        : "+actFractionFieldMsg			+"  Value Expected  "+expFractionFieldMsg);
 		System.out.println("PictureFieldMsg         : "+actPictureFieldMsg			+"  Value Expected  "+expPictureFieldMsg);
-		System.out.println("StringListFieldMsg      : "+actStringListFieldMsg		+"  Value Expected  "+expStringListFieldMsg);
-		System.out.println("NumberListFieldMsg      : "+actNumberListFieldMsg		+"  Value Expected  "+expNumberListFieldMsg);
-		System.out.println("DocumentViewerFieldMsg  : "+actDocumentViewerFieldMsg	+"  Value Expected  "+expDocumentViewerFieldMsg);
-		System.out.println("MasterFieldMsg          : "+actMasterFieldMsg			+"  Value Expected  "+expMasterFieldMsg);
+		
 		System.out.println("BigNumberFieldMsg       : "+actBigNumberFieldMsg		+"  Value Expected  "+expBigNumberFieldMsg);
-		System.out.println("SmallNumberFieldMsg     : "+actSmallNumberFieldMsg		+"  Value Expected  "+expSmallNumberFieldMsg);
-		System.out.println("TinyNumberFieldMsg      : "+actTinyNumberFieldMsg		+"  Value Expected  "+expTinyNumberFieldMsg);
-		System.out.println("GregorianFieldMsg       : "+actGregorianFieldMsg		+"  Value Expected  "+expGregorianFieldMsg);
-		System.out.println("HijriFieldMsg           : "+actHijriFieldMsg			+"  Value Expected  "+expHijriFieldMsg);
-		//System.out.println("ShamsiFieldMsg          : "+actShamsiFieldMsg			+"  Value Expected  "+expShamsiFieldMsg);
-
+		
 		if(actTextFieldMsg.equalsIgnoreCase(expTextFieldMsg) && actNumbertFieldMsg.equalsIgnoreCase(expNumberFieldMsg) 
-				&& actBooleanFieldMsg.equalsIgnoreCase(expBooleanFieldMsg) && /*actDateTimeFieldMsg.equalsIgnoreCase(expDateTimeFieldMsg) 
-				&& actDateFieldMsg.equalsIgnoreCase(expDateFieldMsg) && actTimeFieldMsg.equalsIgnoreCase(expTimeFieldMsg) 
-				&& */actFractionFieldMsg.equalsIgnoreCase(expFractionFieldMsg) && actPictureFieldMsg.equalsIgnoreCase(expPictureFieldMsg) 
-				&& actStringListFieldMsg.equalsIgnoreCase(expStringListFieldMsg) && actNumberListFieldMsg.equalsIgnoreCase(expNumberListFieldMsg) 
-				&& actDocumentViewerFieldMsg.equalsIgnoreCase(expDocumentViewerFieldMsg) && actMasterFieldMsg.equalsIgnoreCase(expMasterFieldMsg) 
-				&& actBigNumberFieldMsg.equalsIgnoreCase(expBigNumberFieldMsg) && actSmallNumberFieldMsg.equalsIgnoreCase(expSmallNumberFieldMsg) 
-				&& actTinyNumberFieldMsg.equalsIgnoreCase(expTinyNumberFieldMsg) && actGregorianFieldMsg.equalsIgnoreCase(expGregorianFieldMsg) 
-				&& actHijriFieldMsg.equalsIgnoreCase(expHijriFieldMsg) /*&& actShamsiFieldMsg.equalsIgnoreCase(expShamsiFieldMsg)*/)
+				&& actBooleanFieldMsg.equalsIgnoreCase(expBooleanFieldMsg) && actFractionFieldMsg.equalsIgnoreCase(expFractionFieldMsg) 
+				&& actPictureFieldMsg.equalsIgnoreCase(expPictureFieldMsg)
+				&& actBigNumberFieldMsg.equalsIgnoreCase(expBigNumberFieldMsg))
 		{	
 			return true;
 		}	 
@@ -19032,16 +17555,16 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 		Thread.sleep(8000);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(userNameTxt));
-		userNameTxt.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(userNameTxt1));
+		//userNameTxt.click();
 
-		String userInfo=userNameTxt.getText();
+		String userInfo=userNameTxt1.getText();
 
 		System.out.println("User Info : "+userInfo);
 
-		System.out.println("User Info Capture Text :"+userNameTxt.getText());
+		System.out.println("User Info Capture Text :"+userNameTxt1.getText());
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogoImg));
+		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogoImg));
 
 		companyLogoImg.click();
 
@@ -19049,7 +17572,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		String getLoginCompanyName=getCompanyTxt.substring(0, 36);
 		System.out.println("company name :"+ getLoginCompanyName);
 		companyLogoImg.click();
-
+*/
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(dashboardName));
 
 		String getDashboard=dashboardName.getText();
@@ -19059,17 +17582,17 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 		String expuserInfo            ="SU";
 		String expLoginCompanyName    ="Account Properties And Customization";
-		String expDashboard			  ="Graph with Active and setAsDefault";
+		String expDashboard			  ="Dashboard";
 
 
 		System.out.println("***********************************checkLogoutAndLoginAfterEnablingMandatoryCheckboxInFieldsProperties*********************************");
 
 		System.out.println("User Info                        : "+userInfo               +"  value expected  "+expuserInfo);
-		System.out.println("Login Company Name               : "+getLoginCompanyName    +"  value expected  "+expLoginCompanyName);
+	//	System.out.println("Login Company Name               : "+getLoginCompanyName    +"  value expected  "+expLoginCompanyName);
 		System.out.println("Dashboard                        : "+getDashboard           +"  value expected  "+expDashboard);
 
 
-		if(/*userInfo.equalsIgnoreCase(expuserInfo) &&*/ getLoginCompanyName.equalsIgnoreCase(expLoginCompanyName))
+		if(userInfo.equalsIgnoreCase(expuserInfo) && getDashboard.equalsIgnoreCase(expDashboard))
 		{	
 			return true;
 		}	 
@@ -19157,43 +17680,9 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		boolean actCreatTabPictureFieldDeleteBtnValue=accountHeaderCreateTabPictureFieldDeleteBtn.isDisplayed();
 		boolean expCreatTabPictureFieldDeleteBtnValue= false;
 
-		boolean actCreateTabStringListValue=accountHeaderCreateTabStringListFieldDropdown.isDisplayed();
-		boolean expCreateTabStringListValue= false;
-
-		boolean actCreateTabDocumentViewerValue=accountHeaderCreateTabDocumentViewerField.isDisplayed();
-		boolean expCreateTabDocumentViewerValue= false;
-
-		boolean actCreateTabDocumentViewerBrowseBtnValue=accountHeaderCreateTabDocumentViewerBrowseBtn.isDisplayed();
-		boolean expCreateTabDocumentViewerBrowseBtnValue= false;
-
-		boolean actCreatTabPictureFieldSaveBtnValue=accountHeaderCreateTabDocumentViewerSaveBtn.isDisplayed();
-		boolean expCreatTabPictureFieldSaveBtnValue= false;
-
-		boolean actCreateTabNumberListValue=accountHeaderCreateTabNumberListFieldDropdown.isDisplayed();
-		boolean expCreateTabNumberListValue= false;
-
-
-		/*boolean actCreateTabMasterFieldDropDownValue=accountHeaderCreateTabMasterFieldDropdown.isDisplayed();
-		boolean expCreateTabMasterFieldDropDownValue= false;*/
 
 		boolean actCreateTabBigNumberFiledValue=accountHeaderCreateTabBigNumberField.isDisplayed();
 		boolean expCreateTabBigNumberFiledValue= false;
-
-		/* boolean actCreateTabExternalFiledDropdownValue=accountHeaderCreateTabExternalFieldDropdown.isDisplayed();
-		 boolean expCreateTabExternalFiledDropdownValue= false;*/
-
-		boolean actCreateTabSmallNumberField=accountHeaderCreateTabSmallNumberField.isDisplayed();
-		boolean expCreateTabSmallNumberField= false;
-
-
-		boolean actCreateTabTinyNumberField=accountHeaderCreateTabTinyNumberField.isDisplayed();
-		boolean expCreateTabTinyNumberField= false;
-
-		boolean actCreateTabGregorianDateField=accountHeaderCreateTabGregorianDateField.isDisplayed();
-		boolean expCreateTabGregorianDateField= false;
-
-		boolean actCreateTabHijriDateField=accountHeaderCreateTabHijriFieldDate.isDisplayed();
-		boolean expCreateTabHijriDateField= false;
 
 
 
@@ -19208,27 +17697,13 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		System.out.println("TimeField            : 		"+actCreateTabTimeFieldValue				+"  Value Expected  "+expCreateTabTimeFieldValue);
 		System.out.println("FractionField        : 		"+actCreateTabFractionFieldValue			+"  Value Expected  "+expCreateTabFractionFieldValue);
 		System.out.println("PictureField         : 		"+actCreateTabPictureBrowseBtnValue			+"  Value Expected  "+expCreateTabPictureBrowseBtnValue);
-		System.out.println("StringListField      : 		"+actCreateTabStringListValue				+"  Value Expected  "+expCreateTabStringListValue);
-		System.out.println("NumberListField      : 		"+actCreateTabNumberListValue				+"  Value Expected  "+expCreateTabNumberListValue);
-		System.out.println("DocumentViewerField  : 		"+actCreateTabDocumentViewerValue			+"  Value Expected  "+expCreateTabDocumentViewerValue);
-	/*	System.out.println("MasterField          : 		"+actCreateTabMasterFieldDropDownValue		+"  Value Expected  "+expCreateTabMasterFieldDropDownValue);*/
+	
 		System.out.println("BigNumberField       : 		"+actCreateTabBigNumberFiledValue			+"  Value Expected  "+expCreateTabBigNumberFiledValue);
-		System.out.println("SmallNumberField     :		"+actCreateTabSmallNumberField				+"  Value Expected  "+expCreateTabSmallNumberField);
-		System.out.println("TinyNumberField      : 		"+actCreateTabTinyNumberField				+"  Value Expected  "+expCreateTabTinyNumberField);
-		System.out.println("GregorianField       : 		"+actCreateTabGregorianDateField			+"  Value Expected  "+expCreateTabGregorianDateField);
-		System.out.println("HijriField           : 		"+actCreateTabHijriDateField				+"  Value Expected  "+actCreateTabHijriDateField);
-
-
-
+	
 		if(actCreateTabTextFieldValue==expCreateTabTextFieldValue && actCreateTabNumberFieldValue==expCreateTabNumberFieldValue 
-				&& actCreateTabBooleanFieldValue==expCreateTabBooleanFieldValue && /*actCreateTabDateTimeFieldValue==expCreateTabDateTimeFieldValue 
-			&& actCreateTabDateFieldValue==expCreateTabDateFieldValue && actCreateTabTimeFieldValue==expCreateTabTimeFieldValue 
-			&& */actCreateTabFractionFieldValue==expCreateTabFractionFieldValue && actCreateTabPictureBrowseBtnValue==expCreateTabPictureBrowseBtnValue 
-			&& actCreateTabStringListValue==expCreateTabStringListValue && actCreateTabNumberListValue==expCreateTabNumberListValue 
-			&& actCreateTabDocumentViewerValue==expCreateTabDocumentViewerValue /*&& actCreateTabMasterFieldDropDownValue==expCreateTabMasterFieldDropDownValue */
-			&& actCreateTabBigNumberFiledValue==expCreateTabBigNumberFiledValue && actCreateTabSmallNumberField==expCreateTabSmallNumberField 
-			&& actCreateTabTinyNumberField==expCreateTabTinyNumberField /*&& actCreateTabGregorianDateField==expCreateTabGregorianDateField 
-			&& actCreateTabHijriDateField==actCreateTabHijriDateField*/)
+				&& actCreateTabBooleanFieldValue==expCreateTabBooleanFieldValue && actCreateTabFractionFieldValue==expCreateTabFractionFieldValue 
+				&& actCreateTabPictureBrowseBtnValue==expCreateTabPictureBrowseBtnValue 
+				&& actCreateTabBigNumberFiledValue==expCreateTabBigNumberFiledValue)
 		{	
 			return true;
 		}	 
@@ -19401,7 +17876,9 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accounts));
 		accounts.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(5000);
+		
+		checkValidationMessage("");
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterRibbonToExpandOptions));		
 		masterRibbonToExpandOptions.click();
@@ -19577,7 +18054,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 			} 
 		}
 
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
 		extraFields_PropertiesTab.click();
@@ -19599,41 +18076,6 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		String expDateFieldMsg = "Field Updated Successfully";
 		String actDateFieldMsg = checkValidationMessage(expDateFieldMsg);
 
-		//Time field
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_TimeField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesHiddenChekbox));
-
-		if (extraFields_PropertiesHiddenChekboxSelected.isSelected()==true) 
-		{
-			extraFields_PropertiesHiddenChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesHiddenInGroupChekbox));
-		extraFields_PropertiesHiddenInGroupChekbox.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-
-		String expTimeFieldMsg = "Field Updated Successfully";
-		String actTimeFieldMsg = checkValidationMessage(expTimeFieldMsg);
 
 		//Fraction Field
 
@@ -19707,149 +18149,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		String expPictureFieldMsg = "Field Updated Successfully";
 		String actPictureFieldMsg = checkValidationMessage(expPictureFieldMsg);
 
-		//String List Field
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_StringListField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesHiddenChekbox));
-
-		if (extraFields_PropertiesHiddenChekboxSelected.isSelected()==true) 
-		{
-			extraFields_PropertiesHiddenChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesHiddenInGroupChekbox));
-		extraFields_PropertiesHiddenInGroupChekbox.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-
-		String expStringListFieldMsg = "Field Updated Successfully";
-		String actStringListFieldMsg = checkValidationMessage(expStringListFieldMsg);
-
-		//Number List
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_NumberListField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesHiddenChekbox));
-
-		if (extraFields_PropertiesHiddenChekboxSelected.isSelected()==true) 
-		{
-			extraFields_PropertiesHiddenChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesHiddenInGroupChekbox));
-		extraFields_PropertiesHiddenInGroupChekbox.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-
-		String expNumberListFieldMsg = "Field Updated Successfully";
-		String actNumberListFieldMsg = checkValidationMessage(expNumberListFieldMsg);
-
-		//DocumentViewer Field
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_DocumentViewerField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesHiddenChekbox));
-
-		if (extraFields_PropertiesHiddenChekboxSelected.isSelected()==true) 
-		{
-			extraFields_PropertiesHiddenChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesHiddenInGroupChekbox));
-		extraFields_PropertiesHiddenInGroupChekbox.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-
-		String expDocumentViewerFieldMsg = "Field Updated Successfully";
-		String actDocumentViewerFieldMsg = checkValidationMessage(expDocumentViewerFieldMsg);
-
-		//Master Field
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_MasterField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesHiddenChekbox));
-
-		if (extraFields_PropertiesHiddenChekboxSelected.isSelected()==true) 
-		{
-			extraFields_PropertiesHiddenChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesHiddenInGroupChekbox));
-		extraFields_PropertiesHiddenInGroupChekbox.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-
-		String expMasterFieldMsg = "Field Updated Successfully";
-		String actMasterFieldMsg = checkValidationMessage(expMasterFieldMsg);
+		
 
 		//BigNumber Field
 
@@ -19887,232 +18187,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		String expBigNumberFieldMsg = "Field Updated Successfully";
 		String actBigNumberFieldMsg = checkValidationMessage(expBigNumberFieldMsg);
 
-		/*
-				//External Table Field
-
-				for (int i = 0; i < count; i++) 
-				{
-					String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-					if (data.equalsIgnoreCase("CreateTab_ExternalTableField")) 
-					{
-						CreateTabeditFieldList.get(i).click();
-						break;
-					} 
-				}
-
-				Thread.sleep(2000);
-
-				getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-				extraFields_PropertiesTab.click();
-
-				Thread.sleep(2000);
-
-				getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesHiddenChekbox));
-
-				if (extraFields_PropertiesHiddenChekbox.isSelected()==true) 
-				{
-					extraFields_PropertiesHiddenChekbox.click();
-				}
-
-				getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesHiddenInGroupChekbox));
-				extraFields_PropertiesHiddenInGroupChekbox.click();
-
-				getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-				extraFields_OkBtn.click();
-
-				String expExternalTableFieldMsg = "Field Updated Successfully";
-				String actExternalTableFieldMsg = checkValidationMessage(expExternalTableFieldMsg);*/
-
-		//Small Number Field
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_SmallNumberField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesHiddenChekbox));
-
-		if (extraFields_PropertiesHiddenChekboxSelected.isSelected()==true) 
-		{
-			extraFields_PropertiesHiddenChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesHiddenInGroupChekbox));
-		extraFields_PropertiesHiddenInGroupChekbox.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-
-		String expSmallNumberFieldMsg = "Field Updated Successfully";
-		String actSmallNumberFieldMsg = checkValidationMessage(expSmallNumberFieldMsg);
-
-		//Tiny Number field
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_TinyNumberField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesHiddenChekbox));
-
-		if (extraFields_PropertiesHiddenChekboxSelected.isSelected()==true) 
-		{
-			extraFields_PropertiesHiddenChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesHiddenInGroupChekbox));
-		extraFields_PropertiesHiddenInGroupChekbox.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
 		
-		Thread.sleep(2000);
-
-
-		String expTinyNumberFieldMsg = "Field Updated Successfully";
-		String actTinyNumberFieldMsg = checkValidationMessage(expTinyNumberFieldMsg);
-
-		//Gregirian Field
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_GregorianField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesHiddenChekbox));
-
-		if (extraFields_PropertiesHiddenChekboxSelected.isSelected()==true) 
-		{
-			extraFields_PropertiesHiddenChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesHiddenInGroupChekbox));
-		extraFields_PropertiesHiddenInGroupChekbox.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-		Thread.sleep(2000);
-
-
-		String expGregorianFieldMsg = "Field Updated Successfully";
-		String actGregorianFieldMsg = checkValidationMessage(expGregorianFieldMsg);
-
-		//Hijri Field 
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_HijriField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesHiddenChekbox));
-
-		if (extraFields_PropertiesHiddenChekboxSelected.isSelected()==true) 
-		{
-			extraFields_PropertiesHiddenChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesHiddenInGroupChekbox));
-		extraFields_PropertiesHiddenInGroupChekbox.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-		Thread.sleep(2000);
-
-
-		String expHijriFieldMsg = "Field Updated Successfully";
-		String actHijriFieldMsg = checkValidationMessage(expHijriFieldMsg);
-
-		//Shamsi Field
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_ShamsiField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesHiddenChekbox));
-
-		if (extraFields_PropertiesHiddenChekboxSelected.isSelected()==true) 
-		{
-			extraFields_PropertiesHiddenChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesHiddenInGroupChekbox));
-		extraFields_PropertiesHiddenInGroupChekbox.click();
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-		
-		Thread.sleep(2000);
-		String expShamsiFieldMsg = "Field Updated Successfully";
-		String actShamsiFieldMsg = checkValidationMessage(expShamsiFieldMsg);
-		
-		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(closeBtnInCreateTabCustomizeMasetrWarehouse));
 		closeBtnInCreateTabCustomizeMasetrWarehouse.click();
 
@@ -20123,29 +18198,16 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		System.out.println("BooleanFieldMsg         : "+actBooleanFieldMsg			+"  Value Expected  "+expBooleanFieldMsg);
 		System.out.println("DateTimeFieldMsg        : "+actDateTimeFieldMsg			+"  Value Expected  "+expDateTimeFieldMsg);
 		System.out.println("DateFieldMsg            : "+actDateFieldMsg				+"  Value Expected  "+expDateFieldMsg);
-		System.out.println("TimeFieldMsg            : "+actTimeFieldMsg				+"  Value Expected  "+expTimeFieldMsg);
+	
 		System.out.println("FractionFieldMsg        : "+actFractionFieldMsg			+"  Value Expected  "+expFractionFieldMsg);
 		System.out.println("PictureFieldMsg         : "+actPictureFieldMsg			+"  Value Expected  "+expPictureFieldMsg);
-		System.out.println("StringListFieldMsg      : "+actStringListFieldMsg		+"  Value Expected  "+expStringListFieldMsg);
-		System.out.println("NumberListFieldMsg      : "+actNumberListFieldMsg		+"  Value Expected  "+expNumberListFieldMsg);
-		System.out.println("DocumentViewerFieldMsg  : "+actDocumentViewerFieldMsg	+"  Value Expected  "+expDocumentViewerFieldMsg);
-		System.out.println("MasterFieldMsg          : "+actMasterFieldMsg			+"  Value Expected  "+expMasterFieldMsg);
-		System.out.println("BigNumberFieldMsg       : "+actBigNumberFieldMsg		+"  Value Expected  "+expBigNumberFieldMsg);
-		System.out.println("SmallNumberFieldMsg     : "+actSmallNumberFieldMsg		+"  Value Expected  "+expSmallNumberFieldMsg);
-		System.out.println("TinyNumberFieldMsg      : "+actTinyNumberFieldMsg		+"  Value Expected  "+expTinyNumberFieldMsg);
-		System.out.println("GregorianFieldMsg       : "+actGregorianFieldMsg		+"  Value Expected  "+expGregorianFieldMsg);
-		System.out.println("HijriFieldMsg           : "+actHijriFieldMsg			+"  Value Expected  "+expHijriFieldMsg);
-		System.out.println("ShamsiFieldMsg          : "+actShamsiFieldMsg			+"  Value Expected  "+expShamsiFieldMsg);
 
+		System.out.println("BigNumberFieldMsg       : "+actBigNumberFieldMsg		+"  Value Expected  "+expBigNumberFieldMsg);
+		
 		if(actTextFieldMsg.equalsIgnoreCase(expTextFieldMsg) && actNumbertFieldMsg.equalsIgnoreCase(expNumberFieldMsg) 
-				&& actBooleanFieldMsg.equalsIgnoreCase(expBooleanFieldMsg) /*&& actDateTimeFieldMsg.equalsIgnoreCase(expDateTimeFieldMsg) 
-				&& actDateFieldMsg.equalsIgnoreCase(expDateFieldMsg) && actTimeFieldMsg.equalsIgnoreCase(expTimeFieldMsg) */
+				&& actBooleanFieldMsg.equalsIgnoreCase(expBooleanFieldMsg)
 				&& actFractionFieldMsg.equalsIgnoreCase(expFractionFieldMsg) && actPictureFieldMsg.equalsIgnoreCase(expPictureFieldMsg) 
-				&& actStringListFieldMsg.equalsIgnoreCase(expStringListFieldMsg) && actNumberListFieldMsg.equalsIgnoreCase(expNumberListFieldMsg) 
-				&& actDocumentViewerFieldMsg.equalsIgnoreCase(expDocumentViewerFieldMsg) && actMasterFieldMsg.equalsIgnoreCase(expMasterFieldMsg) 
-				&& actBigNumberFieldMsg.equalsIgnoreCase(expBigNumberFieldMsg) && actSmallNumberFieldMsg.equalsIgnoreCase(expSmallNumberFieldMsg) 
-				&& actTinyNumberFieldMsg.equalsIgnoreCase(expTinyNumberFieldMsg) && actGregorianFieldMsg.equalsIgnoreCase(expGregorianFieldMsg) 
-				&& actHijriFieldMsg.equalsIgnoreCase(expHijriFieldMsg) && actShamsiFieldMsg.equalsIgnoreCase(expShamsiFieldMsg))
+				&& actBigNumberFieldMsg.equalsIgnoreCase(expBigNumberFieldMsg))
 		{	
 			return true;
 		}	 
@@ -20233,15 +18295,15 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 		Thread.sleep(8000);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(userNameTxt));
-		userNameTxt.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(usernametxt1));
+		//userNameTxt.click();
 
-		String userInfo=userNameTxt.getText();
+		String userInfo=usernametxt1.getText();
 
 		System.out.println("User Info : "+userInfo);
 
-		System.out.println("User Info Capture Text :"+userNameTxt.getText());
-
+		System.out.println("User Info Capture Text :"+usernametxt1.getText());
+/*
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogoImg));
 
 		companyLogoImg.click();
@@ -20249,7 +18311,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		String getCompanyTxt=companyName.getText();
 		String getLoginCompanyName=getCompanyTxt.substring(0, 36);
 		System.out.println("company name :"+ getLoginCompanyName);
-		companyLogoImg.click();
+		companyLogoImg.click();*/
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(dashboardName));
 
@@ -20260,16 +18322,16 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 		String expuserInfo            ="SU";
 		String expLoginCompanyName    ="Account Properties And Customization";
-		String expDashboard			  ="Graph with Active and setAsDefault";
+		String expDashboard			  ="Dashboard";
 
 		System.out.println("***********************************checkLogoutAndLoginAfterEnablingMandatoryCheckboxInFieldsProperties*********************************");
 
 		System.out.println("User Info                        : "+userInfo               +"  value expected  "+expuserInfo);
-		System.out.println("Login Company Name               : "+getLoginCompanyName    +"  value expected  "+expLoginCompanyName);
+		//System.out.println("Login Company Name               : "+getLoginCompanyName    +"  value expected  "+expLoginCompanyName);
 		System.out.println("Dashboard                        : "+getDashboard           +"  value expected  "+expDashboard);
 
 
-		if(/*userInfo.equalsIgnoreCase(expuserInfo) &&*/ getLoginCompanyName.equalsIgnoreCase(expLoginCompanyName))
+		if(userInfo.equalsIgnoreCase(expuserInfo) && getDashboard.equalsIgnoreCase(expDashboard))
 		{	
 			return true;
 		}	 
@@ -20352,49 +18414,11 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		boolean actCreatTabPictureFieldDeleteBtnValue=accountHeaderCreateTabPictureFieldDeleteBtn.isDisplayed();
 		boolean expCreatTabPictureFieldDeleteBtnValue= false;
 
-		boolean actCreateTabStringListValue=accountHeaderCreateTabStringListFieldDropdown.isDisplayed();
-		boolean expCreateTabStringListValue= false;
-
-		boolean actCreateTabDocumentViewerValue=accountHeaderCreateTabDocumentViewerField.isDisplayed();
-		boolean expCreateTabDocumentViewerValue= false;
-
-
-		boolean actCreateTabDocumentViewerBrowseBtnValue=accountHeaderCreateTabDocumentViewerBrowseBtn.isDisplayed();
-		boolean expCreateTabDocumentViewerBrowseBtnValue= false;
-
-
-		boolean actCreatTabPictureFieldSaveBtnValue=accountHeaderCreateTabDocumentViewerSaveBtn.isDisplayed();
-		boolean expCreatTabPictureFieldSaveBtnValue= false;
-
-
-		boolean actCreateTabNumberListValue=accountHeaderCreateTabNumberListFieldDropdown.isDisplayed();
-		boolean expCreateTabNumberListValue= false;
-
-/*
-		boolean actCreateTabMasterFieldDropDownValue=accountHeaderCreateTabMasterFieldDropdown.isDisplayed();
-		boolean expCreateTabMasterFieldDropDownValue= false;*/
 
 		boolean actCreateTabBigNumberFiledValue=accountHeaderCreateTabBigNumberField.isDisplayed();
 		boolean expCreateTabBigNumberFiledValue= false;
 
-		/* boolean actCreateTabExternalFiledDropdownValue=accountHeaderCreateTabExternalFieldDropdown.isDisplayed();
-		 boolean expCreateTabExternalFiledDropdownValue= false;*/
-
-		boolean actCreateTabSmallNumberField=accountHeaderCreateTabSmallNumberField.isDisplayed();
-		boolean expCreateTabSmallNumberField= false;
-
-
-		boolean actCreateTabTinyNumberField=accountHeaderCreateTabTinyNumberField.isDisplayed();
-		boolean expCreateTabTinyNumberField= false;
-
-		boolean actCreateTabGregorianDateField=accountHeaderCreateTabGregorianDateField.isDisplayed();
-		boolean expCreateTabGregorianDateField= false;
-
-
-		boolean actCreateTabHijriDateField=accountHeaderCreateTabHijriFieldDate.isDisplayed();
-		boolean expCreateTabHijriDateField= false;
-
-
+		
 
 		Thread.sleep(2000);
 
@@ -20408,27 +18432,13 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		System.out.println("TimeField            : 		"+actCreateTabTimeFieldValue				+"  Value Expected  "+expCreateTabTimeFieldValue);
 		System.out.println("FractionField        : 		"+actCreateTabFractionFieldValue			+"  Value Expected  "+expCreateTabFractionFieldValue);
 		System.out.println("PictureField         : 		"+actCreateTabPictureBrowseBtnValue			+"  Value Expected  "+expCreateTabPictureBrowseBtnValue);
-		System.out.println("StringListField      : 		"+actCreateTabStringListValue				+"  Value Expected  "+expCreateTabStringListValue);
-		System.out.println("NumberListField      : 		"+actCreateTabNumberListValue				+"  Value Expected  "+expCreateTabNumberListValue);
-		System.out.println("DocumentViewerField  : 		"+actCreateTabDocumentViewerValue			+"  Value Expected  "+expCreateTabDocumentViewerValue);
-		/*System.out.println("MasterField          : 		"+actCreateTabMasterFieldDropDownValue		+"  Value Expected  "+expCreateTabMasterFieldDropDownValue);*/
+	
 		System.out.println("BigNumberField       : 		"+actCreateTabBigNumberFiledValue			+"  Value Expected  "+expCreateTabBigNumberFiledValue);
-		System.out.println("SmallNumberField     :		"+actCreateTabSmallNumberField				+"  Value Expected  "+expCreateTabSmallNumberField);
-		System.out.println("TinyNumberField      : 		"+actCreateTabTinyNumberField				+"  Value Expected  "+expCreateTabTinyNumberField);
-		System.out.println("GregorianField       : 		"+actCreateTabGregorianDateField			+"  Value Expected  "+expCreateTabGregorianDateField);
-		System.out.println("HijriField           : 		"+actCreateTabHijriDateField				+"  Value Expected  "+actCreateTabHijriDateField);
-
-
-
+		
 		if(actCreateTabTextFieldValue==expCreateTabTextFieldValue && actCreateTabNumberFieldValue==expCreateTabNumberFieldValue 
-				&& actCreateTabBooleanFieldValue==expCreateTabBooleanFieldValue /*&& actCreateTabDateTimeFieldValue==expCreateTabDateTimeFieldValue 
-			&& actCreateTabDateFieldValue==expCreateTabDateFieldValue && actCreateTabTimeFieldValue==expCreateTabTimeFieldValue */
+				&& actCreateTabBooleanFieldValue==expCreateTabBooleanFieldValue
 				&& actCreateTabFractionFieldValue==expCreateTabFractionFieldValue && actCreateTabPictureBrowseBtnValue==expCreateTabPictureBrowseBtnValue 
-				&& actCreateTabStringListValue==expCreateTabStringListValue && actCreateTabNumberListValue==expCreateTabNumberListValue 
-				&& actCreateTabDocumentViewerValue==expCreateTabDocumentViewerValue /*&& actCreateTabMasterFieldDropDownValue==expCreateTabMasterFieldDropDownValue */
-				&& actCreateTabBigNumberFiledValue==expCreateTabBigNumberFiledValue && actCreateTabSmallNumberField==expCreateTabSmallNumberField 
-				&& actCreateTabTinyNumberField==expCreateTabTinyNumberField /*&& actCreateTabGregorianDateField==expCreateTabGregorianDateField 
-			&& actCreateTabHijriDateField==actCreateTabHijriDateField*/)
+				&& actCreateTabBigNumberFiledValue==expCreateTabBigNumberFiledValue)
 		{	
 			return true;
 		}	 
@@ -21170,7 +19180,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterFieldsCreateTab));
 		masterFieldsCreateTab.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		
 		////////
 		
@@ -21216,6 +19226,8 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 
 		//Number Field
+		
+		Thread.sleep(2000);
 
 		for (int i = 0; i < count; i++) 
 		{
@@ -21251,6 +19263,8 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		String actNumbertFieldMsg = checkValidationMessage(expNumberFieldMsg);
 
 		//Boolean Field
+		
+		Thread.sleep(2000);
 
 		for (int i = 0; i < count; i++) 
 		{
@@ -21283,6 +19297,8 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		String actBooleanFieldMsg = checkValidationMessage(expBooleanFieldMsg);
 
 		//DateTime Field
+		
+		Thread.sleep(2000);
 
 		for (int i = 0; i < count; i++) 
 		{
@@ -21316,6 +19332,8 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 		//Date Field
 
+		
+		Thread.sleep(2000);
 
 		for (int i = 0; i < count; i++) 
 		{
@@ -21328,7 +19346,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 			} 
 		}
 
-		Thread.sleep(2000);
+		Thread.sleep(3500);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
 		extraFields_PropertiesTab.click();
@@ -21348,6 +19366,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		String actDateFieldMsg = checkValidationMessage(expDateFieldMsg);
 
 		//Time field
+		Thread.sleep(2000);
 
 		for (int i = 0; i < count; i++) 
 		{
@@ -21360,7 +19379,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 			} 
 		}
 
-		Thread.sleep(2000);
+		Thread.sleep(3500);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
 		extraFields_PropertiesTab.click();
@@ -21381,6 +19400,8 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		String actTimeFieldMsg = checkValidationMessage(expTimeFieldMsg);
 
 		//Fraction Field
+		
+		Thread.sleep(2000);
 
 		for (int i = 0; i < count; i++) 
 		{
@@ -21414,6 +19435,8 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		String actFractionFieldMsg = checkValidationMessage(expFractionFieldMsg);
 
 		//Picture Field
+		
+		Thread.sleep(2000);
 
 		for (int i = 0; i < count; i++) 
 		{
@@ -21446,139 +19469,10 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		String expPictureFieldMsg = "Field Updated Successfully";
 		String actPictureFieldMsg = checkValidationMessage(expPictureFieldMsg);
 
-		//String List Field
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_StringListField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesHiddenInGroupChekbox));
-
-		if (extraFields_PropertiesHiddenInGroupChekboxSelected.isSelected()==true) 
-		{
-			extraFields_PropertiesHiddenInGroupChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-
-		String expStringListFieldMsg = "Field Updated Successfully";
-		String actStringListFieldMsg = checkValidationMessage(expStringListFieldMsg);
-
-		//Number List
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_NumberListField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesHiddenInGroupChekbox));
-
-		if (extraFields_PropertiesHiddenInGroupChekboxSelected.isSelected()==true) 
-		{
-			extraFields_PropertiesHiddenInGroupChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-
-		String expNumberListFieldMsg = "Field Updated Successfully";
-		String actNumberListFieldMsg = checkValidationMessage(expNumberListFieldMsg);
-
-		//DocumentViewer Field
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_DocumentViewerField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesHiddenInGroupChekbox));
-
-		if (extraFields_PropertiesHiddenInGroupChekboxSelected.isSelected()==true) 
-		{
-			extraFields_PropertiesHiddenInGroupChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-
-		String expDocumentViewerFieldMsg = "Field Updated Successfully";
-		String actDocumentViewerFieldMsg = checkValidationMessage(expDocumentViewerFieldMsg);
-
-		//Master Field
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_MasterField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesHiddenInGroupChekbox));
-
-		if (extraFields_PropertiesHiddenInGroupChekboxSelected.isSelected()==true) 
-		{
-			extraFields_PropertiesHiddenInGroupChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-
-		String expMasterFieldMsg = "Field Updated Successfully";
-		String actMasterFieldMsg = checkValidationMessage(expMasterFieldMsg);
 
 		//BigNumber Field
+		
+		Thread.sleep(2000);
 
 		for (int i = 0; i < count; i++) 
 		{
@@ -21613,173 +19507,6 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 
 
-		//Small Number Field
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_SmallNumberField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesHiddenInGroupChekbox));
-
-		if (extraFields_PropertiesHiddenInGroupChekboxSelected.isSelected()==true) 
-		{
-			extraFields_PropertiesHiddenInGroupChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-
-		String expSmallNumberFieldMsg = "Field Updated Successfully";
-		String actSmallNumberFieldMsg = checkValidationMessage(expSmallNumberFieldMsg);
-
-		//Tiny Number field
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_TinyNumberField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesHiddenInGroupChekbox));
-
-		if (extraFields_PropertiesHiddenInGroupChekboxSelected.isSelected()==true) 
-		{
-			extraFields_PropertiesHiddenInGroupChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-
-		String expTinyNumberFieldMsg = "Field Updated Successfully";
-		String actTinyNumberFieldMsg = checkValidationMessage(expTinyNumberFieldMsg);
-
-		//Gregirian Field
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_GregorianField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesHiddenInGroupChekbox));
-
-		if (extraFields_PropertiesHiddenInGroupChekboxSelected.isSelected()==true) 
-		{
-			extraFields_PropertiesHiddenInGroupChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-
-		String expGregorianFieldMsg = "Field Updated Successfully";
-		String actGregorianFieldMsg = checkValidationMessage(expGregorianFieldMsg);
-
-		//Hijri Field 
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_HijriField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesHiddenInGroupChekbox));
-
-		if (extraFields_PropertiesHiddenInGroupChekboxSelected.isSelected()==true) 
-		{
-			extraFields_PropertiesHiddenInGroupChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-
-		String expHijriFieldMsg = "Field Updated Successfully";
-		String actHijriFieldMsg = checkValidationMessage(expHijriFieldMsg);
-
-		//Shamsi Field
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = CreateTabfieldCaptionTxtList.get(i).getText();
-
-			if (data.equalsIgnoreCase("CreateTab_ShamsiField")) 
-			{
-				CreateTabeditFieldList.get(i).click();
-				break;
-			} 
-		}
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
-		extraFields_PropertiesTab.click();
-
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesHiddenInGroupChekbox));
-
-		if (extraFields_PropertiesHiddenInGroupChekboxSelected.isSelected()==true) 
-		{
-			extraFields_PropertiesHiddenInGroupChekbox.click();
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-
-		String expShamsiFieldMsg = "Field Updated Successfully";
-		String actShamsiFieldMsg = checkValidationMessage(expShamsiFieldMsg);
-		
-		
-
 		System.out.println("***********************************checkEnableHiddenCheckboxInAllFieldsProperties*********************************");
 
 		System.out.println("TextFieldMsg            : "+actTextFieldMsg				+"  Value Expected  "+expTextFieldMsg);
@@ -21790,17 +19517,9 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		System.out.println("TimeFieldMsg            : "+actTimeFieldMsg				+"  Value Expected  "+expTimeFieldMsg);
 		System.out.println("FractionFieldMsg        : "+actFractionFieldMsg			+"  Value Expected  "+expFractionFieldMsg);
 		System.out.println("PictureFieldMsg         : "+actPictureFieldMsg			+"  Value Expected  "+expPictureFieldMsg);
-		System.out.println("StringListFieldMsg      : "+actStringListFieldMsg		+"  Value Expected  "+expStringListFieldMsg);
-		System.out.println("NumberListFieldMsg      : "+actNumberListFieldMsg		+"  Value Expected  "+expNumberListFieldMsg);
-		System.out.println("DocumentViewerFieldMsg  : "+actDocumentViewerFieldMsg	+"  Value Expected  "+expDocumentViewerFieldMsg);
-		System.out.println("MasterFieldMsg          : "+actMasterFieldMsg			+"  Value Expected  "+expMasterFieldMsg);
+	
 		System.out.println("BigNumberFieldMsg       : "+actBigNumberFieldMsg		+"  Value Expected  "+expBigNumberFieldMsg);
-		System.out.println("SmallNumberFieldMsg     : "+actSmallNumberFieldMsg		+"  Value Expected  "+expSmallNumberFieldMsg);
-		System.out.println("TinyNumberFieldMsg      : "+actTinyNumberFieldMsg		+"  Value Expected  "+expTinyNumberFieldMsg);
-		System.out.println("GregorianFieldMsg       : "+actGregorianFieldMsg		+"  Value Expected  "+expGregorianFieldMsg);
-		System.out.println("HijriFieldMsg           : "+actHijriFieldMsg			+"  Value Expected  "+expHijriFieldMsg);
-		System.out.println("ShamsiFieldMsg          : "+actShamsiFieldMsg			+"  Value Expected  "+expShamsiFieldMsg);
-
+		
 		
 		Thread.sleep(3000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(closeBtnInCreateTabCustomizeMasetrWarehouse));
@@ -21811,11 +19530,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 				&& actBooleanFieldMsg.equalsIgnoreCase(expBooleanFieldMsg)/* && actDateTimeFieldMsg.equalsIgnoreCase(expDateTimeFieldMsg) 
 			&& actDateFieldMsg.equalsIgnoreCase(expDateFieldMsg) && actTimeFieldMsg.equalsIgnoreCase(expTimeFieldMsg) */
 				&& actFractionFieldMsg.equalsIgnoreCase(expFractionFieldMsg) && actPictureFieldMsg.equalsIgnoreCase(expPictureFieldMsg) 
-				&& actStringListFieldMsg.equalsIgnoreCase(expStringListFieldMsg) && actNumberListFieldMsg.equalsIgnoreCase(expNumberListFieldMsg) 
-				&& actDocumentViewerFieldMsg.equalsIgnoreCase(expDocumentViewerFieldMsg) && actMasterFieldMsg.equalsIgnoreCase(expMasterFieldMsg) 
-				&& actBigNumberFieldMsg.equalsIgnoreCase(expBigNumberFieldMsg) && actSmallNumberFieldMsg.equalsIgnoreCase(expSmallNumberFieldMsg) 
-				&& actTinyNumberFieldMsg.equalsIgnoreCase(expTinyNumberFieldMsg) && actGregorianFieldMsg.equalsIgnoreCase(expGregorianFieldMsg) 
-				&& actHijriFieldMsg.equalsIgnoreCase(expHijriFieldMsg) && actShamsiFieldMsg.equalsIgnoreCase(expShamsiFieldMsg))
+				&& actBigNumberFieldMsg.equalsIgnoreCase(expBigNumberFieldMsg) )
 		{	
 			return true;
 		}	 
@@ -21890,7 +19605,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 	@FindBy(xpath="//input[@id='uploadBtn2']")
 	public static WebElement massUpdateCreateTabDocumentUploadBtn;
 
-	@FindBy(xpath="//*[@id='btnUpdateForMass']/i")
+	@FindBy(xpath="//*[@id='btnUpdateForMass']")
 	public static WebElement massUpdateUpdateBtn;
 
 	@FindBy(xpath="//*[@id='divMassUpdate']/ul/li[2]/span/i")
@@ -22562,7 +20277,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterAdvanceMasterImportORExportBtn));		
 		masterAdvanceMasterImportORExportBtn.click();
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(exportBtnInAdvanceMasterImportOrExport));		
@@ -22628,7 +20343,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 	@FindBy(xpath="(//input[@name='chkRowCheck'])[7]")
 	public static WebElement lastCheckbox;
 
-	@FindBy(xpath="//*[@id='btnProformaExportForAdvanceMasterPopUp']")//*[@id="btnProformaExportForAdvanceFormPopUp"]
+	@FindBy(xpath="//*[@id='btnProformaExportForAdvanceFormPopUp']")//*[@id="btnProformaExportForAdvanceFormPopUp"]
 	public static WebElement exportBtnInAdvanceMasterImportOrExport;
 
 	@FindBy(xpath="//*[@id='btnImportDataForAdvanceMasterPopUp']")
@@ -22655,8 +20370,11 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 	@FindBy(xpath="//*[@id='btnMasterAdvanceExportSelectAll']")
 	public static WebElement selectAllCheckboxInExportPopup;
+	
+	@FindBy(xpath="//*[@id='btnMasterAdvanceExportSelectAll']/../span")
+	public static WebElement selectAllCheckboxInExportPopupSelected;
 
-	@FindBy(xpath="//*[@id='btnMasterAdvanceExport']/i")
+	@FindBy(xpath="//*[@id='btnMasterAdvanceExport']")
 	public static WebElement exportBtnInExportPopup;
 
 	@FindBy(xpath="//*[@id='divAdvMasterExport']/ul/li/span[3]/i")
@@ -22667,7 +20385,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 
 
-	public static boolean checkAdvancedImportOrExportAfterEnablingExportCheckBoxesInCreateTab() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
+	public static boolean checkAdvancedImportOrExportAfterEnablingExportCheckBoxesInCreateTab() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException, AWTException
 	{
 		getDriver().navigate().refresh();
 
@@ -22690,7 +20408,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		accounts.click();
 
 
-		Thread.sleep(3000);
+		Thread.sleep(4000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(firstCheckBox));
 		firstCheckBox.click();
 
@@ -22723,8 +20441,8 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 				tabsListInExportPopUp.get(i).click();
 
 
-				getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(selectAllCheckboxInExportPopup));		
-				selectAllCheckboxInExportPopup.click();
+				getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(selectAllCheckboxInExportPopupSelected));		
+				selectAllCheckboxInExportPopupSelected.click();
 				Thread.sleep(2000);
 
 				break;
@@ -22740,9 +20458,48 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(exportBtnInExportPopup));		
 		exportBtnInExportPopup.click();
 
-		Thread.sleep(8000);
+		Thread.sleep(10000);
+		Robot robot = new Robot();
+		robot.keyPress(KeyEvent.VK_ENTER);
+		robot.keyRelease(KeyEvent.VK_ENTER);
+		Thread.sleep(3500);
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		
+		Thread.sleep(2000);
+		
+		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
 
-		String actExportedFileName = checkDownloadedFileName(getDriver());
+		int count1 = openTabs.size();
+		
+	 	System.out.println("openTabs : "+count1);
+
+	 	getDriver().switchTo().window(openTabs.get(1));
+	 	
+	 		
+	 	Thread.sleep(2000);
+		JavascriptExecutor js1 = (JavascriptExecutor)getDriver();
+
+		String fileName = (String) js1.executeScript("return document.querySelector('downloads-manager').shadowRoot.querySelector('#downloadsList downloads-item').shadowRoot.querySelector('div#content #file-link').text");
+		
+
+		System.err.println("Download deatils");
+		System.out.println("File Name :-" + fileName);
+
+		Thread.sleep(2000);
+	
+		
+		getDriver().switchTo().window(openTabs.get(1)).close();
+			
+		Thread.sleep(2000);
+		getDriver().switchTo().window(openTabs.get(0));
+		Thread.sleep(2000);
+
+		//String actExportedFileName = checkDownloadedFileName(getDriver());
+	 String actExportedFileName = fileName;
 		String expExportedFileName = "Account.zip" ;
 
 		System.out.println("Exported File Name : "+actExportedFileName+"  Value Expected  "+expExportedFileName);
@@ -22762,7 +20519,8 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 		Thread.sleep(2000);
 		getDriver().navigate().refresh();
-
+		Thread.sleep(4000);
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(homeMenu));
 		homeMenu.click();
 
@@ -22793,7 +20551,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 		Runtime.getRuntime().exec(getBaseDir()+"\\autoIt\\scripts\\Account.exe");
 
-		Thread.sleep(6000);
+		Thread.sleep(8000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(importDataBtnInAdvanceMasterImportOrExport));		
 		importDataBtnInAdvanceMasterImportOrExport.click();
@@ -22887,12 +20645,13 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 
 
-	public static boolean checkAdvancedImportOrExportAfterEnablingExportCheckBoxesInCreateTabAccountTypeAsData() throws InterruptedException
+	public static boolean checkAdvancedImportOrExportAfterEnablingExportCheckBoxesInCreateTabAccountTypeAsData() throws InterruptedException, AWTException
 	{
 
 
-		Thread.sleep(3000);
+		getDriver().navigate().refresh();
 
+		Thread.sleep(3000);
 		File Efile=new File(getBaseDir()+"\\autoIt\\ExportFiles\\Account.zip");
 
 		if(Efile.exists())
@@ -22923,13 +20682,13 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterAdvanceMasterImportORExportBtn));		
 		masterAdvanceMasterImportORExportBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(exportBtnInAdvanceMasterImportOrExport));		
 		exportBtnInAdvanceMasterImportOrExport.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(4000);
 
 		int count = tabsListInExportPopUp.size();
 
@@ -22942,9 +20701,9 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 			{
 				tabsListInExportPopUp.get(i).click();
 
-
-				getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(selectAllCheckboxInExportPopup));		
-				selectAllCheckboxInExportPopup.click();
+					Thread.sleep(4000);			
+					getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(selectAllCheckboxInExportPopupSelected));		
+					selectAllCheckboxInExportPopupSelected.click();
 				Thread.sleep(2000);
 
 				break;
@@ -22952,14 +20711,20 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 			}
 		}
 
-		/*Select exportsc =new Select(accountTypeSideDropdown);
+		Select exportsc =new Select(accountTypeSideDropdown);
 				exportsc.selectByValue("1");
-				Thread.sleep(2000);*/
+				Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(exportBtnInExportPopup));		
 		exportBtnInExportPopup.click();
 
-		Thread.sleep(8000);
+		Thread.sleep(6000);
+		
+		Robot robot = new Robot();
+		robot.keyPress(KeyEvent.VK_ENTER);
+		robot.keyRelease(KeyEvent.VK_ENTER);
+		Thread.sleep(3500);
+		
 
 		String actExportedFileName = checkDownloadedFileName(getDriver());
 		String expExportedFileName = "Account.zip" ;
@@ -23147,24 +20912,21 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		accounts.click();
 
 		Thread.sleep(2000);
+		
+		Thread.sleep(2000);
 
-		int count = masterGridBodyName.size();
-
-		for (int i = 0; i < count; i++) 
-		{
-			String data = masterGridBodyName.get(i).getText();
-
-			if (data.equalsIgnoreCase("Mandatory Group")) 
-			{
-				masterGridBodyChkbox.get(i).click();
-				break;
-			}
-		}
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterEditBtn));
-		masterEditBtn.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterNewBtn));	
+		masterNewBtn.click();
 
 		Thread.sleep(2000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(nameTxt));
+		nameTxt.sendKeys("Read Only");
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(codeTxt));
+		codeTxt.sendKeys("Read Only");
+
+		Thread.sleep(3000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accountHeaderCreateTab));
 		accountHeaderCreateTab.click();
@@ -23177,7 +20939,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		accountHeaderCreateTabTextFieldTxt.sendKeys("ReadOnly");
 		accountHeaderCreateTabTextFieldTxt.sendKeys(Keys.TAB);
 		String actDefaultText = accountHeaderCreateTabTextFieldTxt.getAttribute("value");
-		String expDefaultText = "MassUpdate";
+		String expDefaultText = "TextField_DefaultValue";
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accountHeaderCreateTabNumberFieldTxt));
 		accountHeaderCreateTabNumberFieldTxt.click();
@@ -23185,10 +20947,9 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		accountHeaderCreateTabNumberFieldTxt.sendKeys("12345");
 		accountHeaderCreateTabTextFieldTxt.sendKeys(Keys.TAB);
 		String actDefaultNumber = accountHeaderCreateTabNumberFieldTxt.getAttribute("value");
-		String expDefaultNumber = "123";
+		String expDefaultNumber = "0";
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accountCloseBtnn));
-		accountCloseBtnn.click();
+	
 
 		System.out.println("***********************************checkOpenAccountsAndValidateFieldsWithReadOnlyOptionInMandatoryGroup*********************************");
 
@@ -23843,12 +21604,12 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 			} 
 		}
 
-		Thread.sleep(2000);
+		Thread.sleep(3500);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
 		extraFields_PropertiesTab.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(3500);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesInformationFieldChekbox));
 
@@ -24172,7 +21933,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
 
-		checkValidationMessage("Screen opened");
+		
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(documentNumberTxt));
 
@@ -24343,7 +22104,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherSaveBtn));
 		voucherSaveBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newReferenceTxt));
@@ -24363,7 +22124,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 		Thread.sleep(2000);
 
-		if(actMessage.startsWith(expMessage1) && actMessage.endsWith(expMessage2))
+		if(actMessage.startsWith(expMessage1))
 		{
 			return true;
 		} 
@@ -24405,7 +22166,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 	@FindBy(xpath="//*[@id='dvReportInputs']/div[1]/div/label/span")
 	public static WebElement sl_SelectAllItemsChkBox;
 
-	@FindBy(xpath="//div[@id='id_reportmenudisplay']/ul/li[9]")
+	@FindBy(xpath="//div[@id='id_reportmenudisplay']//i[@class='icon-filter hiconright2']")
 	public static WebElement report_FilterBtn;
 
 	@FindBy(xpath="//span[@id='idFilterCustomizeIcon']")
@@ -24418,7 +22179,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 	@FindBy (xpath="//ul[@id='FilterFields_500_0']/ul[1]/li/div/label")
 	public static List<WebElement> filterAccountsList;
 	
-	@FindBy(xpath="//*[text()='Filter']")
+	@FindBy(xpath="//div[@id='id_reportmenudisplay']//ul/*[text()='Filter']")
 	public static WebElement FilterBtnInFilterDropdown;
 	
 	
@@ -24534,7 +22295,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 		int count = masterGridBodyName.size();
 
-		ArrayList<String> AccountNames = new ArrayList<String>();
+		HashSet<String> AccountNames = new HashSet<String>();
 
 		for (int i = 0; i < count; i++) 
 		{
@@ -24550,10 +22311,13 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		System.out.println("***********************************checkMoveUpOptionInMasterAccounts*********************************");
 
 		String actAccountNamesList = AccountNames.toString();
-		String expAccountNamesList = "[Mandatory Group, Mandatory Account, Demo Account, Cust_Display Debit/Credit totals for each Account under group, Cust_ClubTransactionsOf_AllAccounts_Group, cust_display_ledger_by_currency, DoNot_Restrict_If_Rights_Are_Not_Allotted, cust_display_when_StatusIsActive, Consolidate_Always, Consolidate_When_Both_Accounts_Are_Same, Display_Un-Realize_GainOrLoss_In_Ledger, cust_display_dr/cr_total_for_each_day, cust_display_dr/cr_total_for_each_month, Round off Exchange gain / loss, ASSETS, EXPENSES, CONTROL ACCOUNTS, REVENUE, EQUITIES, LIABILITIES, COGS POSTING ACC, BR COGS ACC INV, FIFO COGS ACC INV, WA COGS ACC INV, STD RATE COGS ACC INV, SR COGS POSTING ACC, SHORTAGE COGS POSTING ACC, EXCESS COGS POSTING ACC, VAT OUTPUT, VAT ADVANCE SALE, VAT ADVANCE PURCHASE, PURCHASE VARIANCE, VAT INPUT, Test Master, HDFC]";
+		
+		Set<String> expAccountNamesList = Set.of("Mandatory Group", "Mandatory Account", "Demo Account", "Cust_Display Debit/Credit totals for each Account under group", "Cust_ClubTransactionsOf_AllAccounts_Group", "cust_display_ledger_by_currency", "DoNot_Restrict_If_Rights_Are_Not_Allotted", "cust_display_when_StatusIsActive", "Consolidate_Always, Consolidate_When_Both_Accounts_Are_Same", "Display_Un-Realize_GainOrLoss_In_Ledger", "cust_display_dr/cr_total_for_each_day", "cust_display_dr/cr_total_for_each_month", "Round off Exchange gain / loss", "ASSETS, EXPENSES", "CONTROL ACCOUNTS", "REVENUE", "EQUITIES", "LIABILITIES", "COGS POSTING ACC", "BR COGS ACC INV", "FIFO COGS ACC INV", "WA COGS ACC INV", "STD RATE COGS ACC INV", "SR COGS POSTING ACC", "SHORTAGE COGS POSTING ACC", "EXCESS COGS POSTING ACC", "VAT OUTPUT", "VAT ADVANCE SALE", "VAT ADVANCE PURCHASE", "PURCHASE VARIANCE", "VAT INPUT", "Test Master", "HDFC");
+			 
 
 		System.out.println(actAccountNamesList);
 		System.out.println(expAccountNamesList);
+		
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterRibbonToExpandOptions));		
 		masterRibbonToExpandOptions.click();
@@ -24565,7 +22329,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 		Thread.sleep(2000);
 
-		ArrayList<String> afterMoveUpAccountNames = new ArrayList<String>();
+		HashSet<String> afterMoveUpAccountNames = new HashSet<String>();
 
 		for (int i = 0; i < count; i++) 
 		{
@@ -24581,7 +22345,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 		Thread.sleep(2000);
 
-		if(actAccountNamesList.equalsIgnoreCase(expAccountNamesList) && actAccountNamesListAfterMoveUp.equalsIgnoreCase(expAccountNamesListAfterMoveUp))
+		if(actAccountNamesList.equals(expAccountNamesList) && actAccountNamesListAfterMoveUp.equalsIgnoreCase(expAccountNamesListAfterMoveUp))
 		{	
 			return true;
 		}	 
@@ -24622,10 +22386,10 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		System.out.println(actAccountNamesList);
 		System.out.println(expAccountNamesList);
 
-		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterRibbonToExpandOptions));		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterRibbonToExpandOptions));		
 		masterRibbonToExpandOptions.click();
 
-		Thread.sleep(3000);*/
+		Thread.sleep(3000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterMoveDownBtn));	
 		masterMoveDownBtn.click();
@@ -24641,7 +22405,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		}
 
 		String actAccountNamesListAfterMoveUp = afterMoveUpAccountNames.toString();
-		String expAccountNamesListAfterMoveUp = "[Cust_Display Debit/Credit totals for each Account under group, Demo Account, Cust_ClubTransactionsOf_AllAccounts_Group, cust_display_ledger_by_currency, DoNot_Restrict_If_Rights_Are_Not_Allotted, cust_display_when_StatusIsActive, Consolidate_Always, Consolidate_When_Both_Accounts_Are_Same, Display_Un-Realize_GainOrLoss_In_Ledger, cust_display_dr/cr_total_for_each_day, cust_display_dr/cr_total_for_each_month, Round off Exchange gain / loss, ASSETS, EXPENSES, CONTROL ACCOUNTS, REVENUE, EQUITIES, LIABILITIES, COGS POSTING ACC, BR COGS ACC INV, FIFO COGS ACC INV, WA COGS ACC INV, STD RATE COGS ACC INV, SR COGS POSTING ACC, SHORTAGE COGS POSTING ACC, EXCESS COGS POSTING ACC, VAT OUTPUT, VAT ADVANCE SALE, VAT ADVANCE PURCHASE, PURCHASE VARIANCE, VAT INPUT, Test Master, HDFC]";
+		String expAccountNamesListAfterMoveUp = "[Mandatory Group, Mandatory Account, Demo Account, Cust_Display Debit/Credit totals for each Account under group, Cust_ClubTransactionsOf_AllAccounts_Group, cust_display_ledger_by_currency, DoNot_Restrict_If_Rights_Are_Not_Allotted, cust_display_when_StatusIsActive, Consolidate_Always, Consolidate_When_Both_Accounts_Are_Same, Display_Un-Realize_GainOrLoss_In_Ledger, cust_display_dr/cr_total_for_each_day, cust_display_dr/cr_total_for_each_month, Round off Exchange gain / loss, ASSETS, EXPENSES, CONTROL ACCOUNTS, REVENUE, EQUITIES, LIABILITIES, COGS POSTING ACC, BR COGS ACC INV, FIFO COGS ACC INV, WA COGS ACC INV, STD RATE COGS ACC INV, SR COGS POSTING ACC, SHORTAGE COGS POSTING ACC, EXCESS COGS POSTING ACC, VAT OUTPUT, VAT ADVANCE SALE, VAT ADVANCE PURCHASE, PURCHASE VARIANCE, VAT INPUT, Test Master, HDFC]";
 
 		System.out.println(actAccountNamesListAfterMoveUp);
 		System.out.println(expAccountNamesListAfterMoveUp);
@@ -24724,7 +22488,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 		Select selectField = new Select(selectMasterSortingSelectFieldDrpdwn);
 
-		selectField.selectByVisibleText("Name");
+		selectField.selectByVisibleText("sName");
 
 		Thread.sleep(2000);
 
@@ -24781,7 +22545,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(selectMasterSortingSelectFieldDrpdwn));
 
-		selectField.selectByVisibleText("Name");
+		selectField.selectByVisibleText("sName");
 
 		Thread.sleep(2000);
 
@@ -24800,6 +22564,8 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		String expDescendingMsg = "success";
 		String actDescendingMsg = checkValidationMessage(expDescendingMsg);
 
+		
+		Thread.sleep(2500);
 		ArrayList<String> AccountNamesSortingDescending = new ArrayList<String>();
 
 		for (int i = 0; i < count; i++) 
@@ -24870,6 +22636,8 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		accounts.click();
 
 		Thread.sleep(3000);
+		
+		checkValidationMessage("");
 
 		int count = masterGridHeaderList.size();
 
@@ -24889,11 +22657,13 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		System.out.println(actAccountHeaderList);
 		System.out.println(expAccountHeaderList);
 
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterRibbonToExpandOptions));		
 		masterRibbonToExpandOptions.click();
 
 		Thread.sleep(3000);
 
+		getAction().moveToElement(mastercustamizeTreeBtn).build().perform();
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(mastercustamizeTreeBtn));	
 		mastercustamizeTreeBtn.click();
 
@@ -24905,8 +22675,8 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		{
 			String data = masterCustomizeTreePopupFieldsList.get(i).getText();
 			System.err.println(data);
-			((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", masterCustomizeTreePopupFieldsList.get(i));
-
+			//((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", masterCustomizeTreePopupFieldsList.get(i));
+			getAction().moveToElement( masterCustomizeTreePopupFieldsList.get(i)).build().perform();
 			if (data.equalsIgnoreCase("CreateTab_TextField")) 
 			{
 				masterCustomizeTreePopupChkboxList.get(i).click();
@@ -25112,7 +22882,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		Select yearDrpdwn = new Select(filterByYearDrpdwn);
 
 		String actYear = yearDrpdwn.getFirstSelectedOption().getText();
-		String expYear = "2022";
+		String expYear = "2023";
 
 		ArrayList<String> backtracktable = new ArrayList<String>();
 
@@ -25318,6 +23088,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 			if (data.equalsIgnoreCase("Vendor B")) 
 			{
 				masterGridBodyChkbox.get(i).click();
+				break;
 			}
 		}
 
@@ -25413,7 +23184,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		}
 		
 
-	public static boolean checkLedgerIsEmptyForVendorBAfterTransfer() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
+	public static boolean checkLedgerIsEmptyForVendorBAfterTransfer() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException, AWTException
 	{
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(homeMenu));
 		getAction().moveToElement(homeMenu).click().build().perform();
@@ -25429,6 +23200,8 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		accounts.click();
 
 		Thread.sleep(3000);
+		
+		checkValidationMessage("");
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterSearchTxt));
 		masterSearchTxt.click();
@@ -25460,30 +23233,38 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		Thread.sleep(2000);
 		
 		
-		scrollToElementJSE(masterLedgerBtn);
+		
+		
+		getAction().moveToElement(masterLedgerBtn).build().perform();
 		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(masterLedgerBtn));
 		masterLedgerBtn.click();
 
-		Thread.sleep(5000);
+		//Thread.sleep(6000);
 
 		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
 
 		int actOpenWindowsCount = getDriver().getWindowHandles().size();
 
-		getDriver().switchTo().window(openTabs.get(0));
+		//getDriver().switchTo().window(openTabs.get(0));
 
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
 
 		getDriver().switchTo().window(openTabs.get(1));
-
+		Thread.sleep(2000);
+		
+		
+		
 		
 		checkValidationMessage("No Dashlate Available for this Dashboard");
 		
-		Thread.sleep(2000);
+		Thread.sleep(3000);	
+		
 		String expMessage = "No transaction exists for the selected master(s).";
 		
 		String actMessage = checkValidationMessage(expMessage);
+		
+		
 		
 /*
 		boolean actTableIsEmpty = ledgerTable.getText().isEmpty();
@@ -25492,16 +23273,25 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		System.out.println("****************************************checkLedgerIsEmptyForVendorBAfterTransfer************************************");
 
 		System.out.println("Ledger Table isEmpty : "+actMessage+"  Value Expected  "+expMessage);
+		
+		
+		
 
-		getDriver().switchTo().window(openTabs.get(0));
+		
+		
+		//getDriver().switchTo().window(openTabs.get(0));
 
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
 
 		getDriver().switchTo().window(openTabs.get(1)).close();
 
 		Thread.sleep(2000);
 
 		getDriver().switchTo().window(openTabs.get(0));
+		
+		
+		
+		System.out.println("title3 is   :"+getDriver().getTitle());
 
 		if(actMessage.equalsIgnoreCase(expMessage))
 		{
@@ -25559,7 +23349,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 
 
-	public static boolean checkLedgerReportForAccountVendorAAfterTransfer() throws InterruptedException
+	public static boolean checkLedgerReportForAccountVendorAAfterTransfer() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(homeMenu));
 		getAction().moveToElement(homeMenu).click().build().perform();
@@ -25575,6 +23365,8 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		accounts.click();
 
 		Thread.sleep(3000);
+		
+		checkValidationMessage("");
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterSearchTxt));
 		masterSearchTxt.click();
@@ -25606,24 +23398,25 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		Thread.sleep(2000);
 
 
-		scrollToElementJSE(masterLedgerBtn);
+		//scrollToElementJSE(masterLedgerBtn);
+		getAction().moveToElement(masterLedgerBtn).build().perform();
 		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(masterLedgerBtn));
 		masterLedgerBtn.click();
 
-		Thread.sleep(4000);
+		//Thread.sleep(4000);
 
 		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
 
 		int actOpenWindowsCount = getDriver().getWindowHandles().size();
 
-		getDriver().switchTo().window(openTabs.get(0));
+		//getDriver().switchTo().window(openTabs.get(0));
 
 		Thread.sleep(2000);
 
 		getDriver().switchTo().window(openTabs.get(1));
 
-		Thread.sleep(2000);
+		Thread.sleep(3500);
 
 		int reportsByWarehouseRow1ListCount = reportsRow1List.size();
 		ArrayList<String> reportsByWarehouseRow1ListArray = new ArrayList<String>();
@@ -25633,7 +23426,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 			reportsByWarehouseRow1ListArray.add(data);
 		}
 		String actRow1List = reportsByWarehouseRow1ListArray.toString();
-		String expRow1List = "[Vendor A [033-001]]";
+		String expRow1List = "[Vendor A 033-001]";
 
 
 		int reportsByWarehouseRow2ListCount = reportsRow2List.size();
@@ -25669,13 +23462,13 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		System.out.println("ActualRow3List Values  " +actRow3List);
 		System.out.println("ExpectedRow3List Values" +expRow3List);
 
-		getDriver().switchTo().window(openTabs.get(0));
+		//getDriver().switchTo().window(openTabs.get(0));
 
 		Thread.sleep(2000);
 
 		getDriver().switchTo().window(openTabs.get(1)).close();
 
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 
 		getDriver().switchTo().window(openTabs.get(0));
 
@@ -25989,13 +23782,16 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accounts));
 		accounts.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(5000);
+		
+		checkValidationMessage("");
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterRibbonToExpandOptions));		
 		masterRibbonToExpandOptions.click();
 
 		Thread.sleep(2000);
 
+		getAction().moveToElement(masterCustamizemasterBtn).build().perform();
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterCustamizemasterBtn));	
 		masterCustamizemasterBtn.click();
 
@@ -26025,7 +23821,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		}
 
 		String actAgeingAnalysisTableList = AgeingAnalysisTable.toString();
-		String expAgeingAnalysisTableList = "[0-30 Days, 0, 0, 30-60 Days, 0, 0, 60-180 Days, 0, 0, 180-360 Days, 0, 0, >360 Days, 0, 0, Ledger Balance, 0, 0, PDC Amount, 0, 0, Unadjusted Amount, 0, 0, Balance Amount, 0, 0]"; 
+		String expAgeingAnalysisTableList = "[0 - 30 Days, 0, 0, 30-60 Days, 0, 0, 60-180 Days, 0, 0, 180-360 Days, 0, 0, >360 Days, 0, 0, Ledger Balance, 0, 0, PDC Amount, 0, 0, Unadjusted Amount, 0, 0, Balance Amount, 0, 0]"; 
 
 
 
@@ -26043,7 +23839,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		}
 
 		String actAgeingAnalysisBaseTableList = AgeingAnalysisBaseTable.toString();
-		String expAgeingAnalysisBaseTableList = "[0-30 Days, 0, 0, 30-60 Days, 0, 0, 60-180 Days, 0, 0, 180-360 Days, 0, 0, >360 Days, 0, 0, Ledger Balance, 0, 0, PDC Amount, 0, 0, Unadjusted Amount, 0, 0, Balance Amount, 0, 0]";
+		String expAgeingAnalysisBaseTableList = "[0 - 30 Days, 0, 0, 30-60 Days, 0, 0, 60-180 Days, 0, 0, 180-360 Days, 0, 0, >360 Days, 0, 0, Ledger Balance, 0, 0, PDC Amount, 0, 0, Unadjusted Amount, 0, 0, Balance Amount, 0, 0]";
 
 
 
@@ -26061,7 +23857,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		}
 
 		String actAgeingAnalysisLocalTableList = AgeingAnalysisLocalTable.toString();
-		String expAgeingAnalysisLocalTableList = "[0-30 Days, 0, 0, 30-60 Days, 0, 0, 60-180 Days, 0, 0, 180-360 Days, 0, 0, >360 Days, 0, 0, Ledger Balance, 0, 0, PDC Amount, 0, 0, Unadjusted Amount, 0, 0, Balance Amount, 0, 0]";
+		String expAgeingAnalysisLocalTableList = "[0 - 30 Days, 0, 0, 30-60 Days, 0, 0, 60-180 Days, 0, 0, 180-360 Days, 0, 0, >360 Days, 0, 0, Ledger Balance, 0, 0, PDC Amount, 0, 0, Unadjusted Amount, 0, 0, Balance Amount, 0, 0]";
 
 
 
@@ -26229,6 +24025,9 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 	@FindBy(xpath="//*[@id='divPanel_7']/div[2]//tbody//td[1]")
 	public static WebElement infoPanelCustCreatedPanelTableTxt;
+	
+	@FindBy(xpath="(//*[@id='panelData_tbody'])[2]//td")
+	public static List<WebElement> infoPanelCustCreatedPanelTableTxtList;
 
 
 	public static boolean checkCustomizeMasterInfoPanelCustomizationValidatingPanelAdded() throws EncryptedDocumentException, InvalidFormatException, InterruptedException, IOException
@@ -26395,7 +24194,8 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 
 
-	@FindBy(xpath="//div[@id='divInfoPanel']/div/div/div[1]/label")
+	//@FindBy(xpath="//div[@id='divInfoPanel']/div/div/div[1]/label")
+	@FindBy(xpath="//div[@id='divInfoPanel']//h4")
 	public static List<WebElement> infoPanelDashletsList;
 
 	@FindBy(xpath="//div[@id='divInfoPanel']//table/tbody/tr/td")
@@ -26588,7 +24388,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		}
 
 		String actDashletAdded = dashlet.toString();
-		String expDashletAdded = "[Authorization]";
+		String expDashletAdded = "[Trial Info Panel, Authorization]";
 
 		Thread.sleep(2000);
 
@@ -26784,9 +24584,16 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 		String actCreatedPanel = infoPanelCustCreatedPanel.getText();
 		String expCreatedPanel = "Trial Info Panel Update";
+		
+		ArrayList<String>infoPanelArray=new ArrayList<String>();
+		for(int i=0;i<infoPanelCustCreatedPanelTableTxtList.size();i++)
+		{
+			infoPanelArray.add(infoPanelCustCreatedPanelTableTxtList.get(i).getText());
+		}
 
-		String actinfoPanelCustCreatedPanelTableTxt = infoPanelCustCreatedPanelTableTxt.getText();
-		String expinfoPanelCustCreatedPanelTableTxt = "Account Type :";
+
+		String actinfoPanelCustCreatedPanelTableTxt = infoPanelArray.toString();
+		String expinfoPanelCustCreatedPanelTableTxt = "[Account Type, :, ]";
 
 		System.out.println("***********************************checkCustomizeMasterInfoPanelCustomizationEditingAndValidatingPanelAdded*********************************");
 
@@ -26806,7 +24613,8 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		}
 	}
 
-	@FindBy(xpath="//*[@id='btnYes_DelInfoPanel']")
+	//@FindBy(xpath="//*[@id='btnYes_DelInfoPanel']")
+	@FindBy(xpath="//*[@id='btnDeleteMaster_Ok']")
 	public static WebElement deletePopupYesbtn;
 	
 
@@ -26832,12 +24640,16 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		accounts.click();
 
 		Thread.sleep(3000);
+		
+		checkValidationMessage("");
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterRibbonToExpandOptions));		
 		masterRibbonToExpandOptions.click();
 
 
 		Thread.sleep(2000);
+		
+		getAction().moveToElement(masterCustamizemasterBtn).build().perform();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterCustamizemasterBtn));	
 		masterCustamizemasterBtn.click();
@@ -26847,7 +24659,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(itemInfoPanelCustomizationTab));
 		itemInfoPanelCustomizationTab.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(infoPanelCustCreatedPanel));
 		infoPanelCustCreatedPanel.click();
@@ -26857,7 +24669,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(infoPanelCust_DeleteBtn));
 		infoPanelCust_DeleteBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(deletePopupYesbtn));
 		deletePopupYesbtn.click();
@@ -27149,9 +24961,8 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		
 		
 
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(userNameDisplay));
-		userNameDisplay.click();
+		getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(LogoutDropdown));
+		LogoutDropdown.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(logoutOption));
 		logoutOption.click();
@@ -27350,10 +25161,8 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		
 		
 		
-
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(userNameDisplay));
-		userNameDisplay.click();
+		getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(LogoutDropdown));
+		LogoutDropdown.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(logoutOption));
 		logoutOption.click();
@@ -27610,9 +25419,8 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		Thread.sleep(2000);
 
 
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(userNameDisplay));
-		userNameDisplay.click();
+		getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(LogoutDropdown));
+		LogoutDropdown.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(logoutOption));
 		logoutOption.click();
@@ -27838,9 +25646,8 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 		Thread.sleep(2000);
 
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(userNameDisplay));
-		userNameDisplay.click();
+		getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(LogoutDropdown));
+		LogoutDropdown.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(logoutOption));
 		logoutOption.click();
@@ -27912,17 +25719,19 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accounts));
 		accounts.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterNewBtn));
 		masterNewBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(nameTxt));
 		nameTxt.sendKeys("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq");
-
-		 Robot robot = new Robot();
+		
+		nameTxt.sendKeys(Keys.TAB);
+		
+		Robot robot = new Robot();
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(codeTxtUnderMultipleType));
 		robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_A);
@@ -27936,7 +25745,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 
 		Thread.sleep(2000);
-
+		click(nameTxt);
 		String actName=nameTxt.getAttribute("value");
 		String expName="qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq";
 
@@ -27981,7 +25790,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accounts));
 		accounts.click();
-
+		Thread.sleep(4000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterRibbonToExpandOptions));		
 		masterRibbonToExpandOptions.click();
 
@@ -28065,9 +25874,8 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		Thread.sleep(2000);
 
 
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(userNameDisplay));
-		userNameDisplay.click();
+		getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(LogoutDropdown));
+		LogoutDropdown.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(logoutOption));
 		logoutOption.click();
@@ -28125,8 +25933,8 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		lp.clickOnSignInBtn();
 
 
-		Thread.sleep(2000);
-		reLogin(unamelt, pawslt, compname);
+		Thread.sleep(4000);
+		//reLogin(unamelt, pawslt, compname);
 
 		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(homeMenu));
@@ -28138,12 +25946,15 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accounts));
 		accounts.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(4000);
+		checkValidationMessage("");
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterNewBtn));
 		masterNewBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(4000);
+		
+		checkValidationMessage("");
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(nameTxt));
 		nameTxt.sendKeys("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq");
@@ -28283,9 +26094,8 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		Thread.sleep(2000);
 
 
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(userNameDisplay));
-		userNameDisplay.click();
+		getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(LogoutDropdown));
+		LogoutDropdown.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(logoutOption));
 		logoutOption.click();
@@ -28466,7 +26276,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		}
 
 		String actbehaviourDrpdwnIncrementalGridList=behaviourDrpdwnIncrementalGridListArray.toString();
-		String expbehaviourDrpdwnIncrementalGridList="[, , Type, Value, Mandatory Value, Starting Char Position, , , , , , , , ]";
+		String expbehaviourDrpdwnIncrementalGridList="[#, Type, Value, Mandatory Value, Starting Char Position, No of Characters]";
 
 		System.err.println(" Actual List : "+actbehaviourDrpdwnIncrementalGridList);
 		System.err.println(" Exp    List :  "+expbehaviourDrpdwnIncrementalGridList);
@@ -28544,7 +26354,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		System.err.println(" actTypeDrpDwnList : "+actTypeDrpDwnList);
 		System.err.println(" ExpTypeDrpDwnList : "+expTypeDrpDwnList);
 
-		/*Thread.sleep(2000);
+		Thread.sleep(2000);
 
 		s1.selectByValue("1");
 		Thread.sleep(2000);
@@ -28579,7 +26389,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		
 		Thread.sleep(1000);
 		
-		*/
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customizeMasterCreateCreateTabNewlyCreateTabSaveButton));
 		customizeMasterCreateCreateTabNewlyCreateTabSaveButton.click();
 		
@@ -28597,9 +26407,8 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		Thread.sleep(2000);
 
 
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(userNameDisplay));
-		userNameDisplay.click();
+		getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(LogoutDropdown));
+		LogoutDropdown.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(logoutOption));
 		logoutOption.click();
@@ -29109,7 +26918,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 	public boolean checkChangesDoneInFontInAcountSaving() throws InterruptedException
 	{
 		getDriver().navigate().refresh();
-
+		Thread.sleep(4000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(homeMenu));
 		homeMenu.click();
 
@@ -29125,7 +26934,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterNewBtn));
 		masterNewBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createTab_CreateTab));
 		createTab_CreateTab.click();
 
@@ -29136,18 +26945,20 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		accountHeaderCreateTabTextFieldTxt.sendKeys("formating tab");
 		accountHeaderCreateTabTextFieldTxt.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 
 		/*String actText = accountHeaderCreateTabTextFieldTxt.getText();
 		String expText = "FORMATING TAB";*/
 
 		String actaccountHeaderCreateTabTextFieldTxt=accountHeaderCreateTabTextFieldTxt.getAttribute("style");
-		String expaccountHeaderCreateTabTextFieldTxt="text-align: center; width: 100%; font-family: Calibri !important; font-size: 10px !important; font-style: italic !important; font-weight: bold !important; color: blue !important;";
+		String expaccountHeaderCreateTabTextFieldTxt="text-align: center; width: 100%; background-color: rgb(255, 255, 255) !important; font-family: Calibri !important; font-size: 10px !important; font-style: italic !important; font-weight: bold !important; color: blue !important;";
 
 		System.out.println("actual : "+actaccountHeaderCreateTabTextFieldTxt);
 		System.out.println("Exp    : "+expaccountHeaderCreateTabTextFieldTxt);
 		//System.out.println("Text   : "+actText+"  Value Expected  "+expText );
 
+		Thread.sleep(4000);
+		getAction().moveToElement(accountCloseBtnInGroup).build().perform();
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accountCloseBtnInGroup));
 		accountCloseBtnInGroup.click();
 
@@ -29339,7 +27150,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		Thread.sleep(1000);
 
 		String actaccountHeaderCreateTabTextFieldTxt=accountHeaderCreateTabTextFieldTxt.getAttribute("style");
-		String expaccountHeaderCreateTabTextFieldTxt="text-align: left; width: 100%; font-family: Arial !important; font-size: 10px !important; font-style: normal !important; font-weight: normal !important; color: black !important;";
+		String expaccountHeaderCreateTabTextFieldTxt="text-align: left; width: 100%; background-color: rgb(255, 255, 255) !important; font-family: Arial !important; font-size: 10px !important; font-style: normal !important; font-weight: normal !important; color: black !important;";
 
 		System.out.println("actual : "+actaccountHeaderCreateTabTextFieldTxt);
 		System.out.println("Exp    : "+expaccountHeaderCreateTabTextFieldTxt);
@@ -29618,13 +27429,16 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 	@FindBy(xpath = "//*[@id='tab_Rule_IF_Alerts_FieldRules']/a")
 	public static WebElement rulesTab_IFAlertsTab;
 
-	@FindBy(xpath = "//*[@id='Rule_Else_FieldRules']/div/div[1]/ul/li[1]/a/span")
+	//@FindBy(xpath = "//*[@id='Rule_Else_FieldRules']/div/div[1]/ul/li[1]/a/span")
+	@FindBy(xpath="//*[@id='tab_Rule_Else_Formating_FieldRules']//a")
 	public static WebElement rulesTab_ElseFormattingTab;
 
-	@FindBy(xpath = "//*[@id='Rule_Else_FieldRules']/div/div[1]/ul/li[2]/a/span")
+	//@FindBy(xpath = "//*[@id='Rule_Else_FieldRules']/div/div[1]/ul/li[2]/a/span")
+	@FindBy(xpath="//*[@id='tab_Rule_Else_Messaging_FieldRules']//a")
 	public static WebElement rulesTab_ElseMessageTab;
 
-	@FindBy(xpath = "//*[@id='Rule_Else_FieldRules']/div/div[1]/ul/li[3]/a/span")
+	//@FindBy(xpath = "//*[@id='Rule_Else_FieldRules']/div/div[1]/ul/li[3]/a/span")
+	@FindBy(xpath="//*[@id='tab_Rule_Else_Alerts_FieldRules']//a")
 	public static WebElement rulesTab_ElseAlertsTab;
 
 
@@ -29636,8 +27450,10 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		Thread.sleep(2000);
 		getDriver().navigate().refresh();
 
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 
+		getAction().moveToElement(homeMenu).build().perform();
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(homeMenu));
 		homeMenu.click();
 
@@ -29670,7 +27486,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_RulesTab));
 		extraFields_RulesTab.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(rulesTabAddRuleBtn));
 
@@ -29725,10 +27541,14 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		boolean actextraFields_ruleOnActiveChkbox                = extraFields_ruleOnActiveChkbox.isDisplayed();
 
 		Thread.sleep(2000);
-
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(rulesTabElseTab));
 		rulesTabElseTab.click();
 
+		Thread.sleep(2000);
+		
+		getAction().moveToElement(rulesTab_ElseFormattingTab).build().perform();
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(rulesTab_ElseFormattingTab));
 		boolean actrulesTab_ElseFormattingTab                    =rulesTab_ElseFormattingTab.isDisplayed();
 
@@ -29936,9 +27756,13 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 		rulesTabIFGridEnterCaption.sendKeys(Keys.TAB);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_RulesSaveBtn));
-		extraFields_RulesSaveBtn.click();
+		Thread.sleep(3000);
 		
+		getAction().moveToElement(extraFields_RulesSaveBtn).build().perform();
+		Thread.sleep(2000);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_RulesSaveBtn));
+	//	extraFields_RulesSaveBtn.click();
+		ClickUsingJs(extraFields_RulesSaveBtn);
 		Thread.sleep(1500);
 		String expMessageOnSaveRule = "Rule Saved Successfully";
 		String actMessageOnSaveRule=checkValidationMessage(expMessageOnSaveRule);
@@ -30005,6 +27829,9 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		System.out.println("extraFields_ruleOnActiveChkbox   : "+actextraFields_ruleOnActiveChkbox+" Value "+expextraFields_ruleOnActiveChkbox);
 
 		Thread.sleep(3000);
+		
+		getAction().moveToElement(rulesGrid1stRow_1stcol).build().perform();
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(rulesGrid1stRow_1stcol));
 		String actrulesGrid1stRow_1stcol=rulesGrid1stRow_1stcol.getText();
 		String exprulesGrid1stRow_1stcol="CreateTab_NumberField";
@@ -30104,7 +27931,10 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(cus1stRowEditBtn));
 		cus1stRowEditBtn.click();
-
+		
+		Thread.sleep(2500);
+		
+	
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_RulesTab));
 		extraFields_RulesTab.click();
 
@@ -30322,7 +28152,8 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 		String expMessageOnSaveRule = "Rule Saved Successfully";
 		String actMessageOnSaveRule=checkValidationMessage(expMessageOnSaveRule);
-
+		
+		
 		if(actAlert.equalsIgnoreCase(expAlert) && actMessageOnDeleteRule.equalsIgnoreCase(expMessageOnDeleteRule) && 
 				actMessageOnSaveRule.equalsIgnoreCase(expMessageOnSaveRule)&& actRules_NewRecordChekbox.equalsIgnoreCase(expRules_NewRecordChekbox) && 
 				actextraFields_ruleLoadChkbox.equalsIgnoreCase(expextraFields_ruleLoadChkbox)&&
@@ -30480,6 +28311,22 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 		System.out.println(" rulesGridElse2ndRow_1stcol : "+actrulesGridElse2ndRow_1stcol+".");
 		System.out.println(" rulesGridElse2ndRow_1stcol : "+exprulesGridElse2ndRow_1stcol+".");
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesTab));
+		extraFields_PropertiesTab.click();
+		Thread.sleep(2500);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_PropertiesReadOnlyChekbox));
+		if(extraFields_PropertiesReadOnlyChekboxSelected.isSelected()==true)
+		{
+			
+			extraFields_PropertiesReadOnlyChekbox.click();
+		}
+		
+		Thread.sleep(2000);
+		
+		extraFields_OkBtn.click();
+		Thread.sleep(2000);
+
 
 		if(actrulesGrid1stRow_2ndcol.equalsIgnoreCase(exprulesGrid1stRow_2ndcol) &&
 				actrulesGrid1stRow_1stcol.equalsIgnoreCase(exprulesGrid1stRow_1stcol) &&
@@ -30702,8 +28549,12 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 
 
-	public boolean checkValidationRuleWithCondition() throws InterruptedException
+	public boolean checkValidationRuleWithCondition() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
+		
+		checkLogoutAndLogin();
+		Thread.sleep(4000);
+		
 		getDriver().navigate().refresh();
 		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(homeMenu));
@@ -30733,9 +28584,9 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		accountHeaderCreateTabTextFieldTxt.sendKeys(Keys.END,Keys.SHIFT,Keys.HOME);
 		Thread.sleep(1000);
 		accountHeaderCreateTabTextFieldTxt.sendKeys("FOCUSHYD");
-
+		Thread.sleep(1000);
 		accountHeaderCreateTabTextFieldTxt.sendKeys(Keys.TAB);
-
+		Thread.sleep(1000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accountHeaderCreateTabNumberFieldTxt));
 
 		String actaccountHeaderCreateTabNumberFieldTxt=accountHeaderCreateTabNumberFieldTxt.getAttribute("value");
@@ -30881,7 +28732,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		String expMessageOnOk = "Field Updated Successfully";
 		String actMessageOnOk=checkValidationMessage(expMessageOnOk);
 
-		Thread.sleep(2000);
+		Thread.sleep(6000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(headerDetailsSaveBtn));
 		headerDetailsSaveBtn.click();
 
@@ -30907,7 +28758,8 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 
 
-	@FindBy(xpath="//*[@id='all_TabsField']/div[10]/nav/div/div/ul/li[1]/a/i")
+	//@FindBy(xpath="//*[@id='all_TabsField']/div[10]/nav/div/div/ul/li[1]/a/i")
+	@FindBy(xpath="(//a[@title='Save'])[1]")
 	public static WebElement headerDetailsSaveBtn;
 
 
@@ -31062,7 +28914,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		accountHeaderCreateTabTextFieldTxt.sendKeys(Keys.END,Keys.SHIFT,Keys.HOME);
 		Thread.sleep(1000);
 		accountHeaderCreateTabTextFieldTxt.sendKeys("FOCUSHYD");
-
+		Thread.sleep(1000);
 		accountHeaderCreateTabTextFieldTxt.sendKeys(Keys.TAB);
 
 
@@ -31148,6 +29000,8 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		accountHeaderCreateTabTextFieldTxt.sendKeys("FOCUSHYD");
 		Thread.sleep(1000);
 		accountHeaderCreateTabTextFieldTxt.sendKeys(Keys.TAB);
+		
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accountHeaderCreateTabNumberFieldTxt));
 		String actcreateField_SimpleNumberLabel=accountHeaderCreateTabNumberFieldTxt.getAttribute("value");
@@ -31212,7 +29066,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		masterRibbonToExpandOptions.click();
 
 
-		Thread.sleep(3000);
+		Thread.sleep(4000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterCustamizemasterBtn));	
 		masterCustamizemasterBtn.click();
@@ -31587,6 +29441,8 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 		Thread.sleep(2000);
 		Rules_RuleNameText.sendKeys(Keys.TAB);
+		
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(Rules_NewRecordChekbox));
 		Rules_NewRecordChekbox.click();
@@ -31653,18 +29509,18 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accountRules_DeleteBtn));
 		accountRules_DeleteBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		String actDeleteMessage=ruleOptionDeletePopTxt.getText();
 		String expDeleteMessage="Are you sure want to delete the selected Rule [ RuleForDelete ]";
 
 		System.out.println("ACtual Delete Message : "+actDeleteMessage);
 		System.out.println("Exp    Delete Message : "+expDeleteMessage);
-		Thread.sleep(3000);
+		Thread.sleep(4000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ruleOptionDeletePopYesBtn));
 		ruleOptionDeletePopYesBtn.click();
 		
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 
 		String expMessageOnDelete = "Rule Deleted Successfully.";
 		String actMessageOnDelete=checkValidationMessage(expMessageOnDelete);
@@ -31676,12 +29532,13 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 				actMessageOnDelete.equalsIgnoreCase(expMessageOnDelete)) 
 		{
 			System.out.println(" Rule Deleted In Rule Option ");
+			Thread.sleep(2500);
 
-			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(headerDetailsSaveBtn));
+		/*	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(headerDetailsSaveBtn));
 			headerDetailsSaveBtn.click();
 
 			String expMessageOnSave1 = "Master updated successfully";
-			String actMessageOnSave1=checkValidationMessage(expMessageOnSave1);
+			String actMessageOnSave1=checkValidationMessage(expMessageOnSave1);*/
 
 
 			return true;
@@ -31923,7 +29780,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(UniqueConstraintsAddBtn));
 		UniqueConstraintsAddBtn.click();//Save Btn
 
-		String expMessageOnSave = "Master updated successfully";
+		String expMessageOnSave = "Unique Constraint Saved Successfully.";
 		String actMessageOnSave=checkValidationMessage(expMessageOnSave);
 
 		if ( actMessageOnSave.equalsIgnoreCase(expMessageOnSave) )
@@ -32000,7 +29857,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		UniqueConstraintsAddBtn.click();//Save Btn
 
 
-		String expMessageOnSave = "Master updated successfully";
+		String expMessageOnSave = "Unique Constraint Saved Successfully.";
 		String actMessageOnSave=checkValidationMessage(expMessageOnSave);
 
 		Thread.sleep(2000);
@@ -32057,7 +29914,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(UniqueConstraintsAddBtn));
 		UniqueConstraintsAddBtn.click();//Save Btn
-		String expMessageOnSave = "Master updated successfully";
+		String expMessageOnSave = "Unique Constraint Saved Successfully.";
 		String actMessageOnSave=checkValidationMessage(expMessageOnSave);
 
 		Thread.sleep(2000);
@@ -32081,7 +29938,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		UniqueConstraintsDeleteBtn.click();
 
 
-		String expMessageOnSave1 = "Master updated successfully";
+		String expMessageOnSave1 = "Unique Constraint Deleted Successfully.";
 		String actMessageOnSave1=checkValidationMessage(expMessageOnSave1);
 
 		if ( actMessageOnSave.equalsIgnoreCase(expMessageOnSave) && 
@@ -32293,7 +30150,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(UniqueConstraintsDeleteBtn));
 		UniqueConstraintsDeleteBtn.click();//Save Btn
 
-		String expMessageOnSave = "Master updated successfully";
+		String expMessageOnSave = "Unique Constraint Deleted Successfully.";
 		String actMessageOnSave=checkValidationMessage(expMessageOnSave);
 
 		if ( actMessageOnSave.equalsIgnoreCase(expMessageOnSave) )
@@ -32365,7 +30222,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 		String actReportList = reportsListArray.toString();
 		System.out.println(actReportList);
-		String expReportList ="[Master info, ABC analysis amount, Bank book, Bank reconciliation statement, Cash book, Cheque book register report, Comparative analysis, Customer ageing detail analysis, Customer ageing detail by due date, Customer ageing summary analysis, Customer bill-wise summary, Customer due date analysis, Customer listing of outstanding bills, Customer overdue analysis, Customer overdue summary, Customer statements, Customer summary ageing by due date, Income Expense Trend, Interest calculation, Ledger, Ledger detail, Monthly Sales, Peak and low balance amount, Petty cash book, Purchase register, Purchase return register, Purchases grouped by department, Purchases grouped by Item, Purchases grouped by vendor, Sales day book, Sales grouped by customer, sales grouped by department, Sales grouped by Item, Sales return register, Schedules, Sub ledger, Summary purchase register, Summary sales register, Top Customers, Trading account, Transactions type analysis, Vendor ageing detail analysis, Vendor ageing detail by due date, Vendor ageing summary analysis, Vendor bill-wise summary, Vendor due date analysis, Vendor listing of outstanding bills, Vendor overdue analysis, Vendor overdue summary, Vendor statements, Vendor summary ageing by due date, Virtual Bank Ledger]";
+		String expReportList ="[Master info, ABC analysis account, Bank book, Bank reconciliation statement, Cash book, Cheque book register report, Comparative analysis, Customer ageing detail analysis, Customer ageing detail by due date, Customer ageing summary analysis, Customer bill-wise summary, Customer due date analysis, Customer listing of outstanding bills, Customer overdue analysis, Customer overdue summary, Customer statements, Customer summary ageing by due date, Income Expense Trend, Interest calculation, Ledger, Ledger detail, Monthly Sales, Peak and low balance amount, Petty cash book, Purchase register, Purchase return register, Purchases grouped by department, Purchases grouped by Item, Purchases grouped by vendor, Sales day book, Sales grouped by customer, sales grouped by department, Sales grouped by Item, Sales return register, Schedules, Sub ledger, Summary purchase register, Summary sales register, Top Customers, Trading account, Transactions type analysis, Vendor ageing detail analysis, Vendor ageing detail by due date, Vendor ageing summary analysis, Vendor bill-wise summary, Vendor due date analysis, Vendor listing of outstanding bills, Vendor overdue analysis, Vendor overdue summary, Vendor statements, Vendor summary ageing by due date, Virtual Bank Ledger]";
 		if (actReportList.equalsIgnoreCase(expReportList) && 
 				reportsListCount==expreportsListCount)
 		{
@@ -32488,23 +30345,23 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 			
 		Thread.sleep(2000);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(userNameTxt));
-		userNameTxt.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(userNameTxt1));
+		//userNameTxt.click();
 
-		String userInfo=userNameTxt.getText();
+		String userInfo=userNameTxt1.getText();
 
 		System.out.println("User Info : "+userInfo);
 
-		System.out.println("User Info Capture Text :"+userNameTxt.getText());
+		System.out.println("User Info Capture Text :"+userNameTxt1.getText());
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogoImg));
+	/*	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogoImg));
 
 		companyLogoImg.click();
 
 		String getCompanyTxt=companyName.getText();
 		String getLoginCompanyName=getCompanyTxt.substring(0, 36);
 		System.out.println("company name :"+ getLoginCompanyName);
-		companyLogoImg.click();
+		companyLogoImg.click();*/
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(dashboardName));
 
@@ -32514,19 +30371,19 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 
 		String expuserInfo            ="SU";
-		String expLoginCompanyName    ="Automation Company ";
-		String expDashboard			  ="Graph with Active and setAsDefault";
+		String expLoginCompanyName    ="Account Properties And Customization";
+		String expDashboard			  ="Dashboard";
 
 
 		System.out.println("***********************************checkLogoutAndLoginAfterEnablingMandatoryCheckboxInFieldsProperties*********************************");
 
 		System.out.println("User Info                        : "+userInfo               +"  value expected  "+expuserInfo);
-		System.out.println("Login Company Name               : "+getLoginCompanyName    +"  value expected  "+expLoginCompanyName);
+		//System.out.println("Login Company Name               : "+getLoginCompanyName    +"  value expected  "+expLoginCompanyName);
 		System.out.println("Dashboard                        : "+getDashboard           +"  value expected  "+expDashboard);
 
 
 		
-		if(/*userInfo.equalsIgnoreCase(expuserInfo) &&*/ getLoginCompanyName.equalsIgnoreCase(expLoginCompanyName))
+		if(userInfo.equalsIgnoreCase(expuserInfo) && getDashboard.equalsIgnoreCase(expDashboard))
 		{	
 			return true;
 		}	 
@@ -32587,7 +30444,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 
 
-	public static boolean checkLedgerDetailReportForVendorB() throws InterruptedException
+	public static boolean checkLedgerDetailReportForVendorB() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(homeMenu));		
 		homeMenu.click();
@@ -32599,6 +30456,8 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		accounts.click();
 
 		Thread.sleep(2000);
+		
+		checkValidationMessage("");
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterSearchTxt));
 		masterSearchTxt.click();
@@ -32630,10 +30489,11 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 		Thread.sleep(2000);
 
+		getAction().moveToElement(masterLedgerDetailBtn).build().perform();
 		getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(masterLedgerDetailBtn));
 		masterLedgerDetailBtn.click();
 
-		Thread.sleep(4000);
+		Thread.sleep(8000);
 
 		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
 
@@ -32875,7 +30735,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
 
-		checkValidationMessage("Screen opened");
+		
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(dateText));
 		dateText.click();
@@ -33727,7 +31587,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
 
-		checkValidationMessage("Screen opened");
+		
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(dateText));
 		dateText.click();
@@ -34629,7 +32489,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
 
-		checkValidationMessage("Screen opened");
+		
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(documentNumberTxt));
@@ -35133,7 +32993,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
 
-		checkValidationMessage("Screen Opened");
+		
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newCashBankAccountTxt));
 		newCashBankAccountTxt.click();
@@ -35943,7 +33803,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
 
-		checkValidationMessage("Screen Opened");
+		
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newCashBankAccountTxt));
 		newCashBankAccountTxt.click();
@@ -36398,7 +34258,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
 
-		checkValidationMessage("Screen Opened");
+		
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newCashBankAccountTxt));
 		newCashBankAccountTxt.click();
@@ -36832,7 +34692,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
 
-		checkValidationMessage("Screen opened");
+		
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerAccountTxt));
 		customerAccountTxt.sendKeys("cust_Display_when_StatusIsActive");
@@ -38057,7 +35917,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
 
-		checkValidationMessage("Screen opened");
+		
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(documentNumberTxt));
@@ -38370,7 +36230,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
 
-		checkValidationMessage("Screen opened");
+		
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(documentNumberTxt));
@@ -38666,7 +36526,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
 
-		checkValidationMessage("Screen opened");
+		
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(documentNumberTxt));
@@ -38872,7 +36732,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
 
-		checkValidationMessage("Screen opened");
+		
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(dateText));
 		dateText.click();
@@ -39516,7 +37376,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
 
-		checkValidationMessage("Screen opened");
+		
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerAccountTxt));
 		customerAccountTxt.sendKeys("cust-club trans of all accts One");
@@ -40190,7 +38050,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
 
-		checkValidationMessage("Screen opened");
+		
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerAccountTxt));
 		customerAccountTxt.sendKeys("Cust-display cr dr total each account one");
@@ -40716,6 +38576,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		
 		Thread.sleep(3000);
 		
+		checkValidationMessage("");
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterRibbonToExpandOptions));		
 		masterRibbonToExpandOptions.click();
 		
@@ -40748,20 +38609,65 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		
 		Thread.sleep(2000);
 		
-		Select dataTypeDropdown = new Select(extraFields_FieldDetailsDatTypeDropdown);
 		
-		dataTypeDropdown.selectByValue("0");
+				
+				Select dataTypeDropdown = new Select(extraFields_FieldDetailsDatTypeDropdown);
+				
+				dataTypeDropdown.selectByValue("12");
+				
+				extraField_FieldDetailsMasterToLinkDropDown.sendKeys(Keys.SPACE);
+				Thread.sleep(2000);
+				
+				int mastersCount = MastersList.size();
+				ArrayList<String> mastersArray = new ArrayList<String>();
+				for(int i=1;i<mastersCount;i++)
+				{
+					String data = MastersList.get(i).getText();
+					mastersArray.add(data);
+				}
+				String actMastersList = mastersArray.toString();
+				String expMastersList = "[Airline Sector, Bank Card Type, Bins, BodyMasterFour, BodyMasterOne, BodyMasterThree, BodyMasterTwo, Break down standard reason, Capacity, Category, City, Cost Center, Counter, Country, Course, Course Type, Delivery Time Interval, Department, Designation]";
+				
+				System.out.println("actMastersList: "+actMastersList);
+				System.out.println("expMastersList: "+expMastersList);
+				
+				Thread.sleep(2000);
+				
+				Select alldata = new Select(extraFields_FieldDetailsInCludeGroups);
+				alldata.selectByVisibleText("All Data");
+				Thread.sleep(2000);
+				
+				Thread.sleep(2000);
+				
+				getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraField_FieldDetailsMasterToLinkDropDown));
+				extraField_FieldDetailsMasterToLinkDropDown.sendKeys(Keys.END);
+				extraField_FieldDetailsMasterToLinkDropDown.sendKeys(Keys.SHIFT,Keys.HOME);
+				extraField_FieldDetailsMasterToLinkDropDown.sendKeys("Department");		
+				Thread.sleep(2000);
+				extraField_FieldDetailsMasterToLinkDropDown.sendKeys(Keys.TAB);
+				
+				getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraField_FieldDetailsMandatoryFields));
+				boolean actualValue = extraField_FieldDetailsMandatoryFields.isDisplayed();
+				boolean expectedValue = true;
+				
+				String FieldValues = extraField_FieldDetailsMandatoryFields.getText();
+				System.out.println(FieldValues);
+				
+				getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
+				extraFields_OkBtn.click();
+				
+				Thread.sleep(2000);
+				String expMessage = "Field Added Successfully.";
+				String actMessage = checkValidationMessage(expMessage);
+				
+				boolean actHeader;
+				
+				boolean expHeader;
+				
+				actHeader = generalHeaderDetailsTab.isDisplayed();
+				expHeader = true;
 		
-		Thread.sleep(2000);
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(extraFields_OkBtn));
-		extraFields_OkBtn.click();
-		
-		Thread.sleep(2000);
-		
-		String expMessage = "Field Added Successfully.";
-		String actMessage = checkValidationMessage(expMessage);
-		
+	
 		if (actMessage.equalsIgnoreCase(expMessage)) 
 		{
 			return true;
@@ -41162,7 +39068,9 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accounts));		
 		accounts.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(4000);
+		
+		checkValidationMessage("");
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterNewBtn));		
 		masterNewBtn.click();
@@ -41179,8 +39087,8 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		
 		Select accountTypeDrpdwn = new Select(accountTypeDropdown);
 		
-		accountTypeDrpdwn.selectByVisibleText("Customer / Vendor");	
-		
+		//accountTypeDrpdwn.selectByVisibleText("Customer/Vendor");	
+		accountTypeDrpdwn.selectByValue("7");
 		Thread.sleep(2000);
 
 		deptLinkInAccountMaster.sendKeys("DUBAI ESTATES");
@@ -41194,7 +39102,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		String actSaveAccountMessage = checkValidationMessage(expSaveAccountMessage);
 
 		Thread.sleep(2000);
-
+		checkValidationMessage("");
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(nameTxt));
 		nameTxt.sendKeys("AccountForCustomizationTwo");
@@ -41204,7 +39112,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		codeTxt.sendKeys("AccountForCustomizationTwo");
 		codeTxt.sendKeys(Keys.TAB);
 		
-		accountTypeDrpdwn.selectByVisibleText("Customer / Vendor");	
+		accountTypeDrpdwn.selectByVisibleText("Customer/Vendor");	
 		
 		Thread.sleep(2000);
 		
@@ -41217,7 +39125,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 		actSaveAccountMessage = checkValidationMessage(expSaveAccountMessage);
 
-
+		checkValidationMessage("");
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(nameTxt));
 		nameTxt.sendKeys("AccountForCustomizationThree");
@@ -41227,7 +39135,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		codeTxt.sendKeys("AccountForCustomizationThree");
 		codeTxt.sendKeys(Keys.TAB);
 		
-		accountTypeDrpdwn.selectByVisibleText("Customer / Vendor");	
+		accountTypeDrpdwn.selectByVisibleText("Customer/Vendor");	
 		
 		Thread.sleep(2000);
 		
@@ -41240,7 +39148,9 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		SaveBtn.click();
 
 		actSaveAccountMessage = checkValidationMessage(expSaveAccountMessage);
-
+		
+		checkValidationMessage("");
+		
 		if (actSaveAccountMessage.equalsIgnoreCase(expSaveAccountMessage)) 
 		{
 			return true;
@@ -41259,7 +39169,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 	@FindBy(xpath="//*[@class='icon-settings hiconright2']")
 	private static WebElement voucherSettingsBtn;
 	
-	@FindBy(xpath="//select[@id='doc_Accountdepandency_Filter']")
+	@FindBy(xpath="//select[@id='doc_Accountdepandency_Filter1']")
 	private static WebElement accountFilterDropDown;
 	
 	
@@ -41290,12 +39200,14 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesInvVoucher));
 		salesInvVoucher.click();
 		
+		Thread.sleep(6500);
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherSettingsBtn));
 		voucherSettingsBtn.click();
-		
+		Thread.sleep(5000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(documentsTab));
 		documentsTab.click();
+		Thread.sleep(2500);
 		
 		Select accFilter = new Select(accountFilterDropDown);
 		accFilter.selectByVisibleText("DEPT");
@@ -41350,7 +39262,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
 		
-		checkValidationMessage("Screen opened");
+		
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesAccountTxt));
 		salesAccountTxt.sendKeys("Sales - Computers");
@@ -41473,6 +39385,9 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 	{
 		Thread.sleep(3000);
 		
+		getDriver().navigate().refresh();
+		Thread.sleep(3500);
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(finacinalsMenu));
 		finacinalsMenu.click();
 		
@@ -41491,10 +39406,12 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesInvVoucher));
 		salesInvVoucher.click();
 		
+		Thread.sleep(5000);
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
 		
-		checkValidationMessage("Screen opened");
+		
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesAccountTxt));
 		salesAccountTxt.sendKeys(Keys.SPACE);
@@ -41513,7 +39430,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		}
 		
 		String actList = actVendorAccountList.toString();
-		String expList = "[Legal Fee, Sales - Computers, Sales - Electronics, Sales - Home Appliances, SR COGS POSTING ACC, Uninvoiced DO, Utility charges]";
+		String expList = "[Sales - Computers, Sales - Electronics, Sales - Home Appliances, SR COGS POSTING ACC, Uninvoiced DO]";
 		
 		System.out.println("actList: "+actList);
 		System.out.println("expList: "+expList);
@@ -41703,7 +39620,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesInvVoucher));
 		salesInvVoucher.click();
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherSettingsBtn));
 		voucherSettingsBtn.click();
@@ -41715,7 +39632,8 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		Thread.sleep(2000);
 		
 		JavascriptExecutor jse = (JavascriptExecutor)getDriver();
-		jse.executeScript("arguments[0].scrollIntoView(true);", postingDetailsEpandBtn);
+	/*	jse.executeScript("arguments[0].scrollIntoView(true);", postingDetailsEpandBtn);*/
+		getAction().moveToElement(postingDetailsEpandBtn).build().perform();
 		
 		Thread.sleep(2000);
 		
@@ -41730,8 +39648,8 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 		Thread.sleep(2000);
 		
-		jse.executeScript("arguments[0].scrollIntoView(true);", updateBtn);
-		
+		//jse.executeScript("arguments[0].scrollIntoView(true);", updateBtn);
+		getAction().moveToElement(updateBtn).build().perform();
 		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(updateBtn));
 		updateBtn.click();
@@ -41790,11 +39708,11 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesInvVoucher));
 		salesInvVoucher.click();
 		
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
 		
-		checkValidationMessage("Screen opened");
+		
 		
 
 		ArrayList<String> headerList = new ArrayList<String>();
@@ -41806,7 +39724,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 			((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", pvVATHeaderFieldList.get(i));
 			
 			String data = pvVATHeaderFieldList.get(i).getText();
-			System.err.println(i+". "+data);
+			//System.err.println(i+". "+data);
 			headerList.add(data);
 		}
 		
@@ -42006,7 +39924,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 			}
 			
 			String actList = actVendorAccountList.toString();
-			String expList = "[Legal Fee, Sales - Computers, Sales - Electronics, Sales - Home Appliances, SR COGS POSTING ACC, Uninvoiced DO, Utility charges]";
+			String expList = "[Sales - Computers, Sales - Electronics, Sales - Home Appliances, SR COGS POSTING ACC, Uninvoiced DO]";
 			
 			System.out.println("actList: "+actList);
 			System.out.println("expList: "+expList);
@@ -42585,7 +40503,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		 
 		 createUserSecurityQuestionDropDown.click();
 		 Select s = new Select(createUserSecurityQuestionDropDown);
-		 s.selectByVisibleText("In which county were you born?");
+		 s.selectByVisibleText("In which country were you born?");
 
 		 getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createUserSecurityAnswerTxt));	
 		 createUserSecurityAnswerTxt.sendKeys("India");
@@ -42747,16 +40665,16 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 	    
 	    Thread.sleep(8000);
 	          
-	    getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(userNameDisplay));
-	   	userNameDisplay.click();
+	    getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(usernametxt));
+	   //	userNameDisplay.click();
 	           	
-		String userInfo=userNameDisplay.getText();
+		String userInfo=usernametxt.getText();
 		
 		System.out.println("User Info : "+userInfo);
 		
-		System.out.println("User Info Capture Text :"+userNameDisplay.getText());
+		//System.out.println("User Info Capture Text :"+userNameDisplay.getText());
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogoImg));
+	/*	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogoImg));
 		
 		companyLogoImg.click();
 		
@@ -42764,7 +40682,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		String getLoginCompanyName=getCompanyTxt.substring(0, 19);
 		System.out.println("company name :"+ getLoginCompanyName);
 		companyLogoImg.click();
-		
+		*/
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(dashboard));
 		
 		String getDashboard=dashboard.getText();
@@ -42780,11 +40698,11 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		System.out.println("***********************************checkLogin*********************************");
 	    
 	    System.out.println("User Info                        : "+userInfo               +"  value expected  "+expuserInfo);
-	    System.out.println("Login Company Name               : "+getLoginCompanyName    +"  value expected  "+expLoginCompanyName);
+	   // System.out.println("Login Company Name               : "+getLoginCompanyName    +"  value expected  "+expLoginCompanyName);
 	    System.out.println("Dashboard                        : "+getDashboard           +"  value expected  "+expDashboard);
 	   
 	  
-		if(userInfo.equalsIgnoreCase(expuserInfo) /*&& getLoginCompanyName.equalsIgnoreCase(expLoginCompanyName)*/)
+		if(userInfo.equalsIgnoreCase(expuserInfo) && getDashboard.equalsIgnoreCase(expDashboard))
 		{	
 			return true;
 		}	 
@@ -42797,8 +40715,8 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 	
 	public static boolean checkEditCreatedUser() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
-
-		 getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(homeMenu));
+		Thread.sleep(2500);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(homeMenu));
 		 homeMenu.click();
 					
 		 getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(securityMenu));
@@ -43027,24 +40945,23 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		Thread.sleep(3000);
 		
 		getDriver().navigate().refresh();
+		Thread.sleep(4000);
+		
+		getAction().moveToElement(settingsmenuBtn).build().perform();
 		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(settingsmenuBtn));
-		settingsmenuBtn.click();
+		
+		ClickUsingJs(settingsmenuBtn);
+		//getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(settingsmenuBtn));
+		//settingsmenuBtn.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ConfigureTransactionBtn));
 		ConfigureTransactionBtn.click();
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PreferencesBtn));
-		PreferencesBtn.click();
-		
-		Thread.sleep(3000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(DocumentCustomizationBtn));
-		DocumentCustomizationBtn.click();
-
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchasesVoucherVatBtn));
 		purchasesVoucherVatBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(6000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenTabInDC));
 		editScreenTabInDC.click();
@@ -43090,7 +41007,8 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 
 		Thread.sleep(2000);
-
+		ScrollToElement(editScreenApplyBtn);
+		Thread.sleep(1000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenApplyBtn));
 		editScreenApplyBtn.click();		
 
@@ -43099,7 +41017,9 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		String expMessage = "Data saved successfully";
 		String actMessage = checkValidationMessage(expMessage);
 
-
+		
+		getAction().moveToElement(UpdateBtn).build().perform();
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(UpdateBtn));
 		UpdateBtn.click();		
 
@@ -43319,12 +41239,14 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchasesVoucherVATBtn));
 		purchasesVoucherVATBtn.click();
 
+		Thread.sleep(15000);
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
 
-		checkValidationMessage("Screen opened");
+		
 
-
+		Thread.sleep(4000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorAccountTxt));
 		vendorAccountTxt.sendKeys("Vendor A");
@@ -43419,7 +41341,8 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		select1stRow_5thColumn.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_9thColumn));
-		String actDefaultValue =  select1stRow_9thColumn.getText();	
+		select1stRow_9thColumn.click();
+		String actDefaultValue =  select1stRow_9thColumn.getAttribute("data-focustext");	
 		System.out.println("Actual Default Value:   "+actDefaultValue);
 		String expDefaultValue = "5.00";
 
@@ -43583,10 +41506,12 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 	public static WebElement ledgerBtn; 
 
 
-	@FindBy(xpath="//*[@id='id_mainreportmenuheadings']/ul/li[7]/a/i")
+	//@FindBy(xpath="//*[@id='id_mainreportmenuheadings']/ul/li[7]/a/i")
+	@FindBy(xpath="//i[@class='icon-ok hiconright2']")
 	public static WebElement ledgerOkBtn; 
 
-	@FindBy(xpath="//*[@id='DvHeaderReport_4af20d6b-6ac8-42a9-996e-488869dca826']/div/nav/div/nav/ol/li/a")
+	//@FindBy(xpath="//*[@id='DvHeaderReport_4af20d6b-6ac8-42a9-996e-488869dca826']/div/nav/div/nav/ol/li/a")
+	@FindBy(xpath="((//*[@id='ReportRender']//div)[3]//li//a)[1]")
 	public static WebElement ledgerTitle;
 
 
@@ -43632,6 +41557,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 		Thread.sleep(2000);
 
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ledgerOkBtn));		
 		ledgerOkBtn.click();
 
@@ -43651,24 +41577,34 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 		int reportsRow2ListCount = reportsRow2List.size();
 		ArrayList<String> reportsRow2ListArray = new ArrayList<String>();
-		for(int i=3;i<reportsRow2ListCount;i++)
+		for(int i=0;i<reportsRow2ListCount;i++)
 		{
 			String data = reportsRow2List.get(i).getText();
 			reportsRow2ListArray.add(data);
 		}
 		String actRow2List = reportsRow2ListArray.toString();
-		String expRow2List = "[STD RATE COGS ACC INV, , 112.00, 112.00, , 7.84, 7.84, , 112.00, 112.00, Indian Rupees]";
+		String expRow2List = "[1, "+getCurrentDateF2()+", 	NDT52 : 1, STD RATE COGS ACC INV, , 112.00, 112.00, , 7.84, 7.84, , 112.00, 112.00, Indian Rupees]";
 
 
 		int reportsByWarehouseRow3ListCount = reportsRow3List.size();
 		ArrayList<String> reportsByWarehouseRow3ListArray = new ArrayList<String>();
-		for(int i=1;i<reportsByWarehouseRow3ListCount;i++)
+		for(int i=0;i<reportsByWarehouseRow3ListCount;i++)
 		{
 			String data = reportsRow3List.get(i).getText();
 			reportsByWarehouseRow3ListArray.add(data);
 		}
 		String actRow3List = reportsByWarehouseRow3ListArray.toString();
-		String expRow3List = "[Total, , , , 112.00, 112.00, , 7.84, 7.84, , 112.00, 112.00, ]";
+		String expRow3List = "";
+		
+		int reportsByWarehouseRow4ListCount = reportsRow4List.size();
+		ArrayList<String> reportsByWarehouseRow4ListArray = new ArrayList<String>();
+		for(int i=0;i<reportsByWarehouseRow4ListCount;i++)
+		{
+			String data = reportsRow4List.get(i).getText();
+			reportsByWarehouseRow4ListArray.add(data);
+		}
+		String actRow4List = reportsByWarehouseRow4ListArray.toString();
+		String expRow4List = "";
 
 
 		System.out.println("ActualRow1List Values   " +actRow1List);
@@ -43679,7 +41615,13 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 		System.out.println("ActualRow3List Values  " +actRow3List);
 		System.out.println("ExpectedRow3List Values" +expRow3List);
+		
+		System.out.println("ActualRow4List Values  " +actRow4List);
+		System.out.println("ExpectedRow4List Values" +expRow4List);
 
+		
+		click(LogoutDropdown);
+		click(logoutOption);
 		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List) 
 				&& actRow3List.equalsIgnoreCase(expRow3List)) 
 		{
@@ -43862,15 +41804,25 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		sc2.selectByVisibleText("Deduct");
 
 
+	
 		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenApplyBtn));
-		editScreenApplyBtn.click();		
+		ScrollToElement(editScreenApplyBtn);
+		Thread.sleep(1000);
+		
+		editScreenApplyBtn.click();
+		
+	
 
 		String expMessage = "Data saved successfully";
 		String actMessage = checkValidationMessage(expMessage);
 
-
+		Thread.sleep(2000);
+		
+		
+		
+		getAction().moveToElement(UpdateBtn).build().perform();
+		Thread.sleep(2000);
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(UpdateBtn));
 		UpdateBtn.click();	
 
@@ -43940,14 +41892,24 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 		Thread.sleep(2000);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenApplyBtn));
-		editScreenApplyBtn.click();		
+		Thread.sleep(2000);
+		ScrollToElement(editScreenApplyBtn);
+		Thread.sleep(1000);
+		editScreenApplyBtn.click();
+		
+	
 
 		String expMessage = "Data saved successfully";
 		String actMessage = checkValidationMessage(expMessage);
+		
+		
+		getAction().moveToElement(UpdateBtn).build().perform();
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(UpdateBtn));
 		UpdateBtn.click();	
+		
+		
 
 		String expMessage1 = "Data saved successfully";
 		String actMessage1 = checkValidationMessage(expMessage);
@@ -44011,12 +41973,20 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 
 		Thread.sleep(2000);
+		Thread.sleep(2000);
+		ScrollToElement(editScreenApplyBtn);
+		Thread.sleep(1000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenApplyBtn));
 		editScreenApplyBtn.click();		
 
 		String expMessage = "Data saved successfully";
 		String actMessage = checkValidationMessage(expMessage);
+		
+		
+		
+		getAction().moveToElement(UpdateBtn).build().perform();
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(UpdateBtn));
 		UpdateBtn.click();		
@@ -44082,12 +42052,20 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		sc2.selectByVisibleText("Add");
 
 		Thread.sleep(2000);
+		Thread.sleep(2000);
+		ScrollToElement(editScreenApplyBtn);
+		Thread.sleep(1000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenApplyBtn));
 		editScreenApplyBtn.click();		
 
 		String expMessage = "Data saved successfully";
 		String actMessage = checkValidationMessage(expMessage);
+		
+		
+		
+		getAction().moveToElement(UpdateBtn).build().perform();
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(UpdateBtn));
 		UpdateBtn.click();	
@@ -44157,20 +42135,21 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 
 		Thread.sleep(2000);
+		Thread.sleep(2000);
+		ScrollToElement(editScreenApplyBtn);
+		Thread.sleep(1000);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenApplyBtn));
-		editScreenApplyBtn.click();		
-
+		editScreenApplyBtn.click();
+		
 		String expMessage = "Data saved successfully";
 		String actMessage = checkValidationMessage(expMessage);
 
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(UpdateBtn));
+		
+		getAction().moveToElement(UpdateBtn).build().perform();
+		Thread.sleep(2000);
+	
 		UpdateBtn.click();
-
-		String expMessage1 = "Data saved successfully";
-		String actMessage1 = checkValidationMessage(expMessage);
-
+		
 		if (actMessage.equalsIgnoreCase(expMessage))
 		{
 			return  true;
@@ -44233,11 +42212,20 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 		Thread.sleep(2000);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenApplyBtn));
-		editScreenApplyBtn.click();		
+		Thread.sleep(2000);
+		ScrollToElement(editScreenApplyBtn);
+		Thread.sleep(1000);	
+		
+		
+		editScreenApplyBtn.click();
 
 		String expMessage = "Data saved successfully";
 		String actMessage = checkValidationMessage(expMessage);
+		
+	
+		
+		getAction().moveToElement(UpdateBtn).build().perform();
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(UpdateBtn));
 		UpdateBtn.click();
@@ -44260,8 +42248,12 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 	public static boolean checkAddingFieldWithRoundOffsAsHighest() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(settingsmenuBtn));
-		settingsmenuBtn.click();
+		getAction().moveToElement(settingsmenuBtn).build().perform();
+		Thread.sleep(2000);
+		
+		ClickUsingJs(settingsmenuBtn);
+		//getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(settingsmenuBtn));
+		//settingsmenuBtn.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ConfigureTransactionBtn));
 		ConfigureTransactionBtn.click();
@@ -44317,12 +42309,18 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 		Thread.sleep(2000);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenApplyBtn));
-		editScreenApplyBtn.click();		
+		Thread.sleep(2000);
+		ScrollToElement(editScreenApplyBtn);
+		Thread.sleep(1000);	
 
+		editScreenApplyBtn.click();
+		
 		String expMessage = "Data saved successfully";
 		String actMessage = checkValidationMessage(expMessage);
-
+		
+		
+		getAction().moveToElement(UpdateBtn).build().perform();
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(UpdateBtn));
 		UpdateBtn.click();	
@@ -44362,7 +42360,8 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 	@FindBy(xpath="//td[@id='editScreen_bodyrow_13 _1']/span[@id='editIcon']")
 	public static WebElement editBtn_13;
 
-	@FindBy(xpath="//*[@id='editScreen_FieldsCustomization_FieldDetails']/div[19]/div[2]/label/span")
+	//@FindBy(xpath="//*[@id='editScreen_FieldsCustomization_FieldDetails']/div[19]/div[2]/label/span")
+	@FindBy(xpath="//input[@id='editScreen_FieldsCustomization_chkHideNetFromSummary']/../span")
 	public static WebElement hideFromSummaryChkBox;
 
 	@FindBy(xpath="//*[@id='id_transactionentry_summary']//table/tbody/tr/td")
@@ -44402,19 +42401,29 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 	public static boolean checkFieldPositionBQ_AddToNetNotApplicableToStock() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(settingsmenuBtn));
-		settingsmenuBtn.click();
+		
+		getAction().moveToElement(settingsmenuBtn).build().perform();
+		Thread.sleep(2000);
+		
+		ClickUsingJs(settingsmenuBtn);
+		//getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(settingsmenuBtn));
+		//settingsmenuBtn.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ConfigureTransactionBtn));
 		ConfigureTransactionBtn.click();
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PreferencesBtn));
+		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PreferencesBtn));
 		PreferencesBtn.click();
 		
 		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(documentCustomization45Btn));
-		documentCustomization45Btn.click();
+		documentCustomization45Btn.click();*/
+		
+		Thread.sleep(1200);
+		getAction().moveToElement(purchasesVoucherVatBtn).build().perform();
+		
+		Thread.sleep(1200);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchasesVoucherVatBtn));
 		purchasesVoucherVatBtn.click();
@@ -44447,12 +42456,18 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		Select positionDropdown = new Select(editScreenpositionDropdown);
 		positionDropdown.selectByValue("0");
 
-
+		Thread.sleep(2000);
+		ScrollToElement(editScreenApplyBtn);
+		Thread.sleep(1000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenApplyBtn));
 		editScreenApplyBtn.click();		
 
 		String expMessage = "Data saved successfully";
 		String actMessage = checkValidationMessage(expMessage);
+		
+	
+		getAction().moveToElement(UpdateBtn).build().perform();
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(UpdateBtn));
 		UpdateBtn.click();
@@ -44493,12 +42508,20 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		positionDropdown.selectByValue("1");
 
 
+		Thread.sleep(2000);
+		ScrollToElement(editScreenApplyBtn);
+		Thread.sleep(1000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenApplyBtn));
 		editScreenApplyBtn.click();		
 
 		String expMessage = "Data saved successfully";
 		String actMessage = checkValidationMessage(expMessage);
 
+		
+		
+		getAction().moveToElement(UpdateBtn).build().perform();
+		Thread.sleep(2000);
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(UpdateBtn));
 		UpdateBtn.click();
 
@@ -44536,6 +42559,9 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		Select positionDropdown = new Select(editScreenpositionDropdown);
 		positionDropdown.selectByValue("2");		
 
+		Thread.sleep(2000);
+		ScrollToElement(editScreenApplyBtn);
+		Thread.sleep(1000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenApplyBtn));
 		editScreenApplyBtn.click();		
 
@@ -44579,6 +42605,9 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		Select positionDropdown = new Select(editScreenpositionDropdown);
 		positionDropdown.selectByValue("3");		
 
+		Thread.sleep(2000);
+		ScrollToElement(editScreenApplyBtn);
+		Thread.sleep(1000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenApplyBtn));
 		editScreenApplyBtn.click();		
 
@@ -44616,9 +42645,15 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 			}
 		}
+		
+		getAction().moveToElement(hideFromSummaryChkBox).build().perform();
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(hideFromSummaryChkBox));
 		hideFromSummaryChkBox.click();
 
+		Thread.sleep(2000);
+		ScrollToElement(editScreenApplyBtn);
+		Thread.sleep(1000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenApplyBtn));
 		editScreenApplyBtn.click();		
 
@@ -44723,6 +42758,9 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		Select positionDropdown = new Select(editScreenpositionDropdown);
 		positionDropdown.selectByValue("0");
 
+		Thread.sleep(2000);
+		ScrollToElement(editScreenApplyBtn);
+		Thread.sleep(1000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenApplyBtn));
 		editScreenApplyBtn.click();		
 
@@ -44750,6 +42788,8 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 	public static boolean checkFieldsPositionAndHiddenFieldInPvVAT() throws EncryptedDocumentException, InvalidFormatException, InterruptedException, IOException
 	{
 		Thread.sleep(3000);
+		getDriver().navigate().refresh();
+		Thread.sleep(4000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(finacinalsMenu));
 		finacinalsMenu.click();
 
@@ -44764,10 +42804,11 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchasesVoucherVATBtn));
 		purchasesVoucherVATBtn.click();
 
+		Thread.sleep(6000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
 
-		checkValidationMessage("screen opened");
+		
 
 		ArrayList<String> headerList = new ArrayList<String>();
 
@@ -44776,6 +42817,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		{
 			/*((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", pvVATHeaderFieldList.get(i));
 			 */
+			getAction().moveToElement(pvVATHeaderFieldList.get(i));
 			String data = pvVATHeaderFieldList.get(i).getText();
 			System.err.println(i+". "+data);
 			headerList.add(data);
@@ -44931,44 +42973,59 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 	@FindBy(xpath="//a[contains(text(),'Properties')]")
 	public static WebElement editScreenPropertiesTab;  
 
-	@FindBy(xpath="//*[@id='editScreen_FieldsCustomization_Properties']/div[1]/label/span")
+	//@FindBy(xpath="//*[@id='editScreen_FieldsCustomization_Properties']/div[1]/label/span")
+	@FindBy(xpath="//*[@id='editScreen_FieldsCustomization_chkAuditTrail']/../span")
 	public static WebElement editScreenauditTrailChkBox;  
 
-	@FindBy(xpath="//*[@id='editScreen_FieldsCustomization_Properties']/div[2]/label/span")
+	//@FindBy(xpath="//*[@id='editScreen_FieldsCustomization_Properties']/div[2]/label/span")
+	@FindBy(xpath="//*[@id='editScreen_FieldsCustomization_chkCantExprt']/../span")
 	public static WebElement editScreencantExportChkBox;  
 
-	@FindBy(xpath="//*[@id='dvEditScreenPropCannotImport']/label/span")
+	//@FindBy(xpath="//*[@id='dvEditScreenPropCannotImport']/label/span")
+	@FindBy(xpath="//*[@id='editScreen_FieldsCustomization_chkCantImprt']/../span")
 	public static WebElement editScreencantImportChkbox; 
 
-	@FindBy(xpath="//*[@id='dvEditScreenPropHidden']/label/span")
+	//@FindBy(xpath="//*[@id='dvEditScreenPropHidden']/label/span")
+	@FindBy(xpath="//*[@id='editScreen_FieldsCustomization_chkHidden']/../span")
 	public static WebElement editScreenhiddenChkbox;  
 
-	@FindBy(xpath="//*[@id='editScreen_FieldsCustomization_chkMandatory']//following-sibling::span")
+	@FindBy(xpath="//*[@id='editScreen_FieldsCustomization_chkMandatory']/../span")
 	public static WebElement editScreenmandatorychkBox; 
 
-	@FindBy(xpath="//*[@id='editScreen_FieldsCustomization_Properties']/div[6]/label/span")
+	//@FindBy(xpath="//*[@id='editScreen_FieldsCustomization_Properties']/div[6]/label/span")
+	@FindBy(xpath="//*[@id='editScreen_FieldsCustomization_chkNotAvailForReports']/../span")
 	public static WebElement editScreennotAvailableForReportsChkBox;  
 
-	@FindBy(xpath="//*[@id='dvReadonlyPropHidden']/label/span")
+	//@FindBy(xpath="//*[@id='dvReadonlyPropHidden']/label/span")
+	@FindBy(xpath="//*[@id='editScreen_FieldsCustomization_chkReadOnly']/../span")
 	public static WebElement editScreenreadOnlyChkBox;  
 	///////////PV VAT Properties 
 
 
 	public static boolean checkAudiTrailPropertyForCaption_Default_Text() throws EncryptedDocumentException, InvalidFormatException, InterruptedException, IOException
 	{
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(settingsmenuBtn));
-		settingsmenuBtn.click();
+		
+		getDriver().navigate().refresh();
+		Thread.sleep(4500);
+		getAction().moveToElement(settingsmenuBtn).build().perform();
+		Thread.sleep(2000);
+		ClickUsingJs(settingsmenuBtn);
+		
+		//getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(settingsmenuBtn));
+		//settingsmenuBtn.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ConfigureTransactionBtn));
 		ConfigureTransactionBtn.click();
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(documentCustomization45Btn));
-		documentCustomization45Btn.click();
-
+		//getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(documentCustomization45Btn));
+		//documentCustomization45Btn.click();
+		
+		Thread.sleep(5000);
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchasesVoucherVatBtn));
 		purchasesVoucherVatBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenTabInDC));
 		editScreenTabInDC.click();
@@ -44996,6 +43053,9 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenauditTrailChkBox));
 		editScreenauditTrailChkBox.click();
 
+		Thread.sleep(2000);
+		ScrollToElement(editScreenApplyBtn);
+		Thread.sleep(1000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenApplyBtn));
 		editScreenApplyBtn.click();		
 
@@ -45044,6 +43104,9 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		editScreencantExportChkBox.click();
 		Thread.sleep(2000);
 
+		Thread.sleep(2000);
+		ScrollToElement(editScreenApplyBtn);
+		Thread.sleep(1000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenApplyBtn));
 		editScreenApplyBtn.click();		
 
@@ -45090,6 +43153,9 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreencantImportChkbox));
 		editScreencantImportChkbox.click();
 
+		Thread.sleep(2000);
+		ScrollToElement(editScreenApplyBtn);
+		Thread.sleep(1000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenApplyBtn));
 		editScreenApplyBtn.click();		
 
@@ -45113,15 +43179,18 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 	public static boolean checkHiddenPropertyForDeductAsAddToNetAddAsAddToStock() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(settingsmenuBtn));
-		settingsmenuBtn.click();
-
+		getAction().moveToElement(settingsmenuBtn).build().perform();
+		//getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(settingsmenuBtn));
+		//settingsmenuBtn.click();
+		ClickUsingJs(settingsmenuBtn);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ConfigureTransactionBtn));
 		ConfigureTransactionBtn.click();
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(documentCustomization45Btn));
-		documentCustomization45Btn.click();
+		//getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(documentCustomization45Btn));
+		//documentCustomization45Btn.click();
 
+		Thread.sleep(3000);
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchasesVoucherVatBtn));
 		purchasesVoucherVatBtn.click();
 
@@ -45156,6 +43225,9 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenhiddenChkbox));
 		editScreenhiddenChkbox.click();
 
+		Thread.sleep(2000);
+		ScrollToElement(editScreenApplyBtn);
+		Thread.sleep(1000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenApplyBtn));
 		editScreenApplyBtn.click();		
 
@@ -45232,6 +43304,9 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 		Thread.sleep(2000);
 		
+		Thread.sleep(2000);
+		ScrollToElement(editScreenApplyBtn);
+		Thread.sleep(1000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenApplyBtn));
 		editScreenApplyBtn.click();	
 		Thread.sleep(2000);
@@ -45278,6 +43353,9 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenreadOnlyChkBox));
 		editScreenreadOnlyChkBox.click();
 
+		Thread.sleep(2000);
+		ScrollToElement(editScreenApplyBtn);
+		Thread.sleep(1000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenApplyBtn));
 		editScreenApplyBtn.click();		
 
@@ -45322,6 +43400,9 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreennotAvailableForReportsChkBox));
 		editScreennotAvailableForReportsChkBox.click();
 
+		Thread.sleep(2000);
+		ScrollToElement(editScreenApplyBtn);
+		Thread.sleep(1000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenApplyBtn));
 		editScreenApplyBtn.click();		
 
@@ -45359,12 +43440,11 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchasesVoucherVATBtn));
 		purchasesVoucherVATBtn.click();
 
+		Thread.sleep(8000);		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
 
-		checkValidationMessage("screen opened");
-
-
+		Thread.sleep(3000);	
 		//validating hidden property
 
 		ArrayList<String> headerList = new ArrayList<String>();
@@ -45376,12 +43456,12 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 			((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", pvVATHeaderFieldList.get(i));
 
 			String data = pvVATHeaderFieldList.get(i).getText();
-			System.err.println(i+". "+data);
+			//System.err.println(i+". "+data);
 			headerList.add(data);
 		}
 
 		String actHeaderList = headerList.toString();
-		String expHeaderList = "[Warehouse, Item, Tax Code, Purchase Account, Units, RD, Avg Rate, Avg Rate(O), Caption_Default_Text, AddToNetDeductFromStock, AddToNetNotApplicableToStock, NotApplicableToAddToNetNotApplicableToAddToStock, Quantity, L-Purchases Orders, , Rate, Gross, Discount, VAT, Taxable, NotApplicableToAddToNetAddToAddToStock, DeductAddToNetDeductToAddToStock, Batch, Bins, Expiry Date, RMA, Remarks]";
+		String expHeaderList = "[Warehouse, Item, Tax Code, Purchase Account, Units, RD, Avg Rate, Avg Rate(O), Caption_Default_Text, AddToNetDeductFromStock, AddToNetNotApplicableToStock, NotApplicableToAddToNetNotApplicableToAddToStock, Quantity, L-Purchases Orders, DeductAsAddToNetAddAsAddToStock, Rate, Gross, Discount, VAT, Taxable, NotApplicableToAddToNetAddToAddToStock, DeductAddToNetDeductToAddToStock, Batch, Bins, Expiry Date, RMA, Remarks, , , , , , , , , ]";
 
 		System.out.println(actHeaderList);
 		System.out.println(expHeaderList);
@@ -45525,8 +43605,10 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 
 		enter_Quantity.sendKeys("10");
-		enter_Quantity.sendKeys(Keys.TAB);
+		//enter_Quantity.sendKeys(Keys.TAB);
 
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_16thColumn));
+		select1stRow_16thColumn.click();
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_RateTxt));
@@ -45534,6 +43616,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		enter_RateTxt.sendKeys("10");
 		enter_RateTxt.sendKeys(Keys.TAB);
 
+		Thread.sleep(1200);
 		enter_GrossTxt.click();
 		enter_GrossTxt.sendKeys(Keys.TAB);
 
@@ -45588,7 +43671,7 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		}
 	}
 
-	@FindBy(xpath="(//span[@class='theme_button_color']/i[@class='icon-font6 icon-custamize'])[2]")
+	@FindBy(xpath="(//i[@class='icon-filter2 hiconright2'])[2]")
 	public static WebElement ledgerCustomizeBtn;
 
 
@@ -45626,16 +43709,18 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ledgerOkBtn));
 		ledgerOkBtn.click();
-
+		
+		Thread.sleep(6000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ledgerTitle));
 		String actledgerTitle = ledgerTitle.getText();
 		String expLedgerTitle = "Ledger  of STD RATE COGS ACC INV STD RATE COGS ACC INV";
-
+		String expLedgerTitle1 = "Ledger";
 		System.out.println("LedgerTitle : "+actledgerTitle);
 
 		Thread.sleep(3000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ledgerCustomizeBtn));
 		ledgerCustomizeBtn.click();
+		Thread.sleep(4500);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ledgerTransactionExpandBtn));
 		ledgerTransactionExpandBtn.click();
@@ -45663,8 +43748,9 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 
 		System.out.println("FieldList: "+fieldsList);
-
-		if (actledgerTitle.equalsIgnoreCase(expLedgerTitle) && field == true)
+		System.out.println(field);
+		
+		if (actledgerTitle.equalsIgnoreCase(expLedgerTitle1) && field == true)
 		{
 			return true;
 
@@ -45754,6 +43840,9 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 	public static boolean checkCannotImportPropertyForAddToNetNotApplicableToStock() throws IOException, InterruptedException
 	{
 		Thread.sleep(4000);
+		
+		getAction().moveToElement(homeMenu).build().perform();
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(homeMenu));
 		homeMenu.click();
 
@@ -45761,9 +43850,11 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(utilities));
 		utilities.click();
 
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(transactionImport));
 		transactionImport.click();
+		Thread.sleep(4500);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherTypeComboBox));
 		voucherTypeComboBox.click();

@@ -17,14 +17,15 @@ public class CodeIncrementalTest extends BaseEngine
                
 	CodeIncrementalPage CIP;
 
-	@Test(priority=2000)
+    @Test(priority=2000)
 	public void checkLogin() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		CIP=new CodeIncrementalPage(getDriver());
 		Assert.assertEquals(CIP.checkLogin(), true);
 	}
 	
-	/*@Test(priority=2002)
+    
+	@Test(priority=2002)
 	public void checkSaveNormalIncrementOfCodeInCustMaster() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		CIP=new CodeIncrementalPage(getDriver());
@@ -58,7 +59,7 @@ public class CodeIncrementalTest extends BaseEngine
 		CIP=new CodeIncrementalPage(getDriver());
 		Assert.assertEquals(CIP.checkLogoutAndLoginAfterCustomization(), true);
 	}
-	
+    
 	@Test(priority=2008)
 	public void checkSaveCopyFromParentAndIncrementalForGroupAccounts() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
@@ -71,7 +72,7 @@ public class CodeIncrementalTest extends BaseEngine
 	{
 		CIP=new CodeIncrementalPage(getDriver());
 		Assert.assertEquals(CIP.checkLogoutAndLoginAfterCustomization(), true);
-	}*/
+	}
 	
 	@Test(priority=2010)
 	public void checkSaveGroupAccountsAndNestedGroupAccountAndVerifyCode() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
@@ -100,5 +101,35 @@ public class CodeIncrementalTest extends BaseEngine
 		CIP=new CodeIncrementalPage(getDriver());
 		Assert.assertEquals(CIP.checkNormalAccountInLevelFour(), true);
 	}
+	
+	@Test(priority=2014)
+	public void checkRemoveIncrementalForCode2() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+	{
+		CIP=new CodeIncrementalPage(getDriver());
+		Assert.assertEquals(CIP.checkRemoveIncrementalForCode(), true);
+	}
+	
+	@Test(priority=2015)
+	public void checkSaveCodeIncrementalWithUserInput() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+	{
+		CIP=new CodeIncrementalPage(getDriver());
+		Assert.assertEquals(CIP.checkSaveCodeIncrementalWithUserInput(), true);
+	}
+	
+	@Test(priority=2016)
+	public void checkSaveAccountMasterToVerifyUserInputIncrement() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+	{
+		CIP=new CodeIncrementalPage(getDriver());
+		Assert.assertEquals(CIP.checkSaveAccountMasterToVerifyUserInputIncrement(), true);
+	}
+	
+	@Test(priority=2017)
+	public void checkSavedUserInputIncrementAccounts() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+	{
+		CIP=new CodeIncrementalPage(getDriver());
+		Assert.assertEquals(CIP.checkSavedUserInputIncrementAccounts(), true);
+	}
+	
+	
 
 }

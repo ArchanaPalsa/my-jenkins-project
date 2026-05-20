@@ -18,6 +18,8 @@ import org.testng.ITestResult;
 
 import org.testng.Reporter;
 
+import com.focus.base.BaseEngine;
+
 public class Listener implements ITestListener, ISuiteListener, IInvokedMethodListener {
 
 	// This belongs to ISuiteListener and will execute before the Suite start
@@ -94,6 +96,7 @@ public class Listener implements ITestListener, ISuiteListener, IInvokedMethodLi
 	public void onTestSkipped(ITestResult arg0) {
 
 		printTestResults(arg0);
+		BaseEngine.extentReports.flush();
 
 	}
 

@@ -28,29 +28,45 @@ public class AccountPropertiesTest extends BaseEngine
 		cmctp=new AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkLogin(), true);
 	}
-
-
+	
+	
+	
 	@Test(priority=1999)
 	public void checkRestoreCompany() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkRestoreCompany(), true);
 	}
+	
+	@Test(priority=2000)
+	public void checkEnableCollapseTreeandValidateTreeList() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
+	{
+		
+		cmctp=new AccountPropertiesPage(getDriver());
+		Assert.assertEquals(cmctp.checkEnableCollapseTreeandValidateTreeList(), true);
+	}
 
-	@Test(priority=60001)
+	@Test(priority=60000)
 	public void checkAccouncreatedWithPropertyAsCreditOrDebitTotlasForEachMonth() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new  AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkAccouncreatedWithPropertyAsCreditOrDebitTotlasForEachMonth(), true);
 	}
 
-	@Test(priority=60002)
+	@Test(priority=60001)
 	public void checkPropertiesForCreatedAccountAsDebitOrCreditTotalsForEachMonth() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new  AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkPropertiesForCreatedAccountAsDebitOrCreditTotalsForEachMonth(), true);
 	}
-
+	
+	@Test(priority=60002)
+	public void checkPurchasesVoucherVATForCustomerDislayDrOrCrTotalsForEachMonth() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+	{
+		cmctp=new  AccountPropertiesPage(getDriver());
+		Assert.assertEquals(cmctp.checkPurchasesVoucherVATForCustomerDislayDrOrCrTotalsForEachMonth(), true);
+	}
+	
 	@Test(priority=60003)
 	public void checkRaiseSalesInvoivesVATForCustomerDislayDrOrCrTotalsForEachMonth() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
@@ -79,8 +95,6 @@ public class AccountPropertiesTest extends BaseEngine
 		Assert.assertEquals(cmctp.checkCustomerStatementsReportForCreatedCustomerAccount(), true);
 	}
 
-
-
 	// Display Debit / Credit totals for each day
 
 	@Test(priority=60007)
@@ -96,105 +110,127 @@ public class AccountPropertiesTest extends BaseEngine
 		cmctp=new  AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkPropertiesForCreatedAccountAsDebitOrCreditTotalsForEachDay(), true);
 	}
-
+	
 	@Test(priority=60009)
+	public void checkPurchasesVoucherVATForCustomerDislayDrOrCrTotalsForDay() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+	{
+		cmctp=new  AccountPropertiesPage(getDriver());
+		Assert.assertEquals(cmctp.checkPurchasesVoucherVATForCustomerDislayDrOrCrTotalsForDay(), true);
+	}
+	
+
+	@Test(priority=60010)
 	public void checkRaiseSalesInvoivesVATForCustomerDislayDrOrCrTotalsForEachDay() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new  AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkRaiseSalesInvoivesVATForCustomerDislayDrOrCrTotalsForEachDay(), true);
 	}
 
-	@Test(priority=60010)
+	@Test(priority=60011)
 	public void checkRaiseSalesInvoivesVATForCustomerDislayDrOrCrTotalsForEachDay2() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new  AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkRaiseSalesInvoivesVATForCustomerDislayDrOrCrTotalsForEachDay2(), true);
 	}
 
-	@Test(priority=60011)//col
+	@Test(priority=60012)//col
 	public void checkLedgerReportForCreatedCustomer2() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new  AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkLedgerReportForCreatedCustomer2(), true);
 	}
 
-	@Test(priority=60012)
+	@Test(priority=60013)
 	public void checkCustomerStatementsReportForCreatedCustomerAccount2() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new  AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkCustomerStatementsReportForCreatedCustomerAccount2(), true);
 	}
-
-
+     
 	// Display Un-Realize Gain/Loss In Ledger
 
-	@Test(priority=60013)
+	@Test(priority=60014)
 	public void checkCreatingAccountForDisplayUnRealizeGainOrLossInLedger() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkCreatingAccountForDisplayUnRealizeGainOrLossInLedger(), true);
 	}
 
-	@Test(priority=60014)
+	@Test(priority=60015)
 	public void checkMasterAccountEnablingDisplayUnRealizeGainOrLossInLedgerChkboxInProperties() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkMasterAccountEnablingDisplayUnRealizeGainOrLossInLedgerChkboxInProperties(), true);
 	}
-
-	@Test(priority=60015)
+	
+	@Test(priority=60016)
 	public void checkLogoutAndLoginAfterEnablingDisplayUnRealizeGainOrLossInLedgerChkboxInProperties() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkLogoutAndLogin(), true);
 	}
-
-
-	@Test(priority=60016)
+	
+	
+	@Test(priority=60017)
+	public void checkPurchasesVoucherVATForCustomerAccountAsDisplayUnRealizeGainLossInLedger() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+	{
+		cmctp=new AccountPropertiesPage(getDriver());
+		Assert.assertEquals(cmctp.checkPurchasesVoucherVATForCustomerAccountAsDisplayUnRealizeGainLossInLedger(), true);
+	}
+	
+	@Test(priority=60018)//not printing batch picked value
 	public void checkSavingSalesInvoivesVATWithCustomerAccountAsDisplayUnRealizeGainLossInLedger() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkSavingSalesInvoivesVATWithCustomerAccountAsDisplayUnRealizeGainLossInLedger(), true);
 	}
 
-	@Test(priority=60017)
+	@Test(priority=60019)
 	public void checkSavingRecepitsVocher1() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkSavingRecepitsVocher1(), true);
 	}
 
-	@Test(priority=60018)
-	public void checkCustomerStatementReport() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, ParseException
+	@Test(priority=60020)
+	public void checkLedgerReportForCustomerAccountAsDisplayUnRealizeGainLossInLedger() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, ParseException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
-		Assert.assertEquals(cmctp.checkCustomerStatementReport(), true);
+		Assert.assertEquals(cmctp.checkLedgerReportForCustomerAccountAsDisplayUnRealizeGainLossInLedger(), true);
 	}
 
 	// Consolidate when both Accounts are same
 
-	@Test(priority=60019)
+	@Test(priority=60021)
 	public void checkCreatingAccountForConsolidateWhenBothAccountsAreSame() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkCreatingAccountForConsolidateWhenBothAccountsAreSame(), true);
 	}
 
-	@Test(priority=60020)
+	@Test(priority=60022)
 	public void checkMasterAccountEnablingConsolidateWhenBothAccountsAreSameInProperties() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkMasterAccountEnablingConsolidateWhenBothAccountsAreSameInProperties(), true);
 	}
+	
 
-	@Test(priority=60021)
+	@Test(priority=60023)
 	public void checkSavingRecepitsVocherForValidatingConsolidateWhenBothAccountsAreSame() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkSavingRecepitsVocherForValidatingConsolidateWhenBothAccountsAreSame(), true);
 	}
+	
+	@Test(priority=60024)
+	public void checkSavingRecepitsVocherForValidatingConsolidateWhenBothAccountsAreSame2() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+	{
+		cmctp=new AccountPropertiesPage(getDriver());
+		Assert.assertEquals(cmctp.checkSavingRecepitsVocherForValidatingConsolidateWhenBothAccountsAreSame2(), true);
+	}
 
-	@Test(priority=60022)
+	@Test(priority=60025)
 	public void checkLedgerReportForConsolidateWhenBothAccountsAreSame() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
@@ -204,28 +240,28 @@ public class AccountPropertiesTest extends BaseEngine
 	// Consolidate Always
 
 
-	@Test(priority=60023)
+	@Test(priority=60026)
 	public void checkCreatingAccountForConsolidateAlways() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkCreatingAccountForConsolidateAlways(), true);
 	}
 
-	@Test(priority=60024)
+	@Test(priority=60027)
 	public void checkMasterAccountEnablingConsolidateAlwaysInProperties() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkMasterAccountEnablingConsolidateAlwaysInProperties(), true);
 	}
 
-	@Test(priority=60025)
+	@Test(priority=60028)
 	public void checkSavingRecepitsVocherForValidatingConsolidateAlways() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkSavingRecepitsVocherForValidatingConsolidateAlways(), true);
 	}
 
-	@Test(priority=60026)
+	@Test(priority=60029)
 	public void checkLedgerReportForConsolidateAlways() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
@@ -235,35 +271,35 @@ public class AccountPropertiesTest extends BaseEngine
 	// Active and In Active
 
 
-	@Test(priority=60027)
+	@Test(priority=60030)
 	public void checkAccouncreatedWithPropertAsStatusIsActive() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkAccouncreatedWithPropertAsStatusIsActive(), true);
 	}
 
-	@Test(priority=60028)
+	@Test(priority=60031)
 	public void checkPropertiesForCreatedAccountAsDisplayWhenStatusIsActive() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new  AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkPropertiesForCreatedAccountAsDisplayWhenStatusIsActive(), true);
 	}
 
-	@Test(priority=60029)
+	@Test(priority=60032)
 	public void checkRaiseSalesIvoiceForCustomerAccountCustDisplayWhenStatusIsActive() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new  AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkRaiseSalesIvoiceForCustomerAccountCustDisplayWhenStatusIsActive(), true);
 	}
 
-	@Test(priority=60030)
+	@Test(priority=60033)
 	public void checkCustomerStatementsReportForCustDisplayWhenStatusIsActive() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new  AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkCustomerStatementsReportForCustDisplayWhenStatusIsActive(), true);
 	}
 
-	@Test(priority=60031)
+	@Test(priority=60034)
 	public void checkReportDetailsInLedgerReportPageForCustomerAccountStatusAsActive() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
@@ -272,52 +308,54 @@ public class AccountPropertiesTest extends BaseEngine
 
 	// In Active
 
-	@Test(priority=60032)
+	@Test(priority=60035)
 	public void checkChangeAccountPropertyFromActiveToInActive() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkChangeAccountPropertyFromActiveToInActive(), true);
 	}
 
-	@Test(priority=60033)
+	@Test(priority=60036)
 	public void checkLogoutAndLoginToCheckCustomerStatementsReports() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkLogoutAndLoginToCheckCustomerStatementsReports(), true);
 	}
 
-	@Test(priority=60034)
-	public void checkCustomerStatementsReportisEmpty() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+	@Test(priority=60037)
+	public void checkSalesInvoiceVatForInactiveAccount() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
-		Assert.assertEquals(cmctp.checkCustomerStatementsReportisEmpty(), true);
+		Assert.assertEquals(cmctp.checkSalesInvoiceVatForInactiveAccount(), true);
 	}
 
-	@Test(priority=60035)
+	//@Test(priority=60037)//not needed
 	public void checkLedgerIsEmptyForCustomerAccountStatusAsInActive() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkLedgerIsEmptyForCustomerAccountStatusAsInActive(), true);
 	}
+	
+	
 
 
 	// Do Not Restrict The Selection Even If Rights Are Not Allotted
 
-	@Test(priority=60036)
+	@Test(priority=60038)
 	public void checkCreatingAccountForDoNotRestrictTheSelectionEvenIfRightsAreNotAllotted() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkCreatingAccountForDoNotRestrictTheSelectionEvenIfRightsAreNotAllotted(), true);
 	}
 
-	@Test(priority=60037)
+	@Test(priority=60039)
 	public void checkUserCreationForRestrictionOfAccount() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkUserCreationForRestrictionOfAccount(), true);
 	}
 
-	@Test(priority=60038)
+	@Test(priority=60040)
 	public void checkSavingSalesInvoivesVATWithCustomerAccountAsDoNotRestrictIfRightsAreNotAllotted() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
@@ -325,63 +363,63 @@ public class AccountPropertiesTest extends BaseEngine
 	}
 
 
-	@Test(priority=60039)
+	@Test(priority=60041)
 	public void checkLogoutAndLoginWithAccountRestrictUser() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkLogoutAndLoginWithAccountRestrictUser(), true);
 	}
 
-	@Test(priority=60040)
+	@Test(priority=60042)
 	public void checkLedgerReportForUserRestrictAccountWithoutEnablingDoNotRestrictTheSelectionEvenIfRightsAreNotAllottedOption() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkLedgerReportForUserRestrictAccountWithoutEnablingDoNotRestrictTheSelectionEvenIfRightsAreNotAllottedOption(), true);
 	}
 
-	@Test(priority=60041)
+	@Test(priority=60043)
 	public void checkSalesInvoivesVATWithOutEnablingDoNotRestrictIfRightsAreNotAllottedOption() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkSalesInvoivesVATWithOutEnablingDoNotRestrictIfRightsAreNotAllottedOption(), true);
 	}
 
-	@Test(priority=60042)
+	@Test(priority=60044)
 	public void checkLogoutAndLoginWithSUToEnableDoNotRestrictTheSelectionEvenIfRightsAreNotAllottedOption() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkLogoutAndLogin(), true);
 	}
 
-	@Test(priority=60043)
+	@Test(priority=60045)
 	public void checkMasterAccountEnablingDoNotRestrictTheSelectionEvenIfRightsAreNotAllottedOption() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkMasterAccountEnablingDoNotRestrictTheSelectionEvenIfRightsAreNotAllottedOption(), true);
 	}
 
-	@Test(priority=60044)
+	@Test(priority=60046)
 	public void checkLogoutAndLoginWithAccountRestrictUserAfterEnablingDoNotRestrictTheSelectionEvenIfRightsAreNotAllottedOption() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkLogoutAndLoginWithAccountRestrictUser(), true);
 	}
 
-	@Test(priority=60045)
+	@Test(priority=60047)
 	public void checkLedgerReportForUserRestrictAccountWithDoNotRestrictTheSelectionEvenIfRightsAreNotAllottedOption() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkLedgerReportForUserRestrictAccountWithDoNotRestrictTheSelectionEvenIfRightsAreNotAllottedOption(), true);
 	}
 
-	@Test(priority=60046)
+	@Test(priority=60048)
 	public void checkSalesInvoivesVATAfterEnablingDoNotRestrictIfRightsAreNotAllottedOption() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkSalesInvoivesVATAfterEnablingDoNotRestrictIfRightsAreNotAllottedOption(), true);
 	}
 
-	@Test(priority=60047)
+	@Test(priority=60049)
 	public void checkLogoutAndLoginWithSUAfterValidation() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
@@ -391,35 +429,35 @@ public class AccountPropertiesTest extends BaseEngine
 
 	// Display ledger by currency
 
-	@Test(priority=60048)
+	@Test(priority=60050)
 	public void checkAccouncreatedWithPropertyAsDisplayLedgerByCurrency() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkAccouncreatedWithPropertyAsDisplayLedgerByCurrency(), true);
 	}
 
-	@Test(priority=60049)
+	@Test(priority=60051)
 	public void checkPropertiesForCreatedAccountAsDisplayLedgerByCurrency() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkPropertiesForCreatedAccountAsDisplayLedgerByCurrency(), true);
 	}
 
-	@Test(priority=60050)
+	@Test(priority=60052)
 	public void checkRaiseSalesInvoivesVATForCustomerDisplayLedgerByCurrency() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkRaiseSalesInvoivesVATForCustomerDisplayLedgerByCurrency(), true);
 	}
 
-	@Test(priority=60051)
+	@Test(priority=60053)
 	public void checkLedgerDetailsForCustomerDisplayLedgerByCurrency() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkLedgerDetailsForCustomerDisplayLedgerByCurrency(), true);
 	}
 
-	@Test(priority=60052)
+	@Test(priority=60054)
 	public void checkCustomerStatementsReportForCreatedCustomerAccountDisplayLedgerByCurrency() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
@@ -427,39 +465,44 @@ public class AccountPropertiesTest extends BaseEngine
 	}
 
 
-
-
 	// Club the transactions of all the Accounts under Group
 
-	@Test(priority=60053)
+	@Test(priority=60055)
 	public void checkGroupAccountCreateAndSelectPropertyASClubAllTransactionsOfEachAccountUnderGroup() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkGroupAccountCreateAndSelectPropertyASClubAllTransactionsOfEachAccountUnderGroup(), true);
 	}
 
-	@Test(priority=60054)
+	@Test(priority=60056)
 	public void checkSavedGroupAccountInTheAccountsListAndSelectProprtyAsClubAllTransactionsOfEachAccountUnderGroup() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkSavedGroupAccountInTheAccountsListAndSelectProprtyAsClubAllTransactionsOfEachAccountUnderGroup(), true);
 	}
+	
+	@Test(priority=60057)
+	public void checkPurchasesVoucherVATForCustomerAccountOneInGroup() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+	{
+		cmctp=new AccountPropertiesPage(getDriver());
+		Assert.assertEquals(cmctp.checkPurchasesVoucherVATForCustomerAccountOneInGroup(), true);
+	}
 
-	@Test(priority=60055)
+	@Test(priority=60058)
 	public void checkRaiseSalesInvoivesVATForCustomerAccountOneInGroup() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkRaiseSalesInvoivesVATForCustomerAccountOneInGroup(), true);
 	}
 
-	@Test(priority=60056)
+	@Test(priority=60059)
 	public void checkRaiseSalesInvoivesVATForCustomerAccountTwoInGroup() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkRaiseSalesInvoivesVATForCustomerAccountTwoInGroup(), true);
 	}
 
-	@Test(priority=60057)
+	@Test(priority=60060)//not getting club transactions
 	public void checkCustomerStatementsReportDetailsForGroupAccountCustCulbTransactionsOfAllAccountsUnderGroup() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
@@ -467,53 +510,79 @@ public class AccountPropertiesTest extends BaseEngine
 	}
 
 
-
 	// Display Debit/Credit totals for each Account under group
 
 
-	@Test(priority=60058)
+	@Test(priority=60061)
 	public void checkGroupAccountCreateAndSelectPropertyASDisplayDrOrCrTotalForEachAccountUnderGroup() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkGroupAccountCreateAndSelectPropertyASDisplayDrOrCrTotalForEachAccountUnderGroup(), true);
 	}
 
-	@Test(priority=60059)
+	@Test(priority=60062)
 	public void checkSavedGroupAccountInTheAccountsListAndSelectProprtyAsDisplayDrOrCrTotalForEachAccountUnderGroup() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkSavedGroupAccountInTheAccountsListAndSelectProprtyAsDisplayDrOrCrTotalForEachAccountUnderGroup(), true);
 	}
+	
+	@Test(priority=60063)
+	  public void checkPurchasesVoucherVATForCustomerAccountOneInGroupForDrOrCrTotlas() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+	  {
+		  cmctp=new AccountPropertiesPage(getDriver());
+		  Assert.assertEquals(cmctp.checkPurchasesVoucherVATForCustomerAccountOneInGroupForDrOrCrTotlas(), true);
+	  }
 
-	@Test(priority=60060)
+	@Test(priority=60064)
 	public void checkRaiseSalesInvoivesVATForCustomerAccountOneInGroupForDrOrCrTotlas() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkRaiseSalesInvoivesVATForCustomerAccountOneInGroupForDrOrCrTotlas(), true);
 	}
 
-	@Test(priority=60061)
+	@Test(priority=60065)
 	public void checkRaiseSalesInvoivesVATForCustomerAccountTwoInGroupForDrOrCrTotlas() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checkRaiseSalesInvoivesVATForCustomerAccountTwoInGroupForDrOrCrTotlas(), true);
 	}
 
-	@Test(priority=60062)
-	public void checkCustomerStatementsReportForGroupAccountDisplayDrOrCrTotalsForEachAccountUnderGroup() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+	@Test(priority=60066)
+	public void checkLedgerReportForGroupAccountDisplayDrOrCrTotalsForEachAccountUnderGroup() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
-		Assert.assertEquals(cmctp.checkCustomerStatementsReportForGroupAccountDisplayDrOrCrTotalsForEachAccountUnderGroup(), true);
+		Assert.assertEquals(cmctp.checkLedgerReportForGroupAccountDisplayDrOrCrTotalsForEachAccountUnderGroup(), true);
+	}
+	
+
+	@Test(priority=60070)
+	public void checkEnableShowSummaryOfTheAccountforAnAccount() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+	{
+		cmctp=new AccountPropertiesPage(getDriver());
+		Assert.assertEquals(cmctp.checkEnableShowSummaryOfTheAccountforAnAccount(), true);
 	}
 
-
-	@Test(priority=60063)
+	@Test(priority=60071)
+	public void checkLedgerReportForShowSummaryOfTheAccount() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+	{
+		cmctp=new AccountPropertiesPage(getDriver());
+		Assert.assertEquals(cmctp.checkLedgerReportForShowSummaryOfTheAccount(), true);
+	}
+	
+	@Test(priority=60072)
+	public void checkApplyFilterIntheLedgerOnItemMaster() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
+	{
+		cmctp=new AccountPropertiesPage(getDriver());
+		Assert.assertEquals(cmctp.checkApplyFilterIntheLedgerOnItemMaster(), true);
+	}
+	
+	@Test(priority=60074)
 	public void checklogoutAccountPropertiesPage() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException
 	{
 		cmctp=new AccountPropertiesPage(getDriver());
 		Assert.assertEquals(cmctp.checklogoutAccountPropertiesPage(), true);
 	}
-
 
 
 

@@ -25,13 +25,14 @@ public class FocusInventoryReportsTest extends BaseEngine
 	  Assert.assertEquals(urp.checkLoginWithRERInFA(), true);
 	}
 	
+	
 	 @Test(priority=99)
 	 public void checkItemQueryReport() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
 		 firp=new FocusInventoryReportsPage(getDriver());
 		 Assert.assertEquals(firp.checkItemQueryReport(), true);
 	 }
-
+	
 	 @Test(priority=100)
 	 public void checkStockLedgerReport() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
@@ -46,20 +47,20 @@ public class FocusInventoryReportsTest extends BaseEngine
 		 Assert.assertEquals(firp.checkFilterInStockLedger(), true);
 	 }
 	 
-	 @Test(priority=102)//Miss matching rows
+	 @Test(priority=102)//jumbling rows
 	 public void checkOpeningStockRegisterReport() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
 		 firp=new FocusInventoryReportsPage(getDriver());
 		 Assert.assertEquals(firp.checkOpeningStockRegisterReport(), true);
 	 }
-
+	 
 	 @Test(priority=103)
 	 public void checkStockStatementReport() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
 		 firp=new FocusInventoryReportsPage(getDriver());
 		 Assert.assertEquals(firp.checkStockStatementReport(), true);
 	 }
-
+	 		
 	 @Test(priority=104)
 	 public void checkPrintOptionInStockStatements() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
@@ -80,7 +81,7 @@ public class FocusInventoryReportsTest extends BaseEngine
 		 firp=new FocusInventoryReportsPage(getDriver());
 		 Assert.assertEquals(firp.checkVirtualStockAnalysisReport(), true);
 	 }
-
+	 
 	 @Test(priority=107)
 	 public void checkStockValuationReportByProduct() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
@@ -122,7 +123,7 @@ public class FocusInventoryReportsTest extends BaseEngine
 		 firp=new FocusInventoryReportsPage(getDriver());
 		 Assert.assertEquals(firp.checkABCAnalysisReport(), true);
 	 }
-	 
+	
 	 @Test(priority=113)
 	 public void checkStockAnalysisByBatchReport() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
@@ -172,14 +173,14 @@ public class FocusInventoryReportsTest extends BaseEngine
 		 Assert.assertEquals(firp.checkStockBalanceByWarehouse(), true);
 	 }
 	 
-	 //@Test(priority=120)//Not displaying in user level
+	 @Test(priority=120)//Not displaying in user level
 	 public void checkStockAgeingAnalysisReport() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
 		 firp=new FocusInventoryReportsPage(getDriver());
 		 Assert.assertEquals(firp.checkStockAgeingAnalysisReport(), true);
 	 }
 	 
-	 @Test(priority=121)
+	 @Test(priority=121)// col
 	 public void checkAgeingAnalysisByBatchReport() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
 		 firp=new FocusInventoryReportsPage(getDriver());
@@ -215,7 +216,7 @@ public class FocusInventoryReportsTest extends BaseEngine
 	 }
 	 
 	
-	 @Test(priority=126)
+	 @Test(priority=126)  // need to edit from here
 	 public void checkFastMovingItemsReport() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException, AWTException
 	 {
 		 firp=new FocusInventoryReportsPage(getDriver());

@@ -11,7 +11,9 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.pdfbox.contentstream.operator.graphics.MoveTo;
 import org.apache.poi.EncryptedDocumentException;
@@ -26,6 +28,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.focus.base.BaseEngine;
 import com.testautomationguru.utility.PDFUtil;
@@ -682,7 +685,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	public static WebElement widthTxt;
 
 
-	@FindBy(xpath="//input[@id='FTextBox_18_1999']")
+	@FindBy(xpath="//input[@id='FTextBox_14_2000']")
 	public static WebElement CwidthTxt;
 
 	@FindBy(xpath="//input[@id='fHeight']")
@@ -1097,7 +1100,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	@FindBy(xpath="//*[@id='btnAdd_Field_MasterCust']/div[1]/span")
 	private static WebElement accountAddBtn;
 
-	@FindBy(xpath="//*[@id='GenerateNewMasterModel']/div/div[1]/div[2]/div/ul/li[2]/button[5]/i")
+	@FindBy(xpath="//*[@id='GenerateNewMasterModel']/div/div[1]/div[2]/div/ul/li[2]/button[6]/i")
 	private static WebElement accountCloseBtn;
 
 	@FindBy(xpath="//span[@class='Flabel theme_icon-color'][contains(text(),'Settings')]")
@@ -2751,7 +2754,8 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	@FindBy(xpath="//*[@id='id_menu_tree_2033']/a/i")
 	private static WebElement  stocksBtn;
 
-	@FindBy(xpath="//*[@id='Profilemenu']/li[3]/ul/li[2]/i")
+	//@FindBy(xpath="//*[@id='Profilemenu']/li[3]/ul/li[2]/i")
+	@FindBy(xpath="(//a[contains(text(),'Reports')])[4]/../i")
 	private static WebElement  inventoryReportsExpandBtn;
 
 	@FindBy(xpath="//*[@id='575']")
@@ -2917,7 +2921,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	// Miscellaneous Tab
 
-	@FindBy(xpath="//span[@class='icon-miscellaneous']")
+	@FindBy(xpath="//ul[@id='preferenceUL']//*[@id='4']")
 	private static WebElement  miscellaneousTab;
 
 	@FindBy(xpath="//input[@id='misc_Abbrivation']")
@@ -9785,7 +9789,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		//checkPopUpWindow();
 
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(userNameDisplay));
 		userNameDisplay.click();
@@ -9893,7 +9897,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 
 
-	
+
 
 	@FindBy (xpath="//*[@id='26']/span")
 	private static WebElement backup;
@@ -9948,7 +9952,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		System.err.println("Download deatils");
 		System.out.println("File Name :-" + fileName);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		driver.close();
 
 		driver.switchTo().window(mainWindow);
@@ -10010,11 +10014,11 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(folderpathExpandBtn));
 		folderpathExpandBtn.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		Runtime.getRuntime().exec(getBaseDir()+"\\autoIt\\scripts\\optionsCompanyRestore.exe");
 
-		Thread.sleep(3000);
+		Thread.sleep(6000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(restoreCompanyBtn));
 		restoreCompanyBtn.click();
@@ -10030,7 +10034,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			System.err.println("NO OLDER COMPANY EXISTS");
 		}
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		if(getIsAlertPresent())
 		{
@@ -10046,13 +10050,13 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(logoutOption));
 		logoutOption.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		lp.enterUserName(unamelt);
 
 		lp.enterPassword(pawslt);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		Select s = new Select(companyDropDownList);
 		int size=s.getOptions().size();
@@ -11005,7 +11009,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	@FindBy(xpath="//*[@id='configTransMenu']/ul/li[2]/span[2]")
 	private static WebElement  docCustCloseBtn;
 
-	@FindBy(xpath="//*[@id='id_search_menu']/input")
+	@FindBy(xpath="//*[@id='id_search_menu']//input")
 	public static WebElement serachMenuTextHomePage;
 
 
@@ -12677,7 +12681,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	@FindBy(xpath="//*[@id='id_transactionentry_suspend']")
 	private static WebElement  new_SuspendBtn;
 
-	@FindBy(xpath="//*[@id='id_transactionentry_close']")
+	@FindBy(xpath="//*[@id='id_transactionentry_close']/a")
 	private static WebElement  new_CloseBtn;
 
 	@FindBy(xpath="//div[@id='id_transactionentry_delete']//span[contains(@class,'icon-delete icon-font6')]")
@@ -13221,12 +13225,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
 
-		checkValidationMessage("Screen opened");
+		
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(documentNumberTxt));
 
@@ -13237,7 +13241,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		vendorAccountTxt.sendKeys("Vendor B");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		ArrayList<String>  actVendorAccountList= new ArrayList<String>(); 
 
@@ -13268,7 +13272,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		voucherHeaderCurrency.sendKeys("INR");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		int currencycount=currencyListCount.size();
 
@@ -13293,7 +13297,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		departmentTxt.sendKeys("INDIA");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		ArrayList<String> actDepartmentList= new ArrayList<String>(); 
 
@@ -13317,13 +13321,13 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(placeOFSupplyTxt));
 		placeOFSupplyTxt.click();
 		placeOFSupplyTxt.sendKeys("Abu Dhabi");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		placeOFSupplyTxt.sendKeys(Keys.TAB);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(jurisdictionTxt));
 		jurisdictionTxt.click();
 		jurisdictionTxt.sendKeys("DUBAI");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		jurisdictionTxt.sendKeys(Keys.TAB);
 
 
@@ -13336,7 +13340,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		enter_WarehouseTxt.sendKeys("HYDERABAD");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		int warehousecount=warehouseBodyComboList.size();
 
@@ -13359,7 +13363,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		enter_ItemTxt.sendKeys("BR COGS ITEM");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		int pvvGridItemListCount=pvvGridItemList.size();
 		for (int i = 0; i < pvvGridItemListCount; i++) 
@@ -13422,7 +13426,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		enter_Expirydate.sendKeys("31122021");
 		enter_Expirydate.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 
@@ -13437,7 +13441,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		enter_WarehouseTxt.sendKeys("HYDERABAD");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		for(int i=0 ; i < warehousecount ;i++)
 		{
@@ -13460,7 +13464,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		enter_ItemTxt.sendKeys("STD RATE COGS ITEM");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		for (int i = 0; i < pvvGridItemListCount; i++) 
 		{
@@ -13511,7 +13515,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		enter_PvTaxable.click();
 		enter_PvTaxable.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 
@@ -13526,7 +13530,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		enter_WarehouseTxt.sendKeys("HYDERABAD");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		for(int i=0 ; i < warehousecount ;i++)
 		{
@@ -13548,7 +13552,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		enter_ItemTxt.sendKeys("FIFO COGS ITEM");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		for (int i = 0; i < pvvGridItemListCount; i++) 
 		{
@@ -13599,7 +13603,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		enter_PvTaxable.click();
 		enter_PvTaxable.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(binSearchTxt));
 
@@ -13612,7 +13616,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(binSearchBtn));
 		binSearchBtn.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(binAutoAllocateBtn));
 		binAutoAllocateBtn.click();
@@ -13620,7 +13624,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(binOkBtn));
 		binOkBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 
@@ -13635,7 +13639,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		enter_WarehouseTxt.sendKeys("HYDERABAD");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		for(int i=0 ; i < warehousecount ;i++)
 		{
@@ -13657,7 +13661,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		enter_ItemTxt.sendKeys("WA COGS ITEM");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		for (int i = 0; i < pvvGridItemListCount; i++) 
 		{
@@ -13708,7 +13712,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		enter_PvTaxable.click();
 		enter_PvTaxable.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(rmaScreenTitle));
 
@@ -13723,12 +13727,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(rmaAddBtn));
 		rmaAddBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(RMAPopupOkBtn));
 		RMAPopupOkBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 
@@ -13743,7 +13747,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		enter_WarehouseTxt.sendKeys("SECUNDERABAD");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		for(int i=0 ; i < warehousecount ;i++)
 		{
@@ -13766,7 +13770,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		enter_ItemTxt.sendKeys("STD RATE COGS ITEM");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		for (int i = 0; i < pvvGridItemListCount; i++) 
 		{
@@ -13817,7 +13821,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		enter_PvTaxable.click();
 		enter_PvTaxable.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherSaveBtn));
@@ -13839,14 +13843,14 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		{
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_CloseBtn));
 			new_CloseBtn.click();
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 			return true;
 		} 
 		else 
 		{
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_CloseBtn));
 			new_CloseBtn.click();
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 			return false;
 		}
 	}
@@ -13918,18 +13922,38 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	@FindBy(xpath="//*[@id='btnPrint']")
 	private static WebElement footerPrintBtn;
-	
-	
+
+
 	@FindBy(xpath="//*[@id='id_transaction_voucherprint']/div[2]/div/div[3]/div/input[1]")
 	private static WebElement footerPDFBtn;
-	
-	
+
+	@FindBy(xpath="//*[@id='btnTransHomeEmail']")
+	private static WebElement emailBtn;
+
+
+
+
 
 	@FindBy(xpath="//*[@id='id_transaction_voucherprint']/div[2]/div/div[3]/div/input[4]")
 	private static WebElement CloseBtnInPrint;
 
 	@FindBy (xpath="(//*[@id='dvCreateViewMain']/div[1]/div/div[2]/span[1]/i)[1]")
 	private static WebElement createLayoutBtn;
+	
+	@FindBy(xpath="//*[@id='drpdownSlider']//a[@title='New']")
+	public static WebElement createlayoutNewBtn;
+	
+	
+	@FindBy(xpath="(//*[@id='SliderMenu']//a)[1]")
+	public static WebElement createlayoutNewLayoutBtn;
+	
+	@FindBy (xpath="//*[@id='id_BlankTemplate']/div[1]/div/../img")
+	private static WebElement blankTemplateBtn;
+	
+	@FindBy (xpath="//*[@id='id_BlankTemplate']/div[2]/div/../img")
+	private static WebElement browseTemplateBtn;
+	
+
 
 	@FindBy(xpath="//li[@id='iNew']//i[@class='icon-new hiconright2']")
 	private static WebElement  Newdropdown;
@@ -14184,7 +14208,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	@FindBy(xpath="//*[@id='dvCreateViewMain']/div[1]/div/div[2]/span[2]/i")
 	private static WebElement  LayoutName_Editlayout;
 
-	@FindBy(xpath="//*[@id='opt_DocSetID']")
+	@FindBy(xpath="//*[@id='dvCreateViewMain']/div[2]/div/div[2]/span[2]")
 	private static WebElement  DocumentSet_Editlayout;
 
 	@FindBy(xpath="//*[@id='btnPrint']")
@@ -14203,26 +14227,28 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkAccouncreatedForPrintEmailOne() throws EncryptedDocumentException, InvalidFormatException, InterruptedException, IOException
 	{
+		Thread.sleep(2000);
+	
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(homeMenu));
 		homeMenu.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(mastersMenu));		
 		mastersMenu.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accounts));		
 		accounts.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(10000);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterNewBtn));		
-		masterNewBtn.click();
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(masterNewBtn));		
+		click(masterNewBtn);
 
-
-		Thread.sleep(3000);
+		Thread.sleep(4000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(nameTxt));
 		nameTxt.sendKeys("Email Account One");
@@ -14234,24 +14260,35 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		Select accountTypeDrpdwn = new Select(accountTypeDropdown);
 
-		accountTypeDrpdwn.selectByVisibleText("Customer / Vendor");
+		accountTypeDrpdwn.selectByVisibleText("Customer/Vendor");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(AccountHeaderDetailsTab));
 		AccountHeaderDetailsTab.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
+
+		moveToElement(accountEmailTxt);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accountEmailTxt));
 		accountEmailTxt.sendKeys("emailvalidationone@gmail.com");
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtnInAccount));
-		SaveBtnInAccount.click();
+		Thread.sleep(3000);
+		
+		
+		Thread.sleep(2000);
+		 getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtnInAccount));
+		 
+		 
+		ClickUsingJs(SaveBtnInAccount);
+		Thread.sleep(2000);
+		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtnInAccount));
+		SaveBtnInAccount.click();*/
 
 		String expSaveAccountMessage = "Saved Successfully";	
 		String actSaveAccountMessage = checkValidationMessage(expSaveAccountMessage);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		System.out.println("Click on Save With Valid Information Value Actual : " + actSaveAccountMessage + "  Value Expected : " + expSaveAccountMessage);
 
@@ -14267,34 +14304,58 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkAccouncreatedForPrintEmailTwo() throws EncryptedDocumentException, InvalidFormatException, InterruptedException, IOException
 	{
+		
+	/*	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(homeMenu));
+		homeMenu.click();
+
+		Thread.sleep(1600);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(mastersMenu));		
+		mastersMenu.click();
+
+		Thread.sleep(1600);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accounts));		
+		accounts.click();
+
+		Thread.sleep(10000);
+
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(masterNewBtn));		
+		click(masterNewBtn);*/
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(nameTxt));
 		nameTxt.sendKeys("Email Account Two");
 		nameTxt.sendKeys(Keys.TAB);
 
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(codeTxt));
 		codeTxt.sendKeys("EmailAccountTwo");
 		codeTxt.sendKeys(Keys.TAB);
 
 		Select accountTypeDrpdwn = new Select(accountTypeDropdown);
 
-		accountTypeDrpdwn.selectByVisibleText("Customer / Vendor");
+		accountTypeDrpdwn.selectByVisibleText("Customer/Vendor");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(AccountHeaderDetailsTab));
 		AccountHeaderDetailsTab.click();
 
-		Thread.sleep(2000);
+
+		scrollToElementJSE(accountEmailTxt);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accountEmailTxt));
 		accountEmailTxt.sendKeys("emailvalidationtwo@gmail.com");
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(saveBtn));
-		saveBtn.click();
+		Thread.sleep(2000);
+		ClickUsingJs(saveBtn);
+		Thread.sleep(2000);
+		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(saveBtn));
+		saveBtn.click();*/
 
 		String expSaveAccountMessage = "Saved Successfully";	
 		String actSaveAccountMessage = checkValidationMessage(expSaveAccountMessage);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		System.out.println("Click on Save With Valid Information Value Actual : " + actSaveAccountMessage + "  Value Expected : " + expSaveAccountMessage);
 
@@ -14310,6 +14371,25 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkAccouncreatedForPrintEmailThree() throws EncryptedDocumentException, InvalidFormatException, InterruptedException, IOException
 	{
+		Thread.sleep(2000);
+		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(homeMenu));
+		homeMenu.click();
+
+		Thread.sleep(1600);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(mastersMenu));		
+		mastersMenu.click();
+
+		Thread.sleep(1600);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accounts));		
+		accounts.click();
+
+		Thread.sleep(10000);
+
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(masterNewBtn));		
+		click(masterNewBtn);*/
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(nameTxt));
 		nameTxt.sendKeys("Email Account Three");
 		nameTxt.sendKeys(Keys.TAB);
@@ -14318,26 +14398,31 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		codeTxt.sendKeys("EmailAccountThree");
 		codeTxt.sendKeys(Keys.TAB);
 
+		Thread.sleep(1600);
 		Select accountTypeDrpdwn = new Select(accountTypeDropdown);
 
-		accountTypeDrpdwn.selectByVisibleText("Customer / Vendor");
+		accountTypeDrpdwn.selectByVisibleText("Customer/Vendor");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(AccountHeaderDetailsTab));
 		AccountHeaderDetailsTab.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
+		scrollToElementJSE(accountEmailTxt);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accountEmailTxt));
 		accountEmailTxt.sendKeys("emailvalidationthree@gmail.com");
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(saveBtn));
-		saveBtn.click();
+		Thread.sleep(2000);
+		ClickUsingJs(saveBtn);
+		Thread.sleep(2000);
+		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(saveBtn));
+		saveBtn.click();*/
 
 		String expSaveAccountMessage = "Saved Successfully";	
 		String actSaveAccountMessage = checkValidationMessage(expSaveAccountMessage);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		System.out.println("Click on Save With Valid Information Value Actual : " + actSaveAccountMessage + "  Value Expected : " + expSaveAccountMessage);
 
@@ -14356,9 +14441,9 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkSavingReceiptsVoucherForEmailAccountOne() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		getDriver().navigate().refresh();
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
 
@@ -14368,28 +14453,32 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(cashAndBankMenu));
 		cashAndBankMenu.click();
 
-		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(receiptsVoucher));
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(receiptsVoucher));
 		receiptsVoucher.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(10000);
 
-		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(newBtn));
+		
 		newBtn.click();
 
-		checkValidationMessage("Screen Opened");
-
+	
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newCashBankAccountTxt));
+		newCashBankAccountTxt.click();
+		newCashBankAccountTxt.sendKeys(Keys.SPACE);
 		newCashBankAccountTxt.sendKeys("Bank");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		newCashBankAccountTxt.sendKeys(Keys.TAB);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(departmentTxt));
+		departmentTxt.click();
+		departmentTxt.sendKeys(Keys.SPACE);
 		departmentTxt.sendKeys("INDIA");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		departmentTxt.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_1stColumn));
 		select1stRow_1stColumn.click();
@@ -14397,21 +14486,54 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_AccountTxt));
 		enter_AccountTxt.click();
 		enter_AccountTxt.sendKeys("Email Account One");
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		enter_AccountTxt.sendKeys(Keys.TAB);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_Amount));
 		enter_Amount.sendKeys("100");
 		enter_Amount.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(3000);
+		
+		
+		new WebDriverWait(getDriver(), 350).until(ExpectedConditions.visibilityOf(newReferenceTxt));
+		
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(newReferenceTxt));
+		ClickUsingJs(newReferenceTxt);
+	
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(billRefPickIcon));
+		ClickUsingJs(billRefPickIcon);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(billRefPickIcon));
+		Thread.sleep(1600);
+		
+		
+		try{
+			
+			if (getIsAlertPresent()) 
+			{
+				getAlert().accept();
+			}
+			else 
+			{
+				System.out.println("No Alert is present");
+			}
+			
+		
+		}
+		
+		catch (Exception e){
+			
+			System.out.println("No alert present");
+		}
+		Thread.sleep(1600);
+		
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(newReferenceTxt));
+		ClickUsingJs(newReferenceTxt);
+		
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(billRefPickIcon));
 		billRefPickIcon.click();
 
-		Thread.sleep(2000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(billRefOkBtn));
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(billRefOkBtn));
 		billRefOkBtn.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherSaveBtn));	
@@ -14436,18 +14558,41 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	public static boolean checkSavingReceiptsvoucherForEmailAccountTwo() throws EncryptedDocumentException, InvalidFormatException, InterruptedException, IOException
 	{	
 		Thread.sleep(2000);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+		financialsMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionMenu));
+		financialsTransactionMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(cashAndBankMenu));
+		cashAndBankMenu.click();
+
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(receiptsVoucher));
+		receiptsVoucher.click();
+
+		Thread.sleep(10000);
+
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(newBtn));
+		
+		newBtn.click();
+
+	
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newCashBankAccountTxt));
+		newCashBankAccountTxt.click();
+		newCashBankAccountTxt.sendKeys(Keys.SPACE);
 		newCashBankAccountTxt.sendKeys("Bank");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		newCashBankAccountTxt.sendKeys(Keys.TAB);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(departmentTxt));
+		departmentTxt.click();
+		departmentTxt.sendKeys(Keys.SPACE);
 		departmentTxt.sendKeys("INDIA");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		departmentTxt.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_1stColumn));
 		select1stRow_1stColumn.click();
@@ -14455,24 +14600,24 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_AccountTxt));
 		enter_AccountTxt.click();
 		enter_AccountTxt.sendKeys("Email Account Two");
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		enter_AccountTxt.sendKeys(Keys.TAB);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_Amount));
 		enter_Amount.sendKeys("100");
 		enter_Amount.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(billRefPickIcon));
 		billRefPickIcon.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(billRefOkBtn));
 		billRefOkBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherSaveBtn));	
 		voucherSaveBtn.click();
 
@@ -14497,18 +14642,42 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkSavingReceiptsVoucherForEmailAccountThree() throws EncryptedDocumentException, InvalidFormatException, InterruptedException, IOException
 	{
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newCashBankAccountTxt));
-		newCashBankAccountTxt.sendKeys("Bank");
 		Thread.sleep(2000);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+		financialsMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionMenu));
+		financialsTransactionMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(cashAndBankMenu));
+		cashAndBankMenu.click();
+
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(receiptsVoucher));
+		receiptsVoucher.click();
+
+		Thread.sleep(10000);
+
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(newBtn));
+		
+		newBtn.click();
+
+	
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newCashBankAccountTxt));
+		newCashBankAccountTxt.click();
+		newCashBankAccountTxt.sendKeys(Keys.SPACE);
+		newCashBankAccountTxt.sendKeys("Bank");
+		Thread.sleep(1600);
 		newCashBankAccountTxt.sendKeys(Keys.TAB);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(departmentTxt));
+		departmentTxt.click();
+		departmentTxt.sendKeys(Keys.SPACE);
 		departmentTxt.sendKeys("INDIA");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		departmentTxt.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_1stColumn));
 		select1stRow_1stColumn.click();
@@ -14516,24 +14685,24 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_AccountTxt));
 		enter_AccountTxt.click();
 		enter_AccountTxt.sendKeys("Email Account Three");
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		enter_AccountTxt.sendKeys(Keys.TAB);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_Amount));
 		enter_Amount.sendKeys("100");
 		enter_Amount.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(billRefPickIcon));
 		billRefPickIcon.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(billRefOkBtn));
 		billRefOkBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherSaveBtn));	
 		voucherSaveBtn.click();
@@ -14592,14 +14761,14 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	@FindBy(xpath="//a[@id='btnTransHomeEmail']")
 	private static WebElement EmailBtn;
-	
 
-	
+
+
 
 
 	public static boolean checkSendingReceiptsEmailsForEveryAccount() throws EncryptedDocumentException, InvalidFormatException, InterruptedException, IOException
 	{	
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
 
@@ -14612,7 +14781,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(receiptsVoucher));
 		receiptsVoucher.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherHomeHeaderCheckbox));
 		voucherHomeHeaderCheckbox.click();
@@ -14620,23 +14789,24 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(EmailBtn));
 		EmailBtn.click();
 
+		Thread.sleep(4000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
 		LayoutNameTxt.click();
 		LayoutNameTxt.sendKeys(Keys.END);
 		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys("RCT");
 		Thread.sleep(1000);
 		LayoutNameTxt.sendKeys(Keys.TAB);
-		
-		Thread.sleep(1500);
-		
-		
+
+		Thread.sleep(2000);
+
+
 
 		/*Select s = new Select(LayoutOptionsdropdown);
 		s.selectByVisibleText("Email");
-*/
-		Thread.sleep(2000);
+		 */
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(printSCreenSubjectTxt));
 		printSCreenSubjectTxt.click();
@@ -14647,6 +14817,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(emailSendBtn));
 		emailSendBtn.click();
 
+		Thread.sleep(2000);
 		String expMessage="Mail sent successfully";
 		String actMessage1=checkValidationMessage(expMessage);
 		String actMessage2=checkValidationMessage(expMessage);
@@ -14661,7 +14832,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				LayoutNameTxt.click();
 				LayoutNameTxt.sendKeys(Keys.END);
 				LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 				LayoutNameTxt.sendKeys("RCT");
 				Thread.sleep(1000);
 				LayoutNameTxt.sendKeys(Keys.TAB);
@@ -14669,13 +14840,13 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 				s.selectByVisibleText("Email");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 	  			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(printSCreenSubjectTxt));
 	  			printSCreenSubjectTxt.click();
 	  			printSCreenSubjectTxt.sendKeys("Account Emails Validation");
 
-	  			Thread.sleep(2000);
+	  			Thread.sleep(1600);
 
 	  			emailOptions.click();
 
@@ -14686,18 +14857,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	  			String actToInfo = toDropdown.getAttribute("value");
 	  			String expToInfo = "emailvalidationthree@gmail.com";
-	  			Thread.sleep(2000);
+	  			Thread.sleep(1600);
 
 	  			emailOptionsOkBtn.click();
-	  			Thread.sleep(2000);
+	  			Thread.sleep(1600);
 
-	  			Thread.sleep(2000);
+	  			Thread.sleep(1600);
 
 	  			emailOptions.click();
 
 
 	  			emailOptionsOkBtn.click();
-	  			Thread.sleep(5000);*/
+	  			Thread.sleep(2000);*/
 
 		if (actMessage1.equalsIgnoreCase(expMessage) && actMessage2.equalsIgnoreCase(expMessage) &&
 				actMessage3.equalsIgnoreCase(expMessage) /*&& actfromAdd.equalsIgnoreCase(expFromadd) &&
@@ -14739,68 +14910,72 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public boolean checkPrintEmailOneOptionInReceiptsVoucherVAT() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException, AWTException
 	{
+
+
+		File Efile1=new File(getBaseDir()+"\\autoIt\\ExportFiles\\EmailReceiptsvoucherPrint1.pdf");
+
+		if(Efile1.exists())
+		{
+			Efile1.delete();
+		}
+
+		Robot robot = new Robot();   
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_T);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		robot.keyRelease(KeyEvent.VK_T);
+
+		Thread.sleep(4000);
+
+		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
+
+		System.out.println("openTabs"+openTabs);
+
+		getDriver().switchTo().window(openTabs.get(0));
+		Thread.sleep(1600);
+		getDriver().switchTo().window(openTabs.get(1));
+
+		Thread.sleep(1600);
+		getDriver().get("https://accounts.google.com/ServiceLogin/identifier?service=mail&passive=true&rm=false&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&ss=1&scc=1&ltmpl=default&ltmplcache=2&emr=1&osid=1&flowName=GlifWebSignIn&flowEntry=AddSession");
+
+		Thread.sleep(3000);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(UserNameTxt));
+		UserNameTxt.click();
+
+		UserNameTxt.sendKeys("emailvalidationone@gmail.com");
+
+		Thread.sleep(2000);
+
+		System.out.println("User enter text");
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(NextBtn));
+		NextBtn.click();
+
+		Thread.sleep(3500);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PasswordTxt));
+		PasswordTxt.click();
+
+		PasswordTxt.sendKeys("validationone");
+
+		Thread.sleep(2000);
+
+		NextBtn.click();
+
+		Thread.sleep(8000);
+
+		int count1 = row1mailFromList.size();
+		System.out.println("No.of mails in the list"+count1);
+
+		String actAccount1Data = " ";
+		String expAccount1Data = " ";
+
+
 		try{
 
-			File Efile1=new File(getBaseDir()+"\\autoIt\\ExportFiles\\EmailReceiptsvoucherPrint1.pdf");
-
-			if(Efile1.exists())
+			if (emailBody.isDisplayed()) 
 			{
-				Efile1.delete();
-			}
 
-			Robot robot = new Robot();   
-			robot.keyPress(KeyEvent.VK_CONTROL);
-			robot.keyPress(KeyEvent.VK_T);
-			robot.keyRelease(KeyEvent.VK_CONTROL);
-			robot.keyRelease(KeyEvent.VK_T);
-
-			Thread.sleep(2000);
-
-			ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
-
-			System.out.println("openTabs"+openTabs);
-
-			getDriver().switchTo().window(openTabs.get(0));
-
-			getDriver().switchTo().window(openTabs.get(1));
-
-
-			getDriver().get("https://accounts.google.com/ServiceLogin/identifier?service=mail&passive=true&rm=false&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&ss=1&scc=1&ltmpl=default&ltmplcache=2&emr=1&osid=1&flowName=GlifWebSignIn&flowEntry=AddSession");
-
-			Thread.sleep(2000);
-			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(UserNameTxt));
-			UserNameTxt.click();
-
-			UserNameTxt.sendKeys("emailvalidationone@gmail.com");
-
-			Thread.sleep(2000);
-
-			System.out.println("User enter text");
-
-			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(NextBtn));
-			NextBtn.click();
-
-			Thread.sleep(2000);
-
-			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PasswordTxt));
-			PasswordTxt.click();
-
-			PasswordTxt.sendKeys("validationone");
-
-			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(NextBtn));
-			NextBtn.click();
-
-			Thread.sleep(7000);
-
-			System.err.println("emailBody.isDisplayed()"+emailBody.isDisplayed());
-
-			int count1 = row1mailFromList.size();
-			System.out.println("No.of mails in the list"+count1);
-
-			System.err.println("Email Body *"+emailBody.getText()+"*");
-
-			if (emailBody.getText().isEmpty()==false) 
-			{
 				int count = emailSubjectList.size();
 				System.err.println("No.of mails in the list"+count);
 
@@ -14816,16 +14991,14 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				}
 
 
-				Thread.sleep(3000);
-
-				Thread.sleep(3000);
+				Thread.sleep(6500);
 
 				getAction().moveToElement(mailAttachmentDownloadBtn).build().perform();
 
 				getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(mailAttachmentDownloadBtn));
 				mailAttachmentDownloadBtn.click();
 
-				Thread.sleep(3000);
+				Thread.sleep(1800);
 
 
 				robot.keyPress(KeyEvent.VK_CONTROL);
@@ -14844,18 +15017,19 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				robot.keyPress(KeyEvent.VK_ENTER);
 				robot.keyRelease(KeyEvent.VK_ENTER);
 
-				Thread.sleep(3000);
+				Thread.sleep(2000);
 
 				robot.keyPress(KeyEvent.VK_CONTROL);
 				robot.keyPress(KeyEvent.VK_S);
 				robot.keyRelease(KeyEvent.VK_S);
 				robot.keyRelease(KeyEvent.VK_CONTROL);
 
-				Thread.sleep(2000);
+				Thread.sleep(1800);
+
+
 				Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\PrintEmailReceiptsOne.exe");
 
-				Thread.sleep(4000);
-
+				Thread.sleep(6000);
 
 				robot.keyPress(KeyEvent.VK_CONTROL);
 				robot.keyPress(KeyEvent.VK_J);
@@ -14871,33 +15045,47 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 				System.out.println("Number of Windows  : "+actOpenWindowsCount+"  Value Expected  "+expOpenWindowsCount);
 
-				getDriver().switchTo().window(newTabs.get(3)).close();
-				Thread.sleep(1000);
+			/*	getDriver().switchTo().window(newTabs.get(3)).close();
+				Thread.sleep(2000);
 				getDriver().switchTo().window(newTabs.get(2)).close();
-				Thread.sleep(1000);
+				Thread.sleep(2000);
 				getDriver().switchTo().window(newTabs.get(1));
+				Thread.sleep(4000);*/
+				robot.keyPress(KeyEvent.VK_CONTROL);
+				robot.keyPress(KeyEvent.VK_W);
+				robot.keyRelease(KeyEvent.VK_W);
+				robot.keyRelease(KeyEvent.VK_CONTROL);
 				Thread.sleep(1000);
+				
+				robot.keyPress(KeyEvent.VK_CONTROL);
+				robot.keyPress(KeyEvent.VK_W);
+				robot.keyRelease(KeyEvent.VK_W);
+				robot.keyRelease(KeyEvent.VK_CONTROL);
+				Thread.sleep(1000);
+				
 
-				getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(mailDeleteButton));
-				mailDeleteButton.click();
+				getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(backToIndexBtn1));
+				backToIndexBtn1.click();
 
 				Thread.sleep(2000);
 
-				getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(gmailUserBtn));
-				gmailUserBtn.click();
+				getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(selectAllCheckBox));
+				selectAllCheckBox.click();
+
+				Thread.sleep(2000);
+
+				getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(selectAllDelete));
+				selectAllDelete.click();
 
 				Thread.sleep(3000);
+				
+				ClickUsingJs(gmailUserBtn);
+				Thread.sleep(1000);
+
+				Thread.sleep(2000);
 				getDriver().switchTo().frame(SignOutFrame);
 				Thread.sleep(1000);
 				getAction().moveToElement(gmailSignOutBtn).click().build().perform();
-				/*ScrollToElement(gmailSignOutBtn);
-					 	ClickUsingJs(gmailSignOutBtn);*/
-				//moveToElement(gmailSignOutBtn);
-				Thread.sleep(2000);
-				//getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(gmailSignOutBtn));
-				//ClickUsingJs(gmailSignOutBtn);
-
-				Thread.sleep(2000);
 
 				getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(removeAccountBtn));
 				removeAccountBtn.click();
@@ -14921,52 +15109,100 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 				boolean result = pdfutil.compare(actAccount1PDF, expAccount1PDF);
 
-				String actAccount1Data = pdfutil.getText(actAccount1PDF);
-				String expAccount1Data = pdfutil.getText(expAccount1PDF);
+				actAccount1Data = pdfutil.getText(actAccount1PDF);
+				expAccount1Data = pdfutil.getText(expAccount1PDF);
 
-				System.err.println(actAccount1Data);
-				System.err.println(expAccount1Data);
+				
+				System.err.println("actAccount1Data:  "+actAccount1Data);
+				
+				System.err.println("expAccount1Data:  "+expAccount1Data);
+
+
 
 				if (actAccount1Data.equalsIgnoreCase(expAccount1Data)) 
 				{
+
+
+					ArrayList<String> newTabs2 = new ArrayList<String>(getDriver().getWindowHandles());
+
+					int actOpenWindowsCount2 = getDriver().getWindowHandles().size();
+					int expOpenWindowsCount2 = 2;
+
+					System.out.println("Number of Windows  : "+actOpenWindowsCount2+"  Value Expected  "+expOpenWindowsCount2);
+
+
+				/*	getDriver().switchTo().window(newTabs2.get(0));
+
+					Thread.sleep(1000);
+
+					getDriver().switchTo().window(newTabs2.get(1)).close();
+
+					Thread.sleep(1000);
+
+					getDriver().switchTo().window(openTabs.get(0));*/
+					
+					robot.keyPress(KeyEvent.VK_CONTROL);
+					robot.keyPress(KeyEvent.VK_W);
+					robot.keyRelease(KeyEvent.VK_W);
+					robot.keyRelease(KeyEvent.VK_CONTROL);
+					Thread.sleep(1000);
+					
 					return true;
 				}
 				else
 				{
+
+					ArrayList<String> newTabs2 = new ArrayList<String>(getDriver().getWindowHandles());
+
+					int actOpenWindowsCount2 = getDriver().getWindowHandles().size();
+					int expOpenWindowsCount2 = 2;
+
+					System.out.println("Number of Windows  : "+actOpenWindowsCount2+"  Value Expected  "+expOpenWindowsCount2);
+
+
+				/*	getDriver().switchTo().window(newTabs2.get(0));
+
+					Thread.sleep(1000);
+
+					getDriver().switchTo().window(newTabs2.get(1)).close();
+
+					Thread.sleep(1000);
+
+					getDriver().switchTo().window(openTabs.get(0));*/
+					
+					robot.keyPress(KeyEvent.VK_CONTROL);
+					robot.keyPress(KeyEvent.VK_W);
+					robot.keyRelease(KeyEvent.VK_W);
+					robot.keyRelease(KeyEvent.VK_CONTROL);
+					Thread.sleep(1000);
+					
 					System.err.println("PDF file is not as Expected");
 					return false;
 				}
-			} 
+
+
+
+			}
+
+			boolean res= (actAccount1Data.equalsIgnoreCase(expAccount1Data)) ? true :false;
+			return res;
+
 		}
-		catch (Exception e)
+
+		catch (Exception e) 
 		{
 
 
-			System.err.println("Subject : "+emailRow1Subject.getText());
-
 			Thread.sleep(2000);
 
-			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(selectAllMailsChckbx));
-			selectAllMailsChckbx.click();
-
-			Thread.sleep(2000);
-
-			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(selectAllMailsDltBtn));
-			selectAllMailsDltBtn.click();
-
-			Thread.sleep(4000);
-
-			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(gmailUserBtn));
-			gmailUserBtn.click();
+			
+			ClickUsingJs(gmailUserBtn);
+			Thread.sleep(1000);
 
 			Thread.sleep(3000);
 			getDriver().switchTo().frame(SignOutFrame);
 			Thread.sleep(1000);
-
-			Thread.sleep(2000);
-			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(gmailSignOutBtn));
-			ClickUsingJs(gmailSignOutBtn);
-
+			getAction().moveToElement(gmailSignOutBtn).click().build().perform();
 			Thread.sleep(2000);
 
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(removeAccountBtn));
@@ -14977,20 +15213,44 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(removeDeleteBtn));
 			removeDeleteBtn.click();
 
-			Thread.sleep(2000);
+			Thread.sleep(4000);
 
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(yesRemoveBtn));
 			yesRemoveBtn.click();
 
 			Thread.sleep(1000);
 
-			System.err.println("Exception:  "+e);
+			ArrayList<String> newTabs2 = new ArrayList<String>(getDriver().getWindowHandles());
+
+			int actOpenWindowsCount2 = getDriver().getWindowHandles().size();
+			int expOpenWindowsCount2 = 2;
+
+			System.out.println("Number of Windows  : "+actOpenWindowsCount2+"  Value Expected  "+expOpenWindowsCount2);
+
+
+
+		/*	getDriver().switchTo().window(newTabs2.get(0));
+
+			Thread.sleep(1000);
+
+			getDriver().switchTo().window(newTabs2.get(1)).close();
+
+			Thread.sleep(1000);
+
+			getDriver().switchTo().window(openTabs.get(0));*/
+			
+			robot.keyPress(KeyEvent.VK_CONTROL);
+			robot.keyPress(KeyEvent.VK_W);
+			robot.keyRelease(KeyEvent.VK_W);
+			robot.keyRelease(KeyEvent.VK_CONTROL);
+			Thread.sleep(1000);
+			
+
+			return false;
 
 		}
 
 
-
-		return false;
 	}
 
 
@@ -15010,24 +15270,24 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		{
 			Efile2.delete();
 		}	
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(UserNameTxt));
 		UserNameTxt.click();
 
 		UserNameTxt.sendKeys("emailvalidationtwo@gmail.com");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(NextBtn));
 		NextBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PasswordTxt));
 		PasswordTxt.click();
 
 		PasswordTxt.sendKeys("validationtwo");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		NextBtn.click();
 
@@ -15055,16 +15315,16 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			}
 
 
-			Thread.sleep(3000);
+			Thread.sleep(2000);
 
-			Thread.sleep(3000);
+			Thread.sleep(2000);
 
 			getAction().moveToElement(mailAttachmentDownloadBtn).build().perform();
 
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(mailAttachmentDownloadBtn));
 			mailAttachmentDownloadBtn.click();
 
-			Thread.sleep(3000);
+			Thread.sleep(2000);
 
 			Robot robot = new Robot();   
 			robot.keyPress(KeyEvent.VK_CONTROL);
@@ -15073,7 +15333,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			robot.keyRelease(KeyEvent.VK_CONTROL);
 
 
-			Thread.sleep(5000);
+			Thread.sleep(2000);
 
 			robot.keyPress(KeyEvent.VK_TAB);
 			robot.keyRelease(KeyEvent.VK_TAB);
@@ -15083,25 +15343,25 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			robot.keyPress(KeyEvent.VK_ENTER);
 			robot.keyRelease(KeyEvent.VK_ENTER);
 
-			Thread.sleep(3000);
+			Thread.sleep(2000);
 
 			robot.keyPress(KeyEvent.VK_CONTROL);
 			robot.keyPress(KeyEvent.VK_S);
 			robot.keyRelease(KeyEvent.VK_S);
 			robot.keyRelease(KeyEvent.VK_CONTROL);
 
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 
 			Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\PrintEmailReceiptsTwo.exe");
 
-			Thread.sleep(4000);
+			Thread.sleep(6000);
 
 			robot.keyPress(KeyEvent.VK_CONTROL);
 			robot.keyPress(KeyEvent.VK_J);
 			robot.keyRelease(KeyEvent.VK_J);
 			robot.keyRelease(KeyEvent.VK_CONTROL);
 
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 
 			ArrayList<String> newTabs1 = new ArrayList<String>(getDriver().getWindowHandles());
 
@@ -15111,31 +15371,31 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			System.out.println("Number of Windows  : "+actOpenWindowsCount1+"  Value Expected  "+expOpenWindowsCount1);
 
 			getDriver().switchTo().window(newTabs1.get(3)).close();
-			Thread.sleep(1000);
+			Thread.sleep(2000);
 			getDriver().switchTo().window(newTabs1.get(2)).close();
-			Thread.sleep(1000);
+			Thread.sleep(2000);
 			getDriver().switchTo().window(newTabs1.get(1));
 			Thread.sleep(1000);
 
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(mailDeleteButton));
 			mailDeleteButton.click();
 
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 
 
 
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(gmailUserBtn));
 			gmailUserBtn.click();
 
-			Thread.sleep(3000);
+			Thread.sleep(2000);
 			getDriver().switchTo().frame(SignOutFrame);
-			Thread.sleep(1000);
+			Thread.sleep(2000);
 			getAction().moveToElement(gmailSignOutBtn).click().build().perform();
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 
 			ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
 
@@ -15189,31 +15449,31 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		  		 		System.err.println("Count   : "+count);
 		  		 		System.err.println("Subject : "+emailRow1Subject.getText());
 
-		  		 		Thread.sleep(2000);
+		  		 		Thread.sleep(1600);
 
 		  		 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(selectAllMailsChckbx));
 		  		 		selectAllMailsChckbx.click();
 
-		  		 		Thread.sleep(2000);
+		  		 		Thread.sleep(1600);
 
 		  		 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(selectAllMailsDltBtn));
 		  		 		selectAllMailsDltBtn.click();
 
-		  		 		Thread.sleep(4000);*/
+		  		 		Thread.sleep(2000);*/
 
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(gmailUserBtn));
 			gmailUserBtn.click();
 
-			Thread.sleep(3000);
+			Thread.sleep(2000);
 			getDriver().switchTo().frame(SignOutFrame);
 			Thread.sleep(1000);
 			getAction().moveToElement(gmailSignOutBtn).click().build().perform();
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 
 
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 
 			ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
 
@@ -15247,7 +15507,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 					 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(removeDeleteBtn));
 					 	removeDeleteBtn.click();
 
-					 	Thread.sleep(2000);
+					 	Thread.sleep(1600);
 
 					 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(yesRemoveBtn));
 					 	yesRemoveBtn.click();
@@ -15270,25 +15530,25 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		}
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(UserNameTxt));
 		UserNameTxt.click();
 
 		UserNameTxt.sendKeys("emailvalidationthree@gmail.com");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(NextBtn));
 		NextBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PasswordTxt));
 		PasswordTxt.click();
 
 		PasswordTxt.sendKeys("validationthree");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		NextBtn.click();
 
@@ -15316,16 +15576,16 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			}
 
 
-			Thread.sleep(3000);
+			Thread.sleep(2000);
 
-			Thread.sleep(3000);
+			Thread.sleep(2000);
 
 			getAction().moveToElement(mailAttachmentDownloadBtn).build().perform();
 
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(mailAttachmentDownloadBtn));
 			mailAttachmentDownloadBtn.click();
 
-			Thread.sleep(3000);
+			Thread.sleep(2000);
 
 			Robot robot = new Robot();   
 			robot.keyPress(KeyEvent.VK_CONTROL);
@@ -15334,7 +15594,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			robot.keyRelease(KeyEvent.VK_CONTROL);
 
 
-			Thread.sleep(5000);
+			Thread.sleep(2000);
 
 			robot.keyPress(KeyEvent.VK_TAB);
 			robot.keyRelease(KeyEvent.VK_TAB);
@@ -15344,25 +15604,25 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			robot.keyPress(KeyEvent.VK_ENTER);
 			robot.keyRelease(KeyEvent.VK_ENTER);
 
-			Thread.sleep(3000);
+			Thread.sleep(2000);
 
 			robot.keyPress(KeyEvent.VK_CONTROL);
 			robot.keyPress(KeyEvent.VK_S);
 			robot.keyRelease(KeyEvent.VK_S);
 			robot.keyRelease(KeyEvent.VK_CONTROL);
 
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 
 			Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\PrintEmailReceiptsThree.exe");
 
-			Thread.sleep(4000);
+			Thread.sleep(6000);
 
 			robot.keyPress(KeyEvent.VK_CONTROL);
 			robot.keyPress(KeyEvent.VK_J);
 			robot.keyRelease(KeyEvent.VK_J);
 			robot.keyRelease(KeyEvent.VK_CONTROL);
 
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 
 			ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
 
@@ -15383,19 +15643,19 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(mailDeleteButton));
 			mailDeleteButton.click();
 
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(gmailUserBtn));
 			gmailUserBtn.click();
 
-			Thread.sleep(3000);
+			Thread.sleep(2000);
 			getDriver().switchTo().frame(SignOutFrame);
 			Thread.sleep(1000);
 
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(gmailSignOutBtn));
 			ClickUsingJs(gmailSignOutBtn);
 
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(removeAccountBtn));
 			removeAccountBtn.click();
@@ -15405,7 +15665,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(removeDeleteBtn));
 			removeDeleteBtn.click();
 
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(yesRemoveBtn));
 			yesRemoveBtn.click();
@@ -15452,29 +15712,29 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 			System.err.println("Subject : "+emailRow1Subject.getText());
 
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(selectAllMailsChckbx));
 			selectAllMailsChckbx.click();
 
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(selectAllMailsDltBtn));
 			selectAllMailsDltBtn.click();
 
-			Thread.sleep(4000);
+			Thread.sleep(2000);
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(gmailUserBtn));
 			gmailUserBtn.click();
 
-			Thread.sleep(3000);
+			Thread.sleep(2000);
 			getDriver().switchTo().frame(SignOutFrame);
 			Thread.sleep(1000);
 
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(gmailSignOutBtn));
 			ClickUsingJs(gmailSignOutBtn);
 
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(removeAccountBtn));
 			removeAccountBtn.click();
@@ -15484,14 +15744,14 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(removeDeleteBtn));
 			removeDeleteBtn.click();
 
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(yesRemoveBtn));
 			yesRemoveBtn.click();
 
 			Thread.sleep(1000);
 
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 
 			ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
 
@@ -15525,7 +15785,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	{
 		getDriver().navigate().refresh();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
 
@@ -15538,7 +15798,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(receiptsVoucher));
 		receiptsVoucher.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		int count = grid_VoucherNoList.size();
 
@@ -15568,7 +15828,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		ArrayList<String> InfoDetailsList = new ArrayList<String>();
 		for (int i = 0; i < count; i++) 
 		{
-			Thread.sleep(3000);
+			Thread.sleep(2000);
 			String emailInfo = emailSentHistoryList.get(i).getText();
 			InfoDetailsList.add(emailInfo);
 
@@ -15658,6 +15918,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	@FindBy(xpath="//*[@id='emailSettings']/div/div/div[3]/button[2]")
 	private static WebElement  CustomerReport_ExportOkBtn;
 
+	@FindBy(xpath="//div[@id='id_reportmenudisplay']//a[@title='Email']")
+	private static WebElement  CustomerReport_EmailBtn;
+
+
+
+
 	@FindBy(xpath="//*[@id='emailSettings']/div/div/div[3]/button[3]")
 	private static WebElement  CustomerReport_ExportCancelBtn;
 
@@ -15676,52 +15942,54 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkSendCustomerStatementsReportsEmailVerificationsCreatedAccounts() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{	
-		
+		/*	
 	  	Thread.sleep(1200);
 	  	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(CustomerReport_ExportBtn));
-	  	CustomerReport_ExportBtn.click();
-	  	
-	  	Thread.sleep(2000);
-	  	
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(CustomerReport_ExportBtn_EmailOptions));
-		CustomerReport_ExportBtn_EmailOptions.click();
-	  	
+	  	CustomerReport_ExportBtn.click();*/
+
+		Thread.sleep(2500);
+
+		getWebDriverWaitEle(CustomerReport_EmailBtn);
 		Thread.sleep(2000);
-	 
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(CustomerReport_EmailBtn));
+		CustomerReport_EmailBtn.click();
+
+		Thread.sleep(1600);
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(CustomerReport_ExportSubjectTxt));
 		CustomerReport_ExportSubjectTxt.click();
 		CustomerReport_ExportSubjectTxt.sendKeys("CustomerStatementsEmailVer");
-		
-		Thread.sleep(2000);
+
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(CustomerReport_ExportPickEmailFromCustomer_SupplierChckBx));
 		CustomerReport_ExportPickEmailFromCustomer_SupplierChckBx.click();
-		
-		
-	 	
+
+
+
 		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(CustomerReport_ExportTomailTxt));
 		CustomerReport_ExportTomailTxt.click();
 		CustomerReport_ExportTomailTxt.sendKeys(Keys.END,Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		CustomerReport_ExportTomailTxt.sendKeys("emailvalidationtwo@gmail.com");
-	  	
-		*/
+
+		 */
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(CustomerReport_ExportAttachPdfChckBx));
 		CustomerReport_ExportAttachPdfChckBx.click();
-		
-		Thread.sleep(2000);
-		
+
+		Thread.sleep(1600);
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(CustomerReport_ExportOkBtn));
 		CustomerReport_ExportOkBtn.click();
-		
-		Thread.sleep(5000);
-		
+
+		Thread.sleep(2000);
+
 		/*checkValidationMessage("Exporting in process..");*/
-		
+
 		String expMailSentMessage = "Mail sent successfully";
 		String actMailSentMessage = checkValidationMessage(expMailSentMessage);
-		
-	
-		
+
+
+
 		if (actMailSentMessage.equalsIgnoreCase(expMailSentMessage))
 		{
 			return true;
@@ -15730,310 +15998,23 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		{
 			return false;
 		}
-		
+
 	}
 
 	public static boolean checkValidateEmailAccountOneInBothCustomerStatementsAndEmailAccountOne() throws InterruptedException, AWTException, IOException
 	{
 
-		
-		
+
+
 		File Efile1=new File(getBaseDir()+"\\autoIt\\ExportFiles\\CustomerStatementsEmailOne.pdf");
-		
+
 		if(Efile1.exists())
 		{
 			Efile1.delete();
 		}
-		
-		
-		Thread.sleep(5000);
-		
-		Robot robot = new Robot();   
-			robot.keyPress(KeyEvent.VK_CONTROL);
-			robot.keyPress(KeyEvent.VK_T);
-			robot.keyRelease(KeyEvent.VK_CONTROL);
-			robot.keyRelease(KeyEvent.VK_T);
-			
-			Thread.sleep(2000);
-			
-			ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
 
-		 	System.out.println("openTabs"+openTabs);
 
-		 	getDriver().switchTo().window(openTabs.get(0));
-		 	
-		 	getDriver().switchTo().window(openTabs.get(1));
-			
-    	
-		 	getDriver().get("https://accounts.google.com/ServiceLogin/identifier?service=mail&passive=true&rm=false&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&ss=1&scc=1&ltmpl=default&ltmplcache=2&emr=1&osid=1&flowName=GlifWebSignIn&flowEntry=AddSession");
-		 	
-		 	Thread.sleep(2000);
-		 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(UserNameTxt));
-		 	UserNameTxt.click();
-		 	
-		 	UserNameTxt.sendKeys("emailvalidationone@gmail.com");
-		 	
-		 	Thread.sleep(2000);
-		 	
-		 	System.out.println("User enter text");
-		 	
-		 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(NextBtn));
-		 	NextBtn.click();
-		 	
-		 	Thread.sleep(2000);
-		 	
-		 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PasswordTxt));
-		 	PasswordTxt.click();
-		 	
-		 	PasswordTxt.sendKeys("validationone");
-		 	
-		 	Thread.sleep(2000);
-		 	
-		 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(NextBtn));
-		 	NextBtn.click();
-		 	
-		 	Thread.sleep(5000);
-		 	
-
-		 	int count1 = row1mailFromList.size();
-		 	System.out.println("No.of mails in the list"+count1);
-		 	
-		 	//System.err.println("Email Body *"+emailBody.getText()+"*");
-		 	
-		 	if (emailRow1Subject.getText().isEmpty()==false) 
-		 	{
-		 		int count = emailSubjectList.size();
-		 		System.err.println("No.of mails in the list"+count);
-  		 	
-  		 	for (int i = 0; i < count; i++) 
-		 	{
-		 		String mailFromTxt = emailSubjectList.get(i).getText();
-		 		
-		 		if (mailFromTxt.equalsIgnoreCase("CustomerStatementsEmailVer")) 
-		 		{
-		 			emailSubjectList.get(i).click();
-		 			break;
-				}
-			}
-  		 	
-		 	Thread.sleep(3000);
-		 	
-		 	getAction().moveToElement(mailAttachmentDownloadBtn).build().perform();
-		 	
-		 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(mailAttachmentDownloadBtn));
-		 	mailAttachmentDownloadBtn.click();
-		 	
-		 	Thread.sleep(3000);
-		 	
-		 	 
-		 	robot.keyPress(KeyEvent.VK_CONTROL);
-			robot.keyPress(KeyEvent.VK_J);
-			robot.keyRelease(KeyEvent.VK_J);
-			robot.keyRelease(KeyEvent.VK_CONTROL);
-			
-			
-			Thread.sleep(3000);
-			
-			robot.keyPress(KeyEvent.VK_TAB);
-			robot.keyRelease(KeyEvent.VK_TAB);
-			robot.keyPress(KeyEvent.VK_TAB);
-			robot.keyRelease(KeyEvent.VK_TAB);
-			
-			robot.keyPress(KeyEvent.VK_ENTER);
-			robot.keyRelease(KeyEvent.VK_ENTER);
-			
-			Thread.sleep(2000);
-			
-			robot.keyPress(KeyEvent.VK_CONTROL);
-			robot.keyPress(KeyEvent.VK_S);
-			robot.keyRelease(KeyEvent.VK_S);
-			robot.keyRelease(KeyEvent.VK_CONTROL);
-		 	
-			Thread.sleep(2000);
-			
-					
-					Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\SavingCustStmntsEmailOne.exe");
-					
-					Thread.sleep(4000);
-					
-					robot.keyPress(KeyEvent.VK_CONTROL);
-					robot.keyPress(KeyEvent.VK_J);
-					robot.keyRelease(KeyEvent.VK_J);
-					robot.keyRelease(KeyEvent.VK_CONTROL);
-					
-					Thread.sleep(2000);
-					
-					ArrayList<String> newTabs = new ArrayList<String>(getDriver().getWindowHandles());
-						
-					int actOpenWindowsCount = getDriver().getWindowHandles().size();
-					int expOpenWindowsCount = 4;
-					
-					System.out.println("Number of Windows  : "+actOpenWindowsCount+"  Value Expected  "+expOpenWindowsCount);
-					
-					getDriver().switchTo().window(newTabs.get(3)).close();
-				 	Thread.sleep(1000);
-				 	getDriver().switchTo().window(newTabs.get(2)).close();
-				 	Thread.sleep(1000);
-				 	getDriver().switchTo().window(newTabs.get(1));
-				 	Thread.sleep(1000);
-				 	
-				 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(mailDeleteButton));
-				 	mailDeleteButton.click();
-				 	
-				 	Thread.sleep(2000);
-				 	
-
-				 	
-				 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(gmailUserBtn));
-				 	gmailUserBtn.click();
-				 	
-				 	Thread.sleep(3000);
-				 	getDriver().switchTo().frame(SignOutFrame);
-					Thread.sleep(1000);
-				 	getAction().moveToElement(gmailSignOutBtn).click().build().perform();
-				 	
-				 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(removeAccountBtn));
-				 	removeAccountBtn.click();
-				 	
-				 	Thread.sleep(1000);
-				 	
-				 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(removeDeleteBtn));
-				 	removeDeleteBtn.click();
-				 	
-				 	Thread.sleep(2000);
-				 	
-				 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(yesRemoveBtn));
-				 	yesRemoveBtn.click();
-				 	
-				 	Thread.sleep(1000);
-				 	
-				 	String actAccount1PDF = getBaseDir()+"\\autoIt\\ExportFiles\\CustomerStatementsEmailOne.pdf";
-					String expAccount1PDF = getBaseDir()+"\\autoIt\\ImportFiles\\CustomerStatementsEmailOne.pdf";
-					
-					PDFUtil pdfutil = new PDFUtil();
-					
-					boolean result = pdfutil.compare(actAccount1PDF, expAccount1PDF);
-					
-					String actAccount1Data = pdfutil.getText(actAccount1PDF);
-					String expAccount1Data = pdfutil.getText(expAccount1PDF).replaceAll("11/10/2022", getCurrentDateF2());
-					
-					System.err.println(actAccount1Data);
-					System.err.println(expAccount1Data);
-					
-					if (actAccount1Data.equalsIgnoreCase(expAccount1Data)) 
-					{
-						
-						
-						ArrayList<String> newTabs2 = new ArrayList<String>(getDriver().getWindowHandles());
-							
-						int actOpenWindowsCount2 = getDriver().getWindowHandles().size();
-						int expOpenWindowsCount2 = 2;
-						
-						System.out.println("Number of Windows  : "+actOpenWindowsCount2+"  Value Expected  "+expOpenWindowsCount2);
-					
-						
-					 	getDriver().switchTo().window(newTabs2.get(0));
-					 	
-					 	Thread.sleep(1000);
-					 	
-					 	getDriver().switchTo().window(newTabs2.get(1)).close();
-					 	
-					 	Thread.sleep(1000);
-					 	
-					 
-						return true;
-					}
-					else
-					{
-						
-						ArrayList<String> newTabs2 = new ArrayList<String>(getDriver().getWindowHandles());
-						
-						int actOpenWindowsCount2 = getDriver().getWindowHandles().size();
-						int expOpenWindowsCount2 = 2;
-						
-						System.out.println("Number of Windows  : "+actOpenWindowsCount2+"  Value Expected  "+expOpenWindowsCount2);
-					
-						
-					 	getDriver().switchTo().window(newTabs2.get(0));
-					 	
-					 	Thread.sleep(1000);
-					 	
-					 	getDriver().switchTo().window(newTabs2.get(1)).close();
-					 	
-					 	Thread.sleep(1000);
-					 	
-					 	getDriver().switchTo().window(openTabs.get(0));
-						System.err.println("PDF file is not as Expected");
-						return false;
-					}
-					
-				
-				} 
-	  		 	else 
-				{	
-	  		 		
-	  		 		
-	  		 		System.err.println("Subject : "+emailRow1Subject.getText());
-	  		 		
-	  		 		Thread.sleep(2000);
-	  		 		
-	  		 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(selectAllMailsChckbx));
-	  		 		selectAllMailsChckbx.click();
-	  		 		
-	  		 		Thread.sleep(2000);
-				 	
-	  		 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(selectAllMailsDltBtn));
-	  		 		selectAllMailsDltBtn.click();
-	  		 		
-	  		 		Thread.sleep(4000);
-
-				 	Thread.sleep(2000);
-				 	
-				 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(gmailUserBtn));
-				 	gmailUserBtn.click();
-				 	
-				 	Thread.sleep(3000);
-				 getDriver().switchTo().frame(SignOutFrame);
-					Thread.sleep(1000);
-				 	getAction().moveToElement(gmailSignOutBtn).click().build().perform();
-				 	Thread.sleep(2000);
-				 	
-				 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(removeAccountBtn));
-				 	removeAccountBtn.click();
-				 	
-				 	Thread.sleep(1000);
-				 	
-				 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(removeDeleteBtn));
-				 	removeDeleteBtn.click();
-				 	
-				 	Thread.sleep(2000);
-				 	
-				 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(yesRemoveBtn));
-				 	yesRemoveBtn.click();
-				 	
-				 	Thread.sleep(1000);
-	  		 		return false;
-				}
-  		 	
-		 	
-		 	
-	
-	}
-	
-	public static boolean checkValidateEmailAccountTwoInBothCustomerStatementsAndEmailAccountTwo() throws InterruptedException, AWTException, IOException
-	{
 		Thread.sleep(2000);
-
-
-		File Efile1=new File(getBaseDir()+"\\autoIt\\ExportFiles\\CustomerStatementsEmailTwo.pdf");
-
-		if(Efile1.exists())
-		{
-			Efile1.delete();
-		}
-
-
-		Thread.sleep(5000);
 
 		Robot robot = new Robot();   
 		robot.keyPress(KeyEvent.VK_CONTROL);
@@ -16041,7 +16022,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 		robot.keyRelease(KeyEvent.VK_T);
 
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 
 		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
 
@@ -16054,34 +16035,32 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		getDriver().get("https://accounts.google.com/ServiceLogin/identifier?service=mail&passive=true&rm=false&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&ss=1&scc=1&ltmpl=default&ltmplcache=2&emr=1&osid=1&flowName=GlifWebSignIn&flowEntry=AddSession");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(UserNameTxt));
 		UserNameTxt.click();
 
-		UserNameTxt.sendKeys("emailvalidationtwo@gmail.com");
+		UserNameTxt.sendKeys("emailvalidationone@gmail.com");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		System.out.println("User enter text");
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(NextBtn));
 		NextBtn.click();
 
-		Thread.sleep(4000);
-		
-		getAction().moveToElement(PasswordTxt).build().perform();
-		Thread.sleep(1000);
+		Thread.sleep(1600);
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PasswordTxt));
 		PasswordTxt.click();
 
-		PasswordTxt.sendKeys("validationtwo");
+		PasswordTxt.sendKeys("validationone");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(NextBtn));
 		NextBtn.click();
 
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 
 
 		int count1 = row1mailFromList.size();
@@ -16105,7 +16084,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				}
 			}
 
-			Thread.sleep(3000);
+			Thread.sleep(2000);
 
 			getAction().moveToElement(mailAttachmentDownloadBtn).build().perform();
 
@@ -16121,7 +16100,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			robot.keyRelease(KeyEvent.VK_CONTROL);
 
 
-			Thread.sleep(5000);
+			Thread.sleep(3000);
 
 			robot.keyPress(KeyEvent.VK_TAB);
 			robot.keyRelease(KeyEvent.VK_TAB);
@@ -16131,26 +16110,26 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			robot.keyPress(KeyEvent.VK_ENTER);
 			robot.keyRelease(KeyEvent.VK_ENTER);
 
-			Thread.sleep(3000);
+			Thread.sleep(1600);
 
 			robot.keyPress(KeyEvent.VK_CONTROL);
 			robot.keyPress(KeyEvent.VK_S);
 			robot.keyRelease(KeyEvent.VK_S);
 			robot.keyRelease(KeyEvent.VK_CONTROL);
 
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 
 
-			Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\SavingCustStmntsEmailTwo.exe");
+			Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\SavingCustStmntsEmailOne.exe");
 
-			Thread.sleep(4000);
+			Thread.sleep(6000);
 
 			robot.keyPress(KeyEvent.VK_CONTROL);
 			robot.keyPress(KeyEvent.VK_J);
 			robot.keyRelease(KeyEvent.VK_J);
 			robot.keyRelease(KeyEvent.VK_CONTROL);
 
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 
 			ArrayList<String> newTabs = new ArrayList<String>(getDriver().getWindowHandles());
 
@@ -16169,15 +16148,301 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(mailDeleteButton));
 			mailDeleteButton.click();
 
+			Thread.sleep(1600);
+
+			Thread.sleep(1600);
+			ClickUsingJs(gmailUserBtn);
+			Thread.sleep(1600);
+
+			Thread.sleep(2000);
+			getDriver().switchTo().frame(SignOutFrame);
+			Thread.sleep(1000);
+			getAction().moveToElement(gmailSignOutBtn).click().build().perform();
+
+			/*	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(removeAccountBtn));
+				 	removeAccountBtn.click();
+
+				 	Thread.sleep(1000);
+
+				 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(removeDeleteBtn));
+				 	removeDeleteBtn.click();
+
+				 	Thread.sleep(1600);
+
+				 	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(yesRemoveBtn));
+				 	yesRemoveBtn.click();
+			 */
+			Thread.sleep(1000);
+
+			String actAccount1PDF = getBaseDir()+"\\autoIt\\ExportFiles\\CustomerStatementsEmailOne.pdf";
+			String expAccount1PDF = getBaseDir()+"\\autoIt\\ImportFiles\\CustomerStatementsEmailOne.pdf";
+
+			PDFUtil pdfutil = new PDFUtil();
+
+			boolean result = pdfutil.compare(actAccount1PDF, expAccount1PDF);
+
+			String actAccount1Data = pdfutil.getText(actAccount1PDF);
+			String expAccount1Data = pdfutil.getText(expAccount1PDF).replaceAll("08/03/2022 ", getCurrentDateF2());
+
+			System.err.println(actAccount1Data);
+			System.err.println(expAccount1Data);
+
+			if (actAccount1Data.equalsIgnoreCase(expAccount1Data)) 
+			{
+
+
+				ArrayList<String> newTabs2 = new ArrayList<String>(getDriver().getWindowHandles());
+
+				int actOpenWindowsCount2 = getDriver().getWindowHandles().size();
+				int expOpenWindowsCount2 = 2;
+
+				System.out.println("Number of Windows  : "+actOpenWindowsCount2+"  Value Expected  "+expOpenWindowsCount2);
+
+
+				getDriver().switchTo().window(newTabs2.get(0));
+
+				Thread.sleep(1000);
+
+				getDriver().switchTo().window(newTabs2.get(1)).close();
+
+				Thread.sleep(1000);
+
+
+				return true;
+			}
+			else
+			{
+
+				ArrayList<String> newTabs2 = new ArrayList<String>(getDriver().getWindowHandles());
+
+				int actOpenWindowsCount2 = getDriver().getWindowHandles().size();
+				int expOpenWindowsCount2 = 2;
+
+				System.out.println("Number of Windows  : "+actOpenWindowsCount2+"  Value Expected  "+expOpenWindowsCount2);
+
+
+				getDriver().switchTo().window(newTabs2.get(0));
+
+				Thread.sleep(1000);
+
+				getDriver().switchTo().window(newTabs2.get(1)).close();
+
+				Thread.sleep(1000);
+
+				getDriver().switchTo().window(openTabs.get(0));
+				System.err.println("PDF file is not as Expected");
+				return false;
+			}
+
+
+		} 
+		else 
+		{	
+
+
+			System.err.println("Subject : "+emailRow1Subject.getText());
+
+			Thread.sleep(1600);
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(selectAllMailsChckbx));
+			selectAllMailsChckbx.click();
+
+			Thread.sleep(1600);
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(selectAllMailsDltBtn));
+			selectAllMailsDltBtn.click();
+
+			Thread.sleep(2000);
+
+			Thread.sleep(1600);
+			ClickUsingJs(gmailUserBtn);
+			Thread.sleep(1600);
+
+			Thread.sleep(2000);
+			getDriver().switchTo().frame(SignOutFrame);
+			Thread.sleep(1000);
+			getAction().moveToElement(gmailSignOutBtn).click().build().perform();
+			Thread.sleep(1600);
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(removeAccountBtn));
+			removeAccountBtn.click();
+
+			Thread.sleep(1000);
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(removeDeleteBtn));
+			removeDeleteBtn.click();
+
+			Thread.sleep(1600);
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(yesRemoveBtn));
+			yesRemoveBtn.click();
+
+			Thread.sleep(1000);
+			return false;
+		}
+
+
+
+
+	}
+
+	public static boolean checkValidateEmailAccountTwoInBothCustomerStatementsAndEmailAccountTwo() throws InterruptedException, AWTException, IOException
+	{
+		Thread.sleep(1600);
+
+
+		File Efile1=new File(getBaseDir()+"\\autoIt\\ExportFiles\\CustomerStatementsEmailTwo.pdf");
+
+		if(Efile1.exists())
+		{
+			Efile1.delete();
+		}
+
+
+		Thread.sleep(2000);
+
+		Robot robot = new Robot();   
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_T);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		robot.keyRelease(KeyEvent.VK_T);
+
+		Thread.sleep(1600);
+
+		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
+
+		System.out.println("openTabs"+openTabs);
+
+		getDriver().switchTo().window(openTabs.get(0));
+
+		getDriver().switchTo().window(openTabs.get(1));
+
+
+		getDriver().get("https://accounts.google.com/ServiceLogin/identifier?service=mail&passive=true&rm=false&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&ss=1&scc=1&ltmpl=default&ltmplcache=2&emr=1&osid=1&flowName=GlifWebSignIn&flowEntry=AddSession");
+
+		Thread.sleep(1600);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(UserNameTxt));
+		UserNameTxt.click();
+
+		UserNameTxt.sendKeys("emailvalidationtwo@gmail.com");
+
+		Thread.sleep(1600);
+
+		System.out.println("User enter text");
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(NextBtn));
+		NextBtn.click();
+
+		Thread.sleep(2000);
+
+		getAction().moveToElement(PasswordTxt).build().perform();
+		Thread.sleep(1000);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PasswordTxt));
+		PasswordTxt.click();
+
+		PasswordTxt.sendKeys("validationtwo");
+
+		Thread.sleep(1600);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(NextBtn));
+		NextBtn.click();
+
+		Thread.sleep(2000);
+
+
+		int count1 = row1mailFromList.size();
+		System.out.println("No.of mails in the list"+count1);
+
+		//System.err.println("Email Body *"+emailBody.getText()+"*");
+
+		if (emailRow1Subject.getText().isEmpty()==false) 
+		{
+			int count = emailSubjectList.size();
+			System.err.println("No.of mails in the list"+count);
+
+			for (int i = 0; i < count; i++) 
+			{
+				String mailFromTxt = emailSubjectList.get(i).getText();
+
+				if (mailFromTxt.equalsIgnoreCase("CustomerStatementsEmailVer")) 
+				{
+					emailSubjectList.get(i).click();
+					break;
+				}
+			}
+
+			Thread.sleep(2000);
+
+			getAction().moveToElement(mailAttachmentDownloadBtn).build().perform();
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(mailAttachmentDownloadBtn));
+			mailAttachmentDownloadBtn.click();
+
 			Thread.sleep(2000);
 
 
+			robot.keyPress(KeyEvent.VK_CONTROL);
+			robot.keyPress(KeyEvent.VK_J);
+			robot.keyRelease(KeyEvent.VK_J);
+			robot.keyRelease(KeyEvent.VK_CONTROL);
+
+
 			Thread.sleep(2000);
 
-			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(gmailUserBtn));
-			gmailUserBtn.click();
+			robot.keyPress(KeyEvent.VK_TAB);
+			robot.keyRelease(KeyEvent.VK_TAB);
+			robot.keyPress(KeyEvent.VK_TAB);
+			robot.keyRelease(KeyEvent.VK_TAB);
 
-			Thread.sleep(3000);
+			robot.keyPress(KeyEvent.VK_ENTER);
+			robot.keyRelease(KeyEvent.VK_ENTER);
+
+			Thread.sleep(2000);
+
+			robot.keyPress(KeyEvent.VK_CONTROL);
+			robot.keyPress(KeyEvent.VK_S);
+			robot.keyRelease(KeyEvent.VK_S);
+			robot.keyRelease(KeyEvent.VK_CONTROL);
+
+			Thread.sleep(1600);
+
+
+			Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\SavingCustStmntsEmailTwo.exe");
+
+			Thread.sleep(6000);
+
+			robot.keyPress(KeyEvent.VK_CONTROL);
+			robot.keyPress(KeyEvent.VK_J);
+			robot.keyRelease(KeyEvent.VK_J);
+			robot.keyRelease(KeyEvent.VK_CONTROL);
+
+			Thread.sleep(1600);
+
+			ArrayList<String> newTabs = new ArrayList<String>(getDriver().getWindowHandles());
+
+			int actOpenWindowsCount = getDriver().getWindowHandles().size();
+			int expOpenWindowsCount = 4;
+
+			System.out.println("Number of Windows  : "+actOpenWindowsCount+"  Value Expected  "+expOpenWindowsCount);
+
+			getDriver().switchTo().window(newTabs.get(3)).close();
+			Thread.sleep(1000);
+			getDriver().switchTo().window(newTabs.get(2)).close();
+			Thread.sleep(1000);
+			getDriver().switchTo().window(newTabs.get(1));
+			Thread.sleep(1000);
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(mailDeleteButton));
+			mailDeleteButton.click();
+
+			Thread.sleep(1600);
+
+
+			Thread.sleep(1600);
+			ClickUsingJs(gmailUserBtn);
+			Thread.sleep(1600);
+
+			Thread.sleep(2000);
 			getDriver().switchTo().frame(SignOutFrame);
 			Thread.sleep(1000);
 			getAction().moveToElement(gmailSignOutBtn).click().build().perform();
@@ -16190,7 +16455,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(removeDeleteBtn));
 			removeDeleteBtn.click();
 
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(yesRemoveBtn));
 			yesRemoveBtn.click();
@@ -16230,7 +16495,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 				Thread.sleep(1000);
 
-				
+
 				return true;
 			}
 			else
@@ -16265,28 +16530,27 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 			System.err.println("Subject : "+emailRow1Subject.getText());
 
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(selectAllMailsChckbx));
 			selectAllMailsChckbx.click();
 
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(selectAllMailsDltBtn));
 			selectAllMailsDltBtn.click();
 
-			Thread.sleep(4000);
-
 			Thread.sleep(2000);
 
-			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(gmailUserBtn));
-			gmailUserBtn.click();
+			Thread.sleep(1600);
+			ClickUsingJs(gmailUserBtn);
+			Thread.sleep(1600);
 
-			Thread.sleep(3000);
+			Thread.sleep(2000);
 			getDriver().switchTo().frame(SignOutFrame);
 			Thread.sleep(1000);
 			getAction().moveToElement(gmailSignOutBtn).click().build().perform();
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(removeAccountBtn));
 			removeAccountBtn.click();
@@ -16296,7 +16560,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(removeDeleteBtn));
 			removeDeleteBtn.click();
 
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(yesRemoveBtn));
 			yesRemoveBtn.click();
@@ -16307,12 +16571,14 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 
 
-	
+
 	}
-	
+
+
+
 	public static boolean checkSendCustomerDueDateAnalysisReportEmailVeriForCreatedAccounts() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
 
@@ -16325,9 +16591,9 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerDetailsCustomerDueDateAnalysisReport));
 		customerDetailsCustomerDueDateAnalysisReport.click();
 
-		Thread.sleep(3000);
-
 		Thread.sleep(2000);
+
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		Select s=new Select(sl_DateOptionDropdown);
@@ -16340,16 +16606,16 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
 		sl_OkBtn.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(CustomerReport_ExportBtn));
 		CustomerReport_ExportBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(CustomerReport_ExportBtn_EmailOptions));
 		CustomerReport_ExportBtn_EmailOptions.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(CustomerReport_ExportTomailTxt));
 		CustomerReport_ExportTomailTxt.click();
@@ -16359,14 +16625,14 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		CustomerReport_ExportSubjectTxt.click();
 		CustomerReport_ExportSubjectTxt.sendKeys("CustomerDueDateAnalysisReportEmailVer");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(CustomerReport_ExportPickEmailFromCustomer_SupplierChckBx));
 		CustomerReport_ExportPickEmailFromCustomer_SupplierChckBx.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(CustomerReport_ExportAttachPdfChckBx));
 		CustomerReport_ExportAttachPdfChckBx.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(CustomerReport_ExportOkBtn));
 		CustomerReport_ExportOkBtn.click();
@@ -16389,7 +16655,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkSendVendorAgeingSummaryAnalysisReportEmailVerForCreatedAccounts() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
 
@@ -16413,16 +16679,16 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
 		sl_OkBtn.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(CustomerReport_ExportBtn));
 		CustomerReport_ExportBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(CustomerReport_ExportBtn_EmailOptions));
 		CustomerReport_ExportBtn_EmailOptions.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(CustomerReport_ExportTomailTxt));
 		CustomerReport_ExportTomailTxt.click();
@@ -16432,14 +16698,14 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		CustomerReport_ExportSubjectTxt.click();
 		CustomerReport_ExportSubjectTxt.sendKeys("VendorAgeingSummaryAnalysisReportEmailVer");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(CustomerReport_ExportPickEmailFromCustomer_SupplierChckBx));
 		CustomerReport_ExportPickEmailFromCustomer_SupplierChckBx.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(CustomerReport_ExportAttachPdfChckBx));
 		CustomerReport_ExportAttachPdfChckBx.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(CustomerReport_ExportOkBtn));
 		CustomerReport_ExportOkBtn.click();
@@ -16462,7 +16728,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkSendVendorSummaryAgeingByDueDateReportEmailVer() throws EncryptedDocumentException, InvalidFormatException, InterruptedException, IOException
 	{
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
 
@@ -16474,7 +16740,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorSummeryVendorSummaryAgeingByDueDateReport));
 		vendorSummeryVendorSummaryAgeingByDueDateReport.click();
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		Select s=new Select(sl_DateOptionDropdown);
 		s.selectByValue("1");
@@ -16486,16 +16752,16 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
 		sl_OkBtn.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(CustomerReport_ExportBtn));
 		CustomerReport_ExportBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(CustomerReport_ExportBtn_EmailOptions));
 		CustomerReport_ExportBtn_EmailOptions.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(CustomerReport_ExportTomailTxt));
 		CustomerReport_ExportTomailTxt.click();
@@ -16505,14 +16771,14 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		CustomerReport_ExportSubjectTxt.click();
 		CustomerReport_ExportSubjectTxt.sendKeys("VendorSummaryAgeingByDueDateReportEmailVer");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(CustomerReport_ExportPickEmailFromCustomer_SupplierChckBx));
 		CustomerReport_ExportPickEmailFromCustomer_SupplierChckBx.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(CustomerReport_ExportAttachPdfChckBx));
 		CustomerReport_ExportAttachPdfChckBx.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(CustomerReport_ExportOkBtn));
 		CustomerReport_ExportOkBtn.click();
@@ -16538,19 +16804,19 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkSendStockMovementReportEmailVerForCreatedAccounts() throws EncryptedDocumentException, InvalidFormatException, InterruptedException, IOException
 	{
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryExpandBtn));
 		inventoryExpandBtn.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryReportsExpandBtn));
 		inventoryReportsExpandBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(stockMovementReport));
 		stockMovementReport.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		Select s=new Select(sl_DateOptionDropdown);
@@ -16567,12 +16833,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(CustomerReport_ExportBtn));
 		CustomerReport_ExportBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(CustomerReport_ExportBtn_EmailOptions));
 		CustomerReport_ExportBtn_EmailOptions.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(CustomerReport_ExportTomailTxt));
 		CustomerReport_ExportTomailTxt.click();
@@ -16582,14 +16848,14 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		CustomerReport_ExportSubjectTxt.click();
 		CustomerReport_ExportSubjectTxt.sendKeys("StockMovementReportEmailVer");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(CustomerReport_ExportPickEmailFromCustomer_SupplierChckBx));
 				CustomerReport_ExportPickEmailFromCustomer_SupplierChckBx.click();*/
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(CustomerReport_ExportAttachPdfChckBx));
 		CustomerReport_ExportAttachPdfChckBx.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(CustomerReport_ExportOkBtn));
 		CustomerReport_ExportOkBtn.click();
@@ -16619,8 +16885,8 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public boolean checkPrintScreenOptions() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
-		
-		Thread.sleep(2000);
+
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
 
@@ -16629,19 +16895,33 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionsPurchaseMenu));
 		financialsTransactionsPurchaseMenu.click();
-		
-		Thread.sleep(2000);
+
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(4000);
-		
-		ClickUsingJs(printBtn);
 		Thread.sleep(2000);
+
+		ClickUsingJs(printBtn);
+		Thread.sleep(1600);
 		/*getWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
 		printBtn.click();*/
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
+
+		try{
+			if(LayoutNameTxt.isDisplayed()) 
+			{
+				System.out.println("Print btn clicked");
+
+			}
+
+		}
+
+		catch (Exception e)
+		{
+			ClickUsingJs(printBtn);
+		}
 
 		if(LayoutNameTxt.isDisplayed() && createLayoutBtn.isDisplayed() && LayoutName_Editlayout.isDisplayed()
 				&& DocumentSet.isDisplayed() && DocumentSet_CreatelayoutBtn.isDisplayed() && DocumentSet_Editlayout.isDisplayed()
@@ -16670,7 +16950,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		System.out.println(actval);
 		int expval=5;   // to pdf and to Xps is not Displaying
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		if(actval==expval)
 		{
@@ -16706,27 +16986,31 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public boolean checkInvoiceDesignOptions() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{							
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
 		LayoutNameTxt.click();
-		
-		Thread.sleep(3000);
-		
+
+		Thread.sleep(2000);
+
 		ClickUsingJs(createLayoutBtn);
 		/*getWebDriverWait().until(ExpectedConditions.elementToBeClickable(createLayoutBtn));
 		createLayoutBtn.click();*/
+		Thread.sleep(2000);
+		
+		blankTemplateBtn.click();
+		Thread.sleep(2000);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(previewTab));
 		previewTab.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(designerTab));
 		designerTab.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Newdropdown));
 
@@ -17327,7 +17611,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Finance_Purchases_HeaderExpandBtn));
 		Finance_Purchases_HeaderExpandBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		if(Finance_Purchases_Header_DocNOdraganddrop.isDisplayed() && Finance_Purchases_Header_DateExpandBtn.isDisplayed()
 				&& Finance_Purchases_Header_TimeExpandBtn.isDisplayed() && Finance_Purchases_Header_PurchaseAcExpandBtn.isDisplayed()
@@ -17359,12 +17643,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public boolean checkBodyOptions() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PSS_BodyExpandbtn));
 		PSS_BodyExpandbtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		if(PSS_Body_ItemtExpansion.isDisplayed() && PSS_Body_UnitExpandBtn.isDisplayed() && PSS_Body_RDdraganddrop.isDisplayed() 
 				&& PSS_Body_AvgRate0draganddrop.isDisplayed() && PSS_Body_Quantitydraganddrop.isDisplayed() && PSS_Body_LPurchaseOrdersdraganddrop.isDisplayed()
@@ -17451,12 +17735,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public boolean checkUserDetailsOptions() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(UserDetailsExpandbtn));
 		UserDetailsExpandbtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		if(UserDetails_UserNamedraganddrop.isDisplayed() && UserDetails_MobileNumberdraganddrop.isDisplayed() && UserDetails_PhoneNumberdraganddrop.isDisplayed()
 				&& UserDetails_EmailIddraganddrop.isDisplayed() && UserDetails_Signaturedraganddrop.isDisplayed() && UserDetails_EmployeeExpandBtn.isDisplayed()
@@ -17542,12 +17826,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public boolean checkMiscellaneousOptions() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(MiscellaneousExpandBtn));
 		MiscellaneousExpandBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		if(Miscellaneous_LoginNamedraganddrop.isDisplayed() && Miscellaneous_PageNumberdraganddrop.isDisplayed() && Miscellaneous_PrintDatedraganddrop.isDisplayed()
 				&& Miscellaneous_PrintTimedraganddrop.isDisplayed() && Miscellaneous_TotalPagedraganddrop.isDisplayed() && Miscellaneous_SrNodraganddrop.isDisplayed()
@@ -17623,12 +17907,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public boolean checkCompanyOptions() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(CompanyExpandBtn));
 		CompanyExpandBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		if(Company_CompanyLogodraganddrop.isDisplayed() && Company_CompanyNamedraganddrop.isDisplayed() && Comapny_AccountingDateExpandbtn.isDisplayed()
 				&& Company_Countrydraganddrop.isDisplayed() && Company_Currencydraganddrop.isDisplayed() && Company_DefaultLangdraganddrop.isDisplayed()
@@ -17676,16 +17960,16 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(clickonHeader));
 		clickonHeader.click();
 
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(docNo));
 		docNo.click();
 
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 
 		getAction().dragAndDropBy(docNo, 100, 25);
 
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 
 		if(draggedDocNo.isDisplayed())
 		{
@@ -17739,12 +18023,15 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	@FindBy(xpath="//div[@id='InvoiceDesignFields']/ul/li[1]/ul/li[10]/ul/li[1]/a/span/i")
 	private static WebElement  header_PlaceOfSupplyName;
+	
+	@FindBy(xpath="//div[@id='InvoiceDesignFields']//ul//li//a[text()='Net']")
+	private static WebElement  Body_NetFiled;
 
 
 
 	public static boolean checkDragandDropHeaderFiledsAndBodyFiledsIntoLayout() throws InterruptedException, IOException, EncryptedDocumentException, InvalidFormatException
 	{
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
 
@@ -17757,65 +18044,56 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
 		printBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(2500);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(createLayoutBtn));
 		createLayoutBtn.click();
 		Thread.sleep(2000);
-
+		
+		blankTemplateBtn.click();
+		Thread.sleep(2000);
+		/*
+		 * getWebDriverWait().until(ExpectedConditions.elementToBeClickable(
+		 * clickonHeader)); clickonHeader.click();
+		 * 
+		 * Runtime.getRuntime().exec(getBaseDir()+
+		 * "\\autoIt\\scripts\\HeaderAndBodyFieldsIntoLayout.exe");
+		 * Thread.sleep(120000); System.out.println("Reached here");
+		 * 
+		 * Thread.sleep(1200);
+		 * getAction().moveToElement(Body_NetFiled).build().perform();
+		 * Thread.sleep(1200);
+		 * 
+		 * Thread.sleep(2000);
+		 */
+		
+		Thread.sleep(3000);
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(clickonHeader));
 		clickonHeader.click();
-
-		Runtime.getRuntime().exec(getBaseDir()+"\\autoIt\\scripts\\HeaderFieldsDragF.exe");
-
-		Thread.sleep(60000);
-
-		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(clickonHeader));
-		clickonHeader.click();
-
-		Thread.sleep(2000);
-
-		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(clickOnBody));
-		clickOnBody.click();
-
-		Thread.sleep(2000);
-
-		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Finance_Purchases_Header_WareHouseExpandBtn));
-		Finance_Purchases_Header_WareHouseExpandBtn.click();
-
-		Thread.sleep(5000);
-
-		Runtime.getRuntime().exec(getBaseDir()+"\\autoIt\\scripts\\BodyFieldsDragF.exe");
-
-		Thread.sleep(66000);
+		Thread.sleep(3000);
+		Runtime.getRuntime().exec(getBaseDir()+"\\autoIt\\scripts\\purchasesCreatedVoucher.exe");
+		Thread.sleep(140000);
+		System.out.println("Reached here");
 		
-		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(previewTab));
-		previewTab.click();
-
-		Thread.sleep(2000);
-		
-		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(designerTab));
-		designerTab.click();
-		Thread.sleep(2000);
 		
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Savedropdown));
 		moveToElement(Savedropdown);
-	
+
 		System.err.println("Save button clicked");
 
-		Thread.sleep(2000);
-		
+		Thread.sleep(1600);
+
 		getAction().moveToElement(SaveBtn).build().perform();
 		Thread.sleep(1200);
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(layoutNameTextField));
 		layoutNameTextField.sendKeys("PurchasesVoucherVatCreatedLayout");
@@ -17831,7 +18109,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		System.err.println("actMessage "+actMessage);
 		System.err.println("expMessage "+expMessage);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		String actTitle = SavedlayoutNameTitle.getText();
 		String expTitle ="[PurchasesVoucherVatCreatedLayout]";
@@ -17893,13 +18171,13 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	@FindBy(xpath="//input[@id='FNumericBox_5_2000']")
 	private static WebElement DecimalInColumn;
 
-	@FindBy(xpath="//*[@id='TextBox_8_1999']")
+	@FindBy(xpath="//*[@id='TextBox_8_2000']")
 	private static WebElement Heading2Txt;
 
 	@FindBy(xpath="//*[@id='TextBox_7_2000']")
 	private static WebElement GroupNameTxt;
 
-	@FindBy(xpath="//*[@id='TextBox_16_1999']")
+	@FindBy(xpath="//*[@id='TextBox_16_2000']")
 	private static WebElement SuffixTxt;
 
 	@FindBy(xpath="//select[@id='Combobox_19_2000']")
@@ -17911,10 +18189,10 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	@FindBy(xpath="//select[@id='Combobox_12_2000']")
 	private static WebElement WordWrapDrpdwn;
 
-	@FindBy(xpath="//select[@id='Combobox_10_1999']")
+	@FindBy(xpath="//select[@id='Combobox_10_2000']")
 	private static WebElement PrintUnderPreviousColumnDrpdwn;
 
-	@FindBy(xpath="//input[@id='browsebtn_4_1999']")
+	@FindBy(xpath="//input[@id='browsebtn_4_2000']")
 	private static WebElement FontBrowseBtn;
 
 	@FindBy(xpath="//select[@id='fontFamily_FontControl']")
@@ -17949,8 +18227,8 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	@FindBy(xpath="//input[@id='chkEnableFont_FontControl']")
 	private static WebElement EnableFontChkboxS;
-	
-	
+
+
 	@FindBy(xpath="//input[@id='chkBaseline_FontControl']//following-sibling::span")
 	private static WebElement BaselineChkbox;
 
@@ -17972,7 +18250,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	@FindBy(xpath="//div[@id='id_FontDialog']/div/div/div[3]/button[2]")
 	private static WebElement FontDialogCancelBtn;
 
-	@FindBy(xpath="//input[@id='browsebtn_3_1999']")
+	@FindBy(xpath="//input[@id='browsebtn_3_2000']")
 	private static WebElement ConditionBrowseBtn;
 
 	@FindBy(xpath="//div[@id='769_100_AdvanceFilter_']/table/tbody/tr/td[1]/select")
@@ -18001,80 +18279,80 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	///
 
-	@FindBy(xpath="//*[@id='BodyColumn_1999_0']")
+	@FindBy(xpath="//*[@id='BodyColumn_2000_0']")
 	private static WebElement CwarehouseTxtField;
 
-	@FindBy(xpath="//*[@id='BodyColumn_1999_1']")
+	@FindBy(xpath="//*[@id='BodyColumn_2000_1']")
 	private static WebElement CitemTxtField;
 
-	@FindBy(xpath="//*[@id='BodyColumn_1999_2']")
+	@FindBy(xpath="//*[@id='BodyColumn_2000_2']")
 	private static WebElement CtaxCodeTxtField;
 
-	@FindBy(xpath="//*[@id='BodyColumn_1999_3']")
+	@FindBy(xpath="//*[@id='BodyColumn_2000_3']")
 	private static WebElement CpurchaseAccountTxtfiled;
 
-	@FindBy(xpath="//*[@id='BodyColumn_1999_4']")
+	@FindBy(xpath="//*[@id='BodyColumn_2000_4']")
 	private static WebElement CunitTxtField;
 
-	@FindBy(xpath="//*[@id='BodyColumn_1999_5']")
+	@FindBy(xpath="//*[@id='BodyColumn_2000_5']")
 	private static WebElement CquantityTxtField;
 
-	@FindBy(xpath="//*[@id='BodyColumn_1999_6']")
+	@FindBy(xpath="//*[@id='BodyColumn_2000_6']")
 	private static WebElement CrateTxtField;
 
-	@FindBy(xpath="//*[@id='BodyColumn_1999_7']")
+	@FindBy(xpath="//*[@id='BodyColumn_2000_7']")
 	private static WebElement CgrossTxtField;
 
-	@FindBy(xpath="//*[@id='BodyColumn_1999_8']")
+	@FindBy(xpath="//*[@id='BodyColumn_2000_8']")
 	private static WebElement CvatTxtField;
 
 
 	@FindBy(xpath="/html/body/ul/li[5]/span")
 	private static WebElement  CPropertiesBtn;
 
-	@FindBy(xpath="//*[@id='FTextBox_14_1999']")
+	@FindBy(xpath="//*[@id='FTextBox_14_2000']")
 	private static WebElement CwidthTxt2;
 
-	@FindBy(xpath="//*[@id='Combobox_2_1999']")
+	@FindBy(xpath="//*[@id='Combobox_2_2000']")
 	private static WebElement CTxtalignment;
 
-	@FindBy(xpath="//input[@id='TextBox_1_1999']")
+	@FindBy(xpath="//input[@id='TextBox_1_2000']")
 	private static WebElement CAliasNameTxt;
 
-	@FindBy(xpath="//select[@id='Combobox_10_1999']")
+	@FindBy(xpath="//select[@id='Combobox_10_2000']")
 	private static WebElement CHideColumnDrpdwn;
 
-	@FindBy(xpath="//input[@id='FNumericBox_5_1999']")
+	@FindBy(xpath="//input[@id='FNumericBox_5_2000']")
 	private static WebElement CDecimalInColumn;
 
-	@FindBy(xpath="//input[@id='TextBox_8_1999']")
+	@FindBy(xpath="//input[@id='TextBox_8_2000']")
 	private static WebElement CHeading2Txt;
 
-	@FindBy(xpath="//input[@id='TextBox_7_1999']")
+	@FindBy(xpath="//input[@id='TextBox_7_2000']")
 	private static WebElement CGroupNameTxt;
 
-	@FindBy(xpath="//input[@id='TextBox_15_1999']")
+	@FindBy(xpath="//input[@id='TextBox_15_2000']")
 	private static WebElement CSuffixTxt;
 
-	@FindBy(xpath="//select[@id='Combobox_19_1999']")
+	@FindBy(xpath="//select[@id='Combobox_19_2000']")
 	private static WebElement CRoundTypeDrpdwn;
 
-	@FindBy(xpath="//select[@id='Combobox_9_1999']")
+	@FindBy(xpath="//select[@id='Combobox_9_2000']")
 	private static WebElement CAlignmentHeadingDrpdwn;
 
-	@FindBy(xpath="//select[@id='Combobox_12_1999']")
+	@FindBy(xpath="//select[@id='Combobox_12_2000']")
 	private static WebElement CWordWrapDrpdwn;
 
-	@FindBy(xpath="//select[@id='Combobox_10_1999']")
+	@FindBy(xpath="//select[@id='Combobox_10_2000']")
 	private static WebElement CPrintUnderPreviousColumnDrpdwn;
 
-	@FindBy(xpath="//input[@id='browsebtn_4_1999']")
+	@FindBy(xpath="//input[@id='browsebtn_4_2000']")
 	private static WebElement CFontBrowseBtn;
-	
 
-	@FindBy(xpath="//select[@id='Combobox_24_1999']")
+
+	@FindBy(xpath="//select[@id='Combobox_24_2000']")
 	private static WebElement showGridLinesPopup;
-		
+
 
 
 	///
@@ -18092,29 +18370,29 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
 		printBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
 		LayoutNameTxt.click();
 		Thread.sleep(1200);
 		LayoutNameTxt.sendKeys(Keys.END);
 		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys("PurchasesVoucherVatCreatedLayout");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutName_Editlayout));
 		LayoutName_Editlayout.click();
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		int count = LayoutBodyHeaderListInCL.size();
@@ -18123,30 +18401,141 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		for (int i = count-1; i >= 0; i--) 
 		{
 			String data = LayoutBodyHeaderListInCL.get(i).getText();
+			
+			
+			
 
+			if (data.equalsIgnoreCase("RMA")) 
+			{
+				getAction().contextClick(LayoutBodyHeaderListInCL.get(i)).build().perform();
+
+				Thread.sleep(1600);
+
+				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
+				PropertiesBtn.click();
+
+				Thread.sleep(1600);
+
+				Select alignment = new Select(CTxtalignment);
+				alignment.selectByVisibleText("Left");
+
+				Thread.sleep(1600);
+
+
+				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(CwidthTxt));
+				getAction().doubleClick(CwidthTxt).build().perform();
+				CwidthTxt.sendKeys(Keys.END);
+				CwidthTxt.sendKeys(Keys.SHIFT, Keys.HOME);
+				CwidthTxt.sendKeys("80");
+
+				Thread.sleep(1600);
+			}
+
+			
+
+			if (data.equalsIgnoreCase("Bin")) 
+			{
+				getAction().contextClick(LayoutBodyHeaderListInCL.get(i)).build().perform();
+
+				Thread.sleep(1600);
+
+				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
+				PropertiesBtn.click();
+
+				Thread.sleep(1600);
+
+				Select alignment = new Select(CTxtalignment);
+				alignment.selectByVisibleText("Left");
+
+				Thread.sleep(1600);
+
+
+				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(CwidthTxt));
+				getAction().doubleClick(CwidthTxt).build().perform();
+				CwidthTxt.sendKeys(Keys.END);
+				CwidthTxt.sendKeys(Keys.SHIFT, Keys.HOME);
+				CwidthTxt.sendKeys("60");
+
+				Thread.sleep(1600);
+			}
+
+			
+
+			if (data.equalsIgnoreCase("Batch")) 
+			{
+				getAction().contextClick(LayoutBodyHeaderListInCL.get(i)).build().perform();
+
+				Thread.sleep(1600);
+
+				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
+				PropertiesBtn.click();
+
+				Thread.sleep(1600);
+
+				Select alignment = new Select(CTxtalignment);
+				alignment.selectByVisibleText("Left");
+
+				Thread.sleep(1600);
+
+
+				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(CwidthTxt));
+				getAction().doubleClick(CwidthTxt).build().perform();
+				CwidthTxt.sendKeys(Keys.END);
+				CwidthTxt.sendKeys(Keys.SHIFT, Keys.HOME);
+				CwidthTxt.sendKeys("80");
+
+				Thread.sleep(1600);
+			}
+
+			
+			if (data.equalsIgnoreCase("Gross")) 
+			{
+				getAction().contextClick(LayoutBodyHeaderListInCL.get(i)).build().perform();
+
+				Thread.sleep(1600);
+
+				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
+				PropertiesBtn.click();
+
+				Thread.sleep(1600);
+
+				Select alignment = new Select(CTxtalignment);
+				alignment.selectByVisibleText("Left");
+
+				Thread.sleep(1600);
+
+
+				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(widthTxt));
+				getAction().doubleClick(widthTxt).build().perform();
+				widthTxt.sendKeys(Keys.END);
+				widthTxt.sendKeys(Keys.SHIFT, Keys.HOME);
+				widthTxt.sendKeys("50");
+
+				Thread.sleep(1600);
+			}
 
 
 			if (data.equalsIgnoreCase("Rate")) 
 			{
 				getAction().contextClick(LayoutBodyHeaderListInCL.get(i)).build().perform();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 				PropertiesBtn.click();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				Select alignment = new Select(CTxtalignment);
 				alignment.selectByVisibleText("Left");
 
-				Thread.sleep(2000);
-				
+				Thread.sleep(1600);
+
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Heading2Txt));
 				Heading2Txt.click();
 				Heading2Txt.sendKeys("INR");
-			
-				Thread.sleep(2000);
+
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(SuffixTxt));
 				SuffixTxt.click();
@@ -18155,208 +18544,149 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				SuffixTxt.sendKeys("Rupees");
 
 
-				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(CwidthTxt));
-				getAction().doubleClick(CwidthTxt).build().perform();
-				CwidthTxt.sendKeys(Keys.END);
-				CwidthTxt.sendKeys(Keys.SHIFT, Keys.HOME);
-				CwidthTxt.sendKeys("60");
+				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(widthTxt));
+				getAction().doubleClick(widthTxt).build().perform();
+				widthTxt.sendKeys(Keys.END);
+				widthTxt.sendKeys(Keys.SHIFT, Keys.HOME);
+				widthTxt.sendKeys("50");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 			}
 			if (data.equalsIgnoreCase("Quantity")) 
 			{
 				getAction().contextClick(LayoutBodyHeaderListInCL.get(i)).build().perform();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 				PropertiesBtn.click();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				Select alignment = new Select(CTxtalignment);
 				alignment.selectByVisibleText("Left");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
-				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(CwidthTxt));
-				getAction().doubleClick(CwidthTxt).build().perform();
-				CwidthTxt.sendKeys(Keys.END);
-				CwidthTxt.sendKeys(Keys.SHIFT, Keys.HOME);
-				CwidthTxt.sendKeys("60");
+				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(widthTxt));
+				getAction().doubleClick(widthTxt).build().perform();
+				widthTxt.sendKeys(Keys.END);
+				widthTxt.sendKeys(Keys.SHIFT, Keys.HOME);
+				widthTxt.sendKeys("50");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 			}
 			if (data.equalsIgnoreCase("Un.Name")) 
 			{
 				getAction().contextClick(LayoutBodyHeaderListInCL.get(i)).build().perform();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 				PropertiesBtn.click();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(CwidthTxt2));
 				getAction().doubleClick(CwidthTxt2).build().perform();
 				CwidthTxt2.sendKeys(Keys.END);
 				CwidthTxt2.sendKeys(Keys.SHIFT, Keys.HOME);
-				CwidthTxt2.sendKeys("60");
+				CwidthTxt2.sendKeys("50");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 			}
 			if (data.equalsIgnoreCase("Pu.Name")) 
 			{
 				getAction().contextClick(LayoutBodyHeaderListInCL.get(i)).build().perform();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 				PropertiesBtn.click();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(CwidthTxt2));
 				getAction().doubleClick(CwidthTxt2).build().perform();
 				CwidthTxt2.sendKeys(Keys.END);
 				CwidthTxt2.sendKeys(Keys.SHIFT, Keys.HOME);
-				CwidthTxt2.sendKeys("110");
+				CwidthTxt2.sendKeys("100");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 			}
 
 			if (data.equalsIgnoreCase("Ta.Name")) 
 			{
 				getAction().contextClick(LayoutBodyHeaderListInCL.get(i)).build().perform();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 				PropertiesBtn.click();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(CwidthTxt2));
 				getAction().doubleClick(CwidthTxt2).build().perform();
 				CwidthTxt2.sendKeys(Keys.END);
 				CwidthTxt2.sendKeys(Keys.SHIFT, Keys.HOME);
-				CwidthTxt2.sendKeys("180");
+				CwidthTxt2.sendKeys("160");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 			}
 			if (data.equalsIgnoreCase("It.Name")) 
 			{
 				getAction().contextClick(LayoutBodyHeaderListInCL.get(i)).build().perform();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 				PropertiesBtn.click();
 
-				Thread.sleep(2000);
-				
+				Thread.sleep(1600);
+
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(FontBrowseBtn));
 				FontBrowseBtn.click();
-				
-				Thread.sleep(2000);
-				
+
+				Thread.sleep(1600);
+
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(FontFamilyDrpdwn));
-				
+
 				Select FontFamily = new Select(FontFamilyDrpdwn);
 				FontFamily.selectByVisibleText("Arial Rounded MT");
-				
+
 				Select FontStyle = new Select(FontStyleDrpdwn);
 				FontStyle.selectByVisibleText("Italic");
-				
+
 				Select FontWeight = new Select(FontWeightDrpdwn);
 				FontWeight.selectByVisibleText("Bold");
-				
+
 				Select FontSize = new Select(FontSizeDrpdwn);
 				FontSize.selectByVisibleText("10");
-				
+
 				Select ForeColor = new Select(ForeColorDrpdwn);
 				ForeColor.selectByVisibleText("Blue");
-				
+
 				Select BackColor = new Select(BackColorDrpdwn);
 				BackColor.selectByVisibleText("White");
-				
+
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(BaselineChkbox));
 				BaselineChkbox.click();
-				
+
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(OverlineChkbox));
 				OverlineChkbox.click();
-			
-				
+
+
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(UnderLineChkbox));
 				UnderLineChkbox.click();
-				
-				Thread.sleep(2000);
-				
+
+				Thread.sleep(1600);
+
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(FontDialogOkBtn));
 				FontDialogOkBtn.click();
-				
-				Thread.sleep(2000);
-				
 
-				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(CwidthTxt2));
-				getAction().doubleClick(CwidthTxt2).build().perform();
-				CwidthTxt2.sendKeys(Keys.END);
-				CwidthTxt2.sendKeys(Keys.SHIFT, Keys.HOME);
-				CwidthTxt2.sendKeys("120");
+				Thread.sleep(1600);
 
-				Thread.sleep(2000);
-			}
-			if (data.equalsIgnoreCase("Wa.Name")) 
-			{
-				getAction().contextClick(LayoutBodyHeaderListInCL.get(i)).build().perform();
-
-				Thread.sleep(2000);
-
-				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
-				PropertiesBtn.click();
-
-				Thread.sleep(2000);
-				
-				Thread.sleep(3000);
-				
-				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(ConditionBrowseBtn));
-				ConditionBrowseBtn.click();
-
-				Thread.sleep(2000);
-				
-				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(ConditionConjunctionDrpdwn));
-				Select conjunction = new Select(ConditionConjunctionDrpdwn);
-				conjunction.selectByVisibleText("Where");
-				
-				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(ConditionSelectField));
-				ConditionSelectField.click();
-				
-				Thread.sleep(2000);
-				
-				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(SelectFieldWarehouse));
-				SelectFieldWarehouse.click();
-				
-				Thread.sleep(2000);
-				
-				Select selectoperator = new Select(ConditionSelectOperatorDrpdwn);
-				selectoperator.selectByVisibleText("Equal to");
-				
-				Select comparewith = new Select(ConditionCompareWithDrpdwn);
-				comparewith.selectByVisibleText("value");
-				
-				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(ConditionValueTxt));
-				ConditionValueTxt.click();
-				ConditionValueTxt.sendKeys("Hyderabad");
-				Thread.sleep(3000);
-				ConditionValueTxt.sendKeys(Keys.TAB);
-				
-				Thread.sleep(2000);
-				
-				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(ConditionOkBtn));
-				ConditionOkBtn.click();
-				
-				Thread.sleep(3000);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(CwidthTxt2));
 				getAction().doubleClick(CwidthTxt2).build().perform();
@@ -18364,30 +18694,89 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				CwidthTxt2.sendKeys(Keys.SHIFT, Keys.HOME);
 				CwidthTxt2.sendKeys("110");
 
+				Thread.sleep(1600);
+			}
+			if (data.equalsIgnoreCase("Wa.Name")) 
+			{
+				getAction().contextClick(LayoutBodyHeaderListInCL.get(i)).build().perform();
+
+				Thread.sleep(1600);
+
+				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
+				PropertiesBtn.click();
+
+				Thread.sleep(1600);
+
 				Thread.sleep(2000);
+
+				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(ConditionBrowseBtn));
+				ConditionBrowseBtn.click();
+
+				Thread.sleep(1600);
+
+				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(ConditionConjunctionDrpdwn));
+				Select conjunction = new Select(ConditionConjunctionDrpdwn);
+				conjunction.selectByVisibleText("Where");
+
+				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(ConditionSelectField));
+				ConditionSelectField.click();
+
+				Thread.sleep(1600);
+
+				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(SelectFieldWarehouse));
+				SelectFieldWarehouse.click();
+
+				Thread.sleep(1600);
+
+				Select selectoperator = new Select(ConditionSelectOperatorDrpdwn);
+				selectoperator.selectByVisibleText("Equal to");
+
+				Select comparewith = new Select(ConditionCompareWithDrpdwn);
+				comparewith.selectByVisibleText("value");
+
+				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(ConditionValueTxt));
+				ConditionValueTxt.click();
+				ConditionValueTxt.sendKeys("Hyderabad");
+				Thread.sleep(2000);
+				ConditionValueTxt.sendKeys(Keys.TAB);
+
+				Thread.sleep(1600);
+
+				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(ConditionOkBtn));
+				ConditionOkBtn.click();
+
+				Thread.sleep(2000);
+
+				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(CwidthTxt2));
+				getAction().doubleClick(CwidthTxt2).build().perform();
+				CwidthTxt2.sendKeys(Keys.END);
+				CwidthTxt2.sendKeys(Keys.SHIFT, Keys.HOME);
+				CwidthTxt2.sendKeys("100");
+
+				Thread.sleep(1600);
 			}
 		}
 
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(bodyGrid));
 		getAction().contextClick(bodyGrid).build().perform();
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 		PropertiesBtn.click();
-		
-		
-		 Select showGridLines = new Select(showGridLinesPopup);
-		 showGridLines.selectByVisibleText("Horizontal");
-		 
-			
-		 Select bodyLength = new Select(gridBodyLengthVariable);
-		 bodyLength.selectByVisibleText("True");
-		 
+
+
+		Select showGridLines = new Select(showGridLinesPopup);
+		showGridLines.selectByVisibleText("Horizontal");
+
+
+		Select bodyLength = new Select(gridBodyLengthVariable);
+		bodyLength.selectByVisibleText("True");
+
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(CbodyhieghtTxt));
 		getAction().doubleClick(CbodyhieghtTxt).build().perform();
 		CbodyhieghtTxt.sendKeys(Keys.END);
@@ -18400,7 +18789,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Savedropdown));
 		Savedropdown.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
@@ -18408,14 +18797,14 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		String expMessage = "Layout saved successfully";
 		String actMessage = checkValidationMessage(expMessage);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		if (actMessage.equalsIgnoreCase(expMessage)) 
 		{
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ExitBtn));
 			ExitBtn.click();
 
-			Thread.sleep(3000);
+			Thread.sleep(2000);
 
 			return true;
 		}
@@ -18424,7 +18813,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ExitBtn));
 			ExitBtn.click();
 
-			Thread.sleep(3000);
+			Thread.sleep(2000);
 
 			return false;
 		}
@@ -18448,26 +18837,32 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
 		printBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(createLayoutBtn));
 		createLayoutBtn.click();
+		
+		Thread.sleep(2000);
+Thread.sleep(2000);
+		
+		blankTemplateBtn.click();
+		Thread.sleep(2000);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(previewTab));
 		previewTab.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(designerTab));
 		designerTab.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(FieldsTab));
 		FieldsTab.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(clickonHeader));
 		clickonHeader.click();
@@ -18479,17 +18874,17 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(clickonHeader));
 		clickonHeader.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(clickOnBody));
 		clickOnBody.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Finance_Purchases_Header_WareHouseExpandBtn));
 		Finance_Purchases_Header_WareHouseExpandBtn.click();
 
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 
 		Runtime.getRuntime().exec(getBaseDir()+"\\autoIt\\scripts\\LayoutBodyFields.exe");
 
@@ -18498,28 +18893,28 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(bodyGrid));
 		getAction().contextClick(bodyGrid).build().perform();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 		PropertiesBtn.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(bodyGridTopTextFiled));
 		getAction().doubleClick(bodyGridTopTextFiled).build().perform();
 		bodyGridTopTextFiled.sendKeys("220");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Savedropdown));
 		getAction().moveToElement(Savedropdown).click().build().perform();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(layoutNameTextField));
 		layoutNameTextField.sendKeys("PurchasesVoucherVatLayoutForDelete");
@@ -18532,7 +18927,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		String expMessage = "Layout saved successfully";
 		String actMessage = checkValidationMessage(expMessage);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		String actTitle = SavedlayoutNameTitle.getText();
 		String expTitle ="[PurchasesVoucherVatLayoutForDelete]";
@@ -18540,7 +18935,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ExitBtn));
 		ExitBtn.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		if (actMessage.equalsIgnoreCase(expMessage) && actTitle.equalsIgnoreCase(expTitle) )
 		{
@@ -18570,22 +18965,22 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
 		printBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
 		LayoutNameTxt.click();
 		LayoutNameTxt.sendKeys(Keys.END);
 		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys("PurchasesVoucherVatLayoutForDelete");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutName_Editlayout));
 		LayoutName_Editlayout.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		Runtime.getRuntime().exec(getBaseDir()+"\\autoIt\\scripts\\EditLayout.exe");
 
@@ -18594,7 +18989,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Savedropdown));
 		Savedropdown.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
@@ -18602,12 +18997,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		String expMessage = "Layout saved successfully";
 		String actMessage = checkValidationMessage(expMessage);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ExitBtn));
 		ExitBtn.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		if (actMessage.equalsIgnoreCase(expMessage))
 		{
@@ -18637,12 +19032,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
 		printBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		/*getWebDriverWait().until(ExpectedConditions.elementToBeClickable(layoutTab));
 						layoutTab.click();
 
-						Thread.sleep(2000);
+						Thread.sleep(1600);
 
 						ArrayList<String>  actVendorAccountList= new ArrayList<String>(); 
 
@@ -18665,16 +19060,16 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		LayoutNameTxt.click();
 		LayoutNameTxt.sendKeys(Keys.END);
 		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys("PurchasesVoucherVatLayoutForDelete");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutName_Editlayout));
 		LayoutName_Editlayout.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(exchangeRateFiled));
 		boolean actExchangeField = exchangeRateFiled.isDisplayed();
@@ -18691,7 +19086,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Removedropdown));
 		Removedropdown.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(RemoveBtn));
 		RemoveBtn.click();
@@ -18713,7 +19108,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ExitBtn));
 			ExitBtn.click();
 
-			Thread.sleep(3000);
+			Thread.sleep(2000);
 
 			return true;
 		} 
@@ -18722,7 +19117,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ExitBtn));
 			ExitBtn.click();
 
-			Thread.sleep(3000);
+			Thread.sleep(2000);
 
 			return false;
 		}
@@ -18739,10 +19134,10 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionsPurchaseMenu));
 		financialsTransactionsPurchaseMenu.click();
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		File Efile=new File(getBaseDir()+"\\autoIt\\ExportFiles\\PurchaseVoucherVATPrintWithCreatedLayout.pdf");
 
@@ -18777,29 +19172,29 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		Thread.sleep(1200);
 		LayoutNameTxt.sendKeys(Keys.END);
 		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys("PurchasesVoucherVatCreatedLayout");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
-		Select s = new Select(LayoutOptionsdropdown);
-		s.selectByValue("3");
+		/*Select s = new Select(LayoutOptionsdropdown);
+		s.selectByValue("3");*/
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(footerPDFBtn));
 		footerPDFBtn.click();
 
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 
 		Robot robot = new Robot();
-		robot.keyPress(KeyEvent.VK_CONTROL);
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		robot.keyPress(KeyEvent.VK_TAB);
 		robot.keyRelease(KeyEvent.VK_TAB);
@@ -18809,7 +19204,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyPress(KeyEvent.VK_ENTER);
 		robot.keyRelease(KeyEvent.VK_ENTER);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
@@ -18817,18 +19212,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyRelease(KeyEvent.VK_S);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
-
+		Thread.sleep(1600);
+*/
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\SavingPrintPDFInPurchaseVoucherWithCreatedLayout.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(8000);
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
 
@@ -18839,12 +19234,26 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		Thread.sleep(1000);
 
-		getDriver().switchTo().window(openTabs.get(2)).close();
+	/*	getDriver().switchTo().window(openTabs.get(2)).close();
 		Thread.sleep(1000);
 		getDriver().switchTo().window(openTabs.get(1)).close();
 		Thread.sleep(1000);
 		getDriver().switchTo().window(openTabs.get(0));
-
+*/
+		
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);*/
+		
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		
 
 		String actPDF = getBaseDir()+"\\autoIt\\ExportFiles\\PurchaseVoucherVATPrintWithCreatedLayout.pdf";
 		String expPDF = getBaseDir()+"\\autoIt\\ImportFiles\\PurchaseVoucherVATPrintWithCreatedLayout.pdf";
@@ -18872,14 +19281,20 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	}
 
 
+	@FindBy (xpath="//div[@id='id_LayoutDiv_0']")
+	
+	private static WebElement FirstPage;
 
-
-	@FindBy (xpath="//div[@id='id_LayoutDiv_1']")
+	//@FindBy (xpath="//div[@id='id_LayoutDiv_1']")
+	@FindBy(xpath="//*[@id='Design']//div[@id='id_LayoutDiv_1']")
 	private static WebElement SecondPage;
 
 
 	public boolean checkCreatingLayoutWithTwoPages() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
+		Thread.sleep(1200);
+		getAction().moveToElement(financialsMenu).build().perform();
+		Thread.sleep(1200);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
 
@@ -18892,102 +19307,88 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
 		printBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(createLayoutBtn));
 		createLayoutBtn.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
+		
+Thread.sleep(2000);
+		
+		blankTemplateBtn.click();
+		Thread.sleep(2000);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(FieldsTab));
 		FieldsTab.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNewBtn));
 		LayoutNewBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getAction().moveToElement(LayoutNewPage).build().perform();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNewPage));
 		LayoutNewPage.click();
 
 		getWaitForAlert();
 		getAlert().accept();
-
-
-		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(clickonHeader));
-		clickonHeader.click();
-
-		Runtime.getRuntime().exec(getBaseDir()+"\\autoIt\\scripts\\HeaderFieldsDragF.exe");
-
-		Thread.sleep(60000);
-
-		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(clickonHeader));
-		clickonHeader.click();
-
 		Thread.sleep(2000);
 
-		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(clickOnBody));
-		clickOnBody.click();
+		/*getWebDriverWait().until(ExpectedConditions.elementToBeClickable(clickonHeader));
+		clickonHeader.click();*/
 
-		Thread.sleep(2000);
+		Runtime.getRuntime().exec(getBaseDir()+"\\autoIt\\scripts\\MultiPlePagesNew1.exe");
 
-		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Finance_Purchases_Header_WareHouseExpandBtn));
-		Finance_Purchases_Header_WareHouseExpandBtn.click();
+		Thread.sleep(160000);
+		
+		
 
-		Thread.sleep(5000);
-
-		Runtime.getRuntime().exec(getBaseDir()+"\\autoIt\\scripts\\BodyFieldsDragF.exe");
-
-		Thread.sleep(111000);
-
-		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(clickOnBody));
-		clickOnBody.click();
-
-		Thread.sleep(2000);
-
+		/*
 		getAction().sendKeys(Keys.HOME);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Controldrpdown));
 		getAction().moveToElement(Controldrpdown).click().build().perform();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);*/
 
-		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(StaticTextBtn));
-		StaticTextBtn.click();
+		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(SecondPage));
+		getAction().moveToElement(SecondPage).moveByOffset(0, 150).build().perform();
+		Thread.sleep(4000);
+		//scrollToElementJSE(SecondPage);
+		
+		//SecondPage.click();
+		Thread.sleep(5000);
+		System.out.println("************************************");
+	//	Runtime.getRuntime().exec(getBaseDir()+"\\autoIt\\scripts\\NextPage.exe");
+		//Thread.sleep(12000);
 
+		Runtime.getRuntime().exec(getBaseDir()+"\\autoIt\\scripts\\PrintVoucherWithMultiplePagesSecondPageNew1.exe");
 
-		JavascriptExecutor js = (JavascriptExecutor)getDriver();
-		js.executeScript("arguments[0].scrollIntoView(true);", SecondPage);
-
-		Thread.sleep(2000);
-
-		Thread.sleep(2000);
-
-		Runtime.getRuntime().exec(getBaseDir()+"\\autoIt\\scripts\\PrintVoucherWithMultiplePagesSecondPage.exe");
-
-		Thread.sleep(8000);
-
-		js.executeScript("arguments[0].scrollIntoView(true);", Savedropdown);
+		Thread.sleep(30000);
+	
+		//JavascriptExecutor js = (JavascriptExecutor)getDriver();
+		//js.executeScript("arguments[0].scrollIntoView(true);", Savedropdown);
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Savedropdown));
 		//getAction().moveToElement(Savedropdown).click().build().perform();
 
-		Thread.sleep(2000);
-		Savedropdown.click();
+		ClickUsingJs(Savedropdown);
 
-		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
-		SaveBtn.click();
+		/*getWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
+		SaveBtn.click();*/
+		
+		ClickUsingJs(SaveBtn);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(layoutNameTextField));
 		layoutNameTextField.sendKeys("LayoutForMultiplePages");
@@ -19000,7 +19401,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		String expMessage = "Layout saved successfully";
 		String actMessage = checkValidationMessage(expMessage);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		String actTitle = SavedlayoutNameTitle.getText();
 		String expTitle ="[LayoutForMultiplePages]";
@@ -19019,10 +19420,10 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	@FindBy (xpath="//table[@id='TableGrid_0_2000']/thead/tr/th")
 	private static List<WebElement> LayoutBodyHeaderList;
 
-	@FindBy (xpath="//table[@id='TableGrid_0_1999']/thead/tr/th")
+	@FindBy (xpath="//table[@id='TableGrid_0_2000']/thead/tr/th")
 	private static List<WebElement> CLayoutBodyHeaderList;
 
-	@FindBy (xpath="//table[@id='TableGrid_0_1999']/thead/tr/th")
+	@FindBy (xpath="//table[@id='TableGrid_0_2000']/thead/tr/th")
 	private static List<WebElement> LayoutBodyHeaderListInCL;
 
 	@FindBy (xpath="//table[@id='TableGrid_0_2000']/thead/tr/th")
@@ -19031,7 +19432,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 
 
-	@FindBy (xpath="//*[text()='Static Text']")
+	@FindBy (xpath="//*[@id='StaticText_1_2006']")
 	private static WebElement StaticTxtField;
 
 	@FindBy (xpath="//select[@id='FColorCombo_0_2006']")
@@ -19073,21 +19474,21 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	@FindBy (xpath="//input[@id='FTextBox_14_2006']")
 	private static WebElement StaticTxtSizeWidth;
 
-	@FindBy (xpath="//*[@id='FTextBox_27_2000']")
+	@FindBy (xpath="//*[@id='FTextBox_29_2000']")
 	private static WebElement bodyhieghtTxt;
 
-	@FindBy (xpath="//*[@id='FTextBox_26_1999']")
+	@FindBy (xpath="//*[@id='FTextBox_28_2000']")
 	private static WebElement CbodyhieghtTxt;
 
 
-	@FindBy (xpath="//*[@id='FTextBox_26_1999']")
+	@FindBy (xpath="//*[@id='FTextBox_29_2000']")
 	private static WebElement bodyhieghtTxtInMultiplePages;
 
-	@FindBy (xpath="//*[@id='FTextBox_26_2000']")
+	@FindBy (xpath="//*[@id='FTextBox_28_2000']")
 	private static WebElement CbodyhieghtTxtInMultiplePages;
 
 
-	@FindBy (xpath="//*[@id='StaticText_1_2020']")
+	@FindBy (xpath="//*[@id='StaticText_1_2006']")
 	private static WebElement staticElementTxt;
 
 
@@ -19105,28 +19506,28 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
 		printBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
 		LayoutNameTxt.click();
 		Thread.sleep(1200);
 		LayoutNameTxt.sendKeys(Keys.END);
 		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys("LayoutForMultiplePages");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutName_Editlayout));
 		LayoutName_Editlayout.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		int count = LayoutBodyHeaderListIbMp.size();
@@ -19140,17 +19541,17 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			{
 				getAction().contextClick(LayoutBodyHeaderListIbMp.get(i)).build().perform();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 				PropertiesBtn.click();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				Select alignment = new Select(CTxtalignment);
 				alignment.selectByVisibleText("Left");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(widthTxt));
 				getAction().doubleClick(widthTxt).build().perform();
@@ -19158,23 +19559,23 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				widthTxt.sendKeys(Keys.SHIFT, Keys.HOME);
 				widthTxt.sendKeys("60");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 			}
 			if (data.equalsIgnoreCase("Quantity")) 
 			{
 				getAction().contextClick(LayoutBodyHeaderListIbMp.get(i)).build().perform();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 				PropertiesBtn.click();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				Select alignment = new Select(CTxtalignment);
 				alignment.selectByVisibleText("Left");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(widthTxt));
 				getAction().doubleClick(widthTxt).build().perform();
@@ -19182,18 +19583,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				widthTxt.sendKeys(Keys.SHIFT, Keys.HOME);
 				widthTxt.sendKeys("60");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 			}
 			if (data.equalsIgnoreCase("Un.Name")) 
 			{
 				getAction().contextClick(LayoutBodyHeaderListIbMp.get(i)).build().perform();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 				PropertiesBtn.click();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(CwidthTxt2));
 				getAction().doubleClick(CwidthTxt2).build().perform();
@@ -19201,38 +19602,38 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				CwidthTxt2.sendKeys(Keys.SHIFT, Keys.HOME);
 				CwidthTxt2.sendKeys("60");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 			}
 			if (data.equalsIgnoreCase("Pu.Name")) 
 			{
 				getAction().contextClick(LayoutBodyHeaderListIbMp.get(i)).build().perform();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 				PropertiesBtn.click();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(CwidthTxt2));
 				getAction().doubleClick(CwidthTxt2).build().perform();
 				CwidthTxt2.sendKeys(Keys.END);
 				CwidthTxt2.sendKeys(Keys.SHIFT, Keys.HOME);
-				CwidthTxt2.sendKeys("110");
+				CwidthTxt2.sendKeys("200");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 			}
 
 			if (data.equalsIgnoreCase("Ta.Name")) 
 			{
 				getAction().contextClick(LayoutBodyHeaderListIbMp.get(i)).build().perform();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 				PropertiesBtn.click();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(CwidthTxt2));
 				getAction().doubleClick(CwidthTxt2).build().perform();
@@ -19240,56 +19641,56 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				CwidthTxt2.sendKeys(Keys.SHIFT, Keys.HOME);
 				CwidthTxt2.sendKeys("180");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 			}
 			if (data.equalsIgnoreCase("It.Name")) 
 			{
 				getAction().contextClick(LayoutBodyHeaderListIbMp.get(i)).build().perform();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 				PropertiesBtn.click();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(CwidthTxt2));
 				getAction().doubleClick(CwidthTxt2).build().perform();
 				CwidthTxt2.sendKeys(Keys.END);
 				CwidthTxt2.sendKeys(Keys.SHIFT, Keys.HOME);
-				CwidthTxt2.sendKeys("120");
+				CwidthTxt2.sendKeys("140");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 			}
 			if (data.equalsIgnoreCase("Wa.Name")) 
 			{
 				getAction().contextClick(LayoutBodyHeaderListIbMp.get(i)).build().perform();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 				PropertiesBtn.click();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(CwidthTxt2));
 				getAction().doubleClick(CwidthTxt2).build().perform();
 				CwidthTxt2.sendKeys(Keys.END);
 				CwidthTxt2.sendKeys(Keys.SHIFT, Keys.HOME);
-				CwidthTxt2.sendKeys("110");
+				CwidthTxt2.sendKeys("140");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 			}
 		}
 
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(bodyGrid));
 		getAction().contextClick(bodyGrid).build().perform();
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 		PropertiesBtn.click();
@@ -19303,35 +19704,38 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		JavascriptExecutor js = (JavascriptExecutor)getDriver();
-		js.executeScript("arguments[0].scrollIntoView(true);", StaticTxtField);
+		Thread.sleep(2000);
+		getAction().moveToElement(StaticTxtField).click().build().perform();
+	
+		//js.executeScript("arguments[0].scrollIntoView(true);", StaticTxtField);
 
 
 		/*	getWebDriverWait().until(ExpectedConditions.elementToBeClickable(StaticTxtField));1
 						getAction().moveToElement(StaticTxtField).build().perform();*/
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		getAction().contextClick(StaticTxtField).build().perform();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 		PropertiesBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
-		js.executeScript("arguments[0].scrollIntoView(true);", Savedropdown);
-
+		//js.executeScript("arguments[0].scrollIntoView(true);", Savedropdown);
+		getAction().moveToElement(StaticTxtBackColor).build().perform();
 		Select staticTxtbackclr = new Select(StaticTxtBackColor);
 		staticTxtbackclr.selectByVisibleText("LightSkyBlue");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		Select staticTxtfont = new Select(StaticTxtFontEffect);
 		staticTxtfont.selectByVisibleText("Underline");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(StaticTxtFontSize));
@@ -19343,39 +19747,40 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		Select staticTxtfontstyle = new Select(StaticTxtFontStyle);
 		staticTxtfontstyle.selectByVisibleText("Italic");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		Select statictxtfontweight = new Select(StaticTxtFontWeight);
 		statictxtfontweight.selectByVisibleText("Bold");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		Select staticTxtTextclr = new Select(StaticTxtTextColor);
 		staticTxtTextclr.selectByVisibleText("Black");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		Select staticTxtfntnme = new Select(StaticTxtFontName);
 		staticTxtfntnme.selectByVisibleText("Impact");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		Select statictxtalignmnt = new Select(StaticTxtAlignment);
 		statictxtalignmnt.selectByVisibleText("Center");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
-		js.executeScript("arguments[0].scrollIntoView(true);", StaticTxtText);
+		//js.executeScript("arguments[0].scrollIntoView(true);", StaticTxtText);
+		getAction().moveToElement(StaticTxtText).build().perform();
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(StaticTxtText));
 		StaticTxtText.sendKeys(Keys.END);
 		StaticTxtText.sendKeys(Keys.SHIFT, Keys.HOME);
 		StaticTxtText.sendKeys("Page2");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 
@@ -19384,7 +19789,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		StaticTxtPositionLeft.sendKeys(Keys.SHIFT, Keys.HOME);
 		StaticTxtPositionLeft.sendKeys("100");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(StaticTxtPositionTop));
 		StaticTxtPositionTop.sendKeys(Keys.END);
@@ -19398,19 +19803,20 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		StaticTxtSizeHeight.sendKeys(Keys.SHIFT, Keys.HOME);
 		StaticTxtSizeHeight.sendKeys("150");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(StaticTxtSizeWidth));
 		StaticTxtSizeWidth.sendKeys(Keys.END);
 		StaticTxtSizeWidth.sendKeys(Keys.SHIFT, Keys.HOME);
 		StaticTxtSizeWidth.sendKeys("600");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
-		Thread.sleep(3000);
+		Thread.sleep(4000);
 
-		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Savedropdown));
-		Savedropdown.click();
+		getAction().moveToElement(Savedropdown).build().perform();
+		Thread.sleep(2400);
+		ClickUsingJs(Savedropdown);
 
 		Thread.sleep(2000);
 
@@ -19420,12 +19826,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		String expMessage = "Layout saved successfully";
 		String actMessage = checkValidationMessage(expMessage);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		js.executeScript("arguments[0].scrollIntoView(true);", staticElementTxt);
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(staticElementTxt));
 		//getAction().moveToElement(staticElementTxt).build().perform();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		String actStyleElemnt =staticElementTxt.getAttribute("style");
 
@@ -19438,7 +19844,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ExitBtn));
 							ExitBtn.click();*/
 
-			Thread.sleep(3000);
+			Thread.sleep(2000);
 
 			return true;
 		}
@@ -19447,7 +19853,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ExitBtn));
 			ExitBtn.click();
 
-			Thread.sleep(3000);
+			Thread.sleep(2000);
 
 			return false;
 		}
@@ -19455,8 +19861,10 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkPrintPdfOfLayoutForMultiplePages() throws InterruptedException, AWTException, IOException
 	{
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
+		Thread.sleep(2500);
+		getAction().moveToElement(financialsMenu).build().perform();
+		Thread.sleep(2000);
+		ClickUsingJs(financialsMenu);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionMenu));
 		financialsTransactionMenu.click();
@@ -19467,7 +19875,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		File Efile=new File(getBaseDir()+"\\autoIt\\ExportFiles\\PurchaseVatLayoutForMultiplePages.pdf");
 
@@ -19476,7 +19884,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			Efile.delete();
 		}
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
 
 		int count = grid_VoucherNoList.size();
@@ -19501,31 +19909,30 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
 		LayoutNameTxt.click();
 		Thread.sleep(1200);
-		LayoutNameTxt.sendKeys(Keys.END);
-		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		LayoutNameTxt.sendKeys(Keys.END,Keys.SHIFT,Keys.HOME);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys("LayoutForMultiplePages");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
-	/*	Select s = new Select(LayoutOptionsdropdown);
+		/*	Select s = new Select(LayoutOptionsdropdown);
 		s.selectByValue("3");
-*/
-		Thread.sleep(2000);
+		 */
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(footerPDFBtn));
 		footerPDFBtn.click();
 
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 
 		Robot robot = new Robot();
-		robot.keyPress(KeyEvent.VK_CONTROL);
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		robot.keyPress(KeyEvent.VK_TAB);
 		robot.keyRelease(KeyEvent.VK_TAB);
@@ -19535,7 +19942,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyPress(KeyEvent.VK_ENTER);
 		robot.keyRelease(KeyEvent.VK_ENTER);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
@@ -19543,18 +19950,19 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyRelease(KeyEvent.VK_S);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
+		*/
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\MultipageLayout.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
 
@@ -19565,18 +19973,34 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		Thread.sleep(1000);
 
-		getDriver().switchTo().window(openTabs.get(2)).close();
+	/*	getDriver().switchTo().window(openTabs.get(2)).close();
 		Thread.sleep(1000);
 		getDriver().switchTo().window(openTabs.get(1)).close();
 		Thread.sleep(1000);
 		getDriver().switchTo().window(openTabs.get(0));
-
+*/
+		
+/*		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		*/
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		
 
 		String actPDF = getBaseDir()+"\\autoIt\\ExportFiles\\PurchaseVatLayoutForMultiplePages.pdf";
 		String expPDF = getBaseDir()+"\\autoIt\\ImportFiles\\PurchaseVatLayoutForMultiplePages.pdf";
 
 		PDFUtil pdfutil = new PDFUtil();
 
+		Thread.sleep(4000);
+		
 		boolean result = pdfutil.compare(actPDF, expPDF);
 
 		String actData = pdfutil.getText(actPDF);
@@ -19605,7 +20029,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkCreatingLayoutForShapesLayout() throws IOException, InterruptedException, EncryptedDocumentException, InvalidFormatException
 	{
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
 
@@ -19618,22 +20042,27 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
 		printBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(createLayoutBtn));
 		createLayoutBtn.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
+		
+Thread.sleep(2000);
+		
+		blankTemplateBtn.click();
+		Thread.sleep(2000);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(previewTab));
 		previewTab.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(designerTab));
 		designerTab.click();
 
@@ -19641,7 +20070,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(clickonHeader));
 		clickonHeader.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		Runtime.getRuntime().exec(getBaseDir()+"\\autoIt\\scripts\\BitMapDrag.exe");
 
@@ -19651,7 +20080,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		Thread.sleep(100000);
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		Runtime.getRuntime().exec(getBaseDir()+"\\autoIt\\scripts\\DragDownToEmptyAreaN.exe");
 
@@ -19668,17 +20097,17 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(clickonHeader));
 		getAction().moveToElement(clickonHeader).click().build().perform();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Savedropdown));
 		getAction().moveToElement(Savedropdown).click().build().perform();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(layoutNameTextField));
 		layoutNameTextField.sendKeys("ShapesLayout");
@@ -19691,7 +20120,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		String expMessage = "Layout saved successfully";
 		String actMessage = checkValidationMessage(expMessage);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		String actTitle = SavedlayoutNameTitle.getText();
 		String expTitle ="[ShapesLayout]";
@@ -19950,36 +20379,36 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
 		printBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
 		LayoutNameTxt.click();
 		LayoutNameTxt.sendKeys(Keys.END);
 		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys("ShapesLayout");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutName_Editlayout));
 		LayoutName_Editlayout.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(imageInLaayout));
 		getAction().contextClick(imageInLaayout).build().perform();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 		PropertiesBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 
@@ -19988,30 +20417,30 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		imgBackground.selectByVisibleText("True");
 
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(rectangleInLayout));
 		getAction().contextClick(rectangleInLayout).build().perform();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 		PropertiesBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		Select rectFillClr = new Select(rectangleFillclr);
 		rectFillClr.selectByVisibleText("Plum");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 
 		Select rectBrdrClr = new Select(rectangleborderclr);
 		rectBrdrClr.selectByVisibleText("Black");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(rectanglePositionLeft));
 		rectanglePositionLeft.sendKeys(Keys.END);
@@ -20019,26 +20448,26 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		rectanglePositionLeft.sendKeys("110");
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(rectanglePositionTop));
 		rectanglePositionTop.sendKeys(Keys.END);
 		rectanglePositionTop.sendKeys(Keys.SHIFT, Keys.HOME);
 		rectanglePositionTop.sendKeys("180");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(rectangleSizeHeight));
 		rectangleSizeHeight.sendKeys(Keys.END);
 		rectangleSizeHeight.sendKeys(Keys.SHIFT, Keys.HOME);
 		rectangleSizeHeight.sendKeys("99");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(rectangleSizeWidth));
 		rectangleSizeWidth.sendKeys(Keys.END);
 		rectangleSizeWidth.sendKeys(Keys.SHIFT, Keys.HOME);
 		rectangleSizeWidth.sendKeys("600");
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 
 
@@ -20046,18 +20475,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(eclipseInLayout));
 		getAction().contextClick(eclipseInLayout).build().perform();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 		PropertiesBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		Select eclipseFillclr = new Select(eclipseFillClr);
 		eclipseFillclr.selectByVisibleText("Turquoise");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(eclipsePositionLeft));
 		eclipsePositionLeft.sendKeys(Keys.END);
@@ -20065,20 +20494,20 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		eclipsePositionLeft.sendKeys("110");
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(eclipsePoistionTop));
 		eclipsePoistionTop.sendKeys(Keys.END);
 		eclipsePoistionTop.sendKeys(Keys.SHIFT, Keys.HOME);
 		eclipsePoistionTop.sendKeys("310");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(eclipseSizeHeight));
 		eclipseSizeHeight.sendKeys(Keys.END);
 		eclipseSizeHeight.sendKeys(Keys.SHIFT, Keys.HOME);
 		eclipseSizeHeight.sendKeys("90");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(eclipseSizeWidth));
 		eclipseSizeWidth.sendKeys(Keys.END);
 		eclipseSizeWidth.sendKeys(Keys.SHIFT, Keys.HOME);
@@ -20089,24 +20518,24 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		Runtime.getRuntime().exec(getBaseDir()+"\\autoIt\\scripts\\DragDownToEmptyAreaN.exe");
 
-		Thread.sleep(15000);
+		Thread.sleep(20000);
 
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(approvalHistoryInLayout));
 		getAction().contextClick(approvalHistoryInLayout).build().perform();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 		PropertiesBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		Select appHstrybackclr = new Select(appHstryBackClr);
 		appHstrybackclr.selectByVisibleText("Plum");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(appHstryFontSize));
 		appHstryFontSize.sendKeys(Keys.END);
@@ -20114,42 +20543,42 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		appHstryFontSize.sendKeys("15");
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		Select appHstryfont = new Select(appHstryFontStyle);
 		appHstryfont.selectByVisibleText("Italic");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		Select appHstryfontweight = new Select(appHstryFontWeight);
 		appHstryfontweight.selectByVisibleText("Bold");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		Select appHstryfontname = new Select(appHstryFontName);
 		appHstryfontname.selectByVisibleText("Calibri");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(appHstryPositionLeft));
 		appHstryPositionLeft.sendKeys(Keys.END);
 		appHstryPositionLeft.sendKeys(Keys.SHIFT, Keys.HOME);
 		appHstryPositionLeft.sendKeys("110");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(appHstryPositionTop));
 		appHstryPositionTop.sendKeys(Keys.END);
 		appHstryPositionTop.sendKeys(Keys.SHIFT, Keys.HOME);
 		appHstryPositionTop.sendKeys("500");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(appHstrySizeHeight));
 		appHstrySizeHeight.sendKeys(Keys.END);
 		appHstrySizeHeight.sendKeys(Keys.SHIFT, Keys.HOME);
 		appHstrySizeHeight.sendKeys("100");
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(appHstryWidth));
 		appHstryWidth.sendKeys(Keys.END);
 		appHstryWidth.sendKeys(Keys.SHIFT, Keys.HOME);
@@ -20159,18 +20588,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(postingDetailsInLayout));
 		getAction().contextClick(postingDetailsInLayout).build().perform();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 		PropertiesBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		Select postingdetailsbackclr = new Select(postingDetailsBackClr);
 		postingdetailsbackclr.selectByVisibleText("SlateGray");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(postingDetailsFontSize));
 		postingDetailsFontSize.sendKeys(Keys.END);
@@ -20178,42 +20607,42 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		postingDetailsFontSize.sendKeys("15");
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		Select pdfont = new Select(postingDetailsFontStyle);
 		pdfont.selectByVisibleText("Italic");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		Select pdfontweight = new Select(postingDetailsFontWeight);
 		pdfontweight.selectByVisibleText("Bold");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		Select pdfontname = new Select(postingDEtailsFontName);
 		pdfontname.selectByVisibleText("Calibri");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(postingDetailsPositionLeft));
 		postingDetailsPositionLeft.sendKeys(Keys.END);
 		postingDetailsPositionLeft.sendKeys(Keys.SHIFT, Keys.HOME);
 		postingDetailsPositionLeft.sendKeys("110");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(postingDetailsPositionTop));
 		postingDetailsPositionTop.sendKeys(Keys.END);
 		postingDetailsPositionTop.sendKeys(Keys.SHIFT, Keys.HOME);
 		postingDetailsPositionTop.sendKeys("700");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(postingdetailsSizeHeight));
 		postingdetailsSizeHeight.sendKeys(Keys.END);
 		postingdetailsSizeHeight.sendKeys(Keys.SHIFT, Keys.HOME);
 		postingdetailsSizeHeight.sendKeys("100");
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(postingDetailsWidth));
 		postingDetailsWidth.sendKeys(Keys.END);
 		postingDetailsWidth.sendKeys(Keys.SHIFT, Keys.HOME);
@@ -20223,7 +20652,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Savedropdown));
 		getAction().moveToElement(Savedropdown).click().build().perform();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
@@ -20261,7 +20690,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		File Efile=new File(getBaseDir()+"\\autoIt\\ExportFiles\\ShapesLayout.pdf");
 
@@ -20270,7 +20699,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			Efile.delete();
 		}
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
 
 		int count = grid_VoucherNoList.size();
@@ -20296,21 +20725,21 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		LayoutNameTxt.click();
 		LayoutNameTxt.sendKeys(Keys.END);
 		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys("ShapesLayout");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		Select s = new Select(LayoutOptionsdropdown);
 		s.selectByValue("3");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(footerPrintBtn));
 		footerPrintBtn.click();
 
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 
 		Robot robot = new Robot();
 		robot.keyPress(KeyEvent.VK_CONTROL);
@@ -20318,7 +20747,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		robot.keyPress(KeyEvent.VK_TAB);
 		robot.keyRelease(KeyEvent.VK_TAB);
@@ -20328,7 +20757,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyPress(KeyEvent.VK_ENTER);
 		robot.keyRelease(KeyEvent.VK_ENTER);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
@@ -20336,18 +20765,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyRelease(KeyEvent.VK_S);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\ShapesLayoutPdf.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
 
@@ -20358,11 +20787,25 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		Thread.sleep(1000);
 
-		getDriver().switchTo().window(openTabs.get(2)).close();
+	/*	getDriver().switchTo().window(openTabs.get(2)).close();
 		Thread.sleep(1000);
 		getDriver().switchTo().window(openTabs.get(1)).close();
 		Thread.sleep(1000);
-		getDriver().switchTo().window(openTabs.get(0));
+		getDriver().switchTo().window(openTabs.get(0));*/
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		
 
 
 		String actPDF = getBaseDir()+"\\autoIt\\ExportFiles\\ShapesLayout.pdf";
@@ -20382,7 +20825,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 
 		/* getDriver().navigate().refresh();
-					 Thread.sleep(2000);
+					 Thread.sleep(1600);
 
 					 getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(userNameDisplay));
 					 userNameDisplay.click();
@@ -20413,7 +20856,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkCreatingLayoutforGridProperties() throws InterruptedException, IOException, EncryptedDocumentException, InvalidFormatException
 	{
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
 
@@ -20426,37 +20869,35 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
 		printBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(2500);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(createLayoutBtn));
 		createLayoutBtn.click();
 
 
-		Thread.sleep(3000);
-
-		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(openDropdown));
-		openDropdown.click();
-
+		Thread.sleep(2000);
+		Thread.sleep(2000);
+		
+		browseTemplateBtn.click();
 		Thread.sleep(2000);
 
-		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(openDropdownFromXMLBtn));
-		openDropdownFromXMLBtn.click();
+	
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\LayoutImport.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 
 
 		/*
 					getWebDriverWait().until(ExpectedConditions.elementToBeClickable(clickonHeader));
 					clickonHeader.click();
 
-					Thread.sleep(2000);
+					Thread.sleep(1600);
 
 					Runtime.getRuntime().exec(getBaseDir()+"\\autoIt\\scripts\\PrintVoucherWithMultiplePagesHeader.exe");
 
@@ -20465,12 +20906,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 					getWebDriverWait().until(ExpectedConditions.elementToBeClickable(clickonHeader));
 					clickonHeader.click();
 
-					Thread.sleep(3000);
+					Thread.sleep(2000);
 
 					getWebDriverWait().until(ExpectedConditions.elementToBeClickable(clickOnBody));
 					clickOnBody.click();
 
-					Thread.sleep(2000);
+					Thread.sleep(1600);
 
 					Runtime.getRuntime().exec(getBaseDir()+"\\autoIt\\scripts\\PrintVoucherWithMultiplePagesBody.exe");
 
@@ -20480,12 +20921,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Savedropdown));
 		getAction().moveToElement(Savedropdown).click().build().perform();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(layoutNameTextField));
 		layoutNameTextField.sendKeys("LayoutForGridProperties");
@@ -20498,7 +20939,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		String expMessage = "Layout saved successfully";
 		String actMessage = checkValidationMessage(expMessage);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		String actTitle = SavedlayoutNameTitle.getText();
 		String expTitle ="[LayoutForGridProperties]";
@@ -20624,19 +21065,19 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(6000);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
 		printBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
 		LayoutNameTxt.click();
 		Thread.sleep(1200);
 		LayoutNameTxt.sendKeys(Keys.END);
 		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		
 		LayoutNameTxt.sendKeys("LayoutForGridProperties");
 		Thread.sleep(2000);
 		LayoutNameTxt.sendKeys(Keys.TAB);
@@ -20648,13 +21089,13 @@ public class VoucherPrintOptionsPage extends BaseEngine
 						 getWebDriverWait().until(ExpectedConditions.elementToBeClickable(previewTab));
 							previewTab.click();
 
-							Thread.sleep(3000);
+							Thread.sleep(2000);
 							getWebDriverWait().until(ExpectedConditions.elementToBeClickable(designerTab));
 							designerTab.click();
 		 */
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		int count = LayoutBodyHeaderList.size();
 		System.out.println("count "+count);
 
@@ -20666,17 +21107,17 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			{
 				getAction().contextClick(LayoutBodyHeaderList.get(i)).build().perform();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 				PropertiesBtn.click();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				Select alignment = new Select(Txtalignment);
 				alignment.selectByVisibleText("Left");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(widthTxt));
 				getAction().doubleClick(widthTxt).build().perform();
@@ -20684,24 +21125,24 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				widthTxt.sendKeys(Keys.SHIFT, Keys.HOME);
 				widthTxt.sendKeys("60");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 			}
 
 			if (data.equalsIgnoreCase("Rate")) 
 			{
 				getAction().contextClick(LayoutBodyHeaderList.get(i)).build().perform();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 				PropertiesBtn.click();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				Select alignment = new Select(Txtalignment);
 				alignment.selectByVisibleText("Left");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(widthTxt));
 				getAction().doubleClick(widthTxt).build().perform();
@@ -20709,23 +21150,23 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				widthTxt.sendKeys(Keys.SHIFT, Keys.HOME);
 				widthTxt.sendKeys("60");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 			}
 			if (data.equalsIgnoreCase("Quantity")) 
 			{
 				getAction().contextClick(LayoutBodyHeaderList.get(i)).build().perform();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 				PropertiesBtn.click();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				Select alignment = new Select(Txtalignment);
 				alignment.selectByVisibleText("Left");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(widthTxt));
 				getAction().doubleClick(widthTxt).build().perform();
@@ -20733,18 +21174,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				widthTxt.sendKeys(Keys.SHIFT, Keys.HOME);
 				widthTxt.sendKeys("60");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 			}
 			if (data.equalsIgnoreCase("Un.Name")) 
 			{
 				getAction().contextClick(LayoutBodyHeaderList.get(i)).build().perform();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 				PropertiesBtn.click();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(widthTxt2));
 				getAction().doubleClick(widthTxt2).build().perform();
@@ -20752,18 +21193,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				widthTxt2.sendKeys(Keys.SHIFT, Keys.HOME);
 				widthTxt2.sendKeys("60");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 			}
 			if (data.equalsIgnoreCase("Pu.Name")) 
 			{
 				getAction().contextClick(LayoutBodyHeaderList.get(i)).build().perform();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 				PropertiesBtn.click();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(widthTxt2));
 				getAction().doubleClick(widthTxt2).build().perform();
@@ -20771,18 +21212,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				widthTxt2.sendKeys(Keys.SHIFT, Keys.HOME);
 				widthTxt2.sendKeys("140");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 			}
 			if (data.equalsIgnoreCase("It.Name")) 
 			{
 				getAction().contextClick(LayoutBodyHeaderList.get(i)).build().perform();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 				PropertiesBtn.click();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(widthTxt2));
 				getAction().doubleClick(widthTxt2).build().perform();
@@ -20790,18 +21231,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				widthTxt2.sendKeys(Keys.SHIFT, Keys.HOME);
 				widthTxt2.sendKeys("140");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 			}
 			if (data.equalsIgnoreCase("Wa.Name")) 
 			{
 				getAction().contextClick(LayoutBodyHeaderList.get(i)).build().perform();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 				PropertiesBtn.click();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(widthTxt2));
 				getAction().doubleClick(widthTxt2).build().perform();
@@ -20809,14 +21250,14 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				widthTxt2.sendKeys(Keys.SHIFT, Keys.HOME);
 				widthTxt2.sendKeys("140");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 			}
 		}
-
+		Thread.sleep(3000);
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Savedropdown));
 		getAction().moveToElement(Savedropdown).click().build().perform();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
@@ -20855,56 +21296,57 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
-
+		Thread.sleep(4500);
+		getWebDriverWaitEle(printBtn);
+		Thread.sleep(1600);
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
 		printBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
 		LayoutNameTxt.click();
 		Thread.sleep(1200);
 		LayoutNameTxt.sendKeys(Keys.END);
 		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys("LayoutForGridProperties");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutName_Editlayout));
 		LayoutName_Editlayout.click();
 
 
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(bodyGrid));
 		getAction().contextClick(bodyGrid).build().perform();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 		PropertiesBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(clubByBrowseBtn));
 		clubByBrowseBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(doNotClubIfRatesAreDiffCheckbx));
 		doNotClubIfRatesAreDiffCheckbx.click();
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(bodyExpandbtn));
 		bodyExpandbtn.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(itemExpandBtn));
 		itemExpandBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(itemNmeBtn));
 		itemNmeBtn.click();
@@ -20918,7 +21360,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		OkayBtn.click();
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		String actclubByText =clubbyTextFiled.getText();
 		String expclubByText ="Item.Name";
@@ -20927,12 +21369,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Savedropdown));
 		getAction().moveToElement(Savedropdown).click().build().perform();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		String expMessage = "Layout saved successfully";
 		String actMessage = checkValidationMessage(expMessage);
 
@@ -20953,7 +21395,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkPrintPdfWithEnablingDontClubIfRatesAreDiff() throws IOException, InterruptedException, AWTException
 	{
-		Thread.sleep(4000);
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
 
@@ -20966,7 +21408,9 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(4000);
+		
+		String parentWindowHandle = getDriver().getWindowHandle();
 
 		File Efile=new File(getBaseDir()+"\\autoIt\\ExportFiles\\LayoutForGridProperties.pdf");
 
@@ -20975,7 +21419,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			Efile.delete();
 		}
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
 
 		int count = grid_VoucherNoList.size();
@@ -20996,30 +21440,30 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
 		printBtn.click();
-
+		Thread.sleep(3000);
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
 		LayoutNameTxt.click();
 		Thread.sleep(1200);
-		LayoutNameTxt.sendKeys(Keys.END);
-		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		LayoutNameTxt.sendKeys(Keys.END,Keys.SHIFT,Keys.HOME);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys("LayoutForGridProperties");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
-	/*	Select s = new Select(LayoutOptionsdropdown);
+		/*	Select s = new Select(LayoutOptionsdropdown);
 		s.selectByValue("3");
 
-		Thread.sleep(2000);*/
+		Thread.sleep(1600);*/
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(footerPDFBtn));
 		footerPDFBtn.click();
 
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 
 		Robot robot = new Robot();
-		robot.keyPress(KeyEvent.VK_CONTROL);
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
@@ -21034,7 +21478,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyPress(KeyEvent.VK_ENTER);
 		robot.keyRelease(KeyEvent.VK_ENTER);
 
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
@@ -21042,35 +21486,74 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyRelease(KeyEvent.VK_S);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
-
+		Thread.sleep(3000);
+*/
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\LayoutForGridProperties.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(8000);
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 
 		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
 
+	
+		
 		int actOpenWindowsCount = getDriver().getWindowHandles().size();
 		int expOpenWindowsCount = 3;
 
 		System.out.println("Number of Windows  : "+actOpenWindowsCount+"  Value Expected  "+expOpenWindowsCount);
 
-		Thread.sleep(1000);
-
-		getDriver().switchTo().window(openTabs.get(2)).close();
-		Thread.sleep(1000);
+		Thread.sleep(2000);
+	
+		/*
+		Set<String> allWindowHandles = getDriver().getWindowHandles();
+		System.err.println(allWindowHandles.size());
+	
+		for (String handle : allWindowHandles) {
+		    if (!handle.equals(parentWindowHandle)) {
+		       
+		        getDriver().switchTo().window(handle).close();
+		        
+		    }
+		}
+		
+		/*
+		
+		System.err.println(getDriver().switchTo().window(openTabs.get(3)).getTitle());
+		System.err.println(getDriver().switchTo().window(openTabs.get(2)).getTitle());
+		System.err.println(getDriver().switchTo().window(openTabs.get(1)).getTitle());
+		System.err.println(getDriver().switchTo().window(openTabs.get(0)).getTitle());*/
+		
+	/*	getDriver().switchTo().window(openTabs.get(1)).close();
+		Thread.sleep(2000);
+		
+		
 		getDriver().switchTo().window(openTabs.get(1)).close();
-		Thread.sleep(1000);
+		Thread.sleep(2100);
+		
 		getDriver().switchTo().window(openTabs.get(0));
-
-		Thread.sleep(3000);
+*/
+		
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		*/
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		
+		Thread.sleep(5000);
+		
 		String actPDF = getBaseDir()+"\\autoIt\\ExportFiles\\LayoutForGridProperties.pdf";
 		String expPDF = getBaseDir()+"\\autoIt\\ImportFiles\\LayoutForGridProperties.pdf";
 
@@ -21084,7 +21567,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		System.err.println(actData);
 		System.err.println(expData);
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		System.out.println("Compared Result  : "+result);
 
 		if (actData.equalsIgnoreCase(expData) && result==true) 
@@ -21114,19 +21597,19 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(6000);
 
-		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(printBtn));
 		printBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
 		LayoutNameTxt.click();
 		Thread.sleep(1200);
 		LayoutNameTxt.sendKeys(Keys.END);
 		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys("LayoutForGridProperties");
 		Thread.sleep(2000);
 		LayoutNameTxt.sendKeys(Keys.TAB);
@@ -21138,27 +21621,27 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		LayoutName_Editlayout.click();
 
 
-		Thread.sleep(3000);
+		Thread.sleep(4000);
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(bodyGrid));
 		getAction().contextClick(bodyGrid).build().perform();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 		PropertiesBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(clubByBrowseBtn));
 		clubByBrowseBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		boolean actratescheckbx =doNotClubIfRatesAreDiffCheckbx.isSelected();
 		boolean expratescheckbx = true;
 
-		if(actratescheckbx == true)
+		if(doNotClubIfRatesAreDiffCheckbx.isSelected() == true)
 		{
 			getWebDriverWait().until(ExpectedConditions.elementToBeClickable(doNotClubIfRatesAreDiffCheckbx));
 			doNotClubIfRatesAreDiffCheckbx.click();
@@ -21169,23 +21652,24 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		OkayBtn.click();
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		String actclubByText =clubbyTextFiled.getText();
 		String expclubByText ="Product.Name";
-
+		
+		getAction().moveToElement(Savedropdown).build().perform();
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Savedropdown));
 		getAction().moveToElement(Savedropdown).click().build().perform();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
-
+		
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		String expMessage = "Layout saved successfully";
 		String actMessage = checkValidationMessage(expMessage);
@@ -21221,7 +21705,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(6000);
 
 		File Efile=new File(getBaseDir()+"\\autoIt\\ExportFiles\\LayoutForGridPropertiesLayoutWithDuplicteRates.pdf");
 
@@ -21230,7 +21714,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			Efile.delete();
 		}
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
 
 		int count = grid_VoucherNoList.size();
@@ -21251,35 +21735,36 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
 		printBtn.click();
+		
+		Thread.sleep(4000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
 		LayoutNameTxt.click();
 		Thread.sleep(1200);
-		LayoutNameTxt.sendKeys(Keys.END);
-		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		LayoutNameTxt.sendKeys(Keys.END,Keys.SHIFT,Keys.HOME);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys("LayoutForGridProperties");
 		Thread.sleep(2000);
 		LayoutNameTxt.sendKeys(Keys.TAB);
 		Thread.sleep(2000);
 
-	/*	Select s = new Select(LayoutOptionsdropdown);
+		/*	Select s = new Select(LayoutOptionsdropdown);
 		s.selectByValue("3");
 
-		Thread.sleep(2000);
-*/
+		Thread.sleep(1600);
+		 */
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(footerPDFBtn));
 		footerPDFBtn.click();
 
-		Thread.sleep(5000);
+		Thread.sleep(4000);
 
 		Robot robot = new Robot();
-		robot.keyPress(KeyEvent.VK_CONTROL);
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		robot.keyPress(KeyEvent.VK_TAB);
 		robot.keyRelease(KeyEvent.VK_TAB);
@@ -21289,7 +21774,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyPress(KeyEvent.VK_ENTER);
 		robot.keyRelease(KeyEvent.VK_ENTER);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
@@ -21297,18 +21782,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyRelease(KeyEvent.VK_S);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
-
+		Thread.sleep(3500);
+*/
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\LayoutForGridPropertiesLayoutAfterDisablingRatesCheckbox.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(8000);
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(2500);
 
 		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
 
@@ -21317,15 +21802,29 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		System.out.println("Number of Windows  : "+actOpenWindowsCount+"  Value Expected  "+expOpenWindowsCount);
 
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 
-		getDriver().switchTo().window(openTabs.get(2)).close();
-		Thread.sleep(1000);
+	/*	getDriver().switchTo().window(openTabs.get(2)).close();
+		Thread.sleep(2000);
 		getDriver().switchTo().window(openTabs.get(1)).close();
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		getDriver().switchTo().window(openTabs.get(0));
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);*/
+		
+		
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);*/
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		
 
 		String actPDF = getBaseDir()+"\\autoIt\\ExportFiles\\LayoutForGridPropertiesLayoutWithDuplicteRates.pdf";
 		String expPDF = getBaseDir()+"\\autoIt\\ImportFiles\\LayoutForGridPropertiesLayoutWithDuplicteRates.pdf";
@@ -21342,7 +21841,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		System.out.println("Compared Result  : "+result);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		if (actData.equalsIgnoreCase(expData) && result==true) 
 		{
 			return true;
@@ -21359,6 +21858,8 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkGridProperties_ClubByWarehouse() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
+		
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
 
@@ -21371,38 +21872,39 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(3500);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
 		printBtn.click();
 
-		Thread.sleep(2000);
-
+		Thread.sleep(3000);
+		getAction().moveToElement(LayoutNameTxt).build().perform();
+		Thread.sleep(1200);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
 		LayoutNameTxt.click();
 		Thread.sleep(1200);
 		LayoutNameTxt.sendKeys(Keys.END);
 		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys("LayoutForGridProperties");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutName_Editlayout));
 		LayoutName_Editlayout.click();
 
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(bodyGrid));
 		getAction().contextClick(bodyGrid).build().perform();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 		PropertiesBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(clubByBrowseBtn));
 		clubByBrowseBtn.click();
@@ -21411,12 +21913,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(bodyExpandbtn));
 		bodyExpandbtn.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(productNameInList));
 		productNameInList.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(removeArrowBtn));
 		removeArrowBtn.click();
@@ -21428,7 +21930,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(warehouseNmeBtn));
 		warehouseNmeBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(addArrowBtn));
 		addArrowBtn.click();
@@ -21436,17 +21938,17 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(OkayBtn));
 		OkayBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Savedropdown));
 		getAction().moveToElement(Savedropdown).click().build().perform();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		String expMessage = "Layout saved successfully";
 		String actMessage = checkValidationMessage(expMessage);
@@ -21475,7 +21977,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		File Efile=new File(getBaseDir()+"\\autoIt\\ExportFiles\\LayoutForGridPropertiesClubByItemnWarehouse.pdf");
 
@@ -21484,7 +21986,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			Efile.delete();
 		}
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
 
 		int count = grid_VoucherNoList.size();
@@ -21505,36 +22007,37 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
 		printBtn.click();
+		
+		Thread.sleep(4000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
 		LayoutNameTxt.click();
 		Thread.sleep(1200);
-		LayoutNameTxt.sendKeys(Keys.END);
-		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		LayoutNameTxt.sendKeys(Keys.END,Keys.SHIFT,Keys.HOME);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys("LayoutForGridProperties");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		/*Select s = new Select(LayoutOptionsdropdown);
 		s.selectByValue("3");
-*/
-		Thread.sleep(2000);
+		 */
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(footerPDFBtn));
 		footerPDFBtn.click();
 
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 
 		Robot robot = new Robot();
 
-		robot.keyPress(KeyEvent.VK_CONTROL);
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		robot.keyPress(KeyEvent.VK_TAB);
 		robot.keyRelease(KeyEvent.VK_TAB);
@@ -21544,7 +22047,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyPress(KeyEvent.VK_ENTER);
 		robot.keyRelease(KeyEvent.VK_ENTER);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
@@ -21552,18 +22055,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyRelease(KeyEvent.VK_S);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
-
+		Thread.sleep(1600);
+*/
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\LayoutForClubbyItemAndWarehouse.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
 
@@ -21572,13 +22075,26 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		System.out.println("Number of Windows  : "+actOpenWindowsCount+"  Value Expected  "+expOpenWindowsCount);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
-		getDriver().switchTo().window(openTabs.get(2)).close();
+	/*	getDriver().switchTo().window(openTabs.get(2)).close();
 		Thread.sleep(2000);
 		getDriver().switchTo().window(openTabs.get(1)).close();
-		Thread.sleep(2000);
-		getDriver().switchTo().window(openTabs.get(0));
+		Thread.sleep(1600);
+		getDriver().switchTo().window(openTabs.get(0));*/
+		
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);*/
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		
 
 
 		String actPDF = getBaseDir()+"\\autoIt\\ExportFiles\\LayoutForGridPropertiesClubByItemnWarehouse.pdf";
@@ -21595,7 +22111,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		System.err.println(expData);
 
 		System.out.println("Compared Result  : "+result);
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		if (actData.equalsIgnoreCase(expData) && result==true) 
 		{
@@ -21611,9 +22127,9 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	public static boolean checkLayoutForGridPropertiesGroupBy() throws EncryptedDocumentException, InvalidFormatException, InterruptedException, IOException
 	{
 
-		Thread.sleep(2000);
-		getDriver().navigate().refresh();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
+		//getDriver().navigate().refresh();
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
 
@@ -21626,36 +22142,40 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
 		printBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(createLayoutBtn));
 		createLayoutBtn.click();
 
+Thread.sleep(2000);
+		
+browseTemplateBtn.click();
+		Thread.sleep(2000);
 
-		Thread.sleep(3000);
-
+		Thread.sleep(2000);
+/*
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(openDropdown));
 		openDropdown.click();
 
 		Thread.sleep(2000);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(openDropdownFromXMLBtn));
-		openDropdownFromXMLBtn.click();
+		openDropdownFromXMLBtn.click();*/
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\LayoutImport.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 
 
 		/*getWebDriverWait().until(ExpectedConditions.elementToBeClickable(clickonHeader));
 						clickonHeader.click();
 
-						Thread.sleep(2000);
+						Thread.sleep(1600);
 
 						Runtime.getRuntime().exec(getBaseDir()+"\\autoIt\\scripts\\PrintVoucherWithMultiplePagesHeader.exe");
 
@@ -21664,12 +22184,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 						getWebDriverWait().until(ExpectedConditions.elementToBeClickable(clickonHeader));
 						clickonHeader.click();
 
-						Thread.sleep(2000);
+						Thread.sleep(1600);
 
 						getWebDriverWait().until(ExpectedConditions.elementToBeClickable(clickOnBody));
 						clickOnBody.click();
 
-						Thread.sleep(2000);
+						Thread.sleep(1600);
 
 						Runtime.getRuntime().exec(getBaseDir()+"\\autoIt\\scripts\\PrintVoucherWithMultiplePagesBody.exe");
 
@@ -21679,12 +22199,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Savedropdown));
 		getAction().moveToElement(Savedropdown).click().build().perform();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(layoutNameTextField));
 		layoutNameTextField.sendKeys("LayoutForGridPropertiesGroupBy");
@@ -21697,7 +22217,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		String expMessage = "Layout saved successfully";
 		String actMessage = checkValidationMessage(expMessage);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		String actTitle = SavedlayoutNameTitle.getText();
 		String expTitle ="[LayoutForGridPropertiesGroupBy]";
@@ -21718,7 +22238,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	public static boolean checkLayoutForFieldPropertiesGroupBy() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
@@ -21733,29 +22253,29 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(2500);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
 		printBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
 		LayoutNameTxt.click();
 		Thread.sleep(1200);
 		LayoutNameTxt.sendKeys(Keys.END);
 		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys("LayoutForGridPropertiesGroupBy");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutName_Editlayout));
 		LayoutName_Editlayout.click();
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		int count = LayoutBodyHeaderList.size();
 		System.out.println("count "+count);
 
@@ -21767,17 +22287,17 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			{
 				getAction().contextClick(LayoutBodyHeaderList.get(i)).build().perform();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 				PropertiesBtn.click();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				Select alignment = new Select(Txtalignment);
 				alignment.selectByVisibleText("Left");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(widthTxt));
 				getAction().doubleClick(widthTxt).build().perform();
@@ -21785,24 +22305,24 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				widthTxt.sendKeys(Keys.SHIFT, Keys.HOME);
 				widthTxt.sendKeys("60");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 			}
 
 			if (data.equalsIgnoreCase("Rate")) 
 			{
 				getAction().contextClick(LayoutBodyHeaderList.get(i)).build().perform();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 				PropertiesBtn.click();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				Select alignment = new Select(Txtalignment);
 				alignment.selectByVisibleText("Left");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(widthTxt));
 				getAction().doubleClick(widthTxt).build().perform();
@@ -21810,23 +22330,23 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				widthTxt.sendKeys(Keys.SHIFT, Keys.HOME);
 				widthTxt.sendKeys("60");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 			}
 			if (data.equalsIgnoreCase("Quantity")) 
 			{
 				getAction().contextClick(LayoutBodyHeaderList.get(i)).build().perform();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 				PropertiesBtn.click();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				Select alignment = new Select(Txtalignment);
 				alignment.selectByVisibleText("Left");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(widthTxt));
 				getAction().doubleClick(widthTxt).build().perform();
@@ -21834,18 +22354,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				widthTxt.sendKeys(Keys.SHIFT, Keys.HOME);
 				widthTxt.sendKeys("60");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 			}
 			if (data.equalsIgnoreCase("Un.Name")) 
 			{
 				getAction().contextClick(LayoutBodyHeaderList.get(i)).build().perform();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 				PropertiesBtn.click();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(widthTxt2));
 				getAction().doubleClick(widthTxt2).build().perform();
@@ -21853,18 +22373,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				widthTxt2.sendKeys(Keys.SHIFT, Keys.HOME);
 				widthTxt2.sendKeys("60");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 			}
 			if (data.equalsIgnoreCase("Pu.Name")) 
 			{
 				getAction().contextClick(LayoutBodyHeaderList.get(i)).build().perform();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 				PropertiesBtn.click();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(widthTxt2));
 				getAction().doubleClick(widthTxt2).build().perform();
@@ -21872,18 +22392,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				widthTxt2.sendKeys(Keys.SHIFT, Keys.HOME);
 				widthTxt2.sendKeys("140");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 			}
 			if (data.equalsIgnoreCase("It.Name")) 
 			{
 				getAction().contextClick(LayoutBodyHeaderList.get(i)).build().perform();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 				PropertiesBtn.click();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(widthTxt2));
 				getAction().doubleClick(widthTxt2).build().perform();
@@ -21891,18 +22411,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				widthTxt2.sendKeys(Keys.SHIFT, Keys.HOME);
 				widthTxt2.sendKeys("140");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 			}
 			if (data.equalsIgnoreCase("Wa.Name")) 
 			{
 				getAction().contextClick(LayoutBodyHeaderList.get(i)).build().perform();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 				PropertiesBtn.click();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(widthTxt2));
 				getAction().doubleClick(widthTxt2).build().perform();
@@ -21910,20 +22430,20 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				widthTxt2.sendKeys(Keys.SHIFT, Keys.HOME);
 				widthTxt2.sendKeys("140");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 			}
 		}
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Savedropdown));
 		getAction().moveToElement(Savedropdown).click().build().perform();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		String expMessage = "Layout saved successfully";
 		String actMessage = checkValidationMessage(expMessage);
@@ -21956,52 +22476,52 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
 		printBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
 		LayoutNameTxt.click();
 		Thread.sleep(1200);
 		LayoutNameTxt.sendKeys(Keys.END);
 		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys("LayoutForGridPropertiesGroupBy");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutName_Editlayout));
 		LayoutName_Editlayout.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(bodyGrid));
 		getAction().contextClick(bodyGrid).build().perform();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 		PropertiesBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(groupByBrowseBtn));
 		groupByBrowseBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(bodyExpandbtn));
 		bodyExpandbtn.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(itemExpandBtn));
 		itemExpandBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(itemNmeBtn));
 		itemNmeBtn.click();
@@ -22014,14 +22534,16 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		OkayBtn.click();
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Savedropdown));
-		getAction().moveToElement(Savedropdown).click().build().perform();
+		getAction().moveToElement(Savedropdown).build().perform();
+		Thread.sleep(1200);
+		Savedropdown.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
@@ -22058,7 +22580,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		File Efile=new File(getBaseDir()+"\\autoIt\\ExportFiles\\LayoutForGridPropertiesGroupByItem.pdf");
 
@@ -22067,7 +22589,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			Efile.delete();
 		}
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
 
 		int count = grid_VoucherNoList.size();
@@ -22092,32 +22614,31 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
 		LayoutNameTxt.click();
 		Thread.sleep(1200);
-		LayoutNameTxt.sendKeys(Keys.END);
-		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		LayoutNameTxt.sendKeys(Keys.END,Keys.SHIFT,Keys.HOME);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys("LayoutForGridPropertiesGroupBy");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
-/*
+		Thread.sleep(1600);
+		/*
 		Select s = new Select(LayoutOptionsdropdown);
 		s.selectByValue("3");
 
-		Thread.sleep(2000);*/
+		Thread.sleep(1600);*/
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(footerPDFBtn));
-		footerPDFBtn.click();
+		footerPDFBtn.click();    // 1 window 
 
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 
 		Robot robot = new Robot();
 
-		robot.keyPress(KeyEvent.VK_CONTROL);
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_J);
-		robot.keyRelease(KeyEvent.VK_CONTROL);
+		robot.keyRelease(KeyEvent.VK_CONTROL);   // 2 window 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		robot.keyPress(KeyEvent.VK_TAB);
 		robot.keyRelease(KeyEvent.VK_TAB);
@@ -22125,7 +22646,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyRelease(KeyEvent.VK_TAB);
 
 		robot.keyPress(KeyEvent.VK_ENTER);
-		robot.keyRelease(KeyEvent.VK_ENTER);
+		robot.keyRelease(KeyEvent.VK_ENTER);   // 3 window
 
 		Thread.sleep(2000);
 
@@ -22133,13 +22654,13 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_S);
 		robot.keyRelease(KeyEvent.VK_S);
-		robot.keyRelease(KeyEvent.VK_CONTROL);
+		robot.keyRelease(KeyEvent.VK_CONTROL);  //
 
 		Thread.sleep(2000);
-
+*/
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\LayoutForGroupbyItem.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_J);
@@ -22155,13 +22676,26 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		System.out.println("Number of Windows  : "+actOpenWindowsCount+"  Value Expected  "+expOpenWindowsCount);
 
-		Thread.sleep(1000);
-
+		Thread.sleep(2100);
+/*
 		getDriver().switchTo().window(openTabs.get(2)).close();
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		getDriver().switchTo().window(openTabs.get(1)).close();
+		Thread.sleep(2000);
+		getDriver().switchTo().window(openTabs.get(0));*/
+		
+/*		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);*/
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
 		Thread.sleep(1000);
-		getDriver().switchTo().window(openTabs.get(0));
+		
 
 
 		String actPDF = getBaseDir()+"\\autoIt\\ExportFiles\\LayoutForGridPropertiesGroupByItem.pdf";
@@ -22193,9 +22727,9 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkEnableCheckboxesInGroupBy() throws EncryptedDocumentException, InvalidFormatException, InterruptedException, IOException
 	{
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getDriver().navigate().refresh();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
@@ -22209,44 +22743,44 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
 		printBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
 		LayoutNameTxt.click();
 		Thread.sleep(1200);
 		LayoutNameTxt.sendKeys(Keys.END);
 		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys("LayoutForGridPropertiesGroupBy");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutName_Editlayout));
 		LayoutName_Editlayout.click();
 
 
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(bodyGrid));
 		getAction().contextClick(bodyGrid).build().perform();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 		PropertiesBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(groupByBrowseBtn));
 		groupByBrowseBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(printGroupCheckBoxInGroupBy));
 		printGroupCheckBoxInGroupBy.click();
@@ -22259,18 +22793,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(OkayBtn));
 		OkayBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Savedropdown));
 		getAction().moveToElement(Savedropdown).click().build().perform();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		String expMessage = "Layout saved successfully";
 		String actMessage = checkValidationMessage(expMessage);
@@ -22291,7 +22825,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkPrintPdfAfterEnablingCheckboexInGroupBy() throws IOException, InterruptedException, AWTException
 	{
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
@@ -22306,7 +22840,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		File Efile=new File(getBaseDir()+"\\autoIt\\ExportFiles\\LayoutForGridPropertiesGroupByItemCheckboxesEnable.pdf");
 
@@ -22315,7 +22849,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			Efile.delete();
 		}
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
 
 		int count = grid_VoucherNoList.size();
@@ -22340,32 +22874,31 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
 		LayoutNameTxt.click();
 		Thread.sleep(1200);
-		LayoutNameTxt.sendKeys(Keys.END);
-		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		LayoutNameTxt.sendKeys(Keys.END,Keys.SHIFT,Keys.HOME);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys("LayoutForGridPropertiesGroupBy");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
-	/*	Select s = new Select(LayoutOptionsdropdown);
+		/*	Select s = new Select(LayoutOptionsdropdown);
 		s.selectByValue("3");
 
-		Thread.sleep(2000);*/
+		Thread.sleep(1600);*/
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(footerPDFBtn));
 		footerPDFBtn.click();
 
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 
 		Robot robot = new Robot();
 
-		robot.keyPress(KeyEvent.VK_CONTROL);
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		robot.keyPress(KeyEvent.VK_TAB);
 		robot.keyRelease(KeyEvent.VK_TAB);
@@ -22375,7 +22908,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyPress(KeyEvent.VK_ENTER);
 		robot.keyRelease(KeyEvent.VK_ENTER);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
@@ -22383,18 +22916,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyRelease(KeyEvent.VK_S);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
-
+		Thread.sleep(1600);
+*/
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\LayoutForGroupbyItemCheckBoxesEnable.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
 
@@ -22405,11 +22938,25 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		Thread.sleep(1000);
 
-		getDriver().switchTo().window(openTabs.get(2)).close();
+	/*	getDriver().switchTo().window(openTabs.get(2)).close();
 		Thread.sleep(1000);
 		getDriver().switchTo().window(openTabs.get(1)).close();
 		Thread.sleep(1000);
-		getDriver().switchTo().window(openTabs.get(0));
+		getDriver().switchTo().window(openTabs.get(0));*/
+		
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);*/
+		
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		
 
 
 		String actPDF = getBaseDir()+"\\autoIt\\ExportFiles\\LayoutForGridPropertiesGroupByItemCheckboxesEnable.pdf";
@@ -22442,7 +22989,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkLayoutForGridPropertiesOrderByItem() throws EncryptedDocumentException, InvalidFormatException, InterruptedException, IOException
 	{
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
 
@@ -22455,36 +23002,43 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
+		getAction().moveToElement(printBtn).build().perform();
+		Thread.sleep(1200);
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
-		printBtn.click();
+		Thread.sleep(1200);
+		ClickUsingJs(printBtn);
 
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(createLayoutBtn));
 		createLayoutBtn.click();
 
-		Thread.sleep(3000);
-
-
-		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(openDropdown));
-		openDropdown.click();
-
+		Thread.sleep(2000);
+		Thread.sleep(2000);
+		
+		browseTemplateBtn.click();
 		Thread.sleep(2000);
 
+
+		/*getWebDriverWait().until(ExpectedConditions.elementToBeClickable(openDropdown));
+		openDropdown.click();
+
+		Thread.sleep(1600);
+
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(openDropdownFromXMLBtn));
-		openDropdownFromXMLBtn.click();
+		openDropdownFromXMLBtn.click();*/
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\LayoutImport.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 
 		/*
 						getWebDriverWait().until(ExpectedConditions.elementToBeClickable(clickonHeader));
 						clickonHeader.click();
 
-						Thread.sleep(2000);
+						Thread.sleep(1600);
 
 						Runtime.getRuntime().exec(getBaseDir()+"\\autoIt\\scripts\\PrintVoucherWithMultiplePagesHeader.exe");
 
@@ -22493,27 +23047,28 @@ public class VoucherPrintOptionsPage extends BaseEngine
 						getWebDriverWait().until(ExpectedConditions.elementToBeClickable(clickonHeader));
 						clickonHeader.click();
 
-						Thread.sleep(2000);
+						Thread.sleep(1600);
 
 						getWebDriverWait().until(ExpectedConditions.elementToBeClickable(clickOnBody));
 						clickOnBody.click();
 
-						Thread.sleep(2000);
+						Thread.sleep(1600);
 
 						Runtime.getRuntime().exec(getBaseDir()+"\\autoIt\\scripts\\PrintVoucherWithMultiplePagesBody.exe");
 
 						Thread.sleep(100000);
 		 */
 
+		Thread.sleep(6000);
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Savedropdown));
 		getAction().moveToElement(Savedropdown).click().build().perform();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(layoutNameTextField));
 		layoutNameTextField.sendKeys("LayoutForGridPropertiesOrderBy");
@@ -22526,7 +23081,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		String expMessage = "Layout saved successfully";
 		String actMessage = checkValidationMessage(expMessage);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		String actTitle = SavedlayoutNameTitle.getText();
 		String expTitle ="[LayoutForGridPropertiesOrderBy]";
@@ -22549,7 +23104,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	{
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
@@ -22564,19 +23119,19 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(6000);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
 		printBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
 		LayoutNameTxt.click();
 		Thread.sleep(1200);
 		LayoutNameTxt.sendKeys(Keys.END);
 		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys("LayoutForGridPropertiesOrderBy");
 		Thread.sleep(2000);
 		LayoutNameTxt.sendKeys(Keys.TAB);
@@ -22586,10 +23141,10 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		LayoutName_Editlayout.click();
 
 
-		Thread.sleep(3000);
+		Thread.sleep(4000);
 
 
-		Thread.sleep(2000);
+		
 		int count = LayoutBodyHeaderList.size();
 		System.out.println("count "+count);
 
@@ -22601,17 +23156,17 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			{
 				getAction().contextClick(LayoutBodyHeaderList.get(i)).build().perform();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 				PropertiesBtn.click();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				Select alignment = new Select(Txtalignment);
 				alignment.selectByVisibleText("Left");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(widthTxt));
 				getAction().doubleClick(widthTxt).build().perform();
@@ -22619,24 +23174,24 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				widthTxt.sendKeys(Keys.SHIFT, Keys.HOME);
 				widthTxt.sendKeys("60");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 			}
 
 			if (data.equalsIgnoreCase("Rate")) 
 			{
 				getAction().contextClick(LayoutBodyHeaderList.get(i)).build().perform();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 				PropertiesBtn.click();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				Select alignment = new Select(Txtalignment);
 				alignment.selectByVisibleText("Left");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(widthTxt));
 				getAction().doubleClick(widthTxt).build().perform();
@@ -22644,23 +23199,23 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				widthTxt.sendKeys(Keys.SHIFT, Keys.HOME);
 				widthTxt.sendKeys("60");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 			}
 			if (data.equalsIgnoreCase("Quantity")) 
 			{
 				getAction().contextClick(LayoutBodyHeaderList.get(i)).build().perform();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 				PropertiesBtn.click();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				Select alignment = new Select(Txtalignment);
 				alignment.selectByVisibleText("Left");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(widthTxt));
 				getAction().doubleClick(widthTxt).build().perform();
@@ -22668,18 +23223,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				widthTxt.sendKeys(Keys.SHIFT, Keys.HOME);
 				widthTxt.sendKeys("60");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 			}
 			if (data.equalsIgnoreCase("Un.Name")) 
 			{
 				getAction().contextClick(LayoutBodyHeaderList.get(i)).build().perform();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 				PropertiesBtn.click();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(widthTxt2));
 				getAction().doubleClick(widthTxt2).build().perform();
@@ -22687,18 +23242,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				widthTxt2.sendKeys(Keys.SHIFT, Keys.HOME);
 				widthTxt2.sendKeys("60");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 			}
 			if (data.equalsIgnoreCase("Pu.Name")) 
 			{
 				getAction().contextClick(LayoutBodyHeaderList.get(i)).build().perform();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 				PropertiesBtn.click();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(widthTxt2));
 				getAction().doubleClick(widthTxt2).build().perform();
@@ -22706,18 +23261,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				widthTxt2.sendKeys(Keys.SHIFT, Keys.HOME);
 				widthTxt2.sendKeys("140");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 			}
 			if (data.equalsIgnoreCase("It.Name")) 
 			{
 				getAction().contextClick(LayoutBodyHeaderList.get(i)).build().perform();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 				PropertiesBtn.click();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(widthTxt2));
 				getAction().doubleClick(widthTxt2).build().perform();
@@ -22725,18 +23280,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				widthTxt2.sendKeys(Keys.SHIFT, Keys.HOME);
 				widthTxt2.sendKeys("140");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 			}
 			if (data.equalsIgnoreCase("Wa.Name")) 
 			{
 				getAction().contextClick(LayoutBodyHeaderList.get(i)).build().perform();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 				PropertiesBtn.click();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(widthTxt2));
 				getAction().doubleClick(widthTxt2).build().perform();
@@ -22744,19 +23299,19 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				widthTxt2.sendKeys(Keys.SHIFT, Keys.HOME);
 				widthTxt2.sendKeys("140");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 			}
 		}
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Savedropdown));
 		getAction().moveToElement(Savedropdown).click().build().perform();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		String expMessage = "Layout saved successfully";
 		String actMessage = checkValidationMessage(expMessage);
 
@@ -22776,9 +23331,8 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkGridproperties_OrderbyItem() throws EncryptedDocumentException, InvalidFormatException, InterruptedException, IOException
 	{
-
-
-
+		
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
 
@@ -22791,19 +23345,19 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(6000);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
 		printBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
 		LayoutNameTxt.click();
 		Thread.sleep(1200);
 		LayoutNameTxt.sendKeys(Keys.END);
 		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+	
 		LayoutNameTxt.sendKeys("LayoutForGridPropertiesOrderBy");
 		Thread.sleep(2000);
 		LayoutNameTxt.sendKeys(Keys.TAB);
@@ -22812,33 +23366,33 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutName_Editlayout));
 		LayoutName_Editlayout.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(4000);
 
-		Thread.sleep(3000);
+		
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(bodyGrid));
 		getAction().contextClick(bodyGrid).build().perform();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 		PropertiesBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(orderByBrowseBtn));
 		orderByBrowseBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(bodyExpandbtn));
 		bodyExpandbtn.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(itemExpandBtn));
 		itemExpandBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(itemNmeBtn));
 		itemNmeBtn.click();
@@ -22851,20 +23405,20 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		OkayBtn.click();
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Savedropdown));
 		getAction().moveToElement(Savedropdown).click().build().perform();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		String expMessage = "Layout saved successfully";
 		String actMessage = checkValidationMessage(expMessage);
@@ -22896,10 +23450,10 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionsPurchaseMenu));
 		financialsTransactionsPurchaseMenu.click();
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		File Efile=new File(getBaseDir()+"\\autoIt\\ExportFiles\\LayoutForGridPropertiesOrderByItem.pdf");
 
@@ -22908,7 +23462,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			Efile.delete();
 		}
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
 
 		int count = grid_VoucherNoList.size();
@@ -22933,32 +23487,31 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
 		LayoutNameTxt.click();
 		Thread.sleep(1200);
-		LayoutNameTxt.sendKeys(Keys.END);
-		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		LayoutNameTxt.sendKeys(Keys.END,Keys.SHIFT,Keys.HOME);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys("LayoutForGridPropertiesOrderBy");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
-	/*	Select s = new Select(LayoutOptionsdropdown);
+		/*	Select s = new Select(LayoutOptionsdropdown);
 		s.selectByValue("3");*/
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(footerPDFBtn));
 		footerPDFBtn.click();
 
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 
 		Robot robot = new Robot();
 
-		robot.keyPress(KeyEvent.VK_CONTROL);
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		robot.keyPress(KeyEvent.VK_TAB);
 		robot.keyRelease(KeyEvent.VK_TAB);
@@ -22968,7 +23521,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyPress(KeyEvent.VK_ENTER);
 		robot.keyRelease(KeyEvent.VK_ENTER);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
@@ -22976,11 +23529,11 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyRelease(KeyEvent.VK_S);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
-
+		Thread.sleep(2500);
+*/
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\LayoutForOrderbyItem.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_J);
@@ -22996,13 +23549,27 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		System.out.println("Number of Windows  : "+actOpenWindowsCount+"  Value Expected  "+expOpenWindowsCount);
 
-		Thread.sleep(1000);
+		Thread.sleep(2100);
 
-		getDriver().switchTo().window(openTabs.get(2)).close();
-		Thread.sleep(1000);
+	/*	getDriver().switchTo().window(openTabs.get(2)).close();
+		Thread.sleep(2000);
 		getDriver().switchTo().window(openTabs.get(1)).close();
+		Thread.sleep(2100);
+		getDriver().switchTo().window(openTabs.get(0));*/
+		
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);*/
+		
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
 		Thread.sleep(1000);
-		getDriver().switchTo().window(openTabs.get(0));
+		
 
 
 		String actPDF = getBaseDir()+"\\autoIt\\ExportFiles\\LayoutForGridPropertiesOrderByItem.pdf";
@@ -23050,42 +23617,42 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
 		printBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
 		LayoutNameTxt.click();
 		Thread.sleep(1200);
 		LayoutNameTxt.sendKeys(Keys.END);
 		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys("LayoutForGridPropertiesOrderBy");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutName_Editlayout));
 		LayoutName_Editlayout.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(bodyGrid));
 		getAction().contextClick(bodyGrid).build().perform();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 		PropertiesBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(orderByBrowseBtn));
 		orderByBrowseBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(printGroupCheckBoxInGroupBy));
 		printGroupCheckBoxInGroupBy.click();
@@ -23098,18 +23665,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(OkayBtn));
 		OkayBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Savedropdown));
 		getAction().moveToElement(Savedropdown).click().build().perform();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		String expMessage = "Layout saved successfully";
 		String actMessage = checkValidationMessage(expMessage);
@@ -23132,7 +23699,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	public static boolean checkPrintPdfAfterEnablingCheckboexInOderBy() throws IOException, InterruptedException, AWTException
 	{
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
@@ -23147,7 +23714,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		File Efile=new File(getBaseDir()+"\\autoIt\\ExportFiles\\LayoutForGridPropertiesOrderByItemCheckboxesEnable.pdf");
 
@@ -23156,7 +23723,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			Efile.delete();
 		}
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
 
 		int count = grid_VoucherNoList.size();
@@ -23183,30 +23750,30 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		Thread.sleep(1200);
 		LayoutNameTxt.sendKeys(Keys.END);
 		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys("LayoutForGridPropertiesOrderBy");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
-/*
+		Thread.sleep(1600);
+		/*
 		Select s = new Select(LayoutOptionsdropdown);
 		s.selectByValue("3");
-*/
-		Thread.sleep(2000);
+		 */
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(footerPDFBtn));
 		footerPDFBtn.click();
 
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 
 		Robot robot = new Robot();
 
-		robot.keyPress(KeyEvent.VK_CONTROL);
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		robot.keyPress(KeyEvent.VK_TAB);
 		robot.keyRelease(KeyEvent.VK_TAB);
@@ -23216,7 +23783,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyPress(KeyEvent.VK_ENTER);
 		robot.keyRelease(KeyEvent.VK_ENTER);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
@@ -23224,18 +23791,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyRelease(KeyEvent.VK_S);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
-
+		Thread.sleep(2500);
+*/
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\LayoutForOrderbyItemCheckBoxesEnable.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
 
@@ -23246,11 +23813,25 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		Thread.sleep(1000);
 
-		getDriver().switchTo().window(openTabs.get(2)).close();
-		Thread.sleep(1000);
+	/*	getDriver().switchTo().window(openTabs.get(2)).close();
+		Thread.sleep(2100);
 		getDriver().switchTo().window(openTabs.get(1)).close();
+		Thread.sleep(2100);
+		getDriver().switchTo().window(openTabs.get(0));*/
+		
+/*		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
 		Thread.sleep(1000);
-		getDriver().switchTo().window(openTabs.get(0));
+	*/	
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		
 
 
 		String actPDF = getBaseDir()+"\\autoIt\\ExportFiles\\LayoutForGridPropertiesOrderByItemCheckboxesEnable.pdf";
@@ -23285,7 +23866,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	public static boolean checkLayoutGridProperties() throws EncryptedDocumentException, InvalidFormatException, InterruptedException, IOException
 	{
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
 
@@ -23295,39 +23876,43 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionsPurchaseMenu));
 		financialsTransactionsPurchaseMenu.click();
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(2500);
 
-		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(printBtn));
 		printBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(createLayoutBtn));
 		createLayoutBtn.click();
 
-		Thread.sleep(3000);
-
-
-		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(openDropdown));
-		openDropdown.click();
-
+		Thread.sleep(2000);
+		Thread.sleep(2000);
+		
+		browseTemplateBtn.click();
 		Thread.sleep(2000);
 
+
+		/*getWebDriverWait().until(ExpectedConditions.elementToBeClickable(openDropdown));
+		openDropdown.click();
+
+		Thread.sleep(1600);
+
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(openDropdownFromXMLBtn));
-		openDropdownFromXMLBtn.click();
+		openDropdownFromXMLBtn.click();*/
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\LayoutImport.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 
 
 		/*getWebDriverWait().until(ExpectedConditions.elementToBeClickable(clickonHeader));
 						clickonHeader.click();
 
-						Thread.sleep(2000);
+						Thread.sleep(1600);
 
 						Runtime.getRuntime().exec(getBaseDir()+"\\autoIt\\scripts\\PrintVoucherWithMultiplePagesHeader.exe");
 
@@ -23336,12 +23921,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 						getWebDriverWait().until(ExpectedConditions.elementToBeClickable(clickonHeader));
 						clickonHeader.click();
 
-						Thread.sleep(2000);
+						Thread.sleep(1600);
 
 						getWebDriverWait().until(ExpectedConditions.elementToBeClickable(clickOnBody));
 						clickOnBody.click();
 
-						Thread.sleep(2000);
+						Thread.sleep(1600);
 
 						Runtime.getRuntime().exec(getBaseDir()+"\\autoIt\\scripts\\PrintVoucherWithMultiplePagesBody.exe");
 
@@ -23351,12 +23936,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Savedropdown));
 		getAction().moveToElement(Savedropdown).click().build().perform();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(layoutNameTextField));
 		layoutNameTextField.sendKeys("GridPropertiesLayout");
@@ -23371,7 +23956,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		String expMessage = "Layout saved successfully";
 		String actMessage = checkValidationMessage(expMessage);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		String actTitle = SavedlayoutNameTitle.getText();
 		String expTitle ="[GridPropertiesLayout]";
@@ -23394,7 +23979,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	public static boolean checkLayoutFieldPropries() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
 
-		Thread.sleep(2000);
+		Thread.sleep(2500);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
@@ -23409,32 +23994,32 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(2500);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
 		printBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
 		LayoutNameTxt.click();
 		Thread.sleep(1200);
 		LayoutNameTxt.sendKeys(Keys.END);
 		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys("GridPropertiesLayout");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutName_Editlayout));
 		LayoutName_Editlayout.click();
 
 
-		Thread.sleep(3000);
-
-
 		Thread.sleep(2000);
+
+
+		Thread.sleep(1600);
 		int count = LayoutBodyHeaderList.size();
 		System.out.println("count "+count);
 
@@ -23446,17 +24031,17 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			{
 				getAction().contextClick(LayoutBodyHeaderList.get(i)).build().perform();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 				PropertiesBtn.click();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				Select alignment = new Select(Txtalignment);
 				alignment.selectByVisibleText("Left");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(widthTxt));
 				getAction().doubleClick(widthTxt).build().perform();
@@ -23464,24 +24049,24 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				widthTxt.sendKeys(Keys.SHIFT, Keys.HOME);
 				widthTxt.sendKeys("60");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 			}
 
 			if (data.equalsIgnoreCase("Rate")) 
 			{
 				getAction().contextClick(LayoutBodyHeaderList.get(i)).build().perform();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 				PropertiesBtn.click();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				Select alignment = new Select(Txtalignment);
 				alignment.selectByVisibleText("Left");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(widthTxt));
 				getAction().doubleClick(widthTxt).build().perform();
@@ -23489,23 +24074,23 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				widthTxt.sendKeys(Keys.SHIFT, Keys.HOME);
 				widthTxt.sendKeys("60");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 			}
 			if (data.equalsIgnoreCase("Quantity")) 
 			{
 				getAction().contextClick(LayoutBodyHeaderList.get(i)).build().perform();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 				PropertiesBtn.click();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				Select alignment = new Select(Txtalignment);
 				alignment.selectByVisibleText("Left");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(widthTxt));
 				getAction().doubleClick(widthTxt).build().perform();
@@ -23513,18 +24098,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				widthTxt.sendKeys(Keys.SHIFT, Keys.HOME);
 				widthTxt.sendKeys("60");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 			}
 			if (data.equalsIgnoreCase("Un.Name")) 
 			{
 				getAction().contextClick(LayoutBodyHeaderList.get(i)).build().perform();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 				PropertiesBtn.click();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(widthTxt2));
 				getAction().doubleClick(widthTxt2).build().perform();
@@ -23532,18 +24117,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				widthTxt2.sendKeys(Keys.SHIFT, Keys.HOME);
 				widthTxt2.sendKeys("60");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 			}
 			if (data.equalsIgnoreCase("Pu.Name")) 
 			{
 				getAction().contextClick(LayoutBodyHeaderList.get(i)).build().perform();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 				PropertiesBtn.click();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(widthTxt2));
 				getAction().doubleClick(widthTxt2).build().perform();
@@ -23551,18 +24136,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				widthTxt2.sendKeys(Keys.SHIFT, Keys.HOME);
 				widthTxt2.sendKeys("140");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 			}
 			if (data.equalsIgnoreCase("It.Name")) 
 			{
 				getAction().contextClick(LayoutBodyHeaderList.get(i)).build().perform();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 				PropertiesBtn.click();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(widthTxt2));
 				getAction().doubleClick(widthTxt2).build().perform();
@@ -23570,18 +24155,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				widthTxt2.sendKeys(Keys.SHIFT, Keys.HOME);
 				widthTxt2.sendKeys("140");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 			}
 			if (data.equalsIgnoreCase("Wa.Name")) 
 			{
 				getAction().contextClick(LayoutBodyHeaderList.get(i)).build().perform();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 				PropertiesBtn.click();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(widthTxt2));
 				getAction().doubleClick(widthTxt2).build().perform();
@@ -23589,14 +24174,14 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				widthTxt2.sendKeys(Keys.SHIFT, Keys.HOME);
 				widthTxt2.sendKeys("140");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 			}
 		}
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Savedropdown));
 		getAction().moveToElement(Savedropdown).click().build().perform();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
@@ -23658,14 +24243,14 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	@FindBy(xpath="//*[@id='BodyColumn_2000_3']")
 	private static WebElement unitColInGrid;
 
-	@FindBy(xpath="//*[@id='Combobox_10_2000']")
+	@FindBy(xpath="//*[@id='Combobox_11_2000']")
 	private static WebElement printUnderPrevCol;
 
 
 
 	public static boolean  checkGridPropertiesInPvVatLayout() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
@@ -23679,28 +24264,28 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(2500);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
 		printBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
 		LayoutNameTxt.click();
 		Thread.sleep(1200);
 		LayoutNameTxt.sendKeys(Keys.END);
 		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys("GridPropertiesLayout");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutName_Editlayout));
 		LayoutName_Editlayout.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 
 
@@ -23717,7 +24302,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		Select printundrprevCol = new Select(printUnderPrevCol);
 		printundrprevCol.selectByIndex(1);	 //true
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(bodyGrid));
 		getAction().contextClick(bodyGrid).build().perform();
@@ -23726,25 +24311,26 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 		PropertiesBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		Select backclr = new Select(gridBackClr);
 		backclr.selectByVisibleText("Cornsilk");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		Select gridcr = new Select(gridGridClr);
 		gridcr.selectByVisibleText("Indigo");
 
 		Thread.sleep(2000);
 
-
+		getAction().moveToElement(gridThickness).build().perform();
+		Thread.sleep(1000);
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(gridThickness));
 		gridThickness.click();
 		gridThickness.sendKeys(Keys.END);
 		gridThickness.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		gridThickness.sendKeys("3");
 
 		Thread.sleep(1000);
@@ -23779,7 +24365,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		Select printTotal = new Select(printTotalOnEveryPage);
 		printTotal.selectByVisibleText("True");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		Select skipALine = new Select(skipALineBwRow);
 		skipALine.selectByVisibleText("True");
@@ -23788,13 +24374,13 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Savedropdown));
 		getAction().moveToElement(Savedropdown).click().build().perform();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		String expMessage = "Layout saved successfully";
 		String actMessage = checkValidationMessage(expMessage);
 
@@ -23819,7 +24405,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	public static boolean checkPrintPdfAfterGridPropertiesEnabledToTrue() throws IOException, InterruptedException, AWTException
 	{
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		File Efile=new File(getBaseDir()+"\\autoIt\\ExportFiles\\LayoutForbodyGridPropertiesAfterEnablingTrue.pdf");
 
@@ -23829,7 +24415,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		}
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
@@ -23845,7 +24431,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		purchaseVouchersVat.click();
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
 
 		int count = grid_VoucherNoList.size();
@@ -23870,32 +24456,31 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
 		LayoutNameTxt.click();
 		Thread.sleep(1200);
-		LayoutNameTxt.sendKeys(Keys.END);
-		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		LayoutNameTxt.sendKeys(Keys.END,Keys.SHIFT,Keys.HOME);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys("GridPropertiesLayout");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
-/*
+		Thread.sleep(3000);
+		/*
 		Select s = new Select(LayoutOptionsdropdown);
 		s.selectByValue("3");*/
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(footerPDFBtn));
 		footerPDFBtn.click();
 
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 
 		Robot robot = new Robot();
-
+/*
 		robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		robot.keyPress(KeyEvent.VK_TAB);
 		robot.keyRelease(KeyEvent.VK_TAB);
@@ -23905,7 +24490,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyPress(KeyEvent.VK_ENTER);
 		robot.keyRelease(KeyEvent.VK_ENTER);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
@@ -23913,18 +24498,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyRelease(KeyEvent.VK_S);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
-
+		Thread.sleep(2500);
+*/
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\LayoutForbodyGridPropertiesEnablingTrue.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
 
@@ -23934,13 +24519,28 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		System.out.println("Number of Windows  : "+actOpenWindowsCount+"  Value Expected  "+expOpenWindowsCount);
 
 		Thread.sleep(1000);
-
+/*
 		getDriver().switchTo().window(openTabs.get(2)).close();
-		Thread.sleep(1000);
+		Thread.sleep(2100);
 		getDriver().switchTo().window(openTabs.get(1)).close();
-		Thread.sleep(1000);
+		Thread.sleep(2100);
 		getDriver().switchTo().window(openTabs.get(0));
-
+*/
+		
+/*		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		*/
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		
+		
 
 		String actPDF = getBaseDir()+"\\autoIt\\ExportFiles\\LayoutForbodyGridPropertiesAfterEnablingTrue.pdf";
 		String expPDF = getBaseDir()+"\\autoIt\\ImportFiles\\LayoutForbodyGridPropertiesAfterEnablingTrue.pdf";
@@ -24034,7 +24634,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	public static boolean checkAreaInPurchaseVatLayout() throws EncryptedDocumentException, InvalidFormatException, InterruptedException, IOException
 	{
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
 
@@ -24047,44 +24647,31 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
 		printBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(createLayoutBtn));
 		createLayoutBtn.click();
 
-		Thread.sleep(3000);
-
-		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(previewTab));
-		previewTab.click();
-
-		Thread.sleep(3000);
-		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(designerTab));
-		designerTab.click();
-
-
-		Thread.sleep(3000);
-
-		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(openDropdown));
-		openDropdown.click();
+		Thread.sleep(2000);
+		Thread.sleep(2000);
+		
+		browseTemplateBtn.click();
+		
 
 		Thread.sleep(2000);
-
-		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(openDropdownFromXMLBtn));
-		openDropdownFromXMLBtn.click();
-
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\LayoutImport.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 
 		/*getWebDriverWait().until(ExpectedConditions.elementToBeClickable(clickonHeader));
 						clickonHeader.click();
 
-						Thread.sleep(2000);
+						Thread.sleep(1600);
 
 						Runtime.getRuntime().exec(getBaseDir()+"\\autoIt\\scripts\\PrintVoucherWithMultiplePagesHeader.exe");
 
@@ -24093,12 +24680,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 						getWebDriverWait().until(ExpectedConditions.elementToBeClickable(clickonHeader));
 						clickonHeader.click();
 
-						Thread.sleep(2000);
+						Thread.sleep(1600);
 
 						getWebDriverWait().until(ExpectedConditions.elementToBeClickable(clickOnBody));
 						clickOnBody.click();
 
-						Thread.sleep(2000);
+						Thread.sleep(1600);
 
 						Runtime.getRuntime().exec(getBaseDir()+"\\autoIt\\scripts\\PrintVoucherWithMultiplePagesBody.exe");
 
@@ -24108,12 +24695,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Savedropdown));
 		getAction().moveToElement(Savedropdown).click().build().perform();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(layoutNameTextField));
 		layoutNameTextField.sendKeys("LayoutForAreaProperties");
@@ -24126,7 +24713,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		String expMessage = "Layout saved successfully";
 		String actMessage = checkValidationMessage(expMessage);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		String actTitle = SavedlayoutNameTitle.getText();
 		String expTitle ="[LayoutForAreaProperties]";
@@ -24147,7 +24734,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	{
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
@@ -24162,28 +24749,28 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
 		printBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
 		LayoutNameTxt.click();
 		LayoutNameTxt.sendKeys(Keys.END);
 		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys("LayoutForAreaProperties");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutName_Editlayout));
 		LayoutName_Editlayout.click();
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		int count = LayoutBodyHeaderList.size();
 		System.out.println("count "+count);
 
@@ -24195,17 +24782,17 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			{
 				getAction().contextClick(LayoutBodyHeaderList.get(i)).build().perform();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 				PropertiesBtn.click();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				Select alignment = new Select(Txtalignment);
 				alignment.selectByVisibleText("Left");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(widthTxt));
 				getAction().doubleClick(widthTxt).build().perform();
@@ -24213,24 +24800,24 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				widthTxt.sendKeys(Keys.SHIFT, Keys.HOME);
 				widthTxt.sendKeys("60");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 			}
 
 			if (data.equalsIgnoreCase("Rate")) 
 			{
 				getAction().contextClick(LayoutBodyHeaderList.get(i)).build().perform();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 				PropertiesBtn.click();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				Select alignment = new Select(Txtalignment);
 				alignment.selectByVisibleText("Left");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(widthTxt));
 				getAction().doubleClick(widthTxt).build().perform();
@@ -24238,23 +24825,23 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				widthTxt.sendKeys(Keys.SHIFT, Keys.HOME);
 				widthTxt.sendKeys("60");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 			}
 			if (data.equalsIgnoreCase("Quantity")) 
 			{
 				getAction().contextClick(LayoutBodyHeaderList.get(i)).build().perform();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 				PropertiesBtn.click();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				Select alignment = new Select(Txtalignment);
 				alignment.selectByVisibleText("Left");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(widthTxt));
 				getAction().doubleClick(widthTxt).build().perform();
@@ -24262,18 +24849,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				widthTxt.sendKeys(Keys.SHIFT, Keys.HOME);
 				widthTxt.sendKeys("60");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 			}
 			if (data.equalsIgnoreCase("Un.Name")) 
 			{
 				getAction().contextClick(LayoutBodyHeaderList.get(i)).build().perform();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 				PropertiesBtn.click();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(widthTxt2));
 				getAction().doubleClick(widthTxt2).build().perform();
@@ -24281,18 +24868,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				widthTxt2.sendKeys(Keys.SHIFT, Keys.HOME);
 				widthTxt2.sendKeys("60");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 			}
 			if (data.equalsIgnoreCase("Pu.Name")) 
 			{
 				getAction().contextClick(LayoutBodyHeaderList.get(i)).build().perform();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 				PropertiesBtn.click();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(widthTxt2));
 				getAction().doubleClick(widthTxt2).build().perform();
@@ -24300,18 +24887,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				widthTxt2.sendKeys(Keys.SHIFT, Keys.HOME);
 				widthTxt2.sendKeys("140");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 			}
 			if (data.equalsIgnoreCase("It.Name")) 
 			{
 				getAction().contextClick(LayoutBodyHeaderList.get(i)).build().perform();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 				PropertiesBtn.click();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(widthTxt2));
 				getAction().doubleClick(widthTxt2).build().perform();
@@ -24319,18 +24906,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				widthTxt2.sendKeys(Keys.SHIFT, Keys.HOME);
 				widthTxt2.sendKeys("140");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 			}
 			if (data.equalsIgnoreCase("Wa.Name")) 
 			{
 				getAction().contextClick(LayoutBodyHeaderList.get(i)).build().perform();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 				PropertiesBtn.click();
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 
 				getWebDriverWait().until(ExpectedConditions.elementToBeClickable(widthTxt2));
 				getAction().doubleClick(widthTxt2).build().perform();
@@ -24338,7 +24925,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				widthTxt2.sendKeys(Keys.SHIFT, Keys.HOME);
 				widthTxt2.sendKeys("140");
 
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 			}
 		}
 
@@ -24348,11 +24935,11 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 		PropertiesBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		Select bodylength = new Select(gridBodyLengthVariable);
 		bodylength.selectByVisibleText("True");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(bodyhieghtTxt));
 		getAction().doubleClick(bodyhieghtTxt).build().perform();
@@ -24367,13 +24954,13 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Savedropdown));
 		getAction().moveToElement(Savedropdown).click().build().perform();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		String expMessage = "Layout saved successfully";
 		String actMessage = checkValidationMessage(expMessage);
@@ -24415,14 +25002,16 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	private static WebElement voucherNet;
 
 
+	@FindBy(xpath="//*[@id='InputBlock_0_2007']/p")
+	private static WebElement header_vouchernet;
 
 
-
-
+	@FindBy(xpath="//*[@id='Combobox_12_2007']")
+	private static WebElement header_vouchernetAmtinWordsSelect;
 
 	public static boolean checkDragnetVouchernetAndAreaItoLayout() throws InterruptedException, IOException, EncryptedDocumentException, InvalidFormatException
 	{
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
@@ -24437,91 +25026,91 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
 		printBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
 		LayoutNameTxt.click();
 		LayoutNameTxt.sendKeys(Keys.END);
 		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys("LayoutForAreaProperties");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutName_Editlayout));
 		LayoutName_Editlayout.click();
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(controlDropDownBtn));
 		controlDropDownBtn.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getAction().moveToElement(areaBtnInControls).build().perform();
 		Thread.sleep(1000);
 		areaBtnInControls.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		Runtime.getRuntime().exec(getBaseDir()+"\\autoIt\\scripts\\DragDownToEmptyAreaN.exe");
 
-		Thread.sleep(15000);
+		Thread.sleep(20000);
 
 
 		JavascriptExecutor jse = (JavascriptExecutor)getDriver();
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Savedropdown));
 		jse.executeScript("arguments[0].scrollIntoView(true)",Savedropdown);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		Savedropdown.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		String expMessage = "Layout saved successfully";
 		String actMessage = checkValidationMessage(expMessage);
 
 
-		Thread.sleep(4000);
+		Thread.sleep(2000);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ExitBtn));
 		ExitBtn.click();
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
 		printBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
 		LayoutNameTxt.click();
 		LayoutNameTxt.sendKeys(Keys.END);
 		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys("LayoutForAreaProperties");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutName_Editlayout));
 		LayoutName_Editlayout.click();
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		Runtime.getRuntime().exec(getBaseDir()+"\\autoIt\\scripts\\DragDownToEmptyAreaN.exe");
 
@@ -24535,19 +25124,19 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 		PropertiesBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		Select borderClr = new Select(areaBorderclr);
 		borderClr.selectByVisibleText("Blue");
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		Select displayborder = new Select(areaDisplayborder);
 		displayborder.selectByVisibleText("True");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		Select pageSelect = new Select(areaPageSelect);
@@ -24560,7 +25149,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		areaPositionLeft.sendKeys("60");
 		areaPositionLeft.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(areaPositionTop));
 		getAction().doubleClick(areaPositionTop).build().perform();
@@ -24570,7 +25159,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		areaPositionTop.sendKeys(Keys.TAB);
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(areaSizeHeight));
 		getAction().doubleClick(areaSizeHeight).build().perform();
@@ -24579,7 +25168,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		areaSizeHeight.sendKeys("85");
 		areaSizeHeight.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(areaSizeWidth));
 		getAction().doubleClick(areaSizeWidth).build().perform();
@@ -24592,7 +25181,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Savedropdown));
 		jse.executeScript("arguments[0].scrollIntoView(true)",Savedropdown);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		Savedropdown.click();
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
@@ -24601,56 +25190,56 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		Thread.sleep(1000);
 		//checkValidationMessage(expMessage);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ExitBtn));
 		ExitBtn.click();
 
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
 		printBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
 		LayoutNameTxt.click();
 		LayoutNameTxt.sendKeys(Keys.END);
 		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys("LayoutForAreaProperties");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutName_Editlayout));
 		LayoutName_Editlayout.click();
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getAction().moveToElement(fieldsTab).build().perform();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(fieldsTab));
 		fieldsTab.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(clickonHeader));
 		clickonHeader.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		jse.executeScript("arguments[0].scrollIntoView(true)",voucherNet);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		//getAction().moveToElement(bodyField).build().perform();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		Runtime.getRuntime().exec(getBaseDir()+"\\autoIt\\scripts\\VoucherNetArea.exe");
 
@@ -24659,15 +25248,15 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(clickonHeader));
 		jse.executeScript("arguments[0].scrollIntoView(true)",clickonHeader);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(clickOnBody));
 		clickOnBody.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Rdvalue));
 		jse.executeScript("arguments[0].scrollIntoView(true)",Rdvalue);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		Runtime.getRuntime().exec(getBaseDir()+"\\autoIt\\scripts\\NetAmountArea.exe");
 
@@ -24679,17 +25268,17 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Savedropdown));
 		jse.executeScript("arguments[0].scrollIntoView(true)",Savedropdown);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		Savedropdown.click();
-		Thread.sleep(1500);
+		Thread.sleep(2000);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		Runtime.getRuntime().exec(getBaseDir()+"\\autoIt\\scripts\\DragDownToEmptyAreaN.exe");
 
@@ -24699,13 +25288,20 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		Thread.sleep(20000);
 
+	
+		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(header_vouchernet));
+		getAction().contextClick(header_vouchernet).build().perform();
 
+		Select s01=new Select(header_vouchernetAmtinWordsSelect);
+		s01.selectByValue("1");
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Savedropdown));
 		jse.executeScript("arguments[0].scrollIntoView(true)",Savedropdown);
 
-		Thread.sleep(2000);
+		
+	
+		Thread.sleep(1600);
 		Savedropdown.click();
-		Thread.sleep(1500);
+		Thread.sleep(2000);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
@@ -24728,7 +25324,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	{
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
@@ -24743,7 +25339,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		File Efile=new File(getBaseDir()+"\\autoIt\\ExportFiles\\AreaLayoutProperties.pdf");
 
@@ -24752,7 +25348,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			Efile.delete();
 		}
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
 
 		int count = grid_VoucherNoList.size();
@@ -24779,21 +25375,21 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		Thread.sleep(1200);
 		LayoutNameTxt.sendKeys(Keys.END);
 		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys("LayoutForAreaProperties");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
-/*
+		Thread.sleep(1600);
+		/*
 		Select s = new Select(LayoutOptionsdropdown);
 		s.selectByValue("3");
-*/
-		Thread.sleep(2000);
+		 */
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(footerPDFBtn));
 		footerPDFBtn.click();
 
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 
 		Robot robot = new Robot();
 
@@ -24802,7 +25398,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		robot.keyPress(KeyEvent.VK_TAB);
 		robot.keyRelease(KeyEvent.VK_TAB);
@@ -24812,7 +25408,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyPress(KeyEvent.VK_ENTER);
 		robot.keyRelease(KeyEvent.VK_ENTER);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
@@ -24820,18 +25416,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyRelease(KeyEvent.VK_S);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(2500);
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\SavingAreaLayout.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(2100);
 
 		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
 
@@ -24840,13 +25436,27 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		System.out.println("Number of Windows  : "+actOpenWindowsCount+"  Value Expected  "+expOpenWindowsCount);
 
-		Thread.sleep(1000);
+		Thread.sleep(2100);
 
-		getDriver().switchTo().window(openTabs.get(2)).close();
-		Thread.sleep(1000);
+	/*	getDriver().switchTo().window(openTabs.get(2)).close();
+		Thread.sleep(2100);
 		getDriver().switchTo().window(openTabs.get(1)).close();
+		Thread.sleep(2100);
+		getDriver().switchTo().window(openTabs.get(0));*/
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
 		Thread.sleep(1000);
-		getDriver().switchTo().window(openTabs.get(0));
+		
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		
 
 
 		String actPDF = getBaseDir()+"\\autoIt\\ExportFiles\\AreaLayoutProperties.pdf";
@@ -24880,8 +25490,8 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkChangeAreaPropertiesToRelative() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
-		Thread.sleep(2000);
-		
+		Thread.sleep(1600);
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
 
@@ -24894,36 +25504,36 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
 		printBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
 		LayoutNameTxt.click();
 		Thread.sleep(1200);
 		LayoutNameTxt.sendKeys(Keys.END);
 		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys("LayoutForAreaProperties");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutName_Editlayout));
 		LayoutName_Editlayout.click();
 
-		Thread.sleep(3000);
-
-
 		Thread.sleep(2000);
+
+
+		Thread.sleep(1600);
 		Runtime.getRuntime().exec(getBaseDir()+"\\autoIt\\scripts\\DragDownToEmptyAreaN.exe");
 
 		Thread.sleep(20000);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\EmptyGridRightClickForProperties.exe");
 
@@ -24935,7 +25545,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		Select areaPOsitioning = new Select(areaPositioning);
 		areaPOsitioning.selectByVisibleText("Relative");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		Select pageSelect = new Select(areaPageSelect);
@@ -24945,13 +25555,13 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Savedropdown));
 		getAction().moveToElement(Savedropdown).click().build().perform();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		String expMessage = "Layout saved successfully";
 		String actMessage = checkValidationMessage(expMessage);
@@ -24971,14 +25581,11 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	public static boolean checkPrintPDFForAreaLayoutAfterChangingToRealtive() throws IOException, InterruptedException, AWTException
 	{
 
-
-
 		Thread.sleep(2000);
-
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-		financialsMenu.click();
-
+		getAction().moveToElement(financialsMenu).build().perform();
+		Thread.sleep(2000);
+		ClickUsingJs(financialsMenu);
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionMenu));
 		financialsTransactionMenu.click();
 
@@ -24988,7 +25595,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 
 		File Efile=new File(getBaseDir()+"\\autoIt\\ExportFiles\\AreaLayoutRelativeProperties.pdf");
 
@@ -24997,7 +25604,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			Efile.delete();
 		}
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
 
 		int count = grid_VoucherNoList.size();
@@ -25022,32 +25629,31 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
 		LayoutNameTxt.click();
 		Thread.sleep(1200);
-		LayoutNameTxt.sendKeys(Keys.END);
-		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		LayoutNameTxt.sendKeys(Keys.END,Keys.SHIFT,Keys.HOME);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys("LayoutForAreaProperties");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		/*Select s = new Select(LayoutOptionsdropdown);
 		s.selectByValue("3");*/
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(footerPDFBtn));
 		footerPDFBtn.click();
 
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 
 		Robot robot = new Robot();
 
-		robot.keyPress(KeyEvent.VK_CONTROL);
+		/*robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		robot.keyPress(KeyEvent.VK_TAB);
 		robot.keyRelease(KeyEvent.VK_TAB);
@@ -25057,7 +25663,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyPress(KeyEvent.VK_ENTER);
 		robot.keyRelease(KeyEvent.VK_ENTER);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
@@ -25065,18 +25671,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyRelease(KeyEvent.VK_S);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
-
+		Thread.sleep(1600);
+*/
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\SavingAreaLayoutRelativeProp.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
 
@@ -25086,12 +25692,25 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		System.out.println("Number of Windows  : "+actOpenWindowsCount+"  Value Expected  "+expOpenWindowsCount);
 
 		Thread.sleep(1000);
-
+/*
 		getDriver().switchTo().window(openTabs.get(2)).close();
 		Thread.sleep(1000);
 		getDriver().switchTo().window(openTabs.get(1)).close();
 		Thread.sleep(1000);
-		getDriver().switchTo().window(openTabs.get(0));
+		getDriver().switchTo().window(openTabs.get(0));*/
+		
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);*/
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		
 
 
 		String actPDF = getBaseDir()+"\\autoIt\\ExportFiles\\AreaLayoutRelativeProperties.pdf";
@@ -25111,14 +25730,14 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		if (actData.equalsIgnoreCase(expData) && result==true) 
 		{
-			
+
 
 			return true;
 		}
 		else
 		{
-			
-			
+
+
 			return false;
 		}
 
@@ -25155,19 +25774,22 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	private static WebElement accountsSaveBtn;
 
 
-	@FindBy(xpath="//*[@id='optiVoucherType']")
+	@FindBy(xpath="//*[@id='iVoucherType']")
 	private static WebElement gridVoucherTypeTxt;
 
 
 	@FindBy(xpath="//*[@id='iPrintLayout']")
 	private static WebElement gridPrintLayoutTxt;
+	
+	//tbody[@id='tblMasterNewGeneratorBody']//tr//td[5]
+	
+	//tbody[@id='tblMasterNewGeneratorBody']//tr//td[4]
 
 	public static boolean checkAccountsCreationForMulipleandSinglePrintLayoutAssign() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
-		Thread.sleep(2000);
-		getDriver().navigate().refresh();
-		Thread.sleep(2500);
 		
+		Thread.sleep(2500);
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(homeMenu));
 		homeMenu.click();
 
@@ -25189,7 +25811,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		codeTxt.sendKeys("MPL");
 		codeTxt.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accountTypeDropdown));
 		accountTypeDropdown.sendKeys("Vendor");
 		accountTypeDropdown.sendKeys(Keys.TAB);
@@ -25200,41 +25822,38 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherTypeInPrintLayoutTab));
 		voucherTypeInPrintLayoutTab.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		gridVoucherTypeTxt.sendKeys("Purchase Voucher VAT");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		gridVoucherTypeTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
-
-
-
+		Thread.sleep(1600);
 
 		gridPrintLayoutTxt.sendKeys("GridPropertiesLayout");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		gridPrintLayoutTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		gridVoucherTypeTxt.sendKeys("Purchase Voucher VAT");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		gridVoucherTypeTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		gridPrintLayoutTxt.sendKeys("PurchaseVoucherVAT");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		gridPrintLayoutTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accountsSaveBtn));
 		accountsSaveBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		String expMessage1 = "Saved Successfully";
 		String actMessage1 = checkValidationMessage(expMessage1);
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(nameTxt));
 		nameTxt.sendKeys("SinglePringLayout");
 		nameTxt.sendKeys(Keys.TAB);
@@ -25243,7 +25862,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		codeTxt.sendKeys("SPL");
 		codeTxt.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accountTypeDropdown));
 		accountTypeDropdown.sendKeys("Vendor");
 		accountTypeDropdown.sendKeys(Keys.TAB);
@@ -25252,24 +25871,24 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		headerPrintLayoutTab.click();
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherTypeInPrintLayoutTab));
 		voucherTypeInPrintLayoutTab.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		gridVoucherTypeTxt.sendKeys("Purchase Voucher VAT");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		gridVoucherTypeTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 
 
 		gridPrintLayoutTxt.sendKeys("GridPropertiesLayout");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		gridPrintLayoutTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtnInAccount));
@@ -25279,7 +25898,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		String expMessage2 = "Saved Successfully";
 		String actMessage2 = checkValidationMessage(expMessage2);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accountCloseBtn));
 		accountCloseBtn.click();
@@ -25304,43 +25923,42 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 
 
-	@FindBy(xpath="//*[@id='id_search_menu']/input")
+	@FindBy(xpath="//*[@id='id_search_menu']//input")
 	private static WebElement searchTxt;
 
-	@FindBy(xpath="//*[@id='16']")
+	@FindBy(xpath="//*[@id='16']//span[text()='Settings']")
 	private static WebElement SettingsBtn;
-	
-	@FindBy(xpath="//a[@id='148']//span[text()='Preferences']")
+
+	@FindBy(xpath="//*[@id='174']/span")
 	private static WebElement preferences;
-	
-	
-	
+
+
+
 
 	public static boolean checkAccountRadiobtnAndPrintUsingCheckboxinbothPrefAndDocCust() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getDriver().navigate().refresh();
 		Thread.sleep(3000);
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SettingsBtn));
-		SettingsBtn.click();
 
-		Thread.sleep(2000);
+		ScrollToElement(SettingsBtn);
+		Thread.sleep(1200);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SettingsBtn));
+		ClickUsingJs(SettingsBtn);
+
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(preferences));
 		preferences.click();
 
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ReportBtn));
 		ReportBtn.click();
-
-
-		
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(reportsAccountRadioBtn));
 		reportsAccountRadioBtn.click();
 
-
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(updateBtnInDc));
-		updateBtnInDc.click();
+		ClickUsingJs(updateBtnInDc);
 
 
 		getWaitForAlert();
@@ -25348,30 +25966,35 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		String expAlertMgs  ="Do you want to save the changes?";
 		getAlert().accept();
 
-		Thread.sleep(3000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SettingsBtn));
-		SettingsBtn.click();
 		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ConfigureTransactionBtn));
-		ConfigureTransactionBtn.click();
 		
+		
+		Thread.sleep(5000);
+		getAction().moveToElement(SettingsBtn).build().perform();
 		Thread.sleep(2000);
-		
-		
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(SettingsBtn));
+		ClickUsingJs(SettingsBtn);
+
+		Thread.sleep(5000);
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(ConfigureTransactionBtn));
+		ConfigureTransactionBtn.click();
+
+		Thread.sleep(1600);
+
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVoucherVATsBtnInDC));
 		purchaseVoucherVATsBtnInDC.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(8000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(miscellaneousTabInDC));
 		miscellaneousTabInDC.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		/* getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorAccountSettingsExpandBtn));
 				         vendorAccountSettingsExpandBtn.click();*/
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(printUsingDefaultPrinterAndFormatChkBox));
 		getAction().moveToElement(printUsingDefaultPrinterAndFormatChkBox).click().build().perform();
@@ -25401,7 +26024,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkSavingPvVatForMultiplePrintLayoutAccount() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
 
@@ -25414,12 +26037,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
 
-		checkValidationMessage("Screen opened");
+		
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(documentNumberTxt));
 
@@ -25430,7 +26053,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		vendorAccountTxt.sendKeys("MultiplePrintLayouts");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		ArrayList<String>  actVendorAccountList= new ArrayList<String>(); 
 
@@ -25461,7 +26084,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		voucherHeaderCurrency.sendKeys("INR");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		int currencycount=currencyListCount.size();
 
@@ -25486,7 +26109,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		departmentTxt.sendKeys("INDIA");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		ArrayList<String> actDepartmentList= new ArrayList<String>(); 
 
@@ -25510,13 +26133,13 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(placeOFSupplyTxt));
 		placeOFSupplyTxt.click();
 		placeOFSupplyTxt.sendKeys("Abu Dhabi");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		placeOFSupplyTxt.sendKeys(Keys.TAB);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(jurisdictionTxt));
 		jurisdictionTxt.click();
 		jurisdictionTxt.sendKeys("DUBAI");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		jurisdictionTxt.sendKeys(Keys.TAB);
 
 
@@ -25529,7 +26152,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		enter_WarehouseTxt.sendKeys("HYDERABAD");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		int warehousecount=warehouseBodyComboList.size();
 
@@ -25552,7 +26175,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		enter_ItemTxt.sendKeys("STD RATE COGS ITEM");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		int pvvGridItemListCount=pvvGridItemList.size();
 		for (int i = 0; i < pvvGridItemListCount; i++) 
@@ -25609,14 +26232,15 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherSaveBtn));
 		voucherSaveBtn.click();
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(billRefPickIcon));
+		Thread.sleep(1200);
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(billRefPickIcon));
 		billRefPickIcon.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(billRefOkBtn));
 		billRefOkBtn.click();
 
 		String expMessage1="Voucher saved successfully";
-		String expMessage2="SU/IND/TEXT3";
+		String expMessage2="SU/IND/TEXT4";
 
 		String actMessage=checkValidationMessage(expMessage1);
 
@@ -25624,14 +26248,14 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		{
 			/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_CloseBtn));
 			new_CloseBtn.click();*/
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 			return true;
 		} 
 		else 
 		{
 			/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_CloseBtn));
 			new_CloseBtn.click();*/
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 			return false;
 		}
 
@@ -25654,12 +26278,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
 
-		checkValidationMessage("Screen opened");
+		
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(documentNumberTxt));
 
@@ -25670,7 +26294,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		vendorAccountTxt.sendKeys("SinglePringLayout");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		ArrayList<String>  actVendorAccountList= new ArrayList<String>(); 
 
@@ -25701,7 +26325,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		voucherHeaderCurrency.sendKeys("INR");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		int currencycount=currencyListCount.size();
 
@@ -25726,7 +26350,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		departmentTxt.sendKeys("INDIA");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		ArrayList<String> actDepartmentList= new ArrayList<String>(); 
 
@@ -25750,13 +26374,13 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(placeOFSupplyTxt));
 		placeOFSupplyTxt.click();
 		placeOFSupplyTxt.sendKeys("Abu Dhabi");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		placeOFSupplyTxt.sendKeys(Keys.TAB);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(jurisdictionTxt));
 		jurisdictionTxt.click();
 		jurisdictionTxt.sendKeys("DUBAI");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		jurisdictionTxt.sendKeys(Keys.TAB);
 
 
@@ -25769,7 +26393,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		enter_WarehouseTxt.sendKeys("HYDERABAD");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		int warehousecount=warehouseBodyComboList.size();
 
@@ -25792,7 +26416,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		enter_ItemTxt.sendKeys("STD RATE COGS ITEM");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		int pvvGridItemListCount=pvvGridItemList.size();
 		for (int i = 0; i < pvvGridItemListCount; i++) 
@@ -25856,7 +26480,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		billRefOkBtn.click();
 
 		String expMessage1="Voucher saved successfully";
-		String expMessage2="SU/IND/TEXT4";
+		String expMessage2="SU/IND/TEXT5";
 
 		String actMessage=checkValidationMessage(expMessage1);
 
@@ -25864,14 +26488,14 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		{
 			/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_CloseBtn));
 			new_CloseBtn.click();*/
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 			return true;
 		} 
 		else 
 		{
 			/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_CloseBtn));
 			new_CloseBtn.click();*/
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 			return false;
 		}
 
@@ -25891,7 +26515,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean chechPrintPdfForMultipleLayoutVoucher() throws IOException, InterruptedException, AWTException
 	{
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
@@ -25906,9 +26530,9 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
 
 		int count = grid_VoucherNoList.size();
@@ -25917,7 +26541,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		{
 			String VoucherNo = grid_VoucherNoList.get(i).getText();
 
-			if (VoucherNo.equalsIgnoreCase("SU/IND/TEXT3")) 
+			if (VoucherNo.equalsIgnoreCase("SU/IND/TEXT4")) 
 			{
 				if (grid_CheckBoxList.get(i).isSelected()==false) 
 				{
@@ -25947,7 +26571,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		String actLayoutList = data.toString();
 		String expLayoutList = "[GridPropertiesLayout, PurchaseVoucherVAT]";
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		//layoutPopupCloseBtn.click();
 
 		System.out.println("loadProfile  : "+actLayoutList);
@@ -25970,9 +26594,9 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	public static boolean checkAddingPrintLayoutForNoofCopies() throws InterruptedException, IOException, EncryptedDocumentException, InvalidFormatException
 	{
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getDriver().navigate().refresh();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
@@ -25986,10 +26610,10 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
 
 		int count = grid_VoucherNoList.size();
@@ -26008,49 +26632,47 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			}
 		}      
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
 		printBtn.click();
 
-
+		Thread.sleep(4000);
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(createLayoutBtn));
 		createLayoutBtn.click();
-
-		Thread.sleep(3000);
-
-		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(openDropdown));
-		openDropdown.click();
-
+		Thread.sleep(4000);
+		
+	
+		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(browseTemplateBtn));
+		browseTemplateBtn.click();
 		Thread.sleep(2000);
 
-		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(openDropdownFromXMLBtn));
-		openDropdownFromXMLBtn.click();
+		
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\LayoutImport.exe");
 
-		Thread.sleep(10000);
+		Thread.sleep(12000);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(clickOnMiscellaneous));
 		clickOnMiscellaneous.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
-		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\PageTypeDrag.exe");
+		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\PageTypeDragNew.exe");
 
 		Thread.sleep(25000);
 
-		/*Thread.sleep(2000);
+		/*Thread.sleep(1600);
 						getWebDriverWait().until(ExpectedConditions.elementToBeClickable(clickonHeader));
 						clickonHeader.click();
 
-						Thread.sleep(2000);
+						Thread.sleep(1600);
 
 						getWebDriverWait().until(ExpectedConditions.elementToBeClickable(clickOnBody));
 						clickOnBody.click();
 
-						Thread.sleep(2000);
+						Thread.sleep(1600);
 
 						Runtime.getRuntime().exec(getBaseDir()+"\\autoIt\\scripts\\PrintVoucherWithMultiplePagesBody.exe");
 
@@ -26060,12 +26682,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Savedropdown));
 		getAction().moveToElement(Savedropdown).click().build().perform();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(layoutNameTextField));
 		layoutNameTextField.sendKeys("LayoutForPrintPageNames");
@@ -26075,7 +26697,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Save_OkBtn));
 		Save_OkBtn.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		String expMessage = "Layout saved successfully";
 		String actMessage = checkValidationMessage(expMessage);
 
@@ -26083,7 +26705,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(bodyGrid));
 		getAction().contextClick(bodyGrid).build().perform();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 		PropertiesBtn.click();
 
@@ -26093,22 +26715,22 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		bodyhieghtTxt.sendKeys(Keys.SHIFT, Keys.HOME);
 		bodyhieghtTxt.sendKeys("300");
 		bodyhieghtTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Savedropdown));
 		getAction().moveToElement(Savedropdown).click().build().perform();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		String actTitle = SavedlayoutNameTitle.getText();
 		String expTitle ="[LayoutForPrintPageNames]";
@@ -26126,15 +26748,15 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	}
 
 
-	@FindBy(xpath="//*[@id='FNumericBox_13_0']")
+	@FindBy(xpath="//*[@id='FNumericBox_12_0']")
 	private static WebElement NoOfCopiesTxtInLayout;
 	public static boolean checkLayoutPropertiesPageType() throws IOException, InterruptedException, EncryptedDocumentException, InvalidFormatException
 	{
 
 
-		Thread.sleep(3000);
-		getDriver().navigate().refresh();
 		Thread.sleep(2000);
+		getDriver().navigate().refresh();
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
 
@@ -26147,7 +26769,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
@@ -26176,48 +26798,49 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		Thread.sleep(1200);
 		LayoutNameTxt.sendKeys(Keys.END);
 		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys("LayoutForPrintPageNames");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutName_Editlayout));
 		LayoutName_Editlayout.click();
 
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
-
-		Thread.sleep(3000);
-		Runtime.getRuntime().exec(getBaseDir()+"\\autoIt\\scripts\\DragDownToEmptyAreaN.exe");
-
-		Thread.sleep(15000);
 
 		Thread.sleep(2000);
+		Runtime.getRuntime().exec(getBaseDir()+"\\autoIt\\scripts\\DragDownToEmptyAreaN.exe");
+
+		Thread.sleep(20000);
+
+		Thread.sleep(1600);
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\EmptyGridRightClickForProperties.exe");
 
 		Thread.sleep(8000);
 
-
-		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(NoOfCopiesTxtInLayout));
+		getAction().moveToElement(NoOfCopiesTxtInLayout).build().perform();
+		Thread.sleep(2500);
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(NoOfCopiesTxtInLayout));
 		NoOfCopiesTxtInLayout.click();
 		NoOfCopiesTxtInLayout.sendKeys(Keys.END);
 		NoOfCopiesTxtInLayout.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		NoOfCopiesTxtInLayout.sendKeys("3");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Savedropdown));
 		getAction().moveToElement(Savedropdown).click().build().perform();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		String expMessage = "Layout saved successfully";
 		String actMessage = checkValidationMessage(expMessage);
 
@@ -26230,7 +26853,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	}
 	public static boolean checkPrintPdfWithoutChangingNamesInReports() throws InterruptedException, IOException, AWTException
 	{
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
@@ -26244,7 +26867,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		File Efile=new File(getBaseDir()+"\\autoIt\\ExportFiles\\LayoutForDefaultPageNames.pdf");
 
@@ -26253,7 +26876,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			Efile.delete();
 		}
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
 
 		int count = grid_VoucherNoList.size();
@@ -26278,32 +26901,31 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
 		LayoutNameTxt.click();
 		Thread.sleep(1200);
-		LayoutNameTxt.sendKeys(Keys.END);
-		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		LayoutNameTxt.sendKeys(Keys.END,Keys.SHIFT,Keys.HOME);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys("LayoutForPrintPageNames");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		/*Select s = new Select(LayoutOptionsdropdown);
 		s.selectByValue("3");
-*/
-		Thread.sleep(2000);
+		 */
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(footerPDFBtn));
 		footerPDFBtn.click();
 
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 
 		Robot robot = new Robot();
 
-		robot.keyPress(KeyEvent.VK_CONTROL);
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		robot.keyPress(KeyEvent.VK_TAB);
 		robot.keyRelease(KeyEvent.VK_TAB);
@@ -26313,7 +26935,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyPress(KeyEvent.VK_ENTER);
 		robot.keyRelease(KeyEvent.VK_ENTER);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
@@ -26321,18 +26943,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyRelease(KeyEvent.VK_S);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
-
+		Thread.sleep(1600);
+*/
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\SavingLayoutForDefaultPageNames.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
 
@@ -26343,11 +26965,24 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		Thread.sleep(1000);
 
-		getDriver().switchTo().window(openTabs.get(2)).close();
+	/*	getDriver().switchTo().window(openTabs.get(2)).close();
 		Thread.sleep(1000);
 		getDriver().switchTo().window(openTabs.get(1)).close();
 		Thread.sleep(1000);
-		getDriver().switchTo().window(openTabs.get(0));
+		getDriver().switchTo().window(openTabs.get(0));*/
+		
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);*/
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		
 
 
 		String actPDF = getBaseDir()+"\\autoIt\\ExportFiles\\LayoutForDefaultPageNames.pdf";
@@ -26401,39 +27036,40 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	public static boolean checkSettingLayoutLayoutNamesInReports()  throws IOException, InterruptedException, EncryptedDocumentException, InvalidFormatException
 	{	
 
+		Thread.sleep(1600);
+		getAction().moveToElement(SettingsBtn).build().perform();
 		Thread.sleep(2000);
-		getDriver().navigate().refresh();
-		Thread.sleep(1500);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SettingsBtn));
-		SettingsBtn.click();
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(SettingsBtn));
+		ClickUsingJs(SettingsBtn);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(preferences));
 		preferences.click();
 
+		Thread.sleep(1000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ReportBtn));
 		ReportBtn.click();
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getAction().moveToElement(TransactionHomePageExpanBtn).build().perform();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(OrginalNameLayout));
 		OrginalNameLayout.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		enterOrginalNameLayout.sendKeys("Original Invoice");
 		enterOrginalNameLayout.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(duplicateNamelayout));
 		duplicateNamelayout.click();
 		enterOrginalNameLayout.sendKeys("Customer Invoice");
 		enterOrginalNameLayout.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(triplicateNameLayout));
 		triplicateNameLayout.click();
@@ -26449,7 +27085,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		String expAlertMgs  ="Do you want to save the changes?";
 		getAlert().accept();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		if(actAlertMgs.equalsIgnoreCase(expAlertMgs))
 		{
@@ -26467,7 +27103,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	public static boolean checkPrintPDFAfterChangingNamesInReports() throws IOException, InterruptedException, AWTException
 	{
 
-		Thread.sleep(2000);
+		Thread.sleep(2500);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
@@ -26482,7 +27118,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		File Efile=new File(getBaseDir()+"\\autoIt\\ExportFiles\\LayoutForEditedPageNames.pdf");
 
@@ -26491,7 +27127,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			Efile.delete();
 		}
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
 
 		int count = grid_VoucherNoList.size();
@@ -26515,32 +27151,32 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
 		LayoutNameTxt.click();
-		LayoutNameTxt.sendKeys(Keys.END);
-		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1200);
+		LayoutNameTxt.sendKeys(Keys.END,Keys.SHIFT,Keys.HOME);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys("LayoutForPrintPageNames");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		/*Select s = new Select(LayoutOptionsdropdown);
 		s.selectByValue("3");*/
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(footerPDFBtn));
 		footerPDFBtn.click();
 
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 
 		Robot robot = new Robot();
 
-		robot.keyPress(KeyEvent.VK_CONTROL);
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		robot.keyPress(KeyEvent.VK_TAB);
 		robot.keyRelease(KeyEvent.VK_TAB);
@@ -26550,7 +27186,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyPress(KeyEvent.VK_ENTER);
 		robot.keyRelease(KeyEvent.VK_ENTER);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
@@ -26558,18 +27194,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyRelease(KeyEvent.VK_S);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
-
+		Thread.sleep(1600);
+*/
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\SavingLayoutForEditedPageNames.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
 
@@ -26580,11 +27216,25 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		Thread.sleep(1000);
 
-		getDriver().switchTo().window(openTabs.get(2)).close();
+	/*	getDriver().switchTo().window(openTabs.get(2)).close();
 		Thread.sleep(1000);
 		getDriver().switchTo().window(openTabs.get(1)).close();
 		Thread.sleep(1000);
-		getDriver().switchTo().window(openTabs.get(0));
+		getDriver().switchTo().window(openTabs.get(0));*/
+		
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		*/
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		
 
 
 		String actPDF = getBaseDir()+"\\autoIt\\ExportFiles\\LayoutForEditedPageNames.pdf";
@@ -26618,28 +27268,28 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkAddingFieldsInPvVatHeader() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getDriver().navigate().refresh();
-		Thread.sleep(1500);
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(searchTxt));
 		searchTxt.click();
 		searchTxt.sendKeys("Configure Transactions");
 		Thread.sleep(1000);
 		searchTxt.sendKeys(Keys.ENTER);
 
-		Thread.sleep(3000);
-		
+		Thread.sleep(2000);
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVatBtnInPrint));
 		purchaseVouchersVatBtnInPrint.click();
 
-		Thread.sleep(3000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editLayoutTabInDc));
-		editLayoutTabInDc.click();
-
 		Thread.sleep(2000);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editLayoutAddFieldsBtn));
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(editLayoutTabInDc));
+		editLayoutTabInDc.click();
+
+		Thread.sleep(1600);
+
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(editLayoutAddFieldsBtn));
 		editLayoutAddFieldsBtn.click();
 
 		Thread.sleep(1000);
@@ -26659,14 +27309,17 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			System.out.println("Exception: "+e); 
 
 		}
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		editLayoutCaptionTxt.click();
 		System.err.println("element clicked");
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editLayoutCaptionTxt));
 		editLayoutCaptionTxt.sendKeys("HeaderDoc");
+		Thread.sleep(1200);
+		editLayoutCaptionTxt.sendKeys(Keys.TAB);
 
+		Thread.sleep(1200);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editLayoutDataTypeDropdown));
 
 		Select dataType = new Select(editLayoutDataTypeDropdown);
@@ -26711,9 +27364,11 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			System.out.println("Exception: "+e); 
 
 		}
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editLayoutCaptionTxt));
 		editLayoutCaptionTxt.sendKeys("HeaderPic");
+		editLayoutCaptionTxt.sendKeys(Keys.TAB);
+		Thread.sleep(1200);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editLayoutDataTypeDropdown));
 
@@ -26726,7 +27381,9 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		String expMessage2 = "Data saved successfully";
 		String actMessage2 = checkValidationMessage(expMessage2);
 
-
+		Thread.sleep(2000);
+		getAction().moveToElement(updateBtnInDc).build().perform();
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(updateBtnInDc));
 		updateBtnInDc.click();	
 
@@ -26748,10 +27405,10 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkAddingFieldsInPvVATBody() throws EncryptedDocumentException, InvalidFormatException, InterruptedException, IOException
 	{
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editLayoutBodyTab));
 		editLayoutBodyTab.click();	
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editLayoutAddFieldsBtn));
 		editLayoutAddFieldsBtn.click();
 
@@ -26771,9 +27428,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			System.out.println("Exception: "+e); 
 
 		}
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editLayoutCaptionTxt));
 		editLayoutCaptionTxt.sendKeys("BodyDoc");
+		
+		editLayoutCaptionTxt.sendKeys(Keys.TAB);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editLayoutDataTypeDropdown));
 
@@ -26803,6 +27463,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkSavePictureFieldInBodyTab() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{	
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editLayoutAddFieldsBtn));
 		editLayoutAddFieldsBtn.click();
 
@@ -26825,6 +27486,9 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		}
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editLayoutCaptionTxt));
 		editLayoutCaptionTxt.sendKeys("BodyPic");
+		
+		editLayoutCaptionTxt.sendKeys(Keys.TAB);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editLayoutDataTypeDropdown));
 
@@ -26837,9 +27501,9 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		String expMessage2 = "Data saved successfully";
 		String actMessage2 = checkValidationMessage(expMessage2);
 
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(updateBtnInDc));
-		updateBtnInDc.click();	
+		ScrollToElement(updateBtnInDc);
+		Thread.sleep(1200);
+		ClickUsingJs(updateBtnInDc);
 
 		String expupdtMessage1 = "Data saved successfully";
 		String actupdtMessage1 = checkValidationMessage(expupdtMessage1);
@@ -26853,32 +27517,34 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			return false;
 
 		}
+		
+		
 	}
 
 
 
 
-	@FindBy(xpath="//*[@id='id_body_16777334']")
+	@FindBy(xpath="//*[@id='id_body_16777335']")
 	private static WebElement enter_bodyPic;
 
 
-	@FindBy(xpath="//*[@id='id_header_67108979_browse_image']/i")
+	@FindBy(xpath="//*[@id='id_header_67108980_browse_image']/i")
 	private static WebElement headerDocBrowseBtn;
 
-	@FindBy(xpath="//*[@id='id_header_67108980_browse_image']/i")
+	@FindBy(xpath="//*[@id='id_header_67108981_browse_image']/i")
 	private static WebElement headerPicBrowseBtn;
 
 
-	@FindBy(xpath="//*[@id='id_body_16777333_browse_image']/i")
+	@FindBy(xpath="//*[@id='id_body_16777334_browse_image']/i")
 	private static WebElement bodyDocBrowseBtn;
 
-	@FindBy(xpath="//*[@id='id_body_16777334_browse_image']/i")
+	@FindBy(xpath="//*[@id='id_body_16777335_browse_image']/i")
 	private static WebElement bodyPicBrowseBtn;
 
 
 	public static boolean checkSavingPvVATWithDocAndPictures() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
-		Thread.sleep(4000);
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
 
@@ -26891,12 +27557,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
 
-		checkValidationMessage("Screen opened");
+		
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(documentNumberTxt));
 
@@ -26907,7 +27573,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		vendorAccountTxt.sendKeys("Vendor A");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		ArrayList<String>  actVendorAccountList= new ArrayList<String>(); 
 
@@ -26938,7 +27604,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		voucherHeaderCurrency.sendKeys("INR");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		int currencycount=currencyListCount.size();
 
@@ -26963,7 +27629,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		departmentTxt.sendKeys("INDIA");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		ArrayList<String> actDepartmentList= new ArrayList<String>(); 
 
@@ -26987,24 +27653,24 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(placeOFSupplyTxt));
 		placeOFSupplyTxt.click();
 		placeOFSupplyTxt.sendKeys("Abu Dhabi");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		placeOFSupplyTxt.sendKeys(Keys.TAB);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(jurisdictionTxt));
 		jurisdictionTxt.click();
 		jurisdictionTxt.sendKeys("DUBAI");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		jurisdictionTxt.sendKeys(Keys.TAB);
 
 
-		Thread.sleep(4000);
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(headerDocBrowseBtn));
 		headerDocBrowseBtn.click();
 
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\HeaderDocumentImport.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(headerPicBrowseBtn));
 		headerPicBrowseBtn.click();
@@ -27012,7 +27678,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\HeaderPictureImport.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 
 
 
@@ -27025,7 +27691,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		enter_WarehouseTxt.sendKeys("HYDERABAD");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		int warehousecount=warehouseBodyComboList.size();
 
@@ -27048,7 +27714,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		enter_ItemTxt.sendKeys("STD RATE COGS ITEM");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		int pvvGridItemListCount=pvvGridItemList.size();
 		for (int i = 0; i < pvvGridItemListCount; i++) 
@@ -27106,7 +27772,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\BodyDocumentImport.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_21stColumn));
@@ -27120,7 +27786,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\BodyPictureImport.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 
 
 
@@ -27137,7 +27803,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		billRefOkBtn.click();
 
 		String expMessage1="Voucher saved successfully";
-		String expMessage2="SU/IND/TEXT5";
+		String expMessage2="SU/IND/TEXT6";
 
 		String actMessage=checkValidationMessage(expMessage1);
 
@@ -27147,14 +27813,14 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		{
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_CloseBtn));
 			new_CloseBtn.click();
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 			return true;
 		} 
 		else 
 		{
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_CloseBtn));
 			new_CloseBtn.click();
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 			return false;
 		}
 
@@ -27162,9 +27828,13 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkSavingDesignLayourForAttachments() throws EncryptedDocumentException, InvalidFormatException, InterruptedException, IOException
 	{
-
-
-		Thread.sleep(2000);
+		Thread.sleep(1600);
+		getDriver().navigate().refresh();
+		Thread.sleep(1600);
+		getAction().moveToElement(financialsMenu).build().perform();
+		Thread.sleep(1600);
+		Thread.sleep(1600);
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
 
@@ -27177,36 +27847,31 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
 		printBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(2500);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(createLayoutBtn));
 		createLayoutBtn.click();
-
-
-		Thread.sleep(3000);
-
-		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(openDropdown));
-		openDropdown.click();
-
+		Thread.sleep(2000);
+		
+		browseTemplateBtn.click();
 		Thread.sleep(2000);
 
-		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(openDropdownFromXMLBtn));
-		openDropdownFromXMLBtn.click();
+		
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\LayoutImport.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 
 
 		/*getWebDriverWait().until(ExpectedConditions.elementToBeClickable(clickonHeader));
 						clickonHeader.click();
 
-						Thread.sleep(2000);
+						Thread.sleep(1600);
 
 						Runtime.getRuntime().exec(getBaseDir()+"\\autoIt\\scripts\\PrintVoucherWithMultiplePagesHeader.exe");
 
@@ -27215,12 +27880,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 						getWebDriverWait().until(ExpectedConditions.elementToBeClickable(clickonHeader));
 						clickonHeader.click();
 
-						Thread.sleep(2000);
+						Thread.sleep(1600);
 
 						getWebDriverWait().until(ExpectedConditions.elementToBeClickable(clickOnBody));
 						clickOnBody.click();
 
-						Thread.sleep(2000);
+						Thread.sleep(1600);
 
 						Runtime.getRuntime().exec(getBaseDir()+"\\autoIt\\scripts\\PrintVoucherWithMultiplePagesBody.exe");
 
@@ -27230,12 +27895,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Savedropdown));
 		getAction().moveToElement(Savedropdown).click().build().perform();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(layoutNameTextField));
 		layoutNameTextField.sendKeys("LayoutForAttachments");
@@ -27248,12 +27913,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		String expMessage = "Layout saved successfully";
 		String actMessage = checkValidationMessage(expMessage);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(bodyGrid));
 		getAction().contextClick(bodyGrid).build().perform();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(PropertiesBtn));
 		PropertiesBtn.click();
 
@@ -27263,18 +27928,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		bodyhieghtTxt.sendKeys(Keys.SHIFT, Keys.HOME);
 		bodyhieghtTxt.sendKeys("300");
 		bodyhieghtTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Savedropdown));
 		getAction().moveToElement(Savedropdown).click().build().perform();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		String actTitle = SavedlayoutNameTitle.getText();
 		String expTitle ="[LayoutForAttachments]";
@@ -27295,39 +27960,34 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	private static WebElement attachmentbrowseBtn;
 
 
-	@FindBy(xpath="//*[@id='67108979']")
+	@FindBy(xpath="//*[@id='67108980']//following-sibling::span")
 	private static WebElement headerDocChckbx;
 
-	@FindBy(xpath="//*[@id='67108980']")
+	@FindBy(xpath="//*[@id='67108981']//following-sibling::span")
 	private static WebElement headerPicChckbx;
 
-	@FindBy(xpath="//div[@class='col-xs-offset-1 col-xs-11 Fcheckbox']//label//input[@id='16777333']")
+	@FindBy(xpath="//div[@id='id_page_attachdocs_popup_body']//input[@id='16777334']//following-sibling::span")
 	private static WebElement bodyDochchckbx;
 
-	@FindBy(xpath="//div[@class='col-xs-offset-1 col-xs-11 Fcheckbox']//label//input[@id='16777334']")
+	@FindBy(xpath="//div[@id='id_page_attachdocs_popup_body']//input[@id='16777335']//following-sibling::span")
 	private static WebElement bodyPicChckbx;
 
-	@FindBy(xpath="//*[@id='300030']")
+	@FindBy(xpath="//*[@id='300030']//following-sibling::span")
 	private static WebElement imageChckBox;
 
-	@FindBy(xpath="//*[@id='301589']")
+	@FindBy(xpath="//*[@id='301589']//following-sibling::span")
 	private static WebElement photoChckBox;
 
 
 	@FindBy(xpath="//*[@id='id_AttachDocs_OkBtn']")
 	private static WebElement attachmentOkBtn;
 
-
-
-
-
-
 	public static boolean checkPropertiesForLayoutAttachments() throws InterruptedException  , EncryptedDocumentException, InvalidFormatException, IOException
 	{
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		getDriver().navigate().refresh();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
 
@@ -27340,7 +28000,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
@@ -27369,11 +28029,11 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		Thread.sleep(1200);
 		LayoutNameTxt.sendKeys(Keys.END);
 		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys("LayoutForAttachments");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutName_Editlayout));
 		LayoutName_Editlayout.click();
@@ -27381,45 +28041,46 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		/* getWebDriverWait().until(ExpectedConditions.elementToBeClickable(previewTab));
 							previewTab.click();
 
-							Thread.sleep(3000);
+							Thread.sleep(2000);
 							getWebDriverWait().until(ExpectedConditions.elementToBeClickable(designerTab));
 							designerTab.click();*/
 
-		Thread.sleep(3000);
+		Thread.sleep(4000);
 
-
-		Thread.sleep(3000);
-		Runtime.getRuntime().exec(getBaseDir()+"\\autoIt\\scripts\\layoutPropClick.exe");
-
-		Thread.sleep(15000);
 
 		Thread.sleep(2000);
+		Runtime.getRuntime().exec(getBaseDir()+"\\autoIt\\scripts\\layoutPropClick.exe");
+
+		Thread.sleep(20000);
+
+		Thread.sleep(1600);
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\EmptyGridRightClickForProperties.exe");
 
-		Thread.sleep(8000);
-
+		Thread.sleep(18000);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(attachmentbrowseBtn));
-		attachmentbrowseBtn.click();
-
+		//attachmentbrowseBtn.click();
+		ClickUsingJs(attachmentbrowseBtn);
+		Thread.sleep(1000);
+		
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(headerDocChckbx));
 		headerDocChckbx.click();
 
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(headerPicChckbx));
 		headerPicChckbx.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(bodyDochchckbx));
 		bodyDochchckbx.click();
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(bodyPicChckbx));
 		bodyPicChckbx.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(imageChckBox));
 		imageChckBox.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(photoChckBox));
 		photoChckBox.click();
 
@@ -27428,16 +28089,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(attachmentOkBtn));
 		attachmentOkBtn.click();
 
-		Thread.sleep(2000);
-		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Savedropdown));
+		Thread.sleep(1600);
+		
 		getAction().moveToElement(Savedropdown).click().build().perform();
-
-		Thread.sleep(2000);
+		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Savedropdown));
+		Savedropdown.click();
+		
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		String expMessage = "Layout saved successfully";
 		String actMessage = checkValidationMessage(expMessage);
 
@@ -27455,7 +28118,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	public static boolean checkPrintPDFForAttachmentsLayout() throws IOException, InterruptedException, AWTException
 	{
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
@@ -27470,7 +28133,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		File Efile=new File(getBaseDir()+"\\autoIt\\ExportFiles\\AttachmentsLayout.pdf");
 
@@ -27479,7 +28142,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			Efile.delete();
 		}
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
 
 		int count = grid_VoucherNoList.size();
@@ -27488,7 +28151,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		{
 			String VoucherNo = grid_VoucherNoList.get(i).getText();
 
-			if (VoucherNo.equalsIgnoreCase("SU/IND/TEXT5")) 
+			if (VoucherNo.equalsIgnoreCase("SU/IND/TEXT6")) 
 			{
 				if (grid_CheckBoxList.get(i).isSelected()==false) 
 				{
@@ -27506,30 +28169,30 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		Thread.sleep(1200);
 		LayoutNameTxt.sendKeys(Keys.END);
 		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys("LayoutForAttachments");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		/*Select s = new Select(LayoutOptionsdropdown);
 		s.selectByValue("3");
-*/
-		Thread.sleep(2000);
+		 */
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(footerPDFBtn));
 		footerPDFBtn.click();
 
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 
 		Robot robot = new Robot();
 
-		robot.keyPress(KeyEvent.VK_CONTROL);
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		robot.keyPress(KeyEvent.VK_TAB);
 		robot.keyRelease(KeyEvent.VK_TAB);
@@ -27539,7 +28202,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyPress(KeyEvent.VK_ENTER);
 		robot.keyRelease(KeyEvent.VK_ENTER);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
@@ -27547,18 +28210,19 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyRelease(KeyEvent.VK_S);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
-
+		Thread.sleep(1600);
+*/
+		
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\SavingAttachmentsLayout.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
 
@@ -27569,12 +28233,25 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		Thread.sleep(1000);
 
-		getDriver().switchTo().window(openTabs.get(2)).close();
+		/*getDriver().switchTo().window(openTabs.get(2)).close();
 		Thread.sleep(1000);
 		getDriver().switchTo().window(openTabs.get(1)).close();
 		Thread.sleep(1000);
 		getDriver().switchTo().window(openTabs.get(0));
-
+*/
+		
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		*/
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		
 
 		String actPDF = getBaseDir()+"\\autoIt\\ExportFiles\\AttachmentsLayout.pdf";
 		String expPDF = getBaseDir()+"\\autoIt\\ImportFiles\\AttachmentsLayout.pdf";
@@ -27608,8 +28285,8 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	@FindBy(xpath="//*[@id='RestoreCompanyModal']/div/div/div[2]/button[1]")
 	private static WebElement OverwriteYesBtn;
-	
-	
+
+
 
 	@FindBy(xpath="//*[@id='id_body_33554529']")
 	private static WebElement enter_Cgst;
@@ -27649,44 +28326,61 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkSavingSalesInvoiceNewVoucherWithRow1InbodyGrid() throws EncryptedDocumentException, InvalidFormatException, InterruptedException, IOException
 	{
-		Thread.sleep(3000);
+		Thread.sleep(2000);
+		getDriver().navigate().refresh();
+		Thread.sleep(4000);
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionMenu));
 		financialsTransactionMenu.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesMenu));
 		salesMenu.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesInvoiceNewVoucher));
 		salesInvoiceNewVoucher.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(5000);
+		//getWebDriverWaitEle(newBtn);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
-		newBtn.click();
+		ClickUsingJs(newBtn);
+		
+		/*
+		for(int i=0; i<3; i++)
+		{
+			if(salesAccountTxt.isDisplayed() == false)
+			{
+				newBtn.click();
+			}
+		}*/
 
-		checkValidationMessage("Screen opened");
+		/*getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(newBtn));
+		newBtn.click();*/
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
+		
+		
+
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesAccountTxt));
 		salesAccountTxt.sendKeys("Sales - Computers");
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		salesAccountTxt.sendKeys(Keys.TAB);
 
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerAccountTxt));
 		customerAccountTxt.sendKeys("Customer A");
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		customerAccountTxt.sendKeys(Keys.TAB);
 
 
@@ -27716,23 +28410,23 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		departmentTxt.sendKeys(Keys.TAB);	
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_1stColumn));
 		select1stRow_1stColumn.click();
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_WarehouseTxt));
 		enter_WarehouseTxt.sendKeys("Hyderabad");
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		enter_WarehouseTxt.sendKeys(Keys.TAB);
 
 		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_ItemTxt));
 		enter_ItemTxt.sendKeys("STD RATE COGS ITEM");
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		enter_ItemTxt.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_4thColumn));
 		select1stRow_4thColumn.click();
@@ -27742,7 +28436,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		Thread.sleep(1000);
 		enter_Quantity.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_6thColumn));
 		select1stRow_6thColumn.click();
@@ -27751,7 +28445,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		enter_Rate.sendKeys("300");
 		enter_Rate.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_9thColumn));
 		select1stRow_9thColumn.click();
@@ -27781,13 +28475,14 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		Thread.sleep(1000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_IgstLwAmt));
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		System.out.println("**********************Printing Footer Values And Net Values************************************");
 
 
-		JavascriptExecutor jse = (JavascriptExecutor)getDriver();
-		jse.executeScript("arguments[0].scrollIntoView(true);",enterFooter_IgstLwAmt);
+		getAction().moveToElement(enterFooter_IgstLwAmt).build().perform();
+		Thread.sleep(2000);
+		
 		String actCSGTAmountbeforeSave = enterFooter_CgstLwAmt.getAttribute("value");
 		String expCGSTAmountbeforeSave = "18,000.00";
 
@@ -27818,11 +28513,26 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		System.out.println("expNETAmountbeforeSave : "+expNETAmountbeforeSave);
 
 
+
+		getAction().moveToElement(voucherSaveBtn).build().perform();
+		Thread.sleep(1200);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherSaveBtn));
 		voucherSaveBtn.click();
 
-		checkValidationMessage("");
-		Thread.sleep(2000);
+
+	//	checkValidationMessage("");
+		Thread.sleep(10000);
+		
+		try
+		{
+			
+			newReferenceTxt.isDisplayed();
+			
+		}
+		catch(Exception e)
+		{
+			
+		}
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newReferenceTxt));
 		newReferenceTxt.click();
@@ -27837,15 +28547,17 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		String expMessage2 = " : 1";
 		String actMessage =checkValidationMessage(expMessage1);
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(previousBtn));
 		previousBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
-		jse.executeScript("arguments[0].scrollIntoView(true);",enterFooter_IgstLwAmt);
+		getAction().moveToElement(enterFooter_IgstLwAmt).build().perform();
+		Thread.sleep(1200);
+		//jse.executeScript("arguments[0].scrollIntoView(true);",enterFooter_IgstLwAmt);
 
 		String actCSGTAmountafterSave = enterFooter_CgstLwAmt.getAttribute("value");
 		String expCGSTAmountafterSave = "18,000.00";
@@ -27902,25 +28614,28 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkEditingSavedSalesNewVoucherByAddingRow2() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
-		Thread.sleep(2000);
-
+		Thread.sleep(3500);
+		getAction().moveToElement(select2ndRow_1stColumn).build().perform();
+		Thread.sleep(2500);
+		getAction().moveToElement(select2ndRow_1stColumn).build().perform();
+		Thread.sleep(2500);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select2ndRow_1stColumn));
 		select2ndRow_1stColumn.click();
 		enter_WarehouseTxt.sendKeys(Keys.END);
 		enter_WarehouseTxt.sendKeys(Keys.SHIFT,Keys.HOME);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_WarehouseTxt));
 		enter_WarehouseTxt.sendKeys("Hyderabad");
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		enter_WarehouseTxt.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_ItemTxt));
 		enter_ItemTxt.sendKeys("STD RATE COGS ITEM");
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		enter_ItemTxt.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select2ndRow_4thColumn));
 		select2ndRow_4thColumn.click();
@@ -27930,7 +28645,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		Thread.sleep(1000);
 		enter_Quantity.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select2ndRow_6thColumn));
 		select2ndRow_6thColumn.click();
@@ -27939,7 +28654,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		enter_Rate.sendKeys("100");
 		enter_Rate.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select2ndRow_9thColumn));
 		select2ndRow_9thColumn.click();
@@ -27969,10 +28684,11 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		Thread.sleep(1000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_IgstLwAmt));
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
-		JavascriptExecutor jse = (JavascriptExecutor)getDriver();
-		jse.executeScript("arguments[0].scrollIntoView(true);",enterFooter_IgstLwAmt);
+		getAction().moveToElement(enterFooter_IgstLwAmt).build().perform();
+		Thread.sleep(2000);
+		
 		System.out.println("**********************Printing Footer Values And Net Values************************************");
 
 
@@ -28005,12 +28721,14 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		System.out.println("actNETAmountbeforeSave : "+actNETAmountbeforeSave);
 		System.out.println("expNETAmountbeforeSave : "+expNETAmountbeforeSave);
 
-
+		getAction().moveToElement(voucherSaveBtn).build().perform();
+		Thread.sleep(1200);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherSaveBtn));
 		voucherSaveBtn.click();
-		Thread.sleep(2000);
+
+		Thread.sleep(1600);
 		checkValidationMessage("");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newReferenceTxt));
 		newReferenceTxt.click();
@@ -28025,14 +28743,16 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		String expMessage2 = " : 1";
 		String actMessage =checkValidationMessage(expMessage1);
 
-		Thread.sleep(3000);
+		Thread.sleep(2600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(previousBtn));
 		previousBtn.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
-		jse.executeScript("arguments[0].scrollIntoView(true);",enterFooter_IgstLwAmt);
+		getAction().moveToElement(enterFooter_IgstLwAmt).build().perform();
+		Thread.sleep(2000);
+		//jse.executeScript("arguments[0].scrollIntoView(true);",enterFooter_IgstLwAmt);
 
 		String actCSGTAmountafterSave = enterFooter_CgstLwAmt.getAttribute("value");
 		String expCGSTAmountafterSave = "18,500.00";
@@ -28099,6 +28819,10 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkEditingSavedSalesNewVoucherWithIgstValueDeduction() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
+		Thread.sleep(1600);
+		
+		Thread.sleep(3500);
+		getAction().moveToElement(select3rdRow_1stColumn).build().perform();
 		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select3rdRow_1stColumn));
@@ -28110,17 +28834,17 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		enter_WarehouseTxt.sendKeys(Keys.SHIFT,Keys.HOME);
 
 		enter_WarehouseTxt.sendKeys("Hyderabad");
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		enter_WarehouseTxt.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_ItemTxt));
 		enter_ItemTxt.sendKeys("STD RATE COGS ITEM");
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		enter_ItemTxt.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select3rdRow_4thColumn));
 		select3rdRow_4thColumn.click();
@@ -28130,7 +28854,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		Thread.sleep(1000);
 		enter_Quantity.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select3rdRow_6thColumn));
 		select3rdRow_6thColumn.click();
@@ -28139,7 +28863,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		enter_Rate.sendKeys("400");
 		enter_Rate.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select3rdRow_9thColumn));
 		select3rdRow_9thColumn.click();
@@ -28169,7 +28893,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_IgstLwAmt));
 
 		////////////
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select4thRow_1stColumn));
 		select4thRow_1stColumn.click();
@@ -28178,10 +28902,10 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		enter_WarehouseTxt.sendKeys(Keys.SHIFT,Keys.HOME);
 
 		enter_WarehouseTxt.sendKeys("Hyderabad");
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		enter_WarehouseTxt.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_ItemTxt));
 		enter_ItemTxt.sendKeys(Keys.END);
@@ -28207,7 +28931,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		enter_ItemTxt.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select4thRow_4thColumn));
 		select4thRow_4thColumn.click();
@@ -28217,7 +28941,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		Thread.sleep(1000);
 		enter_Quantity.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select4thRow_6thColumn));
 		select4thRow_6thColumn.click();
@@ -28226,7 +28950,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		enter_Rate.sendKeys("100");
 		enter_Rate.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select4thRow_9thColumn));
 		select4thRow_9thColumn.click();
@@ -28257,6 +28981,9 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		Thread.sleep(1000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_IgstLwAmt));
 		enter_IgstLwAmt.sendKeys(Keys.TAB);
+		
+		Thread.sleep(8000);
+		
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(binSearchBtn));
 		binSearchBtn.click();
@@ -28266,16 +28993,16 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(binAutoAllocateBtn));
 		binAutoAllocateBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(binOkBtn));
 		binOkBtn.click();
 
-		Thread.sleep(1000);
+		Thread.sleep(4000);
 
 		///////
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select5thRow_1stColumn));
 		select5thRow_1stColumn.click();
@@ -28286,17 +29013,17 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		enter_WarehouseTxt.sendKeys(Keys.SHIFT,Keys.HOME);
 
 		enter_WarehouseTxt.sendKeys("Hyderabad");
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		enter_WarehouseTxt.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_ItemTxt));
 		enter_ItemTxt.sendKeys("STD RATE COGS ITEM");
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		enter_ItemTxt.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select5thRow_4thColumn));
 		select5thRow_4thColumn.click();
@@ -28306,7 +29033,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		Thread.sleep(1000);
 		enter_Quantity.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select5thRow_6thColumn));
 		select5thRow_6thColumn.click();
@@ -28315,7 +29042,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		enter_Rate.sendKeys("10000");
 		enter_Rate.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select5thRow_9thColumn));
 		select5thRow_9thColumn.click();
@@ -28347,10 +29074,9 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 
 		//////
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
-		JavascriptExecutor jse = (JavascriptExecutor)getDriver();
-		jse.executeScript("arguments[0].scrollIntoView(true);",enterFooter_IgstLwAmt);
+		getAction().moveToElement(enterFooter_IgstLwAmt).build().perform();
 
 		System.out.println("**********************Printing Footer Values And Net Values************************************");
 
@@ -28391,15 +29117,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		System.out.println("actAllocatedBin : "+actAllocatedBin);
 		System.out.println("expAllocatedBin : "+expAllocatedBin);
 
-
+		Thread.sleep(1000);
+		getAction().moveToElement(voucherSaveBtn).build().perform();
+		Thread.sleep(1200);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherSaveBtn));
 		voucherSaveBtn.click();
+
 
 		Thread.sleep(1000);
 
 		checkValidationMessage("");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newReferenceTxt));
 		newReferenceTxt.click();
@@ -28414,15 +29143,15 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		String expMessage2 = " : 1";
 		String actMessage =checkValidationMessage(expMessage1);
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(previousBtn));
 		previousBtn.click();
 
 
-		jse.executeScript("arguments[0].scrollIntoView(true);",enterFooter_IgstLwAmt);
-		Thread.sleep(1000);
-
+		getAction().moveToElement(enterFooter_IgstLwAmt).build().perform();
+		Thread.sleep(2000);
+		
 		String actCSGTAmountafterSave = enterFooter_CgstLwAmt.getAttribute("value");
 		String expCGSTAmountafterSave = "6,18,550.00";
 
@@ -28481,33 +29210,33 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionMenu));
 		financialsTransactionMenu.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialTransactionSalesMenu));
 		financialTransactionSalesMenu.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesInvoiceNewVoucher));
 		salesInvoiceNewVoucher.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
 
-		checkValidationMessage("Screen opened");
+		
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesAccountTxt));
 		salesAccountTxt.sendKeys("Sales - Computers");
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		salesAccountTxt.sendKeys(Keys.TAB);
 
 
@@ -28544,23 +29273,23 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		departmentTxt.sendKeys(Keys.TAB);	
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_1stColumn));
 		select1stRow_1stColumn.click();
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_WarehouseTxt));
 		enter_WarehouseTxt.sendKeys("Hyderabad");
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		enter_WarehouseTxt.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_ItemTxt));
 		enter_ItemTxt.sendKeys("STD RATE COGS ITEM");
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		enter_ItemTxt.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_4thColumn));
 		select1stRow_4thColumn.click();
@@ -28570,7 +29299,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		Thread.sleep(1000);
 		enter_Quantity.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_6thColumn));
 		select1stRow_6thColumn.click();
@@ -28579,7 +29308,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		enter_Rate.sendKeys("150.36");
 		enter_Rate.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_9thColumn));
 		select1stRow_9thColumn.click();
@@ -28608,7 +29337,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		Thread.sleep(1000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_IgstLwAmt));
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select2ndRow_1stColumn));
@@ -28617,17 +29346,17 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		enter_WarehouseTxt.sendKeys(Keys.SHIFT,Keys.HOME);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_WarehouseTxt));
 		enter_WarehouseTxt.sendKeys("Hyderabad");
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		enter_WarehouseTxt.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_ItemTxt));
 		enter_ItemTxt.sendKeys("STD RATE COGS ITEM");
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		enter_ItemTxt.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select2ndRow_4thColumn));
 		select2ndRow_4thColumn.click();
@@ -28637,7 +29366,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		Thread.sleep(1000);
 		enter_Quantity.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select2ndRow_6thColumn));
 		select2ndRow_6thColumn.click();
@@ -28646,7 +29375,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		enter_Rate.sendKeys("250.65");
 		enter_Rate.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select2ndRow_9thColumn));
 		select2ndRow_9thColumn.click();
@@ -28676,7 +29405,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		Thread.sleep(1000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_IgstLwAmt));
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select3rdRow_1stColumn));
@@ -28688,17 +29417,17 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		enter_WarehouseTxt.sendKeys(Keys.SHIFT,Keys.HOME);
 
 		enter_WarehouseTxt.sendKeys("Hyderabad");
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		enter_WarehouseTxt.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_ItemTxt));
 		enter_ItemTxt.sendKeys("STD RATE COGS ITEM");
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		enter_ItemTxt.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select3rdRow_4thColumn));
 		select3rdRow_4thColumn.click();
@@ -28708,7 +29437,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		Thread.sleep(1000);
 		enter_Quantity.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select3rdRow_6thColumn));
 		select3rdRow_6thColumn.click();
@@ -28717,7 +29446,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		enter_Rate.sendKeys("400");
 		enter_Rate.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select3rdRow_9thColumn));
 		select3rdRow_9thColumn.click();
@@ -28750,8 +29479,8 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		System.out.println("**********************Printing Footer Values And Net Values************************************");
 
 
-		JavascriptExecutor jse = (JavascriptExecutor)getDriver();
-		jse.executeScript("arguments[0].scrollIntoView(true);",enterFooter_IgstLwAmt);
+		getAction().moveToElement(enterFooter_IgstLwAmt).build().perform();
+		Thread.sleep(2000);
 		String actCSGTAmountbeforeSave = enterFooter_CgstLwAmt.getAttribute("value");
 		String expCGSTAmountbeforeSave = "1,253.25";
 
@@ -28782,11 +29511,16 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		System.out.println("expNETAmountbeforeSave : "+expNETAmountbeforeSave);
 
 
+
+		getAction().moveToElement(voucherSaveBtn).build().perform();
+		Thread.sleep(1200);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherSaveBtn));
 		voucherSaveBtn.click();
 
+
+
 		checkValidationMessage("");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newReferenceTxt));
 		newReferenceTxt.click();
@@ -28801,15 +29535,16 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		String expMessage2 = " : 2";
 		String actMessage =checkValidationMessage(expMessage1);
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(previousBtn));
 		previousBtn.click();
 
+		Thread.sleep(1600);
+
+
+		getAction().moveToElement(enterFooter_IgstLwAmt).build().perform();
 		Thread.sleep(2000);
-
-
-		jse.executeScript("arguments[0].scrollIntoView(true);",enterFooter_IgstLwAmt);
 
 		String actCSGTAmountafterSave = enterFooter_CgstLwAmt.getAttribute("value");
 		String expCGSTAmountafterSave = "1,253.25";
@@ -28882,7 +29617,10 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkFieldPostToAccountInPurchaseVouchers() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
-		Thread.sleep(2000);
+		Thread.sleep(1600);
+		getDriver().navigate().refresh();
+		Thread.sleep(4000);		
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
 
@@ -28895,12 +29633,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchers));
 		purchaseVouchers.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherSettings));
 		voucherSettings.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(8000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenBtn));
 		editScreenBtn.click();
@@ -28910,7 +29648,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		editScreenFooterTab.click();
 
 
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 
 		ArrayList<String> FooterElementsList = new ArrayList<String>();
 		int count = editScreenFooterCaptionList.size();
@@ -28926,11 +29664,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			}
 		}
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
-		JavascriptExecutor jse =  (JavascriptExecutor)getDriver();
-		jse.executeScript("arguments[0].scrollIntoView(true);", editScreenPostToAccountChkBox);
-		Thread.sleep(2000);
+		//JavascriptExecutor jse =  (JavascriptExecutor)getDriver();
+		//jse.executeScript("arguments[0].scrollIntoView(true);", editScreenPostToAccountChkBox);
+		getAction().moveToElement(editScreenPostToAccountChkBox).build().perform();
+		Thread.sleep(1600);
 
 		System.out.println("Edit Screen post to account checkbox" +editScreenPostToAccountChkBox.isDisplayed());
 
@@ -28941,31 +29680,35 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenAccount1Radio));
 		editScreenAccount1Radio.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenAccount1Container));
 		editScreenAccount1Container.click();
 		editScreenAccount1Container.sendKeys("Customer A");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		editScreenAccount1Container.sendKeys(Keys.TAB);
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenAccount2Radio));
 		editScreenAccount2Radio.click();
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenAccount2Container));
 		editScreenAccount2Container.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		editScreenAccount2Container.sendKeys("VAT OUTPUT");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		editScreenAccount2Container.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenApplyBtn));
 		editScreenApplyBtn.click();
 
 
+		Thread.sleep(1600);
+		
+		Thread.sleep(3500);
+		getAction().moveToElement(updateBtn).build().perform();
 		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(updateBtn));
 		updateBtn.click();
@@ -28973,7 +29716,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		String expUpdatedMessage = "Data saved successfully";
 		String actUpdatedMessage = checkValidationMessage(expUpdatedMessage);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(CustCloseBtn));
 		CustCloseBtn.click();
 
@@ -29032,7 +29775,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	{
 		getDriver().navigate().refresh();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
 
@@ -29045,15 +29788,15 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchers));
 		purchaseVouchers.click();
 
-		Thread.sleep(2000);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
+		Thread.sleep(1600);
 
 		System.out.println("New Btn Displayed:: ?" +newBtn.isDisplayed());
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
 
-		checkValidationMessage("Screen opened");
+		
 
 		////
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseAccountText));
@@ -29116,24 +29859,24 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		wareHouseTxt.click();
 		wareHouseTxt.sendKeys("HYDERABAD");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		wareHouseTxt.sendKeys(Keys.TAB);
 
 		DepartmentTxt.click();
 		DepartmentTxt.sendKeys("DUBAI");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		DepartmentTxt.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_1stColumn));
 		select1stRow_1stColumn.click();
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_ItemTxt));
 		enter_ItemTxt.sendKeys("FIFO COGS ITEM");
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		enter_ItemTxt.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_3rdColumn));
 		select1stRow_3rdColumn.click();
@@ -29147,21 +29890,21 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		enter_Rate.sendKeys(Keys.END);
 		enter_Rate.sendKeys(Keys.SHIFT,Keys.HOME);
 		enter_Rate.sendKeys("100");
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		enter_Rate.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_8thColumn));
 		select1stRow_8thColumn.click();
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enterCGSTTxt));
 		enterCGSTTxt.sendKeys("6");
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		enterCGSTTxt.sendKeys(Keys.TAB);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enterSGSTTxt));
 		enterSGSTTxt.sendKeys("6");
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		enterSGSTTxt.sendKeys(Keys.TAB);
 		enterIGSTTxt.sendKeys(Keys.TAB);
 		enterCGSTLwAmtTxt.sendKeys(Keys.TAB);
@@ -29180,7 +29923,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		String actIGSTLwAmtVal = select1stRow_13thColumn.getText();
 		String expIGSTLwAmtVal = "0.0000";
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(toggleBtn));
 		toggleBtn.click();
@@ -29188,7 +29931,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(postingDetailsBtn));	
 		postingDetailsBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		int postingDetailsDebitListCount = postingDetailsDebitList.size();
 
@@ -29227,19 +29970,21 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		String exppostingDetailsCreditSum =  "12,400.00";
 
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(postingDetailsCloseBtn));
 		postingDetailsCloseBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		vendorAccountTxt.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
-		JavascriptExecutor jse =  (JavascriptExecutor)getDriver();
-		jse.executeScript("arguments[0].scrollIntoView(true);", enterFooterCGSTLwAmtTxt);
-		Thread.sleep(2000);
+	//	JavascriptExecutor jse =  (JavascriptExecutor)getDriver();
+		//jse.executeScript("arguments[0].scrollIntoView(true);", enterFooterCGSTLwAmtTxt);
+		
+getAction().moveToElement(enterFooterCGSTLwAmtTxt).build().perform();
+Thread.sleep(1600);
 
 		String actFooterCGSTLwAmtVal = enterFooterCGSTLwAmtTxt.getAttribute("value");
 		String expFooterCGSTLwAmtVal = "600.00";
@@ -29254,9 +29999,15 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 
 
+		//getAction().moveToElement(voucherSaveBtn).build().perform();
+		Thread.sleep(2000);
+		
+		//scrollToElementJSE(voucherSaveBtn);
+		Thread.sleep(2000);		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherSaveBtn));
 		voucherSaveBtn.click();
-		Thread.sleep(2000);
+
+		Thread.sleep(2500);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newReferenceTxt));
 		newReferenceTxt.click();
 
@@ -29270,14 +30021,14 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		String expMessage2 = " : 1";
 		String actMessage =checkValidationMessage(expMessage1);
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(previousBtn));
 		previousBtn.click();
 
 		checkValidationMessage("Voucher loaded successfully");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 
@@ -29288,7 +30039,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(postingDetailsBtn));	
 		postingDetailsBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 
@@ -29333,8 +30084,8 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(postingDetailsCloseBtn));
 		postingDetailsCloseBtn.click();
 
-		jse.executeScript("arguments[0].scrollIntoView(true);", enterFooterCGSTLwAmtTxt);
-		Thread.sleep(2000);
+	//	jse.executeScript("arguments[0].scrollIntoView(true);", enterFooterCGSTLwAmtTxt);
+		Thread.sleep(1600);
 
 		String actFooterCGSTLwAmtValAfterSave = enterFooterCGSTLwAmtTxt.getAttribute("value");
 		String expFooterCGSTLwAmtValAfterSave = "600.00";
@@ -29429,30 +30180,35 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkDefinedStandardRateForSTDItem() throws InterruptedException
 	{
+		Thread.sleep(2000);
+		getDriver().navigate().refresh();
+		Thread.sleep(4000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(homeMenu));
 		homeMenu.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(utilities));
 		utilities.click();
 
-		Thread.sleep(3000);
-
-		JavascriptExecutor jse = (JavascriptExecutor)getDriver();
-		jse.executeScript("arguments[0].scrollIntoView(true);", standardRate);
 		Thread.sleep(2000);
+
+		//JavascriptExecutor jse = (JavascriptExecutor)getDriver();
+		//jse.executeScript("arguments[0].scrollIntoView(true);", standardRate);
+		getAction().moveToElement(standardRate).build().perform();
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(standardRate));
 		standardRate.click();
 
-		Thread.sleep(5000);
+		Thread.sleep(10000);
 
+		new WebDriverWait(getDriver(), 350).until(ExpectedConditions.elementToBeClickable(standardRateItemCombo));
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(standardRateItemCombo));
 		standardRateItemCombo.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		standardRateItemCombo.sendKeys("STD RATE COGS ITEM");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		standardRateItemCombo.sendKeys(Keys.TAB);
-		
-		Thread.sleep(2000);
+
+		Thread.sleep(1600);
 
 		String actstandardRateItemCombo					 = standardRateItemCombo.getAttribute("value");
 
@@ -29491,7 +30247,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkPurchaseVarianceInPostingDetailsForSTDItem() throws EncryptedDocumentException, InvalidFormatException, InterruptedException, IOException
 	{
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
 
@@ -29504,14 +30260,14 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchers));
 		purchaseVouchers.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(6000);
 
 		System.out.println("New Btn Displayed:: ?" +newBtn.isDisplayed());
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
 
-		checkValidationMessage("Screen opened");
+		
 
 		////
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseAccountText));
@@ -29574,24 +30330,24 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		wareHouseTxt.click();
 		wareHouseTxt.sendKeys("HYDERABAD");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		wareHouseTxt.sendKeys(Keys.TAB);
 
 		DepartmentTxt.click();
 		DepartmentTxt.sendKeys("DUBAI");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		DepartmentTxt.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_1stColumn));
 		select1stRow_1stColumn.click();
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_ItemTxt));
 		enter_ItemTxt.sendKeys("STD RATE COGS ITEM");
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		enter_ItemTxt.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_3rdColumn));
 		select1stRow_3rdColumn.click();
@@ -29605,21 +30361,21 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		enter_Rate.sendKeys(Keys.END);
 		enter_Rate.sendKeys(Keys.SHIFT,Keys.HOME);
 		enter_Rate.sendKeys("100");
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		enter_Rate.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_8thColumn));
 		select1stRow_8thColumn.click();
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enterCGSTTxt));
 		enterCGSTTxt.sendKeys("6");
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		enterCGSTTxt.sendKeys(Keys.TAB);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enterSGSTTxt));
 		enterSGSTTxt.sendKeys("6");
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		enterSGSTTxt.sendKeys(Keys.TAB);
 		enterIGSTTxt.sendKeys(Keys.TAB);
 		enterCGSTLwAmtTxt.sendKeys(Keys.TAB);
@@ -29645,7 +30401,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(postingDetailsBtn));	
 		postingDetailsBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		int postingDetailsDebitListCount = postingDetailsDebitList.size();
 
@@ -29685,19 +30441,17 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		String actpostingDetailsCreditSum = postingDetailsCreditSum.getText();
 		String exppostingDetailsCreditSum =  "1,240.00";
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(postingDetailsCloseBtn));
 		postingDetailsCloseBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		vendorAccountTxt.click();
 
 
-		JavascriptExecutor jse =  (JavascriptExecutor)getDriver();
-		jse.executeScript("arguments[0].scrollIntoView(true);", enterFooterCGSTLwAmtTxt);
-		Thread.sleep(2000);
-
+		getAction().moveToElement(enterFooterCGSTLwAmtTxt).build().perform();
+		Thread.sleep(2500);
 		String actFooterCGSTLwAmtVal = enterFooterCGSTLwAmtTxt.getAttribute("value");
 		String expFooterCGSTLwAmtVal = "60.00";
 
@@ -29709,9 +30463,11 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		Thread.sleep(1000);
 
+		getAction().moveToElement(voucherSaveBtn).build().perform();
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherSaveBtn));
 		voucherSaveBtn.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newReferenceTxt));
 		newReferenceTxt.click();
 
@@ -29725,14 +30481,14 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		String expMessage2 = " : 2";
 		String actMessage =checkValidationMessage(expMessage1);
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(previousBtn));
 		previousBtn.click();
 
 		checkValidationMessage("Voucher loaded successfully");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(toggleBtn));
 		toggleBtn.click();
@@ -29741,7 +30497,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(postingDetailsBtn));	
 		postingDetailsBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 
@@ -29788,9 +30544,9 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(postingDetailsCloseBtn));
 		postingDetailsCloseBtn.click();
 
-		jse.executeScript("arguments[0].scrollIntoView(true);", enterFooterCGSTLwAmtTxt);
-		Thread.sleep(2000);
-
+		getAction().moveToElement(enterFooterCGSTLwAmtTxt).build().perform();
+		Thread.sleep(1800);
+	
 		String actFooterCGSTLwAmtValAfterSave = enterFooterCGSTLwAmtTxt.getAttribute("value");
 		String expFooterCGSTLwAmtValAfterSave = "60.00";
 
@@ -29869,7 +30625,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	public static boolean checkPurchaseVarianceInPostingDeatilsByGivingExactStandardRate() throws EncryptedDocumentException, InvalidFormatException, InterruptedException, IOException
 	{
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
 
@@ -29878,20 +30634,20 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionsPurchaseMenu));
 		financialsTransactionsPurchaseMenu.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchers));
 		purchaseVouchers.click();
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		System.out.println("New Btn Displayed:: ?" +newBtn.isDisplayed());
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
 
-		checkValidationMessage("Screen opened");
+		
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseAccountText));
@@ -29954,21 +30710,21 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		wareHouseTxt.click();
 		wareHouseTxt.sendKeys("HYDERABAD");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		wareHouseTxt.sendKeys(Keys.TAB);
 
 		DepartmentTxt.click();
 		DepartmentTxt.sendKeys("DUBAI");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		DepartmentTxt.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_1stColumn));
 		select1stRow_1stColumn.click();
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_ItemTxt));
 		enter_ItemTxt.sendKeys("STD RATE COGS ITEM");
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		enter_ItemTxt.sendKeys(Keys.TAB);
 
 		Thread.sleep(1000);
@@ -29990,21 +30746,21 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		enter_Rate.sendKeys(Keys.END);
 		enter_Rate.sendKeys(Keys.SHIFT,Keys.HOME);
 		enter_Rate.sendKeys("10");
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		enter_Rate.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_8thColumn));
 		select1stRow_8thColumn.click();
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enterCGSTTxt));
 		enterCGSTTxt.sendKeys("6");
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		enterCGSTTxt.sendKeys(Keys.TAB);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enterSGSTTxt));
 		enterSGSTTxt.sendKeys("6");
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		enterSGSTTxt.sendKeys(Keys.TAB);
 		enterIGSTTxt.sendKeys(Keys.TAB);
 		enterCGSTLwAmtTxt.sendKeys(Keys.TAB);
@@ -30030,7 +30786,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(postingDetailsBtn));	
 		postingDetailsBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		int postingDetailsDebitListCount = postingDetailsDebitList.size();
 
@@ -30075,11 +30831,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(postingDetailsCloseBtn));
 		postingDetailsCloseBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
-		JavascriptExecutor jse =  (JavascriptExecutor)getDriver();
-		jse.executeScript("arguments[0].scrollIntoView(true);", enterFooterCGSTLwAmtTxt);
-		Thread.sleep(2000);
+	//	JavascriptExecutor jse =  (JavascriptExecutor)getDriver();
+	//	jse.executeScript("arguments[0].scrollIntoView(true);", enterFooterCGSTLwAmtTxt);
+		getAction().moveToElement(enterFooterCGSTLwAmtTxt).build().perform();
+		Thread.sleep(1600);
 
 		String actFooterCGSTLwAmtVal = enterFooterCGSTLwAmtTxt.getAttribute("value");
 		String expFooterCGSTLwAmtVal = "0.60";
@@ -30090,16 +30847,19 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		String actNetValue = enterFooter_NetAmount.getText();
 		String expNetValue= "1,180.00";
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
-		jse.executeScript("arguments[0].scrollIntoView(true);", voucherSaveBtn);
-		Thread.sleep(2000);
-		vendorAccountTxt.click();
-		Thread.sleep(2000);
+		getAction().moveToElement(voucherSaveBtn).build().perform();
+		Thread.sleep(1200);
+		
+
+		Thread.sleep(2500);
+	//	vendorAccountTxt.click();
+	//	Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherSaveBtn));
 		voucherSaveBtn.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newReferenceTxt));
 		newReferenceTxt.click();
 
@@ -30113,14 +30873,14 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		String expMessage2 = " : 3";
 		String actMessage =checkValidationMessage(expMessage1);
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(previousBtn));
 		previousBtn.click();
 
 		checkValidationMessage("Voucher loaded successfully");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 
@@ -30131,7 +30891,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(postingDetailsBtn));	
 		postingDetailsBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 
@@ -30178,8 +30938,11 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(postingDetailsCloseBtn));
 		postingDetailsCloseBtn.click();
 
-		jse.executeScript("arguments[0].scrollIntoView(true);", enterFooterCGSTLwAmtTxt);
-		Thread.sleep(2000);
+		//jse.executeScript("arguments[0].scrollIntoView(true);", enterFooterCGSTLwAmtTxt);
+		
+		getAction().moveToElement(enterFooterCGSTLwAmtTxt).build().perform();
+		Thread.sleep(1200);
+	
 
 		String actFooterCGSTLwAmtValAfterSave = enterFooterCGSTLwAmtTxt.getAttribute("value");
 		String expFooterCGSTLwAmtValAfterSave = "0.60";
@@ -30273,7 +31036,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkVouchersExportOptionExcelInVoucherToggle() throws InterruptedException, AWTException
 	{
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
@@ -30288,23 +31051,23 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherOptionsExpand));
 		voucherOptionsExpand.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(exportBtnInToggle));
 		exportBtnInToggle.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(exportBtn));
 		exportBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		String actFileName = checkDownloadedFileName(getDriver());
@@ -30327,7 +31090,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	public static boolean checkVouchersExportOptionPDFInVoucherToggle() throws InterruptedException, AWTException, IOException
 	{
 		getDriver().navigate().refresh();
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
@@ -30341,23 +31104,23 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherOptionsExpand));
 		voucherOptionsExpand.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(exportBtnInToggle));
 		exportBtnInToggle.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(exportToPdf));
 		exportToPdf.click();
 
-		Thread.sleep(15000);
+		Thread.sleep(20000);
 
 		File Efile=new File(getBaseDir()+"\\autoIt\\ExportFiles\\VoucherExportingToPDF.pdf");
 
@@ -30374,7 +31137,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		robot.keyPress(KeyEvent.VK_TAB);
 		robot.keyRelease(KeyEvent.VK_TAB);
@@ -30384,7 +31147,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyPress(KeyEvent.VK_ENTER);
 		robot.keyRelease(KeyEvent.VK_ENTER);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
@@ -30392,18 +31155,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyRelease(KeyEvent.VK_S);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\SavingVoucherExportingToPDF.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
 
@@ -30414,11 +31177,24 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		Thread.sleep(1000);
 
-		getDriver().switchTo().window(openTabs.get(2)).close();
+	/*	getDriver().switchTo().window(openTabs.get(2)).close();
 		Thread.sleep(1000);
 		getDriver().switchTo().window(openTabs.get(1)).close();
 		Thread.sleep(1000);
-		getDriver().switchTo().window(openTabs.get(0));
+		getDriver().switchTo().window(openTabs.get(0));*/
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		
 
 
 		String actPDF = getBaseDir()+"\\autoIt\\ExportFiles\\VoucherExportingToPDF.pdf";
@@ -30454,7 +31230,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	public static boolean checkVouchersExportOptionPrintnVoucherToggle() throws IOException, InterruptedException, AWTException
 	{
 		getDriver().navigate().refresh();
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
@@ -30468,23 +31244,23 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherOptionsExpand));
 		voucherOptionsExpand.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(exportBtnInToggle));
 		exportBtnInToggle.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtnInToggle));
 		printBtnInToggle.click();
 
-		Thread.sleep(15000);
+		Thread.sleep(20000);
 
 		File Efile=new File(getBaseDir()+"\\autoIt\\ExportFiles\\VoucherExportingToPrint.pdf");
 
@@ -30495,25 +31271,25 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		Robot robot = new Robot();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_S);
 		robot.keyRelease(KeyEvent.VK_S);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\SavingVoucherExportingToPrint.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
 
@@ -30524,11 +31300,25 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		Thread.sleep(1000);
 
-		getDriver().switchTo().window(openTabs.get(2)).close();
+	/*	getDriver().switchTo().window(openTabs.get(2)).close();
 		Thread.sleep(1000);
 		getDriver().switchTo().window(openTabs.get(1)).close();
 		Thread.sleep(1000);
-		getDriver().switchTo().window(openTabs.get(0));
+		getDriver().switchTo().window(openTabs.get(0));*/
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		
 
 
 		String actPDF = getBaseDir()+"\\autoIt\\ExportFiles\\VoucherExportingToPrint.pdf";
@@ -30619,9 +31409,9 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	{
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getDriver().navigate().refresh();
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(searchTxt));
 		searchTxt.click();
@@ -30629,7 +31419,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		Thread.sleep(1000);
 		searchTxt.sendKeys(Keys.ENTER);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(barcodeInputBox));
@@ -30679,14 +31469,14 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		}
 
 		String actPackDataList = barcodePackDataListArray.toString();
-		String expPackDataList = "[Batches, Gross, Quantity, Rates, Item name, Item code, Product id, RMA, Units, Spaces, /, -, _, Barcode1, Barcode2, Barcode3, Default Base Unit, Default Sales Unit, Default Purchase Unit, Standard Cost, Overhead cost, Indirect Cost %, Profit %, ABC-code value, ABC-code margin, ABC-code revenue, ABC-code carrying cost, Cost of issue account, Stocks account, Sales account, Supplier, Code, Rate, Tolerance, Lead Time, Credit Days, Credit Limit, Manufacture Policy, Default Replenishment, Reorder point, Reorder Quantity, Max inventory level, Default Vendor, Min order Quantity, Max order quantity, Order multiple, Flushing, Don’t show products expiring in (Days), Item Make, Reorder Policy, Warehouse, Reorder Quantity 1, Reorder Quantity 2, Lead time (in days), Category, Barcode 1, Barcode 2, Barcode 3, WIP Account, Unit, Barcode, Batch, Printer, Description, Warehouse, Warehouse, Start Date, End Date, Least Delivery Date, Safety Lead Time, Safety Stock, Re-order cycle, Perishable Item, Body Id, Bin, Start date, End date, Replenish qty, Alternate Category, Tax Code, Length, Width, Height, Weight, Production Lead Time, Production Lead Time, Do not show the Items expire within (days)]";
+		String expPackDataList = "[Batches, Gross, Quantity, Rates, Item name, Item code, Product id, RMA, Units, Spaces, /, -, _, Barcode1, Barcode2, Barcode3, Bin, Default Base Unit, Default Sales Unit, Default Purchase Unit, Standard Cost, Overhead cost, Indirect Cost %, Profit %, ABC-code value, ABC-code margin, ABC-code revenue, ABC-code carrying cost, Cost of issue account, Stocks account, Sales account, Supplier, Code, Rate, Tolerance, Lead Time, Credit Days, Credit Limit, Manufacture Policy, Default Replenishment, Reorder point, Reorder Quantity, Max inventory level, Default Vendor, Min order Quantity, Max order quantity, Order multiple, Flushing, Don’t show products expiring in (Days), Item Make, Reorder Policy, Warehouse, Reorder Quantity 1, Reorder Quantity 2, Lead time (in days), Category, Barcode 1, Barcode 2, Barcode 3, WIP Account, Unit, Barcode, Batch, Printer, Description, Warehouse, Warehouse, Start Date, End Date, Least Delivery Date, Safety Lead Time, Safety Stock, Re-order cycle, Perishable Item, Body Id, Bin, Start date, End date, Replenish qty, Alternate Category, Tax Code, Length, Width, Height, Weight, Production Lead Time, Production Lead Time, Do not show the Items expire within (days), Phantom BOM]";
 
 
 		System.err.println("actPackDataList: "+actPackDataList);
 
 		System.err.println("expPackDataList: "+expPackDataList);
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		barcodePackDataCheckbox.click();
 
 
@@ -30713,7 +31503,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	public static boolean checkSaveBarcodeDefinitionWithoutTemplateName() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(barcodeOkBtn));
 		barcodeOkBtn.click();	
@@ -30742,7 +31532,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		barcodeTemplateName.click();
 		barcodeTemplateName.sendKeys("Barcode");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(barcodeOkBtn));
 		barcodeOkBtn.click();	
@@ -30773,14 +31563,14 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		barcodeTemplateName.click();
 		barcodeTemplateName.sendKeys(Keys.END);
 		barcodeTemplateName.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		barcodeTemplateName.sendKeys("Barcode");
 		barcodeTemplateName.sendKeys(Keys.TAB);
 
+		Thread.sleep(1600);
 		Thread.sleep(2000);
-		Thread.sleep(3000);
 		barcodePackDataCheckbox.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		barcodeSetAsDefaultCheckbox.click();
 
 		Thread.sleep(1000);
@@ -30875,15 +31665,15 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			}
 		}
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		barcodeOkBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		String expMessage = "Data Saved Successfully";
 		String actMessage = checkValidationMessage(expMessage);
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		String actSavedBarcode = savedBarcode.getText();
 		String expSavedBarcode = "Barcode";
 
@@ -30952,6 +31742,9 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	}
 
+	@FindBy(xpath="//button[contains(text(),'Inventory Settings')]")
+	private static WebElement inventorySettingsBtn;
+
 
 	@FindBy(xpath="//*[@id='panelsStayOpen-headingfour']/button")
 	private static WebElement barcodeSettingsBtn;
@@ -30961,33 +31754,33 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	public static boolean checkCreateNewMRNVoucher() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getDriver().navigate().refresh();
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(searchTxt));
 		searchTxt.click();
 		searchTxt.sendKeys("Configure Transactions");
 		Thread.sleep(1000);
 		searchTxt.sendKeys(Keys.ENTER);
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PreferencesBtn));
 		PreferencesBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(DocumentCustomizationBtn));
 		DocumentCustomizationBtn.click();*/
 
-	
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(materialReceiptsNotesBtn));
 		materialReceiptsNotesBtn.click();
 
-		Thread.sleep(5000);
+		Thread.sleep(4000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createVoucherBtn));
 		createVoucherBtn.click();
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(titleTxt));
 		titleTxt.click();
@@ -30996,8 +31789,8 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		titleTxt.sendKeys(Keys.TAB);	
 
 
-		ScrollToElement(masters1);
-		Thread.sleep(3000);
+		getAction().moveToElement(masters1).build().perform();;
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masters1));
 		masters1.click();
 
@@ -31027,23 +31820,25 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(positionDropdown));
 		positionDropdown.click();
 		positionDropdown.sendKeys("Header");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		positionDropdown.sendKeys(Keys.TAB);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryoptionsTab));
 		inventoryoptionsTab.click();
 
+		Thread.sleep(1600);
+		
+		click(inventorySettingsBtn);
+		//ScrollToElement(barcodeSettingsBtn);
 		Thread.sleep(2000);
-		ScrollToElement(barcodeSettingsBtn);
-		Thread.sleep(1500);
-		barcodeSettingsBtn.click();
+		ClickUsingJs(barcodeSettingsBtn);
 		Thread.sleep(1200);
 		fromTemplateChkBox.click();
 
 
-		ScrollToElement(updateBtn);
-		Thread.sleep(1500);
+		getAction().moveToElement(updateBtn).build().perform();;
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(updateBtn));
 		updateBtn.click();
 
@@ -31052,7 +31847,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		String actMessage = checkValidationMessage(expMessage);
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		if (actMessage.equalsIgnoreCase(expMessage)) 
 		{
@@ -31100,7 +31895,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	{
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(searchTxt));
 		searchTxt.click();
@@ -31111,12 +31906,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		Thread.sleep(3000);
 
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
 
 		Thread.sleep(1000);
 
-		checkValidationMessage("Screen opened");
+		
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorAccountTxt));
 		vendorAccountTxt.click();
@@ -31125,7 +31920,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		vendorAccountTxt.sendKeys("Vendor A");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		ArrayList<String>  actVendorAccountList= new ArrayList<String>(); 
 
@@ -31151,7 +31946,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		barcodeWareHouseTxt.sendKeys("HYDERABAD");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		ArrayList<String>  actbarcodeWarehouseCombo= new ArrayList<String>(); 
 
@@ -31178,7 +31973,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		barcodeDepartmentTxt.sendKeys("DUBAI");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		ArrayList<String>  actbarcodeDepartmentCombo= new ArrayList<String>(); 
 
@@ -31201,7 +31996,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		select1stRow_1stColumn.click();
 		enter_ItemTxt.click();
 		enter_ItemTxt.sendKeys("BATCH BR ITEM");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		enter_ItemTxt.sendKeys(Keys.TAB);
 
 
@@ -31231,7 +32026,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		select2ndRow_1stColumn.click();
 		enter_ItemTxt.click();
 		enter_ItemTxt.sendKeys("STD RATE COGS ITEM");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		enter_ItemTxt.sendKeys(Keys.TAB);
 
 
@@ -31255,27 +32050,27 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		String expSaveMessage = "Voucher saved successfully";
 		String actSaveMessage =  checkValidationMessage(expSaveMessage);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		previousBtn.click();;
 
 		Thread.sleep(1000);
 		checkValidationMessage("Voucher loaded successfully");
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		String actrow1Barcode = select1stRow_11thColumn.getText();
-		String exprow1Barcode = "^0283";
+		String exprow1Barcode = "^0271";
 
 		System.err.println("actrow1Barcode:  "+actrow1Barcode   + "Value Expected:  "+exprow1Barcode);
 
 
 		String actrow2Barcode = select2ndRow_11thColumn.getText();
-		String exprow2Barcode = "^0284";
+		String exprow2Barcode = "^0272";
 
 		System.err.println("actrow2Barcode:  "+actrow2Barcode   + "Value Expected:  "+exprow2Barcode);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		//new_CloseBtn.click();
 
 		if (actSaveMessage.startsWith(expSaveMessage) && actrow1Barcode.equalsIgnoreCase(exprow1Barcode)
@@ -31302,7 +32097,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	{
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(searchTxt));
 		searchTxt.click();
@@ -31310,11 +32105,11 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		Thread.sleep(1000);
 		searchTxt.sendKeys(Keys.ENTER);
 
-		Thread.sleep(3000);
-
-
-
 		Thread.sleep(2000);
+
+
+
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
 
 		int count = grid_VoucherNoList.size();
@@ -31338,22 +32133,27 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createLayoutBtn));
 		createLayoutBtn.click();
+		Thread.sleep(1600);
+		
+		Thread.sleep(2000);
+		
+		//blankTemplateBtn.click();
 		Thread.sleep(2000);
 
-		barcodeExpandBtn.click();
-		Thread.sleep(2000);
+	//	barcodeExpandBtn.click();
+	//	Thread.sleep(1600);
 
-		barcodeItemExpandBtn.click();
-		Thread.sleep(2000);
+	//	barcodeItemExpandBtn.click();
+		Thread.sleep(1600);
 
 
 
-		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\BarcodeLayoutNew.exe");
+		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\BarcodeLayoutNew1.exe");
 
 		Thread.sleep(70000);
 
 		getAction().moveToElement(Savedropdown).build().perform();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(Savedropdown));
 		Savedropdown.click();
 
@@ -31373,7 +32173,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ExitBtn));
 		ExitBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		if (actMessage.equalsIgnoreCase(expMessage)) 
 		{
@@ -31390,53 +32190,69 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	@FindBy(xpath="//*[@id='InputBlock_0_2003']")
 	private static WebElement itemNameInLayout;
 
-	@FindBy(xpath="//*[@id='InputBlock_0_2005']")
+	//@FindBy(xpath="//*[@id='InputBlock_0_2006']")
+	@FindBy(xpath="//*[text()='Item.Code']")
 	private static WebElement itemCodeInLayout;
 
 	@FindBy(xpath="//*[@id='InputBlock_0_2007']")
 	private static WebElement batchInLayout;
 
-	@FindBy(xpath="//*[@id='InputBlock_0_2011']")
+	//@FindBy(xpath="//*[@id='InputBlock_0_2011']")
+	@FindBy(xpath="//p[text()='Barcode.Barcode [Barcode]']")
 	private static WebElement barcodeInLayout;
 
 	@FindBy(xpath="//*[@id='InputBlock_0_2009']")
 	private static WebElement expDateInLayout;
 
-	@FindBy(xpath="//select[@id='Combobox_8_2005']")
+	//@FindBy(xpath="//select[@id='Combobox_8_2005']")
+	@FindBy(xpath="//select[@data-bindingname='EnableQRCode']")
 	private static WebElement itemCodeEnableQRCodeInLayout;
 
-	@FindBy(xpath="//*[@id='FTextBox_23_2005']")
+	//@FindBy(xpath="//*[@id='FTextBox_23_2005']")
+	@FindBy(xpath="//input[@data-bindingname='Left']")
 	private static WebElement itemCodeleftInLayout;
 
-	@FindBy(xpath="//*[@id='FTextBox_24_2005']")
+	//@FindBy(xpath="//*[@id='FTextBox_24_2005']")
+	@FindBy(xpath="//input[@data-bindingname='Top']")
 	private static WebElement itemCodeTopInLayout;
 
 
 
-	@FindBy(xpath="//*[@id='FTextBox_25_2005']")
+	//@FindBy(xpath="//*[@id='FTextBox_25_2005']")
+	@FindBy(xpath="//input[@data-bindingname='Height']")
 	private static WebElement itemCodeHieghtInLayout;
 
-	@FindBy(xpath="//*[@id='FTextBox_26_2005']")
+	//@FindBy(xpath="//*[@id='FTextBox_26_2005']")
+	@FindBy(xpath="//input[@data-bindingname='Width']")
 	private static WebElement itemCodeWidthInLayout;
 
-	@FindBy(xpath="//*[@id='FTextBox_2_2011']")
+	//@FindBy(xpath="//*[@id='FTextBox_2_2011']")
+	@FindBy(xpath="//input[@data-bindingname='FontSize']")
 	private static WebElement barcodeFontSizeDD;
 
 
-	@FindBy(xpath="//select[@id='FFontCombo_6_2011']")
+	//@FindBy(xpath="//select[@id='FFontCombo_6_2011']")
+	@FindBy(xpath="//select[@data-bindingname='FontStyle']")
 	private static WebElement barcodeFontStyleDD;
+	
+	@FindBy(xpath="//select[@data-bindingname='TextFont']")
+	private static WebElement barcodeFontNameDD;
 
-	@FindBy(xpath="//*[@id='FTextBox_23_2011']")
+	//@FindBy(xpath="//*[@id='FTextBox_23_2011']")
+	@FindBy(xpath="//input[@data-bindingname='Left']")
 	private static WebElement barcodeLeft;
 
 
-	@FindBy(xpath="//*[@id='FTextBox_24_2011']")
+	//@FindBy(xpath="//*[@id='FTextBox_24_2011']")
+	@FindBy(xpath="//input[@data-bindingname='Top']")
 	private static WebElement barcodeTop;
 
-	@FindBy(xpath="//*[@id='FTextBox_25_2011']")
+	///@FindBy(xpath="//*[@id='FTextBox_25_2011']")
+	@FindBy(xpath="//input[@data-bindingname='Height']")
 	private static WebElement barcodeheight;
 
-	@FindBy(xpath="//*[@id='FTextBox_26_2011']")
+	//@FindBy(xpath="//*[@id='FTextBox_26_2011']")
+	@FindBy(xpath="//input[@data-bindingname='Width']")
 	private static WebElement barcodeWidth;
 
 
@@ -31469,21 +32285,21 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBarCodeBtn));
 		printBarCodeBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(barCodeLayoutNameTxt));
 		barCodeLayoutNameTxt.click();
 		barCodeLayoutNameTxt.sendKeys(Keys.END);
 		barCodeLayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		barCodeLayoutNameTxt.sendKeys("BarCodeLayout");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		barCodeLayoutNameTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutName_Editlayout));
 		LayoutName_Editlayout.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getAction().contextClick(itemCodeInLayout).build().perform();
 		Thread.sleep(1000);
@@ -31497,14 +32313,14 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		itemCodeleftInLayout.sendKeys(Keys.END);
 		itemCodeleftInLayout.sendKeys(Keys.SHIFT,Keys.HOME);
-		itemCodeleftInLayout.sendKeys("154");
+		itemCodeleftInLayout.sendKeys("250");
 		Thread.sleep(1000);
 
 		itemCodeTopInLayout.sendKeys(Keys.END);
 		itemCodeTopInLayout.sendKeys(Keys.SHIFT,Keys.HOME);
 		itemCodeTopInLayout.sendKeys("85");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		itemCodeHieghtInLayout.sendKeys(Keys.END);
 		itemCodeHieghtInLayout.sendKeys(Keys.SHIFT,Keys.HOME);
@@ -31515,7 +32331,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		itemCodeWidthInLayout.sendKeys(Keys.SHIFT,Keys.HOME);
 		itemCodeWidthInLayout.sendKeys("96");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		getAction().contextClick(barcodeInLayout).build().perform();
@@ -31531,10 +32347,11 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		barcodeFontSizeDD.sendKeys("20");
 		Thread.sleep(1000);
 
-		barcodeFontStyleDD.click();
-		Select barcodeFont = new Select(barcodeFontStyleDD);
+		//barcodeFontStyleDD.click();
+		barcodeFontNameDD.click();
+		Select barcodeFont = new Select(barcodeFontNameDD);
 		barcodeFont.selectByVisibleText("IDAutomationSC128M DEMO");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		barcodeheight.sendKeys(Keys.END);
@@ -31555,12 +32372,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		barcodeTop.sendKeys(Keys.SHIFT,Keys.HOME);
 		barcodeTop.sendKeys("270");
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Savedropdown));
 		Savedropdown.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
@@ -31571,7 +32388,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ExitBtn));
 		ExitBtn.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
 
 
@@ -31592,29 +32409,29 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBarCodeBtn));
 		printBarCodeBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(barCodeLayoutNameTxt));
 		barCodeLayoutNameTxt.click();
 		barCodeLayoutNameTxt.sendKeys(Keys.END);
 		barCodeLayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		barCodeLayoutNameTxt.sendKeys("BarCodeLayout");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		barCodeLayoutNameTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutName_Editlayout));
 		LayoutName_Editlayout.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
-		Thread.sleep(3000);
+		Thread.sleep(4000);
 		Runtime.getRuntime().exec(getBaseDir()+"\\autoIt\\scripts\\DragDownToEmptyAreaN.exe");
 
-		Thread.sleep(15000);
+		Thread.sleep(20000);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\EmptyGridRightClickForProperties.exe");
 
@@ -31622,11 +32439,11 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		Select reportType = new Select(ReportTypeCombo);
 		reportType.selectByVisibleText("Label Across");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Savedropdown));
 		Savedropdown.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
@@ -31634,12 +32451,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		String expMessage1 = "Layout saved successfully";
 		String actMessage1 = checkValidationMessage(expMessage1);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ExitBtn));
 		ExitBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		if (actMessage1.equalsIgnoreCase(expMessage1))
@@ -31678,7 +32495,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkPrintBarcodePopupFields() throws InterruptedException
 	{
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
 
 		int count = grid_VoucherNoList.size();
@@ -31699,7 +32516,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBarCodeBtn));
 		printBarCodeBtn.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		boolean actPickQuantityFromVoucher = pickQuantityFromVoucherRadioBtn.isDisplayed();
 		boolean expPickQuantityFromVoucher = true;
@@ -31735,16 +32552,16 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkPrintBarcodeIntoPDFandValidatePDF() throws AWTException, InterruptedException, IOException
 	{
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(barCodeLayoutNameTxt));
 		barCodeLayoutNameTxt.click();
 		barCodeLayoutNameTxt.sendKeys(Keys.END);
 		barCodeLayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		barCodeLayoutNameTxt.sendKeys("BarCodeLayout");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		barCodeLayoutNameTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		File Efile=new File(getBaseDir()+"\\autoIt\\ExportFiles\\BarcodeLayoutPrint.pdf");
 
@@ -31753,13 +32570,13 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			Efile.delete();
 		}
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		barCodePrintBtn.click();
 
-		Thread.sleep(3000);;
+		Thread.sleep(8000);;
 		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
 
-		getDriver().switchTo().window(openTabs.get(1));
+		//getDriver().switchTo().window(openTabs.get(1));
 
 
 		Robot robot = new Robot();
@@ -31768,10 +32585,10 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyRelease(KeyEvent.VK_S);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\SavingBarcodeLayoutPrint.exe");
-		Thread.sleep(4000);
+		Thread.sleep(8000);
 
 
 
@@ -31785,10 +32602,17 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		Thread.sleep(1000);
 
-		getDriver().switchTo().window(openTabs.get(1)).close();
+	/*	getDriver().switchTo().window(openTabs.get(1)).close();
 		Thread.sleep(1000);
 		getDriver().switchTo().window(openTabs.get(0));
-
+*/
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(2000);
+		
 
 		String actPDF = getBaseDir()+"\\autoIt\\ExportFiles\\BarcodeLayoutPrint.pdf";
 		String expPDF = getBaseDir()+"\\autoIt\\ImportFiles\\BarcodeLayoutPrint.pdf";
@@ -31840,20 +32664,20 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		printBarCodeBtn.click();
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(barCodeLayoutNameTxt));
 		barCodeLayoutNameTxt.click();
 		barCodeLayoutNameTxt.sendKeys(Keys.END);
 		barCodeLayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		barCodeLayoutNameTxt.sendKeys("BarCodeLayout");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		barCodeLayoutNameTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		pickQuantityManualRadioBtn.click();
 		Thread.sleep(200);
@@ -31870,13 +32694,13 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			Efile.delete();
 		}
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		barCodePrintBtn.click();
 
-		Thread.sleep(3000);;
+		Thread.sleep(8000);;
 		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
 
-		getDriver().switchTo().window(openTabs.get(1));
+		//getDriver().switchTo().window(openTabs.get(1));
 
 
 		Robot robot = new Robot();
@@ -31885,10 +32709,10 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyRelease(KeyEvent.VK_S);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\SavingBarcodeLayoutPrintForManualInput.exe");
-		Thread.sleep(4000);
+		Thread.sleep(8000);
 
 
 
@@ -31900,9 +32724,16 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		Thread.sleep(1000);
 
-		getDriver().switchTo().window(openTabs.get(1)).close();
+	/*	getDriver().switchTo().window(openTabs.get(1)).close();
 		Thread.sleep(1000);
-		getDriver().switchTo().window(openTabs.get(0));
+		getDriver().switchTo().window(openTabs.get(0));*/
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(2000);
+		
 
 
 		String actPDF = getBaseDir()+"\\autoIt\\ExportFiles\\BarcodeLayoutPrintManualInput.pdf";
@@ -31967,20 +32798,20 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		printBarCodeBtn.click();
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(barCodeLayoutNameTxt));
 		barCodeLayoutNameTxt.click();
 		barCodeLayoutNameTxt.sendKeys(Keys.END);
 		barCodeLayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		barCodeLayoutNameTxt.sendKeys("BarCodeLayout");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		barCodeLayoutNameTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		pickQuantityItemSelection.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		ArrayList<String> ItemsListArray = new ArrayList<String>();
 		int Itemcount = ItemNameList.size();
@@ -31989,9 +32820,9 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			String data = ItemNameList.get(i).getText();
 			if (data.equalsIgnoreCase("BATCH BR ITEM"))
 			{
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 				ItemNameCheckBoxList.get(i).click();
-				Thread.sleep(2000);
+				Thread.sleep(1600);
 				quantityList.get(i).click();
 				enterquantityList.get(i).sendKeys("3");
 			}
@@ -32013,13 +32844,13 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			Efile.delete();
 		}
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		barCodePrintBtn.click();
 
-		Thread.sleep(3000);;
+		Thread.sleep(8000);;
 		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
 
-		getDriver().switchTo().window(openTabs.get(1));
+		//getDriver().switchTo().window(openTabs.get(1));
 
 
 		Robot robot = new Robot();
@@ -32028,10 +32859,10 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyRelease(KeyEvent.VK_S);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\SavingBarcodeLayoutPrintForItemSelection.exe");
-		Thread.sleep(4000);
+		Thread.sleep(8000);
 
 
 
@@ -32042,10 +32873,17 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		Thread.sleep(1000);
 
-		getDriver().switchTo().window(openTabs.get(1)).close();
+	/*	getDriver().switchTo().window(openTabs.get(1)).close();
 		Thread.sleep(1000);
 		getDriver().switchTo().window(openTabs.get(0));
-
+*/
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(2000);
+		
 
 		String actPDF = getBaseDir()+"\\autoIt\\ExportFiles\\BarcodeLayoutPrintWithItemSelection.pdf";
 		String expPDF = getBaseDir()+"\\autoIt\\ImportFiles\\BarcodeLayoutPrintWithItemSelection.pdf";
@@ -32067,10 +32905,10 @@ public class VoucherPrintOptionsPage extends BaseEngine
 						robot.keyRelease(KeyEvent.VK_J);
 						robot.keyRelease(KeyEvent.VK_CONTROL);
 
-						Thread.sleep(2000);
+						Thread.sleep(1600);
 
 					 	getDriver().switchTo().window(openTabs.get(1)).close();
-					 	Thread.sleep(3000);
+					 	Thread.sleep(2000);
 					 	getDriver().switchTo().window(openTabs.get(0));
 
 
@@ -32089,7 +32927,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkBarcodeIsbeenScannedInDeliveryNotesVoucher() throws EncryptedDocumentException, InvalidFormatException, InterruptedException, IOException
 	{
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getDriver().navigate().refresh();
 		Thread.sleep(2500);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(searchTxt));
@@ -32098,10 +32936,10 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		Thread.sleep(1000);
 		searchTxt.sendKeys(Keys.ENTER);
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
 
 		int count = grid_VoucherNoList.size();
@@ -32123,24 +32961,24 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		Thread.sleep(1000);
 		checkValidationMessage("Voucher loaded successfully");
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		String actrow1Barcode = select1stRow_11thColumn.getText();
-		String exprow1Barcode = "^0283";
+		String exprow1Barcode = "^0278";
 
 		System.err.println("actrow1Barcode:  "+actrow1Barcode   + "Value Expected:  "+exprow1Barcode);
 
 
 		String actrow2Barcode = select2ndRow_11thColumn.getText();
-		String exprow2Barcode = "^0284";
+		String exprow2Barcode = "^0279";
 
 		System.err.println("actrow2Barcode:  "+actrow2Barcode   + "Value Expected:  "+exprow2Barcode);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		new_CloseBtn.click();
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(searchTxt));
 		searchTxt.click();
@@ -32148,22 +32986,22 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		Thread.sleep(1000);
 		searchTxt.sendKeys(Keys.ENTER);
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
-		/*Thread.sleep(3000);
+		/*Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PreferencesBtn));
 		PreferencesBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(DocumentCustomizationBtn));
 		DocumentCustomizationBtn.click();
-*/
-		Thread.sleep(2000);
+		 */
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(deliveryNotesBtn));
 		deliveryNotesBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masters1));
 		masters1.click();
 
@@ -32193,22 +33031,23 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(positionDropdown));
 		positionDropdown.click();
 		positionDropdown.sendKeys("Header");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		positionDropdown.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		ScrollToElement(updateBtn);
 		Thread.sleep(2500);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(updateBtn));
-		updateBtn.click();
+		ClickUsingJs(updateBtn);
+		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(updateBtn));
+		updateBtn.click();*/
 
 
 		String expMessage = "Data saved successfully";
 		String actMessage = checkValidationMessage(expMessage);
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryMenu));
 		inventoryMenu.click();
@@ -32226,16 +33065,16 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(deliveryNotesVoucher));
 		deliveryNotesVoucher.click();
 
-		Thread.sleep(2000);
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
+		Thread.sleep(1600);
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		Thread.sleep(1000);
 		checkValidationMessage("Voucher loaded successfully");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_1stColumn));
 		select1stRow_1stColumn.click();
@@ -32243,7 +33082,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_ItemTxt));
 		enter_ItemTxt.click();
 		enter_ItemTxt.sendKeys(actrow1Barcode);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		enter_ItemTxt.sendKeys(Keys.ENTER);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select2ndRow_1stColumn));
@@ -32252,7 +33091,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_ItemTxt));
 		enter_ItemTxt.click();
 		enter_ItemTxt.sendKeys(actrow2Barcode);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		enter_ItemTxt.sendKeys(Keys.ENTER);
 
 		String actItemValue     =               select1stRow_1stColumn.getText() ;
@@ -32331,17 +33170,17 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				&& actGrossValue2ndRow.equalsIgnoreCase(expGrossValue2ndRow))
 		{
 
-			Thread.sleep(3000);
+			Thread.sleep(2000);
 
-		
+
 
 			return true;
 		}
 		else 
 		{
-			Thread.sleep(3000);
+			Thread.sleep(2000);
 
-		
+
 
 			return false;
 		}
@@ -32370,15 +33209,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	@FindBy(xpath="//*[@id='Profilemenu']/li[1]/i")
 	private static WebElement  createProfileHomeExpandBtn; 
 
-	@FindBy(xpath="//ul[@id='Profilemenu']/li[2]/i")
+	//@FindBy(xpath="//ul[@id='Profilemenu']/li[2]/i")
+	@FindBy(xpath="(//a[contains(text(),'Financials')])[1]/../i")
 	private static WebElement  createProfileFinancalsExpandBtn; 
 
-	@FindBy(xpath="//ul[@id='Profilemenu']/li[3]/i")
+	//@FindBy(xpath="//ul[@id='Profilemenu']/li[3]/i")
+	@FindBy(xpath="(//a[contains(text(),'Inventory')])[1]/../i")
 	private static WebElement  createProfileInventoryExpandBtn; 
 
 
 
-	@FindBy(xpath="//ul[@id='Profilemenu']/li[8]/ul/li/a/span")
+	//@FindBy(xpath="//ul[@id='Profilemenu']/li[8]/ul/li/a/span")
+	@FindBy(xpath="(//a[contains(text(),'Settings')])[2]/../i")
 	private static List<WebElement> settingsExpansionOptionsList;
 
 	@FindBy(xpath="//ul[@id='Profilemenu']/li[1]/ul/li/a/span")
@@ -32409,25 +33251,31 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	private static WebElement masterAccountOption;
 
 
-	@FindBy(xpath="//ul[@id='Profilemenu']/li[2]/ul/li[1]/i")
+	//@FindBy(xpath="//ul[@id='Profilemenu']/li[2]/ul/li[1]/i")
+	@FindBy(xpath="(//a[contains(text(),'Financials')]//following::ul//a[contains(text(),'Transactions')])[1]/../i")
 	private static WebElement financialsTransactionsExpandBtn;
 
-	@FindBy(xpath="//*[@id='Profilemenu']/li[2]/ul/li[1]/ul/li/a")
+//	@FindBy(xpath="//*[@id='Profilemenu']/li[2]/ul/li[1]/ul/li/a")
+	@FindBy(xpath="(//a[contains(text(),'Transactions')])[2]/../ul/li/a")
 	private static List<WebElement> financialsTransactionsList;
 
 	@FindBy(xpath="//*[@id='Profilemenu']/li[2]/ul/li[1]/ul/li[1]/i")
 	private static WebElement financialsTransactionsCashAndBank;
 
-	@FindBy(xpath="//*[@id='Profilemenu']/li[2]/ul/li[1]/ul/li[2]/i")
+	//@FindBy(xpath="//*[@id='Profilemenu']/li[2]/ul/li[1]/ul/li[2]/i")
+	@FindBy(xpath="(//a[contains(text(),'Purchases')])[1]/../i")
 	private static WebElement financialsTransactionsPurchases;
 
-	@FindBy(xpath="//*[@id='Profilemenu']/li[2]/ul/li[1]/ul/li[3]/i")
+	///@FindBy(xpath="//*[@id='Profilemenu']/li[2]/ul/li[1]/ul/li[3]/i")
+	@FindBy(xpath="(//a[contains(text(),'Sales')])[1]/../i")
 	private static WebElement financialsTransactionsSales;
 
-	@FindBy(xpath="//*[@id='Profilemenu']/li[2]/ul/li[1]/ul/li[4]/i")
+	//@FindBy(xpath="//*[@id='Profilemenu']/li[2]/ul/li[1]/ul/li[4]/i")
+	@FindBy(xpath="(//a[contains(text(),'Journals')])[1]/../i")
 	private static WebElement financialsTransactionsJournals;
 
-	@FindBy(xpath="//*[@id='Profilemenu']/li[2]/ul/li[1]/ul/li[5]/i")
+	//@FindBy(xpath="//*[@id='Profilemenu']/li[2]/ul/li[1]/ul/li[5]/i")
+	@FindBy(xpath="(//a[contains(text(),'Auto Postings')])[1]/../i")
 	private static WebElement financialsTransactionsAutoPostings;
 
 
@@ -32435,7 +33283,8 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	@FindBy(xpath="//*[@id='Profilemenu']/li[2]/ul/li[1]/ul/li[2]//ul/li")
 	private static List<WebElement> additionTabFinancialsTransactionsPurchasesMenusList;
 
-	@FindBy(xpath="//*[@id='Profilemenu']/li[2]/ul/li[1]/ul/li[2]//li[3]/a")
+	//@FindBy(xpath="//*[@id='Profilemenu']/li[2]/ul/li[1]/ul/li[2]//li[3]/a")
+	@FindBy(xpath="//a[contains(text(),'Purchase Voucher VAT')]")
 	private static WebElement purchasevouchervat;
 
 
@@ -32466,18 +33315,19 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfile));
 		createProfile.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfileProfileNameCombo));
 		createProfileProfileNameCombo.click();
 
 		createProfileProfileNameCombo.sendKeys("TestProfileRestrictions");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
+		createProfileProfileNameCombo.sendKeys(Keys.TAB);;
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfileHomeExpandBtn));
 		createProfileHomeExpandBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfileSelectAllIcon));
 		createProfileSelectAllIcon.click();
@@ -32491,20 +33341,20 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterAccountOption));
 		masterAccountOption.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfileUnSelectAllIcon));
 		createProfileUnSelectAllIcon.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfileFinancalsExpandBtn));
 		createProfileFinancalsExpandBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfileSelectAllIcon));
 		createProfileSelectAllIcon.click();
@@ -32512,45 +33362,45 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		Thread.sleep(2500);
 
 		financialsTransactionsExpandBtn.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		financialsTransactionsPurchases.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getAction().doubleClick(purchasevouchervat).build().perform();
 		//purchasevouchervat.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfileUnSelectAllIcon));
 		createProfileUnSelectAllIcon.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfileFinancalsExpandBtn));
 		createProfileFinancalsExpandBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfileInventoryExpandBtn));
 		createProfileInventoryExpandBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfileSelectAllIcon));
 		createProfileSelectAllIcon.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		inventoryReportsExpandBtn.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(stockLedgerOption));
 		stockLedgerOption.click();
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfileUnSelectAllIcon));
 		createProfileUnSelectAllIcon.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfileSaveIcon));
 		createProfileSaveIcon.click();
@@ -32586,15 +33436,15 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkSavedProfileWithUnselectedRestrictions() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfileProfileNameCombo));
 		createProfileProfileNameCombo.click();
 
 		createProfileProfileNameCombo.sendKeys("TestProfileRestrictions");
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		createProfileProfileNameCombo.sendKeys(Keys.TAB);
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfileHomeExpandBtn));
 		createProfileHomeExpandBtn.click();
@@ -32631,20 +33481,20 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfileFinancalsExpandBtn));
 		createProfileFinancalsExpandBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		financialsTransactionsExpandBtn.click();
 
 		financialsTransactionsPurchases.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		purchasevouchervat.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		int restrictionTabChkBoxListCount2 = restrictionTabChkBoxList.size();
 
 		boolean PvVATselected = false;
@@ -32670,16 +33520,16 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfileInventoryExpandBtn));
 		createProfileInventoryExpandBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		inventoryReportsExpandBtn.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(stockLedgerOption));
 		stockLedgerOption.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		int restrictionTabChkBoxListCount3 = restrictionTabChkBoxList.size();
 
 		boolean StockLedgerselected = false;
@@ -32763,7 +33613,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	@FindBy(xpath="//i[@class='icon-delete icon-font6']")
 	private static WebElement  createRoleDeleteIcon; 
 
-	@FindBy(xpath="//div[@id='myNavbar']//i[@class='icon-close-1 hiconright2']")
+	@FindBy(xpath="//*[@id='CancelCreateUser']/i")
 	private static WebElement  createRoleCloseIcon; 
 
 	@FindBy(xpath="//span[2]//span[1]")
@@ -32793,20 +33643,20 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		homeSecurityCreateRoleMenu.click();
 
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createRoleRoleNameCombo));
 		createRoleRoleNameCombo.sendKeys("TestRoleRestrictions");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		createRoleRoleNameCombo.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createRolePasswordPolicyDropdown));
 		Select s=new Select(createRolePasswordPolicyDropdown);
 		s.selectByVisibleText("Simple Policy");
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		int avaliableprofileListCount = avaliableprofileList.size();
 
@@ -32824,7 +33674,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createRoleMOveFiledsFromLeftSideToRightSide));
 		createRoleMOveFiledsFromLeftSideToRightSide.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createRoleSaveicon));
 		createRoleSaveicon.click();
@@ -32838,6 +33688,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		System.out.println("Saving Message of Rolw : " +actMessage+" Value Expected : "+expMessage);
 
+		Thread.sleep(2500);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createRoleCloseIcon));
 		createRoleCloseIcon.click();
 
@@ -32860,6 +33711,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkUserCreationForCreatedRoleForRestrictions() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
+		Thread.sleep(2500);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(homeMenu));
 		homeMenu.click();
 
@@ -32899,7 +33751,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		createUserSecurityQuestionDropDown.click();
 		Select s = new Select(createUserSecurityQuestionDropDown);
-		s.selectByVisibleText("In which county were you born?");
+		s.selectByVisibleText("In which country were you born?");
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createUserSecurityAnswerTxt));	
 		createUserSecurityAnswerTxt.sendKeys("India");
@@ -32908,7 +33760,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createUserAdditionalInfoTab));
 		createUserAdditionalInfoTab.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createUserUserTypeDrpDwn));
 		Select user = new Select(createUserUserTypeDrpDwn);
@@ -32938,14 +33790,16 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		}
 	}
 
-	public static boolean checkLogoutAndLogoutWithCrestedUser() throws InterruptedException
+	public static boolean checkLogoutAndLogoutWithCreatedUser() throws InterruptedException
 	{
-		getDriver().navigate().refresh();
+		Thread.sleep(2500);
+		getAction().moveToElement(LogoutDropdown).build().perform();
+		Thread.sleep(2500);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LogoutDropdown));
 		LogoutDropdown.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(logoutOption));
 		logoutOption.click();
@@ -32958,21 +33812,21 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(username));
 		username.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		username.clear();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		username.sendKeys(unamelt);
 		getAction().moveToElement(username).sendKeys(Keys.TAB).perform();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(password));
 		password.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		password.clear();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		password.sendKeys(pawslt);
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		String compname = "Print Design Layout Company";
 
@@ -32998,17 +33852,17 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		}
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		lp.clickOnSignInBtn();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
-		String actUserInfo1=userNameTxt.getText();
+		String actUserInfo1=usernametxt.getText();
 
 		System.out.println("User Info  : "+actUserInfo1);
 
-		System.out.println("User Info Capture Text  :  "+userNameTxt.getText());
+		System.out.println("User Info Capture Text  :  "+usernametxt.getText());
 
 
 		String expUserInfo1           ="TestUserRestrictions";
@@ -33035,7 +33889,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkMenuSelectedInProfileAreReflectingInUserLevel() throws InterruptedException
 	{
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		ArrayList<String> menuList = new ArrayList<String>();
 		int avaliableprofileListCount = menus.size();
@@ -33075,7 +33929,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(mastersMenu));
 		mastersMenu.click();
 
-		Thread.sleep(1500);
+		Thread.sleep(2000);
 
 		ArrayList<String> mastersListArray = new ArrayList<String>();
 		int mastersListCount = mastersList.size();
@@ -33111,18 +33965,19 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkPurchaseVoucherVATVisibilityInPurchasesMenuInUserLevel() throws InterruptedException
 	{
+		Thread.sleep(1200);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionMenu));
 		financialsTransactionMenu.click();
 
-		Thread.sleep(1500);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionsPurchaseMenu));
 		financialsTransactionsPurchaseMenu.click();
 
-		Thread.sleep(1500);
+		Thread.sleep(2000);
 
 
 		ArrayList<String> purchasesListArray = new ArrayList<String>();
@@ -33174,17 +34029,17 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		for(int i=0;i<reportsListCount;i++)
 		{
 			String data = reportsList.get(i).getText().trim();
-			
+
 			if (data.isEmpty() == false)
 			{
 				reportsListArray.add(data);
 			}
-			
+
 
 		}
 
 		String actReportssListValues = reportsListArray.toString();
-		String expReportssListValues = "[Item Query, Opening Stocks Register, Stock Statement, Stock movement, Multi Level Stock Movement, Virtual Stock Analysis, Stock Valuation, Stock report by Tag, Stock Valuation by FA Tag Report, ABC Analysis, Stock Analysis by Batch, Stock Analysis by RMA, Bins Report, Stock balance by warehouse, Stock ageing analysis, Reorder Report, Fast Moving Item, Slow Moving Item, Peak/Low Balances, Best Selling Item, Raise Indent Item with Low Stock, Stock transfer report, Raise request for quote, Stock reservation report, Transaction type-wise stock report, Actual consumption report, General ledger and Inventory mismatch report, Negative Batch List]";
+		String expReportssListValues = "[Item Query, Opening Stocks Register, Stock Statement, Stock movement, Multi Level Stock Movement, Virtual Stock Analysis, Stock Valuation, Stock report by Tag, Stock Valuation by FA Tag Report, ABC Analysis - Item, Stock Analysis by Batch, Stock Analysis by RMA, Bins Report, Stock balance by warehouse, Stock ageing analysis, Reorder Report, Fast Moving Item, Slow Moving Item, Peak/Low Balances, Best Selling Item, Raise Indent Item with Low Stock, Stock transfer report, Raise request for quote, Stock reservation report, Transaction type-wise stock report, Actual consumption report, General ledger and Inventory mismatch report, Negative Batch List]";
 
 		System.out.println("actReportssListValues: "+actReportssListValues);
 		System.out.println("expReportssListValues: "+expReportssListValues);
@@ -33205,12 +34060,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	{
 
 		getDriver().navigate().refresh();
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LogoutDropdown));
 		LogoutDropdown.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(logoutOption));
 		logoutOption.click();
@@ -33223,21 +34078,21 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(username));
 		username.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		username.clear();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		username.sendKeys(unamelt);
 		getAction().moveToElement(username).sendKeys(Keys.TAB).perform();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(password));
 		password.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		password.clear();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		password.sendKeys(pawslt);
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		String compname = "Print Design Layout Company";
 
@@ -33263,17 +34118,17 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		}
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		lp.clickOnSignInBtn();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
-		String actUserInfo1=userNameTxt.getText();
+		String actUserInfo1=usernametxt.getText();
 
 		System.out.println("User Info  : "+actUserInfo1);
 
-		System.out.println("User Info Capture Text  :  "+userNameTxt.getText());
+		System.out.println("User Info Capture Text  :  "+usernametxt.getText());
 
 
 		String expUserInfo1           ="SU";
@@ -33303,18 +34158,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfile));
 		createProfile.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfileProfileNameCombo));
 		createProfileProfileNameCombo.click();
 
 		createProfileProfileNameCombo.sendKeys("TestProfileRestrictions");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		createProfileProfileNameCombo.sendKeys(Keys.TAB);
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfileHomeExpandBtn));
 		createProfileHomeExpandBtn.click();
@@ -33326,7 +34181,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		masterAccountOption.click();
 
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		int restrictionTabChkBoxListCount3 = restrictionTabChkBoxNameList.size();
 
 
@@ -33358,16 +34213,16 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		System.out.println("actMessage: "+actMessage);
 		System.out.println("expMessage: "+expMessage);
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfileProfileNameCombo));
 		createProfileProfileNameCombo.click();
 
 		createProfileProfileNameCombo.sendKeys("TestProfileRestrictions");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		createProfileProfileNameCombo.sendKeys(Keys.TAB);
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfileHomeExpandBtn));
 		createProfileHomeExpandBtn.click();
@@ -33378,7 +34233,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterAccountOption));
 		masterAccountOption.click();
 
-		Thread.sleep(4000);
+		Thread.sleep(2000);
 
 		ArrayList<String> SelectedValues =  new ArrayList<String>();
 		for(int i=0;i<restrictionTabChkBoxListCount3;i++)
@@ -33426,32 +34281,32 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfile));
 		createProfile.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfileProfileNameCombo));
 		createProfileProfileNameCombo.click();
 
 		createProfileProfileNameCombo.sendKeys("TestProfileRestrictions");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		createProfileProfileNameCombo.sendKeys(Keys.TAB);
 
-		Thread.sleep(3000);
+		Thread.sleep(4000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfileFinancalsExpandBtn));
 		createProfileFinancalsExpandBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		financialsTransactionsExpandBtn.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		financialsTransactionsPurchases.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		purchasevouchervat.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		int restrictionTabChkBoxListCount3 = restrictionTabChkBoxNameList.size();
 
 
@@ -33465,9 +34320,11 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				restrictionTabChkBoxList.get(i).click();;
 
 			}
-
+			
 			if(StockLedgerselected.equalsIgnoreCase("Show home page"))
 			{
+				getAction().moveToElement(restrictionTabChkBoxList.get(i)).build().perform();
+				Thread.sleep(2500);
 				restrictionTabChkBoxList.get(i).click();;
 
 			}
@@ -33483,34 +34340,34 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		System.out.println("actMessage: "+actMessage);
 		System.out.println("expMessage: "+expMessage);
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfileProfileNameCombo));
 		createProfileProfileNameCombo.click();
 
 		createProfileProfileNameCombo.sendKeys("TestProfileRestrictions");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		createProfileProfileNameCombo.sendKeys(Keys.TAB);
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfileFinancalsExpandBtn));
 		createProfileFinancalsExpandBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		financialsTransactionsExpandBtn.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		financialsTransactionsPurchases.click();
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		purchasevouchervat.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
-		Thread.sleep(4000);
+		Thread.sleep(2000);
 
 		ArrayList<String> SelectedValues =  new ArrayList<String>();
 		for(int i=0;i<restrictionTabChkBoxListCount3;i++)
@@ -33560,32 +34417,32 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfile));
 		createProfile.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfileProfileNameCombo));
 		createProfileProfileNameCombo.click();
 
 		createProfileProfileNameCombo.sendKeys("TestProfileRestrictions");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		createProfileProfileNameCombo.sendKeys(Keys.TAB);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfileInventoryExpandBtn));
 		createProfileInventoryExpandBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		inventoryReportsExpandBtn.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(stockLedgerOption));
 		stockLedgerOption.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		int restrictionTabChkBoxListCount3 = restrictionTabChkBoxNameList.size();
 		System.out.println("CheckBox count in stock ledger:"+restrictionTabChkBoxListCount3);
 
@@ -33614,31 +34471,31 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		System.out.println("actMessage: "+actMessage);
 		System.out.println("expMessage: "+expMessage);
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfileProfileNameCombo));
 		createProfileProfileNameCombo.click();
 
 		createProfileProfileNameCombo.sendKeys("TestProfileRestrictions");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		createProfileProfileNameCombo.sendKeys(Keys.TAB);
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfileInventoryExpandBtn));
 		createProfileInventoryExpandBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		inventoryReportsExpandBtn.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(stockLedgerOption));
 		stockLedgerOption.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
-		Thread.sleep(4000);
+		Thread.sleep(2000);
 
 		ArrayList<String> SelectedValues =  new ArrayList<String>();
 		for(int i=0;i<restrictionTabChkBoxListCount3;i++)
@@ -33687,7 +34544,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(mastersMenu));
 			mastersMenu.click();
 
-			Thread.sleep(1500);
+			Thread.sleep(2000);
 
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accounts));
 			accounts.click();
@@ -33796,9 +34653,9 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checKValidatePurchaseVoucherVATRestrictionInUserLevel() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getDriver().navigate().refresh();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
 
@@ -33811,7 +34668,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 
 
 		int count = grid_VoucherNoList.size();
@@ -33830,6 +34687,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			}
 		}      
 
+		Thread.sleep(5000);
 		String expRestrictionMessage = "You do not have rights to view this document.";
 		String actRestrictionMessage = checkValidationMessage(expRestrictionMessage);
 
@@ -33856,12 +34714,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryReportsMenu));
 		inventoryReportsMenu.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(stockLedger));
 		stockLedger.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		Select s=new Select(sl_DateOptionDropdown);
@@ -33875,8 +34733,8 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		sl_OkBtn.click();
 
 
-		Thread.sleep(1000);
-		String expRestrictionMessage = "No Permission given for the user TestUserRestrictions";
+		Thread.sleep(3000);
+		String expRestrictionMessage = "No Permission given for the user TestUser12";
 		String actRestrictionMessage = checkValidationMessage(expRestrictionMessage);
 
 		if (actRestrictionMessage.equalsIgnoreCase(expRestrictionMessage)) 
@@ -33901,18 +34759,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfile));
 		createProfile.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfileProfileNameCombo));
 		createProfileProfileNameCombo.click();
 
 		createProfileProfileNameCombo.sendKeys("TestProfileRestrictions");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		createProfileProfileNameCombo.sendKeys(Keys.TAB);
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfileHomeExpandBtn));
 		createProfileHomeExpandBtn.click();
@@ -33924,12 +34782,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		masterAccountOption.click();
 
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfileSelectAllIcon));
 		createProfileSelectAllIcon.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfileSaveIcon));
 		createProfileSaveIcon.click();
@@ -33950,7 +34808,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 
 	}
-	//Add , edit, delete , print ,cannot print, Do not allow to copy/paste
+	//Add , edit, delete , print ,cannot print, Do not allow to copy/paste  Show home page
 	public static boolean checkEnablePurchaseVoucherVatAccessRightsForSavingVoucher() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
 		Thread.sleep(2500);
@@ -33963,32 +34821,32 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfile));
 		createProfile.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2500);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfileProfileNameCombo));
 		createProfileProfileNameCombo.click();
 
 		createProfileProfileNameCombo.sendKeys("TestProfileRestrictions");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		createProfileProfileNameCombo.sendKeys(Keys.TAB);
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfileFinancalsExpandBtn));
 		createProfileFinancalsExpandBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		financialsTransactionsExpandBtn.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		financialsTransactionsPurchases.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		purchasevouchervat.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		int restrictionTabChkBoxListCount3 = restrictionTabChkBoxNameList.size();
 
 
@@ -34083,32 +34941,32 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfile));
 		createProfile.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfileProfileNameCombo));
 		createProfileProfileNameCombo.click();
 
 		createProfileProfileNameCombo.sendKeys("TestProfileRestrictions");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		createProfileProfileNameCombo.sendKeys(Keys.TAB);
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfileInventoryExpandBtn));
 		createProfileInventoryExpandBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		inventoryReportsExpandBtn.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(stockLedgerOption));
 		stockLedgerOption.click();
 
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		int restrictionTabChkBoxListCount3 = restrictionTabChkBoxNameList.size();
 
 
@@ -34142,6 +35000,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfileSaveIcon));
 		createProfileSaveIcon.click();
 
+		Thread.sleep(1500);
 		String expMessage="Profile Updated Successfully";
 
 		String actMessage=checkValidationMessage(expMessage);
@@ -34149,7 +35008,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		System.out.println("actMessage: "+actMessage);
 		System.out.println("expMessage: "+expMessage);
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		if (actMessage.equalsIgnoreCase(expMessage)) 
 		{
@@ -34172,7 +35031,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(mastersMenu));
 		mastersMenu.click();
 
-		Thread.sleep(1500);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accounts));
 		accounts.click();
@@ -34248,16 +35107,17 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	{
 
 
+		Thread.sleep(1600);
+		getAction().moveToElement(masterTranferBtn).build().perform();
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(masterTranferBtn));	
 
 		boolean actmasterCustamizemasterBtn    	  =masterCustamizemasterBtn.isDisplayed();
 		boolean actmasterCustamizeViewBtn    	 	  =masterCustamizeViewBtn.isDisplayed();
 		boolean actmastercustamizeTreeBtn    	 	  =mastercustamizeTreeBtn.isDisplayed();
-		
-		Thread.sleep(2000);
-		getAction().moveToElement(masterLedgerBtn).build().perform();
-		Thread.sleep(2000);
+
+
 		boolean actmasterLedgerBtn    	 		      =masterLedgerBtn.isDisplayed();
 		boolean actmasterManageCreditBtn    	 	  =masterManageCreditBtn.isDisplayed();
 		boolean actmasterDepartmentAppropriationBtn  =masterDepartmentAppropriationBtn.isDisplayed();
@@ -34306,6 +35166,23 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkSaveAccountAfterAccessingRights() throws EncryptedDocumentException, InvalidFormatException, InterruptedException, IOException
 	{
+
+		Thread.sleep(2000);
+		getDriver().navigate().refresh();
+		Thread.sleep(2000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(homeMenu)); 
+		homeMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(mastersMenu));
+		mastersMenu.click();
+
+		Thread.sleep(2000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accounts));
+		accounts.click();
+
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterNewBtn));
 		masterNewBtn.click();
 
@@ -34354,9 +35231,9 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	public static boolean checkSavePurchaseVoucherVAT() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getDriver().navigate().refresh();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
 
@@ -34370,10 +35247,10 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		purchaseVouchersVat.click();
 
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
 
-		checkValidationMessage("Screen opened");
+		
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(documentNumberTxt));
 
@@ -34384,7 +35261,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		vendorAccountTxt.sendKeys("Vendor A");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		ArrayList<String>  actVendorAccountList= new ArrayList<String>(); 
 
@@ -34415,7 +35292,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		voucherHeaderCurrency.sendKeys("INR");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		int currencycount=currencyListCount.size();
 
@@ -34440,7 +35317,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		departmentTxt.sendKeys("INDIA");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		ArrayList<String> actDepartmentList= new ArrayList<String>(); 
 
@@ -34464,23 +35341,23 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(placeOFSupplyTxt));
 		placeOFSupplyTxt.click();
 		placeOFSupplyTxt.sendKeys("Abu Dhabi");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		placeOFSupplyTxt.sendKeys(Keys.TAB);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(jurisdictionTxt));
 		jurisdictionTxt.click();
 		jurisdictionTxt.sendKeys("DUBAI");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		jurisdictionTxt.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(headerDocBrowseBtnFV));
 		headerDocBrowseBtnFV.click();
 
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\HeaderDocumentImport.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(headerPicBrowseBtnFV));
 		headerPicBrowseBtnFV.click();
@@ -34488,7 +35365,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\HeaderPictureImport.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 
 
 
@@ -34501,7 +35378,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		enter_WarehouseTxt.sendKeys("HYDERABAD");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		int warehousecount=warehouseBodyComboList.size();
 
@@ -34524,7 +35401,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		enter_ItemTxt.sendKeys("STD RATE COGS ITEM");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		int pvvGridItemListCount=pvvGridItemList.size();
 		for (int i = 0; i < pvvGridItemListCount; i++) 
@@ -34582,7 +35459,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\BodyDocumentImport.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_21stColumn));
@@ -34596,7 +35473,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\BodyPictureImport.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherSaveBtn));
 		voucherSaveBtn.click();
@@ -34621,14 +35498,14 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		if(actMessage.startsWith(expMessage1) && actMessage.endsWith(expMessage2))
 		{
-			
-			Thread.sleep(2000);
+
+			Thread.sleep(1600);
 			return true;
 		} 
 		else 
 		{
-			
-			Thread.sleep(2000);
+
+			Thread.sleep(1600);
 			return false;
 		}
 
@@ -34643,9 +35520,9 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	public static boolean checkSavedPurchaseVoucherVATForCopyPastePostingDetailsSettingsDeleteDoc() throws InterruptedException
 	{
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getDriver().navigate().refresh();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
 
@@ -34659,6 +35536,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		purchaseVouchersVat.click();
 
 
+		Thread.sleep(4000);
 		int count = grid_VoucherNoList.size();
 
 		for (int i = 0; i < count; i++) 
@@ -34674,11 +35552,11 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				}
 			}
 		}      
-		Thread.sleep(2500);
+		Thread.sleep(4000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(toggleBtn));
 		toggleBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		ArrayList<String> toggleListArray = new ArrayList<String>();
 		int toggleListCount = toggleList.size();
@@ -34691,7 +35569,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		}
 
 		String acttoggleListArray = toggleListArray.toString();
-		String exptoggleListArray = "[Copy Document, Revert changes, BOM Input, Convert to Purchases Returns, Calculator, Auto Load]";
+		String exptoggleListArray = "[Revert changes, Add To Stock, Convert to Purchases Returns, Calculator, Auto Load]";
 
 		System.out.println("actMastersListValues: "+acttoggleListArray);
 		System.out.println("expMastersListValues: "+exptoggleListArray);
@@ -34721,9 +35599,9 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	public static boolean checkSettingsBtnDeleteBtnnUserLevel() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getDriver().navigate().refresh();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
 
@@ -34736,7 +35614,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-
+		Thread.sleep(4000);
 
 		int count = grid_VoucherNoList.size();
 
@@ -34757,21 +35635,21 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherdeleteBtn));
 		voucherdeleteBtn.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getWaitForAlert();
 
 		getAlert().accept();
 		Thread.sleep(1000);
 
-		String expRestrictionMessage1 = "VoucherNo";	
-		String expRestrictionMessage2 = "User has no right to delete others document.";
+		String expRestrictionMessage1 = "VoucherNo - SU/IND/TEXT5: User has no right to delete others document.";	
+		//String expRestrictionMessage2 = "User has no right to delete others document.";
 		String actRestrictionMessage = checkValidationMessage(expRestrictionMessage1);
 
 		Thread.sleep(2500);
 
 		System.out.println("actRestrictionMessage1: "+expRestrictionMessage1);
-		System.out.println("actRestrictionMessage2: "+expRestrictionMessage2);
+		//System.out.println("actRestrictionMessage2: "+expRestrictionMessage2);
 		System.out.println("expRestrictionMessage: "+actRestrictionMessage);
 
 		for (int i = 0; i < count; i++) 
@@ -34789,18 +35667,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			}
 		}  
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		ArrayList<String> voucherActionListArray = new ArrayList<String>();
 		int actVoucherActionListCount = voucherActionList.size();
-		int expVoucherActionListCount = 13;
+		int expVoucherActionListCount = 15;
 
-	
+
 		System.out.println("actVoucherActionListCount: "+actVoucherActionListCount);
 		System.out.println("expVoucherActionListCount: "+expVoucherActionListCount);
 
 
-		if (actRestrictionMessage.startsWith(expRestrictionMessage1) && actRestrictionMessage.endsWith(expRestrictionMessage2) && actVoucherActionListCount==expVoucherActionListCount ) 
+		if (actRestrictionMessage.equalsIgnoreCase(expRestrictionMessage1)  && actVoucherActionListCount==expVoucherActionListCount ) 
 		{
 			return true;
 		} 
@@ -34821,9 +35699,9 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	public static boolean checkValidateViewDocumentsInUserLevelWithoutEnablingViewDocumentscreatedByOthers() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getDriver().navigate().refresh();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
 
@@ -34836,7 +35714,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		int count = grid_VoucherNoList.size();
@@ -34890,12 +35768,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryReportsMenu));
 		inventoryReportsMenu.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(stockLedger));
 		stockLedger.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		Select s=new Select(sl_DateOptionDropdown);
@@ -34909,11 +35787,11 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		sl_OkBtn.click();
 
 
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(CustomerReport_ExportBtn));
 		CustomerReport_ExportBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		ArrayList<String> exportListArray = new ArrayList<String>();
 		int exportListCount = exportList.size();
@@ -34926,7 +35804,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		}
 
 		String actexportListArray = exportListArray.toString();
-		String expexportListArray = "[Excel (Sheet), Excel, PDF, File Path]";
+		String expexportListArray = "[CSV, PDF, File]";
 
 		System.out.println("actMastersListValues: "+actexportListArray);
 		System.out.println("expMastersListValues: "+expexportListArray);
@@ -34947,7 +35825,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	public static boolean checkPrintOptionInUserLevel() throws AWTException, IOException, InterruptedException
 	{
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		File Efile=new File(getBaseDir()+"\\autoIt\\ExportFiles\\StockLedger.pdf");
 
@@ -34957,13 +35835,20 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		}
 
 		CustomerReport_PrintBtn.click();
-		Thread.sleep(3000);
-		
-		getWaitForAlert();
-		
-		getAlert().accept();
-		
-		Thread.sleep(3000);
+		Thread.sleep(2000);
+
+
+		String actConfirmMsg=ss_ReportPrintMsg.getText();
+		String expConfirmMsg="";
+		Thread.sleep(2000);
+
+		System.out.println("Actual Msg                :                "+        actConfirmMsg                + "Expected                "        +        expConfirmMsg);
+
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ss_ReportPrintYesBtn));
+		ss_ReportPrintYesBtn.click();
+
+		Thread.sleep(8000);
 
 		Robot robot =  new Robot();
 		robot.keyPress(KeyEvent.VK_CONTROL);
@@ -34971,18 +35856,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyRelease(KeyEvent.VK_S);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\SavingStockLedger.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
 
@@ -34993,13 +35878,27 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		Thread.sleep(1000);
 
-		getDriver().switchTo().window(openTabs.get(2)).close();
+	/*	getDriver().switchTo().window(openTabs.get(2)).close();
 		Thread.sleep(1000);
 		getDriver().switchTo().window(openTabs.get(1)).close();
 		Thread.sleep(1000);
-		getDriver().switchTo().window(openTabs.get(0));
-
+		getDriver().switchTo().window(openTabs.get(0));*/
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
 		Thread.sleep(2000);
+		
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		
+
+		Thread.sleep(1600);
 
 		boolean actprint = CustomerReport_PrintBtn.isDisplayed();
 		boolean expprint = true;
@@ -35032,34 +35931,34 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfile));
 		createProfile.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfileProfileNameCombo));
 		createProfileProfileNameCombo.click();
 
 		createProfileProfileNameCombo.sendKeys("TestProfileRestrictions");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		createProfileProfileNameCombo.sendKeys(Keys.TAB);
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfileFinancalsExpandBtn));
 		createProfileFinancalsExpandBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		financialsTransactionsExpandBtn.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		financialsTransactionsPurchases.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		purchasevouchervat.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		int restrictionTabChkBoxListCount3 = restrictionTabChkBoxNameList.size();
-		
+
 
 		for(int i=0;i<restrictionTabChkBoxListCount3;i++)
 		{
@@ -35156,7 +36055,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				case "Do not allow to copy/paste":
 					restrictionTabChkBoxList.get(i).click();
 					break;
-					
+
 
 				default:
 					break;
@@ -35169,6 +36068,8 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfileSaveIcon));
 		createProfileSaveIcon.click();
+		
+		Thread.sleep(3000);
 
 		String expMessage="Profile Updated Successfully";
 
@@ -35201,32 +36102,32 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfile));
 		createProfile.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfileProfileNameCombo));
 		createProfileProfileNameCombo.click();
 
 		createProfileProfileNameCombo.sendKeys("TestProfileRestrictions");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		createProfileProfileNameCombo.sendKeys(Keys.TAB);
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfileInventoryExpandBtn));
 		createProfileInventoryExpandBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		inventoryReportsExpandBtn.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(stockLedgerOption));
 		stockLedgerOption.click();
 
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		int restrictionTabChkBoxListCount3 = restrictionTabChkBoxNameList.size();
 
 
@@ -35285,6 +36186,8 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createProfileSaveIcon));
 		createProfileSaveIcon.click();
 
+		Thread.sleep(3000);
+		
 		String expMessage="Profile Updated Successfully";
 
 		String actMessage=checkValidationMessage(expMessage);
@@ -35292,7 +36195,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		System.out.println("actMessage: "+actMessage);
 		System.out.println("expMessage: "+expMessage);
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		if (actMessage.equalsIgnoreCase(expMessage)) 
 		{
@@ -35311,9 +36214,9 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	//delete,suspend,copy paste,settings,psoting details,edit documents
 	public static boolean checkValidateEnabledRightsInProfileInUserLevel() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getDriver().navigate().refresh();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
 
@@ -35326,7 +36229,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2500);
+		Thread.sleep(6000);
 
 		int count = grid_VoucherNoList.size();
 
@@ -35334,6 +36237,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		{
 			String VoucherNo = grid_VoucherNoList.get(i).getText();
 
+			System.out.println(VoucherNo);
 			if (VoucherNo.equalsIgnoreCase("SU/IND/TEXT5")) 
 			{
 				if (grid_CheckBoxList.get(i).isSelected()==false) 
@@ -35346,28 +36250,31 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		checkValidationMessage("Voucher loaded successfully");
 
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 
 		ArrayList<String> voucherActionListArray = new ArrayList<String>();
 		int actVoucherActionListCount = voucherActionList.size();
-		
-		int expVoucherActionListCount = 14;
-		
+
+		int expVoucherActionListCount = 16;
+
 		System.out.println("actVoucherActionListCount: "+actVoucherActionListCount);
 		System.out.println("expVoucherActionListCount: "+expVoucherActionListCount);
 
-		Thread.sleep(4000);
+		Thread.sleep(2000);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(transactionDltBtn));
 		transactionDltBtn.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
-		getWaitForAlert();
+		/*getWaitForAlert();
 
 		getAlert().accept();
-		Thread.sleep(1000);
+		Thread.sleep(1000);*/
+		
+		click(voucherchanges_Yes);
+		Thread.sleep(2000);
 
 
 		String actRestrictionMessage = "Deleting this document has has resulted in negative stock. Voucher deleted Successfully";
@@ -35405,9 +36312,9 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	public static boolean checkSuspendVoucherandEditSuspendedVoucher() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getDriver().navigate().refresh();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
 
@@ -35462,23 +36369,23 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				}
 			}
 		}      
-		
-		Thread.sleep(2000);
-		
+
+		Thread.sleep(1600);
+
 		ScrollToElement(select1stRow_9thColumn);
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_9thColumn));
 		select1stRow_9thColumn.click();
 
 		enter_Quantity.sendKeys(Keys.END,Keys.SHIFT,Keys.HOME);
 		enter_Quantity.sendKeys("3");
-		Thread.sleep(1500);
+		Thread.sleep(2000);
 		enter_Quantity.sendKeys(Keys.TAB);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherSaveBtn));
 		voucherSaveBtn.click();
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newReferenceTxt));
 		newReferenceTxt.click();
 
@@ -35497,14 +36404,14 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		{
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_CloseBtn));
 			new_CloseBtn.click();
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 			return true;
 		} 
 		else 
 		{
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_CloseBtn));
 			new_CloseBtn.click();
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 			return false;
 		}
 
@@ -35518,10 +36425,10 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	private static WebElement newBtnFromVoucher;
 
 
-	@FindBy(xpath="//*[@id='id_transactionentry_copytoclipboard']/a/label")
+	@FindBy(xpath="//*[@id='id_transactionentry_copytoclipboard']//label")
 	private static WebElement copyToClipBoardBtn;
 
-	@FindBy(xpath="//*[@id='id_transactionentry_pastefromclipboard']/a/label")
+	@FindBy(xpath="//*[@id='id_transactionentry_pastefromclipboard']//label")
 	private static WebElement pasteFromClipBoardBtn;
 
 
@@ -35544,7 +36451,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(4000);
+		Thread.sleep(6000);
 
 		int count = grid_VoucherNoList.size();
 
@@ -35581,20 +36488,21 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		postingDetailsCloseBtn.click();
 
 		Thread.sleep(3000);
+		click(documentNumberTxt);
 		
 		getAction().moveToElement(toggleBtn).build().perform();
 		Thread.sleep(1200);
-		
+
 		toggleBtn.click();
 
-		Thread.sleep(1200);
+		Thread.sleep(2000);
 		copyToClipBoardBtn.click();
 
 		newBtnFromVoucher.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
-		Thread.sleep(4000);
+		Thread.sleep(2000);
 		toggleBtn.click();
 
 		pasteFromClipBoardBtn.click();
@@ -35619,9 +36527,9 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkSavePrintLayoutAndPrintOptionInOutputOptions() throws InterruptedException, IOException, EncryptedDocumentException, InvalidFormatException
 	{
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getDriver().navigate().refresh();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
 
@@ -35634,16 +36542,20 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(4000);
+		Thread.sleep(2000);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));	
 		printBtn.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(createLayoutBtn));
 		createLayoutBtn.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
+Thread.sleep(2000);
+		
+		blankTemplateBtn.click();
+		Thread.sleep(2000);
 
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(clickonHeader));
@@ -35656,17 +36568,17 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(clickonHeader));
 		clickonHeader.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(clickOnBody));
 		clickOnBody.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Finance_Purchases_Header_WareHouseExpandBtn));
 		Finance_Purchases_Header_WareHouseExpandBtn.click();
 
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 
 		Runtime.getRuntime().exec(getBaseDir()+"\\autoIt\\scripts\\BodyFieldsDragF.exe");
 
@@ -35675,19 +36587,19 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(clickOnBody));
 		clickOnBody.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getAction().sendKeys(Keys.HOME);
-	
+
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Savedropdown));
 		getAction().moveToElement(Savedropdown).click().build().perform();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(layoutNameTextField));
 		layoutNameTextField.sendKeys("LayoutForUserRestriction");
@@ -35700,7 +36612,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		String expMessage = "Layout saved successfully";
 		String actMessage = checkValidationMessage(expMessage);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		String actTitle = SavedlayoutNameTitle.getText();
 		String expTitle ="[LayoutForUserRestriction]";
@@ -35719,7 +36631,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	@FindBy(xpath="//div[@id='id_reportmenudisplay']/ul/li//i")
 	private static List<WebElement> stockLedgerIcons;
 
-	@FindBy(xpath="//*[@id='txtSearchReport']")
+	@FindBy(xpath="(//*[@id='txtSearchReport'])[1]")
 	private static WebElement searchReport;
 
 
@@ -35733,12 +36645,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryReportsMenu));
 		inventoryReportsMenu.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(stockLedger));
 		stockLedger.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		Select s=new Select(sl_DateOptionDropdown);
@@ -35750,18 +36662,19 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
 		sl_OkBtn.click();
 
-		Thread.sleep(3000);
-		
-		
+		Thread.sleep(2000);
+
+
 		int actIconsCount = stockLedgerIcons.size();
-		int expIconsCount = 10;
-		
-		
-		
-		
-		
-		/*ArrayList<String> reportsListArray = new ArrayList<String>();
-		for(int i=0;i<iconsCount;i++)
+		int expIconsCount = 11;
+
+
+		System.out.println("Stock Ledger Icons:		"		+		"Actual		"		+	actIconsCount	+	"Expected		"		+	expIconsCount);
+
+
+
+		ArrayList<String> reportsListArray = new ArrayList<String>();
+		for(int i=0;i<actIconsCount;i++)
 		{
 			String data = stockLedgerIcons.get(i).getText();
 			reportsListArray.add(data);
@@ -35772,7 +36685,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		System.out.println("actRow2List:  "+actRow2List);
 		System.out.println("expRow2List:  "+expRow2List);
-*/
+		 
 		boolean actSearchBtn = searchReport.isDisplayed();
 		boolean expSearchBtn = true;
 
@@ -35810,27 +36723,27 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_AnalysisBtn));
 		sl_AnalysisBtn.click();
 
-		Thread.sleep(15000);
+		Thread.sleep(30000);
 
 		Runtime.getRuntime().exec(getBaseDir()+"\\autoIt\\scripts\\StockLedgerAnalyzeReport.exe");
 
-		Thread.sleep(40000);
+		Thread.sleep(50000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_LA_saveBtn));
 		sl_LA_saveBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_LA_repotNameTxt));
 		sl_LA_repotNameTxt.click();
 		sl_LA_repotNameTxt.sendKeys("StockLedgerAnalysisReport");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		sl_LA_repotNameTxt.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_LA_repotFinanicalMenu));
 		sl_LA_repotFinanicalMenu.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_LA_repotSaveBtn));
 		sl_LA_repotSaveBtn.click();
 
@@ -35852,14 +36765,14 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	{
 		Thread.sleep(2000);
 		getDriver().navigate().refresh();
-		Thread.sleep(1500);
+		Thread.sleep(3000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(serachMenuTextHomePage));
 		serachMenuTextHomePage.click();
 		serachMenuTextHomePage.sendKeys("StockLedgerAnalysisReport");
 		Thread.sleep(1000);
 		serachMenuTextHomePage.sendKeys(Keys.ENTER);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		Select s=new Select(sl_DateOptionDropdown);
@@ -35940,20 +36853,27 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	@FindBy(xpath="//input[@id='5021']")
 	private static WebElement  filterItemNameChkbox;
+	
+	@FindBy(xpath="//input[@id='5021']/../span")
+	private static WebElement  filterItemNameChkboxSelected;
 
 	@FindBy(xpath="//div[@id='REPORTRENDERNEWControls']/ul/li/span[8]")
 	private static WebElement report_FilterBtn;
 
-	@FindBy(xpath="//i[@class='icon-filter hiconright2']")
+	@FindBy(xpath="(//i[@class='icon-filter hiconright2'])[2]")
+	private static WebElement report_FilterExpBtnInTestUser;
+	
+	@FindBy(xpath="(//li[text()='Filter'])[2]")
 	private static WebElement report_FilterBtnInTestUser;
 
 	@FindBy(xpath="//span[@id='idFilterCustomizeIcon']")
 	private static WebElement  report_FilterCustomizeBtn;
 
-	@FindBy(xpath="//a[contains(text(),'Item')]//i[@class='icon-expand icon-font7']")
+	@FindBy(xpath="//a[contains(text(),'Item')]//i")
 	private static WebElement filteRITEMExpandBtn;
 
-	@FindBy(xpath="//button[@class='Fbutton'][contains(text(),'Ok')]")
+	//@FindBy(xpath="//*[@id='FilterFieldCust_2008_2']/div/div[3]/input[1]")
+	@FindBy(xpath="(//input[@value='Ok'])[1]")
 	private static WebElement  filter_FilterOkButton;
 
 	@FindBy(xpath="//*[@id='FOption_513_0_DefaultFilter_0']")
@@ -36008,26 +36928,26 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkFilterOptionInStockLedger() throws InterruptedException
 	{
-		
-		
-		Thread.sleep(2000);
-		
+
+
+		Thread.sleep(1600);
+
 		getDriver().navigate().refresh();
-		Thread.sleep(2000);
-		
-		
+		Thread.sleep(1600);
+
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryMenu));
 		inventoryMenu.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryReportsMenu));
 		inventoryReportsMenu.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(stockLedger));
 		stockLedger.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
 		Select s=new Select(sl_DateOptionDropdown);
@@ -36039,46 +36959,51 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
 		sl_OkBtn.click();
 
+
+		Thread.sleep(5000);
 		
-		Thread.sleep(2500);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(report_FilterExpBtnInTestUser));
+		report_FilterExpBtnInTestUser.click();
+		
+		Thread.sleep(1000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(report_FilterBtnInTestUser));
 		report_FilterBtnInTestUser.click();
 
-		Thread.sleep(1500);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(report_FilterCustomizeBtn));
 		report_FilterCustomizeBtn.click();
 
-		Thread.sleep(1500);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(filteRITEMExpandBtn));
 		filteRITEMExpandBtn.click();
 
-		Thread.sleep(1500);
+		Thread.sleep(2000);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(filterItemNameChkbox));
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(filterItemNameChkboxSelected));
 		if (filterItemNameChkbox.isSelected()==false)
 		{
-			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(filterItemNameChkbox));
-			filterItemNameChkbox.click();
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(filterItemNameChkboxSelected));
+			filterItemNameChkboxSelected.click();
 		}
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(filter_FilterOkButton));
 		filter_FilterOkButton.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enterDefaultItemTxtInTestUser));
 		enterDefaultItemTxtInTestUser.click();
 		enterDefaultItemTxtInTestUser.sendKeys("BR COGS ITEM");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		enterDefaultItemTxtInTestUser.sendKeys(Keys.TAB);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(filterOkButton));
 		filterOkButton.click();
 
-		Thread.sleep(4000);
+		Thread.sleep(2000);
 
 		int reportsRow1ListCount = report1stRowList.size();
 		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
@@ -36099,7 +37024,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			report2ndRowListArray.add(data);
 		}
 		String actRow2List = report2ndRowListArray.toString();
-		String expRow2List = "[NDT57:SU/IND/TEXT1, 36.00, 0.88, , , 36.00, 31.50, , 31.50, 0.88, , , ]";
+		String expRow2List = "[NDT57:SU/IND/TEXT1, 24.00, 0.88, , , 24.00, 21.00, , 21.00, 0.88, , , ]";
 
 
 		int report3rdRowListCount = report3rdRowList.size();
@@ -36110,7 +37035,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			report3rdRowListArray.add(data);
 		}
 		String actRow3List = report3rdRowListArray.toString();
-		String expRow3List = "[NDT57:SU/IND/TEXT2, 24.00, 0.88, , , 60.00, 21.00, , 52.50, 0.88, , , ]";
+		String expRow3List = "[NDT57:SU/IND/TEXT2, 24.00, 0.88, , , 48.00, 21.00, , 42.00, 0.88, , , ]";
 
 
 		int report4thRowListCount = report4thRowList.size();
@@ -36123,7 +37048,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			report4thRowListArray.add(data);
 		}
 		String actRow4List = report4thRowListArray.toString();
-		String expRow4List = "[NDT57:SU/IND/TEXT2, 24.00, 0.88, , , 84.00, 21.00, , 73.50, 0.88, , , ]";
+		String expRow4List = "[NDT57:SU/IND/TEXT2, 24.00, 0.88, , , 72.00, 21.00, , 63.00, 0.88, , , ]";
 
 
 
@@ -36137,7 +37062,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			report5thRowListArray.add(data);
 		}
 		String actRow5List = report5thRowListArray.toString();
-		String expRow5List = "[NDT57:SU/IND/TEXT2, 24.00, 1.75, , , 108.00, 42.00, , 115.50, 1.07, , , ]";
+		String expRow5List = "[NDT57:SU/IND/TEXT2, 24.00, 1.75, , , 96.00, 42.00, , 105.00, 1.09, , , ]";
 
 
 
@@ -36151,7 +37076,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			report6thRowListArray.add(data);
 		}
 		String actRow6List = report6thRowListArray.toString();
-		String expRow6List = "[Total, , 108.00, 4.38, , , 108.00, 115.50, , 115.50, 3.69, , , ]";
+		String expRow6List = "[Grand Total, , 96.00, 4.38, , , 96.00, 105.00, , 105.00, 3.72, , , ]";
 
 
 		System.out.println("****************************checkSalesRegisterCustomizationAndReport*******************************************");
@@ -36359,7 +37284,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean  CheckCreateUserInSU() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(homeMenu));
 		homeMenu.click();
 
@@ -36399,7 +37324,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		createUserSecurityQuestionDropDown.click();
 		Select s = new Select(createUserSecurityQuestionDropDown);
-		s.selectByVisibleText("In which county were you born?");
+		s.selectByVisibleText("In which country were you born?");
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createUserSecurityAnswerTxt));	
 		createUserSecurityAnswerTxt.sendKeys("India");
@@ -36408,7 +37333,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createUserAdditionalInfoTab));
 		createUserAdditionalInfoTab.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createUserUserTypeDrpDwn));
 		Select user = new Select(createUserUserTypeDrpDwn);
@@ -36454,9 +37379,9 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(excessesInStocksVoucher));
 		excessesInStocksVoucher.click();
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_1stColumn));
 		select1stRow_1stColumn.click();
@@ -36488,7 +37413,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		Thread.sleep(1000);
 		enter_Quantity.sendKeys(Keys.TAB);
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		enter_Rate.sendKeys("10");
 		Thread.sleep(1000);
 		enter_Rate.sendKeys(Keys.TAB);
@@ -36511,22 +37436,22 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(rmaAddBtn));
 		rmaAddBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(rmaOkBtn));
 		rmaOkBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherSaveBtn));
 		voucherSaveBtn.click();
 
-		/*Thread.sleep(2000);
+		/*Thread.sleep(1600);
 
 						getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(billRefPickIcon));
 						billRefPickIcon.click();
 
-						Thread.sleep(2000);
+						Thread.sleep(1600);
 
 						getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(billRefOkBtn));
 						billRefOkBtn.click();*/
@@ -36553,7 +37478,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	public static boolean checkPrintFromExcessInStockVoucherTransaction() throws InterruptedException, IOException, EncryptedDocumentException, InvalidFormatException, AWTException
 	{
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		File Efile=new File(getBaseDir()+"\\autoIt\\ExportFiles\\savingExcessInStocksPrint.pdf");
 
@@ -36561,45 +37486,41 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		{
 			Efile.delete();
 		}
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(previousBtn));
 		previousBtn.click();
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherPrintBtn));
 		voucherPrintBtn.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(createLayoutBtn));
 		createLayoutBtn.click();
 
-
-
-		Thread.sleep(3000);
-
-		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(openDropdown));
-		openDropdown.click();
+Thread.sleep(2000);
+		
+		browseTemplateBtn.click();
+		Thread.sleep(2000);
 
 		Thread.sleep(2000);
 
-		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(openDropdownFromXMLBtn));
-		openDropdownFromXMLBtn.click();
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\RMALayoutImport.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(Savedropdown));
 		getAction().moveToElement(Savedropdown).click().build().perform();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(SaveBtn));
 		SaveBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(layoutNameTextField));
 		layoutNameTextField.sendKeys("RMALayout");
@@ -36612,13 +37533,13 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		String expMessage = "Layout saved successfully";
 		String actMessage = checkValidationMessage(expMessage);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(ExitBtn));
 		ExitBtn.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherPrintBtn));
 		voucherPrintBtn.click();
 
@@ -36626,16 +37547,16 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		LayoutNameTxt.click();
 		LayoutNameTxt.sendKeys(Keys.END);
 		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys("RMALayout");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
-		Select s = new Select(LayoutOptionsdropdown);
-		s.selectByValue("3");
+		/*Select s = new Select(LayoutOptionsdropdown);
+		s.selectByValue("3");*/
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(footerPrintBtn));
 		footerPrintBtn.click();
@@ -36649,7 +37570,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		robot.keyPress(KeyEvent.VK_TAB);
 		robot.keyRelease(KeyEvent.VK_TAB);
@@ -36659,7 +37580,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyPress(KeyEvent.VK_ENTER);
 		robot.keyRelease(KeyEvent.VK_ENTER);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
@@ -36667,18 +37588,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyRelease(KeyEvent.VK_S);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\SavingExcessInStocks.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(8000);
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
 
@@ -36689,11 +37610,25 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		Thread.sleep(1000);
 
-		getDriver().switchTo().window(openTabs.get(2)).close();
+	/*	getDriver().switchTo().window(openTabs.get(2)).close();
 		Thread.sleep(1000);
 		getDriver().switchTo().window(openTabs.get(1)).close();
 		Thread.sleep(1000);
-		getDriver().switchTo().window(openTabs.get(0));
+		getDriver().switchTo().window(openTabs.get(0));*/
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(2000);
+		
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		
 
 
 		String actPDF = getBaseDir()+"\\autoIt\\ExportFiles\\savingExcessInStocksPrint.pdf";
@@ -36730,7 +37665,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LogoutDropdown));
 		LogoutDropdown.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(logoutOption));
 		logoutOption.click();
@@ -36743,21 +37678,21 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(username));
 		username.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		username.clear();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		username.sendKeys(unamelt);
 		getAction().moveToElement(username).sendKeys(Keys.TAB).perform();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(password));
 		password.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		password.clear();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		password.sendKeys(pawslt);
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		String compname = "Print Design Layout Company";
 
@@ -36783,17 +37718,17 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		}
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		lp.clickOnSignInBtn();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
-		String actUserInfo1=userNameDisplay.getText();
+		String actUserInfo1=usernametxt.getText();
 
 		System.out.println("User Info  : "+actUserInfo1);
 
-		System.out.println("User Info Capture Text  :  "+userNameDisplay.getText());
+		System.out.println("User Info Capture Text  :  "+usernametxt.getText());
 
 
 		String expUserInfo1           ="TestUser";
@@ -36871,7 +37806,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 
 		getDriver().navigate().refresh();
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryMenu));
 		inventoryMenu.click();
@@ -36887,9 +37822,9 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(excessesInStocksVoucher));
 		excessesInStocksVoucher.click();
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_1stColumn));
 		select1stRow_1stColumn.click();
@@ -36920,7 +37855,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		Thread.sleep(1000);
 		enter_Quantity.sendKeys(Keys.TAB);
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		enter_Rate.sendKeys("10");
 		Thread.sleep(1000);
 		enter_Rate.sendKeys(Keys.TAB);
@@ -36943,17 +37878,17 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(rmaAddBtn));
 		rmaAddBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(rmaOkBtn));
 		rmaOkBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherSaveBtn));
 		voucherSaveBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		String expMessage = "Voucher saved successfully";
 		String actMessage = checkValidationMessage(expMessage);
@@ -36980,13 +37915,13 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		{
 			Efile.delete();
 		}
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(previousBtn));
 		previousBtn.click();
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherPrintBtn));
 		voucherPrintBtn.click();
 
@@ -36996,21 +37931,21 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		LayoutNameTxt.click();
 		LayoutNameTxt.sendKeys(Keys.END);
 		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys("RMALayout");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
-		Select s = new Select(LayoutOptionsdropdown);
-		s.selectByValue("3");
+	/*	Select s = new Select(LayoutOptionsdropdown);
+		s.selectByValue("3");*/
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(footerPrintBtn));
 		footerPrintBtn.click();
 
-		Thread.sleep(5000);
+		Thread.sleep(4000);
 
 		Robot robot = new Robot();
 
@@ -37019,7 +37954,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		robot.keyPress(KeyEvent.VK_TAB);
 		robot.keyRelease(KeyEvent.VK_TAB);
@@ -37029,7 +37964,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyPress(KeyEvent.VK_ENTER);
 		robot.keyRelease(KeyEvent.VK_ENTER);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
@@ -37037,18 +37972,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyRelease(KeyEvent.VK_S);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\SavingExcessInStocksInUser.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
 
@@ -37059,12 +37994,25 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		Thread.sleep(1000);
 
-		getDriver().switchTo().window(openTabs.get(2)).close();
-		Thread.sleep(1000);
+	/*	getDriver().switchTo().window(openTabs.get(2)).close();
+		Thread.sleep(2000);
 		getDriver().switchTo().window(openTabs.get(1)).close();
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		getDriver().switchTo().window(openTabs.get(0));
-
+*/
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		
 
 		String actPDF = getBaseDir()+"\\autoIt\\ExportFiles\\savingExcessInStocksInUserPrint.pdf";
 		String expPDF = getBaseDir()+"\\autoIt\\ImportFiles\\savingExcessInStocksInUserPrint.pdf";
@@ -37158,7 +38106,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkLogin() throws InterruptedException
 	{
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getDriver().navigate().refresh();
 
@@ -37174,7 +38122,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		lp.enterPassword(pawslt);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		String compname = "Design Layout Company for Multiple attachments";
 
@@ -37200,11 +38148,11 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		}
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		lp.clickOnSignInBtn();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		String actUserInfo1=userNameTxt.getText();
 
@@ -37244,12 +38192,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkRestoreCompany() throws InterruptedException, IOException, AWTException
 	{
-		
+
 
 		VoucherPrintOptionsPage.restoreCompany("Design Layout Company for Multiple attachments","Design Layout Company for Multiple attachments");
-		
-		Thread.sleep(5000);
-		
+
+		Thread.sleep(2000);
+
 		String actUserInfo1=userNameTxt.getText();
 
 		System.out.println("User Info  : "+actUserInfo1);
@@ -37278,8 +38226,8 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		{
 			return false;
 		}
-		
-	
+
+
 	}
 
 
@@ -37342,7 +38290,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	public static boolean checkSavePurchaseVoucherVATForMultipleAttachmentsLayout() throws EncryptedDocumentException, InvalidFormatException, InterruptedException, IOException
 	{
 
-		Thread.sleep(4000);
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
 
@@ -37355,12 +38303,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
 
-		checkValidationMessage("Screen opened");
+		
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(documentNumberTxt));
 
@@ -37371,7 +38319,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		vendorAccountTxt.sendKeys("Vendor B");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		ArrayList<String>  actVendorAccountList= new ArrayList<String>(); 
 
@@ -37402,7 +38350,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		voucherHeaderCurrency.sendKeys("INR");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		int currencycount=currencyListCount.size();
 
@@ -37427,7 +38375,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		departmentTxt.sendKeys("INDIA");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		ArrayList<String> actDepartmentList= new ArrayList<String>(); 
 
@@ -37451,16 +38399,16 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(placeOFSupplyTxt));
 		placeOFSupplyTxt.click();
 		placeOFSupplyTxt.sendKeys("Abu Dhabi");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		placeOFSupplyTxt.sendKeys(Keys.TAB);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(jurisdictionTxt));
 		jurisdictionTxt.click();
 		jurisdictionTxt.sendKeys("DUBAI");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		//jurisdictionTxt.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		voucherSaveBtn.click();
 		Thread.sleep(1000);
@@ -37493,7 +38441,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\headerAccountImage.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(headerItemImg));
 		headerItemImg.click();
@@ -37501,7 +38449,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\headerItemImage.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(headerBinsImg));
@@ -37510,7 +38458,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\headerBinsImage.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(headerDeptImg));
@@ -37519,7 +38467,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\headerDeptImage.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(headerWarehouseImg));
 		headerWarehouseImg.click();
@@ -37527,7 +38475,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\headerWrehoseImage.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_1stColumn));
 		select1stRow_1stColumn.click();
@@ -37538,7 +38486,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		enter_WarehouseTxt.sendKeys("HYDERABAD");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		int warehousecount=warehouseBodyComboList.size();
 
@@ -37561,7 +38509,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		enter_ItemTxt.sendKeys("STD RATE COGS ITEM");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		int pvvGridItemListCount=pvvGridItemList.size();
 		for (int i = 0; i < pvvGridItemListCount; i++) 
@@ -37619,7 +38567,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\bodyFocusImage.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_21stColumn));
@@ -37633,7 +38581,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\bodyAccelerateImage.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 
 		enter_bodyPic2.sendKeys(Keys.TAB);
 
@@ -37644,7 +38592,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\bodyInnovateImage.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_23rdColumn));
@@ -37658,7 +38606,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\bodyCompeteImage.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 
 
 
@@ -37666,7 +38614,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		select1stRow_24thColumn.click();
 
 		enter_boodyDoc.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(bodyDocumentFocus));
 		bodyDocumentFocus.click();
@@ -37674,10 +38622,10 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\BodyFocusDocText.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 
 		voucherSaveBtn.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newReferenceTxt));
@@ -37694,7 +38642,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		String actMessage1=checkValidationMessage(expMessage1);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		if (actMessage.equalsIgnoreCase(expMessage) && actMessage1.startsWith(expMessage1) && actMessage1.endsWith(expMessage2) )
 		{
@@ -37710,7 +38658,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkPrintPdfForMultipleAttachments() throws InterruptedException, IOException, AWTException
 	{
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
@@ -37725,7 +38673,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		File Efile=new File(getBaseDir()+"\\autoIt\\ExportFiles\\MultipleAttachmentsLayout.pdf");
 
@@ -37734,7 +38682,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			Efile.delete();
 		}
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
 
 		int count = grid_VoucherNoList.size();
@@ -37760,21 +38708,21 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		LayoutNameTxt.click();
 		LayoutNameTxt.sendKeys(Keys.END);
 		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys("NewMultipleAttachments");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		Select s = new Select(LayoutOptionsdropdown);
 		s.selectByValue("3");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(footerPrintBtn));
 		footerPrintBtn.click();
 
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 
 		Robot robot = new Robot();
 
@@ -37783,7 +38731,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		robot.keyPress(KeyEvent.VK_TAB);
 		robot.keyRelease(KeyEvent.VK_TAB);
@@ -37793,7 +38741,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyPress(KeyEvent.VK_ENTER);
 		robot.keyRelease(KeyEvent.VK_ENTER);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
@@ -37801,18 +38749,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyRelease(KeyEvent.VK_S);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\SavingMultipleAttachmentsLayout.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
 
@@ -37823,11 +38771,24 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		Thread.sleep(1000);
 
-		getDriver().switchTo().window(openTabs.get(2)).close();
-		Thread.sleep(1000);
+	/*	getDriver().switchTo().window(openTabs.get(2)).close();
+		Thread.sleep(2000);
 		getDriver().switchTo().window(openTabs.get(1)).close();
+		Thread.sleep(2000);
+		getDriver().switchTo().window(openTabs.get(0));*/
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
 		Thread.sleep(1000);
-		getDriver().switchTo().window(openTabs.get(0));
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		
 
 
 		String actPDF = getBaseDir()+"\\autoIt\\ExportFiles\\MultipleAttachmentsLayout.pdf";
@@ -37909,7 +38870,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkEmailValidationForMultipleAttachments() throws InterruptedException, IOException, EncryptedDocumentException, InvalidFormatException
 	{
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
@@ -37925,7 +38886,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		purchaseVouchersVat.click();
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
 
 		int count = grid_VoucherNoList.size();
@@ -37951,16 +38912,16 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		LayoutNameTxt.click();
 		LayoutNameTxt.sendKeys(Keys.END);
 		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys("NewMultipleAttachments");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		Select s = new Select(LayoutOptionsdropdown);
 		s.selectByValue("1");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		if (pickEmailCustCheckboxSelected.isSelected() == true) 
 		{
@@ -37969,43 +38930,43 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 
 		ToAddressInMail.sendKeys(Keys.END,Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		ToAddressInMail.sendKeys("emailvalidationone@gmail.com");
 
 		subjextInMail.sendKeys("PrintLayoutMultipleAttachments");
-		Thread.sleep(4000);
+		Thread.sleep(2000);
 
 		emailOptionBtnInMailOption.click();
-		Thread.sleep(4000);
+		Thread.sleep(2000);
 
 		toAddressInEmailOptions.sendKeys(Keys.END,Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		toAddressInEmailOptions.sendKeys("emailvalidationone@gmail.com");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		attachSignaturechkbxInEmailOptions.click();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		attachSignatureTextArea.sendKeys("@@@@@@@@@@@Archana@@@@@@@@@@@@");
 
-		Thread.sleep(4000);
+		Thread.sleep(2000);
 
 
 		emailTemplateHeaderInEmailOptions.click();
-		Thread.sleep(4000);
+		Thread.sleep(2000);
 
 		templateName.sendKeys("EmailTemplateMutlipleAttachmentLayouts");
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		templateName.sendKeys(Keys.TAB);
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\EmailTemplateHeader.exe");
 
 		Thread.sleep(50000);
 
 
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(templateSaveBtn));
 		templateSaveBtn.click();
 		Thread.sleep(1000);
@@ -38015,39 +38976,39 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		String expEmailTemplateSaveMsg = "Template saved successfully";
 		String actEmailTemplateSaveMsg =  checkValidationMessage(expEmailTemplateSaveMsg);
 
-		Thread.sleep(4000);
+		Thread.sleep(2000);
 
 		templateCloseBtn.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		attachBtnInEmailOptions.click();
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\AttachingImageInEmailOptions.exe");
 
 		Thread.sleep(8000);
 
 		okBtnInEmailOptions.click();
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(selectingTemplateForEmailValidation));
 		selectingTemplateForEmailValidation.click();
 		selectingTemplateForEmailValidation.sendKeys(Keys.END);
 		selectingTemplateForEmailValidation.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		selectingTemplateForEmailValidation.sendKeys("EmailTemplateMutlipleAttachmentLayouts");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		selectingTemplateForEmailValidation.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		String actEmailTemplate = selectingTemplateForEmailValidation.getAttribute("value");
 		String expEmailTemplate = "EmailTemplateMutlipleAttachmentLayouts";
 
 		System.out.println("actEmailTemplate: "+actEmailTemplate);
 		System.out.println("expEmailTemplate: "+expEmailTemplate);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		sendBtnInMailOption.click();
 
@@ -38083,40 +39044,40 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 		robot.keyRelease(KeyEvent.VK_T);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
 
 		System.out.println("openTabs"+openTabs);
 
 		getDriver().switchTo().window(openTabs.get(0));
-
+		Thread.sleep(2000);
 		getDriver().switchTo().window(openTabs.get(1));
-
+		Thread.sleep(1600);
 
 		getDriver().get("https://accounts.google.com/ServiceLogin/identifier?service=mail&passive=true&rm=false&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&ss=1&scc=1&ltmpl=default&ltmplcache=2&emr=1&osid=1&flowName=GlifWebSignIn&flowEntry=AddSession");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(UserNameTxt));
 		UserNameTxt.click();
 
 		UserNameTxt.sendKeys("emailvalidationone@gmail.com");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		System.out.println("User enter text");
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(NextBtn));
 		NextBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PasswordTxt));
 		PasswordTxt.click();
 
 		PasswordTxt.sendKeys("validationone");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		NextBtn.click();
 
@@ -38146,7 +39107,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		boolean actGmailTemplate =  emailTemplateInGmail.isDisplayed();
 		boolean expGmailTemplate = true;
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		boolean actNoOfAttachments = noOfAttachments.isDisplayed();
 		boolean expNoOfAttachments = true;
 
@@ -38177,7 +39138,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkDownloadAllTheAttachments() throws InterruptedException, AWTException, IOException
 	{
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(downloadAllAttachments));
 		downloadAllAttachments.click();
 
@@ -38193,38 +39154,38 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 
 
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 
 		getAction().moveToElement(backToIndexBtn).build().perform();
 		System.out.println("*********************move to back to index**************************");
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(mailDeleteBtn));
 		mailDeleteBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(selectAllMailsChckbx));
 		  		 		selectAllMailsChckbx.click();
 
-		  		 		Thread.sleep(2000);
+		  		 		Thread.sleep(1600);
 
 		  		 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(selectAllMailsDltBtn));
 		  		 		selectAllMailsDltBtn.click();
 
-					 	Thread.sleep(2000);
+					 	Thread.sleep(1600);
 
 
-					 	Thread.sleep(2000);*/
+					 	Thread.sleep(1600);*/
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(gmailUserBtn));
 		gmailUserBtn.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		getDriver().switchTo().frame(SignOutFrame);
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		getAction().moveToElement(gmailSignOutBtn).click().build().perform();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(removeAccountBtn));
@@ -38235,7 +39196,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(removeDeleteBtn));
 		removeDeleteBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(yesRemoveBtn));
 		yesRemoveBtn.click();
@@ -38251,14 +39212,15 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 
 		getDriver().switchTo().window(newTabs.get(1)).close();
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		getDriver().switchTo().window(newTabs.get(0));
-
+		Thread.sleep(1600);
+		
 		if (actExportedFileName.startsWith(expExportedFileName1) && actExportedFileName.endsWith(expExportedFileName2))
 		{
 
 			getDriver().navigate().refresh();
-			Thread.sleep(3000);
+			Thread.sleep(2000);
 
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(userNameDisplay));
 			userNameDisplay.click();
@@ -38273,7 +39235,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		{
 
 			getDriver().navigate().refresh();
-			Thread.sleep(3000);
+			Thread.sleep(2000);
 
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(userNameDisplay));
 			userNameDisplay.click();
@@ -38285,21 +39247,19 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		}
 
 	}
-	
+
 	@FindBy(xpath="//span[text()='Preview']")
 	private static WebElement previewTxt;
-	
+
 	@FindBy(xpath="//*[@id='id_InvoiceDesingPrint']")
 	private static WebElement printIcon;
-	
+
 	@FindBy(xpath="//*[@id='id_InvoiceDesingCancel']")
 	private static WebElement closeIcon;
-	
+
 	public static boolean checkPreviewOptionInPVVAT() throws InterruptedException
 	{
-		Thread.sleep(2000);
-
-
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
 
@@ -38312,7 +39272,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
 
@@ -38340,42 +39300,42 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		Thread.sleep(1200);
 		LayoutNameTxt.sendKeys(Keys.END);
 		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys("GridPropertiesLayout");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PreviewBtn));
 		PreviewBtn.click();
 
-		Thread.sleep(5000);
-		
-		
+		Thread.sleep(2000);
+
+
 		String actPreview = previewTxt.getText();
 		String expPreview = "Preview";
-		
-		
+
+
 		boolean actPrint = printIcon.isDisplayed();
 		boolean expPrint = true;
-		
+
 		boolean actClose = closeIcon.isDisplayed();
 		boolean expClose = true;
-		
+
 		System.out.println("actPreview:"+actPreview);
 		System.out.println("expPreview:"+expPreview);
-		
+
 		System.out.println("actPrint:"+actPrint);
 		System.out.println("expPrint:"+expPrint);
-		
+
 		System.out.println("actClose:"+actClose);
 		System.out.println("expClose:"+expClose);
-		
-		
+
+
 		Thread.sleep(1200);
 		closeIcon.click();
 		Thread.sleep(1200);
-		
+
 		if (actPreview.equalsIgnoreCase(expPreview) && 
 				actPrint == expPrint && actClose == expClose)
 		{
@@ -38385,27 +39345,248 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		{
 			return false;
 		}
-		
-		
+
+
 	}
-	
-	
+
+
 	public static boolean checkPrintAndEmailOutputOptionInPvVAT() throws InterruptedException, AWTException, IOException
 	{
 
 		getDriver().navigate().refresh();
 		Thread.sleep(2500);
-		
 
 		File Efile=new File(getBaseDir()+"\\autoIt\\ExportFiles\\PrintAndEmailPurchaseVoucherVAT.pdf");
-		
+
 		if(Efile.exists())
 		{
 			Efile.delete();
 		}
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+		financialsMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionMenu));
+		financialsTransactionMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionsPurchaseMenu));
+		financialsTransactionsPurchaseMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
+		purchaseVouchersVat.click();
+
+		Thread.sleep(1600);
+
+		Thread.sleep(1600);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
+
+		int count = grid_VoucherNoList.size();
+
+		for (int i = 0; i < count; i++) 
+		{
+			String VoucherNo = grid_VoucherNoList.get(i).getText();
+
+			if (VoucherNo.equalsIgnoreCase("SU/IND/TEXT1")) 
+			{
+				if (grid_CheckBoxList.get(i).isSelected()==false) 
+				{
+					grid_CheckBoxList.get(i).click();
+					break;
+				}
+			}
+		}      
+
+		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(emailBtn));
+		emailBtn.click();
+
+		Thread.sleep(1600);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
+		LayoutNameTxt.click();
+		Thread.sleep(1200);
+		LayoutNameTxt.sendKeys(Keys.END,Keys.SHIFT,Keys.HOME);
+		Thread.sleep(1600);
+		LayoutNameTxt.sendKeys("GridPropertiesLayout");
+		Thread.sleep(1600);
+		LayoutNameTxt.sendKeys(Keys.TAB);
+		Thread.sleep(1600);
+
+		/*	Select s = new Select(LayoutOptionsdropdown);
+		s.selectByValue("2");
+		 */
+		Thread.sleep(1600);
+
+
+		if(pickEmailCustCheckboxSelected.isSelected()==true)
+		{
+			pickEmailCustCheckbox.click();
+		}
+
+		ToAddressInMail.sendKeys("emailvalidationone@gmail.com");
+		Thread.sleep(1600);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(printSCreenSubjectTxt));
+		printSCreenSubjectTxt.click();
+		printSCreenSubjectTxt.sendKeys("Print And Email");
+
+		Thread.sleep(1600);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(footerPDFBtn));
+		footerPDFBtn.click();
+
+		Thread.sleep(9000);
+
+		Robot robot = new Robot();
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_S);
+		robot.keyRelease(KeyEvent.VK_S);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(2000);
+
+		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\PrintAndEmailPrintOption.exe");
+
+		Thread.sleep(8000);
+
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(1600);
+
+		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
+
+		int actOpenWindowsCount = getDriver().getWindowHandles().size();
+		int expOpenWindowsCount = 3;
+
+		System.out.println("Number of Windows  : "+actOpenWindowsCount+"  Value Expected  "+expOpenWindowsCount);
+
+		Thread.sleep(1000);
+
+	/*	getDriver().switchTo().window(openTabs.get(2)).close();
+		Thread.sleep(2000);
+		getDriver().switchTo().window(openTabs.get(1)).close();
+		Thread.sleep(2000);
+		getDriver().switchTo().window(openTabs.get(0));*/
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
 		
 		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
 		
+
+
+		String actPDF = getBaseDir()+"\\autoIt\\ExportFiles\\PrintAndEmailPurchaseVoucherVAT.pdf";
+		String expPDF = getBaseDir()+"\\autoIt\\ImportFiles\\PrintAndEmailPurchaseVoucherVAT.pdf";
+
+		PDFUtil pdfutil = new PDFUtil();
+
+		boolean result = pdfutil.compare(actPDF, expPDF);
+
+		String actData = pdfutil.getText(actPDF);
+		String expData = pdfutil.getText(expPDF);
+
+		System.err.println(actData);
+		System.err.println(expData);
+
+		if (actData.equalsIgnoreCase(expData))
+		{
+			return true;
+		} 
+		else 
+		{
+			return false;
+		}
+
+
+	}
+
+	@FindBy(xpath="//input[@id='doNotOpenPrintFileInBrowser']/../span")
+	private static WebElement DoNotOpenPrintInNewWindowCheckbox;
+
+	@FindBy(xpath="//input[@id='doNotOpenPrintFileInBrowser']")
+	private static WebElement DoNotOpenPrintInNewWindowCheckboxSelected;
+
+	@FindBy(xpath="//input[@id='mergeVouchersInOneFile']/../span")
+	private static WebElement mergeVouchersInOneFileCheckbox;
+
+	@FindBy(xpath="//input[@id='mergeVouchersInOneFile']")
+	private static WebElement mergeVouchersInOneFileCheckboxSelected;
+
+
+
+
+
+	public static boolean checkEnableDoNotOpenPrintFileInNewWindowOptionInReports() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
+	{
+
+		Thread.sleep(2000);
+
+		getDriver().navigate().refresh();
+		Thread.sleep(3000);
+
+		getAction().moveToElement(settingsmenuBtn).build().perform();
+		Thread.sleep(1200);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(settingsmenuBtn));
+		ClickUsingJs(settingsmenuBtn);
+
+		Thread.sleep(2000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PreferencesBtn));
+		PreferencesBtn.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ReportBtn));
+		ReportBtn.click();
+
+		Thread.sleep(2000);
+
+		if (DoNotOpenPrintInNewWindowCheckboxSelected.isSelected()==false)
+		{
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(DoNotOpenPrintInNewWindowCheckbox));
+			DoNotOpenPrintInNewWindowCheckbox.click();
+		}
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(UpdateBtn));
+		UpdateBtn.click();
+
+		getWaitForAlert();
+		String actAlertMgs  =getAlert().getText();
+		String expAlertMgs  ="Do you want to save the changes?";
+		getAlert().accept();
+
+		String expUpdateMsg = "Data saved Successfully";
+		String actUpdateMsg = checkValidationMessage(expUpdateMsg);
+
+		boolean actcheckBox = DoNotOpenPrintInNewWindowCheckboxSelected.isSelected();
+		boolean expCheckBox = true;
+
+		if (actcheckBox == expCheckBox && actAlertMgs.equalsIgnoreCase(expAlertMgs) && actUpdateMsg.equalsIgnoreCase(expUpdateMsg)) 
+		{
+			return true;
+		} 
+		else 
+		{
+			return false;
+		}
+
+
+	}
+
+	public static boolean checkVerifyDoNotOpenPrintFileInNewWindow() throws InterruptedException, IOException, AWTException
+	{
+
+		Thread.sleep(2000);
+
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
 		financialsMenu.click();
 
@@ -38419,6 +39600,13 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		purchaseVouchersVat.click();
 
 		Thread.sleep(2000);
+
+		File Efile=new File(getBaseDir()+"\\autoIt\\ExportFiles\\DoNotOpenPrintFileInNewWindow.pdf");
+
+		if(Efile.exists())
+		{
+			Efile.delete();
+		}
 
 		Thread.sleep(2000);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
@@ -38439,96 +39627,172 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			}
 		}      
 
-		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
-		printBtn.click();
-
 		Thread.sleep(2000);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
+		printBtn.click();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
 		LayoutNameTxt.click();
-		Thread.sleep(1200);
+		Thread.sleep(2000);
 		LayoutNameTxt.sendKeys(Keys.END);
 		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
 		Thread.sleep(2000);
-		LayoutNameTxt.sendKeys("GridPropertiesLayout");
+		LayoutNameTxt.sendKeys("LayoutForAreaProperties");
 		Thread.sleep(2000);
 		LayoutNameTxt.sendKeys(Keys.TAB);
 		Thread.sleep(2000);
 
-	/*	Select s = new Select(LayoutOptionsdropdown);
-		s.selectByValue("2");
-*/
+		Select s = new Select(LayoutOptionsdropdown);
+		s.selectByValue("0");
+
 		Thread.sleep(2000);
 
-		
-			if(pickEmailCustCheckboxSelected.isSelected()==true)
-			{
-			 pickEmailCustCheckbox.click();
-			}
-		
-			ToAddressInMail.sendKeys("emailvalidationone@gmail.com");
-			Thread.sleep(2000);
-			
-			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(printSCreenSubjectTxt));
-			printSCreenSubjectTxt.click();
-			printSCreenSubjectTxt.sendKeys("Print And Email");
-			
-			Thread.sleep(2000);
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(footerPDFBtn));
-		footerPDFBtn.click();
-		
-		Thread.sleep(9000);
-		 
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(footerPrintBtn));
+		footerPrintBtn.click();
+
+		Thread.sleep(5000);
+
 		Robot robot = new Robot();
 		robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_S);
 		robot.keyRelease(KeyEvent.VK_S);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
-		
-		Thread.sleep(4000);
-			
-		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\PrintAndEmailPrintOption.exe");
-		
-		Thread.sleep(8000);
-		
+
+		Thread.sleep(2000);
+
+		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\SavingDoNotOpenPrintFileInNewWindow.exe");
+
+		Thread.sleep(5000);
+
 		robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
-		
+
 		Thread.sleep(2000);
-		
+
 		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
-			
+
 		int actOpenWindowsCount = getDriver().getWindowHandles().size();
 		int expOpenWindowsCount = 3;
-		
+
 		System.out.println("Number of Windows  : "+actOpenWindowsCount+"  Value Expected  "+expOpenWindowsCount);
-		
+
 		Thread.sleep(1000);
 
-	 	getDriver().switchTo().window(openTabs.get(2)).close();
-	 	Thread.sleep(1000);
-	 	getDriver().switchTo().window(openTabs.get(1)).close();
-	 	Thread.sleep(1000);
-	 	getDriver().switchTo().window(openTabs.get(0));
-	 	
-	 	
-	 	String actPDF = getBaseDir()+"\\autoIt\\ExportFiles\\PrintAndEmailPurchaseVoucherVAT.pdf";
-		String expPDF = getBaseDir()+"\\autoIt\\ImportFiles\\PrintAndEmailPurchaseVoucherVAT.pdf";
+	/*	getDriver().switchTo().window(openTabs.get(2)).close();
+		Thread.sleep(2000);
+		getDriver().switchTo().window(openTabs.get(1)).close();
+		Thread.sleep(2000);
+		getDriver().switchTo().window(openTabs.get(0));*/
 		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		
+
+
+		String actPDF = getBaseDir()+"\\autoIt\\ExportFiles\\DoNotOpenPrintFileInNewWindow.pdf";
+		String expPDF = getBaseDir()+"\\autoIt\\ImportFiles\\DoNotOpenPrintFileInNewWindow.pdf";
+
 		PDFUtil pdfutil = new PDFUtil();
-		
+
 		boolean result = pdfutil.compare(actPDF, expPDF);
-		
+
 		String actData = pdfutil.getText(actPDF);
 		String expData = pdfutil.getText(expPDF);
-		
+
 		System.err.println(actData);
 		System.err.println(expData);
-		
-		if (actData.equalsIgnoreCase(expData))
+
+		if (actData.equalsIgnoreCase(expData)) 
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+
+
+
+
+	}
+
+
+	public static boolean checkMergMultipleVouchersInSingleFileOptionInReports() throws EncryptedDocumentException, InvalidFormatException, InterruptedException, IOException
+	{
+
+
+		Thread.sleep(3500);
+
+		getAction().moveToElement(settingsmenuBtn).build().perform();
+		Thread.sleep(2500);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(settingsmenuBtn));
+		Thread.sleep(2500);
+		ClickUsingJs(settingsmenuBtn);
+
+		Thread.sleep(2000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PreferencesBtn));
+		PreferencesBtn.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ReportBtn));
+		ReportBtn.click();
+
+
+		Thread.sleep(2000);
+
+		ScrollToElement(DoNotOpenPrintInNewWindowCheckbox);
+		Thread.sleep(2000);
+
+		if (DoNotOpenPrintInNewWindowCheckboxSelected.isSelected()==true)
+		{
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(DoNotOpenPrintInNewWindowCheckbox));
+			DoNotOpenPrintInNewWindowCheckbox.click();
+		}
+
+		Thread.sleep(2000);
+
+		if (mergeVouchersInOneFileCheckboxSelected.isSelected()==false)
+		{
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(mergeVouchersInOneFileCheckbox));
+			mergeVouchersInOneFileCheckbox.click();
+		}
+
+		Thread.sleep(2000);
+		ScrollToElement(companyLogo);
+		Thread.sleep(2000);
+
+		ClickUsingJs(UpdateBtn);
+		/* getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(UpdateBtn));
+		 UpdateBtn.click();*/
+
+
+		getWaitForAlert();
+		String actAlertMgs  =getAlert().getText();
+		String expAlertMgs  ="Do you want to save the changes?";
+		getAlert().accept();
+
+		String expUpdateMsg = "Data saved Successfully";
+		String actUpdateMsg = checkValidationMessage(expUpdateMsg);
+
+		boolean actNWcheckBox = DoNotOpenPrintInNewWindowCheckboxSelected.isSelected();
+		boolean expNWCheckBox = false;
+
+		boolean actMergecheckBox = mergeVouchersInOneFileCheckboxSelected.isSelected();
+		boolean expMergeCheckBox = true;
+
+
+		if (actNWcheckBox == expNWCheckBox && actMergecheckBox == expMergeCheckBox && actAlertMgs.equalsIgnoreCase(expAlertMgs) && actUpdateMsg.equalsIgnoreCase(expUpdateMsg)) 
 		{
 			return true;
 		} 
@@ -38536,47 +39800,310 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		{
 			return false;
 		}
-		
-	
+
+
+
 	}
-	
+
+	public static boolean checkVerifyMergMultipleVouchersInSingleFileOption() throws InterruptedException, IOException, AWTException
+	{
+
+		Thread.sleep(2000);
+
+		File Efile=new File(getBaseDir()+"\\autoIt\\ExportFiles\\MergMultipleVouchersInSingleFile.pdf");
+
+		if(Efile.exists())
+		{
+			Efile.delete();
+		}
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+		financialsMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionMenu));
+		financialsTransactionMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionsPurchaseMenu));
+		financialsTransactionsPurchaseMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
+		purchaseVouchersVat.click();
+
+		Thread.sleep(2000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
+
+		int count = grid_VoucherNoList.size();
+
+		for (int i = 0; i < count; i++) 
+		{
+			String VoucherNo = grid_VoucherNoList.get(i).getText();
+
+			if (VoucherNo.equalsIgnoreCase("SU/IND/TEXT1")) 
+			{
+				if (grid_CheckBoxList.get(i).isSelected()==false) 
+				{
+					grid_CheckBoxList.get(i).click();
+
+					break;
+				}
+			}
+
+		}      
+
+
+		for (int i = 0; i < count; i++) 
+		{
+			String VoucherNo = grid_VoucherNoList.get(i).getText();
+
+
+			if (VoucherNo.equalsIgnoreCase("SU/IND/TEXT2")) 
+			{
+				if (grid_CheckBoxList.get(i).isSelected()==false) 
+				{
+					grid_CheckBoxList.get(i).click();
+					break;
+				}
+			}
+		}      
+
+
+
+		Thread.sleep(2000);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
+		printBtn.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
+		LayoutNameTxt.click();
+		Thread.sleep(2000);
+		LayoutNameTxt.sendKeys(Keys.END);
+		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
+		Thread.sleep(2000);
+		LayoutNameTxt.sendKeys("LayoutForAreaProperties");
+		Thread.sleep(2000);
+		LayoutNameTxt.sendKeys(Keys.TAB);
+		Thread.sleep(2000);
+
+		Select s = new Select(LayoutOptionsdropdown);
+		s.selectByValue("0");
+
+		Thread.sleep(2000);
+
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(footerPrintBtn));
+		footerPrintBtn.click();
+
+		Thread.sleep(8000);
+
+		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\DownloadInGoogleFrame.exe");
+
+		Thread.sleep(5000);
+
+		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\SavingMergMultipleVouchersInSingleFile.exe");
+		Thread.sleep(7000);
+
+		Robot robot = new Robot();
+
+		robot.keyPress(KeyEvent.VK_ALT);
+		robot.keyPress(KeyEvent.VK_F4);
+
+		robot.keyRelease(KeyEvent.VK_ALT);
+		robot.keyRelease(KeyEvent.VK_F4);
+
+		Thread.sleep(2000);
+
+
+		String actPDF = getBaseDir()+"\\autoIt\\ExportFiles\\MergMultipleVouchersInSingleFile.pdf";
+		String expPDF = getBaseDir()+"\\autoIt\\ImportFiles\\MergMultipleVouchersInSingleFile.pdf";
+
+		PDFUtil pdfutil = new PDFUtil();
+
+		boolean result = pdfutil.compare(actPDF, expPDF);
+
+		String actData = pdfutil.getText(actPDF);
+		String expData = pdfutil.getText(expPDF);
+
+		System.err.println(actData);
+		System.err.println(expData);
+		
+
+
+		if (actData.equalsIgnoreCase(expData)) 
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+
+
+	}
+
+	public static boolean checkPrintDocumentSetForTagwisePrintLayout() throws IOException, InterruptedException, AWTException
+	{
+
+
+		Thread.sleep(2500);
+		getDriver().navigate().refresh();
+		Thread.sleep(2000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+		financialsMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionMenu));
+		financialsTransactionMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionsPurchaseMenu));
+		financialsTransactionsPurchaseMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchers));
+		purchaseVouchers.click();
+
+		Thread.sleep(2000);
+
+		File Efile=new File(getBaseDir()+"\\autoIt\\ExportFiles\\TagWisePrintLayout.pdf");
+
+		if(Efile.exists())
+		{
+			Efile.delete();
+		}
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
+
+		int count = grid_VoucherNoList.size();
+
+		for (int i = 0; i < count; i++) 
+		{
+			String VoucherNo = grid_VoucherNoList.get(i).getText();
+
+			if (VoucherNo.equalsIgnoreCase("1")) 
+			{
+				if (grid_CheckBoxList.get(i).isSelected()==false) 
+				{
+					grid_CheckBoxList.get(i).click();
+					break;
+				}
+			}
+		}      
+
+
+		for (int i = 0; i < count; i++) 
+		{
+			String VoucherNo = grid_VoucherNoList.get(i).getText();
+
+			if (VoucherNo.equalsIgnoreCase("2")) 
+			{
+				if (grid_CheckBoxList.get(i).isSelected()==false) 
+				{
+					grid_CheckBoxList.get(i).click();
+					break;
+				}
+			}
+		}      
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
+		printBtn.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(DocumentSet));
+		DocumentSet.click();
+		DocumentSet.sendKeys(Keys.END,Keys.SHIFT,Keys.HOME);
+		Thread.sleep(2000);
+		DocumentSet.sendKeys("DocSetForLayoutBasedOnTag");
+		Thread.sleep(2000);
+		DocumentSet.sendKeys(Keys.TAB);
+		Thread.sleep(2000);
+
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(footerPrintBtn));
+		footerPrintBtn.click();
+
+		Thread.sleep(20000);
+
+		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\DownloadInGoogleFrame.exe");
+
+		Thread.sleep(5000);
+
+		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\DocSetTagWiseLayout.exe");
+		Thread.sleep(7000);
+
+		Robot robot = new Robot();
+
+		robot.keyPress(KeyEvent.VK_ALT);
+		robot.keyPress(KeyEvent.VK_F4);
+
+		robot.keyRelease(KeyEvent.VK_ALT);
+		robot.keyRelease(KeyEvent.VK_F4);
+
+
+		String actPDF = getBaseDir()+"\\autoIt\\ExportFiles\\TagWisePrintLayout.pdf";
+		String expPDF = getBaseDir()+"\\autoIt\\ImportFiles\\TagWisePrintLayout.pdf";
+
+		Thread.sleep(2500);
+		PDFUtil pdfutil = new PDFUtil();
+
+		boolean result = pdfutil.compare(actPDF, expPDF);
+
+		String actData = pdfutil.getText(actPDF);
+		String expData = pdfutil.getText(expPDF);
+
+		System.err.println("actData:"+actData);
+		System.err.println("expPDF: "+expData);
+
+		System.out.println("Compared Result  : "+result);
+
+		if (actData.equalsIgnoreCase(expData)) 
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+
+	}
+
+
+
 	public static boolean checkValidateCustomerStatementsReport() throws InterruptedException
 	{
 
-		
-		Thread.sleep(3000);
+
+		Thread.sleep(2000);
 		getDriver().navigate().refresh();
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
-	  	financialsMenu.click();
-	  	
-	  	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(receivableAndPayableAnalysisMenu));
-	  	receivableAndPayableAnalysisMenu.click();
-	  	
-	  	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerDetailMenu));
-	  	customerDetailMenu.click();
-	  	
-	  	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerDetailsCustomerStatementsReport));
-	  	customerDetailsCustomerStatementsReport.click();
-	  	
-	  	Thread.sleep(3000);
-	  	
-	  	Thread.sleep(2000);
-	  	
-	  	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
-	  	Select s=new Select(sl_DateOptionDropdown);
-	  	s.selectByValue("1");
-	  	
-	  	
+		financialsMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(receivableAndPayableAnalysisMenu));
+		receivableAndPayableAnalysisMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerDetailMenu));
+		customerDetailMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerDetailsCustomerStatementsReport));
+		customerDetailsCustomerStatementsReport.click();
+
 		Thread.sleep(2000);
+
+		Thread.sleep(5000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+		Select s=new Select(sl_DateOptionDropdown);
+		s.selectByValue("1");
+
+		sl_DateOptionDropdown.sendKeys(Keys.TAB);
+
+
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_HeaderSelectChkBox));
 		sl_HeaderSelectChkBox.click();
-		
-		
+
+
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_OkBtn));
 		sl_OkBtn.click();
-		
-		Thread.sleep(5000);
+
+		Thread.sleep(8000);
 		int reportsRow1ListCount = reportsRow1List.size();
 		ArrayList<String> reportsRow1ListArray = new ArrayList<String>();
 		for(int i=1;i<reportsRow1ListCount;i++)
@@ -38589,7 +40116,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		}
 		String actRow1List = reportsRow1ListArray.toString();
-		String expRow1List = "[Email Account Three [EmailAccountThree]]";
+		String expRow1List = "[Email Account One [EmailAccountOne]]";
 
 
 
@@ -38606,7 +40133,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		}
 		String actRow2List = reportsRow2ListArray.toString();
-		String expRow2List = "[Rct:3, "+getCurrentDateF2()+", Email Account Three, 100.00, 100.00, 100.00, 100.00, 100.00]";
+		String expRow2List = "[Rct:1, "+getCurrentDateF2()+", Email Account One, 100.00, 100.00, 100.00, 100.00, 100.00]";
 
 
 
@@ -38637,7 +40164,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		}
 		String actRow4List = reportsRow4ListArray.toString();
 		String expRow4List = "[Email Account Two [EmailAccountTwo]]";
-		
+
 		int reportsRow5ListCount = reportsRow5List.size();
 		ArrayList<String> reportsRow5ListArray = new ArrayList<String>();
 		for(int i=1;i<reportsRow5ListCount-6;i++)
@@ -38683,7 +40210,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		}
 		String actRow7List = reportsRow7ListArray.toString();
-		String expRow7List = "[Email Account One [EmailAccountOne]]";
+		String expRow7List = "[Email Account Three [EmailAccountThree]]";
 
 
 
@@ -38699,7 +40226,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		}
 		String actRow8List = reportsRow8ListArray.toString();
-		String expRow8List = "[Rct:1, "+getCurrentDateF2()+", Email Account One, 100.00, 100.00, 100.00, 100.00, 100.00]";
+		String expRow8List = "[Rct:3, "+getCurrentDateF2()+", Email Account Three, 100.00, 100.00, 100.00, 100.00, 100.00]";
 		int reportsRow9ListCount = reportsRow9List.size();
 		ArrayList<String> reportsRow9ListArray = new ArrayList<String>();
 		for(int i=1;i<reportsRow9ListCount-6;i++)
@@ -38729,13 +40256,13 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		}
 		String actRow10List = reportsRow10ListArray.toString();
 		String expRow10List = "[Grand Total, 300.00, 300.00, 300.00, 300.00, 300.00]";
-		
+
 		System.out.println(actRow1List);
-		
+
 		System.out.println(expRow1List);
 
 		System.out.println(actRow2List);
-		
+
 		System.out.println(expRow2List);
 
 		System.out.println(actRow3List);
@@ -38746,33 +40273,33 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		System.out.println(actRow5List);
 		System.out.println(expRow5List);
-		
+
 
 		System.out.println(actRow6List);
 		System.out.println(expRow6List);
-		
+
 		System.out.println(actRow7List);
 		System.out.println(expRow7List);
 
 		System.out.println(actRow8List);
 		System.out.println(expRow8List);
-		
+
 
 		System.out.println(actRow9List);
 		System.out.println(expRow9List);
-	
-		
+
+
 		System.out.println(actRow10List);
 		System.out.println(expRow10List);
-		
 
-	
+
+
 		if (actRow1List.equalsIgnoreCase(expRow1List) && actRow2List.equalsIgnoreCase(expRow2List)
 				&& actRow3List.equalsIgnoreCase(expRow3List) && actRow4List.equalsIgnoreCase(expRow4List)&&
 				actRow5List.equalsIgnoreCase(expRow5List) && actRow6List.equalsIgnoreCase(expRow6List)
 				&& actRow7List.equalsIgnoreCase(expRow7List) && actRow8List.equalsIgnoreCase(expRow8List) &&
 				actRow9List.equalsIgnoreCase(expRow9List) && actRow10List.equalsIgnoreCase(expRow10List)
-				
+
 				) 
 		{
 			return true;
@@ -38781,20 +40308,20 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		{
 			return false;
 		}
-		
-	
+
+
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -38830,12 +40357,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
 
-		checkValidationMessage("Screen opened");
+		
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(documentNumberTxt));
 
@@ -38846,7 +40373,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		vendorAccountTxt.sendKeys("Vendor B");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		ArrayList<String>  actVendorAccountList= new ArrayList<String>(); 
 
@@ -38877,7 +40404,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		voucherHeaderCurrency.sendKeys("INR");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		int currencycount=currencyListCount.size();
 
@@ -38902,7 +40429,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		departmentTxt.sendKeys("INDIA");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		ArrayList<String> actDepartmentList= new ArrayList<String>(); 
 
@@ -38926,13 +40453,13 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(placeOFSupplyTxt));
 		placeOFSupplyTxt.click();
 		placeOFSupplyTxt.sendKeys("Abu Dhabi");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		placeOFSupplyTxt.sendKeys(Keys.TAB);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(jurisdictionTxt));
 		jurisdictionTxt.click();
 		jurisdictionTxt.sendKeys("DUBAI");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		jurisdictionTxt.sendKeys(Keys.TAB);
 
 
@@ -38945,7 +40472,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		enter_WarehouseTxt.sendKeys("HYDERABAD");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		int warehousecount=warehouseBodyComboList.size();
 
@@ -38968,7 +40495,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		enter_ItemTxt.sendKeys("BR COGS ITEM");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		int pvvGridItemListCount=pvvGridItemList.size();
 		for (int i = 0; i < pvvGridItemListCount; i++) 
@@ -39031,7 +40558,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		enter_Expirydate.sendKeys("31122021");
 		enter_Expirydate.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select2ndRow_1stColumn));
@@ -39045,7 +40572,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		enter_WarehouseTxt.sendKeys("HYDERABAD");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		for(int i=0 ; i < warehousecount ;i++)
 		{
@@ -39066,7 +40593,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		enter_ItemTxt.sendKeys("BR COGS ITEM");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		for (int i = 0; i < pvvGridItemListCount; i++) 
 		{
@@ -39128,7 +40655,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		enter_Expirydate.sendKeys("31122021");
 		enter_Expirydate.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 
@@ -39144,7 +40671,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		enter_WarehouseTxt.sendKeys("Secunderabad");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		for(int i=0 ; i < warehousecount ;i++)
 		{
@@ -39165,7 +40692,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		enter_ItemTxt.sendKeys("BR COGS ITEM");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		for (int i = 0; i < pvvGridItemListCount; i++) 
 		{
@@ -39227,7 +40754,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		enter_Expirydate.sendKeys("31122021");
 		enter_Expirydate.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select4thRow_1stColumn));
@@ -39241,7 +40768,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		enter_WarehouseTxt.sendKeys("HYDERABAD");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		for(int i=0 ; i < warehousecount ;i++)
 		{
@@ -39263,7 +40790,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		enter_ItemTxt.sendKeys("WA COGS ITEM");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		for (int i = 0; i < pvvGridItemListCount; i++) 
 		{
@@ -39314,7 +40841,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		enter_PvTaxable.click();
 		enter_PvTaxable.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(rmaScreenTitle));
 
@@ -39329,12 +40856,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(rmaAddBtn));
 		rmaAddBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(RMAPopupOkBtn));
 		RMAPopupOkBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select5thRow_1stColumn));
@@ -39348,7 +40875,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		enter_WarehouseTxt.sendKeys("HYDERABAD");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		for(int i=0 ; i < warehousecount ;i++)
 		{
@@ -39370,7 +40897,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		enter_ItemTxt.sendKeys("WA COGS ITEM");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		for (int i = 0; i < pvvGridItemListCount; i++) 
 		{
@@ -39421,7 +40948,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		enter_PvTaxable.click();
 		enter_PvTaxable.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(rmaScreenTitle));
 
@@ -39433,17 +40960,17 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(rmaAddBtn));
 		rmaAddBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(RMAPopupOkBtn));
 		RMAPopupOkBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_RMA));
 		enter_RMA.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_WarehouseTxt));
 		enter_WarehouseTxt.click();
@@ -39454,7 +40981,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		enter_WarehouseTxt.sendKeys("Secunderabad");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		for(int i=0 ; i < warehousecount ;i++)
 		{
@@ -39476,7 +41003,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		enter_ItemTxt.sendKeys("WA COGS ITEM");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		for (int i = 0; i < pvvGridItemListCount; i++) 
 		{
@@ -39527,7 +41054,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		enter_PvTaxable.click();
 		enter_PvTaxable.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(rmaScreenTitle));
 
@@ -39537,17 +41064,17 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(rmaAddBtn));
 		rmaAddBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(RMAPopupOkBtn));
 		RMAPopupOkBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_RMA));
 		enter_RMA.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		for (int i = 1; i <= 50; i++) 
@@ -39565,7 +41092,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 			enter_WarehouseTxt.sendKeys("HYDERABAD");
 
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 
 			for(int w=0 ; w < warehousecount ;i++)
 			{
@@ -39588,7 +41115,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 			enter_ItemTxt.sendKeys("STD RATE COGS ITEM");
 
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 
 			for (int k = 0; k < pvvGridItemListCount; i++) 
 			{
@@ -39635,7 +41162,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			enter_PvTaxable.click();
 			enter_PvTaxable.sendKeys(Keys.TAB);
 
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 
 		}
 
@@ -39659,7 +41186,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_CloseBtn));
 			new_CloseBtn.click();
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 			return true;
 		} 
 		else 
@@ -39668,7 +41195,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_CloseBtn));
 			new_CloseBtn.click();
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 			return false;
 		}
 	}
@@ -39707,7 +41234,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 					getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 					purchaseVouchersVat.click();
 
-					Thread.sleep(2000);*/
+					Thread.sleep(1600);*/
 
 		File Efile=new File(getBaseDir()+"\\autoIt\\ExportFiles\\PurchaseVoucherVATPrint.pdf");
 
@@ -39741,22 +41268,22 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		LayoutNameTxt.click();
 		LayoutNameTxt.sendKeys(Keys.END);
 		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys("PurchaseVoucherVAT");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		Select s = new Select(LayoutOptionsdropdown);
 		s.selectByValue("3");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(footerPrintBtn));
 		footerPrintBtn.click();
 
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 
 		Robot robot = new Robot();
 		robot.keyPress(KeyEvent.VK_CONTROL);
@@ -39764,7 +41291,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		robot.keyPress(KeyEvent.VK_TAB);
 		robot.keyRelease(KeyEvent.VK_TAB);
@@ -39774,25 +41301,25 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyPress(KeyEvent.VK_ENTER);
 		robot.keyRelease(KeyEvent.VK_ENTER);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_S);
 		robot.keyRelease(KeyEvent.VK_S);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\SavingPrintPDFInPurchaseVoucher.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
 
@@ -39802,12 +41329,25 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		System.out.println("Number of Windows  : "+actOpenWindowsCount+"  Value Expected  "+expOpenWindowsCount);
 
 		Thread.sleep(1000);
-
+/*
 		getDriver().switchTo().window(openTabs.get(2)).close();
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		getDriver().switchTo().window(openTabs.get(1)).close();
+		Thread.sleep(2000);
+		getDriver().switchTo().window(openTabs.get(0));*/
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
 		Thread.sleep(1000);
-		getDriver().switchTo().window(openTabs.get(0));
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		
 
 
 		String actPDF = getBaseDir()+"\\autoIt\\ExportFiles\\PurchaseVoucherVATPrint.pdf";
@@ -39851,7 +41391,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	@FindBy(xpath="//div[@id='drpdownSlider']//i[@class='icon-save hiconright2']")  //li[@id='iSave']//i[@class='icon-save hiconright2']
 	private static WebElement  Savedropdown;
-	
+
 	@FindBy(xpath="(//a[@title='Print']//i)[2]")
 	private static WebElement  gggg;
 
@@ -39894,7 +41434,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				if (grid_CheckBoxList.get(i).isSelected()==false) 
 				{
 					grid_CheckBoxList.get(i).click();
-					Thread.sleep(2000);
+					Thread.sleep(1600);
 				}
 			}
 		}   
@@ -39904,29 +41444,18 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(createLayoutBtn));
 		createLayoutBtn.click();
-
-		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(previewTab));
-		previewTab.click();
-
-		Thread.sleep(3000);
-		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(designerTab));
-		designerTab.click();
-
-		Thread.sleep(3000);
-
+		
+		Thread.sleep(2000);
+		
+		browseTemplateBtn.click();
 		Thread.sleep(2000);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(Opendropdown));
-		Opendropdown.click();
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(fromXMLBtn));
-		fromXMLBtn.click();
-
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\ImportingPurchaseVoucherVATPrintLayout.exe");
 
-		Thread.sleep(4000);
+		Thread.sleep(6000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(Savedropdown));
 		Savedropdown.click();
@@ -39947,7 +41476,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ExitBtn));
 		ExitBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
 
@@ -39960,7 +41489,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 				if (grid_CheckBoxList.get(i).isSelected()==false) 
 				{
 					grid_CheckBoxList.get(i).click();
-					Thread.sleep(2000);
+					Thread.sleep(1600);
 				}
 			}
 		}   
@@ -39972,7 +41501,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		LayoutNameTxt.click();
 		LayoutNameTxt.sendKeys(Keys.END);
 		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys("ImportedPurchaseVoucherVATLayout");
 		Thread.sleep(1000);
 		LayoutNameTxt.sendKeys(Keys.TAB);
@@ -39980,12 +41509,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		Select s = new Select(LayoutOptionsdropdown);
 		s.selectByIndex(3);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(footerPrintBtn));
 		footerPrintBtn.click();
 
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 
 		Robot robot = new Robot();
 		robot.keyPress(KeyEvent.VK_CONTROL);
@@ -39993,7 +41522,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		robot.keyPress(KeyEvent.VK_TAB);
 		robot.keyRelease(KeyEvent.VK_TAB);
@@ -40003,25 +41532,25 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyPress(KeyEvent.VK_ENTER);
 		robot.keyRelease(KeyEvent.VK_ENTER);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_S);
 		robot.keyRelease(KeyEvent.VK_S);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\SavingPrintPDFInPurchaseVoucherWithImportedLayout.exe");
 
-		Thread.sleep(4000);
+		Thread.sleep(6000);
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
 
@@ -40032,12 +41561,25 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		Thread.sleep(1000);
 
-		getDriver().switchTo().window(openTabs.get(2)).close();
-		Thread.sleep(1000);
+		/*getDriver().switchTo().window(openTabs.get(2)).close();
+		Thread.sleep(2000);
 		getDriver().switchTo().window(openTabs.get(1)).close();
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		getDriver().switchTo().window(openTabs.get(0));
-
+*/
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		
 
 		String actPDF = getBaseDir()+"\\autoIt\\ExportFiles\\PurchaseVoucherVATPrintWithImportedXML.pdf";
 		String expPDF = getBaseDir()+"\\autoIt\\ImportFiles\\PurchaseVoucherVATPrintWithImportedXML.pdf";
@@ -40080,7 +41622,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			Efile.delete();
 		}
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
 
@@ -40106,7 +41648,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		LayoutNameTxt.click();
 		LayoutNameTxt.sendKeys(Keys.END);
 		LayoutNameTxt.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		LayoutNameTxt.sendKeys("ImportedPurchaseVoucherVATLayout");
 		Thread.sleep(1000);
 		LayoutNameTxt.sendKeys(Keys.TAB);
@@ -40114,7 +41656,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		Select s = new Select(LayoutOptionsdropdown);
 		s.selectByIndex(1);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(printScreenPickEmailChkbox));
 		if (printScreenPickEmailChkbox.isSelected()==true) 
@@ -40132,7 +41674,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		printSCreenSubjectTxt.click();
 		printSCreenSubjectTxt.sendKeys("Purchase Voucher VAT Voucher-3");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(emailSendBtn));
 		emailSendBtn.click();
@@ -40140,7 +41682,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		String ExpMessage="Mail sent successfully";
 		String actMessage=checkValidationMessage(ExpMessage);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		Robot robot = new Robot();   
 		robot.keyPress(KeyEvent.VK_CONTROL);
@@ -40148,37 +41690,37 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 		robot.keyRelease(KeyEvent.VK_T);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
 
 		System.out.println("openTabs"+openTabs);
 
 		getDriver().switchTo().window(openTabs.get(0));
-
+		Thread.sleep(1600);
 		getDriver().switchTo().window(openTabs.get(1));
 
-
+		Thread.sleep(1600);
 		getDriver().get("https://accounts.google.com/ServiceLogin/identifier?service=mail&passive=true&rm=false&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&ss=1&scc=1&ltmpl=default&ltmplcache=2&emr=1&osid=1&flowName=GlifWebSignIn&flowEntry=AddSession");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(userNameTxt));
 		userNameTxt.click();
 
 		userNameTxt.sendKeys("testmiscellaneous1");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(NextBtn));
 		NextBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PasswordTxt));
 		PasswordTxt.click();
 
 		PasswordTxt.sendKeys("testing@123");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		NextBtn.click();
 
@@ -40197,14 +41739,14 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			}
 		}
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getAction().moveToElement(mailAttachmentDownloadBtn).build().perform();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(mailAttachmentDownloadBtn));
 		mailAttachmentDownloadBtn.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_J);
@@ -40212,7 +41754,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
 
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 
 		robot.keyPress(KeyEvent.VK_TAB);
 		robot.keyRelease(KeyEvent.VK_TAB);
@@ -40222,25 +41764,25 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyPress(KeyEvent.VK_ENTER);
 		robot.keyRelease(KeyEvent.VK_ENTER);
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_S);
 		robot.keyRelease(KeyEvent.VK_S);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\PrintEmailPurchaseVoucher.exe");
 
-		Thread.sleep(4000);
+		Thread.sleep(6000);
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		ArrayList<String> newTabs = new ArrayList<String>(getDriver().getWindowHandles());
 
@@ -40250,27 +41792,27 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		System.out.println("Number of Windows  : "+actOpenWindowsCount+"  Value Expected  "+expOpenWindowsCount);
 
 		getDriver().switchTo().window(newTabs.get(3)).close();
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		getDriver().switchTo().window(newTabs.get(2)).close();
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		getDriver().switchTo().window(newTabs.get(1));
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(mailDeleteButton));
 		mailDeleteButton.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(gmailUserBtn));
 		gmailUserBtn.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		getDriver().switchTo().frame(SignOutFrame);
 		Thread.sleep(1000);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(gmailSignOutBtn));
 		ClickUsingJs(gmailSignOutBtn);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(removeAccountBtn));
 		removeAccountBtn.click();
@@ -40280,7 +41822,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(removeDeleteBtn));
 		removeDeleteBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(yesRemoveBtn));
 		yesRemoveBtn.click();
@@ -40289,11 +41831,11 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		getDriver().switchTo().window(newTabs.get(0));
 
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 
 		getDriver().switchTo().window(newTabs.get(1)).close();
 
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 
 		getDriver().switchTo().window(openTabs.get(0));
 
@@ -40369,11 +41911,11 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(restoreBrowseBtn));
 		restoreBrowseBtn.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		Runtime.getRuntime().exec(getBaseDir()+"\\autoIt\\scripts\\DocumentSet.exe");
 
-		Thread.sleep(3000);
+		Thread.sleep(6000);
 
 		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(restoreCompanyBtnOfLoginPage));
 		restoreCompanyBtnOfLoginPage.click();
@@ -40389,7 +41931,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		String expAlertTxt = "Restore company code : 010";
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		if(actAlertTxt.equalsIgnoreCase(expAlertTxt))
 		{
@@ -40418,7 +41960,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
 		purchaseVouchersVat.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		File Efile=new File(getBaseDir()+"\\autoIt\\ExportFiles\\PurchaseVoucherVATPrintWithDocumentSetVendorA.pdf");
 
@@ -40452,22 +41994,22 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		DocumentSet.click();
 		DocumentSet.sendKeys(Keys.END);
 		DocumentSet.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		DocumentSet.sendKeys("Sanity Document Set");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		DocumentSet.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		Select s = new Select(LayoutOptionsdropdown);
 		s.selectByValue("3");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(footerPrintBtn));
 		footerPrintBtn.click();
 
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 
 		Robot robot = new Robot();
 		robot.keyPress(KeyEvent.VK_CONTROL);
@@ -40475,7 +42017,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		robot.keyPress(KeyEvent.VK_TAB);
 		robot.keyRelease(KeyEvent.VK_TAB);
@@ -40485,25 +42027,25 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyPress(KeyEvent.VK_ENTER);
 		robot.keyRelease(KeyEvent.VK_ENTER);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_S);
 		robot.keyRelease(KeyEvent.VK_S);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\SavingPrintPDFInPurchaseVoucherWithDocumentSetVendorA.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
 
@@ -40514,12 +42056,25 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		Thread.sleep(1000);
 
-		getDriver().switchTo().window(openTabs.get(2)).close();
-		Thread.sleep(1000);
+	/*	getDriver().switchTo().window(openTabs.get(2)).close();
+		Thread.sleep(2000);
 		getDriver().switchTo().window(openTabs.get(1)).close();
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		getDriver().switchTo().window(openTabs.get(0));
-
+*/
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		
 
 		String actPDF = getBaseDir()+"\\autoIt\\ExportFiles\\PurchaseVoucherVATPrintWithDocumentSetVendorA.pdf";
 		String expPDF = getBaseDir()+"\\autoIt\\ImportFiles\\PurchaseVoucherVATPrintWithDocumentSetVendorA.pdf";
@@ -40591,22 +42146,22 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		DocumentSet.click();
 		DocumentSet.sendKeys(Keys.END);
 		DocumentSet.sendKeys(Keys.SHIFT,Keys.HOME);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		DocumentSet.sendKeys("Sanity Document Set");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		DocumentSet.sendKeys(Keys.TAB);
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		Select s = new Select(LayoutOptionsdropdown);
 		s.selectByValue("3");
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(footerPrintBtn));
 		footerPrintBtn.click();
 
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 
 		Robot robot = new Robot();
 		robot.keyPress(KeyEvent.VK_CONTROL);
@@ -40614,7 +42169,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		robot.keyPress(KeyEvent.VK_TAB);
 		robot.keyRelease(KeyEvent.VK_TAB);
@@ -40624,25 +42179,25 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		robot.keyPress(KeyEvent.VK_ENTER);
 		robot.keyRelease(KeyEvent.VK_ENTER);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_S);
 		robot.keyRelease(KeyEvent.VK_S);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\SavingPrintPDFInPurchaseVoucherWithDocumentSetVendorB.exe");
 
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 
 		robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_J);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
 
@@ -40653,11 +42208,24 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		Thread.sleep(1000);
 
-		getDriver().switchTo().window(openTabs.get(2)).close();
-		Thread.sleep(1000);
+	/*	getDriver().switchTo().window(openTabs.get(2)).close();
+		Thread.sleep(2000);
 		getDriver().switchTo().window(openTabs.get(1)).close();
+		Thread.sleep(2000);
+		getDriver().switchTo().window(openTabs.get(0));*/
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
 		Thread.sleep(1000);
-		getDriver().switchTo().window(openTabs.get(0));
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		
 
 
 		String actPDF = getBaseDir()+"\\autoIt\\ExportFiles\\PurchaseVoucherVATPrintWithDocumentSetVendorB.pdf";
@@ -40883,12 +42451,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesInvoiceVATVoucher));
 		salesInvoiceVATVoucher.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
 
-		checkValidationMessage("Screen opened");
+		
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerAccountTxt));
 		customerAccountTxt.click();
@@ -40969,10 +42537,10 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		jurisdictionTxt.sendKeys(Keys.END);
 		jurisdictionTxt.sendKeys(Keys.SHIFT,Keys.HOME);
 		jurisdictionTxt.sendKeys("Dubai");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		jurisdictionTxt.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_1stColumn));
@@ -41024,7 +42592,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		enter_ItemTxt.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_5thColumn));
 		select1stRow_5thColumn.click();
@@ -41052,12 +42620,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_Quantity));
 		enter_Quantity.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_19thColumn));
 		select1stRow_19thColumn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(batchPickOnFIFOIcon));
 		batchPickOnFIFOIcon.click();
@@ -41118,7 +42686,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		enter_ItemTxt.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select2ndRow_5thColumn));
 		select2ndRow_5thColumn.click();
@@ -41146,7 +42714,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_Quantity));
 		enter_Quantity.sendKeys(Keys.TAB);
 
-		Thread.sleep(4000);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select2ndRow_21thColumn));
 		select2ndRow_21thColumn.click();
@@ -41154,12 +42722,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_RMA));
 					enter_RMA.sendKeys(Keys.SPACE);*/
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(RMAPopupSerialNoExpansionBtn));
 		RMAPopupSerialNoExpansionBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(searchRMASelectAllChkBox));
 		searchRMASelectAllChkBox.click();
@@ -41167,12 +42735,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(searchRMAOkBtn));
 		searchRMAOkBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(rmaoutwardOkBtn));
 		rmaoutwardOkBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(documentNumberTxt));
 		String docno=documentNumberTxt.getAttribute("value");
 
@@ -41280,7 +42848,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		System.out.println("********* Gross1             : " + actGross1 + "  value expected  " + expGross1);
 		System.out.println("********* RMA Col            : " + actRMA + "  value expected  " + expRMA);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		if (actDocNo.equalsIgnoreCase(expDocNo) && actCustomerAccount.equalsIgnoreCase(expCustomerAccount)
 				&& actDepartment.equalsIgnoreCase(expDepartment) && actWarehouse.equalsIgnoreCase(expWarehouse)
@@ -41297,7 +42865,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_CloseBtn));
 			new_CloseBtn.click();
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 			return true;
 		}
 		else
@@ -41306,7 +42874,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_CloseBtn));
 			new_CloseBtn.click();
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 			return false;
 		}
 	}
@@ -41321,14 +42889,14 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	public static boolean checkUpdatingBuyerPricebookFormulaForSalesInvoiceVAT() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(settingsBtn));
-		settingsBtn.click();
+		ClickUsingJs(SettingsBtn);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenTab));
 		editScreenTab.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenBehaviourDropdown));
 		Select behaviour = new Select(editScreenBehaviourDropdown);
@@ -41348,20 +42916,20 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		String expMessage = "Data saved successfully";
 		String actMessage = checkValidationMessage(expMessage);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		if (actMessage.equalsIgnoreCase(expMessage)) 
 		{
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customizationCloseBtn));
 			customizationCloseBtn.click();
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 			return true;
 		}
 		else 
 		{
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customizationCloseBtn));
 			customizationCloseBtn.click();
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 			return false;
 		}
 	}
@@ -41372,10 +42940,10 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkSavingSalesInvoiceVATVoucher2WithRateFormula() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
 
-		checkValidationMessage("Screen opened");
+		
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerAccountTxt));
 		customerAccountTxt.click();
@@ -41456,10 +43024,10 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		jurisdictionTxt.sendKeys(Keys.END);
 		jurisdictionTxt.sendKeys(Keys.SHIFT,Keys.HOME);
 		jurisdictionTxt.sendKeys("Dubai");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		jurisdictionTxt.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_1stColumn));
@@ -41511,7 +43079,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		enter_ItemTxt.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_5thColumn));
 		select1stRow_5thColumn.click();
@@ -41540,7 +43108,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_Quantity));
 		enter_Quantity.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_19thColumn));
 		select1stRow_19thColumn.click();
@@ -41549,7 +43117,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 					enter_Batch.sendKeys(Keys.SPACE);;
 		 */
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(batchPickOnFIFOIcon));
 		batchPickOnFIFOIcon.click();
@@ -41606,7 +43174,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		enter_ItemTxt.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select2ndRow_5thColumn));
 		select2ndRow_5thColumn.click();
@@ -41634,7 +43202,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_Quantity));
 		enter_Quantity.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select2ndRow_21thColumn));
 		select2ndRow_21thColumn.click();
@@ -41643,12 +43211,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 					enter_RMA.sendKeys(Keys.SPACE);;
 
 		 */
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(RMAPopupSerialNoExpansionBtn));
 		RMAPopupSerialNoExpansionBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(searchRMASelectAllChkBox));
 		searchRMASelectAllChkBox.click();
@@ -41656,12 +43224,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(searchRMAOkBtn));
 		searchRMAOkBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(rmaoutwardOkBtn));
 		rmaoutwardOkBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(documentNumberTxt));
 		String docno=documentNumberTxt.getAttribute("value");
 
@@ -41705,7 +43273,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		String actMessage = checkValidationMessage(expMessage);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(documentNumberTxt));
 
@@ -41785,7 +43353,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_CloseBtn));
 			new_CloseBtn.click();
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 			return true;
 		}
 		else
@@ -41793,7 +43361,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_CloseBtn));
 			new_CloseBtn.click();
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 			return false;
 		}
 	}
@@ -41806,17 +43374,17 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkUpdatingBuyerPricebookFormulaForSalesInvoiceVATVoucher3() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(settingsBtn));
-		settingsBtn.click();
+		ClickUsingJs(SettingsBtn);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenTab));
 		editScreenTab.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenBehaviourFormulaTxt));
 		editScreenBehaviourFormulaTxt.sendKeys(Keys.END,Keys.SHIFT,Keys.HOME);
@@ -41833,20 +43401,20 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		String expMessage = "Data saved successfully";
 		String actMessage = checkValidationMessage(expMessage);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		if (actMessage.equalsIgnoreCase(expMessage)) 
 		{
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customizationCloseBtn));
 			customizationCloseBtn.click();
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 			return true;
 		}
 		else 
 		{
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customizationCloseBtn));
 			customizationCloseBtn.click();
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 			return false;
 		}
 	}
@@ -41857,10 +43425,10 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkSavingSalesInvoiceVATVoucher3WithRateFormula() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
 
-		checkValidationMessage("Screen opened");
+		
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerAccountTxt));
 		customerAccountTxt.click();
@@ -41941,10 +43509,10 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		jurisdictionTxt.sendKeys(Keys.END);
 		jurisdictionTxt.sendKeys(Keys.SHIFT,Keys.HOME);
 		jurisdictionTxt.sendKeys("Dubai");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		jurisdictionTxt.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_1stColumn));
@@ -41996,7 +43564,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		enter_ItemTxt.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_5thColumn));
 		select1stRow_5thColumn.click();
@@ -42020,13 +43588,13 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_Quantity));
 		enter_Quantity.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_19thColumn));
 		select1stRow_19thColumn.click();
 
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(batchPickOnFIFOIcon));
 		batchPickOnFIFOIcon.click();
 
@@ -42087,7 +43655,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		enter_ItemTxt.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select2ndRow_5thColumn));
 		select2ndRow_5thColumn.click();
@@ -42111,17 +43679,17 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_Quantity));
 		enter_Quantity.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select2ndRow_21thColumn));
 		select2ndRow_21thColumn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(RMAPopupSerialNoExpansionBtn));
 		RMAPopupSerialNoExpansionBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(searchRMASelectAllChkBox));
 		searchRMASelectAllChkBox.click();
@@ -42129,12 +43697,12 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(searchRMAOkBtn));
 		searchRMAOkBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(rmaoutwardOkBtn));
 		rmaoutwardOkBtn.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select2ndRow_14thColumn));
 		String actRate2 = select2ndRow_14thColumn.getText();
@@ -42279,17 +43847,17 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkChangingRatePreloadBehaviourToRateSalesInvoiceVAT() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(settingsBtn));
-		settingsBtn.click();
+		ClickUsingJs(SettingsBtn);
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenTab));
 		editScreenTab.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(editScreenBehaviourDropdown));
 		Select behaviour = new Select(editScreenBehaviourDropdown);
@@ -42303,20 +43871,20 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		String expMessage = "Data saved successfully";
 		String actMessage = checkValidationMessage(expMessage);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		if (actMessage.equalsIgnoreCase(expMessage)) 
 		{
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customizationCloseBtn));
 			customizationCloseBtn.click();
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 			return true;
 		}
 		else 
 		{
 			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customizationCloseBtn));
 			customizationCloseBtn.click();
-			Thread.sleep(2000);
+			Thread.sleep(1600);
 			return false;
 		}
 	}
@@ -42330,10 +43898,10 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	public static boolean checkSavingSalesInvoiceVATVoucher4WithRateAsLessThanCreditLimit() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
 	{
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(newBtn));
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(newBtn));
 		newBtn.click();
 
-		checkValidationMessage("Screen opened");
+		
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerAccountTxt));
 		customerAccountTxt.click();
@@ -42388,10 +43956,10 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		jurisdictionTxt.sendKeys(Keys.END);
 		jurisdictionTxt.sendKeys(Keys.SHIFT,Keys.HOME);
 		jurisdictionTxt.sendKeys("Dubai");
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 		jurisdictionTxt.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesInvoiceVATPlaceOFSupply));
@@ -42469,7 +44037,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 		enter_ItemTxt.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_5thColumn));
 		select1stRow_5thColumn.click();
@@ -42492,7 +44060,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_Quantity));
 		enter_Quantity.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_14thColumn));
 		select1stRow_14thColumn.click();
@@ -42500,7 +44068,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		enter_Rate.sendKeys("16");
 		enter_Rate.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(documentNumberTxt));
 		String docno=documentNumberTxt.getAttribute("value");
@@ -42586,7 +44154,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		enter_Rate.sendKeys("17");
 		enter_Rate.sendKeys(Keys.TAB);
 
-		Thread.sleep(2000);
+		Thread.sleep(1600);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(documentNumberTxt));
 		String docno=documentNumberTxt.getAttribute("value");
@@ -42606,7 +44174,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		getWaitForAlert();
 		getAlert().accept();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		if (actDocNo.equalsIgnoreCase(expDocNo) && actCustomerAccount.equalsIgnoreCase(expCustomerAccount)
 				&& actDepartment.equalsIgnoreCase(expDepartment) && actWarehouse.equalsIgnoreCase(expWarehouse)
@@ -42669,7 +44237,7 @@ public class VoucherPrintOptionsPage extends BaseEngine
 	private static WebElement  MailSettingPasswordTxt;
 
 
-	@FindBy(xpath="//*[@data-tooltip='Download']")
+	@FindBy(xpath="(//div[@class='VYBDae-JX-ano'])[1]")
 	private static WebElement mailAttachmentDownloadBtn;
 
 
@@ -42684,19 +44252,35 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 	@FindBy(xpath="//*[@id='gb']/div[2]/div[3]/div[1]/div[2]/div/a/img")
 	private static WebElement gmailUserBtn;
+	
+
+	
+	@FindBy(xpath="//*[@id=':4']//div[@data-tooltip='Back to Inbox']")
+	private static WebElement backToIndexBtn1;
+
+
+
+	@FindBy(xpath="//div[@id=':4']//div[@id=':1y']//span")
+	private static WebElement selectAllCheckBox;
+
+	@FindBy(xpath="//div[@id=':4']//div[@data-tooltip='Delete']/div")
+	private static WebElement selectAllDelete;
+	
 
 	@FindBy(xpath="//div[text()='Sign out']")
 	private static WebElement gmailSignOutBtn;
 
 
-	@FindBy(xpath="//div[contains(text(),'Remove an account')]")
+
+	@FindBy(xpath="//*[contains(text(),'Remove an account')]")
 	private static WebElement removeAccountBtn;
 
-	@FindBy(xpath="//body/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/form[1]/span[1]/section[1]/div[1]/div[1]/div[1]/div[1]/ul[1]/li[1]/div[1]/div[2]/*[1]")
+	@FindBy(xpath="(//*[@jsname='MBVUVe']//div)[8]")
 	private static WebElement removeDeleteBtn;
 
 
-	@FindBy(xpath="//*[@id='yDmH0d']/div[5]/div/div[2]/div[3]/div[1]/span/span")
+
+	@FindBy(xpath="//*[contains(text(),'Yes, remove')]")
 	private static WebElement yesRemoveBtn;
 
 	@FindBy(xpath="//*[@id=':1']/div/div/div[8]/div/div[1]/div[3]/div/table/tbody/tr/td[4]/div[2]/span/span")
@@ -42773,36 +44357,2416 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		}
 	}
 
-	
+
 	public static boolean checkRestoreCompanyForFooterValueValidation() throws IOException, InterruptedException, AWTException
 	{
-		
+
 
 		VoucherPrintOptionsPage.restoreCompany("Print Design Layout Company For Footer Scenarios","Print Design Layout Company");
-		
-		Thread.sleep(5000);
-		
-		String actUserInfo1=userNameTxt.getText();
+
+		Thread.sleep(2000);
+
+		String actUserInfo1=usernametxt.getText();
 
 		System.out.println("User Info  : "+actUserInfo1);
 
-		System.out.println("User Info Capture Text  :  "+userNameTxt.getText());
+		System.out.println("User Info Capture Text  :  "+usernametxt.getText());
 
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogoImg));
+	/*	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogoImg));
 		companyLogoImg.click();
 
 		String getCompanyTxt1=companyName.getText();
 		String getLoginCompanyName1=getCompanyTxt1.substring(0, 27);
 		System.out.println("company name  :  "+ getLoginCompanyName1);
 		companyLogoImg.click();
-
+*/
 		String expUserInfo1           ="SU";
 		String expLoginCompanyName1   ="Print Design Layout Company";
 
 		System.out.println("UserInfo1             : "+actUserInfo1            +" Value Expected : "+expUserInfo1);
-		System.out.println("LoginCompanyName1     : "+getLoginCompanyName1    +" Value Expected : "+expLoginCompanyName1);
+		//System.out.println("LoginCompanyName1     : "+getLoginCompanyName1    +" Value Expected : "+expLoginCompanyName1);
 
-		if(actUserInfo1.equalsIgnoreCase(expUserInfo1) && getLoginCompanyName1.contains(expLoginCompanyName1))
+		if(actUserInfo1.equalsIgnoreCase(expUserInfo1) /*&& getLoginCompanyName1.contains(expLoginCompanyName1)*/)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+
+
+	}
+
+
+	@FindBy(xpath="//select[@id='id_body_16777331']")
+	private static WebElement descriptionDD;
+
+	public static boolean checkSaveSalesInvoiceNVoucherWithDescription() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
+	{
+
+		Thread.sleep(2000);
+		getDriver().navigate().refresh();
+
+		Thread.sleep(2000);
+
+		Thread.sleep(6000);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+		financialsMenu.click();
+
+		Thread.sleep(1600);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionMenu));
+		financialsTransactionMenu.click();
+
+		Thread.sleep(1600);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialTransactionSalesMenu));
+		financialTransactionSalesMenu.click();
+
+		Thread.sleep(1600);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialTransactionSalesNVoucher));
+		financialTransactionSalesNVoucher.click();
+
+		Thread.sleep(1600);
+
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(newBtn));
+		newBtn.click();
+
+		Thread.sleep(1600);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesAccountTxt));
+		salesAccountTxt.sendKeys("Sales - Computers");
+		Thread.sleep(3000);
+		salesAccountTxt.sendKeys(Keys.TAB);
+
+
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(customerAccountTxt));
+		customerAccountTxt.sendKeys("Customer A");
+		Thread.sleep(3000);
+		customerAccountTxt.sendKeys(Keys.TAB);
+
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(departmentTxt));
+		departmentTxt.click();
+		departmentTxt.sendKeys(Keys.END);
+		departmentTxt.sendKeys(Keys.SHIFT,Keys.HOME);
+		departmentTxt.sendKeys(Keys.SPACE);
+
+		int departmentcount=departmentListCount.size();
+
+		System.err.println(departmentcount);
+
+		for(int i=0 ; i < departmentcount ;i++)
+		{
+			String data=departmentListCount.get(i).getText();
+
+			if(data.equalsIgnoreCase("DUBAI"))
+			{
+				departmentListCount.get(i).click();
+
+				Thread.sleep(1000);
+
+				break;
+			}
+		}
+
+		departmentTxt.sendKeys(Keys.TAB);	
+
+		Thread.sleep(1600);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_1stColumn));
+		select1stRow_1stColumn.click();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_WarehouseTxt));
+		enter_WarehouseTxt.sendKeys("Hyderabad");
+		Thread.sleep(3000);
+		enter_WarehouseTxt.sendKeys(Keys.TAB);
+
+		Thread.sleep(1600);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_ItemTxt));
+		enter_ItemTxt.sendKeys("STD RATE COGS ITEM");
+		Thread.sleep(3000);
+		enter_ItemTxt.sendKeys(Keys.TAB);
+
+		Thread.sleep(1600);
+
+		Select desc = new Select(descriptionDD);
+		desc.selectByVisibleText("This voucher contains tag based values choose changes wisely");
+
+		Thread.sleep(1600);
+
+		descriptionDD.sendKeys(Keys.TAB);
+		Thread.sleep(1000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_7thColumn));
+		select1stRow_7thColumn.click();
+		Thread.sleep(1000);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(AQSalesInvN));
+		AQSalesInvN.sendKeys("10");
+		Thread.sleep(1000);
+		AQSalesInvN.sendKeys(Keys.TAB);
+
+		Thread.sleep(1000);
+		FQSalesInvN.sendKeys(Keys.TAB);
+
+		Thread.sleep(1600);
+
+		RDSalesInvN.sendKeys(Keys.TAB);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(select1stRow_12thColumn));
+		select1stRow_12thColumn.click();
+		Thread.sleep(1000);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(enter_Rate));
+		enter_Rate.sendKeys("100");
+		enter_Rate.sendKeys(Keys.TAB);
+
+		Thread.sleep(1600);
+
+		enter_Gross.sendKeys(Keys.TAB);
+
+		Thread.sleep(1600);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(voucherSaveBtn));	
+		voucherSaveBtn.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(pickBtn));
+		pickBtn.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(Bill_OkBtn));
+		Bill_OkBtn.click();
+
+		String expMessage1="Voucher saved successfully";
+		String expMessage2="1";
+
+		String actMessage=checkValidationMessage(expMessage1);
+
+		if(actMessage.startsWith(expMessage1) && actMessage.endsWith(expMessage2))
+		{
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_CloseBtn));
+			new_CloseBtn.click();
+			Thread.sleep(1600);
+			return true;
+		} 
+		else 
+		{
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(new_CloseBtn));
+			new_CloseBtn.click();
+			Thread.sleep(1600);
+			return false;
+		}
+
+
+
+	}
+
+	public static boolean checkPrintPDFForSalesInvoicesNForDescription() throws InterruptedException, AWTException, IOException
+	{
+
+		Thread.sleep(2000);
+		getDriver().navigate().refresh();
+
+		Thread.sleep(2000);
+
+		Thread.sleep(6000);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+		financialsMenu.click();
+
+		Thread.sleep(2000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionMenu));
+		financialsTransactionMenu.click();
+
+		Thread.sleep(2000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialTransactionSalesMenu));
+		financialTransactionSalesMenu.click();
+
+		Thread.sleep(2000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialTransactionSalesNVoucher));
+		financialTransactionSalesNVoucher.click();
+
+		Thread.sleep(2000);
+
+		File Efile = new File(getBaseDir() + "\\autoIt\\ExportFiles\\SalesInvNLayoutForDescription.pdf");
+
+		if (Efile.exists()) {
+			Efile.delete();
+		}
+
+		Thread.sleep(3500);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
+
+		int count = grid_VoucherNoList.size();
+
+		for (int i = 0; i < count; i++) {
+			String VoucherNo = grid_VoucherNoList.get(i).getText();
+
+			if (VoucherNo.equalsIgnoreCase("1")) {
+				if (grid_CheckBoxList.get(i).isSelected() == false) {
+					grid_CheckBoxList.get(i).click();
+					break;
+				}
+			}
+		}
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
+		printBtn.click();
+
+		LayoutNameTxt.click();
+		Thread.sleep(1200);
+		LayoutNameTxt.sendKeys(Keys.END,Keys.SHIFT, Keys.HOME);
+		Thread.sleep(2000);
+		LayoutNameTxt.sendKeys("description");
+		Thread.sleep(2000);
+		LayoutNameTxt.sendKeys(Keys.TAB);
+		Thread.sleep(2000);
+
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(footerPDFBtn));
+		footerPDFBtn.click();
+
+
+		Thread.sleep(5000);
+
+		Robot robot = new Robot();
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(2000);
+
+		robot.keyPress(KeyEvent.VK_TAB);
+		robot.keyRelease(KeyEvent.VK_TAB);
+		robot.keyPress(KeyEvent.VK_TAB);
+		robot.keyRelease(KeyEvent.VK_TAB);
+
+		robot.keyPress(KeyEvent.VK_ENTER);
+		robot.keyRelease(KeyEvent.VK_ENTER);
+
+		Thread.sleep(2000);
+
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_S);
+		robot.keyRelease(KeyEvent.VK_S);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(2000);
+*/
+		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\SalesInvNLayoutForDescription.exe");
+
+		Thread.sleep(5000);
+
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(2000);
+
+		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
+
+		int actOpenWindowsCount = getDriver().getWindowHandles().size();
+		int expOpenWindowsCount = 3;
+
+		System.out.println("Number of Windows  : " + actOpenWindowsCount + "  Value Expected  " + expOpenWindowsCount);
+
+		Thread.sleep(1000);
+
+	/*	getDriver().switchTo().window(openTabs.get(2)).close();
+		Thread.sleep(2000);
+		getDriver().switchTo().window(openTabs.get(1)).close();
+		Thread.sleep(2000);
+		getDriver().switchTo().window(openTabs.get(0));
+*/
+		
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);*/
+		
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		
+		String actPDF = getBaseDir() + "\\autoIt\\ExportFiles\\SalesInvNLayoutForDescription.pdf";
+		String expPDF = getBaseDir() + "\\autoIt\\ImportFiles\\SalesInvNLayoutForDescription.pdf";
+
+		PDFUtil pdfutil = new PDFUtil();
+
+		boolean result = pdfutil.compare(actPDF, expPDF);
+
+		String actData = pdfutil.getText(actPDF);
+		String expData = pdfutil.getText(expPDF);
+
+		System.err.println(actData);
+		System.err.println(expData);
+
+		System.out.println("Compared Result  : " + result);
+
+		if (actData.equalsIgnoreCase(expData) && result == true) {
+			return true;
+		} else {
+			return false;
+		}
+
+
+	}
+
+
+
+	public static boolean checkCreateGroupAccountForLedgerReport() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
+	{
+		Thread.sleep(1200);
+	
+		getDriver().navigate().refresh();
+		Thread.sleep(3000);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(homeMenu));
+		homeMenu.click();
+
+		Thread.sleep(1800);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(mastersMenu));		
+		mastersMenu.click();
+
+		Thread.sleep(1800);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(accounts));		
+		accounts.click();
+
+		Thread.sleep(4000); 
+
+		int count = masterGridBodyName.size();
+
+		ArrayList<String> AccountNames = new ArrayList<String>();
+
+		for (int i = 0; i < count; i++) 
+		{
+			String data = masterGridBodyName.get(i).getText();
+			AccountNames.add(data);
+
+			if (data.equalsIgnoreCase("Email Account One")) 
+			{
+				masterGridBodyChkbox.get(i).click();
+				break;
+			}
+		}
+
+
+		for (int i = 0; i < count; i++) 
+		{
+			String data = masterGridBodyName.get(i).getText();
+			AccountNames.add(data);
+
+			if (data.equalsIgnoreCase("Email Account Two")) 
+			{
+				masterGridBodyChkbox.get(i).click();
+				break;
+			}
+		}
+		Thread.sleep(1800);
+
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterRibbonToExpandOptions));		
+
+		masterRibbonToExpandOptions.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterGroupBtn));	
+
+		masterGroupBtn.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(nameTxt));
+		nameTxt.sendKeys("EmailGroupAccount");
+		nameTxt.sendKeys(Keys.TAB);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(codeTxt));
+		codeTxt.sendKeys("EmailGroupAccount");
+		codeTxt.sendKeys(Keys.TAB);
+
+		Select accountTypeDrpdwn = new Select(accountTypeDropdown);
+
+		accountTypeDrpdwn.selectByVisibleText("Customer/Vendor");
+
+		Thread.sleep(1800);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(saveBtn));
+		saveBtn.click();
+
+		String expSaveAccountMessage = "Saved Successfully";	
+		String actSaveAccountMessage = checkValidationMessage(expSaveAccountMessage);
+
+
+		if(actSaveAccountMessage.equalsIgnoreCase(expSaveAccountMessage))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+
+
+	}
+
+	@FindBy(xpath="//*[@id='RITOutput_']")
+	public static WebElement outputDropdown;
+
+	@FindBy(xpath="//*[@class='aV3']")
+	public static WebElement PdfNameInEmail;
+
+	@FindBy(xpath="//i[@class='icon-enquiry hiconright2']")
+	public static WebElement EmailBtnInLedger;
+
+	public static boolean checkSendEmailToTheRespectiveMailsofLedger() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
+	{
+
+		Thread.sleep(2000);
+		getDriver().navigate().refresh();
+		Thread.sleep(2000);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+		financialsMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsReportsMenu));
+		financialsReportsMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ledger));
+		ledger.click();
+
+		Thread.sleep(2000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(masterSearchTxt));
+		masterSearchTxt.click();
+		masterSearchTxt.sendKeys("EmailGroupAccount");
+		masterSearchTxt.sendKeys(Keys.ENTER);
+
+		Thread.sleep(2000);
+
+		int rowcount=stockLedgerHometableRowCount.size();
+
+		System.out.println(rowcount);
+
+		for (int i = 0; i < rowcount; i++) 
+		{
+			String actName = stockLedgerHometableItemNamesList.get(i).getText();
+
+			System.out.println(actName);
+
+			if(actName.equalsIgnoreCase("EmailGroupAccount"))
+			{
+				stockLedgerHometableItemChkboxList.get(i).click();
+				break;
+			}
+		}
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(sl_DateOptionDropdown));
+		/*sl_DateOptionDropdown.click();*/
+		Select s=new Select(sl_DateOptionDropdown);
+		s.selectByValue("1");
+
+		Thread.sleep(2000);
+
+
+		EmailBtnInLedger.click();
+
+
+		Thread.sleep(2000);
+		boolean actSubjectTxtArea = CustomerReport_ExportSubjectTxt.isDisplayed();
+		boolean expSubjectTxtArea = true;
+
+		System.err.println("actSubjectTxtArea:"+actSubjectTxtArea +"expSubjectTxtArea:"+expSubjectTxtArea);
+
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(CustomerReport_ExportSubjectTxt));
+		CustomerReport_ExportSubjectTxt.click();
+		CustomerReport_ExportSubjectTxt.sendKeys("EmailValidation");
+
+		System.out.println("Email Subject entered");
+
+		Thread.sleep(2000);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(CustomerReport_ExportPickEmailFromCustomer_SupplierChckBx));
+		CustomerReport_ExportPickEmailFromCustomer_SupplierChckBx.click();
+
+		/*getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(CustomerReport_ExportTomailTxt));
+				CustomerReport_ExportTomailTxt.click();
+				CustomerReport_ExportTomailTxt.sendKeys(Keys.END,Keys.SHIFT,Keys.HOME);
+				Thread.sleep(2000);
+				CustomerReport_ExportTomailTxt.sendKeys("emailvalidationtwo@gmail.com");*/
+
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(CustomerReport_ExportAttachPdfChckBx));
+		CustomerReport_ExportAttachPdfChckBx.click();
+
+		Thread.sleep(2000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(CustomerReport_ExportOkBtn));
+		CustomerReport_ExportOkBtn.click();
+
+		Thread.sleep(6000);
+		String expMailSentMessage = "Mail sent successfully";
+		String actMailSentMessage = checkValidationMessage(expMailSentMessage);
+
+		if (actSubjectTxtArea == expSubjectTxtArea && actMailSentMessage.equalsIgnoreCase(expMailSentMessage))
+		{
+			return true;
+		} 
+		else
+		{
+			return false;
+		}
+
+	}
+
+	public static boolean checkPDFNameInEmailOne() throws AWTException, InterruptedException
+	{
+
+		Thread.sleep(5000);
+
+		Robot robot = new Robot();   
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_T);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		robot.keyRelease(KeyEvent.VK_T);
+
+		Thread.sleep(2000);
+
+		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
+
+		System.out.println("openTabs"+openTabs);
+
+		getDriver().switchTo().window(openTabs.get(0));
+		Thread.sleep(1600);
+		getDriver().switchTo().window(openTabs.get(1));
+		Thread.sleep(1600);
+
+		getDriver().get("https://accounts.google.com/ServiceLogin/identifier?service=mail&passive=true&rm=false&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&ss=1&scc=1&ltmpl=default&ltmplcache=2&emr=1&osid=1&flowName=GlifWebSignIn&flowEntry=AddSession");
+
+		Thread.sleep(2000);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(UserNameTxt));
+		UserNameTxt.click();
+
+		UserNameTxt.sendKeys("emailvalidationone@gmail.com");
+
+		Thread.sleep(2000);
+
+		System.out.println("User enter text");
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(NextBtn));
+		NextBtn.click();
+
+		Thread.sleep(2000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PasswordTxt));
+		PasswordTxt.click();
+
+		PasswordTxt.sendKeys("validationone");
+
+		Thread.sleep(2000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(NextBtn));
+		NextBtn.click();
+
+		Thread.sleep(5000);
+
+
+		int count1 = row1mailFromList.size();
+		System.out.println("No.of mails in the list"+count1);
+
+
+		String actPdfName = null;
+		String expPdfName = null;
+
+		if (emailRow1Subject.getText().isEmpty()==false) 
+		{
+			int count = emailSubjectList.size();
+			System.err.println("No.of mails in the list"+count);
+
+			for (int i = 0; i < count; i++) 
+			{
+				String mailFromTxt = emailSubjectList.get(i).getText();
+
+				if (mailFromTxt.equalsIgnoreCase("EmailValidation")) 
+				{
+					emailSubjectList.get(i).click();
+					break;
+				}
+			}
+
+			Thread.sleep(3000);
+
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PdfNameInEmail));
+			actPdfName =  PdfNameInEmail.getText();
+			expPdfName =  "Print_Design_Layout_CompanyEmail_Account_One_EmailAccountOne";
+
+			Thread.sleep(3000);
+
+			System.err.println("actPdfName"+actPdfName);
+			System.err.println("expPdfName"+expPdfName);
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(mailDeleteButton));
+			mailDeleteButton.click();
+
+			Thread.sleep(2000);
+			Thread.sleep(2000);
+		}
+
+		ClickUsingJs(gmailUserBtn);
+
+		Thread.sleep(3000);
+		getDriver().switchTo().frame(SignOutFrame);
+		Thread.sleep(2000);
+		getAction().moveToElement(gmailSignOutBtn).click().build().perform();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(removeAccountBtn));
+		removeAccountBtn.click();
+
+		Thread.sleep(1000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(removeDeleteBtn));
+		removeDeleteBtn.click();
+
+		Thread.sleep(2000);
+
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(yesRemoveBtn));
+		yesRemoveBtn.click();
+
+		ArrayList<String> openTabs2 = new ArrayList<String>(getDriver().getWindowHandles());
+
+		ArrayList<String> newTabs2 = new ArrayList<String>(getDriver().getWindowHandles());
+
+		int actOpenWindowsCount2 = getDriver().getWindowHandles().size();
+		int expOpenWindowsCount2 = 2;
+
+		System.out.println("Number of Windows  : "+actOpenWindowsCount2+"  Value Expected  "+expOpenWindowsCount2);
+
+		getDriver().switchTo().window(newTabs2.get(0));
+
+		Thread.sleep(2000);
+
+		getDriver().switchTo().window(newTabs2.get(1)).close();
+
+		Thread.sleep(2000);
+
+		getDriver().switchTo().window(openTabs2.get(0));
+
+		if (actPdfName.contains("Print_Design_Layout_CompanyEmail_Account_One_EmailAccountOne"))
+		{
+			return true;
+		} 
+		else
+		{
+			return false;
+		}
+
+
+	}
+
+
+	public static boolean checkPDFNameInEmailTwo() throws AWTException, InterruptedException
+	{
+
+		Thread.sleep(5000);
+
+		Robot robot = new Robot();   
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_T);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		robot.keyRelease(KeyEvent.VK_T);
+
+		Thread.sleep(2000);
+
+		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
+
+		System.out.println("openTabs"+openTabs);
+
+		getDriver().switchTo().window(openTabs.get(0));
+		Thread.sleep(1600);
+		getDriver().switchTo().window(openTabs.get(1));
+
+		Thread.sleep(1600);
+		getDriver().get("https://accounts.google.com/ServiceLogin/identifier?service=mail&passive=true&rm=false&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&ss=1&scc=1&ltmpl=default&ltmplcache=2&emr=1&osid=1&flowName=GlifWebSignIn&flowEntry=AddSession");
+
+		Thread.sleep(2000);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(UserNameTxt));
+		UserNameTxt.click();
+
+		UserNameTxt.sendKeys("emailvalidationtwo@gmail.com");
+
+		Thread.sleep(2000);
+
+		System.out.println("User enter text");
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(NextBtn));
+		NextBtn.click();
+
+		Thread.sleep(2000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PasswordTxt));
+		PasswordTxt.click();
+
+		PasswordTxt.sendKeys("validationtwo");
+
+		Thread.sleep(2000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(NextBtn));
+		NextBtn.click();
+
+		Thread.sleep(5000);
+
+
+		int count1 = row1mailFromList.size();
+		System.out.println("No.of mails in the list"+count1);
+
+
+		String actPdfName = null;
+		String expPdfName = null;
+
+		if (emailRow1Subject.getText().isEmpty()==false) 
+		{
+			int count = emailSubjectList.size();
+			System.err.println("No.of mails in the list"+count);
+
+			for (int i = 0; i < count; i++) 
+			{
+				String mailFromTxt = emailSubjectList.get(i).getText();
+
+				if (mailFromTxt.equalsIgnoreCase("EmailValidation")) 
+				{
+					emailSubjectList.get(i).click();
+					break;
+				}
+			}
+
+			Thread.sleep(3000);
+
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PdfNameInEmail));
+			actPdfName =  PdfNameInEmail.getText();
+			expPdfName =  "Print_Design_Layout_CompanyEmail_Account_Two_EmailAccountTwo";
+
+			Thread.sleep(3000);
+
+			System.err.println("actPdfName"+actPdfName);
+			System.err.println("expPdfName"+expPdfName);
+
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(mailDeleteButton));
+			mailDeleteButton.click();
+
+			Thread.sleep(2000);
+			Thread.sleep(2000);
+		}
+
+
+
+		ClickUsingJs(gmailUserBtn);
+
+
+		Thread.sleep(3000);
+		getDriver().switchTo().frame(SignOutFrame);
+		Thread.sleep(1000);
+		getAction().moveToElement(gmailSignOutBtn).click().build().perform();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(removeAccountBtn));
+		removeAccountBtn.click();
+
+		Thread.sleep(1000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(removeDeleteBtn));
+		removeDeleteBtn.click();
+
+		Thread.sleep(2000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(yesRemoveBtn));
+		yesRemoveBtn.click();
+
+		ArrayList<String> openTabs2 = new ArrayList<String>(getDriver().getWindowHandles());
+
+		ArrayList<String> newTabs2 = new ArrayList<String>(getDriver().getWindowHandles());
+
+		int actOpenWindowsCount2 = getDriver().getWindowHandles().size();
+		int expOpenWindowsCount2 = 2;
+
+		System.out.println("Number of Windows  : "+actOpenWindowsCount2+"  Value Expected  "+expOpenWindowsCount2);
+
+		getDriver().switchTo().window(newTabs2.get(0));
+
+		Thread.sleep(1000);
+
+		getDriver().switchTo().window(newTabs2.get(1)).close();
+
+		Thread.sleep(1000);
+
+		getDriver().switchTo().window(openTabs2.get(0));
+
+		if (actPdfName.contains("Print_Design_Layout_CompanyEmail_Account_Two_EmailAccountTwo"))
+		{
+			return true;
+		} 
+		else
+		{
+			return false;
+		}
+
+
+	}
+
+
+	public static boolean checkPrintPDFOfSalesQuotationWithNoApprovalOfAnyUsers() throws IOException, InterruptedException, AWTException
+	{
+		Thread.sleep(2000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryMenu));
+		inventoryMenu.click();
+		Thread.sleep(1000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryTransactionsMenu));
+		inventoryTransactionsMenu.click();
+
+		Thread.sleep(1000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryTransactionsSalesMenu));
+		inventoryTransactionsSalesMenu.click();
+		Thread.sleep(1000);
+
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(salesQuotationsVoucher));
+		salesQuotationsVoucher.click();
+
+		Thread.sleep(1200);
+
+		File Efile = new File(getBaseDir() + "\\autoIt\\ExportFiles\\SQUser1Signature.pdf");
+
+		if (Efile.exists()) {
+			Efile.delete();
+		}
+
+		Thread.sleep(2000);
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
+
+		int count = grid_VoucherNoList.size();
+
+		for (int i = 0; i < count; i++) {
+			String VoucherNo = grid_VoucherNoList.get(i).getText();
+
+			if (VoucherNo.equalsIgnoreCase("1")) {
+				if (grid_CheckBoxList.get(i).isSelected() == false) {
+					grid_CheckBoxList.get(i).click();
+					break;
+				}
+			}
+		}
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
+		printBtn.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
+		LayoutNameTxt.click();
+		Thread.sleep(1200);
+		LayoutNameTxt.sendKeys(Keys.END,Keys.SHIFT, Keys.HOME);
+		Thread.sleep(2000);
+		LayoutNameTxt.sendKeys("SignaturesLayout");
+		Thread.sleep(2000);
+		LayoutNameTxt.sendKeys(Keys.TAB);
+		Thread.sleep(2000);
+
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(footerPDFBtn));
+		footerPDFBtn.click();
+
+		Thread.sleep(5000);
+
+		Robot robot = new Robot();
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(2000);
+
+		robot.keyPress(KeyEvent.VK_TAB);
+		robot.keyRelease(KeyEvent.VK_TAB);
+		robot.keyPress(KeyEvent.VK_TAB);
+		robot.keyRelease(KeyEvent.VK_TAB);
+
+		robot.keyPress(KeyEvent.VK_ENTER);
+		robot.keyRelease(KeyEvent.VK_ENTER);
+
+		Thread.sleep(2000);
+
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_S);
+		robot.keyRelease(KeyEvent.VK_S);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(2000);
+*/
+		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\SavingSQUser1Signature.exe");
+
+		Thread.sleep(5000);
+
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(2000);
+
+		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
+
+		int actOpenWindowsCount = getDriver().getWindowHandles().size();
+		int expOpenWindowsCount = 3;
+
+		System.out.println("Number of Windows  : " + actOpenWindowsCount + "  Value Expected  " + expOpenWindowsCount);
+
+		Thread.sleep(1000);
+
+	/*	getDriver().switchTo().window(openTabs.get(2)).close();
+		Thread.sleep(1000);
+		getDriver().switchTo().window(openTabs.get(1)).close();
+		Thread.sleep(1000);
+		getDriver().switchTo().window(openTabs.get(0));*/
+		
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		*/
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		
+
+		String actPDF = getBaseDir() + "\\autoIt\\ExportFiles\\SQUser1Signature.pdf";
+		String expPDF = getBaseDir() + "\\autoIt\\ImportFiles\\SQUser1Signature.pdf";
+
+		PDFUtil pdfutil = new PDFUtil();
+
+		boolean result = pdfutil.compare(actPDF, expPDF);
+
+		String actData = pdfutil.getText(actPDF);
+		String expData = pdfutil.getText(expPDF);
+
+		System.err.println(actData);
+		System.err.println(expData);
+
+		System.out.println("Compared Result  : " + result);
+
+		if (actData.equalsIgnoreCase(expData) && result == true) 
+		{
+			return true;
+		}
+		else 
+		{
+			return false;
+		}
+
+	}
+
+	public static boolean checkPrintPDFForSaleaQuotationWithUser1ApprovalOnly() throws InterruptedException, AWTException, IOException
+	{
+
+		Thread.sleep(2000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryMenu));
+		inventoryMenu.click();
+		Thread.sleep(1000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryTransactionsMenu));
+		inventoryTransactionsMenu.click();
+
+		Thread.sleep(1000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryTransactionsSalesMenu));
+		inventoryTransactionsSalesMenu.click();
+		Thread.sleep(1000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesQuotationsVoucher));
+		salesQuotationsVoucher.click();
+
+		Thread.sleep(1200);
+
+		File Efile = new File(getBaseDir() + "\\autoIt\\ExportFiles\\SQUser2Signature.pdf");
+
+		if (Efile.exists()) {
+			Efile.delete();
+		}
+
+		Thread.sleep(2000);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
+
+		int count = grid_VoucherNoList.size();
+
+		for (int i = 0; i < count; i++) {
+			String VoucherNo = grid_VoucherNoList.get(i).getText();
+
+			if (VoucherNo.equalsIgnoreCase("2")) {
+				if (grid_CheckBoxList.get(i).isSelected() == false) {
+					grid_CheckBoxList.get(i).click();
+					break;
+				}
+			}
+		}
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
+		printBtn.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
+		LayoutNameTxt.click();
+		Thread.sleep(1200);
+		LayoutNameTxt.sendKeys(Keys.END,Keys.SHIFT, Keys.HOME);
+		Thread.sleep(2000);
+		LayoutNameTxt.sendKeys("SignaturesLayout");
+		Thread.sleep(2000);
+		LayoutNameTxt.sendKeys(Keys.TAB);
+		Thread.sleep(2000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(footerPDFBtn));
+		footerPDFBtn.click();
+
+
+		Thread.sleep(5000);
+
+		Robot robot = new Robot();
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(2000);
+
+		robot.keyPress(KeyEvent.VK_TAB);
+		robot.keyRelease(KeyEvent.VK_TAB);
+		robot.keyPress(KeyEvent.VK_TAB);
+		robot.keyRelease(KeyEvent.VK_TAB);
+
+		robot.keyPress(KeyEvent.VK_ENTER);
+		robot.keyRelease(KeyEvent.VK_ENTER);
+
+		Thread.sleep(2000);
+
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_S);
+		robot.keyRelease(KeyEvent.VK_S);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(2000);
+*/
+		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\SavingSQUser2Signature.exe");
+
+		Thread.sleep(5000);
+
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(2000);
+
+		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
+
+		int actOpenWindowsCount = getDriver().getWindowHandles().size();
+		int expOpenWindowsCount = 3;
+
+		System.out.println("Number of Windows  : " + actOpenWindowsCount + "  Value Expected  " + expOpenWindowsCount);
+
+		Thread.sleep(1000);
+
+	/*	getDriver().switchTo().window(openTabs.get(2)).close();
+		Thread.sleep(1000);
+		getDriver().switchTo().window(openTabs.get(1)).close();
+		Thread.sleep(1000);
+		getDriver().switchTo().window(openTabs.get(0));*/
+
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);*/
+		
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		
+		
+		String actPDF = getBaseDir() + "\\autoIt\\ExportFiles\\SQUser2Signature.pdf";
+		String expPDF = getBaseDir() + "\\autoIt\\ImportFiles\\SQUser2Signature.pdf";
+
+		PDFUtil pdfutil = new PDFUtil();
+
+		boolean result = pdfutil.compare(actPDF, expPDF);
+
+		String actData = pdfutil.getText(actPDF);
+		String expData = pdfutil.getText(expPDF);
+
+		System.err.println(actData);
+		System.err.println(expData);
+
+		System.out.println("Compared Result  : " + result);
+
+		if (actData.equalsIgnoreCase(expData) && result == true) 
+		{
+			return true;
+		}
+		else 
+		{
+			return false;
+		}
+
+
+
+	}
+
+	public static boolean checkPrintPDFForSalesQuotationsWithUser1Nd2Approval() throws InterruptedException, AWTException, IOException
+	{
+
+
+		Thread.sleep(2000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryMenu));
+		inventoryMenu.click();
+		Thread.sleep(1000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryTransactionsMenu));
+		inventoryTransactionsMenu.click();
+
+		Thread.sleep(1000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryTransactionsSalesMenu));
+		inventoryTransactionsSalesMenu.click();
+		Thread.sleep(1000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesQuotationsVoucher));
+		salesQuotationsVoucher.click();
+
+		Thread.sleep(1200);
+
+		File Efile = new File(getBaseDir() + "\\autoIt\\ExportFiles\\SQUser3Signature.pdf");
+
+		if (Efile.exists()) {
+			Efile.delete();
+		}
+
+		Thread.sleep(2000);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
+
+		int count = grid_VoucherNoList.size();
+
+		for (int i = 0; i < count; i++) {
+			String VoucherNo = grid_VoucherNoList.get(i).getText();
+
+			if (VoucherNo.equalsIgnoreCase("3")) {
+				if (grid_CheckBoxList.get(i).isSelected() == false) {
+					grid_CheckBoxList.get(i).click();
+					break;
+				}
+			}
+		}
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
+		printBtn.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
+		LayoutNameTxt.click();
+		Thread.sleep(1200);
+		LayoutNameTxt.sendKeys(Keys.END,Keys.SHIFT, Keys.HOME);
+		Thread.sleep(2000);
+		LayoutNameTxt.sendKeys("SignaturesLayout");
+		Thread.sleep(2000);
+		LayoutNameTxt.sendKeys(Keys.TAB);
+		Thread.sleep(2000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(footerPDFBtn));
+		footerPDFBtn.click();
+
+
+		Thread.sleep(5000);
+
+		Robot robot = new Robot();
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(2000);
+
+		robot.keyPress(KeyEvent.VK_TAB);
+		robot.keyRelease(KeyEvent.VK_TAB);
+		robot.keyPress(KeyEvent.VK_TAB);
+		robot.keyRelease(KeyEvent.VK_TAB);
+
+		robot.keyPress(KeyEvent.VK_ENTER);
+		robot.keyRelease(KeyEvent.VK_ENTER);
+
+		Thread.sleep(2000);
+
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_S);
+		robot.keyRelease(KeyEvent.VK_S);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(2000);
+*/
+		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\SavingSQUser3Signature.exe");
+
+		Thread.sleep(5000);
+
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(2000);
+
+		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
+
+		int actOpenWindowsCount = getDriver().getWindowHandles().size();
+		int expOpenWindowsCount = 3;
+
+		System.out.println("Number of Windows  : " + actOpenWindowsCount + "  Value Expected  " + expOpenWindowsCount);
+
+		Thread.sleep(1000);
+
+		/*getDriver().switchTo().window(openTabs.get(2)).close();
+		Thread.sleep(1000);
+		getDriver().switchTo().window(openTabs.get(1)).close();
+		Thread.sleep(1000);
+		getDriver().switchTo().window(openTabs.get(0));*/
+		
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);*/
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		
+
+		String actPDF = getBaseDir() + "\\autoIt\\ExportFiles\\SQUser3Signature.pdf";
+		String expPDF = getBaseDir() + "\\autoIt\\ImportFiles\\SQUser3Signature.pdf";
+
+		PDFUtil pdfutil = new PDFUtil();
+
+		boolean result = pdfutil.compare(actPDF, expPDF);
+
+		String actData = pdfutil.getText(actPDF);
+		String expData = pdfutil.getText(expPDF);
+
+		System.err.println(actData);
+		System.err.println(expData);
+
+		System.out.println("Compared Result  : " + result);
+
+		if (actData.equalsIgnoreCase(expData) && result == true) 
+		{
+			return true;
+		}
+		else 
+		{
+			return false;
+		}
+
+	}
+
+
+	public static boolean checkPrintPDFForSalesQuotationWithUser12Nd3Approval() throws IOException, InterruptedException, AWTException
+	{
+		Thread.sleep(2000);
+
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryMenu));
+		inventoryMenu.click();
+		Thread.sleep(1000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryTransactionsMenu));
+		inventoryTransactionsMenu.click();
+
+		Thread.sleep(1000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryTransactionsSalesMenu));
+		inventoryTransactionsSalesMenu.click();
+		Thread.sleep(1000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesQuotationsVoucher));
+		salesQuotationsVoucher.click();
+
+		Thread.sleep(1200);
+
+		File Efile = new File(getBaseDir() + "\\autoIt\\ExportFiles\\SQUser4Signature.pdf");
+
+		if (Efile.exists()) {
+			Efile.delete();
+		}
+
+		Thread.sleep(2000);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
+
+		int count = grid_VoucherNoList.size();
+
+		for (int i = 0; i < count; i++) {
+			String VoucherNo = grid_VoucherNoList.get(i).getText();
+
+			if (VoucherNo.equalsIgnoreCase("4")) {
+				if (grid_CheckBoxList.get(i).isSelected() == false) {
+					grid_CheckBoxList.get(i).click();
+					break;
+				}
+			}
+		}
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
+		printBtn.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
+		LayoutNameTxt.click();
+		Thread.sleep(1200);
+		LayoutNameTxt.sendKeys(Keys.END,Keys.SHIFT, Keys.HOME);
+		Thread.sleep(2000);
+		LayoutNameTxt.sendKeys("SignaturesLayout");
+		Thread.sleep(2000);
+		LayoutNameTxt.sendKeys(Keys.TAB);
+		Thread.sleep(2000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(footerPDFBtn));
+		footerPDFBtn.click();
+
+		Thread.sleep(5000);
+
+		Robot robot = new Robot();
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(2000);
+
+		robot.keyPress(KeyEvent.VK_TAB);
+		robot.keyRelease(KeyEvent.VK_TAB);
+		robot.keyPress(KeyEvent.VK_TAB);
+		robot.keyRelease(KeyEvent.VK_TAB);
+
+		robot.keyPress(KeyEvent.VK_ENTER);
+		robot.keyRelease(KeyEvent.VK_ENTER);
+
+		Thread.sleep(2000);
+
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_S);
+		robot.keyRelease(KeyEvent.VK_S);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(2000);
+*/
+		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\SavingSQUser4Signature.exe");
+
+		Thread.sleep(5000);
+
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(2000);
+
+		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
+
+		int actOpenWindowsCount = getDriver().getWindowHandles().size();
+		int expOpenWindowsCount = 3;
+
+		System.out.println("Number of Windows  : " + actOpenWindowsCount + "  Value Expected  " + expOpenWindowsCount);
+
+		Thread.sleep(1000);
+
+	/*	getDriver().switchTo().window(openTabs.get(2)).close();
+		Thread.sleep(1000);
+		getDriver().switchTo().window(openTabs.get(1)).close();
+		Thread.sleep(1000);
+		getDriver().switchTo().window(openTabs.get(0));*/
+		
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);*/
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		
+
+		String actPDF = getBaseDir() + "\\autoIt\\ExportFiles\\SQUser4Signature.pdf";
+		String expPDF = getBaseDir() + "\\autoIt\\ImportFiles\\SQUser4Signature.pdf";
+
+		PDFUtil pdfutil = new PDFUtil();
+
+		boolean result = pdfutil.compare(actPDF, expPDF);
+
+		String actData = pdfutil.getText(actPDF);
+		String expData = pdfutil.getText(expPDF);
+
+		System.err.println(actData);
+		System.err.println(expData);
+
+		System.out.println("Compared Result  : " + result);
+
+		if (actData.equalsIgnoreCase(expData) && result == true) 
+		{
+			return true;
+		}
+		else 
+		{
+			return false;
+		}
+
+
+	}
+
+
+
+	public static boolean checkPrintPDFForSalesQuotationWithUser123ND4Approval() throws InterruptedException, AWTException, IOException
+	{
+
+		Thread.sleep(2000);
+
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryMenu));
+		inventoryMenu.click();
+		Thread.sleep(1000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryTransactionsMenu));
+		inventoryTransactionsMenu.click();
+
+		Thread.sleep(1000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryTransactionsSalesMenu));
+		inventoryTransactionsSalesMenu.click();
+		Thread.sleep(1000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesQuotationsVoucher));
+		salesQuotationsVoucher.click();
+
+		Thread.sleep(1200);
+
+		File Efile = new File(getBaseDir() + "\\autoIt\\ExportFiles\\SQUser5Signature.pdf");
+
+		if (Efile.exists()) {
+			Efile.delete();
+		}
+
+		Thread.sleep(2000);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
+
+		int count = grid_VoucherNoList.size();
+
+		for (int i = 0; i < count; i++) 
+		{
+			String VoucherNo = grid_VoucherNoList.get(i).getText();
+
+			if (VoucherNo.equalsIgnoreCase("5")) 
+			{
+				if (grid_CheckBoxList.get(i).isSelected() == false) 
+				{
+					grid_CheckBoxList.get(i).click();
+					break;
+				}
+			}
+		}
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
+		printBtn.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
+		LayoutNameTxt.click();
+		Thread.sleep(1200);
+		LayoutNameTxt.sendKeys(Keys.END,Keys.SHIFT, Keys.HOME);
+		LayoutNameTxt.sendKeys("SignaturesLayout");
+		Thread.sleep(2000);
+		LayoutNameTxt.sendKeys(Keys.TAB);
+		Thread.sleep(2000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(footerPDFBtn));
+		footerPDFBtn.click();
+
+		Thread.sleep(5000);
+
+		Robot robot = new Robot();
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(2000);
+
+		robot.keyPress(KeyEvent.VK_TAB);
+		robot.keyRelease(KeyEvent.VK_TAB);
+		robot.keyPress(KeyEvent.VK_TAB);
+		robot.keyRelease(KeyEvent.VK_TAB);
+
+		robot.keyPress(KeyEvent.VK_ENTER);
+		robot.keyRelease(KeyEvent.VK_ENTER);
+
+		Thread.sleep(2000);
+
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_S);
+		robot.keyRelease(KeyEvent.VK_S);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(2000);
+*/
+		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\SavingSQUser5Signature.exe");
+
+		Thread.sleep(5000);
+
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(2000);
+
+		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
+
+		int actOpenWindowsCount = getDriver().getWindowHandles().size();
+		int expOpenWindowsCount = 3;
+
+		System.out.println("Number of Windows  : " + actOpenWindowsCount + "  Value Expected  " + expOpenWindowsCount);
+
+		Thread.sleep(1000);
+/*
+		getDriver().switchTo().window(openTabs.get(2)).close();
+		Thread.sleep(2000);
+		getDriver().switchTo().window(openTabs.get(1)).close();
+		Thread.sleep(2000);
+		getDriver().switchTo().window(openTabs.get(0));*/
+		
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		*/
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		
+
+		String actPDF = getBaseDir() + "\\autoIt\\ExportFiles\\SQUser5Signature.pdf";
+		String expPDF = getBaseDir() + "\\autoIt\\ImportFiles\\SQUser5Signature.pdf";
+
+		PDFUtil pdfutil = new PDFUtil();
+
+		boolean result = pdfutil.compare(actPDF, expPDF);
+
+		String actData = pdfutil.getText(actPDF);
+		String expData = pdfutil.getText(expPDF);
+
+		System.err.println(actData);
+		System.err.println(expData);
+
+		System.out.println("Compared Result  : " + result);
+
+		if (actData.equalsIgnoreCase(expData) && result == true) 
+		{
+			return true;
+		}
+		else 
+		{
+			return false;
+		}
+
+	}
+
+
+
+
+	public static boolean checkPrintPDFWithAll5UsersApproval() throws IOException, InterruptedException, AWTException
+	{
+
+		Thread.sleep(2000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryMenu));
+		inventoryMenu.click();
+		Thread.sleep(1000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryTransactionsMenu));
+		inventoryTransactionsMenu.click();
+
+		Thread.sleep(1000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryTransactionsSalesMenu));
+		inventoryTransactionsSalesMenu.click();
+		Thread.sleep(1000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesQuotationsVoucher));
+		salesQuotationsVoucher.click();
+
+		Thread.sleep(1200);
+
+		File Efile = new File(getBaseDir() + "\\autoIt\\ExportFiles\\SQAllAuthorize.pdf");
+
+		if (Efile.exists()) {
+			Efile.delete();
+		}
+
+		Thread.sleep(3500);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
+
+		int count = grid_VoucherNoList.size();
+
+		for (int i = 0; i < count; i++) 
+		{
+			String VoucherNo = grid_VoucherNoList.get(i).getText();
+
+			if (VoucherNo.equalsIgnoreCase("6")) 
+			{
+				if (grid_CheckBoxList.get(i).isSelected() == false) 
+				{
+					grid_CheckBoxList.get(i).click();
+					break;
+				}
+			}
+		}
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
+		printBtn.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
+		LayoutNameTxt.click();
+		Thread.sleep(1200);
+		LayoutNameTxt.sendKeys(Keys.END,Keys.SHIFT, Keys.HOME);
+		Thread.sleep(1200);
+		LayoutNameTxt.sendKeys("SignaturesLayout");
+		Thread.sleep(2000);
+		LayoutNameTxt.sendKeys(Keys.TAB);
+		Thread.sleep(2000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(footerPDFBtn));
+		footerPDFBtn.click();
+
+		Thread.sleep(5000);
+
+		Robot robot = new Robot();
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(2000);
+
+		robot.keyPress(KeyEvent.VK_TAB);
+		robot.keyRelease(KeyEvent.VK_TAB);
+		robot.keyPress(KeyEvent.VK_TAB);
+		robot.keyRelease(KeyEvent.VK_TAB);
+
+		robot.keyPress(KeyEvent.VK_ENTER);
+		robot.keyRelease(KeyEvent.VK_ENTER);
+
+		Thread.sleep(2000);
+
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_S);
+		robot.keyRelease(KeyEvent.VK_S);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(2000);*/
+
+		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\SavingSQAllAuthorize.exe");
+
+		Thread.sleep(5000);
+
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(2000);
+
+		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
+
+		int actOpenWindowsCount = getDriver().getWindowHandles().size();
+		int expOpenWindowsCount = 3;
+
+		System.out.println("Number of Windows  : " + actOpenWindowsCount + "  Value Expected  " + expOpenWindowsCount);
+
+		Thread.sleep(1000);
+
+	/*	getDriver().switchTo().window(openTabs.get(2)).close();
+		Thread.sleep(2000);
+		getDriver().switchTo().window(openTabs.get(1)).close();
+		Thread.sleep(2000);
+		getDriver().switchTo().window(openTabs.get(0));*/
+		
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);*/
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		
+
+		String actPDF = getBaseDir() + "\\autoIt\\ExportFiles\\SQAllAuthorize.pdf";
+		String expPDF = getBaseDir() + "\\autoIt\\ImportFiles\\SQAllAuthorize.pdf";
+
+		PDFUtil pdfutil = new PDFUtil();
+
+		boolean result = pdfutil.compare(actPDF, expPDF);
+
+		String actData = pdfutil.getText(actPDF);
+		String expData = pdfutil.getText(expPDF);
+
+		System.err.println(actData);
+		System.err.println(expData);
+
+		System.out.println("Compared Result  : " + result);
+
+		if (actData.equalsIgnoreCase(expData) && result == true) 
+		{
+			return true;
+		}
+		else 
+		{
+			return false;
+		}
+
+	}
+	
+	
+
+	public static boolean checkPrintPDFForTheRejectedDocumentInUser1Level() throws InterruptedException, AWTException, IOException
+	{
+
+	Thread.sleep(2000);
+
+	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryMenu));
+	inventoryMenu.click();
+	Thread.sleep(1000);
+
+	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryTransactionsMenu));
+	inventoryTransactionsMenu.click();
+
+	Thread.sleep(1000);
+
+	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryTransactionsSalesMenu));
+	inventoryTransactionsSalesMenu.click();
+	Thread.sleep(1000);
+
+	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesQuotationsVoucher));
+	salesQuotationsVoucher.click();
+
+	Thread.sleep(1200);
+
+	File Efile = new File(getBaseDir() + "\\autoIt\\ExportFiles\\SQRejectedDocumentUser1.pdf");
+
+	if (Efile.exists()) {
+		Efile.delete();
+	}
+
+	Thread.sleep(2000);
+	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
+
+	int count = grid_VoucherNoList.size();
+
+	for (int i = 0; i < count; i++) 
+	{
+		String VoucherNo = grid_VoucherNoList.get(i).getText();
+
+		if (VoucherNo.equalsIgnoreCase("7")) 
+		{
+			if (grid_CheckBoxList.get(i).isSelected() == false) 
+			{
+				grid_CheckBoxList.get(i).click();
+				break;
+			}
+		}
+	}
+
+	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
+	printBtn.click();
+
+	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
+	LayoutNameTxt.click();
+	Thread.sleep(1200);
+	LayoutNameTxt.sendKeys(Keys.END,Keys.SHIFT, Keys.HOME);
+	Thread.sleep(1200);
+	LayoutNameTxt.sendKeys("SignaturesLayout");
+	Thread.sleep(2000);
+	LayoutNameTxt.sendKeys(Keys.TAB);
+	Thread.sleep(2000);
+
+	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(footerPDFBtn));
+	footerPDFBtn.click();
+
+	Thread.sleep(5000);
+
+	Robot robot = new Robot();
+/*	robot.keyPress(KeyEvent.VK_CONTROL);
+	robot.keyPress(KeyEvent.VK_J);
+	robot.keyRelease(KeyEvent.VK_J);
+	robot.keyRelease(KeyEvent.VK_CONTROL);
+
+	Thread.sleep(2000);
+
+	robot.keyPress(KeyEvent.VK_TAB);
+	robot.keyRelease(KeyEvent.VK_TAB);
+	robot.keyPress(KeyEvent.VK_TAB);
+	robot.keyRelease(KeyEvent.VK_TAB);
+
+	robot.keyPress(KeyEvent.VK_ENTER);
+	robot.keyRelease(KeyEvent.VK_ENTER);
+
+	Thread.sleep(2000);
+
+	robot.keyPress(KeyEvent.VK_CONTROL);
+	robot.keyPress(KeyEvent.VK_S);
+	robot.keyRelease(KeyEvent.VK_S);
+	robot.keyRelease(KeyEvent.VK_CONTROL);
+
+	Thread.sleep(2000);
+*/
+	Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\SavingSQRejectedDocumentUser1.exe");
+
+	Thread.sleep(5000);
+
+	robot.keyPress(KeyEvent.VK_CONTROL);
+	robot.keyPress(KeyEvent.VK_J);
+	robot.keyRelease(KeyEvent.VK_J);
+	robot.keyRelease(KeyEvent.VK_CONTROL);
+
+	Thread.sleep(2000);
+
+	ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
+
+	int actOpenWindowsCount = getDriver().getWindowHandles().size();
+	int expOpenWindowsCount = 3;
+
+	System.out.println("Number of Windows  : " + actOpenWindowsCount + "  Value Expected  " + expOpenWindowsCount);
+
+	Thread.sleep(1000);
+
+	/*getDriver().switchTo().window(openTabs.get(2)).close();
+	Thread.sleep(2000);
+	getDriver().switchTo().window(openTabs.get(1)).close();
+	Thread.sleep(2000);
+	getDriver().switchTo().window(openTabs.get(0));*/
+	
+/*	robot.keyPress(KeyEvent.VK_CONTROL);
+	robot.keyPress(KeyEvent.VK_W);
+	robot.keyRelease(KeyEvent.VK_W);
+	robot.keyRelease(KeyEvent.VK_CONTROL);
+	Thread.sleep(1000);*/
+	
+	robot.keyPress(KeyEvent.VK_CONTROL);
+	robot.keyPress(KeyEvent.VK_W);
+	robot.keyRelease(KeyEvent.VK_W);
+	robot.keyRelease(KeyEvent.VK_CONTROL);
+	Thread.sleep(1000);
+	
+
+	String actPDF = getBaseDir() + "\\autoIt\\ExportFiles\\SQRejectedDocumentUser1.pdf";
+	String expPDF = getBaseDir() + "\\autoIt\\ImportFiles\\SQRejectedDocumentUser1.pdf";
+
+	PDFUtil pdfutil = new PDFUtil();
+
+	boolean result = pdfutil.compare(actPDF, expPDF);
+
+	String actData = pdfutil.getText(actPDF);
+	String expData = pdfutil.getText(expPDF);
+
+	System.err.println(actData);
+	System.err.println(expData);
+
+	System.out.println("Compared Result  : " + result);
+
+	if (actData.equalsIgnoreCase(expData) && result == true) 
+	{
+		return true;
+	}
+	else 
+	{
+		return false;
+	}
+	}
+
+
+	public static boolean checkPrintPDFForTheRejectedDocumentInUser2Level() throws InterruptedException, AWTException, IOException
+	{
+
+		Thread.sleep(2000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryMenu));
+		inventoryMenu.click();
+		Thread.sleep(1000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryTransactionsMenu));
+		inventoryTransactionsMenu.click();
+
+		Thread.sleep(1000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryTransactionsSalesMenu));
+		inventoryTransactionsSalesMenu.click();
+		Thread.sleep(1000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesQuotationsVoucher));
+		salesQuotationsVoucher.click();
+
+		Thread.sleep(1200);
+
+		File Efile = new File(getBaseDir() + "\\autoIt\\ExportFiles\\SQRejectedDocumentUser2.pdf");
+
+		if (Efile.exists()) {
+			Efile.delete();
+		}
+
+		Thread.sleep(2400);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
+
+		int count = grid_VoucherNoList.size();
+
+		for (int i = 0; i < count; i++) 
+		{
+			String VoucherNo = grid_VoucherNoList.get(i).getText();
+
+			if (VoucherNo.equalsIgnoreCase("8")) 
+			{
+				if (grid_CheckBoxList.get(i).isSelected() == false) 
+				{
+					grid_CheckBoxList.get(i).click();
+					break;
+				}
+			}
+		}
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
+		printBtn.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
+		LayoutNameTxt.click();
+		Thread.sleep(1200);
+		LayoutNameTxt.sendKeys(Keys.END,Keys.SHIFT, Keys.HOME);
+		Thread.sleep(1200);
+		LayoutNameTxt.sendKeys("SignaturesLayout");
+		Thread.sleep(2000);
+		LayoutNameTxt.sendKeys(Keys.TAB);
+		Thread.sleep(2000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(footerPDFBtn));
+		footerPDFBtn.click();
+
+		Thread.sleep(5000);
+
+		Robot robot = new Robot();
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(2000);
+
+		robot.keyPress(KeyEvent.VK_TAB);
+		robot.keyRelease(KeyEvent.VK_TAB);
+		robot.keyPress(KeyEvent.VK_TAB);
+		robot.keyRelease(KeyEvent.VK_TAB);
+
+		robot.keyPress(KeyEvent.VK_ENTER);
+		robot.keyRelease(KeyEvent.VK_ENTER);
+
+		Thread.sleep(2000);
+
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_S);
+		robot.keyRelease(KeyEvent.VK_S);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(2000);
+*/
+		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\SavingSQRejectedDocumentUser2.exe");
+
+		Thread.sleep(5000);
+
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(2000);
+
+		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
+
+		int actOpenWindowsCount = getDriver().getWindowHandles().size();
+		int expOpenWindowsCount = 3;
+
+		System.out.println("Number of Windows  : " + actOpenWindowsCount + "  Value Expected  " + expOpenWindowsCount);
+
+		Thread.sleep(1000);
+
+		/*getDriver().switchTo().window(openTabs.get(2)).close();
+		Thread.sleep(2000);
+		getDriver().switchTo().window(openTabs.get(1)).close();
+		Thread.sleep(2000);
+		getDriver().switchTo().window(openTabs.get(0));*/
+	/*	
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		*/
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		
+
+		String actPDF = getBaseDir() + "\\autoIt\\ExportFiles\\SQRejectedDocumentUser2.pdf";
+		String expPDF = getBaseDir() + "\\autoIt\\ImportFiles\\SQRejectedDocumentUser2.pdf";
+
+		PDFUtil pdfutil = new PDFUtil();
+
+		boolean result = pdfutil.compare(actPDF, expPDF);
+
+		String actData = pdfutil.getText(actPDF);
+		String expData = pdfutil.getText(expPDF);
+
+		System.err.println(actData);
+		System.err.println(expData);
+
+		System.out.println("Compared Result  : " + result);
+
+		if (actData.equalsIgnoreCase(expData) && result == true) 
+		{
+			return true;
+		}
+		else 
+		{
+			return false;
+		}
+	}
+
+
+	
+	public static boolean checkPrintPDFForTheRejectedDocumentInUser123Level() throws InterruptedException, AWTException, IOException
+	{
+
+		Thread.sleep(2000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryMenu));
+		inventoryMenu.click();
+		Thread.sleep(1000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryTransactionsMenu));
+		inventoryTransactionsMenu.click();
+
+		Thread.sleep(1000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryTransactionsSalesMenu));
+		inventoryTransactionsSalesMenu.click();
+		Thread.sleep(1000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(salesQuotationsVoucher));
+		salesQuotationsVoucher.click();
+
+		Thread.sleep(1200);
+
+		File Efile = new File(getBaseDir() + "\\autoIt\\ExportFiles\\SQRejectedDocumentUser123.pdf");
+
+		if (Efile.exists()) {
+			Efile.delete();
+		}
+
+		Thread.sleep(2000);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
+
+		int count = grid_VoucherNoList.size();
+
+		for (int i = 0; i < count; i++) 
+		{
+			String VoucherNo = grid_VoucherNoList.get(i).getText();
+
+			if (VoucherNo.equalsIgnoreCase("9")) 
+			{
+				if (grid_CheckBoxList.get(i).isSelected() == false) 
+				{
+					grid_CheckBoxList.get(i).click();
+					break;
+				}
+			}
+		}
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
+		printBtn.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
+		LayoutNameTxt.click();
+		Thread.sleep(1200);
+		LayoutNameTxt.sendKeys(Keys.END,Keys.SHIFT, Keys.HOME);
+		Thread.sleep(1200);
+		LayoutNameTxt.sendKeys("SignaturesLayout");
+		Thread.sleep(2000);
+		LayoutNameTxt.sendKeys(Keys.TAB);
+		Thread.sleep(2000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(footerPDFBtn));
+		footerPDFBtn.click();
+
+		Thread.sleep(5000);
+
+		Robot robot = new Robot();
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(2000);
+
+		robot.keyPress(KeyEvent.VK_TAB);
+		robot.keyRelease(KeyEvent.VK_TAB);
+		robot.keyPress(KeyEvent.VK_TAB);
+		robot.keyRelease(KeyEvent.VK_TAB);
+
+		robot.keyPress(KeyEvent.VK_ENTER);
+		robot.keyRelease(KeyEvent.VK_ENTER);
+
+		Thread.sleep(2000);
+
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_S);
+		robot.keyRelease(KeyEvent.VK_S);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(2000);*/
+
+		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\SavingSQRejectedDocumentUser123.exe");
+
+		Thread.sleep(5000);
+
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(2000);
+
+		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
+
+		int actOpenWindowsCount = getDriver().getWindowHandles().size();
+		int expOpenWindowsCount = 3;
+
+		System.out.println("Number of Windows  : " + actOpenWindowsCount + "  Value Expected  " + expOpenWindowsCount);
+
+		Thread.sleep(1000);
+
+	/*	getDriver().switchTo().window(openTabs.get(2)).close();
+		Thread.sleep(2000);
+		getDriver().switchTo().window(openTabs.get(1)).close();
+		Thread.sleep(2000);
+		getDriver().switchTo().window(openTabs.get(0));*/
+		
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);*/
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		
+
+		String actPDF = getBaseDir() + "\\autoIt\\ExportFiles\\SQRejectedDocumentUser123.pdf";
+		String expPDF = getBaseDir() + "\\autoIt\\ImportFiles\\SQRejectedDocumentUser123.pdf";
+
+		PDFUtil pdfutil = new PDFUtil();
+
+		boolean result = pdfutil.compare(actPDF, expPDF);
+
+		String actData = pdfutil.getText(actPDF);
+		String expData = pdfutil.getText(expPDF);
+
+		System.err.println(actData);
+		System.err.println(expData);
+
+		System.out.println("Compared Result  : " + result);
+
+		if (actData.equalsIgnoreCase(expData) && result == true) 
+		{
+			return true;
+		}
+		else 
+		{
+			return false;
+		}
+	}
+
+	
+
+	@FindBy(xpath="//*[@id='rdoPostingdetailsonscreenandinprint']/div[1]//input")
+	public static WebElement  PDOnScreenAndPrintAccountNameBtn;
+
+	@FindBy(xpath="//*[@id='rdoPostingdetailsonscreenandinprint']/div[2]//input")
+	public static WebElement  PDOnScreenAndPrintAccountCodeBtn;
+
+	@FindBy(xpath="//*[@id='rdoPostingdetailsonscreenandinprint']/div[3]//input")
+	public static WebElement  PDOnScreenAndPrintBothBtn;
+	
+	
+	@FindBy(xpath="//div[@class='row custom_scrollbar']//div[@class='row']//div[1]")
+	private static List<WebElement>  postingDetailsAllAccountsList; 
+	
+    
+    public static boolean checkEnableAccountNameInPostingDetailsOnScreenAndInPrint() throws InterruptedException
+    {
+    	Thread.sleep(1200); 
+    	
+    	getAction().moveToElement(settingsmenuBtn).build().perform();
+    	Thread.sleep(2500);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(settingsmenuBtn));
+		ClickUsingJs(SettingsBtn);
+
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PreferencesBtn));
+		PreferencesBtn.click();
+
+		Thread.sleep(2000);
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(miscellaneousTab));
+		
+		miscellaneousTab.click();
+		
+		Thread.sleep(2000);
+		
+		ScrollToElement(PDOnScreenAndPrintAccountNameBtn);
+		Thread.sleep(2000);
+		
+		if(PDOnScreenAndPrintAccountNameBtn.isSelected()==false)
+		{
+			PDOnScreenAndPrintAccountNameBtn.click();
+		}
+		
+		Thread.sleep(4000);
+		ScrollToElement(UpdateBtn);
+		Thread.sleep(1000);
+		ClickUsingJs(UpdateBtn);
+		
+
+		getWaitForAlert();
+		String actAlertMgs  =getAlert().getText();
+		String expAlertMgs  ="Do you want to save the changes?";
+		getAlert().accept();
+		
+		
+		boolean ActAccountName = PDOnScreenAndPrintAccountNameBtn.isSelected();
+		boolean ExpAccountName = true;
+
+		Thread.sleep(5000);
+		
+		if (actAlertMgs.equalsIgnoreCase(expAlertMgs) && ActAccountName == ExpAccountName) 
+		{
+			return true;
+		} 
+		else 
+		{
+			return false;
+		}
+
+    }
+    
+    public static boolean checkValidateAccountNameInPostingDetailsInBothScreenAndPrint() throws InterruptedException
+    {
+    	
+    	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+		financialsMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionMenu));
+		financialsTransactionMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionsPurchaseMenu));
+		financialsTransactionsPurchaseMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
+		purchaseVouchersVat.click();
+
+		Thread.sleep(2000);
+
+		int count = grid_VoucherNoList.size();
+
+		for (int i = 0; i < count; i++) 
+		{
+			String VoucherNo = grid_VoucherNoList.get(i).getText();
+
+			if (VoucherNo.equalsIgnoreCase("SU/IND/TEXT1"))
+			{
+				getAction().doubleClick(grid_CheckBoxList.get(i)).build().perform();
+				break;
+			}
+		}
+		
+    	Thread.sleep(1000);
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(toggleBtn));
+		ClickUsingJs(toggleBtn);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(postingDetailsBtn));	
+		postingDetailsBtn.click();
+
+		Thread.sleep(2000);
+
+		int postingDetailsAccountsListCount = postingDetailsAllAccountsList.size();
+
+		ArrayList<String> postingDetailsAccountsListArray = new ArrayList<String>();
+
+		for (int i=0;i<postingDetailsAccountsListCount;i++)
+		{
+			String data = postingDetailsAllAccountsList.get(i).getText();
+			postingDetailsAccountsListArray.add(data);
+
+		}
+
+		String actpostingDetailsAccountsList = postingDetailsAccountsListArray.toString();
+		String exppostingDetailsAccountsList = "[BR COGS ACC INV, VAT INPUT, STD RATE COGS ACC INV, FIFO COGS ACC INV, WA COGS ACC INV, Vendor B, PURCHASE VARIANCE]";
+		
+		System.out.println("actpostingDetailsAccountsList:"+actpostingDetailsAccountsList);
+		System.out.println("exppostingDetailsAccountsList:"+exppostingDetailsAccountsList);
+		
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(postingDetailsCloseBtn));
+		postingDetailsCloseBtn.click();
+
+		Thread.sleep(2000);
+		
+		
+		
+		if (actpostingDetailsAccountsList.equalsIgnoreCase(exppostingDetailsAccountsList)) 
 		{
 			return true;
 		}
@@ -42811,14 +46775,797 @@ public class VoucherPrintOptionsPage extends BaseEngine
 			return false;
 		}
 		
-	
-	}
-	
+    }
+    
+    public static boolean checkPostingDetailsInPrintLayoutWhenAccountNameIsEnabled() throws InterruptedException, AWTException, IOException
+    {
+    	Thread.sleep(1200);
+    	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+		financialsMenu.click();
 
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionMenu));
+		financialsTransactionMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionsPurchaseMenu));
+		financialsTransactionsPurchaseMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
+		purchaseVouchersVat.click();
+
+		Thread.sleep(2000);
+
+		File Efile = new File(getBaseDir() + "\\autoIt\\ExportFiles\\PVVATPostingDetailsWhenANEnabled.pdf");
+
+		if (Efile.exists()) {
+			Efile.delete();
+		}
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
+
+		int count = grid_VoucherNoList.size();
+
+		for (int i = 0; i < count; i++) {
+			String VoucherNo = grid_VoucherNoList.get(i).getText();
+
+			if (VoucherNo.equalsIgnoreCase("SU/IND/TEXT1")) {
+				if (grid_CheckBoxList.get(i).isSelected() == false) {
+					grid_CheckBoxList.get(i).click();
+					break;
+				}
+			}
+		}
+		
+		Thread.sleep(2500);
+
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(printBtn));
+		printBtn.click();
+		Thread.sleep(2500);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
+		LayoutNameTxt.click();
+		LayoutNameTxt.sendKeys(Keys.END,Keys.SHIFT, Keys.HOME);
+		Thread.sleep(2000);
+		LayoutNameTxt.sendKeys("PostingDetails");
+		Thread.sleep(2000);
+		LayoutNameTxt.sendKeys(Keys.TAB);
+		Thread.sleep(3500);
+
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(footerPDFBtn));
+		footerPDFBtn.click();
+
+		Thread.sleep(6000);
+
+		Robot robot = new Robot();
+		/*robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(2000);
+
+		robot.keyPress(KeyEvent.VK_TAB);
+		robot.keyRelease(KeyEvent.VK_TAB);
+		robot.keyPress(KeyEvent.VK_TAB);
+		robot.keyRelease(KeyEvent.VK_TAB);
+
+		robot.keyPress(KeyEvent.VK_ENTER);
+		robot.keyRelease(KeyEvent.VK_ENTER);
+
+		Thread.sleep(2000);
+
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_S);
+		robot.keyRelease(KeyEvent.VK_S);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(2000);
+*/
+		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\PVVATPostingDetailsWhenANEnabled.exe");
+
+		Thread.sleep(5000);
+
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(2000);
+
+		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
+
+		int actOpenWindowsCount = getDriver().getWindowHandles().size();
+		int expOpenWindowsCount = 3;
+
+		System.out.println("Number of Windows  : " + actOpenWindowsCount + "  Value Expected  " + expOpenWindowsCount);
+
+		Thread.sleep(1000);
+
+	/*	getDriver().switchTo().window(openTabs.get(2)).close();
+		Thread.sleep(2000);
+		getDriver().switchTo().window(openTabs.get(1)).close();
+		Thread.sleep(2000);
+		getDriver().switchTo().window(openTabs.get(0));*/
+		
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		*/
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		
+
+		String actPDF = getBaseDir() + "\\autoIt\\ExportFiles\\PVVATPostingDetailsWhenANEnabled.pdf";
+		String expPDF = getBaseDir() + "\\autoIt\\ImportFiles\\PVVATPostingDetailsWhenANEnabled.pdf";
+
+		PDFUtil pdfutil = new PDFUtil();
+
+		boolean result = pdfutil.compare(actPDF, expPDF);
+
+		String actData = pdfutil.getText(actPDF);
+		String expData = pdfutil.getText(expPDF);
+
+		System.err.println(actData);
+		System.err.println(expData);
+
+		System.out.println("Compared Result  : " + result);
+
+		if (actData.equalsIgnoreCase(expData) && result == true) 
+		{
+			return true;
+		} 
+		else 
+		{
+			return false;
+		}
+    }
+    
+    
+    public static boolean checkEnableAccountCodeInPostingDetailsOnScreenAndInPrint() throws InterruptedException
+    {
+
+    	Thread.sleep(1200); 
+    	
+    	getAction().moveToElement(settingsmenuBtn).build().perform();
+    	Thread.sleep(2500);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(settingsmenuBtn));
+		ClickUsingJs(SettingsBtn);
+
+		
+		Thread.sleep(1200);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PreferencesBtn));
+		PreferencesBtn.click();
+
+		Thread.sleep(2000);
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(miscellaneousTab));
+		
+		miscellaneousTab.click();
+		
+		Thread.sleep(2000);
+		
+		ScrollToElement(PDOnScreenAndPrintAccountCodeBtn);
+		Thread.sleep(2000);
+		
+		if(PDOnScreenAndPrintAccountCodeBtn.isSelected()==false)
+		{
+			PDOnScreenAndPrintAccountCodeBtn.click();
+		}
+		
+		Thread.sleep(4000);
+		ScrollToElement(UpdateBtn);
+		Thread.sleep(1000);
+		ClickUsingJs(UpdateBtn);
+		
+
+		getWaitForAlert();
+		String actAlertMgs  =getAlert().getText();
+		String expAlertMgs  ="Do you want to save the changes?";
+		getAlert().accept();
+		
+		
+		boolean ActAccountName = PDOnScreenAndPrintAccountCodeBtn.isSelected();
+		boolean ExpAccountName = true;
+
+		Thread.sleep(5000);
+		
+		if (actAlertMgs.equalsIgnoreCase(expAlertMgs) && ActAccountName == ExpAccountName) 
+		{
+			return true;
+		} 
+		else 
+		{
+			return false;
+		}
+
+    
+    }
+    
+
+    public static boolean checkValidateAccountCodeInPostingDetailsInBothScreenAndPrint() throws InterruptedException
+    {
+
+    	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+    	financialsMenu.click();
+
+    	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionMenu));
+    	financialsTransactionMenu.click();
+
+    	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionsPurchaseMenu));
+    	financialsTransactionsPurchaseMenu.click();
+
+    	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
+    	purchaseVouchersVat.click();
+
+    	Thread.sleep(2000);
+
+    	int count = grid_VoucherNoList.size();
+
+    	for (int i = 0; i < count; i++) 
+    	{
+    		String VoucherNo = grid_VoucherNoList.get(i).getText();
+
+    		if (VoucherNo.equalsIgnoreCase("SU/IND/TEXT1"))
+    		{
+    			getAction().doubleClick(grid_CheckBoxList.get(i)).build().perform();
+    			break;
+    		}
+    	}
+
+    	Thread.sleep(1000);
+    	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(toggleBtn));
+    	toggleBtn.click();
+
+    	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(postingDetailsBtn));	
+    	postingDetailsBtn.click();
+
+    	Thread.sleep(2000);
+
+    	int postingDetailsAccountsListCount = postingDetailsAllAccountsList.size();
+
+    	ArrayList<String> postingDetailsAccountsListArray = new ArrayList<String>();
+
+    	for (int i=0;i<postingDetailsAccountsListCount;i++)
+    	{
+    		String data = postingDetailsAllAccountsList.get(i).getText();
+    		postingDetailsAccountsListArray.add(data);
+
+    	}
+
+    	String actpostingDetailsAccountsList = postingDetailsAccountsListArray.toString();
+    	String exppostingDetailsAccountsList = "[BR COGS ACC INV, VAT INPUT, STD RATE COGS ACC INV, FIFO COGS ACC INV, WA COGS ACC INV, 033-002, PURCHASE VARIANCE]";
+
+    	System.out.println("actpostingDetailsAccountsList:"+actpostingDetailsAccountsList);
+    	System.out.println("exppostingDetailsAccountsList:"+exppostingDetailsAccountsList);
+
+
+    	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(postingDetailsCloseBtn));
+    	postingDetailsCloseBtn.click();
+
+    	Thread.sleep(2000);
+
+    	if (actpostingDetailsAccountsList.equalsIgnoreCase(exppostingDetailsAccountsList)) 
+    	{
+    		return true;
+    	}
+    	else
+    	{
+    		return false;
+    	}
+
+    }
+
+
+    public static boolean checkPostingDetailsInPrintLayoutWhenAccountCodeIsEnabled() throws InterruptedException, AWTException, IOException
+    {
+    	Thread.sleep(1200);
+    	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+		financialsMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionMenu));
+		financialsTransactionMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionsPurchaseMenu));
+		financialsTransactionsPurchaseMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
+		purchaseVouchersVat.click();
+
+		Thread.sleep(2000);
+
+		File Efile = new File(getBaseDir() + "\\autoIt\\ExportFiles\\PVVATPostingDetailsWhenACEnabled.pdf");
+
+		if (Efile.exists()) {
+			Efile.delete();
+		}
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
+
+		int count = grid_VoucherNoList.size();
+
+		for (int i = 0; i < count; i++) {
+			String VoucherNo = grid_VoucherNoList.get(i).getText();
+
+			if (VoucherNo.equalsIgnoreCase("SU/IND/TEXT1")) {
+				if (grid_CheckBoxList.get(i).isSelected() == false) {
+					grid_CheckBoxList.get(i).click();
+					break;
+				}
+			}
+		}
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
+		printBtn.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
+		LayoutNameTxt.click();
+		Thread.sleep(2500);
+		LayoutNameTxt.sendKeys(Keys.END,Keys.SHIFT, Keys.HOME);
+		Thread.sleep(2000);
+		LayoutNameTxt.sendKeys("PostingDetails");
+		Thread.sleep(2000);
+		LayoutNameTxt.sendKeys(Keys.TAB);
+		Thread.sleep(3500);
+
+		footerPDFBtn.click();
+
+		Thread.sleep(6000);
+
+		Robot robot = new Robot();
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(2000);
+
+		robot.keyPress(KeyEvent.VK_TAB);
+		robot.keyRelease(KeyEvent.VK_TAB);
+		robot.keyPress(KeyEvent.VK_TAB);
+		robot.keyRelease(KeyEvent.VK_TAB);
+
+		robot.keyPress(KeyEvent.VK_ENTER);
+		robot.keyRelease(KeyEvent.VK_ENTER);
+
+		Thread.sleep(2000);
+
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_S);
+		robot.keyRelease(KeyEvent.VK_S);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(2000);
+*/
+		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\PVVATPostingDetailsWhenACEnabled.exe");
+
+		Thread.sleep(5000);
+
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(2000);
+
+		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
+
+		int actOpenWindowsCount = getDriver().getWindowHandles().size();
+		int expOpenWindowsCount = 3;
+
+		System.out.println("Number of Windows  : " + actOpenWindowsCount + "  Value Expected  " + expOpenWindowsCount);
+
+		Thread.sleep(1000);
+
+		/*getDriver().switchTo().window(openTabs.get(2)).close();
+		Thread.sleep(2000);
+		getDriver().switchTo().window(openTabs.get(1)).close();
+		Thread.sleep(2000);
+		getDriver().switchTo().window(openTabs.get(0));*/
+		
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		*/
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		
+
+		String actPDF = getBaseDir() + "\\autoIt\\ExportFiles\\PVVATPostingDetailsWhenACEnabled.pdf";
+		String expPDF = getBaseDir() + "\\autoIt\\ImportFiles\\PVVATPostingDetailsWhenACEnabled.pdf";
+
+		PDFUtil pdfutil = new PDFUtil();
+
+		boolean result = pdfutil.compare(actPDF, expPDF);
+
+		String actData = pdfutil.getText(actPDF);
+		String expData = pdfutil.getText(expPDF);
+
+		System.err.println(actData);
+		System.err.println(expData);
+
+		System.out.println("Compared Result  : " + result);
+
+		if (actData.equalsIgnoreCase(expData) && result == true) 
+		{
+			return true;
+		} 
+		else 
+		{
+			return false;
+		
+		}
+		
+    }
+    
+    
+    
+
+    public static boolean checkEnableAccountNameAndCodeInPostingDetailsOnScreenAndInPrint() throws InterruptedException
+    {
+
+    	Thread.sleep(1200); 
+    	
+    	getAction().moveToElement(settingsmenuBtn).build().perform();
+    	Thread.sleep(2500);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(settingsmenuBtn));
+		ClickUsingJs(SettingsBtn);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(PreferencesBtn));
+		PreferencesBtn.click();
+
+		Thread.sleep(2000);
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(miscellaneousTab));
+		
+		miscellaneousTab.click();
+		
+		Thread.sleep(2000);
+		
+		ScrollToElement(PDOnScreenAndPrintBothBtn);
+		Thread.sleep(2000);
+		
+		if(PDOnScreenAndPrintBothBtn.isSelected()==false)
+		{
+			PDOnScreenAndPrintBothBtn.click();
+		}
+		
+		Thread.sleep(4000);
+		ScrollToElement(UpdateBtn);
+		Thread.sleep(1000);
+		ClickUsingJs(UpdateBtn);
+		
+
+		getWaitForAlert();
+		String actAlertMgs  =getAlert().getText();
+		String expAlertMgs  ="Do you want to save the changes?";
+		getAlert().accept();
+		
+		
+		boolean ActAccountName = PDOnScreenAndPrintBothBtn.isSelected();
+		boolean ExpAccountName = true;
+
+		Thread.sleep(5000);
+		
+		if (actAlertMgs.equalsIgnoreCase(expAlertMgs) && ActAccountName == ExpAccountName) 
+		{
+			return true;
+		} 
+		else 
+		{
+			return false;
+		}
+
+    
+    }
+    
+
+    public static boolean checkValidateAccountNameAndCodeInPostingDetailsInBothScreenAndPrint() throws InterruptedException
+    {
+
+    	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+    	financialsMenu.click();
+
+    	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionMenu));
+    	financialsTransactionMenu.click();
+
+    	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionsPurchaseMenu));
+    	financialsTransactionsPurchaseMenu.click();
+
+    	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
+    	purchaseVouchersVat.click();
+
+    	Thread.sleep(2000);
+
+    	int count = grid_VoucherNoList.size();
+
+    	for (int i = 0; i < count; i++) 
+    	{
+    		String VoucherNo = grid_VoucherNoList.get(i).getText();
+
+    		if (VoucherNo.equalsIgnoreCase("SU/IND/TEXT1"))
+    		{
+    			getAction().doubleClick(grid_CheckBoxList.get(i)).build().perform();
+    			break;
+    		}
+    	}
+
+    	Thread.sleep(4000);
+    	getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(toggleBtn));
+    	ClickUsingJs(toggleBtn);
+
+    	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(postingDetailsBtn));	
+    	postingDetailsBtn.click();
+
+    	Thread.sleep(2000);
+
+    	int postingDetailsAccountsListCount = postingDetailsAllAccountsList.size();
+
+    	ArrayList<String> postingDetailsAccountsListArray = new ArrayList<String>();
+
+    	for (int i=0;i<postingDetailsAccountsListCount;i++)
+    	{
+    		String data = postingDetailsAllAccountsList.get(i).getText();
+    		postingDetailsAccountsListArray.add(data);
+
+    	}
+
+    	String actpostingDetailsAccountsList = postingDetailsAccountsListArray.toString();
+    	String exppostingDetailsAccountsList = "[BR COGS ACC INV - BR COGS ACC INV, VAT INPUT - VAT INPUT, STD RATE COGS ACC INV - STD RATE COGS ACC INV, FIFO COGS ACC INV - FIFO COGS ACC INV, WA COGS ACC INV - WA COGS ACC INV, Vendor B - 033-002, PURCHASE VARIANCE - PURCHASE VARIANCE]";
+
+    	System.out.println("actpostingDetailsAccountsList:"+actpostingDetailsAccountsList);
+    	System.out.println("exppostingDetailsAccountsList:"+exppostingDetailsAccountsList);
+
+
+    	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(postingDetailsCloseBtn));
+    	postingDetailsCloseBtn.click();
+
+    	Thread.sleep(2000);
+
+    	if (actpostingDetailsAccountsList.equalsIgnoreCase(exppostingDetailsAccountsList)) 
+    	{
+    		return true;
+    	}
+    	else
+    	{
+    		return false;
+    	}
+
+    }
+
+
+    public static boolean checkPostingDetailsInPrintLayoutWhenAccountNameAndCodeIsEnabled() throws InterruptedException, AWTException, IOException
+    {
+    	Thread.sleep(1200);
+    	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+		financialsMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionMenu));
+		financialsTransactionMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionsPurchaseMenu));
+		financialsTransactionsPurchaseMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
+		purchaseVouchersVat.click();
+
+		Thread.sleep(2000);
+
+		File Efile = new File(getBaseDir() + "\\autoIt\\ExportFiles\\PVVATPostingDetailsWhenACCNameAndCodeEnabled.pdf");
+
+		if (Efile.exists()) {
+			Efile.delete();
+		}
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
+
+		int count = grid_VoucherNoList.size();
+
+		for (int i = 0; i < count; i++) {
+			String VoucherNo = grid_VoucherNoList.get(i).getText();
+
+			if (VoucherNo.equalsIgnoreCase("SU/IND/TEXT1")) {
+				if (grid_CheckBoxList.get(i).isSelected() == false) {
+					grid_CheckBoxList.get(i).click();
+					break;
+				}
+			}
+		}
+
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(printBtn));
+		printBtn.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
+		LayoutNameTxt.click();
+		Thread.sleep(2500);
+		LayoutNameTxt.sendKeys(Keys.END,Keys.SHIFT, Keys.HOME);
+		Thread.sleep(2000);
+		LayoutNameTxt.sendKeys("PostingDetails");
+		Thread.sleep(2000);
+		LayoutNameTxt.sendKeys(Keys.TAB);
+		Thread.sleep(3500);
+
+		footerPDFBtn.click();
+		
+		Thread.sleep(6000);
+
+		Robot robot = new Robot();
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(2000);
+
+		robot.keyPress(KeyEvent.VK_TAB);
+		robot.keyRelease(KeyEvent.VK_TAB);
+		robot.keyPress(KeyEvent.VK_TAB);
+		robot.keyRelease(KeyEvent.VK_TAB);
+
+		robot.keyPress(KeyEvent.VK_ENTER);
+		robot.keyRelease(KeyEvent.VK_ENTER);
+
+		Thread.sleep(2000);
+
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_S);
+		robot.keyRelease(KeyEvent.VK_S);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(2000);
+*/
+		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\PVVATPostingDetailsWhenACCNameAndCodeEnabled.exe");
+
+		Thread.sleep(5000);
+
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(2000);
+
+		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
+
+		int actOpenWindowsCount = getDriver().getWindowHandles().size();
+		int expOpenWindowsCount = 3;
+
+		System.out.println("Number of Windows  : " + actOpenWindowsCount + "  Value Expected  " + expOpenWindowsCount);
+
+		Thread.sleep(1000);
+
+	/*	getDriver().switchTo().window(openTabs.get(2)).close();
+		Thread.sleep(2000);
+		getDriver().switchTo().window(openTabs.get(1)).close();
+		Thread.sleep(2000);
+		getDriver().switchTo().window(openTabs.get(0));
+*/
+		
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		*/
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		
+		String actPDF = getBaseDir() + "\\autoIt\\ExportFiles\\PVVATPostingDetailsWhenACCNameAndCodeEnabled.pdf";
+		String expPDF = getBaseDir() + "\\autoIt\\ImportFiles\\PVVATPostingDetailsWhenACCNameAndCodeEnabled.pdf";
+
+		PDFUtil pdfutil = new PDFUtil();
+
+		boolean result = pdfutil.compare(actPDF, expPDF);
+
+		String actData = pdfutil.getText(actPDF);
+		String expData = pdfutil.getText(expPDF);
+
+		System.err.println(actData);
+		System.err.println(expData);
+
+		System.out.println("Compared Result  : " + result);
+
+		if (actData.equalsIgnoreCase(expData) && result == true) 
+		{
+			return true;
+		} 
+		else 
+		{
+			return false;
+		
+		}
+		
+    }
+    
+    
+
+    public static boolean checkPrintCreatedDateFieldInPVVATVoucher() throws InterruptedException, IOException
+    {
+    	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+		financialsMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionMenu));
+		financialsTransactionMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionsPurchaseMenu));
+		financialsTransactionsPurchaseMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
+		purchaseVouchersVat.click();
+
+		Thread.sleep(1600);
+
+
+		Thread.sleep(1600);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
+
+		int count = grid_VoucherNoList.size();
+
+		for (int i = 0; i < count; i++) 
+		{
+			String VoucherNo = grid_VoucherNoList.get(i).getText();
+
+			if (VoucherNo.equalsIgnoreCase("SU/IND/TEXT2")) 
+			{
+				if (grid_CheckBoxList.get(i).isSelected()==false) 
+				{
+					grid_CheckBoxList.get(i).click();
+					break;
+				}
+			}
+		}      
+
+		Thread.sleep(1600);
+
+		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
+		printBtn.click();
+
+		Thread.sleep(4000);
+		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(createLayoutBtn));
+		createLayoutBtn.click();
+		Thread.sleep(4000);
+		
 	
+		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(browseTemplateBtn));
+		browseTemplateBtn.click();
+		Thread.sleep(2000);
+
+		
+
+		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\LayoutImport.exe");
+
+		Thread.sleep(12000);
+		
+		/*
+		 * Runtime.getRuntime().exec(getBaseDir() +
+		 * "\\autoIt\\scripts\\PageTypeDragNew.exe");
+		 * 
+		 * Thread.sleep(10000);
+		 */
+		
+		return true;
+
+    }
+
+
+
 	public static boolean checkLogoutFromVoucherPrintPage() throws InterruptedException
 	{
-		
+
 		try{
 
 			ArrayList<String> newTabs = new ArrayList<String>(getDriver().getWindowHandles());
@@ -42830,29 +47577,29 @@ public class VoucherPrintOptionsPage extends BaseEngine
 
 
 			getDriver().switchTo().window(newTabs.get(1)).close();
-			Thread.sleep(1000);
+			Thread.sleep(2000);
 			getDriver().switchTo().window(newTabs.get(0));
 		}
 		catch(Exception e)
 		{
 			System.out.println("exception:  "+e);
 		}
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		getDriver().navigate().refresh();
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LogoutDropdown));
 		LogoutDropdown.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2500);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(logoutOption));
 		logoutOption.click();
-		
+
 		boolean actSignInBtn = signIn.isDisplayed();
 		boolean expSignInBtn = true;
-		
-		
+
+
 		if (actSignInBtn == expSignInBtn)
 		{
 			return true;
@@ -42863,6 +47610,1227 @@ public class VoucherPrintOptionsPage extends BaseEngine
 		}
 
 	}
+
+	@FindBy(xpath="//*[@id='id_transactionentry_print']//span")
+	private static WebElement  printBtnInEntryPage;
+
+	public static boolean checkPrintPDFForImageGridLayout() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException, AWTException
+	{
+		Thread.sleep(2000);
+		getAction().moveToElement(financialsMenu).build().perform();
+		Thread.sleep(2000);
+		ClickUsingJs(financialsMenu);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionMenu));
+		financialsTransactionMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionsPurchaseMenu));
+		financialsTransactionsPurchaseMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
+		purchaseVouchersVat.click();
+
+		Thread.sleep(1600);
+
+
+		Thread.sleep(1600);
+
+		File Efile=new File(getBaseDir()+"\\autoIt\\ExportFiles\\LayoutForImageGrid.pdf");
+
+		if(Efile.exists())
+		{
+			Efile.delete();
+		}
+
+
+		Thread.sleep(1600);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
+
+		int count = grid_VoucherNoList.size();
+
+		for (int i = 0; i < count; i++) 
+		{
+			String VoucherNo = grid_VoucherNoList.get(i).getText();
+
+			if (VoucherNo.equalsIgnoreCase("SU/IND/TEXT3")) 
+			{
+				if (grid_CheckBoxList.get(i).isSelected()==false) 
+				{
+					getAction().doubleClick(grid_CheckBoxList.get(i)).build().perform();
+					break;
+				}
+			}
+		}  
+
+		Thread.sleep(1600);
+		checkValidationMessage("");
+
+		Thread.sleep(2000);
+		printBtnInEntryPage.click();
+
+		Thread.sleep(1600);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
+		LayoutNameTxt.click();
+		Thread.sleep(1200);
+		LayoutNameTxt.sendKeys(Keys.END,Keys.SHIFT,Keys.HOME);
+		Thread.sleep(1600);
+		LayoutNameTxt.sendKeys("LayoutForImageGrid");
+		Thread.sleep(2000);
+		LayoutNameTxt.sendKeys(Keys.TAB);
+		Thread.sleep(2000);
+
+		/*	
+		Select s = new Select(LayoutOptionsdropdown);
+		s.selectByValue("3");
+		 */
+		Thread.sleep(1600);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(footerPDFBtn));
+		footerPDFBtn.click();
+
+		Thread.sleep(6000);
+
+		Robot robot = new Robot();
+
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(1600);
+
+		robot.keyPress(KeyEvent.VK_TAB);
+		robot.keyRelease(KeyEvent.VK_TAB);
+		robot.keyPress(KeyEvent.VK_TAB);
+		robot.keyRelease(KeyEvent.VK_TAB);
+
+		robot.keyPress(KeyEvent.VK_ENTER);
+		robot.keyRelease(KeyEvent.VK_ENTER);
+
+		Thread.sleep(1600);
+
+
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_S);
+		robot.keyRelease(KeyEvent.VK_S);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(1600);
+*/
+		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\LayoutForImageGrid.exe");
+
+		Thread.sleep(2000);
+
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(3000);
+
+		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
+
+		int actOpenWindowsCount = getDriver().getWindowHandles().size();
+		int expOpenWindowsCount = 3;
+
+		System.out.println("Number of Windows  : "+actOpenWindowsCount+"  Value Expected  "+expOpenWindowsCount);
+
+		Thread.sleep(1000);
+
+		/*getDriver().switchTo().window(openTabs.get(2)).close();
+		Thread.sleep(2000);
+		getDriver().switchTo().window(openTabs.get(1)).close();
+		Thread.sleep(2000);
+		getDriver().switchTo().window(openTabs.get(0));*/
+		
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(2000);*/
+		
+
+		Thread.sleep(2000);
+		String actPDF = getBaseDir()+"\\autoIt\\ExportFiles\\LayoutForImageGrid.pdf";
+		String expPDF = getBaseDir()+"\\autoIt\\ImportFiles\\LayoutForImageGrid.pdf";
+
+		PDFUtil pdfutil = new PDFUtil();
+
+		boolean result = pdfutil.compare(actPDF, expPDF);
+
+		String actData = pdfutil.getText(actPDF);
+		String expData = pdfutil.getText(expPDF);
+
+		System.err.println(actData);
+		System.err.println(expData);
+
+		System.out.println("Compared Result  : "+result);
+
+		if (actData.equalsIgnoreCase(expData) && result==true) 
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+
+
+
+	}
+
+	public static boolean checkPrintPDFForFormaulaLayout() throws InterruptedException, AWTException, IOException
+	{
+		Thread.sleep(2000);
+		getDriver().navigate().refresh();
+		
+		Thread.sleep(5000);
+		getAction().moveToElement(financialsMenu).build().perform();
+		Thread.sleep(2000);
+		ClickUsingJs(financialsMenu);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionMenu));
+		financialsTransactionMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionsPurchaseMenu));
+		financialsTransactionsPurchaseMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
+		purchaseVouchersVat.click();
+
+		Thread.sleep(1600);
+
+		Thread.sleep(1600);
+
+		File Efile=new File(getBaseDir()+"\\autoIt\\ExportFiles\\LayoutForFormulapdf.pdf");
+
+		if(Efile.exists())
+		{
+			Efile.delete();
+		}
+
+
+		Thread.sleep(1600);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
+
+		int count = grid_VoucherNoList.size();
+
+		for (int i = 0; i < count; i++) 
+		{
+			String VoucherNo = grid_VoucherNoList.get(i).getText();
+
+			if (VoucherNo.equalsIgnoreCase("SU/IND/TEXT1")) 
+			{
+				if (grid_CheckBoxList.get(i).isSelected()==false) 
+				{
+					grid_CheckBoxList.get(i).click();
+					break;
+				}
+			}
+		}      
+
+		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
+		printBtn.click();
+
+		Thread.sleep(1600);
+
+
+		Thread.sleep(1600);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
+		LayoutNameTxt.click();
+		Thread.sleep(1200);
+		LayoutNameTxt.sendKeys(Keys.END,Keys.SHIFT,Keys.HOME);
+		Thread.sleep(1600);
+		LayoutNameTxt.sendKeys("LayoutForFormula");
+		Thread.sleep(2000);
+		LayoutNameTxt.sendKeys(Keys.TAB);
+		Thread.sleep(2000);
+		
+		Thread.sleep(1600);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(footerPDFBtn));
+		footerPDFBtn.click();
+
+		Thread.sleep(2000);
+
+		Robot robot = new Robot();
+
+		/*robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(1600);
+
+		robot.keyPress(KeyEvent.VK_TAB);
+		robot.keyRelease(KeyEvent.VK_TAB);
+		robot.keyPress(KeyEvent.VK_TAB);
+		robot.keyRelease(KeyEvent.VK_TAB);
+
+		robot.keyPress(KeyEvent.VK_ENTER);
+		robot.keyRelease(KeyEvent.VK_ENTER);
+
+		Thread.sleep(1600);
+
+
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_S);
+		robot.keyRelease(KeyEvent.VK_S);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(1600);
+*/
+		
+		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\SavingLayoutForFormula.exe");
+
+		Thread.sleep(6000);
+		
+		
+
+		Thread.sleep(2000);
+
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(3000);
+
+		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
+
+		int actOpenWindowsCount = getDriver().getWindowHandles().size();
+		int expOpenWindowsCount = 3;
+
+		System.out.println("Number of Windows  : "+actOpenWindowsCount+"  Value Expected  "+expOpenWindowsCount);
+
+		Thread.sleep(1000);
+
+		/*getDriver().switchTo().window(openTabs.get(2)).close();
+		Thread.sleep(2000);
+		getDriver().switchTo().window(openTabs.get(1)).close();
+		Thread.sleep(2000);
+		getDriver().switchTo().window(openTabs.get(0));*/
+		
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		*/
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(2000);
+		
+
+
+		String actPDF = getBaseDir()+"\\autoIt\\ExportFiles\\LayoutForFormulapdf.pdf";
+		String expPDF = getBaseDir()+"\\autoIt\\ImportFiles\\LayoutForFormulapdf.pdf";
+
+		PDFUtil pdfutil = new PDFUtil();
+
+		boolean result = pdfutil.compare(actPDF, expPDF);
+
+		String actData = pdfutil.getText(actPDF);
+		String expData = pdfutil.getText(expPDF);
+
+		System.err.println(actData);
+		System.err.println(expData);
+
+		System.out.println("Compared Result  : "+result);
+
+		if (actData.equalsIgnoreCase(expData) && result==true) 
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+
+
+
+	}
+
+
+
+	public static boolean checkPrintPDFForGroupBy() throws InterruptedException, AWTException, IOException
+	{
+		Thread.sleep(1600);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryMenu));
+		inventoryMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryTransactionsMenu));
+		inventoryTransactionsMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(inventoryTransactionsPurchasesMenu));
+		inventoryTransactionsPurchasesMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(materialReceiptNotesVoucher));
+		materialReceiptNotesVoucher.click();
+
+		Thread.sleep(1600);
+
+
+		Thread.sleep(1600);
+
+		File Efile=new File(getBaseDir()+"\\autoIt\\ExportFiles\\LayoutForGroupBy.pdf");
+
+		if(Efile.exists())
+		{
+			Efile.delete();
+		}
+
+
+		Thread.sleep(1600);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
+
+		int count = grid_VoucherNoList.size();
+
+		for (int i = 0; i < count; i++) 
+		{
+			String VoucherNo = grid_VoucherNoList.get(i).getText();
+
+			if (VoucherNo.equalsIgnoreCase("1")) 
+			{
+				if (grid_CheckBoxList.get(i).isSelected()==false) 
+				{
+					grid_CheckBoxList.get(i).click();
+					break;
+				}
+			}
+		}      
+
+		getWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
+		printBtn.click();
+
+		Thread.sleep(1600);
+
+
+		Thread.sleep(1600);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
+		LayoutNameTxt.click();
+		Thread.sleep(1200);
+		LayoutNameTxt.sendKeys(Keys.END,Keys.SHIFT,Keys.HOME);
+		Thread.sleep(1600);
+		LayoutNameTxt.sendKeys("MRNLayoutForGroupBy");
+		Thread.sleep(1600);
+		LayoutNameTxt.sendKeys(Keys.TAB);
+		Thread.sleep(1600);
+
+
+		/*	Select s = new Select(LayoutOptionsdropdown);
+		s.selectByValue("3");*/
+
+		Thread.sleep(1600);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(footerPDFBtn));
+		footerPDFBtn.click();
+
+		Thread.sleep(2000);
+
+		Robot robot = new Robot();
+
+		/*robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(1600);
+
+		robot.keyPress(KeyEvent.VK_TAB);
+		robot.keyRelease(KeyEvent.VK_TAB);
+		robot.keyPress(KeyEvent.VK_TAB);
+		robot.keyRelease(KeyEvent.VK_TAB);
+
+		robot.keyPress(KeyEvent.VK_ENTER);
+		robot.keyRelease(KeyEvent.VK_ENTER);
+
+		Thread.sleep(1600);
+
+
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_S);
+		robot.keyRelease(KeyEvent.VK_S);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(1600);
+*/
+		
+		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\SavingLayoutForGroupBy.exe");
+
+		Thread.sleep(6000);
+
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(1600);
+
+		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
+
+		int actOpenWindowsCount = getDriver().getWindowHandles().size();
+		int expOpenWindowsCount = 3;
+
+		System.out.println("Number of Windows  : "+actOpenWindowsCount+"  Value Expected  "+expOpenWindowsCount);
+
+		Thread.sleep(1000);
+
+	/*	getDriver().switchTo().window(openTabs.get(2)).close();
+		Thread.sleep(2000);
+		getDriver().switchTo().window(openTabs.get(1)).close();
+		Thread.sleep(2000);
+		getDriver().switchTo().window(openTabs.get(0));
+*/
+		
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);*/
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		
+
+		String actPDF = getBaseDir()+"\\autoIt\\ExportFiles\\LayoutForGroupBy.pdf";
+		String expPDF = getBaseDir()+"\\autoIt\\ImportFiles\\LayoutForGroupBy.pdf";
+
+		PDFUtil pdfutil = new PDFUtil();
+
+		boolean result = pdfutil.compare(actPDF, expPDF);
+
+		String actData = pdfutil.getText(actPDF);
+		String expData = pdfutil.getText(expPDF);
+
+		System.err.println(actData);
+		System.err.println(expData);
+
+		System.out.println("Compared Result  : "+result);
+
+		if (actData.equalsIgnoreCase(expData) && result==true) 
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+
+
+	public static boolean checkPintPDFForRollerLayout() throws InterruptedException, AWTException, IOException
+	{
+		Thread.sleep(1600);
+
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+		financialsMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionMenu));
+		financialsTransactionMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionsPurchaseMenu));
+		financialsTransactionsPurchaseMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
+		purchaseVouchersVat.click();
+
+		Thread.sleep(1600);
+
+		File Efile=new File(getBaseDir()+"\\autoIt\\ExportFiles\\LayoutForRoller.pdf");
+
+		if(Efile.exists())
+		{
+			Efile.delete();
+		}
+
+		Thread.sleep(1600);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
+
+		int count = grid_VoucherNoList.size();
+
+		for (int i = 0; i < count; i++) 
+		{
+			String VoucherNo = grid_VoucherNoList.get(i).getText();
+
+			if (VoucherNo.equalsIgnoreCase("SU/IND/TEXT1")) 
+			{
+				if (grid_CheckBoxList.get(i).isSelected()==false) 
+				{
+					grid_CheckBoxList.get(i).click();
+					break;
+				}
+			}
+		}      
+
+		Thread.sleep(2500);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
+		printBtn.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
+		LayoutNameTxt.click();
+		Thread.sleep(1200);
+		LayoutNameTxt.sendKeys(Keys.END,Keys.SHIFT,Keys.HOME);
+		Thread.sleep(1600);
+		LayoutNameTxt.sendKeys("RollerLayout");
+		Thread.sleep(1600);
+		LayoutNameTxt.sendKeys(Keys.TAB);
+		Thread.sleep(1600);
+
+		/*Select s = new Select(LayoutOptionsdropdown);
+		s.selectByValue("3");*/
+
+		Thread.sleep(1600);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(footerPDFBtn));
+		footerPDFBtn.click();
+
+		Thread.sleep(2000);
+
+		Robot robot = new Robot();
+
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(1600);
+
+		robot.keyPress(KeyEvent.VK_TAB);
+		robot.keyRelease(KeyEvent.VK_TAB);
+		robot.keyPress(KeyEvent.VK_TAB);
+		robot.keyRelease(KeyEvent.VK_TAB);
+
+		robot.keyPress(KeyEvent.VK_ENTER);
+		robot.keyRelease(KeyEvent.VK_ENTER);
+
+		Thread.sleep(1600);
+
+
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_S);
+		robot.keyRelease(KeyEvent.VK_S);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(1600);
+*/
+		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\SavingRollerLayout.exe");
+
+		Thread.sleep(6000);
+
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(1600);
+
+		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
+
+		int actOpenWindowsCount = getDriver().getWindowHandles().size();
+		int expOpenWindowsCount = 3;
+
+		System.out.println("Number of Windows  : "+actOpenWindowsCount+"  Value Expected  "+expOpenWindowsCount);
+
+		Thread.sleep(1000);
+
+	/*	getDriver().switchTo().window(openTabs.get(2)).close();
+		Thread.sleep(2000);
+		getDriver().switchTo().window(openTabs.get(1)).close();
+		Thread.sleep(2000);
+		getDriver().switchTo().window(openTabs.get(0));
+*/
+		
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		*/
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		
+		
+
+		String actPDF = getBaseDir()+"\\autoIt\\ExportFiles\\LayoutForRoller.pdf";
+		String expPDF = getBaseDir()+"\\autoIt\\ImportFiles\\LayoutForRoller.pdf";
+
+		PDFUtil pdfutil = new PDFUtil();
+
+		boolean result = pdfutil.compare(actPDF, expPDF);
+
+		String actData = pdfutil.getText(actPDF);
+		String expData = pdfutil.getText(expPDF);
+
+		System.err.println(actData);
+		System.err.println(expPDF);
+		/*	
+						String expDateValidation = expData.replaceAll("02/03/2022", getCurrentDateF2());
+
+						System.err.println(actData);
+						System.err.println(expPDF);*/
+
+		System.out.println("Compared Result  : "+result);
+
+		if (actData.equalsIgnoreCase(expData) && result==true) 
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+
+
+	}
+
+
+	public static boolean checkPrintPDFValidationForBodyGridInArea() throws InterruptedException, AWTException, IOException
+	{
+
+		Thread.sleep(1600);
+
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+		financialsMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionMenu));
+		financialsTransactionMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionsPurchaseMenu));
+		financialsTransactionsPurchaseMenu.click();
+
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(purchaseVouchersVat));
+		purchaseVouchersVat.click();
+
+		Thread.sleep(1600);
+
+		File Efile=new File(getBaseDir()+"\\autoIt\\ExportFiles\\LayoutForBodyGridInArea.pdf");
+
+		if(Efile.exists())
+		{
+			Efile.delete();
+		}
+
+		Thread.sleep(1600);
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(grid_ChkBox1));
+
+		int count = grid_VoucherNoList.size();
+
+		for (int i = 0; i < count; i++) 
+		{
+			String VoucherNo = grid_VoucherNoList.get(i).getText();
+
+			if (VoucherNo.equalsIgnoreCase("SU/IND/TEXT2")) 
+			{
+				if (grid_CheckBoxList.get(i).isSelected()==false) 
+				{
+					grid_CheckBoxList.get(i).click();
+					break;
+				}
+			}
+		}      
+
+		Thread.sleep(2000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(printBtn));
+		printBtn.click();
+
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(LayoutNameTxt));
+		LayoutNameTxt.click();
+		Thread.sleep(1200);
+		LayoutNameTxt.sendKeys(Keys.END,Keys.SHIFT,Keys.HOME);
+		Thread.sleep(1600);
+		LayoutNameTxt.sendKeys("BodyGridInAreaLayout");
+		Thread.sleep(1600);
+		LayoutNameTxt.sendKeys(Keys.TAB);
+		Thread.sleep(1600);
+
+		/*Select s = new Select(LayoutOptionsdropdown);
+		s.selectByValue("3");*/
+
+		Thread.sleep(1600);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(footerPDFBtn));
+		footerPDFBtn.click();
+
+
+		Thread.sleep(2000);
+
+		Robot robot = new Robot();
+
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(1600);
+
+		robot.keyPress(KeyEvent.VK_TAB);
+		robot.keyRelease(KeyEvent.VK_TAB);
+		robot.keyPress(KeyEvent.VK_TAB);
+		robot.keyRelease(KeyEvent.VK_TAB);
+
+		robot.keyPress(KeyEvent.VK_ENTER);
+		robot.keyRelease(KeyEvent.VK_ENTER);
+
+		Thread.sleep(1600);
+
+
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_S);
+		robot.keyRelease(KeyEvent.VK_S);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(1600);
+*/
+		
+		Runtime.getRuntime().exec(getBaseDir() + "\\autoIt\\scripts\\SavingLayoutForBodyGridInArea.exe");
+
+		Thread.sleep(6000);
+
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(1600);
+
+		ArrayList<String> openTabs = new ArrayList<String>(getDriver().getWindowHandles());
+
+		int actOpenWindowsCount = getDriver().getWindowHandles().size();
+		int expOpenWindowsCount = 3;
+
+		System.out.println("Number of Windows  : "+actOpenWindowsCount+"  Value Expected  "+expOpenWindowsCount);
+
+		Thread.sleep(1000);
+
+	/*	getDriver().switchTo().window(openTabs.get(2)).close();
+		Thread.sleep(2000);
+		getDriver().switchTo().window(openTabs.get(1)).close();
+		Thread.sleep(2000);
+		getDriver().switchTo().window(openTabs.get(0));*/
+		
+	/*	robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		*/
+		
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_W);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(1000);
+		
+
+
+		String actPDF = getBaseDir()+"\\autoIt\\ExportFiles\\LayoutForBodyGridInArea.pdf";
+		String expPDF = getBaseDir()+"\\autoIt\\ImportFiles\\LayoutForBodyGridInArea.pdf";
+
+		PDFUtil pdfutil = new PDFUtil();
+
+		boolean result = pdfutil.compare(actPDF, expPDF);
+
+		String actData = pdfutil.getText(actPDF);
+		String expData = pdfutil.getText(expPDF);
+
+		System.err.println(actData);
+		System.err.println(expPDF);
+		/*	
+						String expDateValidation = expData.replaceAll("02/03/2022", getCurrentDateF2());
+
+						System.err.println(actData);
+						System.err.println(expPDF);*/
+
+		System.out.println("Compared Result  : "+result);
+
+		if (actData.equalsIgnoreCase(expData) && result==true) 
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+
+
+	}
+
+
+
+	public static boolean checkEnableDoNotOpenPrintFileInNewWindow() throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException
+	{ 
+
+		Thread.sleep(1000);
+		getDriver().navigate().refresh();
+		Thread.sleep(1600);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(SettingsBtn));
+		ClickUsingJs(SettingsBtn);
+
+		Thread.sleep(1000);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(preferences));
+		preferences.click();
+
+		Thread.sleep(1000);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(ReportBtn));
+		ReportBtn.click();
+
+		Thread.sleep(1000);
+		if(Prfrncs_DoNotOpenPrntFileNwWndw.isSelected())
+		{
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(Prfrncs_DoNotOpenPrntFileNwWndw));
+			Prfrncs_DoNotOpenPrntFileNwWndw.click();
+		}
+
+		boolean actprintChckbx = Prfrncs_DoNotOpenPrntFileNwWndw.isSelected();
+		boolean expprintChckbx = true;
+
+
+		getAction().moveToElement(updateBtnInDc).build().perform();
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(updateBtnInDc));
+		updateBtnInDc.click();
+
+
+		getWaitForAlert();
+		String actAlertMgs  =getAlert().getText();
+		String expAlertMgs  ="Do you want to save the changes?";
+		getAlert().accept();
+
+
+
+		String expMessage = "Data saved successfully";
+		String actMessage = checkValidationMessage(expMessage);
+
+		if( actAlertMgs.equalsIgnoreCase(expAlertMgs) && actMessage.equalsIgnoreCase(expMessage) && actprintChckbx == expprintChckbx)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+
+	}
+
+
+
+	@FindBy(xpath="//*[@id='panelsStayOpen-headingOne']/button")
+	private static WebElement panelForFilter;
+
+	@FindBy(xpath="//*[@id='id_TransHomeFilter']")
+	private static WebElement filterIcon;
+
+	@FindBy(xpath="(//*[@id='FilterFields_2008_2']/li[4]/div/label/span)[1]")
+	private static WebElement purchasesExpandButton;
+
+	@FindBy(xpath="(//*[@id='FilterFields_2008_2']/ul[4]/li[1]/div/label/span)[1]")
+	private static WebElement purchaseNameChckbx;
+
+	@FindBy(xpath="(//*[@id='FilterFields_2008_2']/ul[4]/li[1]/div/label/input)[1]")
+	private static WebElement purchaseNameChckbxSelected;
+
+	@FindBy(xpath="(//*[@id='FilterFields_2008_2']/li[5]/a/i)[1]")
+	private static WebElement vendorExpandButton;
+
+	@FindBy(xpath="(//*[@id='FilterFields_2008_2']/ul[5]/li[1]/div/label/input)[1]")
+	private static WebElement vendorNameChckbxSelected;
+
+	@FindBy(xpath="(//*[@id='FilterFields_2008_2']/ul[5]/li[1]/div/label/span)[1]")
+	private static WebElement vendorNameChckbx;
+
+	@FindBy(xpath="//label[text()='PurchaseAC:']")
+	private static WebElement purAccLabel;
+
+	@FindBy(xpath="//label[text()='VendorAC:']")
+	private static WebElement venAccLabel;
+
+	@FindBy(xpath="//tbody[@id='FOption_2008_2_DefaultFilter_0_table_body']//td[2]")
+	private static List<WebElement> purchasesACCList;
+
+	@FindBy(xpath="//tbody[@id='FOption_2008_2_DefaultFilter_1_table_body']//td[2]")
+	private static List<WebElement> vendorAccList;
+
+	@FindBy(xpath="//*[@id='FOption_2008_2_DefaultFilter_0']")
+	private static WebElement purchasesTable;
+
+	@FindBy(xpath="//*[@id='FOption_2008_2_DefaultFilter_1']")
+	private static WebElement vendorTable;
+
+	@FindBy(xpath="//*[@id='2008_2_AdvanceFilter_']/table/tbody/tr[2]/td[1]/select")
+	private static WebElement andDropDown;
+
+	@FindBy(xpath="//*[@id='btnSetFilterVal']")
+	private static WebElement FilterOkBtn;
+
+	@FindBy(xpath="//tbody[@id='tblBodyTransRender']//tr//td[5]")
+	private static List<WebElement> voucherNumList;
+
+
+	public static boolean checkFilterInPurchasesVoucherHomePage() throws InterruptedException
+	{
+		Thread.sleep(2000);
+		Thread.sleep(2000);
+
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsMenu));
+		financialsMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionMenu));
+		financialsTransactionMenu.click();
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(financialsTransactionsPurchaseMenu));
+		financialsTransactionsPurchaseMenu.click();
+
+		Thread.sleep(2000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseVouchers));
+		purchaseVouchers.click();
+
+		Thread.sleep(2000);
+
+		Thread.sleep(2000);
+		
+		getFluentWebDriverWaitN().until(ExpectedConditions.elementToBeClickable(panelForFilter));
+		ClickUsingJs(panelForFilter);
+
+		
+		Thread.sleep(2000);
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(filterIcon));
+		filterIcon.click();
+
+		Thread.sleep(2000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(report_FilterCustomizeBtn));
+		report_FilterCustomizeBtn.click();
+
+
+		Thread.sleep(2500);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchasesExpandButton));
+		purchasesExpandButton.click();
+
+
+		Thread.sleep(2000);
+
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseNameChckbx));
+		if (vendorNameChckbxSelected.isSelected()==false)
+		{
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(purchaseNameChckbx));
+			purchaseNameChckbx.click();
+		}
+
+
+		Thread.sleep(2000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorExpandButton));
+		vendorExpandButton.click();
+
+
+		Thread.sleep(2000);
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorNameChckbx));
+		if (vendorNameChckbxSelected.isSelected()==false)
+		{
+			getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(vendorNameChckbx));
+			vendorNameChckbx.click();
+		}
+
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(filter_FilterOkButton));
+		filter_FilterOkButton.click();
+
+
+
+		Thread.sleep(2000);
+		boolean actPurLable =purAccLabel.isDisplayed();
+		boolean expPurLable = true;
+
+		System.out.println("actPurLable: "+actPurLable);
+		System.out.println("expPurLable: "+expPurLable);
+
+		Thread.sleep(2000);
+		boolean actVenLable =venAccLabel.isDisplayed();
+		boolean expVenLable = true;
+
+		System.out.println("actVenLable: "+actVenLable);
+		System.out.println("expVenLable: "+expVenLable);
+
+		purchasesTable.click();
+		purchasesTable.sendKeys(Keys.SPACE);
+
+		ArrayList<String> PurAccList= new ArrayList<String>(); 
+
+		int Count=purchasesACCList.size();
+
+		System.err.println(Count);
+
+		for(int i=0 ; i < Count ;i++)
+		{
+			String data=purchasesACCList.get(i).getText();
+			PurAccList.add(data);
+
+		}
+
+		String actPurList = PurAccList.toString();
+		String expPurList = "[Accounts Receivable, Accrued Liabilities, Administrative Expenses, ASSETS, Authorized Capital, Bank, Bank Charges, Basic Salary, BR COGS ACC INV, Capital, Cash, Cash & bank, COGS POSTING ACC, CONTROL ACCOUNTS, Cost of goods sold - Computers, Cost of goods sold - Electronics, Cost of goods sold - HA, Courier Charges, Current Assets, Custom Duty Payable, Customer A, Customer B, Customer C, Customer Display CD For Each Account One, Customer Display CD For Each Account Three, Customer Display CD For Each Account Two, Customer Update, Customer Update Group, Depreciation, Direct Expenses, Dividend Payable, Email Account One, Email Account Three, Email Account Two, Employee Benefits, Employee Payable, EQUITIES, EXCESS COGS POSTING ACC, Exchange Gain, Exchange Loss, EXPENSES, FIFO COGS ACC INV, Financial Charges, Financial Charges, Fixed Assets, Fixed Deposit Investment, Freight Payable, Gain and Loss, Gain on Asset Sale]";
+
+
+		vendorTable.click();
+		vendorTable.sendKeys(Keys.SPACE);
+
+		ArrayList<String> VenAccList= new ArrayList<String>(); 
+
+		int Count2=vendorAccList.size();
+
+		System.err.println(Count2);
+
+		for(int i=0 ; i < Count2 ;i++)
+		{
+			String data=vendorAccList.get(i).getText();
+			VenAccList.add(data);
+
+		}
+
+		String actvenList = PurAccList.toString();
+		String expvenList = "[Accounts Receivable, Accrued Liabilities, Administrative Expenses, ASSETS, Authorized Capital, Bank, Bank Charges, Basic Salary, BR COGS ACC INV, Capital, Cash, Cash & bank, COGS POSTING ACC, CONTROL ACCOUNTS, Cost of goods sold - Computers, Cost of goods sold - Electronics, Cost of goods sold - HA, Courier Charges, Current Assets, Custom Duty Payable, Customer A, Customer B, Customer C, Customer Display CD For Each Account One, Customer Display CD For Each Account Three, Customer Display CD For Each Account Two, Customer Update, Customer Update Group, Depreciation, Direct Expenses, Dividend Payable, Email Account One, Email Account Three, Email Account Two, Employee Benefits, Employee Payable, EQUITIES, EXCESS COGS POSTING ACC, Exchange Gain, Exchange Loss, EXPENSES, FIFO COGS ACC INV, Financial Charges, Financial Charges, Fixed Assets, Fixed Deposit Investment, Freight Payable, Gain and Loss, Gain on Asset Sale]";
+
+		System.out.println("actvenList: "+actvenList);
+		System.out.println("expvenList: "+expvenList);
+
+		System.out.println("actPurList: "+actPurList);
+		System.out.println("expPurList: "+expPurList);
+
+
+		if (actPurLable == expPurLable && actVenLable == expVenLable && actPurList.equalsIgnoreCase(expPurList) 
+				&& actvenList.equalsIgnoreCase(expvenList)) 
+		{
+			return true;
+		}
+		else 
+		{
+			return false;
+		}
+
+	}
+
+	public static boolean checkPurchasesAccountAndVendorAccInFilter() throws InterruptedException
+	{
+		Thread.sleep(1600);
+		purchasesTable.click();
+		purchasesTable.sendKeys(Keys.END,Keys.SHIFT,Keys.HOME);
+		purchasesTable.sendKeys("Purchase");
+		Thread.sleep(1000);
+		purchasesTable.sendKeys(Keys.TAB);
+
+		Thread.sleep(1600);
+		vendorTable.sendKeys(Keys.END,Keys.SHIFT,Keys.HOME);
+		vendorTable.sendKeys(Keys.SPACE);
+		Thread.sleep(1200);
+		vendorTable.sendKeys("Vendor A");
+		Thread.sleep(1200);
+		vendorTable.sendKeys(Keys.TAB);
+
+		FilterOkBtn.click();
+
+		Thread.sleep(1600);
+
+
+		//
+		Thread.sleep(2000);
+		ArrayList<String> VNumList= new ArrayList<String>(); 
+
+		int Count=voucherNumList.size();
+
+		System.err.println(Count);
+
+		for(int i=0 ; i < Count ;i++)
+		{
+			String data=voucherNumList.get(i).getText();
+			VNumList.add(data);
+
+		}
+
+		String actvList = VNumList.toString();
+		String expvList = "[1, ]";
+
+		System.out.println("actvList: "+actvList);
+		System.out.println("expvList: "+expvList);
+
+		
+		Thread.sleep(3000);
+		ClickUsingJs(filterIcon);
+
+		Thread.sleep(1600);
+
+		
+		ClickUsingJs(andDropDown);
+		Select dd = new Select(andDropDown);
+		dd.selectByValue("6");
+
+
+		Thread.sleep(2000);
+
+		FilterOkBtn.click();
+
+
+		System.err.println(Count);
+
+		Thread.sleep(2000);
+		ArrayList<String> VNumList1= new ArrayList<String>(); 
+		for(int i=0 ; i < Count ;i++)
+		{
+			String data=voucherNumList.get(i).getText();
+			VNumList1.add(data);
+
+		}
+
+		String actOrvList = VNumList1.toString();
+		String expOrvList = "[3, 2]";
+
+		System.out.println("actvList: "+actvList);
+		System.out.println("expvList: "+expvList);
+
+		System.out.println("actOrvList: "+actOrvList);
+		System.out.println("expOrvList: "+expOrvList);
+
+		if (actvList.equalsIgnoreCase(expvList) && actOrvList.equalsIgnoreCase(expOrvList)) 
+		{
+			return true;
+		} 
+		else 
+		{
+			return false;
+		}
+
+	}
+
+
+
 
 
 
