@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -16,6 +17,7 @@ import org.openqa.selenium.support.ui.Select;
 import com.focus.base.BaseEngine;
 import com.focus.supporters.ExcelReader;
 import com.focus.utilities.POJOUtility;
+import com.focus.utilities.ScreenshotUtility;
 
 
 
@@ -584,14 +586,18 @@ public class LoginPage extends BaseEngine
 	@FindBy(xpath="//*[@id='id_mainlayoutmenu']/ul[2]/li[5]/a")
 	private static WebElement userNameTxt2;
 	
-	public static boolean checkLogin() throws InterruptedException
+	public static boolean checkLogin() throws InterruptedException, IOException
 	{
 		Thread.sleep(3000);
 		
 		//getDriver().navigate().refresh();
 		
 		LoginPage lp=new LoginPage(getDriver()); 
-
+		ScreenshotUtility.screenshot();
+		
+		System.out.println("Screenshot before Login");
+		
+		
 		String unamelt="su";
 
 		String pawslt="su";
@@ -634,9 +640,12 @@ public class LoginPage extends BaseEngine
 		Thread.sleep(2000);
 
 		lp.clickOnSignInBtn();
+		
+		
 
 
 		Thread.sleep(5000);
+		ScreenshotUtility.screenshot();
 		
 		String actUserInfo1=usernametxt.getText();
 
