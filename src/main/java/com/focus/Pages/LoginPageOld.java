@@ -180,8 +180,8 @@ public class LoginPageOld extends BaseEngine
    // String actURLValue="http://localhost/FocusX#";
 	//String actURLValue="https://focus-qa-118/focusx";
  
-    enterUrl("http://localhost/FocusX#");
-	//enterUrl("https://focus-qa-118/focusxNew");
+    //enterUrl("http://localhost/FocusX#");
+	enterUrl("http://focus-qa-118/FocusX#");
     String actLoginTitle = getDriver().getTitle();
     String expLoginTitle="Focus";
 
