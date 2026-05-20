@@ -310,77 +310,69 @@ public class BaseEngine extends ElementRepository
 	@Parameters("browser")
 	@BeforeSuite
 	public void openBrowser(@Optional("chrome") String browser) {
-		
-		
 
-		baseDir = System.getProperty("user.dir");
-		PropertyConfigurator.configure(baseDir + "\\log4j.properties");
-		
-		
-		
-		//PropertyConfigurator.configure("D:\\FocusXAllProjectsSuite\\FocusAI\\log4j.properties");
-		
-		
+	    baseDir = System.getProperty("user.dir");
+	    PropertyConfigurator.configure(baseDir + "\\log4j.properties");
 
-		if (browser.equalsIgnoreCase("chrome")) {
-			System.setProperty(DriverUtility.chromeKey, baseDir + DriverUtility.chromeValue);
-			//WebDriverManager.chromedriver().setup();
-			
-			String downloadFilepath = getBaseDir() + "\\autoIt\\ExportFiles";
-			HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
-			chromePrefs.put("profile.default_content_settings.popups", 0);
-			chromePrefs.put("download.default_directory", downloadFilepath);
-			chromePrefs.put("safebrowsing.enabled", "false");
-			chromePrefs.put("download.prompt_for_download", true);
-			
-			
-			/*
-			 * ChromeOptions options = new ChromeOptions();
-			 * 
-			 * options.setExperimentalOption("prefs", chromePrefs); DesiredCapabilities cap
-			 * = DesiredCapabilities.chrome();
-			 * cap.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
-			 * cap.setCapability(ChromeOptions.CAPABILITY, options);
-			 * 
-			 * 
-			 * driver = new ChromeDriver(cap);
-			 */
-			
-			ChromeOptions options = new ChromeOptions();
-			options.setExperimentalOption("prefs", chromePrefs);
-			options.setAcceptInsecureCerts(true);  // replaces CapabilityType.ACCEPT_SSL_CERTS
+	    // Auto-detect if running in Jenkins
+	    String isJenkins = System.getenv("JENKINS_HOME");
+	    boolean runningInJenkins = (isJenkins != null);
+	    
+	    System.out.println("Running in Jenkins: " + runningInJenkins);
+	    System.out.println("Base Directory: " + baseDir);
 
-			/*
-			 * // optional: headless for Jenkins options.addArguments("--headless");
-			 * options.addArguments("--disable-gpu");
-			 * options.addArguments("--window-size=1920,1080");
-			 * options.addArguments("--no-sandbox");
-			 * options.addArguments("--disable-dev-shm-usage");
-			 */
+	    if (browser.equalsIgnoreCase("chrome")) {
 
-			driver = new ChromeDriver(options);
-			initActivities();
-			System.out.println("san");
-		}
+	        System.setProperty(DriverUtility.chromeKey, baseDir + DriverUtility.chromeValue);
 
-		/*
-		 * if(browser.equalsIgnoreCase("chrome")) {
-		 * System.setProperty(DriverUtility.chromeKey,
-		 * baseDir+DriverUtility.chromeValue); driver=new ChromeDriver();
-		 * initActivities(); }
-		 */
+	        // Download preferences
+	        String downloadFilepath = getBaseDir() + "\\autoIt\\ExportFiles";
+	        HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
+	        chromePrefs.put("profile.default_content_settings.popups", 0);
+	        chromePrefs.put("download.default_directory", downloadFilepath);
+	        chromePrefs.put("safebrowsing.enabled", "false");
+	        chromePrefs.put("download.prompt_for_download", true);
 
-		if (browser.equalsIgnoreCase("ie")) {
-			System.setProperty(DriverUtility.ieKey, baseDir + DriverUtility.ieValue);
-			driver = new InternetExplorerDriver();
-			initActivities();
-		}
+	        ChromeOptions options = new ChromeOptions();
+	        options.setExperimentalOption("prefs", chromePrefs);
+	        options.setAcceptInsecureCerts(true);
 
-		if (browser.equalsIgnoreCase("firefox")) {
-			System.setProperty(DriverUtility.firefoxKey, baseDir + DriverUtility.firefoxValue);
-			driver = new FirefoxDriver();
-			initActivities();
-		}
+	        if (runningInJenkins) {
+	            // ======= JENKINS MODE - Headless =======
+	            System.out.println("Jenkins Mode: Starting Chrome in Headless mode");
+	            options.addArguments("--headless=new");
+	            options.addArguments("--disable-gpu");
+	            options.addArguments("--window-size=1920,1080");
+	            options.addArguments("--no-sandbox");
+	            options.addArguments("--disable-dev-shm-usage");
+	            options.addArguments("--disable-extensions");
+	            options.addArguments("--remote-allow-origins=*");
+	            options.addArguments("--ignore-certificate-errors");
+	            options.addArguments("--allow-insecure-localhost");
+	        } else {
+	            // ======= LOCAL ECLIPSE MODE - Normal Browser =======
+	            System.out.println("Local Mode: Starting Chrome in Normal mode");
+	            options.addArguments("--start-maximized");
+	            options.addArguments("--disable-notifications");
+	            options.addArguments("--ignore-certificate-errors");
+	        }
+
+	        driver = new ChromeDriver(options);
+	        initActivities();
+	        System.out.println("Chrome Browser Started Successfully");
+	    }
+
+	    if (browser.equalsIgnoreCase("ie")) {
+	        System.setProperty(DriverUtility.ieKey, baseDir + DriverUtility.ieValue);
+	        driver = new InternetExplorerDriver();
+	        initActivities();
+	    }
+
+	    if (browser.equalsIgnoreCase("firefox")) {
+	        System.setProperty(DriverUtility.firefoxKey, baseDir + DriverUtility.firefoxValue);
+	        driver = new FirefoxDriver();
+	        initActivities();
+	    }
 	}
 
 	public void initActivities() {
