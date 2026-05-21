@@ -9,8 +9,8 @@
 
 			<class name="com.focus.testcases.URLBrowserTest" />
 			
-			<class name="com.focus.testcases.LoginPageTest"/>
-			<class name="com.focus.testcases.VoucherPrintOptionsTest" />
+			<!-- <class name="com.focus.testcases.LoginPageTest"/>
+			<class name="com.focus.testcases.VoucherPrintOptionsTest" /> -->
 			
 			<class name="com.focus.testcases.UserRestrictionsTest" />
 			

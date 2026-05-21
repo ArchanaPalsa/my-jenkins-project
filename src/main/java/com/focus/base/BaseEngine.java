@@ -330,12 +330,17 @@ public class BaseEngine extends ElementRepository
 	        HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
 	        chromePrefs.put("profile.default_content_settings.popups", 0);
 	        chromePrefs.put("download.default_directory", downloadFilepath);
-	        chromePrefs.put("safebrowsing.enabled", "false");
+	        chromePrefs.put("safebrowsing.enabled", "true");
+	        chromePrefs.put("safebrowsing.disable_download_protection", true);
 	        chromePrefs.put("download.prompt_for_download", true);
 
 	        ChromeOptions options = new ChromeOptions();
 	        options.setExperimentalOption("prefs", chromePrefs);
 	        options.setAcceptInsecureCerts(true);
+	        
+	     // Fix download blocking - add to BOTH modes:
+	        options.addArguments("--disable-features=InsecureDownloadWarnings");
+	        options.addArguments("--allow-running-insecure-content");
 
 	        if (runningInJenkins) {
 	            // ======= JENKINS MODE - Headless =======
@@ -351,10 +356,16 @@ public class BaseEngine extends ElementRepository
 	            options.addArguments("--allow-insecure-localhost");
 	        } else {
 	            // ======= LOCAL ECLIPSE MODE - Normal Browser =======
+	        	// LOCAL ECLIPSE MODE
 	            System.out.println("Local Mode: Starting Chrome in Normal mode");
 	            options.addArguments("--start-maximized");
 	            options.addArguments("--disable-notifications");
 	            options.addArguments("--ignore-certificate-errors");
+	            
+	            // Fix for downloads being blocked:
+	            options.addArguments("--allow-running-insecure-content"); 
+	            options.addArguments("--disable-features=InsecureDownloadWarnings"); // ← Add this
+	            options.addArguments("--no-sandbox");
 	        }
 
 	        driver = new ChromeDriver(options);
