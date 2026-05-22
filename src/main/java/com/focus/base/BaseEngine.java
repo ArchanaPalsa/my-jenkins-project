@@ -805,17 +805,27 @@ public class BaseEngine extends ElementRepository
 		 *   Direct file upload using sendKeys()
 		 */
 
-		// Build backup file path
 		String filePath = getBaseDir() + "\\backup\\" + BackupFile + ".fbak";
 
-		System.out.println("Uploading backup file: " + filePath);
+		System.out.println("Backup File Path : " + filePath);
 
-		// Locate file input element
-		// Replace locator as per your application
-		WebElement fileInput = folderpathExpandBtn;
+		// Locate hidden file input
+		WebElement fileInput = getDriver().findElement(By.id("openFile"));
+
+		// Make hidden input visible
+		JavascriptExecutor js = (JavascriptExecutor) getDriver();
+
+		js.executeScript(
+		    "arguments[0].style.display='block';",
+		    fileInput
+		);
+
+		Thread.sleep(2000);
 
 		// Upload file directly
 		fileInput.sendKeys(filePath);
+
+		System.out.println("File uploaded successfully");
 
 		Thread.sleep(5000);
 
