@@ -1,8 +1,7 @@
 package com.focus.Pages;
+import com.focus.utilities.RobotUtility;
 
 import java.awt.AWTException;
-import java.awt.Robot;
-import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -981,11 +980,8 @@ public class FocusFinancialsReportPage extends BaseEngine
         
         Thread.sleep(9999);
 
-		Robot robot = new Robot();
-		robot.keyPress(KeyEvent.VK_CONTROL);
-		robot.keyPress(KeyEvent.VK_S);
-		robot.keyRelease(KeyEvent.VK_S);
-		robot.keyRelease(KeyEvent.VK_CONTROL);
+// Robot replaced by RobotUtility (works in Jenkins headless mode)
+			RobotUtility.pressCTRL_S(); // Replaced Robot
 		
 		Thread.sleep(2500);
 			
@@ -993,10 +989,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 		
 		Thread.sleep(2500);
 		
-		robot.keyPress(KeyEvent.VK_CONTROL);
-		robot.keyPress(KeyEvent.VK_J);
-		robot.keyRelease(KeyEvent.VK_J);
-		robot.keyRelease(KeyEvent.VK_CONTROL);
+			RobotUtility.pressCTRL_J(); // Replaced Robot
 		
 		Thread.sleep(2500);
 		
@@ -1015,17 +1008,11 @@ public class FocusFinancialsReportPage extends BaseEngine
 	 	Thread.sleep(1000);
 	 	getDriver().switchTo().window(openTabs.get(0));*/
 		
-		robot.keyPress(KeyEvent.VK_CONTROL);
-		robot.keyPress(KeyEvent.VK_W);
-		robot.keyRelease(KeyEvent.VK_W);
-		robot.keyRelease(KeyEvent.VK_CONTROL);
+			RobotUtility.pressCTRL_W(); // Replaced Robot
 
 		Thread.sleep(2500);
 		
-		robot.keyPress(KeyEvent.VK_CONTROL);
-		robot.keyPress(KeyEvent.VK_W);
-		robot.keyRelease(KeyEvent.VK_W);
-		robot.keyRelease(KeyEvent.VK_CONTROL);
+			RobotUtility.pressCTRL_W(); // Replaced Robot
 
 		Thread.sleep(4500);
 	 	
@@ -13882,30 +13869,21 @@ public class FocusFinancialsReportPage extends BaseEngine
 		
 		Thread.sleep(2000);
 
-		Robot robot = new Robot();
+// Robot replaced by RobotUtility (works in Jenkins headless mode)
 
-		robot.keyPress(KeyEvent.VK_CONTROL);
-		robot.keyPress(KeyEvent.VK_J);
-		robot.keyRelease(KeyEvent.VK_J);
-		robot.keyRelease(KeyEvent.VK_CONTROL);
+			RobotUtility.pressCTRL_J(); // Replaced Robot
 
 		Thread.sleep(1600);
 
-		robot.keyPress(KeyEvent.VK_TAB);
-		robot.keyRelease(KeyEvent.VK_TAB);
-		robot.keyPress(KeyEvent.VK_TAB);
-		robot.keyRelease(KeyEvent.VK_TAB);
+			RobotUtility.pressTAB(); // Replaced Robot
+			RobotUtility.pressTAB(); // Replaced Robot
 
-		robot.keyPress(KeyEvent.VK_ENTER);
-		robot.keyRelease(KeyEvent.VK_ENTER);
+			RobotUtility.pressENTER(); // Replaced Robot
 
 		Thread.sleep(1600);
 
 
-		robot.keyPress(KeyEvent.VK_CONTROL);
-		robot.keyPress(KeyEvent.VK_S);
-		robot.keyRelease(KeyEvent.VK_S);
-		robot.keyRelease(KeyEvent.VK_CONTROL);
+			RobotUtility.pressCTRL_S(); // Replaced Robot
 
 		Thread.sleep(1600);
 
@@ -13913,10 +13891,7 @@ public class FocusFinancialsReportPage extends BaseEngine
 
 		Thread.sleep(2000);
 
-		robot.keyPress(KeyEvent.VK_CONTROL);
-		robot.keyPress(KeyEvent.VK_J);
-		robot.keyRelease(KeyEvent.VK_J);
-		robot.keyRelease(KeyEvent.VK_CONTROL);
+			RobotUtility.pressCTRL_J(); // Replaced Robot
 
 		Thread.sleep(1600);
 

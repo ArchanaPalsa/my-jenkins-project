@@ -1,8 +1,6 @@
 package com.focus.Pages;
 
 import java.awt.AWTException;
-import java.awt.Robot;
-import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.text.DateFormat;
@@ -35,6 +33,7 @@ import org.openqa.selenium.support.ui.Select;
 import com.focus.base.BaseEngine;
 import com.focus.supporters.ExcelReader;
 import com.focus.utilities.POJOUtility;
+import com.focus.utilities.RobotUtility;
 import com.sun.tools.rngom.parse.Parseable;
 
 public class AccountMasterPage extends BaseEngine
@@ -2392,11 +2391,8 @@ public class AccountMasterPage extends BaseEngine
 */
 		
 		Thread.sleep(3500);
-		Robot robot = new Robot();
-		robot.keyPress(KeyEvent.VK_CONTROL);
-		robot.keyPress(KeyEvent.VK_J);
-		robot.keyRelease(KeyEvent.VK_J);
-		robot.keyRelease(KeyEvent.VK_CONTROL);
+// Robot replaced by RobotUtility (works in Jenkins headless mode)
+			RobotUtility.pressCTRL_J(); // Replaced Robot
 		
 		Thread.sleep(2000);
 		
@@ -20459,15 +20455,11 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		exportBtnInExportPopup.click();
 
 		Thread.sleep(10000);
-		Robot robot = new Robot();
-		robot.keyPress(KeyEvent.VK_ENTER);
-		robot.keyRelease(KeyEvent.VK_ENTER);
+// Robot replaced by RobotUtility (works in Jenkins headless mode)
+			RobotUtility.pressENTER(); // Replaced Robot
 		Thread.sleep(3500);
 		
-		robot.keyPress(KeyEvent.VK_CONTROL);
-		robot.keyPress(KeyEvent.VK_J);
-		robot.keyRelease(KeyEvent.VK_J);
-		robot.keyRelease(KeyEvent.VK_CONTROL);
+			RobotUtility.pressCTRL_J(); // Replaced Robot
 		
 		Thread.sleep(2000);
 		
@@ -20720,9 +20712,8 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 
 		Thread.sleep(6000);
 		
-		Robot robot = new Robot();
-		robot.keyPress(KeyEvent.VK_ENTER);
-		robot.keyRelease(KeyEvent.VK_ENTER);
+// Robot replaced by RobotUtility (works in Jenkins headless mode)
+			RobotUtility.pressENTER(); // Replaced Robot
 		Thread.sleep(3500);
 		
 
@@ -25504,13 +25495,10 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(nameTxt));
 		nameTxt.sendKeys("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq");
 		
-		 Robot robot = new Robot();
+// Robot replaced by RobotUtility (works in Jenkins headless mode)
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(codeTxtUnderMultipleType));
 		codeTxtUnderMultipleType.click();
-		robot.keyPress(KeyEvent.VK_CONTROL);
-		robot.keyPress(KeyEvent.VK_A);
-		robot.keyRelease(KeyEvent.VK_CONTROL);
-		robot.keyRelease(KeyEvent.VK_A);
+			RobotUtility.pressCTRL_A(); // Replaced Robot
 		Thread.sleep(1000);
 		codeTxtUnderMultipleType.sendKeys("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq");
 
@@ -25731,15 +25719,11 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		
 		nameTxt.sendKeys(Keys.TAB);
 		
-		Robot robot = new Robot();
+// Robot replaced by RobotUtility (works in Jenkins headless mode)
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(codeTxtUnderMultipleType));
-		robot.keyPress(KeyEvent.VK_CONTROL);
-		robot.keyPress(KeyEvent.VK_A);
-		robot.keyRelease(KeyEvent.VK_CONTROL);
-		robot.keyRelease(KeyEvent.VK_A);
+			RobotUtility.pressCTRL_A(); // Replaced Robot
 		Thread.sleep(1000);
-		robot.keyPress(KeyEvent.VK_BACK_SPACE);
-		robot.keyRelease(KeyEvent.VK_BACK_SPACE);
+			RobotUtility.pressBACKSPACE(); // Replaced Robot
 		Thread.sleep(1000);
 		codeTxtUnderMultipleType.sendKeys("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq");
 
@@ -25959,15 +25943,11 @@ public static boolean checkCreationScreenAfterSavingInCreateAccountUnderAddGroup
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(nameTxt));
 		nameTxt.sendKeys("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq");
 
-		 Robot robot = new Robot();
+// Robot replaced by RobotUtility (works in Jenkins headless mode)
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(codeTxtUnderMultipleType));
-		robot.keyPress(KeyEvent.VK_CONTROL);
-		robot.keyPress(KeyEvent.VK_A);
-		robot.keyRelease(KeyEvent.VK_CONTROL);
-		robot.keyRelease(KeyEvent.VK_A);
+			RobotUtility.pressCTRL_A(); // Replaced Robot
 		Thread.sleep(1000);
-		robot.keyPress(KeyEvent.VK_BACK_SPACE);
-		robot.keyRelease(KeyEvent.VK_BACK_SPACE);
+			RobotUtility.pressBACKSPACE(); // Replaced Robot
 		Thread.sleep(1000);
 		codeTxtUnderMultipleType.sendKeys("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq");
 

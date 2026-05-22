@@ -1,8 +1,7 @@
 package com.focus.Pages;
 
 import java.awt.AWTException;
-import java.awt.Robot;
-import java.awt.event.KeyEvent;
+import com.focus.utilities.RobotUtility;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11907,11 +11906,8 @@ public class FocusFinancialsEERReportPage extends BaseEngine
 			Thread.sleep(3000);
 			
 			
-			Robot robot = new Robot();
-			robot.keyPress(KeyEvent.VK_CONTROL);
-			robot.keyPress(KeyEvent.VK_S);
-			robot.keyRelease(KeyEvent.VK_S);
-			robot.keyRelease(KeyEvent.VK_CONTROL);
+// Robot replaced by RobotUtility (works in Jenkins headless mode)
+			RobotUtility.pressCTRL_S(); // Replaced Robot
 			
 			Thread.sleep(2000);
 				
@@ -11919,10 +11915,7 @@ public class FocusFinancialsEERReportPage extends BaseEngine
 			
 			Thread.sleep(5000);
 			
-			robot.keyPress(KeyEvent.VK_CONTROL);
-			robot.keyPress(KeyEvent.VK_J);
-			robot.keyRelease(KeyEvent.VK_J);
-			robot.keyRelease(KeyEvent.VK_CONTROL);
+			RobotUtility.pressCTRL_J(); // Replaced Robot
 			
 			Thread.sleep(2000);
 			
