@@ -205,6 +205,8 @@ public class AccountPropertiesPage extends BaseEngine {
 		}
 
 		Thread.sleep(1500);
+		
+		
 
 		lp.clickOnSignInBtn();
 

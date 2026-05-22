@@ -1507,6 +1507,9 @@ public class LoginPage extends BaseEngine
 	{
 		System.out.println("********************************* clickOnSignInBtn Method Is Executing...................  ***********************************");
 		
+		getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(signIn));
+		
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(signIn));
 		signIn.click();	
 	}
