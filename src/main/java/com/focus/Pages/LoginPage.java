@@ -657,8 +657,8 @@ public class LoginPage extends BaseEngine
 
 		// Also print what username field contains right now
 		try {
-		    WebElement unameField = getDriver().findElement(By.name("UserName"));
-		    System.out.println("Username field still shows: " + unameField.getAttribute("value"));
+		   
+		    System.out.println("Username field still shows: " + username.getAttribute("value"));
 		} catch(Exception e) {
 		    System.out.println("Username field not found — page may have changed");
 		}
