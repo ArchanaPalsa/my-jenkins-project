@@ -588,9 +588,6 @@ public class LoginPage extends BaseEngine
 	
 	public static boolean checkLogin() throws InterruptedException, IOException
 	{
-		Thread.sleep(3000);
-		
-		//getDriver().navigate().refresh();
 		
 		LoginPage lp=new LoginPage(getDriver()); 
 		ScreenshotUtility.screenshot();
@@ -604,14 +601,9 @@ public class LoginPage extends BaseEngine
 
 		lp.enterUserName(unamelt);
 
-		Thread.sleep(2000);
+		
 		lp.enterPassword(pawslt);
 
-		Thread.sleep(2000);
-		
-		
-
-		Thread.sleep(2000);
 		
 		String compname = "Print Design Layout Company";
 
@@ -633,11 +625,12 @@ public class LoginPage extends BaseEngine
 			if (optionName.toUpperCase().startsWith(compname.toUpperCase())) {
 				System.out.println("q" + elementCount.get(i).getText());
 				elementCount.get(i).click();
+				break;
 			}
 
 		}
 
-		Thread.sleep(2000);
+		
 
 		lp.clickOnSignInBtn();
 		
