@@ -609,85 +609,58 @@ public class LoginPage extends BaseEngine
 		
 		String compname = "Print Design Layout Company";
 
+		
+		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyDropDownList));
+
 		Select oSelect = new Select(companyDropDownList);
-
 		List<WebElement> elementCount = oSelect.getOptions();
+		System.out.println("CompanyDropdownList Count: " + elementCount.size());
 
-		int cqSize = elementCount.size();
-
-		System.out.println("CompanyDropdownList Count :" + cqSize);
-
-		int i;
-
-		for (i = 0; i < elementCount.size(); i++) {
-
-			elementCount.get(i).getText();
-
-			String optionName = elementCount.get(i).getText();
-			if (optionName.toUpperCase().startsWith(compname.toUpperCase())) {
-				System.out.println("q" + elementCount.get(i).getText());
-				elementCount.get(i).click();
-				break;
-			}
-
+		for (WebElement option : elementCount) {
+		    if (option.getText().trim().toUpperCase().startsWith(compname.toUpperCase())) {
+		        oSelect.selectByVisibleText(option.getText().trim());
+		        System.out.println("Company selected: " + option.getText().trim());
+		        break;
+		    }
 		}
 
-		companyDropDownList.sendKeys(Keys.ESCAPE);
-		System.out.println("Dropdown closed via ESCAPE key");
-		
+		// STEP 2: Verify selection is still intact
+		String verified = oSelect.getFirstSelectedOption().getText();
+		System.out.println("Verified selected company BEFORE sign-in: " + verified);
 
+		// ✅ STEP 3: DO NOT use ESCAPE — click body to dismiss dropdown safely
+		((JavascriptExecutor) getDriver()).executeScript("document.body.click();");
+		Thread.sleep(500);
+
+		// STEP 4: Verify AGAIN that selection survived the body click
+		String verifiedAfter = oSelect.getFirstSelectedOption().getText();
+		System.out.println("Verified selected company AFTER body click: " + verifiedAfter);
+
+		// STEP 5: Sign in
 		lp.clickOnSignInBtn();
-		
-		System.out.println("Sign In clicked. Waiting 5 seconds...");
-		Thread.sleep(5000); // temporary — just to see what happens
+		System.out.println("Sign In clicked. Current URL: " + getDriver().getCurrentUrl());
 
-		System.out.println("Current URL      : " + getDriver().getCurrentUrl());
-		System.out.println("Current Title    : " + getDriver().getTitle());
-
-		// Print page source snippet to see if error message is shown
-		String pageSource = getDriver().getPageSource();
-
-		// Check for common login error messages in the page
-		if (pageSource.contains("Invalid") || pageSource.contains("incorrect") 
-		    || pageSource.contains("error") || pageSource.contains("wrong")) {
-		    System.out.println("POSSIBLE LOGIN ERROR DETECTED IN PAGE SOURCE");
+		// STEP 6: Wait for URL to change away from login
+		try {
+		    getFluentWebDriverWait().until(ExpectedConditions.not(
+		        ExpectedConditions.urlToBe("https://focus-qa-118/FocusX#")
+		    ));
+		    System.out.println("URL changed! New URL: " + getDriver().getCurrentUrl());
+		} catch (Exception e) {
+		    System.out.println("URL did not change. Login was rejected by app.");
+		    System.out.println("Selected company at time of failure: " 
+		        + oSelect.getFirstSelectedOption().getText());
+		    ScreenshotUtility.screenshot();
+		    return false;
 		}
 
-		// Print first 500 chars of body to see current state
-		System.out.println("Page Source Snippet: " + 
-		    pageSource.substring(0, Math.min(500, pageSource.length())));
-		
-		
-
-
-		Thread.sleep(5000);
-		ScreenshotUtility.screenshot();
-		
-		 // ✅ Fix 4: THIS IS THE KEY FIX - Wait for dashboard/username element
-	    try {
-	    	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(usernametxt));
-	    	getFluentWebDriverWait().until(ExpectedConditions.not(
-	            ExpectedConditions.textToBePresentInElement(usernametxt, "")
-	        ));
-	    } catch (TimeoutException e) {
-	        System.out.println("FAIL: Dashboard did not load after login. usernametxt not visible.");
-	        ScreenshotUtility.screenshot();
-	        return false;
-	    }
-
-	    ScreenshotUtility.screenshot();
-
-	    String actUserInfo1 = usernametxt.getText().trim();
-	    String expUserInfo1 = "SU";
-
-	    System.out.println("Actual UserInfo   : " + actUserInfo1);
-	    System.out.println("Expected UserInfo : " + expUserInfo1);
-
-	    
-
-		System.out.println("UserInfo1             : "+actUserInfo1            +" Value Expected : "+expUserInfo1);
+		// STEP 7: Wait for usernametxt
+		getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(usernametxt));
+		String actUserInfo1 = usernametxt.getText().trim();
+		System.out.println("User Info Actual   : " + actUserInfo1);
+		System.out.println("User Info Expected : SU");
 	
-		if(actUserInfo1.equalsIgnoreCase(expUserInfo1) )
+		if(actUserInfo1.equalsIgnoreCase("SU") )
 		{
 			return true;
 		}
