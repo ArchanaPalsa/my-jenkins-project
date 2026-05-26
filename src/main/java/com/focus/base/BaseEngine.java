@@ -345,7 +345,7 @@ public class BaseEngine extends ElementRepository
 			if (runningInJenkins) {
 				// ======= JENKINS MODE - Headless =======
 				System.out.println("Jenkins Mode: Starting Chrome in Headless mode");
-				options.addArguments("--headless=new");
+				//options.addArguments("--headless=new");
 				options.addArguments("--disable-gpu");
 				options.addArguments("--window-size=1920,1080");
 				options.addArguments("--no-sandbox");
