@@ -779,12 +779,15 @@ public class BaseEngine extends ElementRepository
 
 	public static  void restoreCompany(String BackupFile, String companyName) throws InterruptedException, IOException, AWTException
 	{
-		Thread.sleep(1000);
-
 		
-
+		getFluentWebDriverWait().until(ExpectedConditions.textToBePresentInElement(usernametxt,"SU" ));
+		
+		getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(homeMenu));
+		
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(homeMenu));
 		homeMenu.click();
+		
+		System.err.println("Home menu clicked");
 
 		Thread.sleep(2000);
 
