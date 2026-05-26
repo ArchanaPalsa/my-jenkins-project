@@ -354,6 +354,14 @@ public class BaseEngine extends ElementRepository
 				options.addArguments("--remote-allow-origins=*");
 				options.addArguments("--ignore-certificate-errors");
 				options.addArguments("--allow-insecure-localhost");
+				// In your BaseEngine.java openBrowser() method — ADD these flags
+				
+				
+
+				// ✅ ADD THESE — fixes SSL/certificate issues on internal servers
+			
+				options.addArguments("--disable-web-security");
+				options.setAcceptInsecureCerts(true); 
 			} else {
 				// ======= LOCAL ECLIPSE MODE - Normal Browser =======
 				// LOCAL ECLIPSE MODE
