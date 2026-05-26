@@ -139,13 +139,13 @@ public class AccountPropertiesPage extends BaseEngine {
 			throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException {
 		boolean loginSuccess = false;
 
-		getDriver().navigate().refresh();
+		//getDriver().navigate().refresh();
 
 		LoginPage lp = new LoginPage(getDriver());
 
 		String username = "su";
 		String password = "su";
-		String companyNameExpected = "Account Properties And Customization";
+		
 
 		WebDriverWait wait = new WebDriverWait(getDriver(), 240);
 
@@ -159,19 +159,42 @@ public class AccountPropertiesPage extends BaseEngine {
 		// Select company from dropdown
 		wait.until(ExpectedConditions.visibilityOf(companyDropDownList));
 		Select companySelect = new Select(companyDropDownList);
+		String compname = "Account Properties And Customization";
 
-		boolean companyFound = false;
-		for (WebElement option : companySelect.getOptions()) {
-			if (option.getText().equalsIgnoreCase(companyNameExpected)) {
-				companySelect.selectByVisibleText(option.getText());
-				companyFound = true;
-				break;
-			}
+		
+
+		// WAIT until dropdown has options loaded
+		wait.until(driver -> {
+		    Select s = new Select(companyDropDownList);
+		    return s.getOptions().size() > 1;
+		});
+
+		Select oSelect = new Select(companyDropDownList);
+
+		List<WebElement> elementCount = oSelect.getOptions();
+
+		System.out.println("CompanyDropdownList Count : " + elementCount.size());
+
+		boolean found = false;
+
+		for (WebElement option : elementCount) {
+
+		    String optionName = option.getText().trim();
+
+		    System.out.println("Dropdown Value : " + optionName);
+
+		    if (optionName.toUpperCase().startsWith(compname.toUpperCase())) {
+
+		        System.out.println("Selected Company : " + optionName);
+
+		        option.click();
+		        found = true;
+		        break;
+		    }
 		}
 
-		if (!companyFound) {
-			System.err.println("Company '" + companyNameExpected + "' not found in dropdown.");
-			return false;
+		if (!found) {
+		    System.out.println("Company NOT found even after waiting.");
 		}
 
 		// Click Sign In
@@ -470,7 +493,7 @@ public class AccountPropertiesPage extends BaseEngine {
 
 	public static boolean checkEnableCollapseTreeandValidateTreeList() throws InterruptedException {
 		Thread.sleep(2000);
-		getDriver().navigate().refresh();
+		//getDriver().navigate().refresh();
 		Thread.sleep(2000);
 
 		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(homeMenu));

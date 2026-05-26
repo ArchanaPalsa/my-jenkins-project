@@ -789,9 +789,10 @@ public class BaseEngine extends ElementRepository
 		restore.click();
 
 		Thread.sleep(4000);
-
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(folderpathExpandBtn));
-		folderpathExpandBtn.click();
+		/*
+		 * getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(
+		 * folderpathExpandBtn)); folderpathExpandBtn.click();
+		 */
 
 		Thread.sleep(4000);
 
