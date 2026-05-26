@@ -639,6 +639,29 @@ public class LoginPage extends BaseEngine
 		// STEP 5: Sign in
 		lp.clickOnSignInBtn();
 		System.out.println("Sign In clicked. Current URL: " + getDriver().getCurrentUrl());
+		
+		// After "URL changed! New URL:" print — ADD THIS
+		Thread.sleep(2000); // let any error message render
+
+		String pageSource = getDriver().getPageSource();
+		String visibleText = pageSource
+		    .replaceAll("<script[^>]*>[\\s\\S]*?</script>", "")
+		    .replaceAll("<style[^>]*>[\\s\\S]*?</style>", "")
+		    .replaceAll("<[^>]*>", " ")
+		    .replaceAll("\\s+", " ")
+		    .trim();
+
+		System.out.println("=== PAGE TEXT AFTER LOGIN ATTEMPT ===");
+		System.out.println(visibleText.substring(0, Math.min(1500, visibleText.length())));
+		System.out.println("=== END ===");
+
+		// Also print what username field contains right now
+		try {
+		    WebElement unameField = getDriver().findElement(By.name("UserName"));
+		    System.out.println("Username field still shows: " + unameField.getAttribute("value"));
+		} catch(Exception e) {
+		    System.out.println("Username field not found — page may have changed");
+		}
 
 		// STEP 6: Wait for URL to change away from login
 		try {
