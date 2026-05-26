@@ -8,6 +8,7 @@ import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -640,27 +641,31 @@ public class LoginPage extends BaseEngine
 		Thread.sleep(5000);
 		ScreenshotUtility.screenshot();
 		
-		String actUserInfo1=usernametxt.getText();
+		 // ✅ Fix 4: THIS IS THE KEY FIX - Wait for dashboard/username element
+	    try {
+	    	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(usernametxt));
+	    	getFluentWebDriverWait().until(ExpectedConditions.not(
+	            ExpectedConditions.textToBePresentInElement(usernametxt, "")
+	        ));
+	    } catch (TimeoutException e) {
+	        System.out.println("FAIL: Dashboard did not load after login. usernametxt not visible.");
+	        ScreenshotUtility.screenshot();
+	        return false;
+	    }
 
-		System.out.println("User Info  : "+actUserInfo1);
+	    ScreenshotUtility.screenshot();
 
-		System.out.println("User Info Capture Text  :  "+usernametxt.getText());
+	    String actUserInfo1 = usernametxt.getText().trim();
+	    String expUserInfo1 = "SU";
 
-	/*	getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(companyLogoImg));
-		companyLogoImg.click();
+	    System.out.println("Actual UserInfo   : " + actUserInfo1);
+	    System.out.println("Expected UserInfo : " + expUserInfo1);
 
-		String getCompanyTxt1=companyName.getText();
-		String getLoginCompanyName1=getCompanyTxt1.substring(0, 27);
-		System.out.println("company name  :  "+ getLoginCompanyName1);
-		companyLogoImg.click();*/
-
-		String expUserInfo1           ="SU";
-		String expLoginCompanyName1   ="Print Design Layout Company";
+	    
 
 		System.out.println("UserInfo1             : "+actUserInfo1            +" Value Expected : "+expUserInfo1);
-	//	System.out.println("LoginCompanyName1     : "+getLoginCompanyName1    +" Value Expected : "+expLoginCompanyName1);
-
-		if(actUserInfo1.equalsIgnoreCase(expUserInfo1) /*&& getLoginCompanyName1.contains(expLoginCompanyName1)*/)
+	
+		if(actUserInfo1.equalsIgnoreCase(expUserInfo1) )
 		{
 			return true;
 		}
