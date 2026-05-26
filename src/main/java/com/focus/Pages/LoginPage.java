@@ -631,9 +631,12 @@ public class LoginPage extends BaseEngine
 
 		}
 
+		companyDropDownList.sendKeys(Keys.ESCAPE);
+		System.out.println("Dropdown closed via ESCAPE key");
 		
 
 		lp.clickOnSignInBtn();
+		
 		
 		
 
