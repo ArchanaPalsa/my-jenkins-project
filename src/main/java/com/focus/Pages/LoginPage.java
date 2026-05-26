@@ -638,6 +638,24 @@ public class LoginPage extends BaseEngine
 
 		lp.clickOnSignInBtn();
 		
+		System.out.println("Sign In clicked. Waiting 5 seconds...");
+		Thread.sleep(5000); // temporary — just to see what happens
+
+		System.out.println("Current URL      : " + getDriver().getCurrentUrl());
+		System.out.println("Current Title    : " + getDriver().getTitle());
+
+		// Print page source snippet to see if error message is shown
+		String pageSource = getDriver().getPageSource();
+
+		// Check for common login error messages in the page
+		if (pageSource.contains("Invalid") || pageSource.contains("incorrect") 
+		    || pageSource.contains("error") || pageSource.contains("wrong")) {
+		    System.out.println("POSSIBLE LOGIN ERROR DETECTED IN PAGE SOURCE");
+		}
+
+		// Print first 500 chars of body to see current state
+		System.out.println("Page Source Snippet: " + 
+		    pageSource.substring(0, Math.min(500, pageSource.length())));
 		
 		
 
