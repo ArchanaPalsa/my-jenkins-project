@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.TimeoutException;
@@ -1508,12 +1509,33 @@ public class LoginPage extends BaseEngine
 	{
 		System.out.println("********************************* clickOnSignInBtn Method Is Executing...................  ***********************************");
 		
-		getFluentWebDriverWait().until(ExpectedConditions.visibilityOf(signIn));
+		   
+		    
+		    // Scroll into view first
+		    ((JavascriptExecutor) driver).executeScript(
+		        "arguments[0].scrollIntoView(true);", signIn
+		    );
+		    
+		    System.out.println("Scrolled Sign In button into view");
+		    
+		    // Wait until clickable
+		    getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(signIn));
+		    
+		    // Try normal click first, fall back to JS click
+		    try {
+		    	signIn.click();
+		        System.out.println("Sign In clicked normally");
+		    } catch (Exception e) {
+		        System.out.println("Normal click failed: " + e.getMessage());
+		        System.out.println("Trying JS click...");
+		        ((JavascriptExecutor) driver).executeScript(
+		            "arguments[0].click();", signIn
+		        );
+		        System.out.println("Sign In clicked via JavaScript");
+		    }
+		}
 		
-		
-		getFluentWebDriverWait().until(ExpectedConditions.elementToBeClickable(signIn));
-		signIn.click();	
-	}
+
 	
 
 	

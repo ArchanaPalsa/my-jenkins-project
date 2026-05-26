@@ -282,7 +282,7 @@ public class BaseEngine extends ElementRepository
 
 	public static int cSize;
 
-	private static WebDriver driver;
+	protected static WebDriver driver;
 	private static String baseDir;
 	private static String tcName;
 	//private static ExtentReports extentReports;
